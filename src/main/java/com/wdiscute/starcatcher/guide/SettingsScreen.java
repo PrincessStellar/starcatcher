@@ -4,11 +4,11 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.HitFakeParticle;
-import com.wdiscute.starcatcher.io.DataComponents;
-import com.wdiscute.starcatcher.io.FishProperties;
+import com.wdiscute.starcatcher.networkandcodecs.DataComponents;
+import com.wdiscute.starcatcher.networkandcodecs.FishProperties;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -33,7 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SettingsScreen extends Screen {
+public class SettingsScreen extends Screen
+{
     private static final Random r = new Random();
     private static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/minigame/minigame.png");
     private static final ResourceLocation TANK = Starcatcher.rl("textures/gui/minigame/surface.png");
@@ -107,7 +108,8 @@ public class SettingsScreen extends Screen {
     int tickCount = 0;
     List<HitFakeParticle> hitParticles = new ArrayList<>();
 
-    public SettingsScreen(FishProperties fp, ItemStack rod) {
+    public SettingsScreen(FishProperties fp, ItemStack rod)
+    {
         super(Component.empty());
 
         previousGuiScale = Minecraft.getInstance().options.guiScale().get();
@@ -160,8 +162,10 @@ public class SettingsScreen extends Screen {
         hand = Minecraft.getInstance().player.getMainHandItem().is(ModItems.ROD.get()) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
     }
 
-    private int getRandomFreePosition() {
-        for (int i = 0; i < 100; i++) {
+    private int getRandomFreePosition()
+    {
+        for (int i = 0; i < 100; i++)
+        {
             int posBeingChecked = r.nextInt(360);
 
             if ((Math.abs(pos1 - posBeingChecked) < 50 || Math.abs(pos1 - posBeingChecked) > 310) && pos1 != Integer.MIN_VALUE)
@@ -177,14 +181,17 @@ public class SettingsScreen extends Screen {
 
             return posBeingChecked;
         }
+
         return 0;
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float FRACTION_OF_A_TICK_THAT_HAPPENED_SINCE_THE_LAST_FRAME_NOT_TO_BE_CONFUSED_TO_WHAT_A_PARTIAL_TICK_IS_IN_ONE_DOT_TWENTY_ONE_WHERE_A_PARTIAL_TICK_IS_THE_FRACTION_OF_A_TICK_SINCE_THE_LAST_TICK_NOT_THE_LAST_FRAME_WOW_THATS_SO_COOL_IM_SO_HAPPY_THIS_WAS_CHANGED_AND_THEY_KEPT_THE_SAME_NAME_SO_IT_TOOK_AGES_TO_DEBUG_AND_FIND_OUT_WHAT_WAS_CAUSING_IT) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float FRACTION_OF_A_TICK_THAT_HAPPENED_SINCE_THE_LAST_FRAME_NOT_TO_BE_CONFUSED_TO_WHAT_A_PARTIAL_TICK_IS_IN_ONE_DOT_TWENTY_ONE_WHERE_A_PARTIAL_TICK_IS_THE_FRACTION_OF_A_TICK_SINCE_THE_LAST_TICK_NOT_THE_LAST_FRAME_WOW_THATS_SO_COOL_IM_SO_HAPPY_THIS_WAS_CHANGED_AND_THEY_KEPT_THE_SAME_NAME_SO_IT_TOOK_AGES_TO_DEBUG_AND_FIND_OUT_WHAT_WAS_CAUSING_IT)
+    {
         super.renderBackground(guiGraphics);
 
-        if (this.tickCount != lastTick) {
+        if (this.tickCount != lastTick)
+        {
             lastTick = this.tickCount;
             milisLastTick = Util.getMillis();
         }
@@ -242,7 +249,8 @@ public class SettingsScreen extends Screen {
         );
 
         //hover
-        if (x > 350 && x < 373 && y > 39 && y < 66) {
+        if (x > 350 && x < 373 && y > 39 && y < 66)
+        {
             List<Component> comp = new ArrayList<>();
 
             comp.add(Component.literal("This screen serves to help those"));
@@ -338,7 +346,8 @@ public class SettingsScreen extends Screen {
         guiGraphics.drawString(this.font, Component.translatable(unitSelected.translationKey), width / 2 - 50, height / 2 + 102, 0x000000, false);
 
 
-        if (treasureActive) {
+        if (treasureActive)
+        {
             //treasure bar
             guiGraphics.blit(
                     TEXTURE, width / 2 - 158, height / 2 - 42 + (int) (64 - (64f * treasureProgressSmooth) / 100),
@@ -369,9 +378,10 @@ public class SettingsScreen extends Screen {
                 32, 16, 0, 112, 32, 16, 256, 256);
 
 
-        PoseStack poseStack = guiGraphics.pose();
         //pos 1
-        if (pos1 != Integer.MIN_VALUE) {
+        if (pos1 != Integer.MIN_VALUE)
+        {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -390,7 +400,9 @@ public class SettingsScreen extends Screen {
 
 
         //pos 2
-        if (pos2 != Integer.MIN_VALUE) {
+        if (pos2 != Integer.MIN_VALUE)
+        {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -408,7 +420,9 @@ public class SettingsScreen extends Screen {
         }
 
         //pos thin 1
-        if (posThin1 != Integer.MIN_VALUE) {
+        if (posThin1 != Integer.MIN_VALUE)
+        {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -426,8 +440,9 @@ public class SettingsScreen extends Screen {
         }
 
         //pos thin 2
-        if (posThin2 != Integer.MIN_VALUE) {
-
+        if (posThin2 != Integer.MIN_VALUE)
+        {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -445,7 +460,9 @@ public class SettingsScreen extends Screen {
         }
 
         //pos treasure
-        if (posTreasure != Integer.MIN_VALUE) {
+        if (posTreasure != Integer.MIN_VALUE)
+        {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -469,6 +486,7 @@ public class SettingsScreen extends Screen {
 
         //POINTER
         {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -488,6 +506,7 @@ public class SettingsScreen extends Screen {
 
         //LAST HIT MARKER
         {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
 
             float centerX = width / 2f;
@@ -507,6 +526,7 @@ public class SettingsScreen extends Screen {
 
         //LAST LAST HIT MARKER
         {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
             RenderSystem.enableBlend();
             float centerX = width / 2f;
@@ -527,6 +547,7 @@ public class SettingsScreen extends Screen {
 
         //LAST LAST LAST HIT MARKER
         {
+            PoseStack poseStack = guiGraphics.pose();
             poseStack.pushPose();
             RenderSystem.enableBlend();
             float centerX = width / 2f;
@@ -585,7 +606,8 @@ public class SettingsScreen extends Screen {
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+    public boolean mouseClicked(double mouseX, double mouseY, int button)
+    {
         super.mouseClicked(mouseX, mouseY, button);
 
         int imageWidth = 512;
@@ -598,7 +620,8 @@ public class SettingsScreen extends Screen {
         double y = mouseY - uiY;
 
         //gui less
-        if (x > 226 && x < 240 && mouseY > 20 && mouseY < 50) {
+        if (x > 226 && x < 240 && mouseY > 20 && mouseY < 50)
+        {
             int current = Minecraft.getInstance().options.guiScale().get();
             if (current > 1)
                 Minecraft.getInstance().options.guiScale().set(current - 1);
@@ -606,26 +629,32 @@ public class SettingsScreen extends Screen {
         }
 
         //gui more
-        if (x > 267 && x < 280 && mouseY > 20 && mouseY < 50) {
+        if (x > 267 && x < 280 && mouseY > 20 && mouseY < 50)
+        {
             int current = Minecraft.getInstance().options.guiScale().get();
             Minecraft.getInstance().options.guiScale().set(current + 1);
             Minecraft.getInstance().resizeDisplay();
         }
 
         //move markers
-        if (x > 316 && x < 328 && y > 105 && y < 112) {
+        if (x > 316 && x < 328 && y > 105 && y < 112)
+        {
             moveMarkers = !moveMarkers;
         }
 
         //change rotation
-        if (x > 316 && x < 328 && y > 172 && y < 180) {
+        if (x > 316 && x < 328 && y > 172 && y < 180)
+        {
             //no steady > steady
-            if (thinForgiving == SIZE_1) {
+            if (thinForgiving == SIZE_1)
+            {
                 thinForgiving = SIZE_2;
                 bigForgiving = SIZE_4;
                 difficultyBobberOffset = 16;
             }
-            else { //steady > no steady
+            else
+            //steady > no steady
+            {
                 thinForgiving = SIZE_1;
                 bigForgiving = SIZE_3;
                 difficultyBobberOffset = 0;
@@ -634,78 +663,90 @@ public class SettingsScreen extends Screen {
 
         //change rotation
         if (x > 316 && x < 328 && y > 125 && y < 145)
+        {
             changeRotation = !changeRotation;
-
+        }
 
         //speed
-        if (x > 316 && x < 330 && y > 185 && y < 225) {
+        if (x > 316 && x < 330 && y > 185 && y < 225)
+        {
             speed--;
             if (speed < 0) speed = 0;
         }
 
         //speed
         if (x > 395 && x < 410 && y > 185 && y < 225)
+        {
             speed++;
-
+        }
 
         //hit delay
-        if (x > 316 && x < 325 && y > 70 && y < 100) {
+        if (x > 316 && x < 325 && y > 70 && y < 100)
+        {
             hitDelay = (float) ((int) (hitDelay * 10)) / 10;
             hitDelay -= 0.2f;
             hitDelay = (float) ((int) (hitDelay * 10)) / 10;
         }
 
         //hit delay
-        if (x > 396 && x < 410 && y > 70 && y < 100) {
+        if (x > 396 && x < 410 && y > 70 && y < 100)
+        {
             hitDelay = (float) ((int) (hitDelay * 10)) / 10;
             hitDelay += 0.2f;
             hitDelay = (float) ((int) (hitDelay * 10)) / 10;
         }
 
         //hit delay next
-        if (x > 312 && x < 330 && y > 226 && y < 240) {
+        if (x > 312 && x < 330 && y > 226 && y < 240)
+        {
             unitSelected = unitSelected.next();
             Config.UNIT.set(unitSelected);
             Config.UNIT.save();
         }
 
         //hit delay next
-        if (x > 193 && x < 205 && y > 226 && y < 240) {
+        if (x > 193 && x < 205 && y > 226 && y < 240)
+        {
             unitSelected = unitSelected.previous();
             Config.UNIT.set(unitSelected);
             Config.UNIT.save();
         }
 
         //markers
-        if (x > 319 && x < 330 && y > 153 && y < 166) {
+        if (x > 319 && x < 330 && y > 153 && y < 166)
+        {
             if (pos1 == Integer.MIN_VALUE)
                 pos1 = getRandomFreePosition();
             else
                 pos1 = Integer.MIN_VALUE;
         }
 
-        if (x > 338 && x < 349 && y > 153 && y < 166) {
+        if (x > 338 && x < 349 && y > 153 && y < 166)
+        {
             if (pos2 == Integer.MIN_VALUE)
                 pos2 = getRandomFreePosition();
             else
                 pos2 = Integer.MIN_VALUE;
         }
 
-        if (x > 357 && x < 368 && y > 153 && y < 166) {
+        if (x > 357 && x < 368 && y > 153 && y < 166)
+        {
             if (posThin1 == Integer.MIN_VALUE)
                 posThin1 = getRandomFreePosition();
             else
                 posThin1 = Integer.MIN_VALUE;
         }
 
-        if (x > 376 && x < 387 && y > 153 && y < 166) {
+        if (x > 376 && x < 387 && y > 153 && y < 166)
+        {
             if (posThin2 == Integer.MIN_VALUE)
                 posThin2 = getRandomFreePosition();
             else
                 posThin2 = Integer.MIN_VALUE;
         }
 
-        if (x > 395 && x < 406 && y > 153 && y < 166) {
+        if (x > 395 && x < 406 && y > 153 && y < 166)
+        {
             if (posTreasure == Integer.MIN_VALUE)
                 posTreasure = getRandomFreePosition();
             else
@@ -721,13 +762,15 @@ public class SettingsScreen extends Screen {
 
         //closes when pressing E
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
-        if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey)) {
+        if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
+        {
             this.onClose();
             return true;
         }
 
         //spacebar input
-        if (keyCode == Minecraft.getInstance().options.keyJump.getKey().getValue()) {
+        if (keyCode == Minecraft.getInstance().options.keyJump.getKey().getValue())
+        {
 
             if (gracePeriod > 0) gracePeriod = 0;
 
@@ -747,7 +790,8 @@ public class SettingsScreen extends Screen {
             lastHitMarkerPos = pointerPosPrecise;
 
             //pos 1
-            if ((Math.abs(pos1 - pointerPosPrecise) < bigForgiving || Math.abs(pos1 - pointerPosPrecise) > 360 - bigForgiving) && pos1 != Integer.MIN_VALUE) {
+            if ((Math.abs(pos1 - pointerPosPrecise) < bigForgiving || Math.abs(pos1 - pointerPosPrecise) > 360 - bigForgiving) && pos1 != Integer.MIN_VALUE)
+            {
                 addParticles(pos1, 15);
                 if (moveMarkers) pos1 = getRandomFreePosition();
                 completion += reward;
@@ -755,7 +799,8 @@ public class SettingsScreen extends Screen {
             }
 
             //pos2
-            if ((Math.abs(pos2 - pointerPosPrecise) < bigForgiving || Math.abs(pos2 - pointerPosPrecise) > 360 - bigForgiving) && pos2 != Integer.MIN_VALUE) {
+            if ((Math.abs(pos2 - pointerPosPrecise) < bigForgiving || Math.abs(pos2 - pointerPosPrecise) > 360 - bigForgiving) && pos2 != Integer.MIN_VALUE)
+            {
                 addParticles(pos2, 15);
                 if (moveMarkers) pos2 = getRandomFreePosition();
                 completion += reward;
@@ -763,7 +808,8 @@ public class SettingsScreen extends Screen {
             }
 
             //pos thin 1
-            if ((Math.abs(posThin1 - pointerPosPrecise) < thinForgiving || Math.abs(posThin1 - pointerPosPrecise) > 360 - thinForgiving) && posThin1 != Integer.MIN_VALUE) {
+            if ((Math.abs(posThin1 - pointerPosPrecise) < thinForgiving || Math.abs(posThin1 - pointerPosPrecise) > 360 - thinForgiving) && posThin1 != Integer.MIN_VALUE)
+            {
                 addParticles(posThin1, 30);
                 if (moveMarkers) posThin1 = getRandomFreePosition();
                 completion += rewardThin;
@@ -771,7 +817,8 @@ public class SettingsScreen extends Screen {
             }
 
             //pos thin 2
-            if ((Math.abs(posThin2 - pointerPosPrecise) < thinForgiving || Math.abs(posThin2 - pointerPosPrecise) > 360 - thinForgiving) && posThin2 != Integer.MIN_VALUE) {
+            if ((Math.abs(posThin2 - pointerPosPrecise) < thinForgiving || Math.abs(posThin2 - pointerPosPrecise) > 360 - thinForgiving) && posThin2 != Integer.MIN_VALUE)
+            {
                 addParticles(posThin2, 30);
                 if (moveMarkers) posThin2 = getRandomFreePosition();
                 completion += rewardThin;
@@ -779,7 +826,8 @@ public class SettingsScreen extends Screen {
             }
 
             //if hit sweet spot treasure
-            if ((Math.abs(posTreasure - pointerPosPrecise) < treasureForgiving || Math.abs(posTreasure - pointerPosPrecise) > 360 - treasureForgiving) && posTreasure != Integer.MIN_VALUE) {
+            if ((Math.abs(posTreasure - pointerPosPrecise) < treasureForgiving || Math.abs(posTreasure - pointerPosPrecise) > 360 - treasureForgiving) && posTreasure != Integer.MIN_VALUE)
+            {
                 addParticles(posTreasure, 30, true);
                 if (moveMarkers) posTreasure = getRandomFreePosition();
                 treasureProgress += treasureReward;
@@ -787,28 +835,38 @@ public class SettingsScreen extends Screen {
             }
 
 
-            if (hitSomething) {
+            if (hitSomething)
+            {
                 consecutiveHits++;
 
                 if (hook.is(ModItems.STONE_HOOK.get()))
-                    gracePeriod = fp.rarity().getGracePeriod();
-
+                {
+                    if (fp.rarity() == FishProperties.Rarity.COMMON) gracePeriod = 40;
+                    if (fp.rarity() == FishProperties.Rarity.UNCOMMON) gracePeriod = 20;
+                    if (fp.rarity() == FishProperties.Rarity.RARE) gracePeriod = 15;
+                    if (fp.rarity() == FishProperties.Rarity.EPIC) gracePeriod = 10;
+                    if (fp.rarity() == FishProperties.Rarity.LEGENDARY) gracePeriod = 5;
+                }
 
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1, 1, false);
                 if (changeRotation) currentRotation *= -1;
             }
-            else {
+            else
+            {
                 consecutiveHits = 0;
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
                 completion -= penalty;
                 perfectCatch = false;
             }
+
         }
+
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     @Override
-    public void tick() {
+    public void tick()
+    {
         pointerPos += (int) (speed * currentRotation);
 
         if (pointerPos > 360) pointerPos -= 360;
@@ -823,21 +881,25 @@ public class SettingsScreen extends Screen {
 
         treasureProgressSmooth += (int) Math.signum(treasureProgress - treasureProgressSmooth);
 
-        if (tickCount % 5 == 0 && gracePeriod < 0) {
+        if (tickCount % 5 == 0 && gracePeriod < 0)
+        {
             completion -= decay;
         }
 
-        if (completionSmooth < 0) {
+        if (completionSmooth < 0)
+        {
             //this.onClose();
             completion = 0;
             completionSmooth = 0;
         }
 
-        if (treasureProgressSmooth > 100) {
+        if (treasureProgressSmooth > 100)
+        {
             posTreasure = Integer.MIN_VALUE;
         }
 
-        if (completionSmooth > 75) {
+        if (completionSmooth > 75)
+        {
             completion = 75;
             completionSmooth = 75;
             //this.onClose();
@@ -847,7 +909,8 @@ public class SettingsScreen extends Screen {
     }
 
     @Override
-    public void onClose() {
+    public void onClose()
+    {
         Config.HIT_DELAY.set((double) hitDelay);
         Config.HIT_DELAY.save();
 
@@ -865,12 +928,15 @@ public class SettingsScreen extends Screen {
         addParticles(posInDegrees, count, false);
     }
 
-    private void addParticles(int posInDegrees, int count, boolean treasure) {
+    private void addParticles(int posInDegrees, int count, boolean treasure)
+    {
         int xPos = (int) (30 * Math.cos(Math.toRadians(posInDegrees - 90)));
         int yPos = (int) (30 * Math.sin(Math.toRadians(posInDegrees - 90)));
 
-        for (int i = 0; i < count; i++) {
-            if (bobber.is(ModItems.GLITTER_BOBBER.get())) {
+        for (int i = 0; i < count; i++)
+        {
+            if (bobber.is(ModItems.GLITTER_BOBBER.get()))
+            {
                 hitParticles.add(new HitFakeParticle(
                         xPos, yPos, new Vector2d(r.nextFloat() * 2 - 1, r.nextFloat() * 2 - 1),
                         r.nextFloat(),
@@ -881,7 +947,8 @@ public class SettingsScreen extends Screen {
                 continue;
             }
 
-            if (bobber.is(ModItems.COLORFUL_BOBBER.get())) {
+            if (bobber.is(ModItems.COLORFUL_BOBBER.get()))
+            {
                 hitParticles.add(new HitFakeParticle(
                         xPos, yPos, new Vector2d(r.nextFloat() * 2 - 1, r.nextFloat() * 2 - 1),
                         DataComponents.getBobberColor(bobber).r(),
@@ -892,7 +959,8 @@ public class SettingsScreen extends Screen {
                 continue;
             }
 
-            if (treasure) {
+            if (treasure)
+            {
                 //red particles if treasure sweet spot was hit
                 hitParticles.add(new HitFakeParticle(
                         xPos, yPos, new Vector2d(r.nextFloat() * 2 - 1, r.nextFloat() * 2 - 1),
@@ -900,12 +968,15 @@ public class SettingsScreen extends Screen {
                 ));
             }
             else
+            {
                 hitParticles.add(new HitFakeParticle(xPos, yPos, new Vector2d(r.nextFloat() * 2 - 1, r.nextFloat() * 2 - 1)));
+            }
 
         }
     }
 
-    public enum Units {
+    public enum Units
+    {
         METRIC("gui.guide.units.metric", 1f, 1f),
         IMPERIAL("gui.guide.units.imperial", 0.3937f, 0.0352739619495804f),
         CHEESEBURGER("gui.guide.units.cheeseburger", 0.09f, 0.0087f),
@@ -914,14 +985,16 @@ public class SettingsScreen extends Screen {
         BANANA("gui.guide.units.banana", 0.05f, 0.00833f),
         DUCK("gui.guide.units.duck", 0.02f, 0.0006667f),
         SPACE_WHALE("gui.guide.units.space_whale", 1f, 1f),
-        SCIENTIFIC("gui.guide.units.scientific", 1f, 1f);
+        SCIENTIFIC("gui.guide.units.scientific", 1f, 1f),
+        ;
 
         private static final Units[] vals = values();
         private final String translationKey;
         private final float multiplierSize;
         private final float multiplierWeight;
 
-        Units(String translationKey, float multiplierSize, float multiplierWeight) {
+        Units(String translationKey, float multiplierSize, float multiplierWeight)
+        {
             this.translationKey = translationKey;
             this.multiplierSize = multiplierSize;
             this.multiplierWeight = multiplierWeight;
@@ -947,12 +1020,14 @@ public class SettingsScreen extends Screen {
             return vals[(this.ordinal() + 1) % vals.length];
         }
 
-        public Units previous() {
+        public Units previous()
+        {
             if (this.ordinal() == 0) return vals[vals.length - 1];
             return vals[(this.ordinal() - 1) % vals.length];
         }
 
-        public String getSizeAsString(int sizeInCm) {
+        public String getSizeAsString(int sizeInCm)
+        {
             //space whale is always infinite
             if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";
             if (this.equals(Units.SCIENTIFIC)) return "0 AU";
@@ -960,12 +1035,14 @@ public class SettingsScreen extends Screen {
             float size = sizeInCm * this.getMultiplierSize();
             String sizeString = ((float) (int) (size * 100)) / 100 + " " + I18n.get(this.getTranslationKey() + ".size");
 
-            if (this.equals(Units.METRIC)) {
+            if (this.equals(Units.METRIC))
+            {
                 sizeString = ((int) size) + "cm";
                 if (size > 100) sizeString = (float) ((int) (size / 100 * 100)) / 100 + "m";
             }
 
-            if (this.equals(Units.IMPERIAL)) {
+            if (this.equals(Units.IMPERIAL))
+            {
                 sizeString = ((int) size) + "''";
                 if (size > 12) sizeString = ((int) (size / 12)) + "'" + ((int) (size % 12)) + "''";
             }
@@ -973,7 +1050,8 @@ public class SettingsScreen extends Screen {
             return sizeString;
         }
 
-        public String getWeightAsString(int weightInGrams) {
+        public String getWeightAsString(int weightInGrams)
+        {
             //space whale is always infinite
             if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";
             if (this.equals(Units.SCIENTIFIC)) return "0 R136a1's";
@@ -981,19 +1059,23 @@ public class SettingsScreen extends Screen {
             float weight = weightInGrams * this.getMultiplierWeight();
             String weightString = ((float) (int) (weight * 100)) / 100 + " " + I18n.get(this.getTranslationKey() + ".weight");
 
-            if (this.equals(Units.METRIC)) {
+            if (this.equals(Units.METRIC))
+            {
                 if (weight < 1000) weightString = ((int) weight) + "g";
                 if (weight > 1000) weightString = (float) ((int) (weight / 1000 * 100)) / 100 + "kg";
             }
 
-            if (this.equals(Units.IMPERIAL)) {
+            if (this.equals(Units.IMPERIAL))
+            {
                 weightString = ((int) weight) + "oz";
                 if (weight > 12) weightString = ((int) (weight / 16)) + " lb " + ((int) (weight % 16)) + " oz";
             }
 
             return weightString;
         }
+
     }
+
 
     @Override
     public boolean isPauseScreen()

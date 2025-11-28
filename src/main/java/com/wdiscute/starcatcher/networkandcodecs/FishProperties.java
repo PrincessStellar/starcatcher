@@ -1,8 +1,8 @@
-package com.wdiscute.starcatcher.io;
+package com.wdiscute.starcatcher.networkandcodecs;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
@@ -28,7 +28,6 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,9 +35,10 @@ import java.util.List;
 import java.util.Optional;
 
 public record FishProperties(
-        Item fish,
+        Holder<Item> fish,
         int baseChance,
         String customName,
+
         SizeAndWeight sw,
         Rarity rarity,
         WorldRestrictions wr,
@@ -58,7 +58,7 @@ public record FishProperties(
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     //mandatory
-                    ForgeRegistries.ITEMS.getCodec().fieldOf("fish").forGetter(FishProperties::fish),
+                    BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("fish").forGetter(FishProperties::fish),
                     //optional
                     Codec.INT.optionalFieldOf("base_chance", 5).forGetter(FishProperties::baseChance),
                     Codec.STRING.optionalFieldOf("custom_name", "").forGetter(FishProperties::customName),
@@ -77,8 +77,9 @@ public record FishProperties(
 
     public static final Codec<List<FishProperties>> LIST_CODEC = FishProperties.CODEC.listOf();
 
+
     public static final FishProperties DEFAULT = new FishProperties(
-            Items.AIR,
+            ModItems.MISSINGNO.getHolder().orElse(Items.AIR.builtInRegistryHolder()),
             5,
             "",
             SizeAndWeight.DEFAULT,
@@ -92,9 +93,10 @@ public record FishProperties(
             true
     );
 
+
     //region with()
 
-    public FishProperties withFish(Item fish)
+    public FishProperties withFish(Holder<Item> fish)
     {
         return new FishProperties(fish, this.baseChance, this.customName, this.sw, this.rarity, this.wr, this.br, this.dif, this.daytime, this.weather, this.skipMinigame, this.hasGuideEntry);
     }
@@ -293,7 +295,6 @@ public record FishProperties(
             int mustBeCaughtAboveY
     )
     {
-        @SuppressWarnings("deprecation")
         public enum Seasons implements StringRepresentable
         {
             ALL("all"),
@@ -318,7 +319,7 @@ public record FishProperties(
             MID_WINTER("mid_winter"),
             LATE_WINTER("late_winter");
 
-            public static final EnumCodec<FishProperties.WorldRestrictions.Seasons> CODEC = StringRepresentable.fromEnum(FishProperties.WorldRestrictions.Seasons::values);
+            public static final Codec<FishProperties.WorldRestrictions.Seasons> CODEC = StringRepresentable.fromEnum(FishProperties.WorldRestrictions.Seasons::values);
             public static final Codec<List<FishProperties.WorldRestrictions.Seasons>> LIST_CODEC = Seasons.CODEC.listOf();
             private final String key;
 
@@ -331,6 +332,7 @@ public record FishProperties(
             {
                 return this.key;
             }
+
         }
 
 
@@ -1169,29 +1171,23 @@ public record FishProperties(
 
     public enum Rarity implements StringRepresentable
     {
-        COMMON(40, "common"),
-        UNCOMMON(20, "uncommon"),
-        RARE(15, "rare"),
-        EPIC(10, "epic"),
-        LEGENDARY(5, "legendary");
+        COMMON("common"),
+        UNCOMMON("uncommon"),
+        RARE("rare"),
+        EPIC("epic"),
+        LEGENDARY("legendary");
 
         public static final Codec<Rarity> CODEC = StringRepresentable.fromEnum(Rarity::values);
-        private final int gracePeriod;
         private final String key;
 
-        Rarity(int gracePeriod, String key)
+        Rarity(String key)
         {
-            this.gracePeriod = gracePeriod;
             this.key = key;
         }
 
         public String getSerializedName()
         {
             return this.key;
-        }
-
-        public int getGracePeriod() {
-            return gracePeriod;
         }
     }
 

@@ -9,12 +9,10 @@ import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishspotter.FishTrackerLayer;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
-import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.io.network.ModPayloads;
+import com.wdiscute.starcatcher.networkandcodecs.*;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
 import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
-import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.rod.FishingRodScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -33,6 +31,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -99,7 +98,7 @@ public class Starcatcher
 
         Minecraft.getInstance().player.displayClientMessage(
                 Component.literal("")
-                        .append(Component.translatable(fp.fish().getDescriptionId()))
+                        .append(Component.translatable(fp.fish().value().getDescriptionId()))
                         .append(Component.literal(" - " + size + " - " + weight))
                 , true);
 
@@ -111,16 +110,16 @@ public class Starcatcher
     {
         IEventBus eventBus = context.getModEventBus();
 
-        ModCreativeModeTabs.REGISTRY.register(eventBus);
-        ModItems.REGISTRY.register(eventBus);
-        ModBlocks.REGISTRY.register(eventBus);
-        ModBlockEntities.REGISTRY.register(eventBus);
-        ModSounds.REGISTRY.register(eventBus);
-        ModEntities.REGISTRY.register(eventBus);
-        ModParticles.REGISTRY.register(eventBus);
-        ModMenuTypes.REGISTRY.register(eventBus);
+        ModCreativeModeTabs.register(eventBus);
+        ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
+        ModBlockEntities.register(eventBus);
+        ModSounds.register(eventBus);
+        ModEntities.register(eventBus);
+        ModParticles.register(eventBus);
+        ModMenuTypes.register(eventBus);
 
-        ModPayloads.register();
+        Payloads.register();
 
         context.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC_SERVER);
@@ -186,14 +185,14 @@ public class Starcatcher
             {
                 DataAttachmentCapability playerCap = DataAttachments.get(player);
 
-                ModPayloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
-                        new ModPayloads.FishesCaughtPayload(playerCap.fishesCaught(), sp));
+                Payloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
+                        new Payloads.FishesCaughtPayload(playerCap.fishesCaught(), sp));
 
-                ModPayloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
-                        new ModPayloads.TrophiesCaughtPayload(playerCap.trophiesCaught()));
+                Payloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
+                        new Payloads.TrophiesCaughtPayload(playerCap.trophiesCaught()));
 
-                ModPayloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
-                        new ModPayloads.FishesNotificationPayload(playerCap.fishNotifications(), sp));
+                Payloads.CHANNEL.send(PacketDistributor.PLAYER.with(() -> sp),
+                        new Payloads.FishesNotificationPayload(playerCap.fishNotifications(), sp));
             }
 
         }

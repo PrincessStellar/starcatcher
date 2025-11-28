@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.io.DataComponents;
+import com.mojang.serialization.Codec;
+import com.wdiscute.starcatcher.networkandcodecs.DataComponents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
@@ -12,14 +13,18 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class SecretNote extends Item {
+import java.util.Arrays;
+
+public class SecretNote extends Item
+{
     public SecretNote()
     {
         super(new Properties().stacksTo(1));
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
+    {
         if (level.isClientSide) openScreen(DataComponents.getSecretNote(player.getItemInHand(usedHand)));
         return super.use(level, player, usedHand);
     }
@@ -30,8 +35,8 @@ public class SecretNote extends Item {
         Minecraft.getInstance().setScreen(new SecretNoteScreen(note));
     }
 
-    @SuppressWarnings("deprecation")
-    public enum Note implements StringRepresentable {
+    public enum Note implements StringRepresentable
+    {
         SAMPLE_NOTE("sample_note"),
         CRYSTAL_HOOK("crystal_hook"),
         ARNWULF_1("lava_proof_bottle_1"),
@@ -40,7 +45,7 @@ public class SecretNote extends Item {
         HOPELESS_NOTE("hopeless_note"),
         TRUE_BLUE("true_blue");
 
-        public static final EnumCodec<Note> CODEC = StringRepresentable.fromEnum(Note::values);
+        public static final Codec<Note> CODEC = StringRepresentable.fromEnum(Note::values);
         //public static final StreamCodec<FriendlyByteBuf, Note> STREAM_CODEC = NeoForgeStreamCodecs.enumCodec(Note.class);
         private final String key;
 
@@ -56,7 +61,7 @@ public class SecretNote extends Item {
 
         public static Note getBySerializedName(String s)
         {
-            return CODEC.byName(s, SAMPLE_NOTE);
+            return Arrays.stream(Note.values()).filter(n -> n.getSerializedName().equals(s)).findFirst().orElse(SAMPLE_NOTE);
         }
 
     }

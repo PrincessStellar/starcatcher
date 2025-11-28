@@ -1,7 +1,6 @@
-package com.wdiscute.starcatcher.io;
+package com.wdiscute.starcatcher.networkandcodecs;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.io.network.ModPayloads;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -18,13 +17,12 @@ import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class DataAttachments implements DataAttachmentCapability, INBTSerializable<CompoundTag>
 {
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public UUID fishing = null;
+    public String fishing = "";
     public List<FishCaughtCounter> fishesCaught = List.of(new FishCaughtCounter(FishProperties.DEFAULT, 0, 0, 0, 0, 0, false));
     public List<TrophyProperties> trophiesCaught = List.of(TrophyProperties.DEFAULT);
     public List<FishProperties> notifications = List.of(FishProperties.DEFAULT);
@@ -45,13 +43,13 @@ public class DataAttachments implements DataAttachmentCapability, INBTSerializab
         return player.getCapability(PLAYER_DATA).orElse(new DataAttachmentCapability()
         {
             @Override
-            public UUID fishing()
+            public String fishing()
             {
-                return null;
+                return "";
             }
 
             @Override
-            public void setFishing(UUID s)
+            public void setFishing(String s)
             {
 
             }
@@ -95,21 +93,21 @@ public class DataAttachments implements DataAttachmentCapability, INBTSerializab
     }
 
     @Override
-    public UUID fishing()
+    public String fishing()
     {
         return fishing;
     }
 
     @Override
-    public void setFishing(UUID uuid)
+    public void setFishing(String s)
     {
-        this.fishing = uuid;
+        this.fishing = s;
 
         if (this.player instanceof ServerPlayer sp)
         {
-            ModPayloads.CHANNEL.send(
+            Payloads.CHANNEL.send(
                     PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> sp),
-                    new ModPayloads.FishingBobUUIDPayload(player, uuid)
+                    new Payloads.FishingBobUUIDPayload(player, s)
             );
         }
     }
@@ -153,9 +151,9 @@ public class DataAttachments implements DataAttachmentCapability, INBTSerializab
 
         if (this.player instanceof ServerPlayer sp)
         {
-            ModPayloads.CHANNEL.send(
+            Payloads.CHANNEL.send(
                     PacketDistributor.PLAYER.with(() -> sp),
-                    new ModPayloads.FishesCaughtPayload(list, sp)
+                    new Payloads.FishesCaughtPayload(list, sp)
             );
         }
 
@@ -176,9 +174,9 @@ public class DataAttachments implements DataAttachmentCapability, INBTSerializab
 
         if (this.player instanceof ServerPlayer sp)
         {
-            ModPayloads.CHANNEL.send(
+            Payloads.CHANNEL.send(
                     PacketDistributor.PLAYER.with(() -> sp),
-                    new ModPayloads.TrophiesCaughtPayload(this.trophiesCaught)
+                    new Payloads.TrophiesCaughtPayload(this.trophiesCaught)
             );
         }
     }
@@ -216,9 +214,9 @@ public class DataAttachments implements DataAttachmentCapability, INBTSerializab
 
         if (this.player instanceof ServerPlayer sp)
         {
-            ModPayloads.CHANNEL.send(
+            Payloads.CHANNEL.send(
                     PacketDistributor.PLAYER.with(() -> sp),
-                    new ModPayloads.FishesNotificationPayload(this.notifications, sp)
+                    new Payloads.FishesNotificationPayload(this.notifications, sp)
             );
         }
     }

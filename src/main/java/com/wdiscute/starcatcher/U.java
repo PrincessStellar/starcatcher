@@ -5,7 +5,8 @@ import java.util.List;
 public class U
 {
     @SafeVarargs
-    public static <T> boolean containsAny(List<T> list, T... contains) {
+    public static <T> boolean containsAny(List<T> list, T... contains)
+    {
         for (T s : contains)
             if(list.contains(s)) return true;
 
@@ -13,7 +14,8 @@ public class U
     }
 
     @SafeVarargs
-    public static <T> boolean containsAll(List<T> list, T... contains) {
+    public static <T> boolean containsAll(List<T> list, T... contains)
+    {
         for (T s : contains)
             if(!list.contains(s)) return false;
 
@@ -25,4 +27,5 @@ public class U
     {
         return !containsAny(list, contains);
     }
+
 }

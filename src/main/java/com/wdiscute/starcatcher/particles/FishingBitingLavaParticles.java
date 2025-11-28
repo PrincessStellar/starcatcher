@@ -7,10 +7,12 @@ import net.minecraft.core.particles.SimpleParticleType;
 
 import java.util.Random;
 
-public class FishingBitingLavaParticles extends TextureSheetParticle {
+public class FishingBitingLavaParticles extends TextureSheetParticle
+{
     private final SpriteSet sprites;
 
-    protected FishingBitingLavaParticles(ClientLevel level, double x, double y, double z, SpriteSet spriteSet) {
+    protected FishingBitingLavaParticles(ClientLevel level, double x, double y, double z, SpriteSet spriteSet)
+    {
         super(level, x, y, z);
 
 
@@ -29,7 +31,8 @@ public class FishingBitingLavaParticles extends TextureSheetParticle {
     }
 
     @Override
-    public void tick() {
+    public void tick()
+    {
         this.setSpriteFromAge(this.sprites);
 
 
@@ -54,7 +57,8 @@ public class FishingBitingLavaParticles extends TextureSheetParticle {
     }
 
 
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
+    public static class Provider implements ParticleProvider<SimpleParticleType>
+    {
         private final SpriteSet spriteSet;
 
         public Provider(SpriteSet spriteSet)
@@ -63,7 +67,8 @@ public class FishingBitingLavaParticles extends TextureSheetParticle {
         }
 
         @Override
-        public Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+        public Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+        {
             return new FishingBitingLavaParticles(clientLevel, x, y, z, this.spriteSet);
         }
     }
