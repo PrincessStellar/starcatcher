@@ -126,7 +126,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         super(Component.empty());
 
 
-        Minecraft mc = this.minecraft;
+        Minecraft mc = Minecraft.getInstance();
         previousGuiScale = mc.options.guiScale().get();
         mc.options.guiScale().set(Config.MINIGAME_GUI_SCALE.get());
         mc.resizeDisplay();
@@ -325,13 +325,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(pos1 - partialTick * currentRotation * moveRate)));
             poseStack.translate(-centerX, -centerY, 0);
             RenderSystem.setShaderColor(1, 1, 1, pos1Vanishing);
-            RenderSystem.enableBlend();
 
             guiGraphics.blit(
                     TEXTURE, width / 2 - 8, height / 2 - 8 - 25,
                     16, 16, 16 - difficultyBobberOffset, 160, 16, 16, 256, 256);
 
-            RenderSystem.disableBlend();
             RenderSystem.setShaderColor(1, 1, 1, 1);
             poseStack.popPose();
         }
@@ -350,13 +348,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(pos2 - partialTick * currentRotation * moveRate)));
             poseStack.translate(-centerX, -centerY, 0);
             RenderSystem.setShaderColor(1, 1, 1, pos2Vanishing);
-            RenderSystem.enableBlend();
 
             guiGraphics.blit(
                     TEXTURE, width / 2 - 8, height / 2 - 8 - 25,
                     16, 16, 16 - difficultyBobberOffset, 160, 16, 16, 256, 256);
 
-            RenderSystem.disableBlend();
             RenderSystem.setShaderColor(1, 1, 1, 1);
             poseStack.popPose();
         }
@@ -374,13 +370,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(posThin1 - partialTick * currentRotation * moveRate)));
             poseStack.translate(-centerX, -centerY, 0);
             RenderSystem.setShaderColor(1, 1, 1, posThin1Vanishing);
-            RenderSystem.enableBlend();
 
             guiGraphics.blit(
                     TEXTURE, width / 2 - 8, height / 2 - 8 - 25,
                     16, 16, 48 - difficultyBobberOffset, 160, 16, 16, 256, 256);
 
-            RenderSystem.disableBlend();
             RenderSystem.setShaderColor(1, 1, 1, 1);
             poseStack.popPose();
         }
@@ -398,13 +392,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(posThin2 - partialTick * currentRotation * moveRate)));
             poseStack.translate(-centerX, -centerY, 0);
             RenderSystem.setShaderColor(1, 1, 1, posThin2Vanishing);
-            RenderSystem.enableBlend();
 
             guiGraphics.blit(
                     TEXTURE, width / 2 - 8, height / 2 - 8 - 25,
                     16, 16, 48 - difficultyBobberOffset, 160, 16, 16, 256, 256);
 
-            RenderSystem.disableBlend();
             RenderSystem.setShaderColor(1, 1, 1, 1);
             poseStack.popPose();
         }
@@ -468,7 +460,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             poseStack.translate(-centerX, -centerY, 0);
 
             RenderSystem.setShaderColor(1, 0, 0, kimbeColor);
-            RenderSystem.enableBlend();
 
             //16 offset on y for texture centering
             if (!bobber.is(ModItems.KIMBE_BOBBER.get())) {
@@ -478,7 +469,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             }
 
             RenderSystem.setShaderColor(1, 1, 1, 1);
-            RenderSystem.disableBlend();
 
             poseStack.popPose();
         }
