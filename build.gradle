@@ -37,11 +37,6 @@ dependencies {
 
     //compileOnly "maven.modrinth:serene-seasons:9.1.0.2"
     //compileOnly "maven.modrinth:glitchcore:0.0.1.1"
-
-    compileOnly files(".libs/ftb-teams-forge-2001.3.1.jar")
-    //runtimeOnly files(".libs/ftb-teams-forge-2001.3.1.jar")
-
-
 }
 
 repositories
