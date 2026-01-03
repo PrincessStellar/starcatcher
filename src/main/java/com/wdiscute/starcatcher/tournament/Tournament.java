@@ -10,6 +10,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
 import java.util.*;
@@ -80,6 +81,14 @@ public class Tournament
         this.lastsUntilEpoch = lastsUntil;
     }
 
+    public Tournament setOwner(UUID owner)
+    {
+        this.owner = owner;
+        playerScores.add(TournamentPlayerScore.empty(owner));
+
+        return this;
+    }
+
     public enum Status implements StringRepresentable
     {
         SETUP("gui.starcatcher.tournament.status.setup"),
@@ -105,6 +114,11 @@ public class Tournament
         public String getSerializedName()
         {
             return this.key;
+        }
+
+        public boolean isDone()
+        {
+            return this == FINISHED || this == CANCELLED;
         }
     }
 

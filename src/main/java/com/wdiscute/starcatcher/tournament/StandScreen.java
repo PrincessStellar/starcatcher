@@ -247,6 +247,8 @@ public class StandScreen extends AbstractContainerScreen<StandMenu>
 
         double x = mouseX - uiX;
         double y = mouseY - uiY;
+        assert minecraft != null;
+        assert minecraft.gameMode != null;
 
         //System.out.println("clicked relative x: " + x);
         //System.out.println("clicked relative y: " + y);
@@ -265,6 +267,9 @@ public class StandScreen extends AbstractContainerScreen<StandMenu>
 
             if (tournamentCache.status.equals(Tournament.Status.ACTIVE))
                 minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 69);
+
+            if (tournamentCache.status.isDone())
+                minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 53);
         }
 
         //duration decrease, shift does x10

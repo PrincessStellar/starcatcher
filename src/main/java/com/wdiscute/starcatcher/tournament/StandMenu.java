@@ -18,6 +18,7 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class StandMenu extends AbstractContainerMenu
@@ -127,6 +128,16 @@ public class StandMenu extends AbstractContainerMenu
             }
         }
 
+        //wipe a finished/canceled tournament
+        if(id == 53)
+        {
+            Tournament tournamentOld = sbe.tournament;
+            sbe.setUuid(UUID.randomUUID());
+            sbe.tournament = TournamentHandler.getTournamentOrNew(sbe.getUuid()).setOwner(tournamentOld.owner);
+            PacketDistributor.sendToAllPlayers(CBStandTournamentUpdatePayload.helper(level, sbe.tournament));
+        }
+
+
         //signup
         if (id == 67)
         {
@@ -160,7 +171,7 @@ public class StandMenu extends AbstractContainerMenu
             }
         }
 
-
+        sbe.sync();
         return super.clickMenuButton(player, id);
     }
 
