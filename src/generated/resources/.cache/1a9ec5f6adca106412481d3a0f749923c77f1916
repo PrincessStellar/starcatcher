@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-22T14:37:52.0135085	FishingProperties
+// 1.21.1	2026-01-04T16:54:33.1798285	FishingProperties
 be60f2d857de148fd2caf6c1b6532125060346b1 data/alexscaves/starcatcher/fish/lanternfish.json
 4c0f285125bd37c9ab9d7ff5709b97ad7f8eddc2 data/alexscaves/starcatcher/fish/radgill.json
 5a6683335e79b9a0904aadaac422ada97586e2ba data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -90,6 +90,7 @@ cef17d0150507f475cdc5425764a06cf8eea479e data/hybrid-aquatic/starcatcher/fish/mo
 5a63ab979dc5480d23b4ec90a681043a6b9b2812 data/hybrid-aquatic/starcatcher/fish/needlefish.json
 12e1e82acb610d3303191c89f5433e346dbae365 data/hybrid-aquatic/starcatcher/fish/neon_tetra.json
 cec7244a1a4c8b22465f2a4d069c07443b852983 data/hybrid-aquatic/starcatcher/fish/oarfish.json
+9a9f453dd1a80672b32199ee4c8cf8b748c90a80 data/hybrid-aquatic/starcatcher/fish/ocean_sunfish.json
 bdbc8d77d110e34b562a0a5a516889538e32c2e8 data/hybrid-aquatic/starcatcher/fish/opah.json
 c80dc4677f9295265a9495327c0a3b14d240d26f data/hybrid-aquatic/starcatcher/fish/oscar.json
 fe040b919588c90812905729d2bfe4c3c565101e data/hybrid-aquatic/starcatcher/fish/parrotfish.json
@@ -103,7 +104,6 @@ c0a79076452f07fef656a42d97a67263fa04daa6 data/hybrid-aquatic/starcatcher/fish/ro
 c3a0342bc2d4a05e1502a6500014e7f8f688ea1a data/hybrid-aquatic/starcatcher/fish/spotted_eagle_ray.json
 d6c491893cf890b14bfd7f954244daaade32a001 data/hybrid-aquatic/starcatcher/fish/squirrelfish.json
 fc9f38475d995b9356b64be0b03f49e0c885dcd9 data/hybrid-aquatic/starcatcher/fish/stonefish.json
-7e9eb865ae709d4ca98f70e0e75c0301e3b6d0c7 data/hybrid-aquatic/starcatcher/fish/sunfish.json
 a3af9d08a05011ba6a9ac2273594fbbfc367256c data/hybrid-aquatic/starcatcher/fish/surgeonfish.json
 9e80c112405aa333ff91c3d53940c25757b1e9cb data/hybrid-aquatic/starcatcher/fish/tiger_barb.json
 6f0c11c5ce553315db9fbd98c0d09254e93051a1 data/hybrid-aquatic/starcatcher/fish/triggerfish.json

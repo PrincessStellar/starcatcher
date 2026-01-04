@@ -292,8 +292,8 @@ public class HybridAquaticFishingProperties extends FishingPropertiesRegistry
                         .withWeather(FishProperties.Weather.CLEAR));
 
         register(
-                overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "sunfish"))
-                        .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "sunfish"))
+                overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "ocean_sunfish"))
+                        .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "ocean_sunfish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(90, 10, 4300, 2500))
                         .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
                         .withRarity(FishProperties.Rarity.RARE)
