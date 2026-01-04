@@ -1307,7 +1307,7 @@ public record FishProperties(
 
         public static SweetSpot DEEPSLATE_CRAB_LEG = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
-                RL_DEEPSLATE_CRAB_LEG, 15, 1, 0x310800
+                RL_DEEPSLATE_CRAB_LEG, 15, 1, 0xff8400
         );
 
         public static SweetSpot OBSIDIAN_CRAB_CLAW = new SweetSpot(
@@ -1317,7 +1317,7 @@ public record FishProperties(
 
         public static SweetSpot OBSIDIAN_CRAB_LEG = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
-                RL_OBSIDIAN_CRAB_LEG, 15, 1, 0x1f1d30
+                RL_OBSIDIAN_CRAB_LEG, 15, 1, 0x3b2754
         );
 
         public static SweetSpot NETHER_CRAB_CLAW = new SweetSpot(
@@ -1327,7 +1327,7 @@ public record FishProperties(
 
         public static SweetSpot NETHER_CRAB_LEG = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
-                RL_NETHER_CRAB_LEG, 15, 1, 0x330618
+                RL_NETHER_CRAB_LEG, 15, 1, 0xcd4545
         );
 
         public static SweetSpot END_CRAB_CLAW = new SweetSpot(
@@ -1337,7 +1337,7 @@ public record FishProperties(
 
         public static SweetSpot END_CRAB_LEG = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
-                RL_END_CRAB_LEG, 15, 1, 0x10093f
+                RL_END_CRAB_LEG, 15, 1, 0xc67ed9
         );
 
 
