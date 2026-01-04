@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.io;
 
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
@@ -29,6 +30,11 @@ public class ModDataComponents
             "bucketed_fish",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
+    //locked book system
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<FishingGuideAttachment>> STORED_BOOK = register(
+            "stored_book",
+            builder -> builder.persistent(FishingGuideAttachment.CODEC));
+
     //rod menu
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BOBBER = register(
             "bobber",
@@ -42,6 +48,7 @@ public class ModDataComponents
             "hook",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
+    //storing data on itemstack
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<TrophyProperties>> TROPHY = register(
             "trophy",
             builder -> builder.persistent(TrophyProperties.CODEC));
@@ -97,8 +104,6 @@ public class ModDataComponents
     public static <T> T getOrDefault(ItemStack stack, Supplier<DataComponentType<T>> component, T defaultValue) {
         return stack.getOrDefault(component, defaultValue);
     }
-
-
 
     private static <T> DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                            UnaryOperator<DataComponentType.Builder<T>> builderOperator)

@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.items.modifieritem;
+package com.wdiscute.starcatcher.registry.items.modifieritem;
 
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.resources.ResourceLocation;

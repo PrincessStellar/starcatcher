@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "starcatcher:block/display",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "starcatcher:block/display"
+    },
+    "facing=south": {
+      "model": "starcatcher:block/display",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "starcatcher:block/display",
+      "y": 270
+    }
+  }
+}

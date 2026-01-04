@@ -1,7 +1,6 @@
-package com.wdiscute.starcatcher.items.cheater;
+package com.wdiscute.starcatcher.registry.items.cheater;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.world.InteractionHand;
@@ -11,12 +10,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class RevokeAllSecrets extends Item
+public class RevokeAllExtras extends Item
 {
-    public RevokeAllSecrets()
+    public RevokeAllExtras()
     {
         super(new Properties().stacksTo(1));
     }
@@ -25,7 +21,9 @@ public class RevokeAllSecrets extends Item
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
 
-        FishingGuideAttachment.getTrophiesCaught(player).keySet().removeIf(loc -> U.getTpFromRl(level, loc).trophyType() == TrophyProperties.TrophyType.SECRET);
+
+        FishingGuideAttachment.getTrophiesCaught(player).keySet().removeIf(loc -> U.getTpFromRl(level, loc).trophyType() == TrophyProperties.TrophyType.EXTRA);
+
         FishingGuideAttachment.sync(player);
 
         return InteractionResultHolder.success(player.getItemInHand(usedHand));

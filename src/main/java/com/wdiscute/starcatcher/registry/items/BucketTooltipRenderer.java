@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.items;
+package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
@@ -8,10 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.ItemStack;
 
 public class BucketTooltipRenderer implements ClientTooltipComponent {
     public StarcaughtBucket.BucketTooltip tooltip;
