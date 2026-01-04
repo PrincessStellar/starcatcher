@@ -13,9 +13,9 @@
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
-    "entity": "hybrid-aquatic:gourami",
+    "entity": "hybrid-aquatic:pleco",
     "fish_bucket": "starcatcher:missingno",
-    "item": "hybrid-aquatic:gourami",
+    "item": "hybrid-aquatic:pleco",
     "treasure": "starcatcher:waterlogged_satchel"
   },
   "daytime": "all",
@@ -23,7 +23,7 @@
     "decay": 1.0,
     "missPenalty": 20,
     "modifiers": [],
-    "speed": 10,
+    "speed": 15,
     "sweetspots": [
       {
         "color_as_int": 65280,
@@ -37,12 +37,12 @@
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 15,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]
