@@ -24,8 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-public record CBActiveTournamentUpdatePayload(List<GameProfile> listSignups,
-                                              Tournament tour) implements CustomPacketPayload
+public record CBActiveTournamentUpdatePayload(List<GameProfile> listSignups, Tournament tour) implements CustomPacketPayload
 {
 
     public static CBActiveTournamentUpdatePayload helper(Player player, Tournament tournament)
@@ -52,7 +51,6 @@ public record CBActiveTournamentUpdatePayload(List<GameProfile> listSignups,
     );
 
     public static final StreamCodec<ByteBuf, List<GameProfile>> GAME_PROFILE_STREAM_CODEC_LIST = GAME_PROFILE_STREAM_CODEC.apply(ByteBufCodecs.list());
-
 
     public static final Type<CBActiveTournamentUpdatePayload> TYPE = new Type<>(Starcatcher.rl("cb_clear_tournament"));
 

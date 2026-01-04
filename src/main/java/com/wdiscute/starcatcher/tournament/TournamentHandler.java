@@ -1,16 +1,11 @@
 package com.wdiscute.starcatcher.tournament;
 
-import com.google.common.collect.BoundType;
-import com.mojang.authlib.GameProfile;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
-import com.wdiscute.starcatcher.io.network.tournament.stand.CBStandTournamentUpdatePayload;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.GameProfileCache;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -26,18 +21,11 @@ import java.util.stream.Stream;
 public class TournamentHandler
 {
     private static final List<Tournament> finishedTournaments = new ArrayList<>();
-    private static final List<Tournament> cancelledTournaments = new ArrayList<>();
     private static final List<Tournament> activeTournaments = new ArrayList<>();
-    private static final List<Tournament> setupTournaments = new ArrayList<>();
     private static final Logger log = LoggerFactory.getLogger(TournamentHandler.class);
 
-    public static Tournament getTournamentOrNew(UUID uuid)
+    public static Tournament getTournamentOrNull(UUID uuid)
     {
-        for (Tournament t : setupTournaments)
-        {
-            if (t.tournamentUUID.equals(uuid)) return t;
-        }
-
         for (Tournament t : activeTournaments)
         {
             if (t.tournamentUUID.equals(uuid)) return t;
@@ -47,25 +35,7 @@ public class TournamentHandler
         {
             if (t.tournamentUUID.equals(uuid)) return t;
         }
-
-        Tournament tournament = new Tournament(
-                uuid,
-                "Unnamed Tournament",
-                Tournament.Status.SETUP,
-                null,
-                new ArrayList<>(),
-                new TournamentSettings(
-                        TournamentSettings.Scoring.SIMPLE,
-                        48000,
-                        0,
-                        0,
-                        SingleStackContainer.EMPTY_LIST),
-                SingleStackContainer.EMPTY_LIST,
-                200
-        );
-
-        setupTournaments.add(tournament);
-        return tournament;
+        return null;
     }
 
     public static void sendActiveTournamentUpdateToClient(ServerPlayer sp, Tournament tournament)
@@ -82,32 +52,22 @@ public class TournamentHandler
 
     public static void startTournament(Player playerWhoStartedTheTournament, Tournament tournament)
     {
-        Level level = playerWhoStartedTheTournament.level();
-
-        for (var entry : tournament.playerScores)
-        {
-            ServerPlayer player = level.getServer().getPlayerList().getPlayer(entry.playerUUID);
-            sendActiveTournamentUpdateToClient(player, tournament);
-        }
-
-        for (var playerScore : tournament.playerScores)
-        {
-            MinecraftServer server = playerWhoStartedTheTournament.level().getServer();
-            ServerPlayer player = server.getPlayerList().getPlayer(playerScore.playerUUID);
-            if (player != null)
-            {
-                player.sendSystemMessage(Component.literal(tournament.name + " has started!"));
-                player.sendSystemMessage(Component.literal("Press [Tab] to toggle the tournament's scoreboard.").withColor(CommonColors.LIGHT_GRAY));
-            }
-        }
-
-        //send to all players to update stand screens
-        PacketDistributor.sendToAllPlayers(CBStandTournamentUpdatePayload.helper(playerWhoStartedTheTournament.level(), tournament));
-
         activeTournaments.add(tournament);
-        setupTournaments.remove(tournament);
         tournament.status = Tournament.Status.ACTIVE;
         tournament.lastsUntilEpoch = System.currentTimeMillis() + tournament.settings.durationInTicks / 20 * 1000;
+
+        Level level = playerWhoStartedTheTournament.level();
+        for (TournamentPlayerScore playerScore : tournament.playerScores)
+        {
+            ServerPlayer player = level.getServer().getPlayerList().getPlayer(playerScore.playerUUID);
+            sendActiveTournamentUpdateToClient(player, tournament);
+
+            if (player != null)
+            {
+                player.sendSystemMessage(Component.literal(tournament.name).append(Component.translatable("gui.starcatcher.tournament.started")));
+                player.sendSystemMessage(Component.translatable("gui.starcatcher.tournament.cancel").withColor(CommonColors.LIGHT_GRAY));
+            }
+        }
     }
 
     public static void cancelTournament(Level level, Tournament tournament)
@@ -119,12 +79,9 @@ public class TournamentHandler
             clearTournamentToClient(player);
         }
 
-        setupTournaments.remove(tournament);
         activeTournaments.remove(tournament);
         finishedTournaments.add(tournament);
         tournament.status = Tournament.Status.CANCELLED;
-
-        PacketDistributor.sendToAllPlayers(CBStandTournamentUpdatePayload.helper(level, tournament));
     }
 
     public static void addScore(Player playerToAwardScoreTo, FishProperties fp, boolean perfectCatch, int size, int weight)
@@ -151,19 +108,6 @@ public class TournamentHandler
                         }
                     }
             );
-        }
-    }
-
-    public static void setName(ServerPlayer player, UUID uuid, String name)
-    {
-        if (player.level().isClientSide) return;
-        for (Tournament t : setupTournaments)
-        {
-            if (t.tournamentUUID.equals(uuid) && player.getUUID().equals(t.owner))
-            {
-                t.name = name;
-                PacketDistributor.sendToAllPlayers(CBStandTournamentUpdatePayload.helper(player.level(), t));
-            }
         }
     }
 
@@ -218,7 +162,6 @@ public class TournamentHandler
     {
         List<Tournament> t = new ArrayList<>();
         t.addAll(activeTournaments);
-        t.addAll(setupTournaments);
         t.addAll(finishedTournaments);
         return t;
     }
@@ -228,14 +171,9 @@ public class TournamentHandler
         activeTournaments.clear();
         activeTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.ACTIVE)).toList());
 
-        cancelledTournaments.clear();
-        cancelledTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.CANCELLED)).toList());
-
         finishedTournaments.clear();
         finishedTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.FINISHED)).toList());
-
-        setupTournaments.clear();
-        setupTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.SETUP)).toList());
+        finishedTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.CANCELLED)).toList());
     }
 
     public static Tournament getTournamentForPlayer(Player player)

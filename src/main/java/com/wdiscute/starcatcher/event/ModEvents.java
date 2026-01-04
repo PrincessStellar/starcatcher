@@ -13,12 +13,11 @@ import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
-import com.wdiscute.starcatcher.io.network.tournament.stand.*;
+import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
 import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
-import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,8 +42,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
-
-import java.util.List;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class ModEvents
@@ -198,12 +195,6 @@ public class ModEvents
                 FPsSeenPayload.TYPE,
                 FPsSeenPayload.STREAM_CODEC,
                 FPsSeenPayload::handle
-        );
-
-        registrar.playToClient(
-                CBStandTournamentUpdatePayload.TYPE,
-                CBStandTournamentUpdatePayload.STREAM_CODEC,
-                CBStandTournamentUpdatePayload::handle
         );
 
         registrar.playToServer(

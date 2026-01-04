@@ -1,11 +1,9 @@
 package com.wdiscute.starcatcher.registry.blocks;
 
-import com.wdiscute.starcatcher.io.network.tournament.stand.CBStandTournamentUpdatePayload;
 import com.wdiscute.starcatcher.tournament.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +23,6 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.nikdo53.tinymultiblocklib.block.AbstractMultiBlock;
 import net.nikdo53.tinymultiblocklib.block.IMultiBlock;
 import net.nikdo53.tinymultiblocklib.block.IPreviewableMultiblock;
@@ -88,21 +85,16 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         BlockPos center = IMultiBlock.getCenter(level, pos);
         if (level.getBlockEntity(center) instanceof StandBlockEntity sbe)
         {
-            if (sbe.tournament == null)
-            {
-                sbe.tournament = TournamentHandler.getTournamentOrNew(sbe.getUuid());
-            }
+            //initial tournament setup, makes new one if empty
+            sbe.makeOrGetTournament();
 
             if(sbe.tournament.owner == null)
             {
                 sbe.tournament.owner = player.getUUID();
                 sbe.tournament.playerScores.add(TournamentPlayerScore.empty(player.getUUID()));
             }
-
             player.openMenu(new SimpleMenuProvider(sbe, Component.empty()), center);
-
-            //send payload to client with tournament info
-            PacketDistributor.sendToPlayer(((ServerPlayer) player), CBStandTournamentUpdatePayload.helper(player.level(), sbe.tournament));
+            sbe.sync();
         }
 
         return InteractionResult.SUCCESS;

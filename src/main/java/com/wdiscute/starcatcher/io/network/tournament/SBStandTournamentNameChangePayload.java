@@ -1,16 +1,15 @@
-package com.wdiscute.starcatcher.io.network.tournament.stand;
+package com.wdiscute.starcatcher.io.network.tournament;
 
 
 import com.mojang.authlib.GameProfile;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import com.wdiscute.starcatcher.tournament.StandMenu;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.List;
@@ -45,7 +44,10 @@ public record SBStandTournamentNameChangePayload(UUID uuid, String name) impleme
     public void handle(IPayloadContext context)
     {
        context.enqueueWork(() -> {
-           TournamentHandler.setName(((ServerPlayer) context.player()), uuid, name);
+           if(context.player().containerMenu instanceof StandMenu sm)
+           {
+               sm.sbe.tournament.name = name;
+           }
        });
     }
 
