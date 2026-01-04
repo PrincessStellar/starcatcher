@@ -27,8 +27,6 @@ public abstract class AbstractSweetSpotBehaviour
         if (ass.pos > 360) ass.pos -= 360;
         if (ass.pos < 0) ass.pos += 360;
 
-        ass.pos += ass.movingRate * ass.currentRotation;
-
         ass.alpha -= ass.vanishingRate;
 
         if (ass.shouldSudokuOnVanish && ass.alpha <= 0) ass.removed = true;

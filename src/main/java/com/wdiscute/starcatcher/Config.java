@@ -24,6 +24,12 @@ public class Config
     public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER
             .defineEnum("sort", FishingGuideScreen.Sort.ALPHABETICAL_DOWN);
 
+    public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER
+            .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
+            .comment("Vanilla should look better for most people")
+            .define("vanilla_partial_ticks", true);
+
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
 
