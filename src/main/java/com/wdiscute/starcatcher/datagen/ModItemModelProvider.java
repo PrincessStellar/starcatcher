@@ -45,6 +45,10 @@ public class ModItemModelProvider extends ItemModelProvider {
             simpleItem((DeferredItem<? extends Item>) item);
         }
 
+        for (DeferredHolder<Item, ? extends Item> item : ModItems.KINDA_BUT_NOT_REALLY_FISH_REGISTRY.getEntries()) {
+            simpleItem((DeferredItem<? extends Item>) item);
+        }
+
         for (DeferredHolder<Item, ? extends Item> item : ModItems.TRASH_REGISTRY.getEntries()) {
             simpleItem((DeferredItem<? extends Item>) item);
         }
