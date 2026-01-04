@@ -43,6 +43,7 @@ public interface ModItems
 
     //fishes which have a model and swim in water
     DeferredRegister.Items FISH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
+    DeferredRegister.Items KINDA_BUT_NOT_REALLY_FISH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items TRASH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
 
     DeferredRegister.Items TEMPLATES_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
@@ -263,11 +264,11 @@ public interface ModItems
 
     //underground
     DeferredItem<Item> GOLD_FAN = FISH_REGISTRY.register("gold_fan", FishItem::new);
-    DeferredItem<Item> GEODE_EEL = FISH_REGISTRY.register("geode_eel", FishItem::new);
+    DeferredItem<Item> GEODE_EEL = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("geode_eel", FishItem::new);
 
     //caves
     DeferredItem<Item> WHITEVEIL = FISH_REGISTRY.register("whiteveil", FishItem::new);
-    DeferredItem<Item> BLACK_EEL = FISH_REGISTRY.register("black_eel", FishItem::new);
+    DeferredItem<Item> BLACK_EEL = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("black_eel", FishItem::new);
     DeferredItem<Item> AMETHYSTBACK = FISH_REGISTRY.register("amethystback", FishItem::new);
     DeferredItem<Item> STONEFISH = FISH_REGISTRY.register("stonefish", FishItem::new);
 
@@ -297,11 +298,11 @@ public interface ModItems
     //overworld surface lava
     DeferredItem<Item> SUNEATER = FISH_REGISTRY.register("suneater", FireResistantBasicItem::new);
     DeferredItem<Item> PYROTROUT = FISH_REGISTRY.register("pyrotrout", FireResistantBasicItem::new);
-    DeferredItem<Item> OBSIDIAN_EEL = FISH_REGISTRY.register("obsidian_eel", FireResistantBasicItem::new);
+    DeferredItem<Item> OBSIDIAN_EEL = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("obsidian_eel", FireResistantBasicItem::new);
 
     //overworld underground lava
     DeferredItem<Item> MOLTEN_SHRIMP = FISH_REGISTRY.register("molten_shrimp", FireResistantBasicItem::new);
-    DeferredItem<Item> OBSIDIAN_CRAB = FISH_REGISTRY.register("obsidian_crab", FireResistantBasicItem::new);
+    DeferredItem<Item> OBSIDIAN_CRAB = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("obsidian_crab", FireResistantBasicItem::new);
 
     //overworld deepslate lava
     DeferredItem<Item> SCORCHED_BLOODSUCKER = FISH_REGISTRY.register("scorched_bloodsucker", FireResistantBasicItem::new);
@@ -311,7 +312,7 @@ public interface ModItems
     DeferredItem<Item> EMBERGILL = FISH_REGISTRY.register("embergill", FireResistantBasicItem::new);
     DeferredItem<Item> SCALDING_PIKE = FISH_REGISTRY.register("scalding_pike", FireResistantBasicItem::new);
     DeferredItem<Item> CINDER_SQUID = FISH_REGISTRY.register("cinder_squid", FireResistantBasicItem::new);
-    DeferredItem<Item> LAVA_CRAB = FISH_REGISTRY.register("lava_crab", FireResistantBasicItem::new);
+    DeferredItem<Item> LAVA_CRAB = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("lava_crab", FireResistantBasicItem::new);
     DeferredItem<Item> MAGMA_FISH = FISH_REGISTRY.register("magma_fish", FireResistantBasicItem::new);
     DeferredItem<Item> GLOWSTONE_SEEKER = FISH_REGISTRY.register("glowstone_seeker", FireResistantBasicItem::new);
     DeferredItem<Item> GLOWSTONE_PUFFERFISH = FISH_REGISTRY.register("glowstone_pufferfish", FireResistantBasicItem::new);
@@ -323,7 +324,7 @@ public interface ModItems
 
     //the end
     DeferredItem<Item> CHARFISH = FISH_REGISTRY.register("charfish", FishItem::new);
-    DeferredItem<Item> CHORUS_CRAB = FISH_REGISTRY.register("chorus_crab", FishItem::new);
+    DeferredItem<Item> CHORUS_CRAB = KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register("chorus_crab", FishItem::new);
     DeferredItem<Item> END_GLOW = FISH_REGISTRY.register("end_glow", FishItem::new);
     DeferredItem<Item> VOIDBITER = FISH_REGISTRY.register("voidbiter", FishItem::new);
 

@@ -125,6 +125,7 @@ public class Starcatcher
         ModItems.BOBBERS_REGISTRY.register(modEventBus);
 
         ModItems.FISH_REGISTRY.register(modEventBus);
+        ModItems.KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register(modEventBus);
         ModItems.TRASH_REGISTRY.register(modEventBus);
 
         ModItems.BLOCKITEMS_REGISTRY.register(modEventBus);
