@@ -48,14 +48,7 @@ dependencies {
         }
     }
 
-    // Example mod dependency using a file as dependency
-    //files("libs/SereneSeasons-neoforge-1.21.1-10.1.0.3.jar")
-
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
-
+    //tiny multiblock lib
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:neo-1.21.1-${tiny_multiblock_lib_version}"))
 
     //EMI
@@ -82,7 +75,6 @@ dependencies {
     //compileOnly files(".compatmods/DistantHorizons-2.3.6-b-1.21.1-fabric-neoforge.jar")
     //runtimeOnly files(".compatmods/DistantHorizons-2.3.6-b-1.21.1-fabric-neoforge.jar")
 
-
     //ftb teams
     compileOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
     compileOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
@@ -91,9 +83,6 @@ dependencies {
     //runtimeOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
     //runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
     //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
-
-
-
 
 }
 
