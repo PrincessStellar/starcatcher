@@ -1,8 +1,7 @@
-package com.wdiscute.starcatcher.items.cheater;
+package com.wdiscute.starcatcher.registry.items.cheater;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.resources.ResourceLocation;
@@ -13,8 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class AwardAllTrophies extends Item

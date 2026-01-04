@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.items.helper;
+package com.wdiscute.starcatcher.registry.items.helper;
 
 import net.minecraft.world.item.Item;
 

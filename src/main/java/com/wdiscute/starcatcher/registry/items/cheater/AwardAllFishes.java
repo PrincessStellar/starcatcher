@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.items.cheater;
+package com.wdiscute.starcatcher.registry.items.cheater;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;

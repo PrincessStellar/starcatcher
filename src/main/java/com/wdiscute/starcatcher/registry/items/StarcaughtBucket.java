@@ -1,11 +1,8 @@
-package com.wdiscute.starcatcher.items;
+package com.wdiscute.starcatcher.registry.items;
 
-import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.io.SizeAndWeightInstance;
 import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.ModItems;
 import net.minecraft.core.BlockPos;

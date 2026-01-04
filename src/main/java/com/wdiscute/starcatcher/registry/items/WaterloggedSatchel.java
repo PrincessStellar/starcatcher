@@ -1,10 +1,9 @@
-package com.wdiscute.starcatcher.items;
+package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

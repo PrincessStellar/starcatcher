@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.items.modifieritem;
+package com.wdiscute.starcatcher.registry.items.modifieritem;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.io.ModDataComponents;

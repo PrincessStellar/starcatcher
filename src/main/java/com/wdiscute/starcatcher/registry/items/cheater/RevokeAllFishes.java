@@ -1,6 +1,5 @@
-package com.wdiscute.starcatcher.items.cheater;
+package com.wdiscute.starcatcher.registry.items.cheater;
 
-import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -9,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RevokeAllFishes extends Item
