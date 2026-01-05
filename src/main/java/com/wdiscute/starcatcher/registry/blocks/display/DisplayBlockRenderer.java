@@ -42,7 +42,6 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
             float ticks = (float) blockEntity.time + partialTick;
 
 
-
             if(blockEntity.open == 0)
             {
                 poseStack.translate(0.5F, 0.95F, 0.5F);
