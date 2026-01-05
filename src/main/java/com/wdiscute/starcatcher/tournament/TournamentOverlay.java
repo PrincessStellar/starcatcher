@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.tournament;
 import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.ModKeymappings;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -16,7 +15,6 @@ import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Instant;
 import java.util.*;
 
 public class TournamentOverlay implements LayeredDraw.Layer
@@ -30,7 +28,7 @@ public class TournamentOverlay implements LayeredDraw.Layer
     public static Pair<Component, Integer> thirdPlace = Pair.of(Component.literal("[empty]"), 0);
 
     public static Pair<Component, Integer> playerPlace = Pair.of(Component.empty(), 0);
-    public static boolean isExpanded;
+    public static ExpandedType expandedType = ExpandedType.BIG;
     static int playerRank = 0;
 
 
@@ -72,8 +70,8 @@ public class TournamentOverlay implements LayeredDraw.Layer
         guiGraphics.pose().translate(0, 0, 0);
         //add scale with config like minigame
 
-        //if tiny
-        if (isExpanded)
+        //if small
+        if (expandedType.equals(ExpandedType.SMALL))
         {
             renderImage(guiGraphics, BACKGROUND_TINY);
 
@@ -93,7 +91,8 @@ public class TournamentOverlay implements LayeredDraw.Layer
                     guiGraphics.blit(THIRD_PLACE_FISH, 30, 72, 0, 0, 11, 6, 11, 6);
             }
         }
-        else
+        //if big
+        else if(expandedType.equals(ExpandedType.BIG))
         {
             renderImage(guiGraphics, BACKGROUND_EXPANDED);
 
@@ -224,5 +223,26 @@ public class TournamentOverlay implements LayeredDraw.Layer
     private void renderImage(GuiGraphics guiGraphics, ResourceLocation rl)
     {
         guiGraphics.blit(rl, 0, 0, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+    }
+
+    public enum ExpandedType
+    {
+        SMALL,
+        BIG,
+        HIDDEN;
+
+        private static final ExpandedType[] vals = values();
+
+        public ExpandedType previous()
+        {
+            if (this.ordinal() == 0) return vals[vals.length - 1];
+            return vals[(this.ordinal() - 1) % vals.length];
+        }
+
+        public ExpandedType next()
+        {
+            return vals[(this.ordinal() + 1) % vals.length];
+        }
+
     }
 }

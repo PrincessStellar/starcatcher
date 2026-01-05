@@ -54,7 +54,7 @@ public class ModClientEvents
     {
         if(event.getAction() == 0 && event.getKey() == ModKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
         {
-            TournamentOverlay.isExpanded = !TournamentOverlay.isExpanded;
+            TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
         }
     }
 
