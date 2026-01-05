@@ -77,6 +77,7 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation HELP_PAGE_GADGETS_COSMETICS = Starcatcher.rl("textures/gui/guide/help_gadgets_cosmetics.png");
     private static final ResourceLocation HELP_PAGE_TEMPLATES_EQUIPMENT = Starcatcher.rl("textures/gui/guide/help_templates_equipment.png");
     private static final ResourceLocation HELP_PAGE_TROPHIES = Starcatcher.rl("textures/gui/guide/help_trophies.png");
+    private static final ResourceLocation HELP_PAGE_TOURNAMENTS = Starcatcher.rl("textures/gui/guide/help_tournaments.png");
 
     private static final ResourceLocation ARROW_PREVIOUS = Starcatcher.rl("textures/gui/guide/arrow_previous.png");
     private static final ResourceLocation ARROW_PREVIOUS_PRESSED = Starcatcher.rl("textures/gui/guide/arrow_previous_pressed.png");
@@ -818,6 +819,11 @@ public class FishingGuideScreen extends Screen
             case 7 ->
             {
                 //tournaments
+                renderHelpText(guiGraphics, "tournaments");
+                renderImage(guiGraphics, HELP_PAGE_TOURNAMENTS);
+                renderItem(tournamentIndexIcon, uiX + 166, uiY + 39, 1);
+                guiGraphics.drawString(this.font, Component.translatable("gui.guide.tournaments"), uiX + 60, uiY + 45, 0x635040, false);
+
             }
 
             case 8 ->

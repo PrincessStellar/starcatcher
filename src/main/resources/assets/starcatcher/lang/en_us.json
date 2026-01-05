@@ -489,6 +489,7 @@
   "gui.guide.cosmetics" : "    Cosmetics",
   "gui.guide.templates" : "    Templates",
   "gui.guide.equipment" : "    Equipment",
+  "gui.guide.tournaments" : "Fishing Tournaments",
   "gui.guide.trophies" : "    Trophies",
   "gui.guide.secrets" : "      Secrets",
 
@@ -717,6 +718,40 @@
   "gui.guide.page.templates.right.5" : "  On top of looking",
   "gui.guide.page.templates.right.6" : "fashionable, equipment might",
   "gui.guide.page.templates.right.7" : "offer modifiers to aid you.",
+
+
+  "gui.guide.page.tournaments.left.0" : "",
+  "gui.guide.page.tournaments.left.1" : "",
+  "gui.guide.page.tournaments.left.2" : "",
+  "gui.guide.page.tournaments.left.3" : "",
+  "gui.guide.page.tournaments.left.4" : "",
+  "gui.guide.page.tournaments.left.5" : "  Fishing tournaments let",
+  "gui.guide.page.tournaments.left.6" : "you put your skills to the",
+  "gui.guide.page.tournaments.left.7" : "test by competing against",
+  "gui.guide.page.tournaments.left.8" : "other anglers!",
+  "gui.guide.page.tournaments.left.9" : "",
+  "gui.guide.page.tournaments.left.10" : "  To get started you'll need",
+  "gui.guide.page.tournaments.left.11" : "a Tournament Stand.",
+  "gui.guide.page.tournaments.left.12" : "",
+  "gui.guide.page.tournaments.left.13" : "  Configure the tournament",
+  "gui.guide.page.tournaments.left.14" : "settings however you want",
+  "gui.guide.page.tournaments.left.15" : "and invite your friends",
+  "gui.guide.page.tournaments.left.16" : "over for a friendly",
+  "gui.guide.page.tournaments.left.17" : "fishing competition!",
+
+  "gui.guide.page.tournaments.right.0" : "",
+  "gui.guide.page.tournaments.right.1" : "",
+  "gui.guide.page.tournaments.right.2" : "",
+  "gui.guide.page.tournaments.right.3" : "[Work In Progress]",
+  "gui.guide.page.tournaments.right.4" : "  The organizer may set",
+  "gui.guide.page.tournaments.right.5" : "an entry cost which goes",
+  "gui.guide.page.tournaments.right.6" : "towards the prize pool!",
+  "gui.guide.page.tournaments.right.7" : "",
+  "gui.guide.page.tournaments.right.8" : "  There might even be",
+  "gui.guide.page.tournaments.right.9" : "special prizes for",
+  "gui.guide.page.tournaments.right.10" : "the best anglers.",
+
+
 
 
   "gui.guide.page.trophies.left.0" : "",
