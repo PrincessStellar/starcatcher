@@ -43,19 +43,19 @@ public class Config
             .define("show_exclamation_mark_particle", false);
 
     public static final ModConfigSpec.BooleanValue ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS = BUILDER_SERVER
-            .comment("enables/disables the ability to bonemeal farmland for worms.")
+            .comment("Enables/disables the ability to bonemeal farmland for worms.")
             .define("enable_worms", true);
 
     public static final ModConfigSpec.BooleanValue ENABLE_MINIGAME = BUILDER_SERVER
             .define("enable_minigame", true);
 
     public static final ModConfigSpec.BooleanValue ENABLE_FTB_TEAM_SHARING = BUILDER_SERVER
-            .comment("enables/disables fishes caught being unlocked for all online team members.")
+            .comment("Enables/disables fishes caught being unlocked for all online team members.")
             .comment("Offline players won't be awarded the entry.")
             .define("enable_seasons", false);
 
     public static final ModConfigSpec.BooleanValue ENABLE_SEASONS = BUILDER_SERVER
-            .comment("enables/disables fishes being restricted by seasons.")
+            .comment("Enables/disables fishes being restricted by seasons.")
             .comment("Useful if you want to play with a seasons mod but don't like the built-in restrictions.")
             .define("enable_seasons", true);
 
