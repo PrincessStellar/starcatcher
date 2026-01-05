@@ -53,6 +53,14 @@ public class ModItemsTagProvider extends ItemTagsProvider
             tag(StarcatcherTags.TEMPLATES).add(item.get());
         }
 
+        //Equipment tag
+        for (DeferredHolder<Item, ? extends Item> item : ModItems.RODS_REGISTRY.getEntries())
+        {
+            if(!item.is(ModItems.ROD)) tag(StarcatcherTags.EQUIPMENTS).add(item.get());
+            //todo add hats and stuff
+        }
+
+
         //gadgets
         tag(StarcatcherTags.GADGETS).add(ModItems.FISH_RADAR.get());
 

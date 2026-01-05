@@ -116,7 +116,7 @@ public class FishingGuideScreen extends Screen
 
     private final ItemStack sweetspotsIcon;
     private final ItemStack treasureIcon;
-    private final ItemStack hatIcon;
+    private final ItemStack equipmentIcon;
 
     private final ItemStack hookIcon;
     private final ItemStack baitIcon;
@@ -634,7 +634,7 @@ public class FishingGuideScreen extends Screen
                 renderHelpText(guiGraphics, "upgrades");
                 renderImage(guiGraphics, HELP_PAGE_LAVA_FISHING);
                 renderItem(upgradeIndexIcon, uiX + 166, uiY + 39, 1);
-                renderItem(hatIcon, uiX + 321, uiY + 39, 1);
+                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.lava_fishing"), uiX + 80, uiY + 45, 0x635040, false);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.modifiers"), uiX + 230, uiY + 45, 0x635040, false);
             }
@@ -721,7 +721,7 @@ public class FishingGuideScreen extends Screen
                 renderHelpText(guiGraphics, "cosmetics");
                 renderImage(guiGraphics, HELP_PAGE_GADGETS_COSMETICS);
                 renderItem(upgradeIndexIcon, uiX + 166, uiY + 39, 1);
-                renderItem(hatIcon, uiX + 321, uiY + 39, 1);
+                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.gadgets"), uiX + 80, uiY + 45, 0x635040, false);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.cosmetics"), uiX + 230, uiY + 45, 0x635040, false);
 
@@ -771,7 +771,7 @@ public class FishingGuideScreen extends Screen
                 int d1 = 23;
                 int h1 = 0;
 
-                //baits max column size
+                //templates max column size
                 for (int i = 0; i < Math.min(templates.size(), 12); i++)
                 {
                     int x = 70 - Math.min(s1, (templates.size() - i / s1 * s1)) * 23 / 2;
@@ -780,7 +780,7 @@ public class FishingGuideScreen extends Screen
 
                     //offset to page
                     xrender += uiX + 60 + h1;
-                    y += uiY + 160;
+                    y += uiY + 157;
 
                     //render item and background
                     guiGraphics.fill(xrender - 10, y - 2, xrender + 10, y + 18, 0xffb4a697);
@@ -792,18 +792,22 @@ public class FishingGuideScreen extends Screen
                 }
 
                 //Equipment
-                renderItem(hatIcon, uiX + 321, uiY + 39, 1);
+                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.equipment"), uiX + 230, uiY + 45, 0x635040, false);
 
-                for (int i = 0; i < Math.min(equipments.size(), 21); i++)
+                int s2 = 7;
+                int d2 = 21;
+                int h2 = 0;
+
+                for (int i = 0; i < Math.min(equipments.size(), 18); i++)
                 {
-                    int x = 70 - Math.min(s1, (equipments.size() - i / s1 * s1)) * 23 / 2;
-                    int xrender = x + (i % s1) * d1;
-                    int y = i / s1 * 25;
+                    int x = 70 - Math.min(s2, (equipments.size() - i / s2 * s2)) * 23 / 2;
+                    int xrender = x + (i % s2) * d2;
+                    int y = i / s2 * 25;
 
                     //offset to page
-                    xrender += uiX + 60 + h1;
-                    y += uiY + 130;
+                    xrender += uiX + 229 + h2;
+                    y += uiY + 157;
 
                     //render item and background
                     guiGraphics.fill(xrender - 10, y - 2, xrender + 10, y + 18, 0xffb4a697);
@@ -2073,7 +2077,7 @@ public class FishingGuideScreen extends Screen
         //other items
         sweetspotsIcon = new ItemStack(ModItems.AURORA.get());
         treasureIcon = new ItemStack(ModItems.WATERLOGGED_SATCHEL.get());
-        hatIcon = new ItemStack(Items.DIAMOND_HELMET);
+        equipmentIcon = new ItemStack(ModItems.AZURE_CRYSTAL_ROD.get());
 
         hookIcon = new ItemStack(ModItems.HOOK.get());
         baitIcon = new ItemStack(ModItems.CHERRY_BAIT.get());

@@ -43,8 +43,14 @@
   "tag.minecraft.is_savanna" : "Savannas",
   "tag.minecraft.is_taiga" : "Taigas",
 
+  "tag.starcatcher.baits" : "Fishing Baits",
   "tag.starcatcher.hooks" : "Fishing Hooks",
-  "tag.starcatcher.bobbers" : "Bobbers",
+  "tag.starcatcher.bobbers" : "Fishing Bobbers",
+  "tag.starcatcher.equipments" : "Fishing Equipment",
+  "tag.starcatcher.gadgets" : "Fishing Gadgets",
+  "tag.starcatcher.rods" : "Starcatcher Rods",
+  "tag.starcatcher.templates" : "Fishing Rod Templates",
+  "tag.starcatcher.bucketable_fishes" : "Starcatcher Bucketable Fishes",
   "tag.starcatcher.hooks_survive_fire" : "Hooks that survive Fire",
 
 
@@ -104,7 +110,7 @@
   "item.starcatcher.azure_crystal_rod": "Azure Crystal Rod",
   "tooltip.starcatcher.azure_crystal_rod.0": "A <rgb>Legendary</rgb> rod made of pure azure crystals.",
   "tooltip.starcatcher.azure_crystal_rod.1": "It's said the <gradient-30>Older Anglers</gradient-50> gift this rod",
-  "tooltip.starcatcher.azure_crystal_rod.2": "to those to manage to greed for a treasure whilst catching an <rgb>Aurora</rgb>",
+  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <rgb>Aurora</rgb>",
 
   "item.starcatcher.good_old_rod": "Good Ol' Rod",
   "tooltip.starcatcher.good_old_rod.0": "A simple rod, now supportive of bobbers, hooks and baits.",
@@ -132,7 +138,7 @@
 
   "item.starcatcher.lush_glowberry_rod": "Lush Glowberry Rod",
   "tooltip.starcatcher.lush_glowberry_rod.0": "A glowing glowberry rod that glows just like glowberries.",
-  "tooltip.starcatcher.lush_glowberry_rod.1": "Rarely fished up from lush caves.",
+  "tooltip.starcatcher.lush_glowberry_rod.1": "Rarely fished up in lush caves.",
 
   "item.starcatcher.humble_rod": "Humble Rod",
   "tooltip.starcatcher.humble_rod.0": "A very humble rod found rarely in rivers.",
@@ -715,9 +721,15 @@
   "gui.guide.page.templates.right.2" : "",
   "gui.guide.page.templates.right.3" : "",
   "gui.guide.page.templates.right.4" : "",
-  "gui.guide.page.templates.right.5" : "  On top of looking",
-  "gui.guide.page.templates.right.6" : "fashionable, equipment might",
-  "gui.guide.page.templates.right.7" : "offer modifiers to aid you.",
+  "gui.guide.page.templates.right.5" : "[wip]",
+  "gui.guide.page.templates.right.6" : "  On top of looking",
+  "gui.guide.page.templates.right.7" : "fashionable, equipment can",
+  "gui.guide.page.templates.right.8" : "offer modifiers to aid you.",
+  "gui.guide.page.templates.right.9" : "",
+  "gui.guide.page.templates.right.10" : "  You may find equipment",
+  "gui.guide.page.templates.right.11" : "from fishing treasures,",
+  "gui.guide.page.templates.right.12" : "tournaments, dungeon loot,",
+  "gui.guide.page.templates.right.13" : "and more!",
 
 
   "gui.guide.page.tournaments.left.0" : "",
