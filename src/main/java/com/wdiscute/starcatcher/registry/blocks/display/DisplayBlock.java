@@ -36,7 +36,6 @@ import javax.annotation.Nullable;
 
 public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
-    public static final MapCodec<DisplayBlock> CODEC = simpleCodec(DisplayBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty HAS_BOOK = BlockStateProperties.HAS_BOOK;
@@ -48,20 +47,15 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public MapCodec<DisplayBlock> codec()
     {
-        return CODEC;
-    }
-
-    public DisplayBlock(BlockBehaviour.Properties properties)
-    {
-        super(properties);
-        this.registerDefaultState(
-                this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(HAS_BOOK, false)
-        );
+        return null;
     }
 
     public DisplayBlock()
     {
-        super(BlockBehaviour.Properties.of());
+        super(BlockBehaviour.Properties.of()
+                .lightLevel(s -> 9)
+                .destroyTime(20)
+        );
         this.registerDefaultState(
                 this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(POWERED, false).setValue(HAS_BOOK, false)
         );
