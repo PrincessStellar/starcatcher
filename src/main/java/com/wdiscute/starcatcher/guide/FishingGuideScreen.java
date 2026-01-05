@@ -850,7 +850,7 @@ public class FishingGuideScreen extends Screen
     {
         int topLeftCorner = uiX + 53;
 
-//        if (player.level().getDayTime() % 10 == 0)
+//        if (player.level().getDayTime() % 5 == 0)
 //        {
 //            System.out.println(player.level().getDayTime());
 //            fishInArea.add(FishProperties.DEFAULT);
@@ -920,8 +920,12 @@ public class FishingGuideScreen extends Screen
                     }
 
                     //render bottom decoration if theres space
-                    if (numberOfRows < 6)
+                    if (numberOfRows < 4)
                         renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_DECORATION);
+
+                    if (numberOfRows == 4 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
+                        renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_DECORATION);
+
 
                     //render bottom left thingy, offset by the number of rows
                     if (!fishInArea.isEmpty())
@@ -930,12 +934,10 @@ public class FishingGuideScreen extends Screen
                     //render fish skeleton unless theres no space for it
                     int xFishSkeletonOffset = 0;
                     if (fishInArea.size() % 7 > 4 || fishInArea.size() % 7 == 0) xFishSkeletonOffset = 20;
-                    if (numberOfRows < 5)
+                    if(numberOfRows < 6)
                         renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset);
-                    if (numberOfRows == 5 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
-                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20);
-                    if (numberOfRows == 6 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
-                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20);
+                    if(numberOfRows == 6 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
+                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset);
                 }
             }
 
