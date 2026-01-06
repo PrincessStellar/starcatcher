@@ -45,14 +45,15 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     }
 
     @Override
-    public List<BlockPos> makeFullBlockShape(Level level, BlockPos center, BlockState blockState, @Nullable BlockEntity blockEntity, @Nullable Direction direction) {
+    public List<BlockPos> makeFullBlockShape(@Nullable Direction direction, BlockPos center, BlockState state)
+    {
         assert direction != null;
         return List.of(center, center.above(), center.relative(direction.getCounterClockWise()), center.relative(direction.getCounterClockWise()).above());
     }
 
-
     @Override
-    public RenderShape getMultiblockRenderShape(BlockState state, boolean isCenter) {
+    public RenderShape getMultiblockRenderShape(BlockState state)
+    {
         return RenderShape.MODEL;
     }
 
@@ -233,8 +234,9 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         }
 
         @Override
-        public Function<BlockPos, BlockPos> getOffsetFunction() {
-            return offset;
+        public BlockPos getOffset()
+        {
+            return offset.apply(BlockPos.ZERO);
         }
     }
 }
