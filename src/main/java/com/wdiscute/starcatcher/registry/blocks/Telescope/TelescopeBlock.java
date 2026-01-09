@@ -33,18 +33,18 @@ public class TelescopeBlock extends AbstractMultiBlock implements IPreviewableMu
 {
     public TelescopeBlock()
     {
-        super(BlockBehaviour.Properties.of());
+        super(BlockBehaviour.Properties.of().noOcclusion());
     }
 
     @Override
-    public List<BlockPos> makeFullBlockShape(@Nullable Direction direction, BlockPos center, BlockState state)
+    public List<BlockPos> makeFullBlockShape(Level level, BlockPos center, BlockState blockState, @Nullable BlockEntity blockEntity, @Nullable Direction direction)
     {
         assert direction != null;
         return List.of(center, center.above());
     }
 
     @Override
-    public RenderShape getMultiblockRenderShape(BlockState state)
+    public RenderShape getMultiblockRenderShape(BlockState state, boolean c)
     {
         return RenderShape.MODEL;
     }
@@ -68,39 +68,9 @@ public class TelescopeBlock extends AbstractMultiBlock implements IPreviewableMu
         return state;
     }
 
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        return getStateForPlacementHelper(context, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState getDefaultStateForPreviews(Direction direction)
-    {
-        return IPreviewableMultiblock.super.getDefaultStateForPreviews(direction.getOpposite());
-    }
-
-
-
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state)
-    {
-        return ModBlockEntities.TELESCOPE.get().create(pos, state);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+
+    //This probably doesn't need to be there since the center property does the same thing
     public static final EnumProperty<TelescopePart> TELESCOPE_PART = EnumProperty.create("part", TelescopePart.class);
 
     @Override
@@ -145,9 +115,8 @@ public class TelescopeBlock extends AbstractMultiBlock implements IPreviewableMu
         }
 
         @Override
-        public BlockPos getOffset()
-        {
-            return offset.apply(BlockPos.ZERO);
+        public Function<BlockPos, BlockPos> getOffsetFunction() {
+            return offset;
         }
     }
 }
