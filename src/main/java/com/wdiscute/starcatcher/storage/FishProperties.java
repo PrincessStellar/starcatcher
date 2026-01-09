@@ -31,6 +31,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -52,6 +53,7 @@ import java.util.Optional;
 //      <><|    <- fish
 public record FishProperties(
         CatchInfo catchInfo,
+        Star star,
         int baseChance,
         SizeAndWeight sizeWeight,
         Rarity rarity,
@@ -67,6 +69,7 @@ public record FishProperties(
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     CatchInfo.CODEC.fieldOf("catch_info").forGetter(FishProperties::catchInfo),
+                    Star.CODEC.fieldOf("star").forGetter(FishProperties::star),
                     Codec.INT.fieldOf("base_chance").forGetter(FishProperties::baseChance),
                     SizeAndWeight.CODEC.fieldOf("size_and_weight").forGetter(FishProperties::sizeWeight),
                     Rarity.CODEC.fieldOf("rarity").forGetter(FishProperties::rarity),
@@ -85,6 +88,7 @@ public record FishProperties(
 
     public static final StreamCodec<RegistryFriendlyByteBuf, FishProperties> STREAM_CODEC = ExtraComposites.composite(
             CatchInfo.STREAM_CODEC, FishProperties::catchInfo,
+            Star.STREAM_CODEC, FishProperties::star,
             ByteBufCodecs.VAR_INT, FishProperties::baseChance,
             SizeAndWeight.STREAM_CODEC, FishProperties::sizeWeight,
             Rarity.STREAM_CODEC, FishProperties::rarity,
@@ -100,7 +104,8 @@ public record FishProperties(
 
     public static final StreamCodec<RegistryFriendlyByteBuf, List<FishProperties>> STREAM_CODEC_LIST = STREAM_CODEC.apply(ByteBufCodecs.list());
 
-    public ResourceLocation toLoc(Level level){
+    public ResourceLocation toLoc(Level level)
+    {
         return U.getRlFromFp(level, this);
     }
 
@@ -110,6 +115,7 @@ public record FishProperties(
     @Deprecated(forRemoval = true)
     public static final FishProperties DEFAULT = new FishProperties(
             CatchInfo.DEFAULT,
+            Star.DEFAULT,
             5,
             SizeAndWeight.DEFAULT,
             Rarity.COMMON,
@@ -130,6 +136,7 @@ public record FishProperties(
     public static class Builder
     {
         private CatchInfo.Builder catchInfo = new CatchInfo.Builder();
+        private Star star = Star.DEFAULT;
         private int baseChance = 5;
 
         private SizeAndWeight sw = SizeAndWeight.DEFAULT;
@@ -181,6 +188,12 @@ public record FishProperties(
         public Builder withItemToOverrideWith(Holder<Item> itemToOverrideWith)
         {
             this.catchInfo.withOverrideMinigameWith(itemToOverrideWith);
+            return this;
+        }
+
+        public Builder withStar(Star star)
+        {
+            this.star = star;
             return this;
         }
 
@@ -254,6 +267,7 @@ public record FishProperties(
         {
             return new FishProperties(
                     catchInfo.build(),
+                    star,
                     baseChance,
                     sw,
                     rarity,
@@ -360,6 +374,77 @@ public record FishProperties(
     }
 
     //endregion CatchInfo
+
+    //region Star
+
+    public record Star(
+            String name,
+            int x,
+            int y,
+            List<String> connections,
+            int debugColor
+    )
+    {
+        public static Star fromRaAndDec(String name, int degrees, float dec, int color, String... connections)
+        {
+            double angleX = Math.cos(Math.toRadians(degrees));
+            double angleY = Math.sin(Math.toRadians(degrees));
+
+            int offsetX = dec > 0 ? 2700 : 900;
+            int offsetY = 900;
+
+            dec = transform(dec);
+
+            int x = (int) (offsetX + angleX * Math.abs(dec) * 10);
+            int y = (int) (offsetY + angleY * Math.abs(dec) * 10);
+
+            return new Star(name, x, y, Arrays.stream(connections).filter(o -> !o.isEmpty()).toList(), color);
+        }
+
+        public static float transform(float v)
+        {
+            if (v == 0f) return 0f;
+
+            float abs = Math.abs(v);
+
+            if (abs > 90f)
+            {
+                throw new IllegalArgumentException("Value must be between -90 and 90");
+            }
+
+            return Math.copySign(90f - abs, v);
+        }
+
+        public static Star fromRaAndDec(String name, int hours, int minutes, double seconds, float dec, int color, String... connections)
+        {
+            double decimalHours = hours + minutes / 60.0 + seconds / 3600.0;
+            int deg = ((int) (decimalHours * 15.0));
+
+            return fromRaAndDec(name, deg, dec, color, connections);
+        }
+
+        public static final Codec<Star> CODEC = RecordCodecBuilder.create(instance ->
+                instance.group(
+                        Codec.STRING.fieldOf("name").forGetter(Star::name),
+                        ExtraCodecs.intRange(0, 3600).fieldOf("x").forGetter(Star::x),
+                        ExtraCodecs.intRange(0, 1800).fieldOf("y").forGetter(Star::y),
+                        Codec.STRING.listOf().fieldOf("connections").forGetter(Star::connections),
+                        Codec.INT.fieldOf("debug_color").forGetter(Star::debugColor)
+                ).apply(instance, Star::new));
+
+        public static final StreamCodec<ByteBuf, Star> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.STRING_UTF8, Star::name,
+                ByteBufCodecs.INT, Star::x,
+                ByteBufCodecs.INT, Star::y,
+                ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), Star::connections,
+                ByteBufCodecs.INT, Star::debugColor,
+                Star::new
+        );
+
+        public static final Star DEFAULT = new Star("", 0, 0, List.of(), 0xffffffff);
+    }
+
+    //endregion Star
 
 
     //region bait
@@ -1622,7 +1707,8 @@ public record FishProperties(
         List<FishProperties> list = new ArrayList<>();
 
         for (FishProperties fp : entity.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
-            if (isDimensionCorrect(entity, fp) && isBiomeCorrect(entity, fp) && isElevationCorrect(entity, fp) && fp.hasGuideEntry && fp.baseChance != 0) list.add(fp);
+            if (isDimensionCorrect(entity, fp) && isBiomeCorrect(entity, fp) && isElevationCorrect(entity, fp) && fp.hasGuideEntry && fp.baseChance != 0)
+                list.add(fp);
 
         return list;
     }
