@@ -13,12 +13,12 @@
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
-    "entity": "tide:snook",
-    "fish_bucket": "tide:snook_bucket",
-    "item": "tide:snook",
+    "entity": "tide:barracuda",
+    "fish_bucket": "tide:barracuda_bucket",
+    "item": "tide:barracuda",
     "treasure": "starcatcher:waterlogged_satchel"
   },
-  "daytime": "all",
+  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 20,
@@ -48,15 +48,22 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "rare",
   "size_and_weight": {
-    "average_size_cm": 27.0,
-    "average_weight_grams": 500.0,
-    "deviation_size_cm": 11.0,
-    "deviation_weight_grams": 352.0
+    "average_size_cm": 150.0,
+    "average_weight_grams": 30000.0,
+    "deviation_size_cm": 50.0,
+    "deviation_weight_grams": 20000.0
   },
   "skips_minigame": false,
-  "weather": "all",
+  "star": {
+    "connections": [],
+    "debug_color": -1,
+    "name": "",
+    "x": 0,
+    "y": 0
+  },
+  "weather": "rain",
   "world_restrictions": {
     "above_y": 50,
     "below_y": 100,
