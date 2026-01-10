@@ -9,7 +9,7 @@ import net.minecraft.world.level.biome.Biomes;
 
 import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
 
-public class StarcatcherFishingProperties
+public class DGStarcatcherFishes
 {
     public static void bootstrap()
     {

@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.registry.fishing;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -9,13 +8,12 @@ import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biomes;
 
 import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
 
-public class ModTrophyProperties
+public class DGTrophies
 {
 
     private static ResourceKey<TrophyProperties> createKey(TrophyProperties tp)
