@@ -10,12 +10,12 @@
     "correct_bait_chance_added": 0,
     "correct_baits": []
   },
-  "base_chance": 5,
+  "base_chance": 2,
   "catch_info": {
     "always_spawn_entity": false,
-    "entity": "starcatcher:fish",
-    "fish_bucket": "starcatcher:missingno",
-    "item": "tide:leafback",
+    "entity": "tide:windbass",
+    "fish_bucket": "tide:windbass_bucket",
+    "item": "tide:windbass",
     "treasure": "starcatcher:waterlogged_satchel"
   },
   "daytime": "all",
@@ -71,9 +71,9 @@
   "rarity": "epic",
   "size_and_weight": {
     "average_size_cm": 40.0,
-    "average_weight_grams": 3000.0,
-    "deviation_size_cm": 20.0,
-    "deviation_weight_grams": 2000.0
+    "average_weight_grams": 1600.0,
+    "deviation_size_cm": 12.0,
+    "deviation_weight_grams": 1100.0
   },
   "skips_minigame": false,
   "star": {
@@ -85,14 +85,12 @@
   },
   "weather": "all",
   "world_restrictions": {
-    "above_y": 50,
-    "below_y": 2147483647,
+    "above_y": 0,
+    "below_y": 50,
     "biomes": [],
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "minecraft:is_jungle"
-    ],
+    "biomes_tags": [],
     "dimensions": [
       "minecraft:overworld"
     ],
@@ -101,8 +99,7 @@
       "minecraft:water"
     ],
     "seasons": [
-      "spring",
-      "autumn"
+      "all"
     ]
   }
 }

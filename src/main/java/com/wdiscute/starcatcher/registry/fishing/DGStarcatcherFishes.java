@@ -202,7 +202,7 @@ public class DGStarcatcherFishes
                 .withSeasons(Seasons.EARLY_SPRING, Seasons.LATE_AUTUMN, Seasons.WINTER)
                 .withDaytime(FishProperties.Daytime.MIDNIGHT)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withDifficulty(FishProperties.Difficulty.THREE_AQUA_ONE_BIG_ONE_SMALL));
+                .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN));
 
         registerStarcatcherBucketAndEntity(overworldDarkForestFish(ModItems.PINFISH)
                 .withStar(Constellations.TAURUS.GAMMA_TAURI)
@@ -224,7 +224,7 @@ public class DGStarcatcherFishes
                 .withSeasons(Seasons.SPRING, Seasons.WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(10, 3, 67, 0))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withDifficulty(FishProperties.Difficulty.THREE_AQUA_ONE_BIG_ONE_SMALL_VANISHING));
+                .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN_VANISHING));
 
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(ModItems.BLOSSOMFISH)
                 .withSeasons(Seasons.SPRING, Seasons.SUMMER)
@@ -457,7 +457,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldDripstoneCavesFish(ModItems.FOSSILIZED_ANGELFISH)
                 .withSizeAndWeight(FishProperties.sizeWeight(700, 150, 36000, 7000))
                 .withRarity(FishProperties.Rarity.RARE)
-                .withDifficulty(FishProperties.Difficulty.THIN_NO_DECAY));
+                .withDifficulty(FishProperties.Difficulty.TWO_THIN_NO_DECAY));
 
         registerStarcatcherBucketAndEntity(overworldDripstoneCavesFish(ModItems.DRIPFIN)
                 .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 16000, 7000))

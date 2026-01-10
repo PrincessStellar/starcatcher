@@ -1038,12 +1038,21 @@ public record FishProperties(
                 SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1
         ).moving();
 
-        public static Difficulty THREE_AQUA_ONE_BIG_ONE_SMALL = new Difficulty(
+        public static Difficulty TWO_AQUA_ONE_THIN = new Difficulty(
                 9, 20, 0,
                 List.of(),
                 SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.THIN
         );
-        public static Difficulty THREE_AQUA_ONE_BIG_ONE_SMALL_VANISHING = THREE_AQUA_ONE_BIG_ONE_SMALL.vanishing();
+        public static Difficulty TWO_AQUA_ONE_THIN_VANISHING = TWO_AQUA_ONE_THIN.vanishing();
+
+        public static Difficulty FOUR_THIN = new Difficulty(
+                9, 20, 0,
+                List.of(),
+                SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
+        );
+
+        public static Difficulty FOUR_THIN_VANISHING = FOUR_THIN.vanishing();
+        public static Difficulty FOUR_THIN_MOVING = FOUR_THIN.moving();
 
         public static Difficulty EIGHT_THIN = new Difficulty(
                 9, 20, 0,
@@ -1061,6 +1070,12 @@ public record FishProperties(
         ).vanishing();
         public static Difficulty THREE_BIG_TWO_THIN_VANISHING = THREE_BIG_TWO_THIN.vanishing();
 
+        public static Difficulty EIGHT_STONE_SPOTS = new Difficulty(
+                12, 20, 0,
+                List.of(),
+                SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
+        );
+
         public static Difficulty FOUR_STONE_SPOTS = new Difficulty(
                 12, 20, 0,
                 List.of(),
@@ -1072,6 +1087,18 @@ public record FishProperties(
                 List.of(),
                 SweetSpot.NORMAL, SweetSpot.NORMAL
         );
+
+        public static Difficulty SINGLE_AQUA = new Difficulty(
+                13, 5, 1,
+                List.of(),
+                SweetSpot.AQUA
+        );
+
+        public static Difficulty SINGLE_AQUA_MOVING = new Difficulty(
+                13, 5, 1,
+                List.of(),
+                SweetSpot.AQUA
+        ).moving();
 
         public static Difficulty SINGLE_BIG_FAST = new Difficulty(
                 13, 30, 1,
@@ -1093,7 +1120,19 @@ public record FishProperties(
                 SweetSpot.AQUA, SweetSpot.AQUA
         );
 
-        public static Difficulty THIN_NO_DECAY = new Difficulty(
+        public static Difficulty SINGLE_THIN_FAST = new Difficulty(
+                14, 10, 1,
+                List.of(),
+                SweetSpot.THIN
+        );
+
+        public static Difficulty TWO_THIN = new Difficulty(
+                11, 15, 1,
+                List.of(),
+                SweetSpot.THIN, SweetSpot.THIN
+        );
+
+        public static Difficulty TWO_THIN_NO_DECAY = new Difficulty(
                 10, 20, 0,
                 List.of(),
                 SweetSpot.THIN, SweetSpot.THIN

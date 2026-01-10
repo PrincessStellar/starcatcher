@@ -13,33 +13,23 @@
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
-    "entity": "tide:glowfish",
-    "fish_bucket": "tide:glowfish_bucket",
-    "item": "tide:glowfish",
+    "entity": "tide:bull_shark",
+    "fish_bucket": "tide:bull_shark_bucket",
+    "item": "tide:bull_shark",
     "treasure": "starcatcher:waterlogged_satchel"
   },
-  "daytime": "all",
+  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
-    "missPenalty": 20,
+    "missPenalty": 10,
     "modifiers": [],
-    "speed": 10,
+    "speed": 14,
     "sweetspots": [
-      {
-        "color_as_int": 65280,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 1.0,
-        "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
       {
         "color_as_int": 65280,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 20,
         "sweet_spot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
@@ -48,29 +38,24 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "uncommon",
+  "rarity": "epic",
   "size_and_weight": {
-    "average_size_cm": 60.0,
-    "average_weight_grams": 7000.0,
-    "deviation_size_cm": 20.0,
-    "deviation_weight_grams": 2000.0
+    "average_size_cm": 400.0,
+    "average_weight_grams": 16000.0,
+    "deviation_size_cm": 120.0,
+    "deviation_weight_grams": 11000.0
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [],
-    "debug_color": -1,
-    "name": "",
-    "x": 0,
-    "y": 0
-  },
   "weather": "all",
   "world_restrictions": {
-    "above_y": -2147483648,
-    "below_y": 50,
+    "above_y": 50,
+    "below_y": 100,
     "biomes": [],
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [],
-    "biomes_tags": [],
+    "biomes_tags": [
+      "starcatcher:is_river"
+    ],
     "dimensions": [
       "minecraft:overworld"
     ],
