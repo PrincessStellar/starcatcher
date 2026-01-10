@@ -3,14 +3,10 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.datagen.TrustedHolder;
-import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.fishing.compat.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -27,22 +23,22 @@ public class FishingPropertiesRegistry
 
     public static void register()
     {
-        MinecraftFishingProperties.bootstrap();
-        StarcatcherFishingProperties.bootstrap();
-        TideFishingProperties.bootstrap();
-        AquacultureFishingProperties.bootstrap();
-        FishOfThievesFishingProperties.bootstrap();
-        NetherDepthsUpgradeFishingProperties.bootstrap();
-        SullysModFishingProperties.bootstrap();
-        UpgradeAquaticFishingProperties.bootstrap();
-        EnvironmentalFishingProperties.bootstrap();
-        CollectorsReapFishingProperties.bootstrap();
-        MinersDelightFishingProperties.bootstrap();
-        AlexsCavesFishingProperties.bootstrap();
-        CrittersAndCompanionsFishingProperties.bootstrap();
-        HybridAquaticFishingProperties.bootstrap();
-        AquamiraeFishingProperties.bootstrap();
-        TerraFirmaCraftFishProperties.bootstrap();
+        DGMinecraftFishes.bootstrap();
+        DGStarcatcherFishes.bootstrap();
+        DGTideFishes.bootstrap();
+        DGAquacultureFishes.bootstrap();
+        DGFishOfThievesFishes.bootstrap();
+        DGNetherDepthsUpgradeFishes.bootstrap();
+        DGSullysModFishes.bootstrap();
+        DGUpgradeAquaticFishes.bootstrap();
+        DGEnvironmentalFishes.bootstrap();
+        DGCollectorsReapFishes.bootstrap();
+        DGMinersDelightFishes.bootstrap();
+        DGAlexsCavesFishes.bootstrap();
+        DGCrittersAndCompanionsFishes.bootstrap();
+        DGHybridAquaticFishes.bootstrap();
+        DGAquamiraeFishes.bootstrap();
+        DGTerraFirmaCraftFishes.bootstrap();
     }
 
     //region builders
