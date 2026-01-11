@@ -37,6 +37,7 @@ public class ModItemsTagProvider extends ItemTagsProvider
             tag(ItemTags.CAT_FOOD).add(item.get());
             tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
             tag(StarcatcherTags.BUCKETABLE_FISHES).add(item.get());
+            tag(StarcatcherTags.STARCAUGHT_FISHES).add(item.get());
         }
 
         //todo figure out what to do with crabs tags?

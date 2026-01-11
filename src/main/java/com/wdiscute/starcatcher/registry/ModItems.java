@@ -64,7 +64,6 @@ public interface ModItems
     DeferredItem<Item> GUIDE = ITEMS_REGISTRY.register("starcatcher_guide", FishingGuideItem::new);
 
     DeferredItem<Item> FISH_RADAR = ITEMS_REGISTRY.register("fish_radar", SingleStackBasicItem::new);
-
     DeferredItem<Item> STARCATCHER_TWINE = ITEMS_REGISTRY.register("starcatcher_twine", SingleStackBasicItem::new);
 
     //hooks
@@ -330,4 +329,6 @@ public interface ModItems
 
     //bucket
     DeferredItem<Item> STARCAUGHT_BUCKET = ITEMS_REGISTRY.register("starcaught_bucket", () -> new StarcaughtBucket(Fluids.WATER));
+
+    DeferredItem<Item> COOKED_STARCAUGHT_FISH = ITEMS_REGISTRY.register("cooked_starcaught_fish", () -> new Item(new Item.Properties().food(ModFoodProperties.BASIC_COOKED_FISH)));
 }
