@@ -735,13 +735,269 @@ public class DGTideFishes extends FishingPropertiesRegistry
         );
 
 
+        //void
+        register(
+                endVoidFishing(U.holderItem("tide", "amber_rockfish"))
+                        .withBucketedFish(U.holderItem("tide", "amber_rockfish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "amber_rockfish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.TWO_STONE_SPOTS_EASY)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                endVoidFishing(U.holderItem("tide", "pale_clubfish"))
+                        .withBucketedFish(U.holderItem("tide", "pale_clubfish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "pale_clubfish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 26000, 7000))
+                        .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                endVoidFishing(U.holderItem("tide", "enderfin"))
+                        .withBucketedFish(U.holderItem("tide", "enderfin_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "enderfin"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 16000, 7000))
+                        .withDifficulty(FishProperties.Difficulty.TWO_AQUA)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                overworldVoidFishing(U.holderItem("tide", "incandescent_larva"))
+                        .withBucketedFish(U.holderItem("tide", "enderfin_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "enderfin"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(6, 4, 5, 3))
+                        .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                overworldVoidFishing(U.holderItem("tide", "bedrock_bug"))
+                        .withBucketedFish(U.holderItem("tide", "bedrock_bug_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "bedrock_bug"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 26000, 7000))
+                        .withDifficulty(FishProperties.Difficulty.TWO_STONE_SPOTS_EASY)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                overworldVoidFishing(U.holderItem("tide", "sleepy_carp"))
+                        .withBucketedFish(U.holderItem("tide", "sleepy_carp_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "sleepy_carp"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
+                        .withDifficulty(FishProperties.Difficulty.MEDIUM)
+                        .withRarity(FishProperties.Rarity.COMMON)
+                        .withBaseChance(20)
+        );
 
+        register(
+                endVoidFishing(U.holderItem("tide", "chorus_cod"))
+                        .withBucketedFish(U.holderItem("tide", "chorus_cod_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "chorus_cod"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
+                        .withDifficulty(FishProperties.Difficulty.HARD)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
 
+        register(
+                endVoidFishing(U.holderItem("tide", "ender_glider"))
+                        .withBucketedFish(U.holderItem("tide", "ender_glider_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "ender_glider"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.HARD)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "endergazer"))
+                        .withBucketedFish(U.holderItem("tide", "endergazer_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "endergazer"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
+                        .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "blue_neonfish"))
+                        .withBucketedFish(U.holderItem("tide", "blue_neonfish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "blue_neonfish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
+                        .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "judgment_fish"))
+                        .withBucketedFish(U.holderItem("tide", "judgment_fish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "judgment_fish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
+                        .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "deep_blue"))
+                        .withBucketedFish(U.holderItem("tide", "deep_blue_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "deep_blue"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.TWO_AQUA)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "violet_carp"))
+                        .withBucketedFish(U.holderItem("tide", "violet_carp_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "violet_carp"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
+                        .withDifficulty(FishProperties.Difficulty.FOUR_BIG_VANISHING)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "nephrosilu"))
+                        .withBucketedFish(U.holderItem("tide", "nephrosilu_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "nephrosilu"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.FOUR_THIN)
+                        .withRarity(FishProperties.Rarity.UNCOMMON)
+                        .withBaseChance(15)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "red_40"))
+                        .withBucketedFish(U.holderItem("tide", "red_40_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "red_40"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.FOUR_THIN)
+                        .withRarity(FishProperties.Rarity.RARE)
+                        .withBaseChance(10)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "dutchman_sock"))
+                        .withBucketedFish(U.holderItem("tide", "dutchman_sock_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "dutchman_sock"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.FOUR_THIN_MOVING)
+                        .withRarity(FishProperties.Rarity.RARE)
+                        .withBaseChance(10)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "vengeance"))
+                        .withBucketedFish(U.holderItem("tide", "vengeance_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "vengeance"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.THREE_BIG_TWO_THIN_VANISHING)
+                        .withRarity(FishProperties.Rarity.RARE)
+                        .withBaseChance(10)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "pentapus"))
+                        .withBucketedFish(U.holderItem("tide", "pentapus_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "pentapus"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.FOUR_THIN_VANISHING)
+                        .withRarity(FishProperties.Rarity.RARE)
+                        .withBaseChance(10)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "elytrout"))
+                        .withBucketedFish(U.holderItem("tide", "elytrout_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "elytrout"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST)
+                        .withRarity(FishProperties.Rarity.RARE)
+                        .withBaseChance(10)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "mantyvern"))
+                        .withBucketedFish(U.holderItem("tide", "mantyvern_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "mantyvern"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_VANISHING)
+                        .withRarity(FishProperties.Rarity.EPIC)
+                        .withBaseChance(10)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "snatcher_squid"))
+                        .withBucketedFish(U.holderItem("tide", "snatcher_squid_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "snatcher_squid"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(40, 20, 1300, 700))
+                        .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN)
+                        .withRarity(FishProperties.Rarity.EPIC)
+                        .withBaseChance(10)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "darkness_eater"))
+                        .withBucketedFish(U.holderItem("tide", "darkness_eater_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "darkness_eater"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.HEAVY_EIGHT_AQUA)
+                        .withRarity(FishProperties.Rarity.EPIC)
+                        .withBaseChance(10)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "shadow_shark"))
+                        .withBucketedFish(U.holderItem("tide", "shadow_shark_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "shadow_shark"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN)
+                        .withRarity(FishProperties.Rarity.EPIC)
+                        .withBaseChance(10)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "voidseeker"))
+                        .withBucketedFish(U.holderItem("tide", "voidseeker_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "voidseeker"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
+                        .withDifficulty(FishProperties.Difficulty.NON_STOP_ACTION_AQUA)
+                        .withRarity(FishProperties.Rarity.LEGENDARY)
+                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .withBaseChance(3)
+        );
+
+        register(
+                overworldVoidFishing(U.holderItem("tide", "alpha_fish"))
+                        .withBucketedFish(U.holderItem("tide", "alpha_fish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "alpha_fish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
+                        .withSkipMinigame(true)
+                        .withRarity(FishProperties.Rarity.LEGENDARY)
+                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .withBaseChance(3)
+        );
+
+        register(
+                endVoidFishing(U.holderItem("tide", "dragon_fish"))
+                        .withBucketedFish(U.holderItem("tide", "dragon_fish_bucket"))
+                        .withEntityToSpawn(U.holderEntity("tide", "dragon_fish"))
+                        .withSizeAndWeight(FishProperties.sizeWeight(500, 150, 700000, 130000))
+                        .withDifficulty(FishProperties.Difficulty.WITHER)
+                        .withRarity(FishProperties.Rarity.LEGENDARY)
+                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .withBaseChance(3)
+        );
 
     }
 }
