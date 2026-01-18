@@ -18,11 +18,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModItemsTagProvider extends ItemTagsProvider
+public class DGModItemsTagProvider extends ItemTagsProvider
 {
 
-    public ModItemsTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
+    public DGModItemsTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                 CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
     {
         super(output, lookupProvider, blockTags, Starcatcher.MOD_ID, existingFileHelper);
     }
@@ -80,9 +80,8 @@ public class ModItemsTagProvider extends ItemTagsProvider
 
         //hooks tag
         for (DeferredHolder<Item, ? extends Item> item : ModItems.HOOKS_REGISTRY.getEntries())
-        {
             tag(StarcatcherTags.HOOKS).add(item.get());
-        }
+        tag(StarcatcherTags.HOOKS).addOptional(rl("tide", "void_fishing_hook"));
 
         //bobbers tag
         for (DeferredHolder<Item, ? extends Item> item : ModItems.BOBBERS_REGISTRY.getEntries())
