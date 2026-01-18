@@ -219,7 +219,7 @@ public class ModClientEvents
         EntityRenderers.register(ModEntities.FISHING_BOB.get(), FishingBobRenderer::new);
         EntityRenderers.register(ModEntities.BOTTLE.get(), ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.FISH.get(), FishRenderer::new);
-        ModItemProperties.addCustomItemProperties();
+        event.enqueueWork(ModItemProperties::addCustomItemProperties);
     }
 
     @SubscribeEvent

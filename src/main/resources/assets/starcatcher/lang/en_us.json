@@ -1,4 +1,5 @@
 {
+  "block.minecraft.empty": "Void",
 
   "advancements.husbandry.starcatcher.fisherman.title": "Fisherman",
   "advancements.husbandry.starcatcher.fisherman.description": "Catch a Fish without missing once",
@@ -6,7 +7,6 @@
   "key.category.starcatcher.starcatcher": "Starcatcher",
   "key.starcatcher.minigame_hit": "Minigame Hit",
   "key.starcatcher.expand_tournament": "Toggle Tournament Overlay",
-
 
   "creativetab.starcatcher.starcatcher": "Starcatcher",
 
