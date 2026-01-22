@@ -100,7 +100,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
 
 
-    // Nikdo53 values, these are mine dont steal them
+    // Nikdo53 fields, these are mine dont steal them
     public final int holdingDelay = 6;
     public int holdingTicks = 0;
     protected boolean isHoldingKey = false;
@@ -109,6 +109,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public float renderScale;
 
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();
+    protected final List<ActiveSweetSpot> spotsToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
+
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
 
     public FishingMinigameScreen(FishProperties fp, ItemStack rod)
@@ -223,7 +225,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             ass = modifier.onSpotAdded(ass);
         }
 
-        if (!ass.removed) this.activeSweetSpots.add(ass);
+        if (!ass.removed) this.spotsToAdd.add(ass);
     }
 
     public int getRandomFreePosition(int sizeOfTheSweetspotToPlace)
@@ -578,6 +580,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             if (s.removed) s.behaviour.onRemove();
             return s.removed;
         });
+
+        activeSweetSpots.addAll(spotsToAdd);
+        spotsToAdd.clear();
 
         //remove modifiers marked for removal
         modifiers.removeIf(m ->
