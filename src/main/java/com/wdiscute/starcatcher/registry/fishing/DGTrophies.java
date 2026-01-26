@@ -126,6 +126,13 @@ public class DGTrophies
                         .setTrophyType(TrophyProperties.TrophyType.SECRET)
         );
 
+        register(
+                context, TrophyProperties.builder()
+                        .setFishProperties(overworldDeepslateFish(ModItems.CRYSTAL_HOOK))
+                        .setTrophyType(TrophyProperties.TrophyType.SECRET)
+                        .withProgress(FishProperties.Rarity.EPIC, new TrophyProperties.RarityProgress(1, 0))
+        );
+
         //
         //          ,--.   ,--.
         // ,---.  ,-'  '-. |  ,---.   ,---.  ,--.--.  ,---.

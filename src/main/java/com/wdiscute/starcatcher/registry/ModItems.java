@@ -68,6 +68,7 @@ public interface ModItems
 
     //hooks
     DeferredItem<Item> HOOK = HOOKS_REGISTRY.register("hook", SingleStackBasicItem::new);
+    DeferredItem<Item> CRYSTAL_HOOK = HOOKS_REGISTRY.register("crystal_hook", SingleStackBasicItem::new);
     DeferredItem<Item> SHINY_HOOK = HOOKS_REGISTRY.register("shiny_hook", () -> new MinigameModifierItem(ModMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS));
     DeferredItem<Item> GOLD_HOOK = HOOKS_REGISTRY.register("gold_hook", () -> new CatchModifierItem(ModCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE));
     DeferredItem<Item> MOSSY_HOOK = HOOKS_REGISTRY.register("mossy_hook", () -> new MinigameModifierItem(ModMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT));

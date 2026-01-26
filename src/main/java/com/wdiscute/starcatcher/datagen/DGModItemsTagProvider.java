@@ -76,6 +76,8 @@ public class DGModItemsTagProvider extends ItemTagsProvider
             //todo add hats and stuff
         }
 
+        //survives lava
+        tag(StarcatcherTags.HOOK_SURVIVES_LAVA).add(ModItems.CRYSTAL_HOOK.get());
 
         //gadgets
         tag(StarcatcherTags.GADGETS).add(ModItems.FISH_RADAR.get());
