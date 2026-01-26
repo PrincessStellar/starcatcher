@@ -244,6 +244,7 @@ public interface ModItems
     DeferredItem<Item> BLUE_CRYSTAL_FIN = FISH_REGISTRY.register("blue_crystal_fin", FishItem::new);
 
     //saltwater
+    DeferredItem<Item> BLUE_HERRING = FISH_REGISTRY.register("blue_herring", FishItem::new);
     DeferredItem<Item> IRONJAW_HERRING = FISH_REGISTRY.register("ironjaw_herring", FishItem::new);
     DeferredItem<Item> DEEPJAW_HERRING = FISH_REGISTRY.register("deepjaw_herring", FishItem::new);
     DeferredItem<Item> DUSKTAIL_SNAPPER = FISH_REGISTRY.register("dusktail_snapper", FishItem::new);
