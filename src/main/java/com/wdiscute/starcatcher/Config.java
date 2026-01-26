@@ -56,7 +56,7 @@ public class Config
     public static final ModConfigSpec.BooleanValue ENABLE_FTB_TEAM_SHARING = BUILDER_SERVER
             .comment("Enables/disables fishes caught being unlocked for all online team members.")
             .comment("Offline players won't be awarded the entry.")
-            .define("enable_seasons", false);
+            .define("enable_ftb_team_sharing", false);
 
     public static final ModConfigSpec.BooleanValue ENABLE_SEASONS = BUILDER_SERVER
             .comment("Enables/disables fishes being restricted by seasons.")
