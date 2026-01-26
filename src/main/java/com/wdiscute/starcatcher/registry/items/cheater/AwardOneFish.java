@@ -47,7 +47,7 @@ public class AwardOneFish extends Item
 
             if(player instanceof ServerPlayer sp)
             {
-                PacketDistributor.sendToPlayer(sp, new FishCaughtPayload(fp, false, 0, 0));
+                PacketDistributor.sendToPlayer(sp, new FishCaughtPayload(fp, false, 0, 0, 0));
             }
         }
 
