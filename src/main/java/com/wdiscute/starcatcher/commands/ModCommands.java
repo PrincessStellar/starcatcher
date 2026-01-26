@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -36,6 +37,10 @@ public class ModCommands
             o -> Component.translatableEscape("commands.starcatcher.rod_not_found", o)
     );
 
+    private static final DynamicCommandExceptionType NOTHING_THERE = new DynamicCommandExceptionType(
+            o -> Component.translatableEscape("commands.starcatcher.nothing_there")
+    );
+
     private static final DynamicCommandExceptionType ERROR_EMPTY = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.rod_not_found", o)
     );
@@ -54,12 +59,21 @@ public class ModCommands
         dispatcher.register(Commands.literal("starcatcher")
                 .requires(sourceStack -> sourceStack.hasPermission(2))
 
+                //starcatcher simulate_fish starcatcher:aurora
+                .then(Commands.literal("simulate_fish")
+                        .executes(c ->
+                                startMinigame(
+                                        c.getSource().getPlayerOrException()
+                                )
+                        )
+                )
+
 
                 //starcatcher simulate_fish starcatcher:aurora
                 .then(Commands.literal("simulate_fish")
                         .then(Commands.argument("fish_entry", ResourceArgument.resource(context, Starcatcher.FISH_REGISTRY))
                                 .executes(c ->
-                                        startMinigame(
+                                        startMinigameFromFP(
                                                 c.getSource().getPlayerOrException(),
                                                 ResourceArgument.getResource(c, "fish_entry", Starcatcher.FISH_REGISTRY).unwrap().left().get()
                                         )
@@ -297,7 +311,30 @@ public class ModCommands
         return 1;
     }
 
-    private static int startMinigame(ServerPlayer player, ResourceKey<FishProperties> fish) throws CommandSyntaxException
+    private static int startMinigame(ServerPlayer player) throws CommandSyntaxException
+    {
+        if (!player.getMainHandItem().is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
+
+        List<FishProperties> available = new ArrayList<>();
+        for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+        {
+            if (FishProperties.getChance(fp, player, player.getMainHandItem()) > 0)
+                available.add(fp);
+        }
+
+        if(!available.isEmpty())
+        {
+            FishProperties fpToFish = available.get(U.r.nextInt(available.size()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, player.getMainHandItem()));
+        }
+        else
+        {
+            throw NOTHING_THERE.create(available);
+        }
+        return 1;
+    }
+
+    private static int startMinigameFromFP(ServerPlayer player, ResourceKey<FishProperties> fish) throws CommandSyntaxException
     {
         if (!player.getMainHandItem().is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
 
