@@ -110,8 +110,13 @@ public class ModClientEvents
 
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
+            String percentile = "(top " + sw.percentile() + "%)";
 
-            comp.add(1, Component.literal(size + " - " + weight).withColor(0x888888));
+            MutableComponent element = Component.literal(size + " - " + weight).withColor(0x888888);
+            if(event.getFlags().hasShiftDown())
+                element.append(percentile).withColor(0x707070);
+            comp.add(1, element);
+
         }
 
         //tackle skin
