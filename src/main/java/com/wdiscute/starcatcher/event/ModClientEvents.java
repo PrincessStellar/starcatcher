@@ -110,11 +110,11 @@ public class ModClientEvents
 
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
-            String percentile = "(top " + sw.percentile() + "%)";
+            String percentile = " (top " + (int) sw.percentile() + "%)";
 
             MutableComponent element = Component.literal(size + " - " + weight).withColor(0x888888);
             if(event.getFlags().hasShiftDown())
-                element.append(percentile).withColor(0x707070);
+                element.append(Component.literal(percentile).withColor(0x707070));
             comp.add(1, element);
 
         }
