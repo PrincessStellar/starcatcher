@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.io;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -54,8 +55,9 @@ public record LegacyFishCaughtCounter(
 
     public static final Codec<List<LegacyFishCaughtCounter>> LIST_CODEC = LegacyFishCaughtCounter.CODEC.listOf();
 
-    public FishCaughtCounter covert(){
-        return new FishCaughtCounter(count, fastestTicks, averageTicks, size, weight, caughtGolden, perfectCatch, false);
+    public FishCaughtCounter covert()
+    {
+        return new FishCaughtCounter(count, fastestTicks, averageTicks, size, weight, U.getTime(), caughtGolden, perfectCatch, false);
     }
 
     public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight, boolean perfectCatch, boolean awardToTeam)
