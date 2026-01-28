@@ -13,9 +13,9 @@ public class Config
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER
-            .comment("//ALL THESE SETTINGS CAN ALSO BE ACCESSED")
-            .comment("//THROUGH THE IN-GAME SETTING TAB INSIDE")
-            .comment("//THE STARCATCHER'S GUIDE")
+            .comment("ALL THESE SETTINGS CAN ALSO BE ACCESSED")
+            .comment("THROUGH THE IN-GAME SETTING TAB INSIDE")
+            .comment("THE STARCATCHER'S GUIDE")
             .defineInRange("minigame_scale", 1.5, 0.1, 6);
 
 
@@ -27,6 +27,15 @@ public class Config
 
     public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER
             .defineEnum("sort", FishingGuideScreen.Sort.ALPHABETICAL_DOWN);
+
+    public static final ModConfigSpec.BooleanValue ENABLE_VILLAGER_SOUND = BUILDER
+            .define("enable_villager_sound", true);
+
+    public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUND = BUILDER
+            .define("enable_hit_sound", true);
+
+    public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER
+            .define("enable_miss_sound", true);
 
     public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
