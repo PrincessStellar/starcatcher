@@ -39,6 +39,7 @@ public class FishingPropertiesRegistry
         DGHybridAquaticFishes.bootstrap();
         DGAquamiraeFishes.bootstrap();
         DGTerraFirmaCraftFishes.bootstrap();
+        DGUnusualFishFishes.bootstrap();
     }
 
     //region builders
@@ -211,7 +212,7 @@ public class FishingPropertiesRegistry
     protected static FishProperties.Builder overworldOceanFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_OCEAN);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS);
     }
 
     protected static FishProperties.Builder overworldWarmOceanFish(Holder<Item> fish)
@@ -266,7 +267,7 @@ public class FishingPropertiesRegistry
     protected static FishProperties.Builder overworldSwampFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMP)
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
                 .withBaitRestrictions(FishProperties.BaitRestrictions.MURKWATER_BAIT);
     }
 
@@ -316,7 +317,6 @@ public class FishingPropertiesRegistry
     {
         builder.withBucketedFish(ModItems.STARCAUGHT_BUCKET);
         builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-        builder.build();
         DGStarcatcherFishes.STARCATCHER_FISHES.add(builder.build());
         register(builder);
     }
@@ -324,7 +324,6 @@ public class FishingPropertiesRegistry
     protected static void registerStarcatcherOnlyEntity(FishProperties.Builder builder)
     {
         builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-        builder.build();
         register(builder);
     }
 
