@@ -56,8 +56,8 @@ import java.util.List;
 
 public class FishingGuideScreen extends Screen
 {
-    //todo fix fishes in area to not be shit
     private static final ResourceLocation BACKGROUND_COVER = Starcatcher.rl("textures/gui/guide/background_cover.png");
+    private static final ResourceLocation BACKGROUND_LAST_PAGE = Starcatcher.rl("textures/gui/guide/background_last_page.png");
     private static final ResourceLocation BACKGROUND_INDEX_FIRST = Starcatcher.rl("textures/gui/guide/background_index_first.png");
     private static final ResourceLocation BACKGROUND_INDEX_SECOND = Starcatcher.rl("textures/gui/guide/background_index_second.png");
     private static final ResourceLocation BACKGROUND_ENTRY = Starcatcher.rl("textures/gui/guide/background_entry.png");
@@ -285,7 +285,19 @@ public class FishingGuideScreen extends Screen
                     //entries -> previous entry
                     page--;
                     return true;
+                }
 
+                case 3 ->
+                {
+                    minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
+                    //end of the book -> last page of entries
+                    if (page == 0)
+                    {
+                        menu = 2;
+                        page = entries.size() / 2 - 1;
+                        return true;
+                    }
+                    return true;
                 }
             }
         }
@@ -339,11 +351,12 @@ public class FishingGuideScreen extends Screen
                     {
                         minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
                         page++;
-                        return true;
                     }
-                    //entries -> leaderboards??
-                    //currentMenu = 3;
-                    //currentPage = 0;
+                    else
+                    {
+                        menu = 3;
+                        page = 0;
+                    }
                     return true;
                 }
             }
@@ -398,7 +411,7 @@ public class FishingGuideScreen extends Screen
         //next arrow
         if (x > 336 && x < 356 && y > 202 && y < 216)
         {
-            if (entries.size() > page * 2 + 2)
+            if (entries.size() > page * 2 + 2 && menu != 3)
             {
                 arrowNextPressed = true;
             }
@@ -465,6 +478,11 @@ public class FishingGuideScreen extends Screen
                 renderEntry(guiGraphics, mouseX, mouseY, 52, page * 2);
                 renderEntry(guiGraphics, mouseX, mouseY, 212, page * 2 + 1);
             }
+
+            case 3 ->
+            {
+                renderImage(guiGraphics, BACKGROUND_LAST_PAGE);
+            }
         }
 
         double x = mouseX - uiX;
@@ -479,7 +497,7 @@ public class FishingGuideScreen extends Screen
             renderImage(guiGraphics, arrowPreviousPressed ? ARROW_PREVIOUS_PRESSED : ARROW_PREVIOUS);
         }
 
-        //indexshould not render on book cover and first page of index
+        //index should not render on book cover and first page of index
         if (menu != -1 && !(menu == 0 && page == 0))
         {
             if (x > 174 && x < 196 && y > 202 && y < 216)
@@ -488,7 +506,7 @@ public class FishingGuideScreen extends Screen
         }
 
         //next arrow
-        if (entries.size() > page * 2 + 2)
+        if (menu != 3)
         {
             if (x > 336 && x < 356 && y > 202 && y < 216)
                 renderImage(guiGraphics, ARROW_NEXT_HIGHLIGHT);
@@ -507,14 +525,14 @@ public class FishingGuideScreen extends Screen
         if(x > 233 && x < 334 && y > 117 && y < 125)
         {
             List<Component> list = new ArrayList<>();
-            list.add(Component.literal("This will lock the book with the current recorded entries so it "));
-            list.add(Component.literal("can be shared with others or displayed in a lectern"));
+            list.add(Component.literal("[not implemented yet] This will lock the book with the current recorded entries so it "));
+            list.add(Component.literal("can be shared with others or displayed in a lectern!"));
             guiGraphics.renderTooltip(this.font, list, Optional.empty() , mouseX, mouseY);
         }
 
         if(clickedX > 233 && clickedX < 334 && clickedY > 117 && clickedY < 125)
         {
-            System.out.println("send packet");
+            //System.out.println("send packet");
         }
 
     }
@@ -1069,7 +1087,7 @@ public class FishingGuideScreen extends Screen
         guiGraphics.setColor(1, 1, 1, 1);
 
         //render fish with missingno if not caught
-        if (caught != 0)
+        if (caught != 0 || !Config.HIDE_ENTRIES_UNTIL_FOUND.get())
             renderItem(is, xOffset, yOffset, 1);
         else
             renderItem(new ItemStack(ModItems.MISSINGNO.get()), xOffset, yOffset, 1);
