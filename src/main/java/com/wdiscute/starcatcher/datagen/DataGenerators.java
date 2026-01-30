@@ -30,7 +30,7 @@ public class DataGenerators
                 new DGFishingPropertiesProvider(output, registries)
         );
 
-        gen.addProvider(event.includeServer(), new DGModRegistryProvider(output, registries));
+        gen.addProvider(event.includeServer(), new DGTrophyPropertiesProvider(output, registries));
 
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
