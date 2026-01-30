@@ -13,17 +13,18 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public class DGFishingPropertiesProvider extends DatapackBuiltinEntriesProvider {
+public class DGFishingPropertiesProvider extends DatapackBuiltinEntriesProvider
+{
 
-    static {
+    static
+    {
         FishingPropertiesRegistry.register(); //register all entries before anything else
     }
 
-    public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder()
-            //fishes
-            .add(Starcatcher.FISH_REGISTRY, FishingPropertiesRegistry::bootstrap);
+    public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(Starcatcher.FISH_REGISTRY, FishingPropertiesRegistry::bootstrap);
 
-    public DGFishingPropertiesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public DGFishingPropertiesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
+    {
         super(output, registries, REGISTRY, DGFishingPropertiesProvider::addConditions, Set.of(
                 Starcatcher.MOD_ID,
                 "minecraft",
@@ -50,12 +51,14 @@ public class DGFishingPropertiesProvider extends DatapackBuiltinEntriesProvider 
         ));
     }
 
-    private static void addConditions(final BiConsumer<ResourceKey<?>, ICondition> consumer) {
+    private static void addConditions(final BiConsumer<ResourceKey<?>, ICondition> consumer)
+    {
         FishingPropertiesRegistry.registerConditions(consumer);
     }
 
     @Override
-    public String getName() {
+    public String getName()
+    {
         return "FishingProperties";
     }
 }
