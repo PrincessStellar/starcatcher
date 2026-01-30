@@ -10,7 +10,6 @@ import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModParticles;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -60,7 +59,7 @@ public class FishingBobEntity extends Projectile
     public ItemStack rod = ItemStack.EMPTY;
     public final List<AbstractCatchModifier> modifiers;
 
-    public boolean netherite_upgraded = false;
+    public boolean survivesLava = false;
 
     public int minTicksToFish;
     public int maxTicksToFish;
@@ -103,7 +102,7 @@ public class FishingBobEntity extends Projectile
 
         entityData.set(VOID, voidHook);
 
-        netherite_upgraded = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || ModDataComponents.get(rod, ModDataComponents.HOOK).stack().is(StarcatcherTags.HOOK_SURVIVES_LAVA);
+        survivesLava = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || ModDataComponents.get(rod, ModDataComponents.HOOK).stack().is(StarcatcherTags.HOOK_SURVIVES_LAVA);
 
         minTicksToFish = 100;
         maxTicksToFish = 300;
@@ -264,25 +263,6 @@ public class FishingBobEntity extends Projectile
                     new FishingStartedPayload(fpToFish, rod)
             );
         }
-
-        //consume bait
-        ItemStack bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy();
-        if (fpToFish.br().consumesBait())
-        {
-            if (!bait.is(Items.BUCKET))
-            {
-                bait.shrink(1);
-                ModDataComponents.set(rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
-                return;
-            }
-
-            if (bait.is(Items.BUCKET) && !fpToFish.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()))
-            {
-                bait.shrink(1);
-                ModDataComponents.set(rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
-            }
-
-        }
     }
 
     private boolean shouldStopFishing(Player player)
@@ -308,14 +288,14 @@ public class FishingBobEntity extends Projectile
     @Override
     public boolean fireImmune()
     {
-        return netherite_upgraded;
+        return survivesLava;
     }
 
     @Override
     public void lavaHurt()
     {
         super.lavaHurt();
-        if (!netherite_upgraded && !level().isClientSide)
+        if (!survivesLava && !level().isClientSide)
         {
             kill();
         }
@@ -413,6 +393,14 @@ public class FishingBobEntity extends Projectile
             {
                 ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB);
                 ModTackleSkins.get(level(), rod).onMissed(player);
+
+                ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack();
+                if (!bait.is(Items.BUCKET))
+                {
+                    bait.shrink(1);
+                    ModDataComponents.set(rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                }
+
                 kill();
             }
         } else
