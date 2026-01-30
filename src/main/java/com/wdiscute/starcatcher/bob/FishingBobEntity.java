@@ -7,6 +7,8 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
+import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.ModEntities;
