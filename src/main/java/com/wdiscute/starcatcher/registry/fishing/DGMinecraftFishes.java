@@ -15,19 +15,38 @@ public class DGMinecraftFishes
     public static void bootstrap() {
 
         //ocean
-        register(overworldOceanFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.COD))
+        register(overworldOceanFish(U.holderItem("minecraft", "cod"))
+                .withBucketedFish(U.holderItem("minecraft", "cod_bucket"))
+                .withEntityToSpawn(U.holderEntity("minecraft", "cod"))
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000)));
+                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
+        );
 
-        register(overworldOceanFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.PUFFERFISH))
+        register(overworldOceanFish(U.holderItem("minecraft", "pufferfish"))
+                .withBucketedFish(U.holderItem("minecraft", "pufferfish_bucket"))
+                .withEntityToSpawn(U.holderEntity("minecraft", "pufferfish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(70, 20, 10000, 3000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withBaseChance(4));
+        );
+
+
+        //warm ocean
+        register(overworldWarmOceanFish(U.holderItem("minecraft", "tropical_fish"))
+                .withBucketedFish(U.holderItem("minecraft", "tropical_fish_bucket"))
+                .withEntityToSpawn(U.holderEntity("minecraft", "tropical_fish"))
+                .withSizeAndWeight(FishProperties.sizeWeight(70, 20, 10000, 3000))
+                .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
+                .withRarity(FishProperties.Rarity.RARE)
+                .withDifficulty(FishProperties.Difficulty.FOUR_AQUA)
+        );
 
         //river
-        register(overworldRiverFish(BuiltInRegistries.ITEM.wrapAsHolder(Items.SALMON))
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 10000, 8000)));
+        register(overworldRiverFish(U.holderItem("minecraft", "salmon"))
+                .withBucketedFish(U.holderItem("minecraft", "salmon_bucket"))
+                .withEntityToSpawn(U.holderEntity("minecraft", "salmon"))
+                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 10000, 8000))
+        );
 
 
         //mobs
@@ -60,13 +79,12 @@ public class DGMinecraftFishes
         );
 
         register(overworldSurfaceFish(U.holderItem("minecraft", "rotten_flesh"))
-                .withSizeAndWeight(FishProperties.SizeAndWeight.NONE)
+                .withEntityToSpawn(U.holderEntity("minecraft", "drowned"))
                 .withBaseChance(1)
                 .withDaytime(FishProperties.Daytime.NIGHT)
                 .withWeather(FishProperties.Weather.RAIN)
                 .withHasGuideEntry(false)
-                .withAlwaysSpawnEntity(true)
-                .withEntityToSpawn(U.holderEntity("minecraft", "drowned"))
+                .withAlwaysSpawnEntity()
                 .withSkipMinigame(true));
     }
 }
