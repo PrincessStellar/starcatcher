@@ -5,12 +5,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
-import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
+import com.wdiscute.starcatcher.registry.ModRenderTypes;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseModifier;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModKeymappings;
@@ -32,6 +30,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.config.ModConfig;
@@ -274,6 +273,14 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         //render tank background
         guiGraphics.blit(tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97);
+
+        /* test for the vignette shader
+        ShaderUtils.blitWithShader(
+                ModRenderTypes::getRendertypeGuiFadeShader,
+                () -> ShaderUtils.setUpFadeShader(width, height, new Vec2(0, 0), new Vec2(0.01f, 0.02f), new Vec2(0.2f, 0.2f), new Vec2(0.5f, 0.5f)),
+                guiGraphics,
+                tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97
+        );*/
 
         //render wheel background
         guiGraphics.blit(TEXTURE, width / 2 - 32, height / 2 - 32, 64, 64, 0, 192, 64, 64, 256, 256);
