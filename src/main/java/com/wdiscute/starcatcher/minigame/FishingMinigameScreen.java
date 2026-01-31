@@ -274,10 +274,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //render tank background
         guiGraphics.blit(tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97);
 
-        /* test for the vignette shader
+        /*
+        //test for the vignette shader
         ShaderUtils.blitWithShader(
                 ModRenderTypes::getRendertypeGuiFadeShader,
-                () -> ShaderUtils.setUpFadeShader(width, height, new Vec2(0, 0), new Vec2(0.01f, 0.02f), new Vec2(0.2f, 0.2f), new Vec2(0.5f, 0.5f)),
+                () -> ShaderUtils.setUpFadeShader(width, height, new Vec2(0, 0), new Vec2(0.01f, 0.02f), new Vec2(0.2f, 0.2f), new Vec2(0.5f, 0.7f), true),
                 guiGraphics,
                 tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97
         );*/
