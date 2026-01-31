@@ -18,7 +18,7 @@ public class ShaderUtils {
      * each of the vectors holds a start value and an end value (clamped 0.0 - 1.0)
      */
     public static void setUpFadeShader(float width, float height,
-                                       Vec2 fadeLeft, Vec2 fadeRight, Vec2 fadeUp, Vec2 fadeDown) {
+                                       Vec2 fadeLeft, Vec2 fadeRight, Vec2 fadeUp, Vec2 fadeDown, boolean invertAlpha) {
 
         ShaderInstance shader = ModRenderTypes.getRendertypeGuiFadeShader();
         if (shader == null) {
@@ -39,6 +39,7 @@ public class ShaderUtils {
         shader.safeGetUniform("FADE_UP").set(fadeUp.x, fadeUp.y);
         shader.safeGetUniform("FADE_DOWN").set(fadeDown.x, fadeDown.y);
         shader.safeGetUniform("u_resolution").set(width, height);
+        shader.safeGetUniform("u_invertAlpha").set(invertAlpha ? 1 : 0);
 
     }
 

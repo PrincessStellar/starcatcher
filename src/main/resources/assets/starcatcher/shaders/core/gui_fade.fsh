@@ -9,6 +9,8 @@ in vec2 texCoord0;
 out vec4 fragColor;
 
 uniform vec2 u_resolution;
+uniform int u_invertAlpha;
+
 uniform vec2 FADE_LEFT;
 uniform vec2 FADE_RIGHT;
 uniform vec2 FADE_UP;
@@ -22,6 +24,10 @@ void main() {
     alpha *= smoothstep(FADE_RIGHT.x, FADE_RIGHT.y, 1. - st.x);
     alpha *= smoothstep(FADE_UP.x, FADE_UP.y, st.y);
     alpha *= smoothstep(FADE_DOWN.x, FADE_DOWN.y, 1. - st.y);
+
+    if(u_invertAlpha == 1){
+        alpha = 1.0 - alpha;
+    }
 
     if(alpha <= 0.0){
         discard;
