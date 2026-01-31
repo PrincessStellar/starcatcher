@@ -5,10 +5,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
-import com.wdiscute.starcatcher.*;
+import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
-import com.wdiscute.starcatcher.registry.ModRenderTypes;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseModifier;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModKeymappings;
@@ -30,7 +32,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.config.ModConfig;
@@ -144,7 +145,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 this.tackleSkin = optional.get().get();
             else
                 this.tackleSkin = new BaseTackleSkin();
-        } else
+        }
+        else
         {
             this.tackleSkin = new BaseTackleSkin();
         }
@@ -269,7 +271,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.pushPose();
         poseStack.translate(width >> 1, height >> 1, 0);
         poseStack.scale(renderScale, renderScale, 1);
-        poseStack.translate(-width >> 1, -height >> 1, 0);
+        poseStack.translate( -width >> 1, -height >> 1, 0);
 
         //render modifiers background
         modifiers.forEach(modifier -> modifier.renderBackground(guiGraphics, partialTick, width, height));
@@ -552,7 +554,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            if (Config.ENABLE_MISS_SOUND.get())
+            if(Config.ENABLE_MISS_SOUND.get())
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
             progress -= penalty;
         }
