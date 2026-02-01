@@ -237,7 +237,7 @@ public interface ModItems
     DeferredItem<Item> HOLLOWBELLY_DARTER = FISH_REGISTRY.register("hollowbelly_darter", FishItem::new);
     DeferredItem<Item> MISTBACK_CHUB = FISH_REGISTRY.register("mistback_chub", FishItem::new);
     DeferredItem<Item> BLUEGIGI = FISH_REGISTRY.register("bluegigi", FishItem::new);
-    DeferredItem<Item> DRIED_SEAWEED = TRASH_REGISTRY.register("dried_seaweed", FishItem::new);
+    DeferredItem<Item> DRIED_SEAWEED = TRASH_REGISTRY.register("dried_seaweed", BasicItem::new);
 
     //icy river
     DeferredItem<Item> FROSTGILL_CHUB = FISH_REGISTRY.register("frostgill_chub", FishItem::new);
