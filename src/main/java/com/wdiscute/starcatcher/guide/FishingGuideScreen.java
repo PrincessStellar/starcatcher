@@ -1129,24 +1129,24 @@ public class FishingGuideScreen extends Screen
             components.add(Component.literal(""));
 
             String check = "";
-            color = FishProperties.isDimensionCorrect(player, fp) ? 0x40752c : 0xa34536;
-            check = FishProperties.isDimensionCorrect(player, fp) ? "✅" : "❌";
+            color = FishProperties.isDimensionCorrect(level, fp) ? 0x40752c : 0xa34536;
+            check = FishProperties.isDimensionCorrect(level, fp) ? "✅" : "❌";
             components.add(Component.translatable("gui.guide.dimension").append(Component.literal(check)).withStyle(Style.EMPTY.withColor(color)));
 
-            color = FishProperties.isBiomeCorrect(player, fp) ? 0x40752c : 0xa34536;
-            check = FishProperties.isBiomeCorrect(player, fp) ? "✅" : "❌";
+            color = FishProperties.isBiomeCorrect(level, player.blockPosition(), fp) ? 0x40752c : 0xa34536;
+            check = FishProperties.isBiomeCorrect(level, player.blockPosition(),fp) ? "✅" : "❌";
             components.add(Component.translatable("gui.guide.biome").append(Component.literal(check)).withStyle(Style.EMPTY.withColor(color)));
 
-            color = FishProperties.isWeatherCorrect(player, fp, ItemStack.EMPTY) ? 0x40752c : 0xa34536;
-            check = FishProperties.isWeatherCorrect(player, fp, ItemStack.EMPTY) ? "✅" : "❌";
+            color = FishProperties.isWeatherCorrect(level, fp, ItemStack.EMPTY) ? 0x40752c : 0xa34536;
+            check = FishProperties.isWeatherCorrect(level, fp, ItemStack.EMPTY) ? "✅" : "❌";
             components.add(Component.translatable("gui.guide.weather").append(Component.literal(check)).withStyle(Style.EMPTY.withColor(color)));
 
-            color = FishProperties.isDaytimeCorrect(player, fp) ? 0x40752c : 0xa34536;
-            check = FishProperties.isDaytimeCorrect(player, fp) ? "✅" : "❌";
+            color = FishProperties.isDaytimeCorrect(level, fp) ? 0x40752c : 0xa34536;
+            check = FishProperties.isDaytimeCorrect(level, fp) ? "✅" : "❌";
             components.add(Component.translatable("gui.guide.daytime").append(Component.literal(check)).withStyle(Style.EMPTY.withColor(color)));
 
-            color = FishProperties.isElevationCorrect(player, fp) ? 0x40752c : 0xa34536;
-            check = FishProperties.isElevationCorrect(player, fp) ? "✅" : "❌";
+            color = FishProperties.isElevationCorrect(player.blockPosition(), fp) ? 0x40752c : 0xa34536;
+            check = FishProperties.isElevationCorrect(player.blockPosition(), fp) ? "✅" : "❌";
             components.add(Component.translatable("gui.guide.elevation").append(Component.literal(check)).withStyle(Style.EMPTY.withColor(color)));
 
             components.add(Component.literal(""));

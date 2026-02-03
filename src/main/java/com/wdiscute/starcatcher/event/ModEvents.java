@@ -19,20 +19,26 @@ import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
@@ -58,6 +64,16 @@ public class ModEvents
             else
                 TournamentHandler.clearTournamentToClient(sp);
         }
+    }
+
+    @SubscribeEvent
+    public static void serverStarted(RegisterSpawnPlacementsEvent event)
+    {
+        event.register(
+                ModEntities.FISH.get(), SpawnPlacementTypes.IN_WATER,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                FishEntity::validSpawnPlacement,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     @SubscribeEvent

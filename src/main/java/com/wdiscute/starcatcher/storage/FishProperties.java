@@ -11,11 +11,13 @@ import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.ModItems;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
@@ -1804,26 +1806,29 @@ public record FishProperties(
 
     public static int getChance(FishProperties fp, Entity entity, ItemStack rod)
     {
-        Level level = entity.level();
+        return getChance(fp, entity.level(), entity.blockPosition(), rod);
+    }
 
-        if(ModDataComponents.get(rod, ModDataComponents.BAIT).stack().is(ModItems.DEV_WORM)) return fp.baseChance;
+    public static int getChance(FishProperties fp, Level level, BlockPos bp, ItemStack rod)
+    {
+        if(ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(ModItems.DEV_WORM)) return fp.baseChance;
 
-        if (!isSeasonCorrect(entity, fp)) return 0;
+        if (!isSeasonCorrect(level, fp)) return 0;
 
-        if (!isDimensionCorrect(entity, fp)) return 0;
+        if (!isDimensionCorrect(level, fp)) return 0;
 
-        if (!isBiomeCorrect(entity, fp)) return 0;
+        if (!isBiomeCorrect(level, bp, fp)) return 0;
 
-        if (!isElevationCorrect(entity, fp)) return 0;
+        if (!isElevationCorrect(bp, fp)) return 0;
 
-        if (!isDaytimeCorrect(entity, fp)) return 0;
+        if (!isDaytimeCorrect(level, fp)) return 0;
 
-        if (!isWeatherCorrect(entity, fp, rod)) return 0;
+        if (!isWeatherCorrect(level, fp, rod)) return 0;
 
         //fluid check
-        boolean fluid = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition()).getType())));
-        boolean fluidAbove = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition().above()).getType())));
-        boolean fluidBelow = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition().below()).getType())));
+        boolean fluid = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp).getType())));
+        boolean fluidAbove = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.above()).getType())));
+        boolean fluidBelow = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.below()).getType())));
 
         if (!fluid && !fluidAbove && !fluidBelow)
             return 0;
@@ -1843,15 +1848,14 @@ public record FishProperties(
         List<FishProperties> list = new ArrayList<>();
 
         for (FishProperties fp : entity.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
-            if (isDimensionCorrect(entity, fp) && isBiomeCorrect(entity, fp) && isElevationCorrect(entity, fp) && fp.hasGuideEntry && fp.baseChance != 0)
+            if (isDimensionCorrect(entity.level(), fp) && isBiomeCorrect(entity.level(), entity.blockPosition(), fp) && isElevationCorrect(entity.blockPosition(), fp) && fp.hasGuideEntry && fp.baseChance != 0)
                 list.add(fp);
 
         return list;
     }
 
-    public static boolean isWeatherCorrect(Entity entity, FishProperties fp, ItemStack rod)
+    public static boolean isWeatherCorrect(Level level, FishProperties fp, ItemStack rod)
     {
-        Level level = entity.level();
         ItemStack bait = ModDataComponents.has(rod, ModDataComponents.BAIT) ? ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy() : ItemStack.EMPTY;
 
         if (!bait.is(ModItems.METEOROLOGICAL_BAIT))
@@ -1877,9 +1881,8 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isDaytimeCorrect(Entity entity, FishProperties fp)
+    public static boolean isDaytimeCorrect(Level level, FishProperties fp)
     {
-        Level level = entity.level();
         //time check
         if (fp.daytime() != Daytime.ALL)
         {
@@ -1907,23 +1910,22 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isElevationCorrect(Entity entity, FishProperties fp)
+    public static boolean isElevationCorrect(BlockPos bp, FishProperties fp)
     {
         //y level check >
-        if (entity.position().y > fp.wr.mustBeCaughtBelowY()) return false;
+        if (bp.getY() > fp.wr.mustBeCaughtBelowY()) return false;
 
         //y level check <
-        if (entity.position().y < fp.wr.mustBeCaughtAboveY()) return false;
+        if (bp.getY() < fp.wr.mustBeCaughtAboveY()) return false;
 
         return true;
     }
 
-    public static boolean isBiomeCorrect(Entity entity, FishProperties fp)
+    public static boolean isBiomeCorrect(Level level, BlockPos bp, FishProperties fp)
     {
-        Level level = entity.level();
         List<ResourceLocation> biomes = getBiomesAsList(fp, level);
         List<ResourceLocation> blacklist = getBiomesBlacklistAsList(fp, level);
-        ResourceLocation currentBiome = level.getBiome(entity.blockPosition()).getKey().location();
+        ResourceLocation currentBiome = level.getBiome(bp).getKey().location();
 
         if (!biomes.isEmpty() && !biomes.contains(currentBiome))
             return false;
@@ -1933,36 +1935,36 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isDimensionCorrect(Entity entity, FishProperties fp)
+    public static boolean isDimensionCorrect(Level level, FishProperties fp)
     {
         //dimension  check
-        if (!fp.wr.dims.isEmpty() && !fp.wr().dims().contains(entity.level().dimension().location()))
+        if (!fp.wr.dims.isEmpty() && !fp.wr().dims().contains(level.dimension().location()))
             return false;
 
-        if (fp.wr.dimsBlacklist.contains(entity.level().dimension().location()))
+        if (fp.wr.dimsBlacklist.contains(level.dimension().location()))
             return false;
         return true;
     }
 
 
-    public static boolean isSeasonCorrect(Entity entity, FishProperties fp)
+    public static boolean isSeasonCorrect(Level level, FishProperties fp)
     {
         //Serene Seasons check
         if (ModList.get().isLoaded("sereneseasons") && Config.ENABLE_SEASONS.get())
         {
-            if (!SereneSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!SereneSeasonsCompat.canCatch(fp, level)) return false;
         }
 
         //Ecliptic Seasons check
         if (ModList.get().isLoaded("eclipticseasons") && Config.ENABLE_SEASONS.get())
         {
-            if (!EclipticSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!EclipticSeasonsCompat.canCatch(fp, level)) return false;
         }
 
         //TerraFirmaCraft Seasons check
         if (ModList.get().isLoaded("tfc") && Config.ENABLE_SEASONS.get())
         {
-            if (!TerraFirmaCraftSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!TerraFirmaCraftSeasonsCompat.canCatch(fp, level)) return false;
         }
         return true;
     }

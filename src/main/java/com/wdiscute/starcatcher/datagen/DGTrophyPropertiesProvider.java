@@ -35,4 +35,10 @@ public class DGTrophyPropertiesProvider extends DatapackBuiltinEntriesProvider
     {
         TrophyPropertiesRegistry.registerConditions(consumer);
     }
+
+    @Override
+    public String getName()
+    {
+        return "TrophyProperties";
+    }
 }

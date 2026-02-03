@@ -7,9 +7,11 @@ import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -17,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -63,24 +66,25 @@ public class FishEntity extends AbstractFish
 
     public static AttributeSupplier.Builder createAttributes()
     {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 3.0F);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F);
     }
 
     @Override
     public void tick()
     {
         super.tick();
-        if(getBodyArmorItem().isEmpty() && !level().isClientSide)
+        if (getBodyArmorItem().isEmpty() && !level().isClientSide)
         {
             shouldDropItem = false;
             List<FishProperties> available = new ArrayList<>();
 
             for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
             {
-                if (FishProperties.getChance(fp, this, ModItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES)) available.add(fp);
+                if (FishProperties.getChance(fp, this, ModItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
+                    available.add(fp);
             }
 
-            if(available.isEmpty())
+            if (available.isEmpty())
                 kill();
             else
             {
@@ -94,7 +98,7 @@ public class FishEntity extends AbstractFish
     @Override
     protected void dropAllDeathLoot(ServerLevel p_level, DamageSource damageSource)
     {
-        if(shouldDropItem)
+        if (shouldDropItem)
             super.dropAllDeathLoot(p_level, damageSource);
     }
 
@@ -111,5 +115,14 @@ public class FishEntity extends AbstractFish
         ItemStack is = new ItemStack(ModItems.STARCAUGHT_BUCKET.get());
         ModDataComponents.set(is, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
         return is;
+    }
+
+    public static boolean validSpawnPlacement(EntityType<FishEntity> entity, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource)
+    {
+        for (FishProperties fp : serverLevelAccessor.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+            if (FishProperties.getChance(fp, serverLevelAccessor.getLevel(), blockPos, ItemStack.EMPTY) > 0)
+                return true;
+
+        return false;
     }
 }
