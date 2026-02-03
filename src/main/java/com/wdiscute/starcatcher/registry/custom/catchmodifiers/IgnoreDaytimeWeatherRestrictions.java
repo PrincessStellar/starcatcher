@@ -36,13 +36,13 @@ public class IgnoreDaytimeWeatherRestrictions extends AbstractCatchModifier
     {
         Level level = entity.level();
 
-        if (!FishProperties.isSeasonCorrect(entity, fp)) return 0;
+        if (!FishProperties.isSeasonCorrect(level, fp)) return 0;
 
-        if (!FishProperties.isDimensionCorrect(entity, fp)) return 0;
+        if (!FishProperties.isDimensionCorrect(level, fp)) return 0;
 
-        if (!FishProperties.isBiomeCorrect(entity, fp)) return 0;
+        if (!FishProperties.isBiomeCorrect(level, entity.blockPosition(), fp)) return 0;
 
-        if (!FishProperties.isElevationCorrect(entity, fp)) return 0;
+        if (!FishProperties.isElevationCorrect(entity.blockPosition(), fp)) return 0;
 
         //fluid check
         boolean fluid = fp.wr().fluids().contains(BuiltInRegistries.FLUID.getKey(FishProperties.getSource(level.getFluidState(entity.blockPosition()).getType())));

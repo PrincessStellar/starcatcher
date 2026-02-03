@@ -9,6 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
@@ -30,6 +31,8 @@ public class DataGenerators
                 new DGFishingPropertiesProvider(output, registries)
         );
 
+        gen.addProvider(event.includeServer(), new DGBiomeModifierProvider(output, registries));
+
         gen.addProvider(event.includeServer(), new DGTrophyPropertiesProvider(output, registries));
 
         //fish models
@@ -49,5 +52,9 @@ public class DataGenerators
 
         //biome tags
         gen.addProvider(event.includeServer(), new DGBiomeTagsProvider(output, registries, existingFileHelper));
+
+
+
+
     }
 }

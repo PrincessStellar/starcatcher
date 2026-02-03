@@ -6,6 +6,7 @@ import net.dries007.tfc.util.calendar.Calendars;
 import net.dries007.tfc.util.calendar.Month;
 import net.dries007.tfc.util.calendar.Season;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 
 public class TerraFirmaCraftSeasonsCompat
 {
