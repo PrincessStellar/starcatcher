@@ -1,4 +1,5 @@
 {
+  "block.minecraft.empty": "Void",
 
   "advancements.husbandry.starcatcher.fisherman.title": "Fisherman",
   "advancements.husbandry.starcatcher.fisherman.description": "Catch a Fish without missing once",
@@ -6,7 +7,6 @@
   "key.category.starcatcher.starcatcher": "Starcatcher",
   "key.starcatcher.minigame_hit": "Minigame Hit",
   "key.starcatcher.expand_tournament": "Toggle Tournament Overlay",
-
 
   "creativetab.starcatcher.starcatcher": "Starcatcher",
 
@@ -17,14 +17,17 @@
   "tag.starcatcher.is_cherry_grove" : "Cherry Groves",
   "tag.starcatcher.is_cold_lake" : "Cold Lakes",
   "tag.starcatcher.is_cold_ocean" : "Cold Oceans",
+  "tag.starcatcher.is_frozen_ocean" : "Frozen Oceans",
   "tag.starcatcher.is_cold_river" : "Cold Rivers",
   "tag.starcatcher.is_dark_forest" : "Dark Forests",
   "tag.starcatcher.is_deep_ocean" : "Deep Oceans",
   "tag.starcatcher.is_mushroom_fields" : "Mushroom Fields",
-  "tag.starcatcher.is_ocean" : "Oceans",
+  "tag.starcatcher.is_ocean" : "All Oceans",
+  "tag.starcatcher.is_normal_ocean" : "Ocean",
   "tag.starcatcher.is_river" : "Rivers",
   "tag.starcatcher.is_swamp" : "Swamps",
-  "tag.starcatcher.is_warm" : "Warm Climate",
+  "tag.starcatcher.is_warm_lake" : "Warm Climate",
+  "tag.starcatcher.is_lukewarm_ocean" : "Lukewarm Oceans",
   "tag.starcatcher.is_warm_ocean" : "Warm Oceans",
   "tag.starcatcher.is_warm_river" : "Warm Rivers",
 
@@ -37,7 +40,7 @@
   "tag.minecraft.is_jungle" : "Jungles",
   "tag.minecraft.is_mountain" : "Mountains",
   "tag.minecraft.is_nether" : "Nether Biomes",
-  "tag.minecraft.is_ocean" : "Ocean",
+  "tag.minecraft.is_ocean" : "All Oceans",
   "tag.minecraft.is_overworld" : "Overworld Biomes",
   "tag.minecraft.is_river" : "Rivers",
   "tag.minecraft.is_savanna" : "Savannas",
@@ -61,6 +64,7 @@
   "commands.starcatcher.fish_entry_not_found" : "Fish Entry %s not found",
   "commands.starcatcher.modifier_not_found" : "Modifier %s not found",
   "commands.starcatcher.rod_not_found" : "You must have a StarcatcherCompatible™ rod in your hand",
+  "commands.starcatcher.nothing_there" : "There are no fishes available at the current location. Make sure you're standing inside the correct fluid.",
   "commands.starcatcher.item_empty" : "You must have an item in your hand to apply the modifier to",
 
   "entity.starcatcher.fish" : "Starcaught Fish",
@@ -237,6 +241,8 @@
   "item.starcatcher.gold_hook": "Gold Hook",
   "item.starcatcher.mossy_hook": "Mossy Hook",
   "item.starcatcher.crystal_hook": "Crystal Hook",
+  "tooltip.starcatcher.crystal_hook.0": "A durable fire resistant hook often used by",
+  "tooltip.starcatcher.crystal_hook.1": "anglers who have yet to upgraded their fishing rod.",
   "item.starcatcher.stone_hook": "Stone Hook",
   "item.starcatcher.split_hook": "Split Hook",
   "item.starcatcher.stabilizing_hook": "Stabilizing Hook",
@@ -263,6 +269,9 @@
 
   "item.starcatcher.almighty_worm": "Almighty Worm",
   "tooltip.starcatcher.almighty_worm.0": "A rare worm found by bonemealing some farmland.",
+
+  "item.starcatcher.dev_worm": "Dev Worm",
+  "tooltip.starcatcher.dev_worm.0": "A worm that ignores all fish restrictions. For dev use.",
 
 
   "item.starcatcher.gunpowder_bait": "Gunpowder Bait",
@@ -358,6 +367,11 @@
   "block.starcatcher.trophy_gold" : "Gold Trophy",
   "block.starcatcher.trophy_silver" : "Silver Trophy",
   "block.starcatcher.trophy_bronze" : "Bronze Trophy",
+
+  "block.starcatcher.display" : "Starcatcher's Guide Display",
+  "tooltip.starcatcher.display.0" : "wip",
+  "block.starcatcher.telescope" : "Telescope",
+  "tooltip.starcatcher.telescope.0" : "wip",
 
   "item.starcatcher.award_all_fishes" : "Award All Fishes",
   "item.starcatcher.award_one_fish" : "Award One Fish",
@@ -474,6 +488,16 @@
   "gui.guide.not_caught" : "------",
   "gui.guide.not_caught_yet" : "Not Caught Yet!",
   "gui.guide.rarity" : "Rarity:",
+
+  "gui.guide.first" : "First Catch:",
+  "gui.guide.fastest" : "Rarity: ",
+  "gui.guide.average" : "Rarity: ",
+  "gui.guide.biggest" : "Rarity: ",
+  "gui.guide.heaviest" : "Rarity: ",
+
+  "gui.guide.bucketable" : "Can be caught in a bucket when using one as a bait!",
+  "gui.guide.entity" : "Can be caught alive when using an Almighty Worm as a bait!",
+  "gui.guide.always_entity" : "This fish is more lively than usual!",
 
   "gui.guide.fishing" : "All about fishing:",
   "gui.guide.index.basics" : "The Basics, Sweetspots, and treasures",
@@ -615,9 +639,9 @@
   "gui.guide.page.upgrades.left.8" : "just water.",
   "gui.guide.page.upgrades.left.9" : "",
   "gui.guide.page.upgrades.left.10" : "  Dangerous fluids such as",
-  "gui.guide.page.upgrades.left.11" : "lava will require a",
-  "gui.guide.page.upgrades.left.12" : "<rgb>Netherite Upgraded</rgb> rod!",
-  "gui.guide.page.upgrades.left.13" : "",
+  "gui.guide.page.upgrades.left.11" : "lava will require either a",
+  "gui.guide.page.upgrades.left.12" : "crystal hook or a",
+  "gui.guide.page.upgrades.left.13" : "<rgb>Netherite Upgraded</rgb> rod!",
   "gui.guide.page.upgrades.left.14" : "  Much like armor or tools,",
   "gui.guide.page.upgrades.left.15" : "you may upgrade your rod",
   "gui.guide.page.upgrades.left.16" : "in a Smithing Table with",
@@ -754,7 +778,7 @@
   "gui.guide.page.tournaments.right.0" : "",
   "gui.guide.page.tournaments.right.1" : "",
   "gui.guide.page.tournaments.right.2" : "",
-  "gui.guide.page.tournaments.right.3" : "[Work In Progress]",
+  "gui.guide.page.tournaments.right.3" : "",
   "gui.guide.page.tournaments.right.4" : "  The organizer may set",
   "gui.guide.page.tournaments.right.5" : "an entry cost which goes",
   "gui.guide.page.tournaments.right.6" : "towards the prize pool!",
@@ -907,7 +931,7 @@
   "gui.secret_note.crystal_hook.10" : "If anyone finds this letter drifting amid the",
   "gui.secret_note.crystal_hook.11" : "oceans, you are welcome to take my precious",
   "gui.secret_note.crystal_hook.12" : "Crystal Hook. Once you've caught at least",
-  "gui.secret_note.crystal_hook.13" : "one legendary fish, the <gradient-30>Older Anglers</gradient-50>",
+  "gui.secret_note.crystal_hook.13" : "one epic fish, the <gradient-30>Older Anglers</gradient-50>",
   "gui.secret_note.crystal_hook.14" : "will shine their blessing upon you and",
   "gui.secret_note.crystal_hook.15" : "my crystal hook will bite your hook.",
   "gui.secret_note.crystal_hook.16" : "-Roguy",
@@ -1058,7 +1082,7 @@
   "item.starcatcher.withered_bottle" : "Withered Bottle",
   "tooltip.starcatcher.withered_bottle.0" : "An ominous dark bottle.",
 
-
+  "item.starcatcher.cooked_starcaught_fish" : "Cooked Fish",
   "item.starcatcher.starcaught_bucket" : "Starcaught Bucket",
   "tooltip.starcatcher.starcaught_bucket.before" : "Bucket of ",
   "tooltip.starcatcher.starcaught_bucket.after" : "",
@@ -1178,7 +1202,7 @@
 
   "item.starcatcher.sludge_catfish" : "Sludge Catfish",
   "tooltip.starcatcher.sludge_catfish.0" : "A dirty catfish species common to murky swamp",
-  "tooltip.starcatcher.sludge_catfish.1" : "waters. Said to make a great dish if washes properly.",
+  "tooltip.starcatcher.sludge_catfish.1" : "waters. Said to make a great dish if washed properly.",
 
   "item.starcatcher.lily_snapper" : "Lily Snapper",
   "tooltip.starcatcher.lily_snapper.0" : "A thin long rare snapper species common to swamps.",
@@ -1246,13 +1270,13 @@
   "tooltip.starcatcher.icetooth_sturgeon.1" : "uses it's sharp petrified ice teeth to bite down on prey.",
 
   "item.starcatcher.boreal" : "Boreal",
-  "tooltip.starcatcher.boreal.0" : "A <rgb>legendary</rgb>  fish found in icy mountains.",
+  "tooltip.starcatcher.boreal.0" : "A <rgb>legendary</rgb> fish found in icy mountains.",
   "tooltip.starcatcher.boreal.1" : "A real challenge even for skilled anglers, they are",
   "tooltip.starcatcher.boreal.2" : "known for blending into the icy waters making it hard",
   "tooltip.starcatcher.boreal.3" : "follow their quick movements.",
 
   "item.starcatcher.crystalback_boreal" : "Crystalback Boreal",
-  "tooltip.starcatcher.crystalback_boreal.0" : "Although named after the <rgb>legendary</rgb>  fish <rgb>Boreal</rgb>, this",
+  "tooltip.starcatcher.crystalback_boreal.0" : "Although named after the <rgb>legendary</rgb> fish <rgb>Boreal</rgb>, this",
   "tooltip.starcatcher.crystalback_boreal.1" : "fish is not nearly as hard to catch. Its shiny back makes it",
   "tooltip.starcatcher.crystalback_boreal.2" : "easy to keep track and the crystallized back slows down its swimming speed.",
 
@@ -1267,7 +1291,7 @@
   "tooltip.starcatcher.carpenjoe.1" : "It is said anglers eat it for good luck before debugging.",
 
   "item.starcatcher.willow_bream" : "Willow Bream",
-  "tooltip.starcatcher.willow_bream.0" : "A really trick to catch fish which",
+  "tooltip.starcatcher.willow_bream.0" : "A really tricky to catch fish which",
   "tooltip.starcatcher.willow_bream.1" : "only reveals itself during nighttime.",
 
   "item.starcatcher.drifting_bream" : "Drifting Bream",
@@ -1314,8 +1338,12 @@
 
 
   "item.starcatcher.ironjaw_herring" : "Ironjaw Herring",
-  "tooltip.starcatcher.ironjaw_herring.0" : "This type of herring common to the ocean often",
+  "tooltip.starcatcher.ironjaw_herring.0" : "This type of herring common to the ocean and often",
   "tooltip.starcatcher.ironjaw_herring.1" : "has a petrified silvery jaw resembling iron.",
+
+  "item.starcatcher.blue_herring" : "Blue Herring",
+  "tooltip.starcatcher.blue_herring.0" : "A very illusive fish, always searching for the 46th ocean.",
+  "tooltip.starcatcher.blue_herring.1" : "Fisherman use it for directions as it always goes back to where it all started.",
 
   "item.starcatcher.deepjaw_herring" : "Deepjaw Herring",
   "tooltip.starcatcher.deepjaw_herring.0" : "A fish common to oceans, often regarded highly for trading.",

@@ -2,6 +2,8 @@ package com.wdiscute.starcatcher.registry.blocks;
 
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
+import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -15,22 +17,16 @@ public interface ModBlocks
 {
     DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
 
-    DeferredBlock<Block> TROPHY_GOLD = registerBlock("trophy_gold", TrophyBlock::new);
-    DeferredBlock<Block> TROPHY_SILVER = registerBlock("trophy_silver", TrophyBlock::new);
-    DeferredBlock<Block> TROPHY_BRONZE = registerBlock("trophy_bronze", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_GOLD = registerBlockDatagen("trophy_gold", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_SILVER = registerBlockDatagen("trophy_silver", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_BRONZE = registerBlockDatagen("trophy_bronze", TrophyBlock::new);
 
-    DeferredBlock<Block> STAND = registerStand("tournament_stand", StandBlock::new);
+    DeferredBlock<Block> STAND = registerBlock("tournament_stand", StandBlock::new);
 
+    DeferredBlock<Block> DISPLAY = registerBlock("display", DisplayBlock::new);
 
+    DeferredBlock<Block> TELESCOPE = registerBlock("telescope", TelescopeBlock::new);
 
-
-    private static <T extends Block> DeferredBlock<T> registerStand(String name, Supplier<T> block)
-    {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-
-        ModItems.BLOCKITEMS_REGISTRY.register(name, () -> new StandBlockItem(toReturn.get()));
-        return toReturn;
-    }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {
@@ -40,6 +36,18 @@ public interface ModBlocks
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
+    {
+        ModItems.BLOCKITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerBlockDatagen(String name, Supplier<T> block)
+    {
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItemDatagen(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> void registerBlockItemDatagen(String name, DeferredBlock<T> block)
     {
         ModItems.ITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }

@@ -2,14 +2,14 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
-import com.wdiscute.starcatcher.items.*;
-import com.wdiscute.starcatcher.items.cheater.*;
-import com.wdiscute.starcatcher.items.helper.BasicItem;
-import com.wdiscute.starcatcher.items.helper.FireResistantBasicItem;
-import com.wdiscute.starcatcher.items.helper.SingleStackBasicItem;
-import com.wdiscute.starcatcher.items.modifieritem.CatchModifierItem;
-import com.wdiscute.starcatcher.items.modifieritem.MinigameModifierItem;
-import com.wdiscute.starcatcher.items.modifieritem.TackleSkinItem;
+import com.wdiscute.starcatcher.registry.items.*;
+import com.wdiscute.starcatcher.registry.items.cheater.*;
+import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
+import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
+import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
+import com.wdiscute.starcatcher.registry.items.modifieritem.CatchModifierItem;
+import com.wdiscute.starcatcher.registry.items.modifieritem.MinigameModifierItem;
+import com.wdiscute.starcatcher.registry.items.modifieritem.TackleSkinItem;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
@@ -64,11 +64,11 @@ public interface ModItems
     DeferredItem<Item> GUIDE = ITEMS_REGISTRY.register("starcatcher_guide", FishingGuideItem::new);
 
     DeferredItem<Item> FISH_RADAR = ITEMS_REGISTRY.register("fish_radar", SingleStackBasicItem::new);
-
     DeferredItem<Item> STARCATCHER_TWINE = ITEMS_REGISTRY.register("starcatcher_twine", SingleStackBasicItem::new);
 
     //hooks
     DeferredItem<Item> HOOK = HOOKS_REGISTRY.register("hook", SingleStackBasicItem::new);
+    DeferredItem<Item> CRYSTAL_HOOK = HOOKS_REGISTRY.register("crystal_hook", SingleStackBasicItem::new);
     DeferredItem<Item> SHINY_HOOK = HOOKS_REGISTRY.register("shiny_hook", () -> new MinigameModifierItem(ModMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS));
     DeferredItem<Item> GOLD_HOOK = HOOKS_REGISTRY.register("gold_hook", () -> new CatchModifierItem(ModCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE));
     DeferredItem<Item> MOSSY_HOOK = HOOKS_REGISTRY.register("mossy_hook", () -> new MinigameModifierItem(ModMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT));
@@ -89,6 +89,7 @@ public interface ModItems
     DeferredItem<Item> WORM = BAITS_REGISTRY.register("worm", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME));
     DeferredItem<Item> ALMIGHTY_WORM = BAITS_REGISTRY.register("almighty_worm", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME, ModCatchModifiers.FISH_ENTITY));
     DeferredItem<Item> SEEKING_WORM = BAITS_REGISTRY.register("seeking_worm", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME, ModCatchModifiers.GUARANTEE_NEW_FISH_ALWAYS));
+    DeferredItem<Item> DEV_WORM = BAITS_REGISTRY.register("dev_worm", BasicItem::new);
 
     DeferredItem<Item> GUNPOWDER_BAIT = BAITS_REGISTRY.register("gunpowder_bait", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME));
     DeferredItem<Item> CHERRY_BAIT = BAITS_REGISTRY.register("cherry_bait", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME));
@@ -236,7 +237,7 @@ public interface ModItems
     DeferredItem<Item> HOLLOWBELLY_DARTER = FISH_REGISTRY.register("hollowbelly_darter", FishItem::new);
     DeferredItem<Item> MISTBACK_CHUB = FISH_REGISTRY.register("mistback_chub", FishItem::new);
     DeferredItem<Item> BLUEGIGI = FISH_REGISTRY.register("bluegigi", FishItem::new);
-    DeferredItem<Item> DRIED_SEAWEED = TRASH_REGISTRY.register("dried_seaweed", FishItem::new);
+    DeferredItem<Item> DRIED_SEAWEED = TRASH_REGISTRY.register("dried_seaweed", BasicItem::new);
 
     //icy river
     DeferredItem<Item> FROSTGILL_CHUB = FISH_REGISTRY.register("frostgill_chub", FishItem::new);
@@ -245,6 +246,7 @@ public interface ModItems
     DeferredItem<Item> BLUE_CRYSTAL_FIN = FISH_REGISTRY.register("blue_crystal_fin", FishItem::new);
 
     //saltwater
+    DeferredItem<Item> BLUE_HERRING = FISH_REGISTRY.register("blue_herring", FishItem::new);
     DeferredItem<Item> IRONJAW_HERRING = FISH_REGISTRY.register("ironjaw_herring", FishItem::new);
     DeferredItem<Item> DEEPJAW_HERRING = FISH_REGISTRY.register("deepjaw_herring", FishItem::new);
     DeferredItem<Item> DUSKTAIL_SNAPPER = FISH_REGISTRY.register("dusktail_snapper", FishItem::new);
@@ -330,4 +332,6 @@ public interface ModItems
 
     //bucket
     DeferredItem<Item> STARCAUGHT_BUCKET = ITEMS_REGISTRY.register("starcaught_bucket", () -> new StarcaughtBucket(Fluids.WATER));
+
+    DeferredItem<Item> COOKED_STARCAUGHT_FISH = ITEMS_REGISTRY.register("cooked_starcaught_fish", () -> new Item(new Item.Properties().food(ModFoodProperties.BASIC_COOKED_FISH)));
 }

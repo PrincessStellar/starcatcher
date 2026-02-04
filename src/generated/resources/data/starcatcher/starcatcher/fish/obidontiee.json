@@ -50,6 +50,15 @@
     "deviation_weight_grams": 200.0
   },
   "skips_minigame": false,
+  "star": {
+    "connections": [
+      "zeta_umi"
+    ],
+    "debug_color": -890519,
+    "name": "epsilon_umi",
+    "x": 2669,
+    "y": 815
+  },
   "weather": "all",
   "world_restrictions": {
     "above_y": 50,
@@ -58,7 +67,8 @@
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [
       "starcatcher:is_ocean",
-      "starcatcher:is_river"
+      "starcatcher:is_river",
+      "starcatcher:is_mushroom_fields"
     ],
     "biomes_tags": [],
     "dimensions": [

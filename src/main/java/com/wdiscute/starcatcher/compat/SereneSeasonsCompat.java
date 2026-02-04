@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.compat;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import sereneseasons.api.season.Season;
 import sereneseasons.api.season.SeasonHelper;
 

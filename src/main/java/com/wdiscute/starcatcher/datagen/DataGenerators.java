@@ -9,6 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,23 +28,33 @@ public class DataGenerators
         PackOutput output = gen.getPackOutput();
         gen.addProvider(
                 event.includeServer(),
-                new FishingPropertiesProvider(output, registries)
+                new DGFishingPropertiesProvider(output, registries)
         );
 
-        gen.addProvider(event.includeServer(), new ModRegistryProvider(output, registries));
+        gen.addProvider(event.includeServer(), new DGBiomeModifierProvider(output, registries));
+
+        gen.addProvider(event.includeServer(), new DGTrophyPropertiesProvider(output, registries));
 
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        gen.addProvider(event.includeServer(), new ModItemModelProvider(output, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGModItemModelProvider(output, existingFileHelper));
 
         //block tags
-        BlockTagsProvider btp = new ModBlocksTagProvider(output, registries, existingFileHelper);
+        BlockTagsProvider btp = new DGModBlocksTagProvider(output, registries, existingFileHelper);
         gen.addProvider(event.includeServer(), btp);
 
-        //fish tags
-        ItemTagsProvider itp = new ModItemsTagProvider(output, registries, btp.contentsGetter(), existingFileHelper);
+        //item tags
+        ItemTagsProvider itp = new DGModItemsTagProvider(output, registries, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
 
-        gen.addProvider(event.includeServer(), new ModAdvancementProvider(output, registries, existingFileHelper));
+        //advancements
+        gen.addProvider(event.includeServer(), new DGModAdvancementProvider(output, registries, existingFileHelper));
+
+        //biome tags
+        gen.addProvider(event.includeServer(), new DGBiomeTagsProvider(output, registries, existingFileHelper));
+
+
+
+
     }
 }

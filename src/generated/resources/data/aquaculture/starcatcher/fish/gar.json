@@ -16,7 +16,7 @@
     "entity": "aquaculture:gar",
     "fish_bucket": "aquaculture:gar_bucket",
     "item": "aquaculture:gar",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "treasure": "aquaculture:box"
   },
   "daytime": "all",
   "difficulty": {
@@ -64,7 +64,8 @@
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [
       "starcatcher:is_ocean",
-      "starcatcher:is_river"
+      "starcatcher:is_river",
+      "starcatcher:is_mushroom_fields"
     ],
     "biomes_tags": [],
     "dimensions": [

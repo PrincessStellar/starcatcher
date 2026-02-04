@@ -34,6 +34,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 import org.joml.Vector2d;
@@ -52,8 +53,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     private static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
     public ResourceLocation tankTexture = SURFACE;
 
-    public final FishProperties fishProperties;
     public FishProperties.Difficulty difficulty;
+    public FishProperties.Rarity rarity;
 
     public final ItemStack itemBeingFished;
     public final ItemStack bobber;
@@ -98,7 +99,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     List<HitFakeParticle> hitParticles = new ArrayList<>();
 
 
-
     // Nikdo53 fields, these are mine dont steal them
     public final int holdingDelay = 6;
     public int holdingTicks = 0;
@@ -121,8 +121,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         renderScale = Config.MINIGAME_RENDER_SCALE.get().floatValue();
         hitDelay = Config.HIT_DELAY.get().floatValue();
 
-        this.fishProperties = fp;
         this.difficulty = fp.dif();
+        this.rarity = fp.rarity();
 
         //if override is not missingno (default) then use the override item set
         if (!fp.catchInfo().overrideMinigameWith().is(ModItems.MISSINGNO.getKey()))
@@ -145,8 +145,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 this.tackleSkin = optional.get().get();
             else
                 this.tackleSkin = new BaseTackleSkin();
-        }
-        else
+        } else
         {
             this.tackleSkin = new BaseTackleSkin();
         }
@@ -163,10 +162,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             tankTexture = NETHER;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = difficulty.speed();
-        this.pointerBaseSpeed = difficulty.speed();
-        this.penalty = difficulty.penalty();
-        this.decay = difficulty.decay();
+        this.pointerSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerBaseSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
+        this.penalty = (int) (difficulty.penalty() * Config.PENALTY_MULTIPLIER.get());
+        this.decay = (float) (difficulty.decay() * Config.DECAY_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
         addModifier(new BaseModifier());
@@ -266,7 +265,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.pushPose();
         poseStack.translate(width >> 1, height >> 1, 0);
         poseStack.scale(renderScale, renderScale, 1);
-        poseStack.translate( -width >> 1, -height >> 1, 0);
+        poseStack.translate(-width >> 1, -height >> 1, 0);
 
         //render modifiers background
         modifiers.forEach(modifier -> modifier.renderBackground(guiGraphics, partialTick, width, height));
@@ -332,7 +331,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.translate(centerX, centerY, 0);
 
-        poseStack.rotateAround(Axis.ZP.rotationDegrees(ass.pos + partialTick * ass.movingRate), 0, 0, 0);
+        poseStack.rotateAround(Axis.ZP.rotationDegrees(ass.pos + (partialTick * ass.movingRate) * ass.currentRotation), 0, 0, 0);
 
         boolean isDisabled = modifiers.stream().anyMatch(mod -> mod.disableSweetSpotRendering(ass));
         if (!isDisabled)
@@ -479,6 +478,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
         {
+            if (Config.ENABLE_VILLAGER_SOUND.get())
+                Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
             return true;
         }
@@ -538,7 +539,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
+            if (Config.ENABLE_MISS_SOUND.get())
+                level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
             progress -= penalty;
         }
     }
@@ -617,6 +619,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
             if (progressSmooth < 0)
             {
+                if (Config.ENABLE_VILLAGER_SOUND.get())
+                    Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
                 this.onClose();
             }
 
@@ -624,6 +628,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             {
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
+
+                if (Config.ENABLE_VILLAGER_SOUND.get())
+                    Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
 
                 PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
                 this.onClose();

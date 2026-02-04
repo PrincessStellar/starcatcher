@@ -13,12 +13,15 @@ public class StarcatcherTags
     public static final ResourceLocation IS_COLD_LAKE = Starcatcher.rl("is_cold_lake");
     public static final ResourceLocation IS_COLD_RIVER = Starcatcher.rl("is_cold_river");
     public static final ResourceLocation IS_COLD_OCEAN = Starcatcher.rl("is_cold_ocean");
+    public static final ResourceLocation IS_FROZEN_OCEAN = Starcatcher.rl("is_cold_ocean");
 
-    public static final ResourceLocation IS_WARM_LAKE = Starcatcher.rl("is_warm");
+    public static final ResourceLocation IS_WARM_LAKE = Starcatcher.rl("is_warm_lake");
     public static final ResourceLocation IS_WARM_RIVER = Starcatcher.rl("is_warm_river");
     public static final ResourceLocation IS_WARM_OCEAN = Starcatcher.rl("is_warm_ocean");
 
     public static final ResourceLocation IS_OCEAN = Starcatcher.rl("is_ocean");
+    public static final ResourceLocation IS_NORMAL_OCEAN = Starcatcher.rl("is_normal_ocean");
+    public static final ResourceLocation IS_LUKEWARM_OCEAN = Starcatcher.rl("is_lukewarm_ocean");
     public static final ResourceLocation IS_DEEP_OCEAN = Starcatcher.rl("is_deep_ocean");
     public static final ResourceLocation IS_RIVER = Starcatcher.rl("is_river");
 
@@ -39,8 +42,13 @@ public class StarcatcherTags
     public static final TagKey<Item> RODS = ItemTags.create(Starcatcher.rl("rods"));
 
     public static final TagKey<Item> BUCKETABLE_FISHES = ItemTags.create(Starcatcher.rl("bucketable_fishes"));
+    public static final TagKey<Item> STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("starcaught_fishes"));
 
+    public static final TagKey<Item> COMMON_FISHES = ItemTags.create(Starcatcher.rl("common_fishes"));
+    public static final TagKey<Item> UNCOMMON_FISHES = ItemTags.create(Starcatcher.rl("uncommon_fishes"));
+    public static final TagKey<Item> RARE_FISHES = ItemTags.create(Starcatcher.rl("rare_fishes"));
+    public static final TagKey<Item> EPIC_FISHES = ItemTags.create(Starcatcher.rl("epic_fishes"));
+    public static final TagKey<Item> LEGENDARY_FISHES = ItemTags.create(Starcatcher.rl("legendary_fishes"));
 
-    public static final TagKey<Fluid> NETHERITE_UPGRADE_SURVIVES = FluidTags.create(Starcatcher.rl("netherite_upgrade_survives"));
-
+    public static final TagKey<Item> HOOK_SURVIVES_LAVA = ItemTags.create(Starcatcher.rl("hook_survives_lava"));
 }

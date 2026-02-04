@@ -77,18 +77,6 @@ public class Starcatcher
             .defaultKey(Starcatcher.rl("pearl"))
             .create();
 
-    public static double truncatedNormal(double mean, double deviation)
-    {
-        while (true)
-        {
-            double value = mean + deviation * U.r.nextGaussian();
-            if (value >= mean - deviation && value <= mean + deviation)
-            {
-                return value;
-            }
-        }
-    }
-
     public static ResourceLocation rl(String s)
     {
         return ResourceLocation.fromNamespaceAndPath(Starcatcher.MOD_ID, s);

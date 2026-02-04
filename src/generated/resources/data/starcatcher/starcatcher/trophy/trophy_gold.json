@@ -4,7 +4,6 @@
     "unique": 0
   },
   "always_show": true,
-  "chance_to_catch": 100,
   "fish_properties": {
     "bait_restrictions": {
       "consumes_bait": true,
@@ -75,22 +74,23 @@
       ]
     }
   },
+  "percentage_chance_to_catch": 100.0,
   "progress": {
     "common": {
       "total": 0,
-      "unique": 36
+      "unique": 44
     },
     "epic": {
       "total": 0,
-      "unique": 13
+      "unique": 16
     },
     "legendary": {
       "total": 0,
-      "unique": 8
+      "unique": 10
     },
     "rare": {
       "total": 0,
-      "unique": 14
+      "unique": 15
     },
     "uncommon": {
       "total": 0,

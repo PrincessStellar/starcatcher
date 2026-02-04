@@ -26,7 +26,7 @@
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 8,
         "sweet_spot_type": "starcatcher:aqua",
         "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.1
@@ -36,7 +36,7 @@
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 8,
         "sweet_spot_type": "starcatcher:aqua",
         "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.1
@@ -62,6 +62,13 @@
     "deviation_weight_grams": 0.0
   },
   "skips_minigame": false,
+  "star": {
+    "connections": [],
+    "debug_color": -9606670,
+    "name": "omicron_tauri",
+    "x": 3209,
+    "y": 1529
+  },
   "weather": "all",
   "world_restrictions": {
     "above_y": 50,

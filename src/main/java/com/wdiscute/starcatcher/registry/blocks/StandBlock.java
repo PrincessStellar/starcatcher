@@ -57,24 +57,28 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     }
 
     @Override
-    public @Nullable DirectionProperty getDirectionProperty() {
+    public @Nullable DirectionProperty getDirectionProperty()
+    {
         return FACING;
     }
 
     @Override
-    public BlockState getStateForEachBlock(BlockState state, BlockPos pos, BlockPos centerOffset, Level level, @Nullable Direction direction) {
-       state = state.setValue(PART, IBlockPosOffsetEnum.fromOffset(StandPart.class, centerOffset, direction, StandPart.BOTTOM_LEFT));
+    public BlockState getStateForEachBlock(BlockState state, BlockPos pos, BlockPos centerOffset, Level level, @Nullable Direction direction)
+    {
+        state = state.setValue(PART, IBlockPosOffsetEnum.fromOffset(StandPart.class, centerOffset, direction, StandPart.BOTTOM_LEFT));
 
         return state;
     }
 
     @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context)
+    {
         return getStateForPlacementHelper(context, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
-    public BlockState getDefaultStateForPreviews(Direction direction) {
+    public BlockState getDefaultStateForPreviews(Direction direction)
+    {
         return IPreviewableMultiblock.super.getDefaultStateForPreviews(direction.getOpposite());
     }
 
@@ -89,7 +93,7 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
             //initial tournament setup, makes new one if empty
             sbe.makeOrGetTournament();
 
-            if(sbe.tournament.owner == null)
+            if (sbe.tournament.owner == null)
             {
                 sbe.tournament.owner = player.getUUID();
                 sbe.tournament.playerScores.add(TournamentPlayerScore.empty(player.getUUID()));
@@ -106,7 +110,7 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     {
         //before super since super removed BE
         BlockPos center = IMultiBlock.getCenter(level, pos);
-        if(level.getBlockEntity(center) instanceof StandBlockEntity sbe && !level.isClientSide && sbe.tournament != null)
+        if (level.getBlockEntity(center) instanceof StandBlockEntity sbe && !level.isClientSide && sbe.tournament != null)
         {
             TournamentHandler.cancelTournament(level, sbe.tournament);
         }
@@ -119,7 +123,8 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     private static final VoxelShape SHAPE_SOUTH = makeShapeSouth();
     private static final VoxelShape SHAPE_WEST = makeShapeWest();
 
-    public static VoxelShape makeShapeNorth(){
+    public static VoxelShape makeShapeNorth()
+    {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(0.5, 0, 0, 1.5, 1, 1), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(0, 0.875, 0, 2, 1, 1), BooleanOp.OR);
@@ -130,7 +135,8 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         return shape;
     }
 
-    public static VoxelShape makeShapeEast(){
+    public static VoxelShape makeShapeEast()
+    {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(0, 0, 0.5, 1, 1, 1.5), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(0, 0.875, 0, 1, 1, 2), BooleanOp.OR);
@@ -141,7 +147,8 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         return shape;
     }
 
-    public static VoxelShape makeShapeSouth(){
+    public static VoxelShape makeShapeSouth()
+    {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(-0.5, 0, 0, 0.5, 1, 1.0), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(-1, 0.875, 0, 1, 1, 1.0), BooleanOp.OR);
@@ -152,7 +159,8 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         return shape;
     }
 
-    public static VoxelShape makeShapeWest(){
+    public static VoxelShape makeShapeWest()
+    {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.join(shape, Shapes.box(0, 0, -0.5, 1.0, 1, 0.5), BooleanOp.OR);
         shape = Shapes.join(shape, Shapes.box(0, 0.875, -1, 1.0, 1, 1), BooleanOp.OR);
@@ -164,13 +172,15 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        VoxelShape shape = switch (getDirection(state).getOpposite()){
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    {
+        VoxelShape shape = switch (getDirection(state).getOpposite())
+        {
             case NORTH -> SHAPE_NORTH;
             case SOUTH -> SHAPE_SOUTH;
             case WEST -> SHAPE_WEST;
             case EAST -> SHAPE_EAST;
-            default ->  null;
+            default -> null;
         };
 
         return voxelShapeHelper(state, level, pos, shape);
@@ -188,6 +198,11 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
         return ModBlockEntities.STAND.get().create(blockPos, blockState);
+    }
+
+    @Override
+    public boolean hasCustomBE() {
+        return true;
     }
 
     public enum StandPart implements StringRepresentable, IBlockPosOffsetEnum

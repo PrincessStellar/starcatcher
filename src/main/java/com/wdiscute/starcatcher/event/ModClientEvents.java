@@ -10,8 +10,11 @@ import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SizeAndWeightInstance;
-import com.wdiscute.starcatcher.items.BucketTooltipRenderer;
-import com.wdiscute.starcatcher.items.StarcaughtBucket;
+import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
+import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
+import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
+import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
 import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
@@ -23,6 +26,7 @@ import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.entity.DisplayRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.resources.language.I18n;
@@ -52,6 +56,12 @@ public class ModClientEvents
         {
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
         }
+    }
+
+    @SubscribeEvent
+    public static void registerBER(EntityRenderersEvent.RegisterRenderers event)
+    {
+        event.registerBlockEntityRenderer(ModBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
     }
 
     @SubscribeEvent
@@ -100,8 +110,13 @@ public class ModClientEvents
 
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
+            String percentile = " (top " + (int) sw.percentile() + "%)";
 
-            comp.add(1, Component.literal(size + " - " + weight).withColor(0x888888));
+            MutableComponent element = Component.literal(size + " - " + weight).withColor(0x888888);
+            if(event.getFlags().hasShiftDown())
+                element.append(Component.literal(percentile).withColor(0x707070));
+            comp.add(1, element);
+
         }
 
         //tackle skin
@@ -209,7 +224,7 @@ public class ModClientEvents
         EntityRenderers.register(ModEntities.FISHING_BOB.get(), FishingBobRenderer::new);
         EntityRenderers.register(ModEntities.BOTTLE.get(), ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.FISH.get(), FishRenderer::new);
-        ModItemProperties.addCustomItemProperties();
+        event.enqueueWork(ModItemProperties::addCustomItemProperties);
     }
 
     @SubscribeEvent
@@ -244,6 +259,9 @@ public class ModClientEvents
         event.registerLayerDefinition(new FrogTackleSkin().getLayerLocation(), FrogTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ColorfulTackleSkin().getLayerLocation(), ColorfulTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ClearTackleSkin().getLayerLocation(), ClearTackleSkin::createBodyLayer);
+
+        //book model
+        event.registerLayerDefinition(DisplayBookModel.LAYER_LOCATION, DisplayBookModel::createBodyLayer);
 
         //fishes
         event.registerLayerDefinition(AgaveBream.LAYER_LOCATION, AgaveBream::createBodyLayer);

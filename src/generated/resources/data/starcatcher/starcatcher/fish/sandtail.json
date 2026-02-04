@@ -4,7 +4,7 @@
     "correct_bait_chance_added": 0,
     "correct_baits": []
   },
-  "base_chance": 5,
+  "base_chance": 8,
   "catch_info": {
     "always_spawn_entity": false,
     "entity": "starcatcher:fish",
@@ -50,6 +50,15 @@
     "deviation_weight_grams": 1200.0
   },
   "skips_minigame": false,
+  "star": {
+    "connections": [
+      "merak"
+    ],
+    "debug_color": -7146903,
+    "name": "phecda",
+    "x": 2330,
+    "y": 912
+  },
   "weather": "all",
   "world_restrictions": {
     "above_y": 50,
@@ -58,7 +67,7 @@
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [],
     "biomes_tags": [
-      "starcatcher:is_warm"
+      "starcatcher:is_warm_lake"
     ],
     "dimensions": [
       "minecraft:overworld"

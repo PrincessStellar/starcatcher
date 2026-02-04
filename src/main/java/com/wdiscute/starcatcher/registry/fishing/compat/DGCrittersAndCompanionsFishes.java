@@ -20,9 +20,8 @@ public class DGCrittersAndCompanionsFishes extends FishingPropertiesRegistry
         //                                                                                                                              `--'
 
 
-        register(overworldBeachFish(U.holderItem("crittersandcompanions", "clam"))  //no mini game
+        register(overworldBeachFish(U.holderItem("crittersandcompanions", "clam"))
                 .withSkipMinigame(true)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
         );
 
         register(overworldRiverFish(U.holderItem("crittersandcompanions", "koi_fish"))
@@ -31,7 +30,6 @@ public class DGCrittersAndCompanionsFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 3000, 2000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM)
                 .withRarity(FishProperties.Rarity.COMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
         );
 
         register(overworldDeepOceanFish(U.holderItem("crittersandcompanions", "dumbo_octopus_bucket"))
@@ -41,7 +39,6 @@ public class DGCrittersAndCompanionsFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1000, 300))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
         );
 
         register(overworldDeepOceanFish(U.holderItem("crittersandcompanions", "sea_bunny_bucket"))
@@ -51,7 +48,6 @@ public class DGCrittersAndCompanionsFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 10, 200, 60))
                 .withDifficulty(FishProperties.Difficulty.HARD)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
         );
 
     }

@@ -4,7 +4,7 @@
     "correct_bait_chance_added": 0,
     "correct_baits": []
   },
-  "base_chance": 5,
+  "base_chance": 15,
   "catch_info": {
     "always_spawn_entity": false,
     "entity": "starcatcher:fish",
@@ -24,7 +24,7 @@
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 8,
         "sweet_spot_type": "starcatcher:aqua",
         "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.0
@@ -34,7 +34,7 @@
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 8,
         "sweet_spot_type": "starcatcher:aqua",
         "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.0
@@ -60,6 +60,13 @@
     "deviation_weight_grams": 100.0
   },
   "skips_minigame": false,
+  "star": {
+    "connections": [],
+    "debug_color": -9606670,
+    "name": "zeta_tauri",
+    "x": 2772,
+    "y": 1586
+  },
   "weather": "all",
   "world_restrictions": {
     "above_y": 50,

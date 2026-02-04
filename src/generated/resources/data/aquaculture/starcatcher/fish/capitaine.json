@@ -16,7 +16,7 @@
     "entity": "aquaculture:capitaine",
     "fish_bucket": "aquaculture:capitaine_bucket",
     "item": "aquaculture:capitaine",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "treasure": "aquaculture:box"
   },
   "daytime": "all",
   "difficulty": {
@@ -64,7 +64,7 @@
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [],
     "biomes_tags": [
-      "starcatcher:is_warm"
+      "starcatcher:is_warm_lake"
     ],
     "dimensions": [
       "minecraft:overworld"

@@ -6,17 +6,18 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.ModItems;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryAccess;
@@ -31,6 +32,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -52,6 +54,7 @@ import java.util.Optional;
 //      <><|    <- fish
 public record FishProperties(
         CatchInfo catchInfo,
+        Star star,
         int baseChance,
         SizeAndWeight sizeWeight,
         Rarity rarity,
@@ -67,6 +70,7 @@ public record FishProperties(
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     CatchInfo.CODEC.fieldOf("catch_info").forGetter(FishProperties::catchInfo),
+                    Star.CODEC.optionalFieldOf("star", Star.DEFAULT).forGetter(FishProperties::star),
                     Codec.INT.fieldOf("base_chance").forGetter(FishProperties::baseChance),
                     SizeAndWeight.CODEC.fieldOf("size_and_weight").forGetter(FishProperties::sizeWeight),
                     Rarity.CODEC.fieldOf("rarity").forGetter(FishProperties::rarity),
@@ -85,6 +89,7 @@ public record FishProperties(
 
     public static final StreamCodec<RegistryFriendlyByteBuf, FishProperties> STREAM_CODEC = ExtraComposites.composite(
             CatchInfo.STREAM_CODEC, FishProperties::catchInfo,
+            Star.STREAM_CODEC, FishProperties::star,
             ByteBufCodecs.VAR_INT, FishProperties::baseChance,
             SizeAndWeight.STREAM_CODEC, FishProperties::sizeWeight,
             Rarity.STREAM_CODEC, FishProperties::rarity,
@@ -100,7 +105,8 @@ public record FishProperties(
 
     public static final StreamCodec<RegistryFriendlyByteBuf, List<FishProperties>> STREAM_CODEC_LIST = STREAM_CODEC.apply(ByteBufCodecs.list());
 
-    public ResourceLocation toLoc(Level level){
+    public ResourceLocation toLoc(Level level)
+    {
         return U.getRlFromFp(level, this);
     }
 
@@ -110,6 +116,7 @@ public record FishProperties(
     @Deprecated(forRemoval = true)
     public static final FishProperties DEFAULT = new FishProperties(
             CatchInfo.DEFAULT,
+            Star.DEFAULT,
             5,
             SizeAndWeight.DEFAULT,
             Rarity.COMMON,
@@ -130,6 +137,7 @@ public record FishProperties(
     public static class Builder
     {
         private CatchInfo.Builder catchInfo = new CatchInfo.Builder();
+        private Star star = Star.DEFAULT;
         private int baseChance = 5;
 
         private SizeAndWeight sw = SizeAndWeight.DEFAULT;
@@ -172,6 +180,12 @@ public record FishProperties(
             return this;
         }
 
+        public Builder withAlwaysSpawnEntity()
+        {
+            this.catchInfo.withAlwaysSpawnEntity(true);
+            return this;
+        }
+
         public Builder withAlwaysSpawnEntity(boolean alwaysSpawnEntity)
         {
             this.catchInfo.withAlwaysSpawnEntity(alwaysSpawnEntity);
@@ -181,6 +195,12 @@ public record FishProperties(
         public Builder withItemToOverrideWith(Holder<Item> itemToOverrideWith)
         {
             this.catchInfo.withOverrideMinigameWith(itemToOverrideWith);
+            return this;
+        }
+
+        public Builder withStar(Star star)
+        {
+            this.star = star;
             return this;
         }
 
@@ -254,6 +274,7 @@ public record FishProperties(
         {
             return new FishProperties(
                     catchInfo.build(),
+                    star,
                     baseChance,
                     sw,
                     rarity,
@@ -360,6 +381,77 @@ public record FishProperties(
     }
 
     //endregion CatchInfo
+
+    //region Star
+
+    public record Star(
+            String name,
+            int x,
+            int y,
+            List<String> connections,
+            int debugColor
+    )
+    {
+        public static Star fromRaAndDec(String name, int degrees, float dec, int color, String... connections)
+        {
+            double angleX = Math.cos(Math.toRadians(degrees));
+            double angleY = Math.sin(Math.toRadians(degrees));
+
+            int offsetX = dec > 0 ? 2700 : 900;
+            int offsetY = 900;
+
+            dec = transform(dec);
+
+            int x = (int) (offsetX + angleX * Math.abs(dec) * 10);
+            int y = (int) (offsetY + angleY * Math.abs(dec) * 10);
+
+            return new Star(name, x, y, Arrays.stream(connections).filter(o -> !o.isEmpty()).toList(), color);
+        }
+
+        public static float transform(float v)
+        {
+            if (v == 0f) return 0f;
+
+            float abs = Math.abs(v);
+
+            if (abs > 90f)
+            {
+                throw new IllegalArgumentException("Value must be between -90 and 90");
+            }
+
+            return Math.copySign(90f - abs, v);
+        }
+
+        public static Star fromRaAndDec(String name, int hours, int minutes, double seconds, float dec, int color, String... connections)
+        {
+            double decimalHours = hours + minutes / 60.0 + seconds / 3600.0;
+            int deg = ((int) (decimalHours * 15.0));
+
+            return fromRaAndDec(name, deg, dec, color, connections);
+        }
+
+        public static final Codec<Star> CODEC = RecordCodecBuilder.create(instance ->
+                instance.group(
+                        Codec.STRING.fieldOf("name").forGetter(Star::name),
+                        ExtraCodecs.intRange(0, 3600).fieldOf("x").forGetter(Star::x),
+                        ExtraCodecs.intRange(0, 1800).fieldOf("y").forGetter(Star::y),
+                        Codec.STRING.listOf().fieldOf("connections").forGetter(Star::connections),
+                        Codec.INT.fieldOf("debug_color").forGetter(Star::debugColor)
+                ).apply(instance, Star::new));
+
+        public static final StreamCodec<ByteBuf, Star> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.STRING_UTF8, Star::name,
+                ByteBufCodecs.INT, Star::x,
+                ByteBufCodecs.INT, Star::y,
+                ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), Star::connections,
+                ByteBufCodecs.INT, Star::debugColor,
+                Star::new
+        );
+
+        public static final Star DEFAULT = new Star("", 0, 0, List.of(), 0xffffffff);
+    }
+
+    //endregion Star
 
 
     //region bait
@@ -586,10 +678,31 @@ public record FishProperties(
                         .withMustBeCaughtAboveY(50)
                         .withMustBeCaughtBelowY(100);
 
+        public static final WorldRestrictions OVERWORLD_ALL_OCEANS =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(StarcatcherTags.IS_OCEAN)
+                        .withMustBeCaughtAboveY(50)
+                        .withMustBeCaughtBelowY(100);
+
         public static final WorldRestrictions OVERWORLD_OCEAN =
                 WorldRestrictions.DEFAULT
                         .withDims(Level.OVERWORLD.location())
-                        .withBiomesTags((StarcatcherTags.IS_OCEAN))
+                        .withBiomesTags(StarcatcherTags.IS_NORMAL_OCEAN)
+                        .withMustBeCaughtAboveY(50)
+                        .withMustBeCaughtBelowY(100);
+
+        public static final WorldRestrictions OVERWORLD_LUKEWARM_OCEAN =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(StarcatcherTags.IS_LUKEWARM_OCEAN)
+                        .withMustBeCaughtAboveY(50)
+                        .withMustBeCaughtBelowY(100);
+
+        public static final WorldRestrictions OVERWORLD_COLD_AND_LUKEWARM_OCEAN =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(StarcatcherTags.IS_LUKEWARM_OCEAN, StarcatcherTags.IS_COLD_OCEAN)
                         .withMustBeCaughtAboveY(50)
                         .withMustBeCaughtBelowY(100);
 
@@ -610,7 +723,7 @@ public record FishProperties(
         public static final WorldRestrictions OVERWORLD_LAKE =
                 WorldRestrictions.DEFAULT
                         .withDims(Level.OVERWORLD.location())
-                        .withBiomesBlacklistTags(StarcatcherTags.IS_OCEAN, StarcatcherTags.IS_RIVER)
+                        .withBiomesBlacklistTags(StarcatcherTags.IS_OCEAN, StarcatcherTags.IS_RIVER, StarcatcherTags.IS_MUSHROOM_FIELDS)
                         .withMustBeCaughtAboveY(50)
                         .withMustBeCaughtBelowY(100);
 
@@ -639,6 +752,14 @@ public record FishProperties(
                         .withMustBeCaughtAboveY(50)
                         .withMustBeCaughtBelowY(100);
 
+        public static final WorldRestrictions OVERWORLD_SAVANNA =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(BiomeTags.IS_SAVANNA.location())
+                        .withMustBeCaughtAboveY(50)
+                        .withMustBeCaughtBelowY(100);
+
+
         public static final WorldRestrictions OVERWORLD_COLD_RIVER =
                 WorldRestrictions.DEFAULT
                         .withDims(Level.OVERWORLD.location())
@@ -650,6 +771,13 @@ public record FishProperties(
                 WorldRestrictions.DEFAULT
                         .withDims(Level.OVERWORLD.location())
                         .withBiomesTags(StarcatcherTags.IS_COLD_OCEAN)
+                        .withMustBeCaughtAboveY(50)
+                        .withMustBeCaughtBelowY(100);
+
+        public static final WorldRestrictions OVERWORLD_FROZEN_OCEAN =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(StarcatcherTags.IS_FROZEN_OCEAN)
                         .withMustBeCaughtAboveY(50)
                         .withMustBeCaughtBelowY(100);
 
@@ -696,10 +824,28 @@ public record FishProperties(
                         .withBiomesTags(StarcatcherTags.IS_CHERRY_GROVE)
                         .withMustBeCaughtAboveY(50);
 
-        public static final WorldRestrictions OVERWORLD_SWAMP =
+        public static final WorldRestrictions OVERWORLD_JUNGLES_AND_SWAMPS =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomesTags(StarcatcherTags.IS_SWAMP, BiomeTags.IS_JUNGLE.location())
+                        .withMustBeCaughtAboveY(50);
+
+        public static final WorldRestrictions OVERWORLD_SWAMPS =
                 WorldRestrictions.DEFAULT
                         .withDims(Level.OVERWORLD.location())
                         .withBiomesTags(StarcatcherTags.IS_SWAMP)
+                        .withMustBeCaughtAboveY(50);
+
+        public static final WorldRestrictions OVERWORLD_SWAMP_ONLY =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomes(Biomes.SWAMP.location())
+                        .withMustBeCaughtAboveY(50);
+
+        public static final WorldRestrictions OVERWORLD_MANGROVE_SWAMP =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withBiomes(Biomes.MANGROVE_SWAMP.location())
                         .withMustBeCaughtAboveY(50);
 
         public static final WorldRestrictions OVERWORLD_DARK_FOREST =
@@ -780,6 +926,27 @@ public record FishProperties(
                         .withDims(Level.END.location())
                         .withBiomesTags(BiomeTags.IS_END.location())
                         .withBiomesBlacklist(Biomes.THE_END.location());
+
+        public static final WorldRestrictions OVERWORLD_VOID =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.OVERWORLD.location())
+                        .withMustBeCaughtBelowY(-64)
+                        .withFluids(ResourceLocation.withDefaultNamespace("empty"));
+
+        public static final WorldRestrictions NETHER_VOID =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.NETHER.location())
+                        .withMustBeCaughtBelowY(0)
+                        .withFluids(ResourceLocation.withDefaultNamespace("empty"));
+
+        public static final WorldRestrictions END_VOID =
+                WorldRestrictions.DEFAULT
+                        .withDims(Level.END.location())
+                        .withFluids(ResourceLocation.withDefaultNamespace("empty"));
+
+        public static final WorldRestrictions VOID =
+                WorldRestrictions.DEFAULT
+                        .withFluids(ResourceLocation.withDefaultNamespace("empty"));
 
         public WorldRestrictions withDims(ResourceLocation... dims)
         {
@@ -981,7 +1148,7 @@ public record FishProperties(
         public static Difficulty THREE_BIG_TWO_THIN = new Difficulty(
                 9, 20, 0,
                 List.of(),
-                SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
+                SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.THIN, SweetSpot.THIN
         ).vanishing();
         public static Difficulty THREE_BIG_TWO_THIN_VANISHING = THREE_BIG_TWO_THIN.vanishing();
 
@@ -989,6 +1156,12 @@ public record FishProperties(
                 12, 20, 0,
                 List.of(),
                 SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
+        );
+
+        public static Difficulty TWO_STONE_SPOTS_EASY = new Difficulty(
+                12, 20, 0,
+                List.of(),
+                SweetSpot.STONE_5, SweetSpot.STONE_5, SweetSpot.STONE_5, SweetSpot.STONE_5
         );
 
         public static Difficulty FOUR_STONE_SPOTS = new Difficulty(
@@ -1032,7 +1205,7 @@ public record FishProperties(
         public static Difficulty FOUR_AQUA = new Difficulty(
                 10, 20, 1,
                 List.of(),
-                SweetSpot.AQUA, SweetSpot.AQUA
+                SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
         );
 
         public static Difficulty SINGLE_THIN_FAST = new Difficulty(
@@ -1313,6 +1486,15 @@ public record FishProperties(
                 0xff0000
         );
 
+        public static SweetSpot STONE_5 = new SweetSpot(
+                ModSweetSpotsBehaviour.NORMAL,
+                RL_STONE,
+                33,
+                5,
+                0x494949
+        );
+
+
         public static SweetSpot STONE = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
                 RL_STONE,
@@ -1325,7 +1507,7 @@ public record FishProperties(
                 ModSweetSpotsBehaviour.AQUA,
                 RL_AQUA,
                 22,
-                15,
+                8,
                 0x387982
         );
 
@@ -1624,26 +1806,31 @@ public record FishProperties(
 
     public static int getChance(FishProperties fp, Entity entity, ItemStack rod)
     {
-        Level level = entity.level();
+        return getChance(fp, entity.level(), entity.blockPosition(), rod);
+    }
 
-        if (!isSeasonCorrect(entity, fp)) return 0;
+    public static int getChance(FishProperties fp, Level level, BlockPos bp, ItemStack rod)
+    {
+        if(ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(ModItems.DEV_WORM)) return fp.baseChance;
 
-        if (!isDimensionCorrect(entity, fp)) return 0;
+        if (!isSeasonCorrect(level, fp)) return 0;
 
-        if (!isBiomeCorrect(entity, fp)) return 0;
+        if (!isDimensionCorrect(level, fp)) return 0;
 
-        if (!isElevationCorrect(entity, fp)) return 0;
+        if (!isBiomeCorrect(level, bp, fp)) return 0;
 
-        if (!isDaytimeCorrect(entity, fp)) return 0;
+        if (!isElevationCorrect(bp, fp)) return 0;
 
-        if (!isWeatherCorrect(entity, fp, rod)) return 0;
+        if (!isDaytimeCorrect(level, fp)) return 0;
+
+        if (!isWeatherCorrect(level, fp, rod)) return 0;
 
         //fluid check
-        boolean fluid = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition()).getType())));
-        boolean fluidAbove = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition().above()).getType())));
-        boolean fluidBelow = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(entity.blockPosition().below()).getType())));
+        boolean fluid = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp).getType())));
+        boolean fluidAbove = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.above()).getType())));
+        boolean fluidBelow = fp.wr.fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.below()).getType())));
 
-        if (!fluid && !fluidAbove && !fluidBelow && entity instanceof FishingBobEntity)
+        if (!fluid && !fluidAbove && !fluidBelow)
             return 0;
 
         //correct bait chance bonus
@@ -1661,14 +1848,14 @@ public record FishProperties(
         List<FishProperties> list = new ArrayList<>();
 
         for (FishProperties fp : entity.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
-            if (isDimensionCorrect(entity, fp) && isBiomeCorrect(entity, fp) && isElevationCorrect(entity, fp) && fp.hasGuideEntry && fp.baseChance != 0) list.add(fp);
+            if (isDimensionCorrect(entity.level(), fp) && isBiomeCorrect(entity.level(), entity.blockPosition(), fp) && isElevationCorrect(entity.blockPosition(), fp) && fp.hasGuideEntry && fp.baseChance != 0)
+                list.add(fp);
 
         return list;
     }
 
-    public static boolean isWeatherCorrect(Entity entity, FishProperties fp, ItemStack rod)
+    public static boolean isWeatherCorrect(Level level, FishProperties fp, ItemStack rod)
     {
-        Level level = entity.level();
         ItemStack bait = ModDataComponents.has(rod, ModDataComponents.BAIT) ? ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy() : ItemStack.EMPTY;
 
         if (!bait.is(ModItems.METEOROLOGICAL_BAIT))
@@ -1694,9 +1881,8 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isDaytimeCorrect(Entity entity, FishProperties fp)
+    public static boolean isDaytimeCorrect(Level level, FishProperties fp)
     {
-        Level level = entity.level();
         //time check
         if (fp.daytime() != Daytime.ALL)
         {
@@ -1724,23 +1910,22 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isElevationCorrect(Entity entity, FishProperties fp)
+    public static boolean isElevationCorrect(BlockPos bp, FishProperties fp)
     {
         //y level check >
-        if (entity.position().y > fp.wr.mustBeCaughtBelowY()) return false;
+        if (bp.getY() > fp.wr.mustBeCaughtBelowY()) return false;
 
         //y level check <
-        if (entity.position().y < fp.wr.mustBeCaughtAboveY()) return false;
+        if (bp.getY() < fp.wr.mustBeCaughtAboveY()) return false;
 
         return true;
     }
 
-    public static boolean isBiomeCorrect(Entity entity, FishProperties fp)
+    public static boolean isBiomeCorrect(Level level, BlockPos bp, FishProperties fp)
     {
-        Level level = entity.level();
         List<ResourceLocation> biomes = getBiomesAsList(fp, level);
         List<ResourceLocation> blacklist = getBiomesBlacklistAsList(fp, level);
-        ResourceLocation currentBiome = level.getBiome(entity.blockPosition()).getKey().location();
+        ResourceLocation currentBiome = level.getBiome(bp).getKey().location();
 
         if (!biomes.isEmpty() && !biomes.contains(currentBiome))
             return false;
@@ -1750,36 +1935,36 @@ public record FishProperties(
         return true;
     }
 
-    public static boolean isDimensionCorrect(Entity entity, FishProperties fp)
+    public static boolean isDimensionCorrect(Level level, FishProperties fp)
     {
         //dimension  check
-        if (!fp.wr.dims.isEmpty() && !fp.wr().dims().contains(entity.level().dimension().location()))
+        if (!fp.wr.dims.isEmpty() && !fp.wr().dims().contains(level.dimension().location()))
             return false;
 
-        if (fp.wr.dimsBlacklist.contains(entity.level().dimension().location()))
+        if (fp.wr.dimsBlacklist.contains(level.dimension().location()))
             return false;
         return true;
     }
 
 
-    public static boolean isSeasonCorrect(Entity entity, FishProperties fp)
+    public static boolean isSeasonCorrect(Level level, FishProperties fp)
     {
         //Serene Seasons check
         if (ModList.get().isLoaded("sereneseasons") && Config.ENABLE_SEASONS.get())
         {
-            if (!SereneSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!SereneSeasonsCompat.canCatch(fp, level)) return false;
         }
 
         //Ecliptic Seasons check
         if (ModList.get().isLoaded("eclipticseasons") && Config.ENABLE_SEASONS.get())
         {
-            if (!EclipticSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!EclipticSeasonsCompat.canCatch(fp, level)) return false;
         }
 
         //TerraFirmaCraft Seasons check
         if (ModList.get().isLoaded("tfc") && Config.ENABLE_SEASONS.get())
         {
-            if (!TerraFirmaCraftSeasonsCompat.canCatch(fp, entity.level())) return false;
+            if (!TerraFirmaCraftSeasonsCompat.canCatch(fp, level)) return false;
         }
         return true;
     }
