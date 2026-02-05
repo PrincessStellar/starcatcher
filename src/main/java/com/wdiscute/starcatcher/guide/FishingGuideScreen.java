@@ -1342,16 +1342,17 @@ public class FishingGuideScreen extends Screen
             renderImage(guiGraphics, NEW_FISH, xOffset - 52, 0);
 
         //render fish tooltip
-        if (mouseX > uiX + xOffset && mouseX < uiX + xOffset + 65 && mouseY > uiY + 45 && mouseY < uiY + 110 && fcc != null)
+        if (mouseX > uiX + xOffset && mouseX < uiX + xOffset + 65 && mouseY > uiY + 45 && mouseY < uiY + 110)
         {
-            if (fp.catchInfo().alwaysSpawnEntity())
+            if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get()))
             {
                 guiGraphics.renderTooltip(this.font,
                         Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")),
                         mouseX, mouseY);
             } else
             {
-                guiGraphics.renderTooltip(this.font, is, mouseX, mouseY);
+                if (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get())
+                    guiGraphics.renderTooltip(this.font, is, mouseX, mouseY);
             }
         }
 
