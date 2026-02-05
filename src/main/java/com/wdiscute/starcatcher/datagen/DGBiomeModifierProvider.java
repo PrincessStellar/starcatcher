@@ -38,17 +38,17 @@ public class DGBiomeModifierProvider extends DatapackBuiltinEntriesProvider
         HolderSet.Named<Biome> isNether = context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_NETHER);
         HolderSet.Named<Biome> isEnd = context.lookup(Registries.BIOME).getOrThrow(BiomeTags.IS_END);
 
-        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_overworld")),
-                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isOverworld,
-                new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
-
-        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_nether")),
-                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isNether,
-                        new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
-
-        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_end")),
-                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isEnd,
-                        new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
+//        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_overworld")),
+//                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isOverworld,
+//                new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
+//
+//        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_nether")),
+//                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isNether,
+//                        new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
+//
+//        context.register(ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Starcatcher.rl("fish_spawn_end")),
+//                BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(isEnd,
+//                        new MobSpawnSettings.SpawnerData(ModEntities.FISH.get(), 10, 2, 3)));
     }
 
     @Override
