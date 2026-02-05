@@ -1744,7 +1744,16 @@ public class FishingGuideScreen extends Screen
                 case "-2147483648, 0" -> Component.translatable("gui.guide.deepslate");
                 case "-2147483648, 2147483647" -> Component.translatable("gui.guide.no_restriction");
 
-                default -> Component.literal("> " + above + ", < " + below);
+                default ->
+                {
+                    if (above == Integer.MIN_VALUE)
+                        yield Component.translatable("gui.guide.below").append(Component.literal(below + ""));
+
+                    if (below == Integer.MAX_VALUE)
+                        yield Component.translatable("gui.guide.above").append(Component.literal(above + ""));
+
+                    yield Component.literal("> " + above + " < " + below);
+                }
             };
 
             //color the text
