@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.registry.ModRecipes;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
@@ -31,6 +32,7 @@ public record FishingRodSmithingRecipe(
     {
         //netherite upgrade
         if (input.template().is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)
+                && input.base().is(StarcatcherTags.RODS)
                 && !ModDataComponents.has(input.base(), ModDataComponents.NETHERITE_UPGRADE)
                 && input.addition().is(Items.NETHERITE_INGOT)
         ) return true;
