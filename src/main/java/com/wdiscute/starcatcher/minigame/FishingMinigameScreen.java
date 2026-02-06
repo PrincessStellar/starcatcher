@@ -198,6 +198,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     }
 
+    public List<ActiveSweetSpot> getActiveSweetSpots()
+    {
+        return activeSweetSpots;
+    }
+
     public void addModifier(AbstractMinigameModifier mod)
     {
         mod.onAdd(this);
