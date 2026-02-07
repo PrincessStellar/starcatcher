@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-03T11:22:59.420219	FishingProperties
+// 1.21.1	2026-02-07T17:43:30.2853521	FishingProperties
 be60f2d857de148fd2caf6c1b6532125060346b1 data/alexscaves/starcatcher/fish/lanternfish.json
 4c0f285125bd37c9ab9d7ff5709b97ad7f8eddc2 data/alexscaves/starcatcher/fish/radgill.json
 5a6683335e79b9a0904aadaac422ada97586e2ba data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -122,7 +122,7 @@ a3af9d08a05011ba6a9ac2273594fbbfc367256c data/hybrid-aquatic/starcatcher/fish/su
 6f0c11c5ce553315db9fbd98c0d09254e93051a1 data/hybrid-aquatic/starcatcher/fish/triggerfish.json
 e850fc4190f1c103e0712bc719c658de0663383f data/hybrid-aquatic/starcatcher/fish/tuna.json
 a64ce61d144772bbed74c1b2c0b6013d01eccc9c data/minecraft/starcatcher/fish/cod.json
-e5d30f01830c33ac534e8317516add0d63b326a3 data/minecraft/starcatcher/fish/creeper_head.json
+87a51d1efb947954a43dd0b2468cab6cec3e370b data/minecraft/starcatcher/fish/creeper_head.json
 9d533ef2de67bf8e054ab240d79dde4cf3ddc5ef data/minecraft/starcatcher/fish/nether_star.json
 5ff2435de2ffef7cb8c5d7e53f0ee1e3c7fc1d58 data/minecraft/starcatcher/fish/pufferfish.json
 db6a6de5c71973fb9fa17e41a71b85c9b391cd37 data/minecraft/starcatcher/fish/rotten_flesh.json
@@ -161,7 +161,7 @@ eeafefa73d3227c9a51364d8bb6e879821eb10e1 data/starcatcher/starcatcher/fish/borea
 991f1aedeb4e8243dc29f2fdeec812b455a06cbd data/starcatcher/starcatcher/fish/bright_amethyst_snapper.json
 3d7feda5c27f04905b803d7240dd4b606f8eb0c7 data/starcatcher/starcatcher/fish/cactifish.json
 9776cbee35f32b83f2618de761f2c5f2d077308b data/starcatcher/starcatcher/fish/carpenjoe.json
-5b085bb4cbfc2eb2659c70b25d857b0f0f13fde7 data/starcatcher/starcatcher/fish/cerberay.json
+f24142c6569670f6021a556d009a28ec5efa30c1 data/starcatcher/starcatcher/fish/cerberay.json
 3adf0a304101d0af09048eb06d9eea11dab73d00 data/starcatcher/starcatcher/fish/charfish.json
 d63ee53ea5010359de91968118462c9a7a1fdaa5 data/starcatcher/starcatcher/fish/chorus_crab.json
 ab051352f1dfbbf3eae018941a568d0c285bd501 data/starcatcher/starcatcher/fish/cinder_squid.json

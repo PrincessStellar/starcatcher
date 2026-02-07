@@ -12,7 +12,7 @@ import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.ModItems;
 import io.netty.buffer.ByteBuf;
@@ -50,6 +50,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 //      <><|    <- fish
 public record FishProperties(
@@ -1005,17 +1006,17 @@ public record FishProperties(
             int speed,
             int penalty,
             float decay,
-            List<ResourceLocation> modifiers,
+            List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers,
             List<SweetSpot> sweetSpots
     )
     {
 
-        public Difficulty(int speed, int penalty, float decay, List<ResourceLocation> modifiers, SweetSpot... sweetSpots)
+        public Difficulty(int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
         {
             this(speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
         }
 
-        public Difficulty withModifiers(List<ResourceLocation> modifiers)
+        public Difficulty withModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)
         {
             return new Difficulty(this.speed, this.penalty, this.decay, modifiers, this.sweetSpots);
         }
@@ -1246,7 +1247,7 @@ public record FishProperties(
 
         public static Difficulty CREEPER = new Difficulty(
                 10, 20, 1,
-                List.of(ModMinigameModifiers.SPAWN_TNT_SWEET_SPOTS.getFirst()),
+                List.of(new SpawnSweetSpotsModifier(-1, 5, 0.25f, SweetSpot.TNT, true).toDoubleSup()),
                 SweetSpot.CREEPER, SweetSpot.CREEPER
         );
 
@@ -1292,7 +1293,7 @@ public record FishProperties(
 
         public static Difficulty CERBERAY = new Difficulty(
                 16, 10, 1.5f,
-                List.of(ModMinigameModifiers.SPAWN_TNT_SWEET_SPOTS_PLUS.getFirst(), ModMinigameModifiers.NIKDO53_MODIFIER.getFirst()),
+                List.of(new SpawnSweetSpotsModifier(-1, 4, 0.50f, SweetSpot.TNT, true).toDoubleSup(), ModMinigameModifiers.NIKDO53_MODIFIER),
                 SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
         );
 
@@ -1304,7 +1305,7 @@ public record FishProperties(
                         Codec.INT.fieldOf("speed").forGetter(Difficulty::speed),
                         Codec.INT.fieldOf("missPenalty").forGetter(Difficulty::penalty),
                         Codec.FLOAT.fieldOf("decay").forGetter(Difficulty::decay),
-                        ResourceLocation.CODEC.listOf().fieldOf("modifiers").forGetter(Difficulty::modifiers),
+                        AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC.fieldOf("modifiers").forGetter(Difficulty::modifiers),
                         SweetSpot.LIST_CODEC.fieldOf("sweetspots").forGetter(Difficulty::sweetSpots)
                 ).apply(instance, Difficulty::new));
 
@@ -1313,7 +1314,7 @@ public record FishProperties(
                 ByteBufCodecs.INT, Difficulty::speed,
                 ByteBufCodecs.INT, Difficulty::penalty,
                 ByteBufCodecs.FLOAT, Difficulty::decay,
-                ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list()), Difficulty::modifiers,
+                ByteBufCodecs.fromCodec(AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC), Difficulty::modifiers,
                 SweetSpot.LIST_STREAM_CODEC, Difficulty::sweetSpots,
                 Difficulty::new
         );

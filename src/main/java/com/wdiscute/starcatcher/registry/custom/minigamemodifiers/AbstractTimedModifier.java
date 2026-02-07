@@ -1,16 +1,23 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
-public abstract class AbstractTimedModifier extends AbstractMinigameModifier
-{
-    int length;
+public abstract class AbstractTimedModifier extends AbstractMinigameModifier {
+    int length = -1;
 
-    public AbstractTimedModifier(int length){
+    public AbstractTimedModifier(int length) {
         this.length = length;
+    }
+
+    public AbstractTimedModifier() {
+
+    }
+
+    public int getLength(){
+        return length;
     }
 
     @Override
     public void tick() {
-        if (tickCount >= length) {
+        if (length > 0 && tickCount >= length) {
             removed = true;
         }
         super.tick();
