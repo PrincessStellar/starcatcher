@@ -1,10 +1,26 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.storage.FishProperties;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.function.Supplier;
 
 public class SteadyBobberModifier extends AbstractMinigameModifier
 {
+
+    public static final MapCodec<SteadyBobberModifier> CODEC = MapCodec.unit(SteadyBobberModifier::new);
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.BIGGER_GREEN_SWEET_SPOTS;
+    }
 
     @Override
     public ActiveSweetSpot onSpotAdded(ActiveSweetSpot ass)

@@ -2,6 +2,9 @@ package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
@@ -9,6 +12,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.function.Supplier;
 
 public class Nikdo53Modifier extends AbstractMinigameModifier
 {
@@ -21,15 +27,29 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     public boolean isHoldingLeft = false;
     public boolean isHoldingRight = false;
 
-    Options options = Minecraft.getInstance().options;
+    public static final MapCodec<Nikdo53Modifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.INT.optionalFieldOf("layers", 2).forGetter(mod -> mod.maxPointerLayer)
+            ).apply(instance, Nikdo53Modifier::new));
+
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.NIKDO53_MODIFIER;
+    }
 
     public Nikdo53Modifier(){
         maxPointerLayer = 1;
     }
 
     // This one probably shouldn't be used, but it sure is funny
-    public Nikdo53Modifier(int maxPointerLayer){
-       this.maxPointerLayer = maxPointerLayer;
+    public Nikdo53Modifier(int layers){
+       this.maxPointerLayer = layers - 1;
     }
 
     @Override
@@ -43,24 +63,28 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
     @Override
     public void onKeyReleased(int key, int scanCode, int keyModifiers) {
-        if (key == options.keyLeft.getKey().getValue()) {
+        if (key == getOptions().keyLeft.getKey().getValue()) {
             isHoldingLeft = false;
         }
 
-        if (key == options.keyRight.getKey().getValue()){
+        if (key == getOptions().keyRight.getKey().getValue()){
             isHoldingRight = false;
         }
 
     }
 
+    private static Options getOptions() {
+        return Minecraft.getInstance().options;
+    }
+
     @Override
     public void onKeyPress(int key, int scanCode, int keyModifiers) {
-        if (key == options.keyLeft.getKey().getValue()) {
+        if (key == getOptions().keyLeft.getKey().getValue()) {
             pointerLayer--;
             isHoldingLeft = true;
         }
 
-       if (key == options.keyRight.getKey().getValue()){
+       if (key == getOptions().keyRight.getKey().getValue()){
            pointerLayer++;
            isHoldingRight = true;
        }

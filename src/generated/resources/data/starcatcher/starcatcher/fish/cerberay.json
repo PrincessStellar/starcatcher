@@ -19,8 +19,26 @@
     "decay": 1.5,
     "missPenalty": 10,
     "modifiers": [
-      "starcatcher:spawn_tnt_sweet_spots_plus",
-      "starcatcher:nikdo53_modifier"
+      {
+        "type": "starcatcher:spawn_sweet_spots",
+        "chance": 0.5,
+        "cooldown": 4,
+        "sudoku_vanish": true,
+        "sweet_spot": {
+          "color_as_int": 16711680,
+          "hitbox_size_in_pixels": 33,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 30,
+          "sweet_spot_type": "starcatcher:tnt",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/tnt.png",
+          "vanishing_rate": 0.0
+        }
+      },
+      {
+        "type": "starcatcher:nikdo53_modifier",
+        "layers": 1
+      }
     ],
     "speed": 16,
     "sweetspots": [

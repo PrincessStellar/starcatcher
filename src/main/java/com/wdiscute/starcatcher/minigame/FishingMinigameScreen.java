@@ -172,10 +172,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         addModifier(new BaseModifier());
 
         //add every modifier from fp json which is registered
-        for (ResourceLocation rl : fp.dif().modifiers())
+        for (Supplier<Supplier<AbstractMinigameModifier>> mod : fp.dif().modifiers())
         {
-            Optional<Supplier<AbstractMinigameModifier>> newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
-            newModifier.ifPresent(mod -> addModifier(mod.get()));
+            addModifier(mod.get().get());
         }
 
         //cycle through all the items to check for modifiers
@@ -185,7 +184,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             if (ModDataComponents.has(is, ModDataComponents.MINIGAME_MODIFIERS))
                 for (ResourceLocation rl : Objects.requireNonNull(ModDataComponents.get(is, ModDataComponents.MINIGAME_MODIFIERS)))
                 {
-                    Optional<Supplier<AbstractMinigameModifier>> newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
+                    var newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
                     newModifier.ifPresent(mod -> addModifier(mod.get()));
                 }
 

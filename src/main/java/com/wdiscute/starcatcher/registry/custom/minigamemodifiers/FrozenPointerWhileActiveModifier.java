@@ -1,20 +1,42 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.sounds.SoundEvents;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.function.Supplier;
 
 public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
 {
     private final int rampTime;
 
+    public static final MapCodec<FrozenPointerWhileActiveModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
+                    Codec.INT.fieldOf("ramp_time").forGetter(mod -> mod.rampTime)
+            ).apply(instance, FrozenPointerWhileActiveModifier::new));
+
     public FrozenPointerWhileActiveModifier(int length, int rampTime)
     {
         super(length);
-        this.length = length;
         this.rampTime = rampTime;
+    }
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.FROZEN_POINTER;
     }
 
     @Override

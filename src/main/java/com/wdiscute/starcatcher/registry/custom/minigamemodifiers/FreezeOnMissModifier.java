@@ -1,12 +1,42 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import org.checkerframework.checker.units.qual.C;
 
-public class FreezeOnMissModifier extends AbstractMinigameModifier
+import java.util.function.Supplier;
+
+public class FreezeOnMissModifier extends AbstractTimedModifier
 {
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/freeze.png");
+
+    public static final MapCodec<ClearBobberModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength)
+            ).apply(instance, ClearBobberModifier::new));
+
+    public FreezeOnMissModifier(int length) {
+        super(length);
+    }
+
+    public FreezeOnMissModifier() {
+        super();
+    }
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.FREEZE_ON_MISS;
+    }
 
     @Override
     public void onMiss()

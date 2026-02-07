@@ -1,9 +1,16 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.function.Supplier;
 
 public class BaseModifier extends AbstractMinigameModifier
 {
+
+    public static final MapCodec<AbstractMinigameModifier> CODEC = MapCodec.unit(BaseModifier::new);
+
     @Override
     public void onMiss()
     {
@@ -20,6 +27,16 @@ public class BaseModifier extends AbstractMinigameModifier
         instance.perfectCatch = false;
 
         instance.consecutiveHits = 0;
+    }
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.BASE;
     }
 
     @Override

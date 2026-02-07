@@ -1,10 +1,26 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.storage.FishProperties;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.function.Supplier;
 
 public class MossyHookModifier extends AbstractMinigameModifier
 {
+    public static final MapCodec<MossyHookModifier> CODEC = MapCodec.unit(MossyHookModifier::new);
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT;
+    }
+
     @Override
     public void tick()
     {

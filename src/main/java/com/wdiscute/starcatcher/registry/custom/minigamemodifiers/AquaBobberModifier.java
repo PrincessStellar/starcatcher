@@ -1,15 +1,40 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.storage.FishProperties;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class AquaBobberModifier extends AbstractMinigameModifier
+import java.util.function.Supplier;
+
+public class AquaBobberModifier extends AbstractTimedModifier
 {
+
+    public static final MapCodec<AquaBobberModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
+                    Codec.INT.optionalFieldOf("amount", 1).forGetter(mod -> mod.numberOfSweetSpotsToAdd)
+            ).apply(instance, AquaBobberModifier::new));
+
     int numberOfSweetSpotsToAdd;
-    public AquaBobberModifier(int numberOfSweetSpotsToAdd)
+
+    public AquaBobberModifier(int length, int numberOfSweetSpotsToAdd)
     {
+        super(length);
         this.numberOfSweetSpotsToAdd = numberOfSweetSpotsToAdd;
+    }
+
+    @Override
+    public MapCodec<? extends AbstractMinigameModifier> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
+        return ModMinigameModifiers.ADD_AQUA_SWEET_SPOT;
     }
 
     @Override

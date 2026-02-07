@@ -84,7 +84,7 @@ public class ActiveSweetSpot
 
     public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss)
     {
-        this(instance, ss, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
+        this(instance, ss, instance.bobber, instance.bait, instance.hook);
     }
 
     public boolean isHoveredOver(){
