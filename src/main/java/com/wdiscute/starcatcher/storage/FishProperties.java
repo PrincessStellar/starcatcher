@@ -1328,13 +1328,24 @@ public record FishProperties(
             boolean isFlip,
             float vanishingRate,
             float movingRate,
-            int particleColor
+            int particleColor,
+            List<Supplier<Supplier<AbstractMinigameModifier>>> onHitModifiers
     )
     {
+        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, int particleColor, List<Supplier<Supplier<AbstractMinigameModifier>>> onHitModifiers)
+        {
+            this(sweetSpotType, texturePath, size, reward, false, 0, 0, particleColor, onHitModifiers);
+        }
+
         public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, int particleColor)
         {
-            this(sweetSpotType, texturePath, size, reward, false, 0, 0, particleColor);
+            this(sweetSpotType, texturePath, size, reward, false, 0, 0, particleColor, List.of());
         }
+
+        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, boolean isFlip, float vanishingRate, float movingRate, int particleColor){
+            this(sweetSpotType, texturePath, size, reward, isFlip, vanishingRate, movingRate, particleColor, List.of());
+        }
+
 
         private static final ResourceLocation RL_NORMAL = Starcatcher.rl("textures/gui/minigame/spots/normal.png");
         private static final ResourceLocation RL_NORMAL_STEADY = Starcatcher.rl("textures/gui/minigame/spots/normal_steady.png");
@@ -1366,18 +1377,25 @@ public record FishProperties(
 
         public SweetSpot flip()
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, true, this.vanishingRate, this.movingRate, this.particleColor);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, true, this.vanishingRate, this.movingRate, this.particleColor, this.onHitModifiers);
         }
 
         public SweetSpot vanishing(float vanishingRate)
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, vanishingRate, this.movingRate, this.particleColor);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, vanishingRate, this.movingRate, this.particleColor, this.onHitModifiers);
         }
 
         public SweetSpot moving(float movingRate)
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, movingRate, this.particleColor);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, movingRate, this.particleColor, this.onHitModifiers);
         }
+
+        @SafeVarargs
+        public final SweetSpot withModifiers(Supplier<Supplier<AbstractMinigameModifier>>... modifiers)
+        {
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, this.movingRate, this.particleColor, Arrays.stream(modifiers).toList());
+        }
+
 
         public static SweetSpot TRASH = new SweetSpot(
                 ModSweetSpotsBehaviour.NORMAL,
@@ -1577,7 +1595,8 @@ public record FishProperties(
                         Codec.BOOL.fieldOf("is_flip").forGetter(SweetSpot::isFlip),
                         Codec.FLOAT.fieldOf("vanishing_rate").forGetter(SweetSpot::vanishingRate),
                         Codec.FLOAT.fieldOf("moving_rate").forGetter(SweetSpot::movingRate),
-                        Codec.INT.fieldOf("color_as_int").forGetter(SweetSpot::particleColor)
+                        Codec.INT.fieldOf("color_as_int").forGetter(SweetSpot::particleColor),
+                        AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC.optionalFieldOf("add_modifiers_on_hit", List.of()).forGetter(SweetSpot::onHitModifiers)
                 ).apply(instance, SweetSpot::new));
 
         public static final Codec<List<SweetSpot>> LIST_CODEC = CODEC.listOf();
@@ -1591,6 +1610,7 @@ public record FishProperties(
                 ByteBufCodecs.FLOAT, SweetSpot::vanishingRate,
                 ByteBufCodecs.FLOAT, SweetSpot::movingRate,
                 ByteBufCodecs.INT, SweetSpot::particleColor,
+                ByteBufCodecs.fromCodec(AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC), SweetSpot::onHitModifiers,
                 SweetSpot::new
         );
 

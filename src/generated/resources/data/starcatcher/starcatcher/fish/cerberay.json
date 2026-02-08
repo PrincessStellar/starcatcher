@@ -36,8 +36,7 @@
         }
       },
       {
-        "type": "starcatcher:nikdo53_modifier",
-        "layers": 1
+        "type": "starcatcher:nikdo53_modifier"
       }
     ],
     "speed": 16,
