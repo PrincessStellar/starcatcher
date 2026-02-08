@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-07T17:43:30.2853521	FishingProperties
+// 1.21.1	2026-02-07T20:51:34.6961309	FishingProperties
 be60f2d857de148fd2caf6c1b6532125060346b1 data/alexscaves/starcatcher/fish/lanternfish.json
 4c0f285125bd37c9ab9d7ff5709b97ad7f8eddc2 data/alexscaves/starcatcher/fish/radgill.json
 5a6683335e79b9a0904aadaac422ada97586e2ba data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -161,7 +161,7 @@ eeafefa73d3227c9a51364d8bb6e879821eb10e1 data/starcatcher/starcatcher/fish/borea
 991f1aedeb4e8243dc29f2fdeec812b455a06cbd data/starcatcher/starcatcher/fish/bright_amethyst_snapper.json
 3d7feda5c27f04905b803d7240dd4b606f8eb0c7 data/starcatcher/starcatcher/fish/cactifish.json
 9776cbee35f32b83f2618de761f2c5f2d077308b data/starcatcher/starcatcher/fish/carpenjoe.json
-f24142c6569670f6021a556d009a28ec5efa30c1 data/starcatcher/starcatcher/fish/cerberay.json
+66c76a0e5f6202e2a25e4906dea772602f211e4d data/starcatcher/starcatcher/fish/cerberay.json
 3adf0a304101d0af09048eb06d9eea11dab73d00 data/starcatcher/starcatcher/fish/charfish.json
 d63ee53ea5010359de91968118462c9a7a1fdaa5 data/starcatcher/starcatcher/fish/chorus_crab.json
 ab051352f1dfbbf3eae018941a568d0c285bd501 data/starcatcher/starcatcher/fish/cinder_squid.json

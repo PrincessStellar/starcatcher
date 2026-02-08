@@ -3,15 +3,14 @@ package com.wdiscute.starcatcher.minigame;
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class ActiveSweetSpot
@@ -23,6 +22,7 @@ public class ActiveSweetSpot
     public ResourceLocation texture;
     public int reward;
     public int particleColor;
+    public List<Supplier<AbstractMinigameModifier>> onHitModifiers;
 
     //from minigame screen/rod
     public final FishingMinigameScreen instance;
@@ -68,6 +68,7 @@ public class ActiveSweetSpot
         this.thickness = ss.size();
         this.reward = ss.reward();
         this.particleColor = ss.particleColor();
+        this.onHitModifiers = ss.onHitModifiers().stream().map(Supplier::get).toList();
 
         this.bobber = bobber;
         this.bait = bait;

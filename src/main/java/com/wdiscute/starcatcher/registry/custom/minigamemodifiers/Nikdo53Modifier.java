@@ -29,7 +29,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
     public static final MapCodec<Nikdo53Modifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("layers", 2).forGetter(mod -> mod.maxPointerLayer)
+                    Codec.INT.optionalFieldOf("layers", 2).forGetter(mod -> mod.maxPointerLayer + 1)
             ).apply(instance, Nikdo53Modifier::new));
 
 
@@ -44,7 +44,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     public Nikdo53Modifier(){
-        maxPointerLayer = 1;
+        this(2);
     }
 
     // This one probably shouldn't be used, but it sure is funny
