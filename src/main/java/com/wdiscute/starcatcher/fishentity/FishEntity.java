@@ -88,7 +88,7 @@ public class FishEntity extends AbstractFish
                 kill();
             else
             {
-                FishProperties fp = available.get(U.r.nextInt(available.size() - 1));
+                FishProperties fp = available.get(U.r.nextInt(available.size()));
                 ItemStack is = new ItemStack(fp.catchInfo().fish());
                 setBodyArmorItem(is);
             }
