@@ -45,8 +45,6 @@ public interface ModMinigameModifiers
     //base
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BASE = registerMinigameModifier("base", BaseModifier::new);
 
-    //flip on every hit
-    Pair<ResourceLocation, Supplier<AbstractMinigameModifier>> FLIP_EVERY_HIT = registerMinigameModifier("flip_every_hit", FlipEveryHitModifier::new);
 
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> FROZEN_POINTER = registerMinigameModifier("frozen_pointer", () -> new FrozenPointerWhileActiveModifier(20, 10));
 
