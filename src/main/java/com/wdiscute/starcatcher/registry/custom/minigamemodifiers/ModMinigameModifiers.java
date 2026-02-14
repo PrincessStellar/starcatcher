@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import it.unimi.dsi.fastutil.Pair;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -46,7 +48,7 @@ public interface ModMinigameModifiers
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BASE = registerMinigameModifier("base", BaseModifier::new);
 
     //flip on every hit
-    Pair<ResourceLocation, Supplier<AbstractMinigameModifier>> FLIP_EVERY_HIT = registerMinigameModifier("flip_every_hit", FlipEveryHitModifier::new);
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> FLIP_EVERY_HIT = registerMinigameModifier("flip_every_hit", FlipEveryHitModifier::new);
 
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> FROZEN_POINTER = registerMinigameModifier("frozen_pointer", () -> new FrozenPointerWhileActiveModifier(20, 10));
 
