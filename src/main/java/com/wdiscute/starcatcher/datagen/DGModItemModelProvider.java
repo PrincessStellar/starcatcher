@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -52,6 +53,11 @@ public class DGModItemModelProvider extends ItemModelProvider {
         for (DeferredHolder<Item, ? extends Item> item : ModItems.TRASH_REGISTRY.getEntries()) {
             simpleItem((DeferredItem<? extends Item>) item);
         }
+
+
+        simpleBlockItem(ModBlocks.TROPHY_BRONZE.get());
+        simpleBlockItem(ModBlocks.TROPHY_SILVER.get());
+        simpleBlockItem(ModBlocks.TROPHY_GOLD.get());
     }
 
     private ItemModelBuilder simpleItem(DeferredItem<? extends Item> item) {

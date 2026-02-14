@@ -17,9 +17,9 @@ public interface ModBlocks
 {
     DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
 
-    DeferredBlock<Block> TROPHY_GOLD = registerBlockDatagen("trophy_gold", TrophyBlock::new);
-    DeferredBlock<Block> TROPHY_SILVER = registerBlockDatagen("trophy_silver", TrophyBlock::new);
-    DeferredBlock<Block> TROPHY_BRONZE = registerBlockDatagen("trophy_bronze", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_GOLD = registerBlock("trophy_gold", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_SILVER = registerBlock("trophy_silver", TrophyBlock::new);
+    DeferredBlock<Block> TROPHY_BRONZE = registerBlock("trophy_bronze", TrophyBlock::new);
 
     DeferredBlock<Block> STAND = registerBlock("tournament_stand", StandBlock::new);
 
@@ -38,18 +38,6 @@ public interface ModBlocks
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
     {
         ModItems.BLOCKITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-    }
-
-    private static <T extends Block> DeferredBlock<T> registerBlockDatagen(String name, Supplier<T> block)
-    {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItemDatagen(name, toReturn);
-        return toReturn;
-    }
-
-    private static <T extends Block> void registerBlockItemDatagen(String name, DeferredBlock<T> block)
-    {
-        ModItems.ITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     static void register(IEventBus eventBus)
