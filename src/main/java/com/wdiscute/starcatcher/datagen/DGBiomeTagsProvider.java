@@ -120,7 +120,7 @@ public class DGBiomeTagsProvider extends BiomeTagsProvider
         this.tag(create(StarcatcherTags.IS_WARM_OCEAN))
                 .addOptional(Biomes.WARM_OCEAN.location())
                 .addOptional(Biomes.LUKEWARM_OCEAN.location())
-                .addOptional(Biomes.DEEP_FROZEN_OCEAN.location())
+                .addOptional(Biomes.DEEP_LUKEWARM_OCEAN.location())
         ;
 
         this.tag(create(StarcatcherTags.IS_WARM_RIVER))
