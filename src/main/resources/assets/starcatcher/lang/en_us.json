@@ -679,8 +679,11 @@
   "gui.guide.page.hooks.left.6" : "different modifiers to aid",
   "gui.guide.page.hooks.left.7" : "catching even the most",
   "gui.guide.page.hooks.left.8" : "challenging fish!",
-  "gui.guide.page.hooks.left.9" : "Use crouch + right click",
-  "gui.guide.page.hooks.left.10" : "to open the rod's menu.",
+  "gui.guide.page.hooks.left.9" : "",
+  "gui.guide.page.hooks.left.10" : "  Use crouch + right click",
+  "gui.guide.page.hooks.left.11" : "to open the rod's menu",
+  "gui.guide.page.hooks.left.12" : "and slot your hooks, bobbers",
+  "gui.guide.page.hooks.left.13" : "and baits.",
 
   "gui.guide.page.hooks.right.0" : "",
   "gui.guide.page.hooks.right.1" : "",
@@ -691,8 +694,12 @@
   "gui.guide.page.hooks.right.6" : "faster, but may also contain",
   "gui.guide.page.hooks.right.7" : "modifiers!",
   "gui.guide.page.hooks.right.8" : "",
-  "gui.guide.page.hooks.right.9" : "  Some fish might only bite",
-  "gui.guide.page.hooks.right.10" : "whilst using the correct bait.",
+  "gui.guide.page.hooks.right.9" : "  Some fish might be likelier",
+  "gui.guide.page.hooks.right.10" : "to bite when using the",
+  "gui.guide.page.hooks.right.11" : "correct bait, and others",
+  "gui.guide.page.hooks.right.12" : "might not even bite at all",
+  "gui.guide.page.hooks.right.13" : "unless the correct bait",
+  "gui.guide.page.hooks.right.14" : "is being used.",
 
 
 
