@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -34,6 +35,7 @@ public class SecretNote extends Item
     @OnlyIn(Dist.CLIENT)
     private void openScreen(Note note)
     {
+        Minecraft.getInstance().player.playSound(SoundEvents.BOOK_PAGE_TURN);
         Minecraft.getInstance().setScreen(new SecretNoteScreen(note));
     }
 
