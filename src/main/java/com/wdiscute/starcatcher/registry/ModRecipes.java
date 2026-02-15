@@ -1,9 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.recipe.FishingRodSmithingRecipe;
-import com.wdiscute.starcatcher.recipe.ModifierShapedRecipe;
-import com.wdiscute.starcatcher.recipe.ModifierShapelessRecipe;
+import com.wdiscute.starcatcher.recipe.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.neoforged.bus.api.IEventBus;
@@ -16,8 +14,14 @@ public class ModRecipes
     public static final DeferredRegister<RecipeSerializer<?>> REGISTRY =
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, Starcatcher.MOD_ID);
 
-    public static final  Supplier<RecipeSerializer<FishingRodSmithingRecipe>> FISHING_ROD_SMITHING =
-            REGISTRY.register("fishing_rod_smithing", FishingRodSmithingRecipe.Serializer::new);
+    public static final  Supplier<RecipeSerializer<NetheriteUpgradeSmithingRecipe>> FISHING_ROD_SMITHING =
+            REGISTRY.register("netherite_upgraded", NetheriteUpgradeSmithingRecipe.Serializer::new);
+
+    public static final  Supplier<RecipeSerializer<TackleSkinSmithingRecipe>> TACKLE_SKIN_SMITHING =
+            REGISTRY.register("tackle_skin", TackleSkinSmithingRecipe.Serializer::new);
+
+    public static final  Supplier<RecipeSerializer<FishingRodSkinSmithingRecipe>> FISHING_ROD_SKIN_SMITHING =
+            REGISTRY.register("fishing_rod_skin", FishingRodSkinSmithingRecipe.Serializer::new);
 
     public static final  Supplier<RecipeSerializer<ModifierShapedRecipe>> MODIFIER_SHAPED_RECIPE =
             REGISTRY.register("modifier_shaped_recipe", ModifierShapedRecipe.Serializer::new);
