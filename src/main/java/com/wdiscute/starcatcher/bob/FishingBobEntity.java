@@ -105,7 +105,7 @@ public class FishingBobEntity extends Projectile
 
         entityData.set(VOID, voidHook);
 
-        survivesLava = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || ModDataComponents.get(rod, ModDataComponents.HOOK).stack().is(StarcatcherTags.HOOK_SURVIVES_LAVA);
+        survivesLava = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
 
         minTicksToFish = 100;
         maxTicksToFish = 300;

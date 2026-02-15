@@ -164,6 +164,8 @@
 
   "tooltip.starcatcher.modifiers": "Fishing Modifiers:",
 
+  "tooltip.modifier.starcatcher.survives_lava.0": "Allows for lava-fishing",
+
   "tooltip.modifier.starcatcher.freeze_on_miss.0": "Missing a sweet-spot will cause your",
   "tooltip.modifier.starcatcher.freeze_on_miss.1": "reel to freeze up for a short period",
 
@@ -243,8 +245,6 @@
   "item.starcatcher.gold_hook": "Gold Hook",
   "item.starcatcher.mossy_hook": "Mossy Hook",
   "item.starcatcher.crystal_hook": "Crystal Hook",
-  "tooltip.starcatcher.crystal_hook.0": "A durable fire resistant hook often used by",
-  "tooltip.starcatcher.crystal_hook.1": "anglers who have yet to upgraded their fishing rod.",
   "item.starcatcher.stone_hook": "Stone Hook",
   "item.starcatcher.split_hook": "Split Hook",
   "item.starcatcher.stabilizing_hook": "Stabilizing Hook",
@@ -316,28 +316,11 @@
   "tooltip.starcatcher.tackle": "Tackle Skin:",
 
   "item.starcatcher.kimbe_smithing_template": "Kimbe Tackle Smithing Template",
-  "tooltip.starcatcher.kimbe_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.kimbe_smithing_template.1": "Smithing Table to change your tackle's appearance.",
-
   "item.starcatcher.king_smithing_template": "King Tackle Smithing Template",
-  "tooltip.starcatcher.king_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.king_smithing_template.1": "Smithing Table to change your tackle's appearance.",
-
   "item.starcatcher.frog_smithing_template": "Frog Tackle Smithing Template",
-  "tooltip.starcatcher.frog_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.frog_smithing_template.1": "Smithing Table to change your tackle's appearance.",
-
   "item.starcatcher.clear_smithing_template": "Clear Tackle Smithing Template",
-  "tooltip.starcatcher.clear_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.clear_smithing_template.1": "Smithing Table to change your tackle's appearance.",
-
   "item.starcatcher.pearl_smithing_template": "Pearl Tackle Smithing Template",
-  "tooltip.starcatcher.pearl_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.pearl_smithing_template.1": "Smithing Table to change your tackle's appearance.",
-
   "item.starcatcher.colorful_smithing_template": "Colorful Tackle Smithing Template",
-  "tooltip.starcatcher.colorful_smithing_template.0": "A tackle smithing template for your rod which may be applied at a",
-  "tooltip.starcatcher.colorful_smithing_template.1": "Smithing Table to change your tackle's appearance.",
 
 
 

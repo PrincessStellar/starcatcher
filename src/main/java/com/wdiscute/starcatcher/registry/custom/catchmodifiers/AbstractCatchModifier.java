@@ -42,6 +42,11 @@ public abstract class AbstractCatchModifier
 
     }
 
+    public boolean survivesLava()
+    {
+        return false;
+    }
+
     //server only
     public void onReelStart()
     {

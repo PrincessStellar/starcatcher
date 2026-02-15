@@ -49,6 +49,4 @@ public class StarcatcherTags
     public static final TagKey<Item> RARE_FISHES = ItemTags.create(Starcatcher.rl("rare_fishes"));
     public static final TagKey<Item> EPIC_FISHES = ItemTags.create(Starcatcher.rl("epic_fishes"));
     public static final TagKey<Item> LEGENDARY_FISHES = ItemTags.create(Starcatcher.rl("legendary_fishes"));
-
-    public static final TagKey<Item> HOOK_SURVIVES_LAVA = ItemTags.create(Starcatcher.rl("hook_survives_lava"));
 }
