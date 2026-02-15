@@ -3,8 +3,7 @@ package com.wdiscute.starcatcher.compat;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.recipe.FishingRodSmithingRecipe;
+import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.registry.ModItems;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -13,10 +12,7 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,12 +30,12 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
     protected final boolean isNetheriteUpgrade;
     protected final EmiStack output;
 
-    public StarcatcherEmiSmithingRecipe(FishingRodSmithingRecipe recipe)
+    public StarcatcherEmiSmithingRecipe(NetheriteUpgradeSmithingRecipe recipe)
     {
-        this.template = EmiIngredient.of(recipe.template());
-        this.input = EmiIngredient.of(recipe.rod());
+        this.template = EmiIngredient.of(recipe.template);
+        this.input = EmiIngredient.of(recipe.base);
 
-        ItemStack stack = Arrays.stream(recipe.rod().getItems()).findFirst().get().copy();
+        ItemStack stack = Arrays.stream(recipe.base.getItems()).findFirst().get().copy();
 
         ModDataComponents.set(stack, ModDataComponents.NETHERITE_UPGRADE, true);
         isNetheriteUpgrade = true;

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.recipe.FishingRodSmithingRecipe;
+import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -11,13 +11,11 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -64,13 +62,13 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 registry.addRecipe(new StarcatcherEmiRecipe(trophies.getKey(fp), fp));
         }
 
-        for (SmithingRecipe recipe : getRecipes(registry, RecipeType.SMITHING))
-        {
-            if (recipe instanceof FishingRodSmithingRecipe frsr && Arrays.stream(((FishingRodSmithingRecipe) recipe).template().getItems()).anyMatch(o -> o.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)))
-            {
-                registry.addRecipe(new StarcatcherEmiSmithingRecipe(frsr));
-            }
-        }
+//        for (SmithingRecipe recipe : getRecipes(registry, RecipeType.SMITHING))
+//        {
+//            if (recipe instanceof NetheriteUpgradeSmithingRecipe frsr && Arrays.stream(((NetheriteUpgradeSmithingRecipe) recipe).template().getItems()).anyMatch(o -> o.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)))
+//            {
+//                registry.addRecipe(new StarcatcherEmiSmithingRecipe(frsr));
+//            }
+//        }
 
         for (Holder<Item> item : BuiltInRegistries.ITEM.getTag(StarcatcherTags.TEMPLATES).get())
         {

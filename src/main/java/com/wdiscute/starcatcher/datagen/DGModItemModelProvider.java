@@ -24,10 +24,11 @@ public class DGModItemModelProvider extends ItemModelProvider
     protected void registerModels()
     {
         //bucket fishes
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
+        for (DeferredHolder<Item, ? extends Item> item : BUCKETABLE_FISHES_REGISTRY.getEntries())
             simpleItem((DeferredItem<? extends Item>) item);
 
         //non bucket fishes
+        simpleItem(BLACK_EEL);
         simpleItem(GEODE_EEL);
         simpleItem(OBSIDIAN_EEL);
         simpleItem(MOLTEN_SHRIMP);
@@ -45,7 +46,7 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleItem(DRIED_SEAWEED);
         simpleItem(WATERLOGGED_BOTTLE);
         simpleItem(LAVA_CRAB_CLAW);
-
+        simpleItem(MOSSY_HOOK);
 
         //items
         simpleItem(MISSINGNO);
@@ -101,6 +102,7 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleItem(WORM);
         simpleItem(ALMIGHTY_WORM);
         simpleItem(SEEKING_WORM);
+        simpleItem(DEV_WORM);
         simpleItem(GUNPOWDER_BAIT);
         simpleItem(CHERRY_BAIT);
         simpleItem(LUSH_BAIT);
@@ -111,12 +113,7 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleItem(METEOROLOGICAL_BAIT);
 
         //templates
-        simpleItem(PEARL_SMITHING_TEMPLATE);
-        simpleItem(KIMBE_SMITHING_TEMPLATE);
-        simpleItem(COLORFUL_SMITHING_TEMPLATE);
-        simpleItem(CLEAR_SMITHING_TEMPLATE);
-        simpleItem(FROG_SMITHING_TEMPLATE);
-        simpleItem(KING_SMITHING_TEMPLATE);
+        TEMPLATES_REGISTRY.getEntries().forEach(o -> simpleItem(((DeferredItem) o)));
 
         //rods
         //custom model

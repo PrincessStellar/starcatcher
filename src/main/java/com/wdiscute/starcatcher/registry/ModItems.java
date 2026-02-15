@@ -108,7 +108,7 @@ public interface ModItems
     DeferredItem<Item> GOOD_OLD_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("good_old_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> BONER_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("boner_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> SKY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("sky_skin_smithing_template", BasicItem::new);
-    DeferredItem<Item> LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("lush_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("lush_glowberry_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> HUMBLE_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("humble_skin_smithing_template", BasicItem::new);
 
 
@@ -267,11 +267,11 @@ public interface ModItems
 
     //underground
     DeferredItem<Item> GOLD_FAN = BUCKETABLE_FISHES_REGISTRY.register("gold_fan", FishItem::new);
-    DeferredItem<Item> GEODE_EEL = ITEMS.register("geode_eel", FishItem::new);
+    DeferredItem<Item> GEODE_EEL = ITEMS.register("geode_eel", BasicItem::new);
 
     //caves
     DeferredItem<Item> WHITEVEIL = BUCKETABLE_FISHES_REGISTRY.register("whiteveil", FishItem::new);
-    DeferredItem<Item> BLACK_EEL = ITEMS.register("black_eel", FishItem::new);
+    DeferredItem<Item> BLACK_EEL = ITEMS.register("black_eel", BasicItem::new);
     DeferredItem<Item> AMETHYSTBACK = BUCKETABLE_FISHES_REGISTRY.register("amethystback", FishItem::new);
     DeferredItem<Item> STONEFISH = BUCKETABLE_FISHES_REGISTRY.register("stonefish", FishItem::new);
 
