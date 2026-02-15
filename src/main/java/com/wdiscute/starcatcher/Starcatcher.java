@@ -106,22 +106,7 @@ public class Starcatcher
     {
         ModCreativeModeTabs.register(modEventBus);
 
-        ModItems.ITEMS_REGISTRY.register(modEventBus);
-
-        ModItems.BAITS_REGISTRY.register(modEventBus);
-        ModItems.HOOKS_REGISTRY.register(modEventBus);
-        ModItems.BOBBERS_REGISTRY.register(modEventBus);
-
-        ModItems.FISH_REGISTRY.register(modEventBus);
-        ModItems.KINDA_BUT_NOT_REALLY_FISH_REGISTRY.register(modEventBus);
-        ModItems.TRASH_REGISTRY.register(modEventBus);
-
-        ModItems.BLOCKITEMS_REGISTRY.register(modEventBus);
-        ModItems.RODS_REGISTRY.register(modEventBus);
-        ModItems.TEMPLATES_REGISTRY.register(modEventBus);
-
-        ModItems.DEV_REGISTRY.register(modEventBus);
-
+        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModDataComponents.register(modEventBus);

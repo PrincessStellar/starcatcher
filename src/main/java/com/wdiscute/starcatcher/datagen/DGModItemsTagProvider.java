@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.storage.FishProperties;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -20,6 +21,16 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static com.wdiscute.starcatcher.registry.ModItems.*;
+import static com.wdiscute.starcatcher.registry.ModItems.CHERRY_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.DRIPSTONE_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.GUNPOWDER_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.LEGENDARY_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.LUSH_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.METEOROLOGICAL_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.MURKWATER_BAIT;
+import static com.wdiscute.starcatcher.registry.ModItems.SCULK_BAIT;
+
 public class DGModItemsTagProvider extends ItemTagsProvider
 {
 
@@ -33,7 +44,7 @@ public class DGModItemsTagProvider extends ItemTagsProvider
     protected void addTags(HolderLookup.Provider provider)
     {
         //fishes, cat_food, foods/raw_fish
-        for (var item : ModItems.FISH_REGISTRY.getEntries())
+        for (var item : ModItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
         {
             tag(ItemTags.FISHES).add(item.get());
             tag(ItemTags.CAT_FOOD).add(item.get());
@@ -44,6 +55,7 @@ public class DGModItemsTagProvider extends ItemTagsProvider
 
         //todo figure out what to do with crabs/eels tags?
 
+        //rarity tags
         for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHES)
         {
             switch (fp.rarity())
@@ -58,60 +70,51 @@ public class DGModItemsTagProvider extends ItemTagsProvider
 
 
         //baits tag
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.BAITS_REGISTRY.getEntries())
-        {
-            tag(StarcatcherTags.BAITS).add(item.get());
-        }
+        tag(StarcatcherTags.BAITS)
+                .add(WORM.get())
+                .add(ALMIGHTY_WORM.get())
+                .add(SEEKING_WORM.get())
+                .add(GUNPOWDER_BAIT.get())
+                .add(CHERRY_BAIT.get())
+                .add(LUSH_BAIT.get())
+                .add(SCULK_BAIT.get())
+                .add(DRIPSTONE_BAIT.get())
+                .add(MURKWATER_BAIT.get())
+                .add(LEGENDARY_BAIT.get())
+                .add(METEOROLOGICAL_BAIT.get())
+                .add(Items.WITHER_SKELETON_SKULL)
+                .add(Items.BUCKET)
+
+                .addOptional(rl("fishofthieves", "earthworms"))
+                .addOptional(rl("fishofthieves", "grubs"))
+                .addOptional(rl("fishofthieves", "leeches"))
+
+                .addOptional(rl("tfc", "food/bluegill"))
+                .addOptional(rl("tfc", "food/cod"))
+                .addOptional(rl("tfc", "food/salmon"))
+                .addOptional(rl("tfc", "food/tropical_fish"))
+        ;
 
         //templates tag
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.TEMPLATES_REGISTRY.getEntries())
-        {
-            tag(StarcatcherTags.TEMPLATES).add(item.get());
-        }
+        ModItems.TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.TEMPLATES).add(o.get()));
 
         //Equipment tag
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.RODS_REGISTRY.getEntries())
-        {
-            if(!item.is(ModItems.ROD)) tag(StarcatcherTags.EQUIPMENTS).add(item.get());
-            //todo add hats and stuff
-        }
-
-        //survives lava
-        tag(StarcatcherTags.HOOK_SURVIVES_LAVA).add(ModItems.CRYSTAL_HOOK.get());
+        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
+        //ModItems.HATS_REGISTRY.getEntries().stream().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
 
         //gadgets
         tag(StarcatcherTags.GADGETS).add(ModItems.FISH_RADAR.get());
 
-        //extra baits
-        tag(StarcatcherTags.BAITS).add(Items.BUCKET);
-        tag(StarcatcherTags.BAITS).add(Items.WITHER_SKELETON_SKULL);
-
-        tag(StarcatcherTags.BAITS).addOptional(rl("fishofthieves", "earthworms"));
-        tag(StarcatcherTags.BAITS).addOptional(rl("fishofthieves", "grubs"));
-        tag(StarcatcherTags.BAITS).addOptional(rl("fishofthieves", "leeches"));
-
-        tag(StarcatcherTags.BAITS).addOptional(rl("tfc", "food/bluegill"));
-        tag(StarcatcherTags.BAITS).addOptional(rl("tfc", "food/cod"));
-        tag(StarcatcherTags.BAITS).addOptional(rl("tfc", "food/salmon"));
-        tag(StarcatcherTags.BAITS).addOptional(rl("tfc", "food/tropical_fish"));
-
         //hooks tag
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.HOOKS_REGISTRY.getEntries())
-            tag(StarcatcherTags.HOOKS).add(item.get());
+        ModItems.HOOKS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.HOOKS).add(o.get()));
         tag(StarcatcherTags.HOOKS).addOptional(rl("tide", "void_fishing_hook"));
 
         //bobbers tag
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.BOBBERS_REGISTRY.getEntries())
-        {
-            tag(StarcatcherTags.BOBBERS).add(item.get());
-        }
+        ModItems.BOBBERS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.BOBBERS).add(o.get()));
 
         //rods and tools/fishing_rod
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.RODS_REGISTRY.getEntries())
-        {
-            tag(Tags.Items.TOOLS_FISHING_ROD).add(item.get());
-            tag(StarcatcherTags.RODS).add(item.get());
-        }
+        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.RODS).add(o.get()));
+        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(Tags.Items.TOOLS_FISHING_ROD).add(o.get()));
     }
 
 

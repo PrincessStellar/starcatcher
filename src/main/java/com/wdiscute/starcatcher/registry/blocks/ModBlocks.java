@@ -37,7 +37,7 @@ public interface ModBlocks
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
     {
-        ModItems.BLOCKITEMS_REGISTRY.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     static void register(IEventBus eventBus)

@@ -33,13 +33,9 @@ public class ModCreativeModeTabs
                         output.accept(ModItems.ROD);
 
                         //adds items
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries())
                             if(!item.equals(ModItems.ROD))
                                 output.accept(item.get());
-
-                        //adds blocks
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.BLOCKITEMS_REGISTRY.getEntries())
-                            output.accept(item.get());
 
                         //adds bobbers
                         for (DeferredHolder<Item, ? extends Item> item : ModItems.BOBBERS_REGISTRY.getEntries())
@@ -47,10 +43,6 @@ public class ModCreativeModeTabs
 
                         //adds hooks
                         for (DeferredHolder<Item, ? extends Item> item : ModItems.HOOKS_REGISTRY.getEntries())
-                            output.accept(item.get());
-
-                        //adds baits
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.BAITS_REGISTRY.getEntries())
                             output.accept(item.get());
 
                         //adds templates
@@ -63,22 +55,8 @@ public class ModCreativeModeTabs
                                 output.accept(item.get());
 
                         //adds fish
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.FISH_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : ModItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
                             output.accept(item.get());
-
-                        //adds fish
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.KINDA_BUT_NOT_REALLY_FISH_REGISTRY.getEntries())
-                            output.accept(item.get());
-
-                        //adds trash
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.TRASH_REGISTRY.getEntries())
-                            output.accept(item.get());
-
-
-                        //adds cheater items
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.DEV_REGISTRY.getEntries())
-                            if (!item.equals(ModItems.SETTINGS) && !item.equals(ModItems.UNKNOWN_FISH) && !item.equals(ModItems.MISSINGNO))
-                                output.accept(item.get());
 
                     })
                     .build()

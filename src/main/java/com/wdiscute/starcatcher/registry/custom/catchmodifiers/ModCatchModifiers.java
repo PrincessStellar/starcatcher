@@ -61,6 +61,8 @@ public interface ModCatchModifiers
     //meteorological bait
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> IGNORE_DAYTIME_AND_WEATHER_RESTRICTIONS = registerCatchModifier("ignore_daytime_and_weather_restrictions", IgnoreDaytimeWeatherRestrictions::new);
 
+    //survives lava - crystal hook
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> SURVIVES_LAVA = registerCatchModifier("survives_lava", SurvivesLavaModifier::new);
 
     static Pair<ResourceLocation, Supplier<AbstractCatchModifier>> registerCatchModifier(String name, Supplier<AbstractCatchModifier> sup)
     {
