@@ -46,7 +46,7 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleItem(DRIED_SEAWEED);
         simpleItem(WATERLOGGED_BOTTLE);
         simpleItem(LAVA_CRAB_CLAW);
-        simpleItem(MOSSY_HOOK);
+        simpleItem(MOSSY_BOOT);
 
         //items
         simpleItem(MISSINGNO);

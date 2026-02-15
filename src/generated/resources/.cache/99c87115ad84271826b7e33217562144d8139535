@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-15T16:52:55.6317206	Item Models: starcatcher
+// 1.21.1	2026-02-15T16:56:51.1378319	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -104,6 +104,7 @@ d98b04fa0f7414323b56a41c977190c4d48f8bfd assets/starcatcher/models/item/mirage_c
 81df6118f4054d44e7202845b30860b653586453 assets/starcatcher/models/item/molten_deepslate_crab.json
 75e6c26e7a7de75b6370266423f58a651e7d6d58 assets/starcatcher/models/item/molten_shrimp.json
 014fb44a55ee7914b8c5954c1d01591d32fe9faa assets/starcatcher/models/item/morganite.json
+80756355f658b900ae4bbbbafa068539787e64be assets/starcatcher/models/item/mossy_boot.json
 d4f78be947fa0653ab211626b347a668a5c740e9 assets/starcatcher/models/item/mossy_hook.json
 532c47348452ae5450777653c35b99b69a455ac7 assets/starcatcher/models/item/murkwater_bait.json
 1e5dfe0c5ce1ea6b478211bb48a89ef1ad327041 assets/starcatcher/models/item/naturalist_skin_smithing_template.json
