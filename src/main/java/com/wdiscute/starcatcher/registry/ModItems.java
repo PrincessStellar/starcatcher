@@ -16,6 +16,7 @@ import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.secretnotes.NoteContainer;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
+import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -86,13 +87,30 @@ public interface ModItems
     DeferredItem<Item> METEOROLOGICAL_BAIT = ITEMS.register("meteorological_bait", () -> new CatchModifierItem(64, ModCatchModifiers.DECREASES_LURE_TIME, ModCatchModifiers.IGNORE_DAYTIME_AND_WEATHER_RESTRICTIONS));
 
 
-    //bobber skin templates
+    //tackle templates
     DeferredItem<Item> PEARL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("pearl_smithing_template", () -> new TackleSkinItem(ModTackleSkins.PEARL_TACKLE_SKIN));
     DeferredItem<Item> KIMBE_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("kimbe_smithing_template", () -> new TackleSkinItem(ModTackleSkins.KIMBE_TACKLE_SKIN));
     DeferredItem<Item> COLORFUL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("colorful_smithing_template", () -> new TackleSkinItem(ModTackleSkins.COLORFUL_TACKLE_SKIN));
     DeferredItem<Item> CLEAR_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("clear_smithing_template", () -> new TackleSkinItem(ModTackleSkins.CLEAR_TACKLE_SKIN));
     DeferredItem<Item> FROG_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("frog_smithing_template", () -> new TackleSkinItem(ModTackleSkins.FROG_TACKLE_SKIN));
     DeferredItem<Item> KING_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("king_smithing_template", () -> new TackleSkinItem(ModTackleSkins.KING_TACKLE_SKIN));
+
+    //skin templates
+    DeferredItem<Item> NATURALIST_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("naturalist_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> ICEBORN_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("iceborn_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> MAGMAFORGED_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("magmaforged_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> SLIMED_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("slimed_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> SHARKTOOTH_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("sharktooth_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("azure_crystal_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> BAMBOO_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("bamboo_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> OBSIDIAN_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("obsidian_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> ALPHA_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("alpha_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> GOOD_OLD_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("good_old_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> BONER_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("boner_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> SKY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("sky_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("lush_skin_smithing_template", BasicItem::new);
+    DeferredItem<Item> HUMBLE_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("humble_skin_smithing_template", BasicItem::new);
+
 
     //rods
     DeferredItem<Item> ROD = RODS_REGISTRY.register("starcatcher_rod", StarcatcherFishingRodItem::new);

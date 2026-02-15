@@ -1,0 +1,15 @@
+{
+  "type": "starcatcher:fishing_rod_skin",
+  "base": {
+    "tag": "starcatcher:rods"
+  },
+  "template": {
+    "item": "starcatcher:azure_crystal_skin_smithing_template"
+  },
+  "addition": {
+    "item": "minecraft:bone"
+  },
+  "result": {
+    "id": "starcatcher:azure_crystal_rod"
+  }
+}
