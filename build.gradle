@@ -63,7 +63,7 @@ dependencies {
 
     //Ecliptic Seasons
     compileOnly files(".compatmods/EclipticSeasons-1.21.1-neoforge-0.12.5-all.jar")
-    runtimeOnly files(".compatmods/EclipticSeasons-1.21.1-neoforge-0.12.5-all.jar")
+    //runtimeOnly files(".compatmods/EclipticSeasons-1.21.1-neoforge-0.12.5-all.jar")
 
     //terrafirmacraft for seasons
     //compileOnly files(".compatmods/Patchouli-1.21.1-92-NEOFORGE.jar")

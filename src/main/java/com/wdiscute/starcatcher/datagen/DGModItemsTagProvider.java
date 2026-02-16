@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.Minecraft;
@@ -16,20 +17,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
 import static com.wdiscute.starcatcher.registry.ModItems.*;
-import static com.wdiscute.starcatcher.registry.ModItems.CHERRY_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.DRIPSTONE_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.GUNPOWDER_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.LEGENDARY_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.LUSH_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.METEOROLOGICAL_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.MURKWATER_BAIT;
-import static com.wdiscute.starcatcher.registry.ModItems.SCULK_BAIT;
+import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
 public class DGModItemsTagProvider extends ItemTagsProvider
 {
@@ -44,7 +39,7 @@ public class DGModItemsTagProvider extends ItemTagsProvider
     protected void addTags(HolderLookup.Provider provider)
     {
         //fishes, cat_food, foods/raw_fish
-        for (var item : ModItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
+        for (var item : BUCKETABLE_FISHES_REGISTRY.getEntries())
         {
             tag(ItemTags.FISHES).add(item.get());
             tag(ItemTags.CAT_FOOD).add(item.get());
@@ -96,25 +91,35 @@ public class DGModItemsTagProvider extends ItemTagsProvider
         ;
 
         //templates tag
-        ModItems.TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.TEMPLATES).add(o.get()));
+        TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.TEMPLATES).add(o.get()));
 
         //Equipment tag
-        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
+        RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
         //ModItems.HATS_REGISTRY.getEntries().stream().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
 
         //gadgets
-        tag(StarcatcherTags.GADGETS).add(ModItems.FISH_RADAR.get());
+        tag(StarcatcherTags.GADGETS).add(FISH_RADAR.get());
 
         //hooks tag
-        ModItems.HOOKS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.HOOKS).add(o.get()));
+        HOOKS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.HOOKS).add(o.get()));
         tag(StarcatcherTags.HOOKS).addOptional(rl("tide", "void_fishing_hook"));
 
         //bobbers tag
-        ModItems.BOBBERS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.BOBBERS).add(o.get()));
+        BOBBERS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.BOBBERS).add(o.get()));
 
         //rods and tools/fishing_rod
-        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.RODS).add(o.get()));
-        ModItems.RODS_REGISTRY.getEntries().forEach(o -> tag(Tags.Items.TOOLS_FISHING_ROD).add(o.get()));
+        RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.RODS).add(o.get()));
+        RODS_REGISTRY.getEntries().forEach(o -> tag(Tags.Items.TOOLS_FISHING_ROD).add(o.get()));
+
+        //hats
+        HATS.getEntries().forEach(o -> tag(StarcatcherTags.HATS).add(((DeferredBlock<?>) o).asItem()));
+
+        //equippable hats
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE)
+                .addTag(StarcatcherTags.HATS);
+
+
+
     }
 
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "fisherman_hat",
+  "ingredients": [
+    {
+      "item": "minecraft:orange_dye"
+    },
+    {
+      "tag": "starcatcher:hats"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "starcatcher:fisherman_hat_orange"
+  }
+}

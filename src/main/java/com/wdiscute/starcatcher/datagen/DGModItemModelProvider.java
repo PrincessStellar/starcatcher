@@ -2,16 +2,20 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.blocks.HatBlock;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.wdiscute.starcatcher.registry.ModItems.*;
+import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
 public class DGModItemModelProvider extends ItemModelProvider
 {
@@ -125,6 +129,24 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleBlockItem(ModBlocks.TROPHY_BRONZE.get());
         simpleBlockItem(ModBlocks.TROPHY_SILVER.get());
         simpleBlockItem(ModBlocks.TROPHY_GOLD.get());
+
+        //hats model, just parents to block
+        simpleBlockItem(FISHERMAN_HAT_WHITE.get());
+        simpleBlockItem(FISHERMAN_HAT_LIME.get());
+        simpleBlockItem(FISHERMAN_HAT_ORANGE.get());
+        simpleBlockItem(FISHERMAN_HAT_RED.get());
+        simpleBlockItem(FISHERMAN_HAT_GRAY.get());
+        simpleBlockItem(FISHERMAN_HAT_LIGHT_GRAY.get());
+        simpleBlockItem(FISHERMAN_HAT_BLACK.get());
+        simpleBlockItem(FISHERMAN_HAT_BROWN.get());
+        simpleBlockItem(FISHERMAN_HAT_YELLOW.get());
+        simpleBlockItem(FISHERMAN_HAT_PINK.get());
+        simpleBlockItem(FISHERMAN_HAT_MAGENTA.get());
+        simpleBlockItem(FISHERMAN_HAT_PURPLE.get());
+        simpleBlockItem(FISHERMAN_HAT_BLUE.get());
+        simpleBlockItem(FISHERMAN_HAT_LIGHT_BLUE.get());
+        simpleBlockItem(FISHERMAN_HAT_CYAN.get());
+        simpleBlockItem(FISHERMAN_HAT_GREEN.get());
     }
 
 
