@@ -17,7 +17,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class TrophyBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock, EntityBlock
+public class TrophyBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock
 {
     public TrophyBlock()
     {
@@ -81,11 +81,5 @@ public class TrophyBlock extends HorizontalDirectionalBlock implements SimpleWat
         bs = bs.setValue(FACING, context.getHorizontalDirection().getOpposite());
         bs = bs.setValue(BlockStateProperties.WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
         return bs;
-    }
-
-    @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
-    {
-        return ModBlockEntities.TROPHY.get().create(blockPos, blockState);
     }
 }
