@@ -54,8 +54,14 @@
   "tag.starcatcher.rods" : "Starcatcher Rods",
   "tag.starcatcher.templates" : "Fishing Rod Templates",
   "tag.starcatcher.bucketable_fishes" : "Starcatcher Bucketable Fishes",
-  "tag.starcatcher.hooks_survive_fire" : "Hooks that survive Fire",
+  "tag.starcatcher.starcaught_fishes" : "Starcatcher Bucketable Fishes",
+  "tag.starcatcher.hats" : "Hats",
 
+  "tag.starcatcher.common_fishes" : "Common Fishes",
+  "tag.starcatcher.uncommon_fishes" : "Uncommon Fishes",
+  "tag.starcatcher.rare_fishes" : "Rare Fishes",
+  "tag.starcatcher.epic_fishes" : "Epic Fishes",
+  "tag.starcatcher.legendary_fishes" : "Legendary Fishes",
 
   "sounds.starcatcher.king_cry" : "Crying noises",
   "sounds.starcatcher.king_grr" : "Angry noises",

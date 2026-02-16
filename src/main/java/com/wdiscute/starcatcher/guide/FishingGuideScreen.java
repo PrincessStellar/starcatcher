@@ -126,6 +126,7 @@ public class FishingGuideScreen extends Screen
 
     private final ItemStack sweetspotsIcon;
     private final ItemStack treasureIcon;
+    private final ItemStack cosmeticsIcon;
     private final ItemStack equipmentIcon;
     private final ItemStack gadgetsIcon;
 
@@ -786,13 +787,13 @@ public class FishingGuideScreen extends Screen
 
             }
 
-            //gadgets & cosmetics-
+            //gadgets & cosmetics
             case 5 ->
             {
                 renderHelpText(guiGraphics, "cosmetics");
                 renderImage(guiGraphics, HELP_PAGE_GADGETS_COSMETICS);
                 renderItem(gadgetsIcon, uiX + 166, uiY + 39, 1);
-                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
+                renderItem(cosmeticsIcon, uiX + 321, uiY + 39, 1);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.gadgets"), uiX + 80, uiY + 45, 0x635040, false);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.cosmetics"), uiX + 230, uiY + 45, 0x635040, false);
 
@@ -2192,7 +2193,8 @@ public class FishingGuideScreen extends Screen
         //other items
         sweetspotsIcon = new ItemStack(ModItems.AURORA.get());
         treasureIcon = new ItemStack(ModItems.WATERLOGGED_SATCHEL.get());
-        equipmentIcon = new ItemStack(ModItems.AZURE_CRYSTAL_ROD.get());
+        equipmentIcon = new ItemStack(ModBlocks.FISHERMAN_HAT_GREEN.get());
+        cosmeticsIcon = new ItemStack(ModItems.AZURE_CRYSTAL_ROD.get());
         gadgetsIcon = new ItemStack(ModItems.FISH_RADAR.get());
 
         hookIcon = new ItemStack(ModItems.HOOK.get());
