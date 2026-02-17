@@ -216,7 +216,7 @@ public class DGTrophies extends TrophyPropertiesRegistry
 
         //neptunium ingot
         registerTrophy(TrophyProperties.builder().withFP(
-                                overworldColdOceanFish(U.holderItem("aquaculture", "neptunium_ingot")))
+                                overworldOceanFish(U.holderItem("aquaculture", "neptunium_ingot")))
                         .setTrophyType(TrophyProperties.TrophyType.EXTRA)
                         .withChanceToCatch(2)
                         .withRepeatable(true)
