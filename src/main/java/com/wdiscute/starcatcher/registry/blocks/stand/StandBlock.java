@@ -1,5 +1,6 @@
-package com.wdiscute.starcatcher.registry.blocks;
+package com.wdiscute.starcatcher.registry.blocks.stand;
 
+import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.tournament.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -99,7 +100,6 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
                 sbe.tournament.playerScores.add(TournamentPlayerScore.empty(player.getUUID()));
             }
             player.openMenu(new SimpleMenuProvider(sbe, Component.empty()), center);
-            sbe.sync();
         }
 
         return InteractionResult.SUCCESS;

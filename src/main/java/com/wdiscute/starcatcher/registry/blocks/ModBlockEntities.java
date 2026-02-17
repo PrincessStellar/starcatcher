@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.registry.blocks;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockEntity;
+import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinBlockEntity;
+import com.wdiscute.starcatcher.registry.blocks.stand.StandBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +21,11 @@ public class ModBlockEntities
             () -> BlockEntityType.Builder.of(StandBlockEntity::new,
                             ModBlocks.STAND.get()
                     ).build(null));
+
+    public static final Supplier<BlockEntityType<SellingBinBlockEntity>> SELLING_BIN = BLOCK_ENTITIES.register("selling_bin",
+            () -> BlockEntityType.Builder.of(SellingBinBlockEntity::new,
+                    ModBlocks.SELLING_BIN.get()
+            ).build(null));
 
     public static final Supplier<BlockEntityType<TelescopeBlockEntity>> TELESCOPE = BLOCK_ENTITIES.register("telescope",
             () -> BlockEntityType.Builder.of(TelescopeBlockEntity::new,

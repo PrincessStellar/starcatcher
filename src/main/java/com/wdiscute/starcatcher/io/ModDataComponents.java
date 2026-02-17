@@ -44,6 +44,10 @@ public class ModDataComponents
             "bait",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BIN_STORAGE = register(
+            "bin_storage",
+            builder -> builder.persistent(SingleStackContainer.CODEC));
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> HOOK = register(
             "hook",
             builder -> builder.persistent(SingleStackContainer.CODEC));

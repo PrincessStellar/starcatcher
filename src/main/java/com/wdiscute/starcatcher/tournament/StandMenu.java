@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.registry.ModMenuTypes;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
-import com.wdiscute.starcatcher.registry.blocks.StandBlockEntity;
+import com.wdiscute.starcatcher.registry.blocks.stand.StandBlockEntity;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

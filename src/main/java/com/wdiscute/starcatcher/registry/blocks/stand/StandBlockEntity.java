@@ -1,13 +1,13 @@
-package com.wdiscute.starcatcher.registry.blocks;
+package com.wdiscute.starcatcher.registry.blocks.stand;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.NBTCodecHelper;
+import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.tournament.StandMenu;
 import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
-import com.wdiscute.starcatcher.tournament.TournamentPlayerScore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.UUIDUtil;

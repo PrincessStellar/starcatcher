@@ -13,6 +13,7 @@ import com.wdiscute.starcatcher.io.SizeAndWeightInstance;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
+import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinScreen;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
@@ -93,6 +94,7 @@ public class ModClientEvents
     {
         event.register(ModMenuTypes.FISHING_ROD_MENU.get(), FishingRodScreen::new);
         event.register(ModMenuTypes.STAND_MENU.get(), StandScreen::new);
+        event.register(ModMenuTypes.SELLING_BIN_MENU.get(), SellingBinScreen::new);
     }
 
     @SubscribeEvent

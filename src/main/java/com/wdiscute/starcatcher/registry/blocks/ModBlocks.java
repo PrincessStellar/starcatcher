@@ -4,14 +4,15 @@ import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
+import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBin;
+import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
 import com.wdiscute.starcatcher.registry.items.HatItem;
-import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -30,6 +31,11 @@ public interface ModBlocks
     DeferredBlock<Block> DISPLAY = registerBlock("display", DisplayBlock::new);
 
     DeferredBlock<Block> TELESCOPE = registerBlock("telescope", TelescopeBlock::new);
+
+    DeferredBlock<Block> SELLING_BIN = registerBlock("selling_bin", SellingBin::new);
+
+    DeferredBlock<Block> TACKLE_BOX = registerBlock("tackle_box", () -> new Block(BlockBehaviour.Properties.of()));
+
 
     //hats
     DeferredBlock<Block> FISHERMAN_HAT_WHITE = registerHat("fisherman_hat_white", HatBlock::new);
