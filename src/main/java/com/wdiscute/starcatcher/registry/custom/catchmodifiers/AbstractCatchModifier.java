@@ -31,7 +31,7 @@ public abstract class AbstractCatchModifier
     }
 
     //server only
-    public int adjustChanceToFishEachTick(int chanceToFishEachTick)
+    public float adjustChanceToFishEachTick(float chanceToFishEachTick)
     {
         return chanceToFishEachTick;
     }

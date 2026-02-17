@@ -1,12 +1,22 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public interface ModMinigameModifiers

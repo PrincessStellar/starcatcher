@@ -16,6 +16,7 @@ import com.wdiscute.starcatcher.registry.ModParticles;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -66,7 +67,7 @@ public class FishingBobEntity extends Projectile
 
     public int minTicksToFish;
     public int maxTicksToFish;
-    public int chanceToFishEachTick;
+    public float chanceToFishEachTick;
 
     public int timeBiting;
 
@@ -86,8 +87,8 @@ public class FishingBobEntity extends Projectile
     public FishingBobEntity(EntityType<? extends FishingBobEntity> entityType, Level level)
     {
         super(entityType, level);
-        this.player = null;
-        this.modifiers = ModCatchModifiers.getAllCatchModifiers(level, rod);
+        this.player = Minecraft.getInstance().player;
+        this.modifiers = ModCatchModifiers.getCatchModifiers(player);
         modifiers.forEach(acm -> acm.onAdd(this));
     }
 
@@ -99,7 +100,7 @@ public class FishingBobEntity extends Projectile
         this.setOwner(player);
         this.player = player;
         this.rod = rod;
-        this.modifiers = ModCatchModifiers.getAllCatchModifiers(level, rod);
+        this.modifiers = ModCatchModifiers.getCatchModifiers(player);
         SingleStackContainer ssc = ModDataComponents.get(rod, ModDataComponents.HOOK);
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));
 
@@ -109,7 +110,7 @@ public class FishingBobEntity extends Projectile
 
         minTicksToFish = 100;
         maxTicksToFish = 300;
-        chanceToFishEachTick = 100;
+        chanceToFishEachTick = 0.005f;
 
         //modify base chances
         for (AbstractCatchModifier acm : modifiers)
@@ -145,6 +146,8 @@ public class FishingBobEntity extends Projectile
             ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
         currentState = FishHookState.FLYING;
+
+        System.out.println(modifiers);
     }
 
     public void reel()
@@ -478,8 +481,8 @@ public class FishingBobEntity extends Projectile
         if (!level().isClientSide && currentState == FishHookState.BOBBING)
         {
             ticksInFluid++;
-            int i = random.nextInt(chanceToFishEachTick);
-            if ((i == 1 || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
+            boolean fish = U.r.nextFloat() < chanceToFishEachTick;
+            if ((fish || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
             {
                 if (Config.SHOW_EXCLAMATION_MARK_PARTICLE.get())
                     ((ServerLevel) level()).sendParticles(

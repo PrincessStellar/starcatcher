@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
@@ -12,7 +13,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -26,16 +26,16 @@ public interface ModCatchModifiers
     //every bait
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> DECREASES_LURE_TIME = registerCatchModifier(
             "decrease_lure_time",
-            () -> new DecreaseLureTimeModifier(20, 100, 80));
+            () -> new AdjustLureTimeModifier(0.7f, 0.7f, 1));
 
     //every bait
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> BIG_DECREASES_LURE_TIME = registerCatchModifier(
             "big_decrease_lure_time",
-            () -> new DecreaseLureTimeModifier(50, 170, 80));
+            () -> new AdjustLureTimeModifier(0.4f, 0.4f, 1));
 
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> INCREASE_DECREASES_LURE_TIME = registerCatchModifier(
             "increase_lure_time",
-            () -> new DecreaseLureTimeModifier(-20, -100, -80));
+            () -> new AdjustLureTimeModifier(1.3f, 1.3f, 1));
 
     //vanilla bobber
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> VANILLA_LOOT = registerCatchModifier("vanilla_loot", VanillaLootModifier::new);
@@ -76,60 +76,45 @@ public interface ModCatchModifiers
     }
 
 
-    static List<AbstractCatchModifier> getAllCatchModifiers(Level level, ItemStack is)
+    static Supplier<AbstractCatchModifier> getCatchModifierSupplier(Level level, ResourceLocation resourceLocation)
     {
-        return getAllCatchModifiers(level, is, true);
+        Optional<Supplier<AbstractCatchModifier>> optional = level.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).getOptional(resourceLocation);
+        return optional.orElse(null);
     }
 
-    static List<AbstractCatchModifier> getAllCatchModifiers(Level level, ItemStack is, boolean checkRodItemStack)
+    static List<AbstractCatchModifier> getCatchModifiers(Player player)
     {
-        List<AbstractCatchModifier> modifiers = new ArrayList<>();
+        List<ResourceLocation> rls = new ArrayList<>();
 
-        if (is.is(StarcatcherTags.RODS) && checkRodItemStack)
+        //rod
+        if (player.getMainHandItem().is(StarcatcherTags.RODS))
         {
-            modifiers.addAll(getAllCatchModifiers(level, ModDataComponents.get(is, ModDataComponents.BOBBER).stack(), false));
-            modifiers.addAll(getAllCatchModifiers(level, ModDataComponents.get(is, ModDataComponents.BAIT).stack(), false));
-            modifiers.addAll(getAllCatchModifiers(level, ModDataComponents.get(is, ModDataComponents.HOOK).stack(), false));
+            rls.addAll(getCatchModifiersRLs(player.getMainHandItem()));
+        }
+        else if (player.getOffhandItem().is(StarcatcherTags.RODS))
+        {
+            rls.addAll(getCatchModifiersRLs(player.getOffhandItem()));
         }
 
-        if (ModDataComponents.has(is, ModDataComponents.CATCH_MODIFIERS))
-        {
-            for (ResourceLocation rl : Objects.requireNonNull(ModDataComponents.get(is, ModDataComponents.CATCH_MODIFIERS)))
-            {
-                Optional<Supplier<AbstractCatchModifier>> optional = level.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).getOptional(rl);
+        //armor
+        player.getInventory().armor.forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
 
-                optional.ifPresent(abstractCatchModifierSupplier -> modifiers.add(abstractCatchModifierSupplier.get()));
-            }
-        }
-        return modifiers;
+        //curios
+
+
+
+
+
+        List<AbstractCatchModifier> catchModifiers = new ArrayList<>();
+        rls.forEach(o -> catchModifiers.add(getCatchModifierSupplier(player.level(), o).get()));
+        return catchModifiers;
     }
 
-    static boolean hasModifier(ItemStack is, ResourceLocation rl)
+    static List<ResourceLocation> getCatchModifiersRLs(ItemStack itemStack)
     {
-        return hasModifier(is, rl, true);
-    }
-
-    static boolean hasModifier(ItemStack is, ResourceLocation rl, boolean checkRodItemStack)
-    {
-
-        if (is.is(StarcatcherTags.RODS) && checkRodItemStack)
-        {
-            return (
-                    hasModifier(ModDataComponents.get(is, ModDataComponents.BOBBER).stack(), rl) ||
-                            hasModifier(ModDataComponents.get(is, ModDataComponents.BAIT).stack(), rl) ||
-                            hasModifier(ModDataComponents.get(is, ModDataComponents.HOOK).stack(), rl) ||
-                            hasModifier(is, rl, false)
-            );
-        }
-
-        if (ModDataComponents.has(is, ModDataComponents.CATCH_MODIFIERS))
-        {
-            return ModDataComponents.get(is, ModDataComponents.CATCH_MODIFIERS).contains(rl);
-        }
-        else
-        {
-            return false;
-        }
+        List<ResourceLocation> resourceLocations = ModDataComponents.get(itemStack, ModDataComponents.CATCH_MODIFIERS);
+        if (resourceLocations == null) return List.of();
+        return resourceLocations;
     }
 }
 
