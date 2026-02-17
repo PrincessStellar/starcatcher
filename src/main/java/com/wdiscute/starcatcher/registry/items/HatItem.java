@@ -1,10 +1,15 @@
 package com.wdiscute.starcatcher.registry.items;
 
+import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class HatItem extends BlockItem implements Equipable
 {
@@ -13,6 +18,7 @@ public class HatItem extends BlockItem implements Equipable
     {
         super(block, new Properties()
                 .stacksTo(1)
+                .component(ModDataComponents.CATCH_MODIFIERS, List.of(ModCatchModifiers.DECREASES_LURE_TIME.getFirst()))
         );
     }
 
