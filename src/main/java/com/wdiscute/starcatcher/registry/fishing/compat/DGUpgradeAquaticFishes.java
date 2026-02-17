@@ -47,7 +47,7 @@ public class DGUpgradeAquaticFishes extends FishingPropertiesRegistry
                         .withBiomesTags(U.rl("upgrade_aquatic", "biome/has_spawn/lionfish")))
         );
 
-        register(fish(U.holderItem("upgrade_aquatic", "thrasher_tooth"))
+        register(overworldWarmOceanFish(U.holderItem("upgrade_aquatic", "thrasher_tooth"))
                 .withBaseChance(0)
                 .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "great_thrasher"))
                 .withBaitRestrictions(FishProperties.BaitRestrictions.DEFAULT
@@ -55,8 +55,6 @@ public class DGUpgradeAquaticFishes extends FishingPropertiesRegistry
                         .withCorrectBaitChanceAdded(5))
                 .withSizeAndWeight(FishProperties.sizeWeight(28, 8, 260, 60))
                 .withDifficulty(FishProperties.Difficulty.FOUR_STONE_SPOTS)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("upgrade_aquatic", "biome/has_spawn/thrasher")))
                 .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
         );
     }

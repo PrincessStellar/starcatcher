@@ -635,7 +635,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
 
         //lava
         register(
-                overworldLakeFish(U.holderItem("tide", "magma_mackerel"))
+                overworldSurfaceLava(U.holderItem("tide", "magma_mackerel"))
                         .withBucketedFish(U.holderItem("tide", "magma_mackerel_bucket"))
                         .withEntityToSpawn(U.holderEntity("tide", "magma_mackerel"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
@@ -644,7 +644,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
         );
 
         register(
-                overworldLakeFish(U.holderItem("tide", "ember_koi"))
+                overworldSurfaceLava(U.holderItem("tide", "ember_koi"))
                         .withBucketedFish(U.holderItem("tide", "ember_koi_bucket"))
                         .withEntityToSpawn(U.holderEntity("tide", "ember_koi"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
@@ -653,7 +653,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
         );
 
         register(
-                overworldLakeFish(U.holderItem("tide", "ash_perch"))
+                overworldSurfaceLava(U.holderItem("tide", "ash_perch"))
                         .withBucketedFish(U.holderItem("tide", "ash_perch_bucket"))
                         .withEntityToSpawn(U.holderEntity("tide", "ash_perch"))
                         .withSizeAndWeight(FishProperties.sizeWeight(27.0f, 11, 500, 352))

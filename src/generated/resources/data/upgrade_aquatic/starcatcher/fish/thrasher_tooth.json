@@ -81,13 +81,13 @@
   "skips_minigame": false,
   "weather": "all",
   "world_restrictions": {
-    "above_y": -2147483648,
-    "below_y": 2147483647,
+    "above_y": 50,
+    "below_y": 100,
     "biomes": [],
     "biomes_blacklist": [],
     "biomes_blacklist_tags": [],
     "biomes_tags": [
-      "upgrade_aquatic:biome/has_spawn/thrasher"
+      "starcatcher:is_warm_ocean"
     ],
     "dimensions": [
       "minecraft:overworld"
