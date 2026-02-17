@@ -126,23 +126,27 @@ public record FishCaughtCounter(
         }
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
-        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKey(fpCaught);
-        FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
+        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKeyOrNull(fpCaught);
+        if(loc != null)
+        {
+            FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
+            boolean newFish = fishCaughtCounter == null;
 
-        boolean newFish = fishCaughtCounter == null;
+            if (newFish)
+                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch);
+            else
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch);
 
-        if (newFish)
-            fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch);
-        else
-            fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch);
+            fishesCaught.put(loc, fishCaughtCounter);
 
-        fishesCaught.put(loc, fishCaughtCounter);
+            //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
+            if (!fpCaught.catchInfo().alwaysSpawnEntity())
+                PacketDistributor.sendToPlayer(((ServerPlayer) player), new FishCaughtPayload(fpCaught, newFish, size, weight, percentile));
 
-        //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
-        if (!fpCaught.catchInfo().alwaysSpawnEntity())
-            PacketDistributor.sendToPlayer(((ServerPlayer) player), new FishCaughtPayload(fpCaught, newFish, size, weight, percentile));
+            FishingGuideAttachment.setFishesCaught(player, fishesCaught);
+        }
 
-        FishingGuideAttachment.setFishesCaught(player, fishesCaught);
+
     }
 
 }

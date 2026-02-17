@@ -26,16 +26,16 @@ public interface ModCatchModifiers
     //every bait
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> DECREASES_LURE_TIME = registerCatchModifier(
             "decrease_lure_time",
-            () -> new AdjustLureTimeModifier(0.7f, 0.7f, 1));
+            () -> new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f));
 
     //every bait
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> BIG_DECREASES_LURE_TIME = registerCatchModifier(
             "big_decrease_lure_time",
-            () -> new AdjustLureTimeModifier(0.4f, 0.4f, 1));
+            () -> new AdjustLureTimeModifier(0.4f, 0.6f, 1.3f));
 
-    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> INCREASE_DECREASES_LURE_TIME = registerCatchModifier(
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> INCREASE_LURE_TIME = registerCatchModifier(
             "increase_lure_time",
-            () -> new AdjustLureTimeModifier(1.3f, 1.3f, 1));
+            () -> new AdjustLureTimeModifier(1.5f, 1.6f, 1));
 
     //vanilla bobber
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> VANILLA_LOOT = registerCatchModifier("vanilla_loot", VanillaLootModifier::new);
@@ -63,6 +63,9 @@ public interface ModCatchModifiers
 
     //survives lava - crystal hook
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> SURVIVES_LAVA = registerCatchModifier("survives_lava", SurvivesLavaModifier::new);
+
+    //add creeper
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> ADD_CREEPER = registerCatchModifier("add_creeper", AddCreeperModifier::new);
 
     static Pair<ResourceLocation, Supplier<AbstractCatchModifier>> registerCatchModifier(String name, Supplier<AbstractCatchModifier> sup)
     {

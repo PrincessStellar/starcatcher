@@ -41,6 +41,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,9 +89,15 @@ public class FishingBobEntity extends Projectile
     public FishingBobEntity(EntityType<? extends FishingBobEntity> entityType, Level level)
     {
         super(entityType, level);
-        this.player = Minecraft.getInstance().player;
+        this.player = getPlayer();
         this.modifiers = ModCatchModifiers.getCatchModifiers(player);
         modifiers.forEach(acm -> acm.onAdd(this));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static Player getPlayer()
+    {
+        return Minecraft.getInstance().player;
     }
 
     //server
@@ -146,8 +154,6 @@ public class FishingBobEntity extends Projectile
             ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
         currentState = FishHookState.FLYING;
-
-        System.out.println(modifiers);
     }
 
     public void reel()
@@ -155,7 +161,7 @@ public class FishingBobEntity extends Projectile
         modifiers.forEach(AbstractCatchModifier::onReelStart);
 
         //server only
-        List<FishProperties> available = new ArrayList<>(List.of());
+        List<FishProperties> available = new ArrayList<>();
 
         Map<ResourceLocation, Integer> data = FishingGuideAttachment.getTrophiesCaught(player);
 
@@ -250,7 +256,7 @@ public class FishingBobEntity extends Projectile
         fpToFish = available.get(random.nextInt(available.size()));
 
         //trigger modifiers for which fish to get based on available
-        List<FishProperties> immutableAvailable = available;
+        List<FishProperties> immutableAvailable = List.copyOf(available);
         modifiers.forEach(acm -> acm.afterChoosingTheCatch(immutableAvailable));
 
         //should cancel to prevent normal minigame/item fished (only used for vanilla bobber)
@@ -265,7 +271,8 @@ public class FishingBobEntity extends Projectile
                 || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(Config.ENABLE_MINIGAME.get())))
         {
             U.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
-        } else
+        }
+        else
         {
             //otherwise send fishing minigame payload to client
             PacketDistributor.sendToPlayer(
@@ -288,7 +295,8 @@ public class FishingBobEntity extends Projectile
         if (!player.isRemoved() && player.isAlive() && holdingRod && !(this.distanceToSqr(player) > 1024))
         {
             return false;
-        } else
+        }
+        else
         {
             this.kill();
             return true;
@@ -331,7 +339,8 @@ public class FishingBobEntity extends Projectile
             if (currentState == FishHookState.BOBBING) entityData.set(STATE, 2);
             if (currentState == FishHookState.BITING) entityData.set(STATE, 3);
             if (currentState == FishHookState.FISHING) entityData.set(STATE, 4);
-        } else
+        }
+        else
         {
             if (entityData.get(STATE) == 1) currentState = FishHookState.FLYING;
             if (entityData.get(STATE) == 2) currentState = FishHookState.BOBBING;
@@ -413,7 +422,8 @@ public class FishingBobEntity extends Projectile
 
                 kill();
             }
-        } else
+        }
+        else
         {
             timeBiting = 0;
         }
@@ -434,17 +444,20 @@ public class FishingBobEntity extends Projectile
                 if (!fluid.isEmpty())
                 {
                     setDeltaMovement(this.getDeltaMovement().add(0.0F, 0.01, 0.0F));
-                } else
+                }
+                else
                 {
                     if (random.nextFloat() > 0.02)
                     {
                         setDeltaMovement(this.getDeltaMovement().add(0.0F, -0.03, 0.0F));
-                    } else
+                    }
+                    else
                     {
                         setDeltaMovement(this.getDeltaMovement().add(0.0F, -0.01, 0.0F));
                     }
                 }
-            } else
+            }
+            else
             {
                 setDeltaMovement(getDeltaMovement().x, getDeltaMovement().y * 0.9, getDeltaMovement().z);
             }
@@ -470,7 +483,8 @@ public class FishingBobEntity extends Projectile
             currentState = FishHookState.FISHING;
             reel();
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
