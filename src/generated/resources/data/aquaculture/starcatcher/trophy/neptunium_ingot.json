@@ -70,7 +70,7 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": [
-        "starcatcher:is_cold_ocean"
+        "starcatcher:is_ocean"
       ],
       "dimensions": [
         "minecraft:overworld"
