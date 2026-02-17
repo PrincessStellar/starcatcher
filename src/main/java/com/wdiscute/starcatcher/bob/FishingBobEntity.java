@@ -154,6 +154,7 @@ public class FishingBobEntity extends Projectile
             ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
         currentState = FishHookState.FLYING;
+        System.out.println(modifiers);
     }
 
     public void reel()

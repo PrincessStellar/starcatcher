@@ -3,12 +3,14 @@ package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.compat.CuriosCompat;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
@@ -103,10 +105,10 @@ public interface ModCatchModifiers
         player.getInventory().armor.forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
 
         //curios
-
-
-
-
+        if(ModList.get().isLoaded("curios"))
+        {
+            CuriosCompat.getItems(player).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
+        }
 
         List<AbstractCatchModifier> catchModifiers = new ArrayList<>();
         rls.forEach(o -> catchModifiers.add(getCatchModifierSupplier(player.level(), o).get()));

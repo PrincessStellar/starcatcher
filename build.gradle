@@ -34,6 +34,12 @@ repositories
         url = "https://maven.favouriteless.net/releases"
     }
 
+    //curios
+    maven {
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
+    }
+
     //modrinth
     maven {
         url = "https://api.modrinth.com/maven"
@@ -54,6 +60,10 @@ dependencies {
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+
+    //curios
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+    //runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     //Serene Seasons
     compileOnly files(".compatmods/SereneSeasons-neoforge-1.21.1-10.1.0.3.jar")
