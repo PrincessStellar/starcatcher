@@ -81,7 +81,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public float pointerBaseSpeed;
 
     public int tickCount = 0;
-    public int pointerPos = 0;
+    public float pointerPos = 0;
     public int currentRotation = 1;
     public float partial;
     public float hitDelay;
@@ -600,7 +600,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         modifiersToAdd.clear();
 
         //move pointer
-        pointerPos += (int) (pointerSpeed * currentRotation);
+        pointerPos += pointerSpeed * currentRotation;
 
         //decrease kimbe markers alpha
         kimbeMarkerAlpha -= 0.1f;
