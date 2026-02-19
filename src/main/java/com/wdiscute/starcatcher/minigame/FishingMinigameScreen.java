@@ -179,14 +179,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         //add modifiers in armor/curios/rod
-        ModMinigameModifiers.getMinigameModifiers(player).forEach(o ->
-        {
-            if(o != null)
-            {
-                modifiers.add(o);
-            }
-        }
-        );
+        modifiers.addAll(ModMinigameModifiers.getMinigameModifiers(player));
 
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())

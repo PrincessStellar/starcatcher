@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.compat.CuriosCompat;
@@ -100,13 +101,21 @@ public interface ModMinigameModifiers
         player.getInventory().armor.forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
 
         //curios
-        if(ModList.get().isLoaded("curios"))
+        if (ModList.get().isLoaded("curios"))
         {
             CuriosCompat.getItems(player).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
 
+        //get all AbstractMinigameModifier instances of registered RLs
         List<AbstractMinigameModifier> minigameModifiers = new ArrayList<>();
-        rls.forEach(o -> minigameModifiers.add(getMinigameModifierSupplier(player.level(), o).get()));
+        rls.forEach(rl ->
+        {
+            Supplier<AbstractMinigameModifier> minigameModifierSupplier = getMinigameModifierSupplier(player.level(), rl);
+            if (minigameModifierSupplier != null)
+                minigameModifiers.add(minigameModifierSupplier.get());
+            else
+                LogUtils.getLogger().error("The modifier {} is not registered. Skipping.", rl);
+        });
         return minigameModifiers;
     }
 
