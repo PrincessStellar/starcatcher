@@ -194,6 +194,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             addSweetSpot(newSweetSpot);
         }
 
+        modifiers.forEach(o -> o.onAdd(this));
     }
 
     public List<ActiveSweetSpot> getActiveSweetSpots()
