@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -55,6 +56,7 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
 
         float decreaseTime = Math.abs(instance.pointerBaseSpeed) / rampTime;
 
+        //who knows wtf is going on here tbh
         if(tickCount <= rampTime)
         {
             instance.pointerSpeed = Math.abs(currentSpeed) < decreaseTime ? 0 : currentSpeed - Math.signum(currentSpeed) * decreaseTime;
@@ -68,6 +70,14 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
     }
 
     @Override
+    public void onMiss()
+    {
+        tickCount = 0;
+        Minecraft.getInstance().player.playSound(SoundEvents.GLASS_BREAK, 0.4f, 1f);
+        Minecraft.getInstance().player.playSound(SoundEvents.SNOW_BREAK, 1f, 1f);
+    }
+
+    @Override
     public void onRemove()
     {
         super.onRemove();
@@ -78,6 +88,10 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
     public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderForeground(guiGraphics, partialTick, width, height);
+        RenderSystem.setShaderColor(1, 1, 1, 1 - (instance.pointerSpeed - instance.pointerBaseSpeed / 2) / (instance.pointerBaseSpeed - instance.pointerBaseSpeed / 2));
+        RenderSystem.enableBlend();
         guiGraphics.blit(FishingMinigameScreen.TEXTURE, width / 2 - 16, height / 2 - 16, 32, 32, 0, 0, 32, 32, 256, 256);
+        RenderSystem.setShaderColor(1, 1, 1, 1);
+        RenderSystem.enableBlend();
     }
 }

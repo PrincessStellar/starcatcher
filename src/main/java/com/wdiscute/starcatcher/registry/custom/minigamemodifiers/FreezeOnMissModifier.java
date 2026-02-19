@@ -42,7 +42,6 @@ public class FreezeOnMissModifier extends AbstractTimedModifier
     public void onMiss()
     {
         super.onMiss();
-
         instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(40, 10));
     }
 
