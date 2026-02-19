@@ -237,7 +237,13 @@ public record FishProperties(
 
         public Builder withDifficulty(Difficulty dif)
         {
-            this.dif = dif;
+            this.dif = dif.withModifiers(dif.modifiers);
+            return this;
+        }
+
+        public Builder withModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)
+        {
+            this.dif.withModifiers(modifiers);
             return this;
         }
 
@@ -1014,6 +1020,11 @@ public record FishProperties(
         public Difficulty(int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
         {
             this(speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
+        }
+
+        public Difficulty withModifiers(Supplier<Supplier<AbstractMinigameModifier>>... modifiers)
+        {
+            return new Difficulty(this.speed, this.penalty, this.decay, Arrays.stream(modifiers).toList(), this.sweetSpots);
         }
 
         public Difficulty withModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)

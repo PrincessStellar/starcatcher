@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.fishing.compat.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.Holder;
@@ -173,7 +174,8 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldColdLakeFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_LAKE);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_LAKE)
+                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
     }
 
     public static FishProperties.Builder overworldWarmLakeFish(Holder<Item> fish)
@@ -191,18 +193,21 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldColdMountainFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_MOUNTAIN);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
+                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
     }
 
     public static FishProperties.Builder overworldColdOceanFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
+                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_OCEAN);
     }
 
     public static FishProperties.Builder overworldColdRiverFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
+                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_RIVER);
     }
 

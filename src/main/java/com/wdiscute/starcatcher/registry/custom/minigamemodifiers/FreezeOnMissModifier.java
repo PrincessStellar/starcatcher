@@ -15,10 +15,10 @@ public class FreezeOnMissModifier extends AbstractTimedModifier
 {
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/freeze.png");
 
-    public static final MapCodec<ClearBobberModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<FreezeOnMissModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength)
-            ).apply(instance, ClearBobberModifier::new));
+            ).apply(instance, FreezeOnMissModifier::new));
 
     public FreezeOnMissModifier(int length) {
         super(length);

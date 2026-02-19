@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
 import net.minecraft.tags.BiomeTags;
@@ -86,7 +87,8 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(ModItems.FROSTJAW_TROUT)
                 .withStar(Constellations.UrsaMajor.ALKAID)
                 .withSizeAndWeight(FishProperties.sizeWeight(35, 8, 1600, 1200))
-                .withDifficulty(FishProperties.Difficulty.FOUR_BIG_VANISHING));
+                .withDifficulty(FishProperties.Difficulty.FOUR_BIG_VANISHING)
+        );
 
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(ModItems.CRYSTALBACK_TROUT)
                 .withStar(Constellations.UrsaMajor.MIZAR)
