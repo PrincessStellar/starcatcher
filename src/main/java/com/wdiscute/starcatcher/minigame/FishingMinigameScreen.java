@@ -111,6 +111,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected final List<ActiveSweetSpot> spotsToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
+    protected final List<AbstractMinigameModifier> modifiersToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
     public FishingMinigameScreen(FishProperties fp, ItemStack rod)
     {
@@ -204,29 +205,20 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void addModifier(AbstractMinigameModifier mod)
     {
-        mod.onAdd(this);
-        if (!mod.removed) this.modifiers.add(mod);
+        if (!mod.removed) this.modifiersToAdd.add(mod);
     }
 
     public void addUniqueModifier(AbstractMinigameModifier mod)
     {
-        //only adds if theres not a modifier of the same class already present
+        //only adds if there's not a modifier of the same class already present
         if (modifiers.stream().noneMatch(m -> m.getClass() == mod.getClass()))
         {
-            mod.onAdd(this);
-            if (!mod.removed) this.modifiers.add(mod);
+            if (!mod.removed) this.modifiersToAdd.add(mod);
         }
     }
 
     public void addSweetSpot(ActiveSweetSpot ass)
     {
-        ass.behaviour.onAdd(this, ass);
-
-        for (AbstractMinigameModifier modifier : modifiers)
-        {
-            ass = modifier.onSpotAdded(ass);
-        }
-
         if (!ass.removed) this.spotsToAdd.add(ass);
     }
 
@@ -594,15 +586,25 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             return s.removed;
         });
 
-        activeSweetSpots.addAll(spotsToAdd);
-        spotsToAdd.clear();
-
         //remove modifiers marked for removal
         modifiers.removeIf(m ->
         {
             if (m.removed) m.onRemove();
             return m.removed;
         });
+
+        //add queued sweetspots
+        activeSweetSpots.addAll(spotsToAdd);
+        //trigger onAdd of SweetSpotBehaviour
+        spotsToAdd.forEach(o -> o.behaviour.onAdd(this, o));
+        //trigger onSpotAdded of modifiers
+        spotsToAdd.forEach(s -> modifiers.forEach(m -> m.onSpotAdded(s)));
+        spotsToAdd.clear();
+
+        //add queued modifiers
+        modifiers.addAll(modifiersToAdd);
+        modifiersToAdd.forEach(o -> o.onAdd(this));
+        modifiersToAdd.clear();
 
         //move pointer
         pointerPos += (int) (pointerSpeed * currentRotation);
