@@ -9,6 +9,7 @@ import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -16,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
@@ -89,6 +91,15 @@ public class ModDataComponents
 
     public static <T> void set(ItemStack stack, Supplier<DataComponentType<T>> component, T data){
         stack.set(component, data);
+    }
+
+    public static List<ItemStack> getSlotsInRod(ItemStack itemStack)
+    {
+        List<ItemStack> list = new ArrayList<>();
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.HOOK, new SingleStackContainer(ItemStack.EMPTY)).stack());
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack());
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BOBBER, new SingleStackContainer(ItemStack.EMPTY)).stack());
+        return list;
     }
 
     @Nullable

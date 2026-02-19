@@ -2,7 +2,9 @@ package com.wdiscute.starcatcher.registry.custom.minigamemodifiers;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.compat.CuriosCompat;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import it.unimi.dsi.fastutil.Pair;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -67,6 +70,51 @@ public interface ModMinigameModifiers
     static DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> registerMinigameModifier(String name, Supplier<AbstractMinigameModifier> sup)
     {
         return REGISTRY.register(name, () -> sup);
+    }
+
+    static Supplier<AbstractMinigameModifier> getMinigameModifierSupplier(Level level, ResourceLocation resourceLocation)
+    {
+        Optional<Supplier<AbstractMinigameModifier>> optional = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(resourceLocation);
+        return optional.orElse(null);
+    }
+
+    static List<AbstractMinigameModifier> getMinigameModifiers(Player player)
+    {
+        List<ResourceLocation> rls = new ArrayList<>();
+
+        //rod
+        ItemStack main = player.getMainHandItem();
+        ItemStack off = player.getOffhandItem();
+        if (main.is(StarcatcherTags.RODS))
+        {
+            rls.addAll(getMinigameModifiersRLs(main));
+            ModDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+        }
+        else if (player.getOffhandItem().is(StarcatcherTags.RODS))
+        {
+            rls.addAll(getMinigameModifiersRLs(off));
+            ModDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+        }
+
+        //armor
+        player.getInventory().armor.forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+
+        //curios
+        if(ModList.get().isLoaded("curios"))
+        {
+            CuriosCompat.getItems(player).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+        }
+
+        List<AbstractMinigameModifier> minigameModifiers = new ArrayList<>();
+        rls.forEach(o -> minigameModifiers.add(getMinigameModifierSupplier(player.level(), o).get()));
+        return minigameModifiers;
+    }
+
+    static List<ResourceLocation> getMinigameModifiersRLs(ItemStack itemStack)
+    {
+        List<ResourceLocation> resourceLocations = ModDataComponents.get(itemStack, ModDataComponents.MINIGAME_MODIFIERS);
+        if (resourceLocations == null) return List.of();
+        return resourceLocations;
     }
 
     static void register(IEventBus eventBus)

@@ -80,7 +80,6 @@ public interface ModCatchModifiers
         REGISTRY.register(eventBus);
     }
 
-
     static Supplier<AbstractCatchModifier> getCatchModifierSupplier(Level level, ResourceLocation resourceLocation)
     {
         Optional<Supplier<AbstractCatchModifier>> optional = level.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).getOptional(resourceLocation);

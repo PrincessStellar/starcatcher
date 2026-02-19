@@ -13,6 +13,7 @@ import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseModifier;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModKeymappings;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -176,17 +177,15 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             addModifier(mod.get().get());
         }
 
-        //cycle through all the items to check for modifiers
-        //todo improve this to check things dynamically, look into baubles compat & armor slots (not inventory otherwise people could offhand modifiers)
-        List<ItemStack> allItems = List.of(bobber, rod, bait, hook);
-        for (ItemStack is : allItems)
-            if (ModDataComponents.has(is, ModDataComponents.MINIGAME_MODIFIERS))
-                for (ResourceLocation rl : Objects.requireNonNull(ModDataComponents.get(is, ModDataComponents.MINIGAME_MODIFIERS)))
-                {
-                    var newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
-                    newModifier.ifPresent(mod -> addModifier(mod.get()));
-                }
-
+        //add modifiers in armor/curios/rod
+        ModMinigameModifiers.getMinigameModifiers(player).forEach(o ->
+        {
+            if(o != null)
+            {
+                modifiers.add(o);
+            }
+        }
+        );
 
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
