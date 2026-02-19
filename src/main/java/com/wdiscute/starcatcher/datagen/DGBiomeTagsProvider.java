@@ -47,9 +47,10 @@ public class DGBiomeTagsProvider extends BiomeTagsProvider
                 .addOptional(Biomes.SNOWY_TAIGA.location())
                 .addOptional(Biomes.SNOWY_BEACH.location())
                 .addOptional(Biomes.SNOWY_PLAINS.location())
+                .addOptional(Biomes.SNOWY_SLOPES.location())
                 .addOptional(Biomes.ICE_SPIKES.location())
                 .addOptional(Biomes.FROZEN_PEAKS.location())
-                .addOptionalTag(Tags.Biomes.IS_COLD_OVERWORLD)
+                .addOptional(Biomes.JAGGED_PEAKS.location())
         ;
 
         this.tag(create(StarcatcherTags.IS_COLD_OCEAN))

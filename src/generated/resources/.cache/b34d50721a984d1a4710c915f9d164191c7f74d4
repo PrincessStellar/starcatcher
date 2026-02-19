@@ -1,8 +1,8 @@
-// 1.21.1	2026-02-14T14:46:12.3451079	Tags for minecraft:worldgen/biome mod id starcatcher
+// 1.21.1	2026-02-19T16:43:37.0157984	Tags for minecraft:worldgen/biome mod id starcatcher
 c292b44e75004534deecb2d20998cfc779483580 data/starcatcher/tags/worldgen/biome/is_beach.json
 946f7156168b436d482a8704e92544cc5c7ae7c7 data/starcatcher/tags/worldgen/biome/is_birch_forest.json
 5e3e6937d1bb9058864a6b7b89e88856087d3656 data/starcatcher/tags/worldgen/biome/is_cherry_grove.json
-3ac6737a3f2d14f8bd525b8b51334eae224a5df8 data/starcatcher/tags/worldgen/biome/is_cold_lake.json
+1f074913a17df7251dd152fc88ddcdd2d0358c43 data/starcatcher/tags/worldgen/biome/is_cold_lake.json
 bfc110d3b64bb5caec1721a299c9bd9753826e57 data/starcatcher/tags/worldgen/biome/is_cold_ocean.json
 793198558ffba8cd08665e81a87ffe96d7e79d74 data/starcatcher/tags/worldgen/biome/is_cold_river.json
 7c1bc15122f878c5edc2d2f2f7c8e745ff4ffe0a data/starcatcher/tags/worldgen/biome/is_dark_forest.json
