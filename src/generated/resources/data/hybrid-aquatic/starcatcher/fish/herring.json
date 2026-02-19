@@ -22,7 +22,11 @@
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 5,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:freeze_on_miss"
+      }
+    ],
     "speed": 9,
     "sweetspots": [
       {

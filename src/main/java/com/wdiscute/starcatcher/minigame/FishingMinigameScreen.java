@@ -45,6 +45,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.overworldColdMountainFish;
+import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.registerStarcatcherBucketAndEntity;
+
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
     public static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/minigame/minigame.png");

@@ -237,7 +237,11 @@ public record FishProperties(
 
         public Builder withDifficulty(Difficulty dif)
         {
-            this.dif = dif.withModifiers(dif.modifiers);
+            //combines existing modifiers with the modifiers being passed in
+            List<Supplier<Supplier<AbstractMinigameModifier>>> list = new ArrayList<>();
+            list.addAll(dif.modifiers);
+            list.addAll(this.dif.modifiers);
+            this.dif = dif.withModifiers(list);
             return this;
         }
 

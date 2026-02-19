@@ -16,7 +16,11 @@
   "difficulty": {
     "decay": 0.0,
     "missPenalty": 20,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:freeze_on_miss"
+      }
+    ],
     "speed": 9,
     "sweetspots": [
       {
