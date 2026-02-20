@@ -91,13 +91,17 @@ public interface ModCatchModifiers
         List<ResourceLocation> rls = new ArrayList<>();
 
         //rod
-        if (player.getMainHandItem().is(StarcatcherTags.RODS))
+        ItemStack main = player.getMainHandItem();
+        ItemStack off = player.getOffhandItem();
+        if (main.is(StarcatcherTags.RODS))
         {
-            rls.addAll(getCatchModifiersRLs(player.getMainHandItem()));
+            rls.addAll(getCatchModifiersRLs(main));
+            ModDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
         }
         else if (player.getOffhandItem().is(StarcatcherTags.RODS))
         {
-            rls.addAll(getCatchModifiersRLs(player.getOffhandItem()));
+            rls.addAll(getCatchModifiersRLs(off));
+            ModDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
         }
 
         //armor

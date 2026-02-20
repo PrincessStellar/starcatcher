@@ -5,10 +5,6 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.compat.CuriosCompat;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +26,9 @@ public interface ModMinigameModifiers
 
     //ice fishes
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> FREEZE_ON_MISS = registerMinigameModifier("freeze_on_miss", FreezeOnMissModifier::new);
+
+    //hot fishes
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BURN_ON_MISS = registerMinigameModifier("burn_on_miss", BurnOnMissModifier::new);
 
     //base modifier
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> LOW_CHANCE_TREASURE_SPAWN = registerMinigameModifier("low_chance_treasure_spawn", LowChanceTreasureSpawnModifier::new);

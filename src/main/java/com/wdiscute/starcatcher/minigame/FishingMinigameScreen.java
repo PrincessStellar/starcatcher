@@ -182,7 +182,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         //add modifiers in armor/curios/rod
-        modifiers.addAll(ModMinigameModifiers.getMinigameModifiers(player));
+        modifiersToAdd.addAll(ModMinigameModifiers.getMinigameModifiers(player));
 
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
@@ -190,8 +190,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
             addSweetSpot(newSweetSpot);
         }
-
-        modifiers.forEach(o -> o.onAdd(this));
     }
 
     public List<ActiveSweetSpot> getActiveSweetSpots()
