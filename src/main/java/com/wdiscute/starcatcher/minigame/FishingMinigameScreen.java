@@ -8,8 +8,7 @@ import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
-import com.wdiscute.starcatcher.registry.ModRenderTypes;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseModifier;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModKeymappings;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
@@ -31,21 +30,16 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 import org.joml.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
-
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
 
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
@@ -172,7 +166,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         this.decay = (float) (difficulty.decay() * Config.DECAY_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
-        addModifier(new BaseModifier());
+        addModifier(new BaseMinigameModifier());
 
         //add every modifier from fp json which is registered
         for (Supplier<Supplier<AbstractMinigameModifier>> mod : fp.dif().modifiers())
@@ -356,25 +350,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //render treasure on top of bar
         guiGraphics.renderItem(treasureIS, width / 2 - 163, ((int) ((float) height / 2 - (64f * treasureProgressSmooth) / 100) + 15));
 
-        //todo consider if i want tackle skins to change particle color like this
-//        int color = Tooltips.hueToRGBInt(Tooltips.hue);
-//        if (tackleSkin.is(ModItems.PEARL_BOBBER_SMITHING_TEMPLATE))
-//            RenderSystem.setShaderColor(
-//                    (float) FastColor.ARGB32.red(color) / 255,
-//                    (float) FastColor.ARGB32.green(color) / 255,
-//                    (float) FastColor.ARGB32.blue(color) / 255,
-//                    1);
-//
-//        if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            color = ModDataComponents.get(tackleSkin, ModDataComponents.BOBBER_COLOR).getColorAsInt();
-//
-//        if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            RenderSystem.setShaderColor(
-//                    (float) FastColor.ARGB32.red(color) / 255,
-//                    (float) FastColor.ARGB32.green(color) / 255,
-//                    (float) FastColor.ARGB32.blue(color) / 255,
-//                    1);
-
         //outline when treasure complete
         if (treasureProgress > 99)
             guiGraphics.blit(
@@ -388,6 +363,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void renderKimbeMarker(GuiGraphics guiGraphics)
     {
+        if(modifiers.stream().anyMatch(AbstractMinigameModifier::skipRenderingKimbeMarker)) return;
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -664,33 +640,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         for (int i = 0; i < count; i++)
         {
-            //todo tackle skin particle stuff? do i want this? who knows
-
-//            if (tackleSkin.is(ModItems.PEARL_BOBBER_SMITHING_TEMPLATE))
-//            {
-//                hitParticles.add(new HitFakeParticle(
-//                        xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-//                        U.r.nextFloat(),
-//                        U.r.nextFloat(),
-//                        U.r.nextFloat(),
-//                        1
-//                ));
-//                continue;
-//            }
-
-//            if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            {
-//                ColorfulSmithingTemplate.BobberColor bobberColor = ModDataComponents.get(tackleSkin, ModDataComponents.BOBBER_COLOR);
-//                hitParticles.add(new HitFakeParticle(
-//                        xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-//                        bobberColor.r(),
-//                        bobberColor.g(),
-//                        bobberColor.b(),
-//                        1
-//                ));
-//                continue;
-//            }
-
             hitParticles.add(
                     new HitFakeParticle(
                             xPos,
@@ -745,6 +694,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             pos += 360;
         }
         return pos;
+    }
+
+    public List<AbstractMinigameModifier> getModifiers()
+    {
+        return modifiers;
     }
 
     @Override

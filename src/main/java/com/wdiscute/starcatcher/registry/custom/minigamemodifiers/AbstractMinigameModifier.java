@@ -118,4 +118,14 @@ public abstract class AbstractMinigameModifier
     {
         return false;
     }
+
+    public boolean skipRenderingKimbeMarker()
+    {
+        return false;
+    }
+
+    public boolean skipHitParticles()
+    {
+        return false;
+    }
 }

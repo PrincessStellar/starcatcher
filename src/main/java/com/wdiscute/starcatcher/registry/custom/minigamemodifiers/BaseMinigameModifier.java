@@ -6,10 +6,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
 
-public class BaseModifier extends AbstractMinigameModifier
+public class BaseMinigameModifier extends AbstractMinigameModifier
 {
 
-    public static final MapCodec<AbstractMinigameModifier> CODEC = MapCodec.unit(BaseModifier::new);
+    public static final MapCodec<AbstractMinigameModifier> CODEC = MapCodec.unit(BaseMinigameModifier::new);
 
     @Override
     public void onMiss()
