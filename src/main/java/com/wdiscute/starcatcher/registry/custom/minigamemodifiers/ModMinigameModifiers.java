@@ -30,6 +30,9 @@ public interface ModMinigameModifiers
     //hot fishes
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BURN_ON_MISS = registerMinigameModifier("burn_on_miss", BurnOnMissModifier::new);
 
+    //end fishes
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> TELEPORT = registerMinigameModifier("teleport", TeleportModifier::new);
+
     //base modifier
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> LOW_CHANCE_TREASURE_SPAWN = registerMinigameModifier("low_chance_treasure_spawn", LowChanceTreasureSpawnModifier::new);
 
@@ -58,7 +61,7 @@ public interface ModMinigameModifiers
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> NIKDO53_MODIFIER = registerMinigameModifier("nikdo53_modifier", Nikdo53Modifier::new);
 
     //base
-    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BASE = registerMinigameModifier("base", BaseModifier::new);
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BASE = registerMinigameModifier("base", BaseMinigameModifier::new);
 
     //flip on every hit
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> FLIP_EVERY_HIT = registerMinigameModifier("flip_every_hit", () -> new FlipEveryHitModifier(-1));
