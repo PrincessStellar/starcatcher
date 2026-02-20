@@ -75,7 +75,6 @@ public class TelescopeScreen extends Screen
     {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         frames++;
-        lockCursor();
 
         int screenHeight = Minecraft.getInstance().getWindow().getScreenHeight();
         int screenWidth = Minecraft.getInstance().getWindow().getScreenWidth();
@@ -183,10 +182,10 @@ public class TelescopeScreen extends Screen
         omouseLocked = mouseLocked;
         if (mouseLocked)
         {
-            GLFW.glfwSetInputMode(this.minecraft.getWindow().getWindow(), 212993, GLFW.GLFW_CURSOR_HIDDEN);
+            GLFW.glfwSetInputMode(this.minecraft.getWindow().getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
         } else
         {
-            GLFW.glfwSetInputMode(this.minecraft.getWindow().getWindow(), 212993, GLFW.GLFW_CURSOR_NORMAL);
+            GLFW.glfwSetInputMode(this.minecraft.getWindow().getWindow(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
         }
     }
 
@@ -194,17 +193,11 @@ public class TelescopeScreen extends Screen
     public boolean keyPressed(int keyCode, int scanCode, int modifiers)
     {
         if (keyCode == GLFW.GLFW_KEY_LEFT_ALT)
-            mouseLocked = false;
-
+        {
+            mouseLocked = !mouseLocked;
+            lockCursor();
+        }
         return super.keyPressed(keyCode, scanCode, modifiers);
-    }
-
-    @Override
-    public boolean keyReleased(int keyCode, int scanCode, int modifiers)
-    {
-        if (keyCode == GLFW.GLFW_KEY_LEFT_ALT)
-            mouseLocked = true;
-        return super.keyReleased(keyCode, scanCode, modifiers);
     }
 
     @Override
@@ -250,7 +243,7 @@ public class TelescopeScreen extends Screen
         super.init();
         double xpos = (double) this.minecraft.getWindow().getScreenWidth() / 2;
         double ypos = (double) this.minecraft.getWindow().getScreenHeight() / 2;
-        InputConstants.grabOrReleaseMouse(this.minecraft.getWindow().getWindow(), 212995, xpos, ypos);
+        InputConstants.grabOrReleaseMouse(this.minecraft.getWindow().getWindow(), GLFW.GLFW_CURSOR_HIDDEN, xpos, ypos);
     }
 
     @Override
