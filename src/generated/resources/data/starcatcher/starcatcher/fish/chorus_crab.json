@@ -16,7 +16,11 @@
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 10,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:teleport"
+      }
+    ],
     "speed": 14,
     "sweetspots": [
       {

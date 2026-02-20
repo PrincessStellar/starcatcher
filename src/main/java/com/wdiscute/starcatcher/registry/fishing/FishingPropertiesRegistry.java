@@ -61,13 +61,15 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder endFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.END);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.END)
+                .addModifier(ModMinigameModifiers.TELEPORT);
     }
 
     public static FishProperties.Builder endOuterIslandsFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.END_OUTER_ISLANDS);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.END_OUTER_ISLANDS)
+                .addModifier(ModMinigameModifiers.TELEPORT);
     }
 
     public static FishProperties.Builder netherLavaFish(Holder<Item> fish)
