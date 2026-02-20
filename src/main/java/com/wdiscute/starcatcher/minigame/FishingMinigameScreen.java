@@ -452,7 +452,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
         {
-            if (Config.ENABLE_VILLAGER_SOUND.get())
+            if (Config.ENABLE_VILLAGER_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
                 Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
             return true;

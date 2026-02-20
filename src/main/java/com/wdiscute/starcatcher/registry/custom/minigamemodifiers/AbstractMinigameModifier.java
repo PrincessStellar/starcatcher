@@ -74,7 +74,7 @@ public abstract class AbstractMinigameModifier
 
     /**
      * Runs right before the sweetSpotBehaviour hit
-     * @return whether the hit should be canceled
+     * @return whether the hit should be cancelled
      */
     public boolean onHit(ActiveSweetSpot ass){
         return false;
@@ -125,6 +125,16 @@ public abstract class AbstractMinigameModifier
     }
 
     public boolean skipHitParticles()
+    {
+        return false;
+    }
+
+    public boolean skipMissSound()
+    {
+        return false;
+    }
+
+    public boolean skipHitSound()
     {
         return false;
     }
