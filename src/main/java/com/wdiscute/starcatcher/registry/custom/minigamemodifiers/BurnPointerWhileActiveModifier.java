@@ -51,8 +51,7 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     public void onAdd(FishingMinigameScreen instance)
     {
         super.onAdd(instance);
-        Minecraft.getInstance().player.playSound(SoundEvents.BLAZE_BURN, 0.4f, 1f);
-        Minecraft.getInstance().player.playSound(SoundEvents.FIRE_EXTINGUISH, 1f, 1f);
+        onMiss();
     }
 
     @Override
@@ -86,8 +85,9 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     public void onMiss()
     {
         tickCount = 0;
-        Minecraft.getInstance().player.playSound(SoundEvents.BLAZE_BURN, 0.4f, 1f);
-        Minecraft.getInstance().player.playSound(SoundEvents.FIRE_EXTINGUISH, 1f, 1f);
+        Minecraft.getInstance().player.playSound(SoundEvents.BLAZE_BURN, 0.9f, 1f);
+        Minecraft.getInstance().player.playSound(SoundEvents.BLAZE_SHOOT, 0.3f, 0.6f);
+        Minecraft.getInstance().player.playSound(SoundEvents.FIRE_EXTINGUISH, 0.2f, 0.7f);
     }
 
     @Override

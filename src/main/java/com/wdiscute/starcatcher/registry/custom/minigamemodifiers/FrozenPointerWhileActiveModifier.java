@@ -44,8 +44,7 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
     public void onAdd(FishingMinigameScreen instance)
     {
         super.onAdd(instance);
-        Minecraft.getInstance().player.playSound(SoundEvents.GLASS_BREAK, 0.4f, 1f);
-        Minecraft.getInstance().player.playSound(SoundEvents.SNOW_BREAK, 1f, 1f);
+        onMiss();
     }
 
     @Override
