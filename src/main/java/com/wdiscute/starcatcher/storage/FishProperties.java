@@ -235,19 +235,22 @@ public record FishProperties(
             return this;
         }
 
-        public Builder withDifficulty(Difficulty dif)
+        public Builder withDifficulty(Difficulty newDif)
         {
-            //combines existing modifiers with the modifiers being passed in
-            List<Supplier<Supplier<AbstractMinigameModifier>>> list = new ArrayList<>();
-            list.addAll(dif.modifiers);
-            list.addAll(this.dif.modifiers);
-            this.dif = dif.withModifiers(list);
+            List<Supplier<Supplier<AbstractMinigameModifier>>> old = List.copyOf(this.dif.modifiers);
+            this.dif = newDif.addModifiers(old);
             return this;
         }
 
-        public Builder withModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)
+        public Builder addModifier(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)
         {
-            this.dif.withModifiers(modifiers);
+            this.dif = dif.addModifiers(modifiers);
+            return this;
+        }
+
+        public Builder addModifier(Supplier<Supplier<AbstractMinigameModifier>> modifier)
+        {
+            this.dif = dif.addModifiers(List.of(modifier));
             return this;
         }
 
@@ -1026,14 +1029,12 @@ public record FishProperties(
             this(speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
         }
 
-        public Difficulty withModifiers(Supplier<Supplier<AbstractMinigameModifier>>... modifiers)
+        public Difficulty addModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> newModifier)
         {
-            return new Difficulty(this.speed, this.penalty, this.decay, Arrays.stream(modifiers).toList(), this.sweetSpots);
-        }
-
-        public Difficulty withModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers)
-        {
-            return new Difficulty(this.speed, this.penalty, this.decay, modifiers, this.sweetSpots);
+            List<Supplier<Supplier<AbstractMinigameModifier>>> list = new ArrayList<>();
+            list.addAll(newModifier);
+            list.addAll(this.modifiers);
+            return new Difficulty(this.speed, this.penalty, this.decay, list, this.sweetSpots);
         }
 
         public Difficulty vanishing(float vanishingRate)

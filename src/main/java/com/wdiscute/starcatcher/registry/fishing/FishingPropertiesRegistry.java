@@ -73,31 +73,36 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder netherLavaFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder netherLavaCrimsonForestFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder netherLavaWarpedForestFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_WARPED_FOREST);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder netherLavaSoulSandValleyFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder netherLavaBasaltDeltasFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_BASALT_DELTAS);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder overworldLushCavesFish(Holder<Item> fish)
@@ -123,7 +128,8 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldSurfaceLava(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_SURFACE);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_SURFACE)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder overworldCavesFish(Holder<Item> fish)
@@ -148,7 +154,8 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldUndergroundLava(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_UNDERGROUND);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_UNDERGROUND)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder overworldMountainFish(Holder<Item> fish)
@@ -168,14 +175,15 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldDeepslateLava(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_DEEPSLATE);
+                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_DEEPSLATE)
+                .addModifier(ModMinigameModifiers.BURN_ON_MISS);
     }
 
     public static FishProperties.Builder overworldColdLakeFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_LAKE)
-                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
+                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
     }
 
     public static FishProperties.Builder overworldWarmLakeFish(Holder<Item> fish)
@@ -194,20 +202,20 @@ public class FishingPropertiesRegistry
     {
         return FishProperties.builder().withFish(fish)
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
-                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
+                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)));
     }
 
     public static FishProperties.Builder overworldColdOceanFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
+                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_OCEAN);
     }
 
     public static FishProperties.Builder overworldColdRiverFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .withDifficulty(FishProperties.Difficulty.EASY.withModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
+                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(ModMinigameModifiers.FREEZE_ON_MISS)))
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_RIVER);
     }
 

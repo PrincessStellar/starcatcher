@@ -45,8 +45,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.overworldColdMountainFish;
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.registerStarcatcherBucketAndEntity;
+import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
 
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {

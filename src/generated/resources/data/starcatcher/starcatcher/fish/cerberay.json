@@ -20,6 +20,9 @@
     "missPenalty": 10,
     "modifiers": [
       {
+        "type": "starcatcher:burn_on_miss"
+      },
+      {
         "type": "starcatcher:spawn_sweet_spots",
         "chance": 0.5,
         "cooldown": 4,
