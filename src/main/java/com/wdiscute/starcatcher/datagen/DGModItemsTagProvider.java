@@ -69,6 +69,7 @@ public class DGModItemsTagProvider extends ItemTagsProvider
                 .add(WORM.get())
                 .add(ALMIGHTY_WORM.get())
                 .add(SEEKING_WORM.get())
+                .add(DEV_WORM.get())
                 .add(GUNPOWDER_BAIT.get())
                 .add(CHERRY_BAIT.get())
                 .add(LUSH_BAIT.get())
