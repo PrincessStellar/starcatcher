@@ -5,9 +5,8 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.io.SizeAndWeightInstance;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -65,12 +64,11 @@ public class TooltipEvents {
             }
         }
 
-        //size and weight
-        if (ModDataComponents.has(stack, ModDataComponents.SIZE_AND_WEIGHT))
+        //caught fish info
+        if (ModDataComponents.has(stack, ModDataComponents.CAUGHT_FISH_INFO))
         {
-            SizeAndWeightInstance sw = ModDataComponents.get(stack, ModDataComponents.SIZE_AND_WEIGHT);
-
             SettingsScreen.Units units = Config.UNIT.get();
+            CaughtFishInfo sw = ModDataComponents.get(stack, ModDataComponents.CAUGHT_FISH_INFO);
 
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
@@ -107,79 +105,6 @@ public class TooltipEvents {
             {
                 comp.add(1, Tooltips.decodeTranslationKey("tooltip.starcatcher.rod.netherite"));
             }
-        }
-
-        //rarity name color
-        if (ModDataComponents.has(stack, ModDataComponents.FISH_PROPERTIES))
-        {
-            FishProperties fp = ModDataComponents.get(stack, ModDataComponents.FISH_PROPERTIES);
-
-            String s = fp.rarity().getPre() + comp.get(0).getString(100) + fp.rarity().getPost();
-
-            comp.remove(0);
-            comp.add(0, Tooltips.decodeString(s));
-        }
-
-        //trophy stuff
-        if (ModDataComponents.has(stack, ModDataComponents.TROPHY))
-        {
-            TrophyProperties tp = ModDataComponents.get(stack, ModDataComponents.TROPHY);
-
-            if (tp.trophyType() == TrophyProperties.TrophyType.TROPHY) {
-                if (hasShiftDown)
-                {
-                    comp.add(Component.translatable("tooltip.libtooltips.generic.shift_down"));
-                    comp.add(Component.translatable("tooltip.libtooltips.generic.empty"));
-                    comp.add(Component.translatable("tooltip.starcatcher.trophy.0"));
-                    comp.add(Component.translatable("tooltip.starcatcher.trophy.1"));
-
-                    List<Component> list = new ArrayList<>();
-
-                    //all
-                    if (tp.all().total() != 0) list.add(Tooltips.decodeString(
-                            I18n.get("tooltip.starcatcher.trophy.total")
-                                    .replace("&", tp.all().total() + "")
-                                    .replace("$", I18n.get("tooltip.starcatcher.trophy.all"))
-                    ));
-
-                    if (tp.all().unique() != 0) list.add(
-                            Tooltips.decodeString(I18n.get("tooltip.starcatcher.trophy.unique")
-                                    .replace("&", tp.all().unique() + "")
-                                    .replace("$", I18n.get("tooltip.starcatcher.trophy.all"))));
-
-                    for (FishProperties.Rarity value : FishProperties.Rarity.values())
-                    {
-                        TrophyProperties.RarityProgress progress = tp.getProgress(value);
-                        if (progress.total() != 0) list.add(
-                                Tooltips.decodeString(I18n.get("tooltip.starcatcher.trophy.total")
-                                        .replace("&", progress.total() + "")
-                                        .replace("$", I18n.get("tooltip.starcatcher.trophy." + value.getSerializedName()))));
-
-                        if (progress.unique() != 0) list.add(
-                                Tooltips.decodeString(I18n.get("tooltip.starcatcher.trophy.unique")
-                                        .replace("&", progress.unique() + "")
-                                        .replace("$", I18n.get("tooltip.starcatcher.trophy." + value.getSerializedName()))));
-                    }
-
-                    if (list.size() == 1)
-                    {
-                        comp.add(Component.translatable("tooltip.starcatcher.trophy.once")
-                                .append(list.get(0))
-                                .append(Component.translatable("tooltip.starcatcher.trophy.have_been_caught")));
-                    }
-                    else
-                    {
-                        comp.add(Component.translatable("tooltip.starcatcher.trophy.2"));
-                        comp.addAll(list);
-                    }
-
-                }
-                else
-                {
-                    comp.add(Component.translatable("tooltip.libtooltips.generic.shift_up"));
-                }
-            }
-
         }
     }
 }

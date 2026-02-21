@@ -4,12 +4,9 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -55,21 +52,13 @@ public class ModDataComponents
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
     //storing data on itemstack
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<TrophyProperties>> TROPHY = register(
-            "trophy",
-            builder -> builder.persistent(TrophyProperties.CODEC));
-
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<FishProperties>> FISH_PROPERTIES = register(
-            "fish_properties",
-            builder -> builder.persistent(FishProperties.CODEC));
-
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SecretNote.Note>> SECRET_NOTE = register(
             "secret_note",
             builder -> builder.persistent(SecretNote.Note.CODEC));
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<SizeAndWeightInstance>> SIZE_AND_WEIGHT = register(
-            "size_and_weight",
-            builder -> builder.persistent(SizeAndWeightInstance.CODEC));
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<CaughtFishInfo>> CAUGHT_FISH_INFO = register(
+            "caught_fish_info",
+            builder -> builder.persistent(CaughtFishInfo.CODEC));
 
 
     //modifiers

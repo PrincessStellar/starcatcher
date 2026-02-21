@@ -22,10 +22,8 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(stack.is(thisItem.getItem()))
         {
-            ModDataComponents.remove(stack, ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(stack, ModDataComponents.FISH_PROPERTIES);
-            ModDataComponents.remove(thisItem, ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(thisItem, ModDataComponents.FISH_PROPERTIES);
+            ModDataComponents.remove(stack, ModDataComponents.CAUGHT_FISH_INFO);
+            ModDataComponents.remove(thisItem, ModDataComponents.CAUGHT_FISH_INFO);
         }
 
     }
@@ -38,10 +36,8 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(itemBeingClickedOn.is(itemInHand.getItem()))
         {
-            ModDataComponents.remove(itemInHand,  ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(itemInHand, ModDataComponents.FISH_PROPERTIES);
-            ModDataComponents.remove(itemBeingClickedOn,ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(itemBeingClickedOn, ModDataComponents.FISH_PROPERTIES);
+            ModDataComponents.remove(itemInHand,  ModDataComponents.CAUGHT_FISH_INFO);
+            ModDataComponents.remove(itemBeingClickedOn,ModDataComponents.CAUGHT_FISH_INFO);
         }
     }
 

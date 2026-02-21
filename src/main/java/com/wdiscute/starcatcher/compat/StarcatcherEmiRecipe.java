@@ -44,8 +44,6 @@ public class StarcatcherEmiRecipe implements EmiRecipe {
         this.tp = tp;
 
         this.is = new ItemStack(tp.fish());
-
-        ModDataComponents.set(is, ModDataComponents.TROPHY, this.tp);
     }
 
     @Override

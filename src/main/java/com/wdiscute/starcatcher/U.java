@@ -21,8 +21,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -140,11 +138,9 @@ public class U
                         //make fish itemstack
                         is = new ItemStack(fp.catchInfo().fish());
 
-                        //store size and weight data component
-                        ModDataComponents.set(is, ModDataComponents.SIZE_AND_WEIGHT, new SizeAndWeightInstance(size, weight, percentile));
-
-                        //store fp in itemstack for name color change
-                        ModDataComponents.set(is, ModDataComponents.FISH_PROPERTIES, fp);
+                        //store caught fish info data component
+                        //todo golden fish
+                        ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), false));
 
                         //call modify stack on modifiers (split hook behaviour)
                         for (AbstractCatchModifier acm : fbe.modifiers) is = acm.modifyItemStack(is);
@@ -244,8 +240,7 @@ public class U
     public static ItemStack getFishedItemstackFromFP(FishProperties fp, int size, int weight, float percentile)
     {
         ItemStack is = new ItemStack(fp.catchInfo().fish());
-        ModDataComponents.set(is, ModDataComponents.FISH_PROPERTIES, fp);
-        ModDataComponents.set(is, ModDataComponents.SIZE_AND_WEIGHT, new SizeAndWeightInstance(size, weight, percentile));
+        ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), false));
         return is;
     }
 

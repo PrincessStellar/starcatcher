@@ -600,7 +600,6 @@ public class FishingGuideScreen extends Screen
             ItemStack is;
 
             is = new ItemStack(tp.fish());
-            ModDataComponents.set(is, ModDataComponents.TROPHY, tp);
 
             guiGraphics.renderOutline(xrender - 10, y - 2, 20, 20, 0xff000000);
             renderItem(is, xrender - 8, y, 1);
@@ -644,7 +643,6 @@ public class FishingGuideScreen extends Screen
             if (FishingGuideAttachment.getTrophiesCaught(player).containsKey(level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY).getKey(tp)))
             {
                 is = new ItemStack(tp.fish());
-                ModDataComponents.set(is, ModDataComponents.TROPHY, tp);
                 if (isMouseOnTop)
                 {
                     guiGraphics.renderTooltip(this.font, is, mouseX, mouseY);
