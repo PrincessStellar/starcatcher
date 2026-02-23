@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-20T18:17:24.8047738	FishingProperties
+// 1.21.1	2026-02-23T18:35:28.4537566	FishingProperties
 be60f2d857de148fd2caf6c1b6532125060346b1 data/alexscaves/starcatcher/fish/lanternfish.json
 4c0f285125bd37c9ab9d7ff5709b97ad7f8eddc2 data/alexscaves/starcatcher/fish/radgill.json
 5a6683335e79b9a0904aadaac422ada97586e2ba data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -245,7 +245,6 @@ e5449a30d9b683f955ad9931dc2caf8f4546e180 data/starcatcher/starcatcher/fish/vesan
 81348431423d28dcef3b27170688a173e94fa5f5 data/starcatcher/starcatcher/fish/vivid_moss.json
 d2f3efdbe9a6116b506de8be0739316b580fbf4b data/starcatcher/starcatcher/fish/voidbiter.json
 7cc3173ae8e4fa36d4e423a674e6137032c408d0 data/starcatcher/starcatcher/fish/ward.json
-f6ea950c2083941f3a68caa2a697f14a388a1e3d data/starcatcher/starcatcher/fish/waterlogged_bottle.json
 2a21a8838e93c4e8f2973e7d7fbe881510d9dd73 data/starcatcher/starcatcher/fish/whiteveil.json
 a02df84a5bd1c275844632e787daaeb797416687 data/starcatcher/starcatcher/fish/willish.json
 9d71fd2dea903f2623a885d7f961501b6e690cac data/starcatcher/starcatcher/fish/willow_bream.json

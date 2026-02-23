@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-23T15:38:28.7533426	Item Models: starcatcher
+// 1.21.1	2026-02-23T18:35:28.4487567	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -191,7 +191,6 @@ c9e4806b81ff40a7424f42dcc56ee59e8736cabd assets/starcatcher/models/item/unknown_
 38d92c7bf5f06561e97a46df04099c8c0354ec7d assets/starcatcher/models/item/vivid_moss.json
 f52bb9144ddc25b53baa049f5ae12af3f707a9bb assets/starcatcher/models/item/voidbiter.json
 9b811446384ffb617b1d650af26591b19e6c112f assets/starcatcher/models/item/ward.json
-0dcccb6568f580f2d3bf693597ad083b6c0fc39c assets/starcatcher/models/item/waterlogged_bottle.json
 f4026da08dc68d4ad19c382d9abe5b0f59edf7e9 assets/starcatcher/models/item/waterlogged_satchel.json
 27953081eeade9a0ed934f5f112dfe8216794046 assets/starcatcher/models/item/whiteveil.json
 76a4012f80b50f38199d41938fe6c494a427bad3 assets/starcatcher/models/item/willish.json

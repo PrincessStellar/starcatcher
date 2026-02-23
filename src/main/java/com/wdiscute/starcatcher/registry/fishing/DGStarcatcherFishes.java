@@ -419,11 +419,6 @@ public class DGStarcatcherFishes
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST));
 
-        register(overworldOceanFish(ModItems.WATERLOGGED_BOTTLE)
-                .withBaseChance(1)
-                .withDifficulty(FishProperties.Difficulty.TRASH)
-                .withHasGuideEntry(false));
-
         //deep ocean
         registerStarcatcherBucketAndEntity(overworldDeepOceanFish(ModItems.BIGEYE_TUNA)
                 .withSeasons(Seasons.SPRING, Seasons.WINTER)

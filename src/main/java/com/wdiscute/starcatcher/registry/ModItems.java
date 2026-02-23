@@ -260,7 +260,6 @@ public interface ModItems
     DeferredItem<Item> REDSCALED_TUNA = BUCKETABLE_FISHES_REGISTRY.register("redscaled_tuna", FishItem::new);
     DeferredItem<Item> BIGEYE_TUNA = BUCKETABLE_FISHES_REGISTRY.register("bigeye_tuna", FishItem::new);
     DeferredItem<Item> SEA_BASS = BUCKETABLE_FISHES_REGISTRY.register("sea_bass", FishItem::new);
-    DeferredItem<Item> WATERLOGGED_BOTTLE = ITEMS.register("waterlogged_bottle", BasicItem::new);
 
     //beaches
     DeferredItem<Item> CONCH = ITEMS.register("conch", BasicItem::new);

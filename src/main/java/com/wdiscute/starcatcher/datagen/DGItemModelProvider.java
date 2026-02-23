@@ -44,7 +44,6 @@ public class DGItemModelProvider extends ItemModelProvider
         //trash
         simpleItem(BOOT);
         simpleItem(DRIED_SEAWEED);
-        simpleItem(WATERLOGGED_BOTTLE);
         simpleItem(LAVA_CRAB_CLAW);
         simpleItem(MOSSY_BOOT);
 
