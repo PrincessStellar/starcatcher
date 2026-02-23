@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
+import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.registry.items.*;
 import com.wdiscute.starcatcher.registry.items.cheater.*;
 import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
@@ -21,6 +22,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 public interface ModItems
 {
@@ -58,7 +61,10 @@ public interface ModItems
     DeferredItem<Item> SHINY_HOOK = HOOKS_REGISTRY.register("shiny_hook", () -> new MinigameModifierItem(ModMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS));
     DeferredItem<Item> GOLD_HOOK = HOOKS_REGISTRY.register("gold_hook", () -> new CatchModifierItem(ModCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE));
     DeferredItem<Item> MOSSY_HOOK = HOOKS_REGISTRY.register("mossy_hook", () -> new MinigameModifierItem(ModMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT));
-    DeferredItem<Item> STONE_HOOK = HOOKS_REGISTRY.register("stone_hook", () -> new MinigameModifierItem(ModMinigameModifiers.STOP_DECAY_ON_HIT));
+    DeferredItem<Item> STONE_HOOK = HOOKS_REGISTRY.register("stone_hook", () -> new Item(new Item.Properties().stacksTo(1)
+            .component(ModDataComponents.CATCH_MODIFIERS, List.of(ModCatchModifiers.INCREASE_LURE_TIME.getFirst()))
+            .component(ModDataComponents.MINIGAME_MODIFIERS, List.of(ModMinigameModifiers.STOP_DECAY_ON_HIT.getId()))
+    ));
     DeferredItem<Item> SPLIT_HOOK = HOOKS_REGISTRY.register("split_hook", () -> new CatchModifierItem(ModCatchModifiers.EXTRA_ITEM));
     DeferredItem<Item> HEAVY_HOOK = HOOKS_REGISTRY.register("heavy_hook", () -> new MinigameModifierItem(ModMinigameModifiers.SLOWER_MOVING_SWEET_SPOTS));
 

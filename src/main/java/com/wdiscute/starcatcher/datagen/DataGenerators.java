@@ -58,8 +58,10 @@ public class DataGenerators
 
         //loot table
         gen.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+                List.of(new LootTableProvider.SubProviderEntry(DGModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
+        //recipes
+        gen.addProvider(event.includeServer(), new DGRecipeProvider(output, lookupProvider));
 
     }
 }
