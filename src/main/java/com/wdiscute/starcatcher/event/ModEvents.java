@@ -154,7 +154,7 @@ public class ModEvents
                 float i = level.getRandom().nextFloat();
                 if (i < 0.8f)
                     is = new ItemStack(ModItems.WORM.get());
-                else if (i < 0.9f)
+                else if (i < 0.99f)
                     is = new ItemStack(ModItems.ALMIGHTY_WORM.get());
                 else
                     is = new ItemStack(ModItems.SEEKING_WORM.get());
