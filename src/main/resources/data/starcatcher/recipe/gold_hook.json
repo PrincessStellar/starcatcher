@@ -1,5 +1,5 @@
 {
-  "type": "starcatcher:modifier_shaped_recipe",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
     "H": {
@@ -20,6 +20,5 @@
   "result": {
     "count": 1,
     "id": "starcatcher:gold_hook"
-  },
-  "modifiers" : ["starcatcher:extra_exp_based_on_performance"]
+  }
 }

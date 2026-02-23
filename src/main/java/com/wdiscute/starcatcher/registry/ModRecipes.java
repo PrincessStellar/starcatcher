@@ -23,11 +23,8 @@ public class ModRecipes
     public static final  Supplier<RecipeSerializer<FishingRodSkinSmithingRecipe>> FISHING_ROD_SKIN_SMITHING =
             REGISTRY.register("fishing_rod_skin", FishingRodSkinSmithingRecipe.Serializer::new);
 
-    public static final  Supplier<RecipeSerializer<ModifierShapedRecipe>> MODIFIER_SHAPED_RECIPE =
-            REGISTRY.register("modifier_shaped_recipe", ModifierShapedRecipe.Serializer::new);
-
-    public static final  Supplier<RecipeSerializer<ModifierShapelessRecipe>> MODIFIER_SHAPELESS_RECIPE =
-            REGISTRY.register("modifier_shapeless_recipe", ModifierShapelessRecipe.Serializer::new);
+    public static final  Supplier<RecipeSerializer<BottledLetterRecipe>> BOTTLED_LETTER =
+            REGISTRY.register("bottled_letter", BottledLetterRecipe.Serializer::new);
 
     public static void register(IEventBus eventBus)
     {

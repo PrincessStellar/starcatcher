@@ -1,5 +1,5 @@
 {
-  "type": "starcatcher:modifier_shapeless_recipe",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
     {
@@ -9,6 +9,5 @@
   "result": {
     "id": "starcatcher:vanilla_bobber",
     "count": 1
-  },
-  "modifiers" : ["starcatcher:vanilla_loot"]
+  }
 }

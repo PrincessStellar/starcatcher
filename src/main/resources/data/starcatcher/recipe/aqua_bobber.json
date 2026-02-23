@@ -1,5 +1,5 @@
 {
-  "type": "starcatcher:modifier_shaped_recipe",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
     "B": {
