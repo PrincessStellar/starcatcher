@@ -11,7 +11,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Collections;
@@ -41,7 +40,7 @@ public class DataGenerators
 
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        gen.addProvider(event.includeServer(), new DGModItemModelProvider(output, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGItemModelProvider(output, existingFileHelper));
 
         //block tags
         BlockTagsProvider btp = new DGModBlocksTagProvider(output, lookupProvider, existingFileHelper);

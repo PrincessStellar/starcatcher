@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.ModParticles;
@@ -109,6 +110,10 @@ public class FishingBobEntity extends Projectile
         this.player = player;
         this.rod = rod;
         this.modifiers = ModCatchModifiers.getCatchModifiers(player);
+
+        //add fish messages modifier
+        modifiers.add(new FishMessagesModifier());
+
         SingleStackContainer ssc = ModDataComponents.get(rod, ModDataComponents.HOOK);
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));
 
@@ -154,7 +159,6 @@ public class FishingBobEntity extends Projectile
             ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
         currentState = FishHookState.FLYING;
-        System.out.println(modifiers);
     }
 
     public void reel()
@@ -258,7 +262,7 @@ public class FishingBobEntity extends Projectile
         List<FishProperties> immutableAvailable = List.copyOf(available);
         modifiers.forEach(acm -> acm.afterChoosingTheCatch(immutableAvailable));
 
-        //should cancel to prevent normal minigame/item fished (only used for vanilla bobber)
+        //should cancel to prevent normal minigame/item fished (vanilla bobber & messages)
         if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldCancelBeforeSkipsMinigameCheck))
         {
             this.kill();

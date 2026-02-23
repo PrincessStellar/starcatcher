@@ -1074,14 +1074,31 @@
   "gui.secret_note.wither_note.15" : "",
 
 
+  "item.starcatcher.letter" : "Letter",
+  "tooltip.starcatcher.letter.0" : "A Letter awaiting to be written and sent off.",
+
+  "item.starcatcher.bottled_letter" : "Bottled Letter",
+  "tooltip.starcatcher.bottled_letter.0" : "A Letter imprisoned in a bottle.",
+  "tooltip.starcatcher.bottled_letter.1" : "The only thing left to do now is throw it into",
+  "tooltip.starcatcher.bottled_letter.2" : "the ocean and let it start it's journey.",
+
+  "item.starcatcher.message_in_a_bottle.thrown" : "Your message in a bottle stars it's journey...",
+
+  "item.starcatcher.message_in_a_bottle" : "Message in a Bottle",
+  "tooltip.starcatcher.message_in_a_bottle.0" : "A bottle containing a message written many moons ago.",
+  "tooltip.starcatcher.message_in_a_bottle.1" : "Looks like the only way to get it out is to break it open.",
+
+  "item.starcatcher.message" : "Message",
+  "tooltip.starcatcher.message.0" : "The message half of a message-in-a-bottle.",
+  "tooltip.starcatcher.message.1" : "Who knows how long it's been drifting the waves to reach you.",
+
+  "item.starcatcher.broken_bottle" : "Broken Bottle",
+  "tooltip.starcatcher.broken_bottle.0" : "The remains of an once intact bottle.",
 
   "item.starcatcher.secret_note" : "Secret Note",
   "tooltip.starcatcher.secret_note.0" : "An old secret note almost lost to time.",
   "tooltip.starcatcher.secret_note.1" : "Holding nothing more than the thoughts of",
   "tooltip.starcatcher.secret_note.2" : "those probably not amongst us anymore.",
-
-  "item.starcatcher.broken_bottle" : "Broken Bottle",
-  "tooltip.starcatcher.broken_bottle.0" : "The remains of an once intact bottle.",
 
   "item.starcatcher.settings" : "Settings",
 

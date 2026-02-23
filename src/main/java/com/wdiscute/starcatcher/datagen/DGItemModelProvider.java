@@ -1,25 +1,21 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.blocks.HatBlock;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.wdiscute.starcatcher.registry.ModItems.*;
 import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
-public class DGModItemModelProvider extends ItemModelProvider
+public class DGItemModelProvider extends ItemModelProvider
 {
-    public DGModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
+    public DGItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
     {
         super(output, Starcatcher.MOD_ID, existingFileHelper);
     }
@@ -64,9 +60,16 @@ public class DGModItemModelProvider extends ItemModelProvider
         simpleItem(COOKED_STARCAUGHT_FISH);
         simpleItem(SETTINGS);
 
-        //notes
-        simpleItem(SECRET_NOTE);
+        //notes & messages
+        simpleItem(LETTER);
+        simpleItem(BOTTLED_LETTER);
+
+        simpleItem(MESSAGE_IN_A_BOTTLE);
+        simpleItem(MESSAGE);
+
         simpleItem(BROKEN_BOTTLE);
+
+        simpleItem(SECRET_NOTE);
         simpleItem(DRIFTING_WATERLOGGED_BOTTLE);
         simpleItem(SCALDING_BOTTLE);
         simpleItem(BURNING_BOTTLE);

@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.io;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -40,25 +41,20 @@ public class ModDataComponents
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BAIT = register(
-            "bait",
-            builder -> builder.persistent(SingleStackContainer.CODEC));
-
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BIN_STORAGE = register(
-            "bin_storage",
-            builder -> builder.persistent(SingleStackContainer.CODEC));
+            "bait", builder -> builder.persistent(SingleStackContainer.CODEC));
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> HOOK = register(
-            "hook",
-            builder -> builder.persistent(SingleStackContainer.CODEC));
+            "hook", builder -> builder.persistent(SingleStackContainer.CODEC));
 
     //storing data on itemstack
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SecretNote.Note>> SECRET_NOTE = register(
-            "secret_note",
-            builder -> builder.persistent(SecretNote.Note.CODEC));
+            "secret_note", builder -> builder.persistent(SecretNote.Note.CODEC));
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<LetterItem.Message>> MESSAGE = register(
+            "message", builder -> builder.persistent(LetterItem.Message.CODEC));
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<CaughtFishInfo>> CAUGHT_FISH_INFO = register(
-            "caught_fish_info",
-            builder -> builder.persistent(CaughtFishInfo.CODEC));
+            "caught_fish_info", builder -> builder.persistent(CaughtFishInfo.CODEC));
 
 
     //modifiers
@@ -78,7 +74,8 @@ public class ModDataComponents
             "netherite_upgraded",
             builder -> builder.persistent(Codec.BOOL));
 
-    public static <T> void set(ItemStack stack, Supplier<DataComponentType<T>> component, T data){
+    public static <T> void set(ItemStack stack, Supplier<DataComponentType<T>> component, T data)
+    {
         stack.set(component, data);
     }
 
@@ -92,20 +89,24 @@ public class ModDataComponents
     }
 
     @Nullable
-    public static <T> T get(ItemStack stack, Supplier<DataComponentType<T>> component){
+    public static <T> T get(ItemStack stack, Supplier<DataComponentType<T>> component)
+    {
         return stack.get(component);
     }
 
-    public static <T> boolean has(ItemStack stack, Supplier<DataComponentType<T>> component){
+    public static <T> boolean has(ItemStack stack, Supplier<DataComponentType<T>> component)
+    {
         return stack.has(component);
     }
 
-    public static  <T> void remove(ItemStack stack, Supplier<DataComponentType<T>> component){
+    public static <T> void remove(ItemStack stack, Supplier<DataComponentType<T>> component)
+    {
         stack.remove(component);
     }
 
     @Nonnull
-    public static <T> T getOrDefault(ItemStack stack, Supplier<DataComponentType<T>> component, T defaultValue) {
+    public static <T> T getOrDefault(ItemStack stack, Supplier<DataComponentType<T>> component, T defaultValue)
+    {
         return stack.getOrDefault(component, defaultValue);
     }
 

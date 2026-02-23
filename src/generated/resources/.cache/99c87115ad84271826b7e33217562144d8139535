@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-16T13:47:07.1028511	Item Models: starcatcher
+// 1.21.1	2026-02-23T15:38:28.7533426	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -23,6 +23,7 @@ ff350c277dd34a5e1f58bef63243dfdc703f052c assets/starcatcher/models/item/bobber.j
 b7b85b2939e82bcc1575802e9fb00d4ae6e1e528 assets/starcatcher/models/item/boner_skin_smithing_template.json
 6179f2da9065b9f2b4e738da036f2865bc7137f4 assets/starcatcher/models/item/boot.json
 838c373fd291ce73dedf6024df8f9e3021aa278e assets/starcatcher/models/item/boreal.json
+8282494508431be1c025161b20acaeb18fcf1a6f assets/starcatcher/models/item/bottled_letter.json
 7cb8ba8815449855022e8935862fa20a52eee3a8 assets/starcatcher/models/item/bright_amethyst_snapper.json
 5becb58593d2ba6ec1da2dab7983c07b6ffd0c56 assets/starcatcher/models/item/broken_bottle.json
 62ceb251bfbc13f7cb95f66013984bdea191c2e5 assets/starcatcher/models/item/burning_bottle.json
@@ -106,6 +107,7 @@ d2723d60eb3f0c4b23296d49fcb9a2d5ea8bca65 assets/starcatcher/models/item/icetooth
 557dfad2f30d8351f8afac8bee9b522c6661e067 assets/starcatcher/models/item/lava_crab.json
 961d2b08e8de7e237fbe484215421e546eeb6bfd assets/starcatcher/models/item/lava_crab_claw.json
 3b6d5de0002cd1ed1f9d41702ae943b21953db21 assets/starcatcher/models/item/legendary_bait.json
+d48a148b1df658af436bf82aa9a3ab52b4221f01 assets/starcatcher/models/item/letter.json
 00bd90c22b41b2c2d021172da194d453a264ed37 assets/starcatcher/models/item/lightning_bass.json
 6a58183a973f6b668c2898d92d9621d1e72fc232 assets/starcatcher/models/item/lily_snapper.json
 5a7ba3ccb7bb40e095604f2e09bc9d66f3f4c25d assets/starcatcher/models/item/lush_bait.json
@@ -113,6 +115,8 @@ d2723d60eb3f0c4b23296d49fcb9a2d5ea8bca65 assets/starcatcher/models/item/icetooth
 f9b89819bbd4f54f901873dac04f2b6e82a20332 assets/starcatcher/models/item/lush_pike.json
 ed62357b2aaad29cc75cda83e4540ed2c1129ad8 assets/starcatcher/models/item/magmaforged_skin_smithing_template.json
 d1c8a3a0e24044485a540d3e01d98db535c272a2 assets/starcatcher/models/item/magma_fish.json
+89eab477ec005bf3be94d20ab1318b94f4a906e5 assets/starcatcher/models/item/message.json
+5b4c17f7edf796079e2e97e26a5ccdca64dc90e7 assets/starcatcher/models/item/message_in_a_bottle.json
 a02ed29e60857f57b56acb3bd991230ad7962737 assets/starcatcher/models/item/meteorological_bait.json
 d98b04fa0f7414323b56a41c977190c4d48f8bfd assets/starcatcher/models/item/mirage_carp.json
 56a12e1193d2e31851cef10808c2656a17d33169 assets/starcatcher/models/item/missingno.json

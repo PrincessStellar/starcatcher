@@ -96,6 +96,9 @@ public class Config
             .comment("Hides entries in the guide book until one has been caught.")
             .define("hide_entries_until_found", true);
 
+    public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
+            .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server")
+            .defineInRange("fish_player_messages_chance", 1d, 0d, 100d);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

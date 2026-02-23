@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.registry.ModRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -17,29 +18,27 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class ModifierShapelessRecipe implements CraftingRecipe
+public class BottledLetterRecipe implements CraftingRecipe
 {
     final String group;
     final CraftingBookCategory category;
     final ItemStack result;
     final NonNullList<Ingredient> ingredients;
     private final boolean isSimple;
-    private final List<ResourceLocation> modifiers;
 
-    public ModifierShapelessRecipe(String group, CraftingBookCategory category, ItemStack result, NonNullList<Ingredient> ingredients, List<ResourceLocation> modifiers)
+    public BottledLetterRecipe(String group, CraftingBookCategory category, ItemStack result, NonNullList<Ingredient> ingredients)
     {
         this.group = group;
         this.category = category;
         this.result = result;
         this.ingredients = ingredients;
         this.isSimple = ingredients.stream().allMatch(Ingredient::isSimple);
-        this.modifiers = modifiers;
     }
 
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.MODIFIER_SHAPELESS_RECIPE.get();
+        return ModRecipes.BOTTLED_LETTER.get();
     }
 
     @Override
@@ -90,7 +89,16 @@ public class ModifierShapelessRecipe implements CraftingRecipe
 
     public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries)
     {
-        return this.result.copy();
+        ItemStack is = this.result.copy();
+        for (int i = 0; i < input.size(); i++)
+        {
+            if(ModDataComponents.has(input.getItem(i), ModDataComponents.MESSAGE))
+            {
+                ModDataComponents.set(is, ModDataComponents.MESSAGE, ModDataComponents.get(input.getItem(i), ModDataComponents.MESSAGE));
+                break;
+            }
+        }
+        return is;
     }
 
     /**
@@ -102,9 +110,9 @@ public class ModifierShapelessRecipe implements CraftingRecipe
         return width * height >= this.ingredients.size();
     }
 
-    public static class Serializer implements RecipeSerializer<ModifierShapelessRecipe>
+    public static class Serializer implements RecipeSerializer<BottledLetterRecipe>
     {
-        private static final MapCodec<ModifierShapelessRecipe> CODEC = RecordCodecBuilder.mapCodec(
+        private static final MapCodec<BottledLetterRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 p_340779_ -> p_340779_.group(
                                 Codec.STRING.optionalFieldOf("group", "").forGetter(p_301127_ -> p_301127_.group),
                                 CraftingBookCategory.CODEC.fieldOf("category").orElse(CraftingBookCategory.MISC).forGetter(p_301133_ -> p_301133_.category),
@@ -129,28 +137,27 @@ public class ModifierShapelessRecipe implements CraftingRecipe
                                                 },
                                                 DataResult::success
                                         )
-                                        .forGetter(p_300975_ -> p_300975_.ingredients),
-                                ResourceLocation.CODEC.listOf().fieldOf("modifiers").forGetter(p_311730_ -> p_311730_.modifiers)
+                                        .forGetter(p_300975_ -> p_300975_.ingredients)
                         )
-                        .apply(p_340779_, ModifierShapelessRecipe::new)
+                        .apply(p_340779_, BottledLetterRecipe::new)
         );
-        public static final StreamCodec<RegistryFriendlyByteBuf, ModifierShapelessRecipe> STREAM_CODEC = StreamCodec.of(
-                ModifierShapelessRecipe.Serializer::toNetwork, ModifierShapelessRecipe.Serializer::fromNetwork
+        public static final StreamCodec<RegistryFriendlyByteBuf, BottledLetterRecipe> STREAM_CODEC = StreamCodec.of(
+                BottledLetterRecipe.Serializer::toNetwork, BottledLetterRecipe.Serializer::fromNetwork
         );
 
         @Override
-        public MapCodec<ModifierShapelessRecipe> codec()
+        public MapCodec<BottledLetterRecipe> codec()
         {
             return CODEC;
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, ModifierShapelessRecipe> streamCodec()
+        public StreamCodec<RegistryFriendlyByteBuf, BottledLetterRecipe> streamCodec()
         {
             return STREAM_CODEC;
         }
 
-        private static ModifierShapelessRecipe fromNetwork(RegistryFriendlyByteBuf buffer)
+        private static BottledLetterRecipe fromNetwork(RegistryFriendlyByteBuf buffer)
         {
             String s = buffer.readUtf();
             CraftingBookCategory craftingbookcategory = buffer.readEnum(CraftingBookCategory.class);
@@ -158,11 +165,10 @@ public class ModifierShapelessRecipe implements CraftingRecipe
             NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i, Ingredient.EMPTY);
             nonnulllist.replaceAll(p_319735_ -> Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             ItemStack itemstack = ItemStack.STREAM_CODEC.decode(buffer);
-            List<ResourceLocation> modifiers = ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list()).decode(buffer);
-            return new ModifierShapelessRecipe(s, craftingbookcategory, itemstack, nonnulllist, modifiers);
+            return new BottledLetterRecipe(s, craftingbookcategory, itemstack, nonnulllist);
         }
 
-        private static void toNetwork(RegistryFriendlyByteBuf buffer, ModifierShapelessRecipe recipe)
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, BottledLetterRecipe recipe)
         {
             buffer.writeUtf(recipe.group);
             buffer.writeEnum(recipe.category);
@@ -174,7 +180,6 @@ public class ModifierShapelessRecipe implements CraftingRecipe
             }
 
             ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
-            ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list()).encode(buffer, recipe.modifiers);
         }
     }
 

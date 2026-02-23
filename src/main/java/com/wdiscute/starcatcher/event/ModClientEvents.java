@@ -50,7 +50,8 @@ public class ModClientEvents
     public static void onClientSetup(FMLClientSetupEvent event)
     {
         EntityRenderers.register(ModEntities.FISHING_BOB.get(), FishingBobRenderer::new);
-        EntityRenderers.register(ModEntities.BOTTLE.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(ModEntities.BROKEN_BOTTLE.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(ModEntities.BOTTLED_LETTER.get(), ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.FISH.get(), FishRenderer::new);
         event.enqueueWork(ModItemProperties::addCustomItemProperties);
     }

@@ -7,10 +7,7 @@ import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.TournamentSavedData;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.io.network.FPsSeenPayload;
-import com.wdiscute.starcatcher.io.network.FishCaughtPayload;
-import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
-import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
+import com.wdiscute.starcatcher.io.network.*;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
 import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
@@ -229,6 +226,12 @@ public class ModEvents
                 CBClearTournamentPayload.TYPE,
                 CBClearTournamentPayload.STREAM_CODEC,
                 CBClearTournamentPayload::handle
+        );
+
+        registrar.playToServer(
+                SetMessagePayload.TYPE,
+                SetMessagePayload.STREAM_CODEC,
+                SetMessagePayload::handle
         );
     }
 

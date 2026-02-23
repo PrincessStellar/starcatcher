@@ -1,7 +1,8 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.brokenbottle.BottleEntity;
+import com.wdiscute.starcatcher.secretnotes.BottledLetterEntity;
+import com.wdiscute.starcatcher.secretnotes.BrokenBottleEntity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,8 +28,13 @@ public class ModEntities
             register("fish", FishEntity::new, MobCategory.WATER_AMBIENT,
                     b -> b.sized(0.5f, 0.5f));
 
-    public static final Supplier<EntityType<BottleEntity>> BOTTLE =
-            register("bottle", BottleEntity::new, MobCategory.MISC,
+    public static final Supplier<EntityType<BrokenBottleEntity>> BROKEN_BOTTLE =
+            register("broken_bottle", BrokenBottleEntity::new, MobCategory.MISC,
+                    b -> b.sized(0.25f, 0.25f)
+                            .clientTrackingRange(4).updateInterval(10));
+
+    public static final Supplier<EntityType<BottledLetterEntity>> BOTTLED_LETTER =
+            register("bottled_letter", BottledLetterEntity::new, MobCategory.MISC,
                     b -> b.sized(0.25f, 0.25f)
                             .clientTrackingRange(4).updateInterval(10));
 

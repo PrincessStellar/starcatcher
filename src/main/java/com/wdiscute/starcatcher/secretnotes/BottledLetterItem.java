@@ -1,6 +1,5 @@
-package com.wdiscute.starcatcher.registry.items;
+package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.brokenbottle.BottleEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;
@@ -15,12 +14,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
 
-public class BrokenBottle extends Item implements ProjectileItem
+public class BottledLetterItem extends Item implements ProjectileItem
 {
-
-    public BrokenBottle()
+    public BottledLetterItem()
     {
-        super(new Item.Properties().stacksTo(16));
+        super(new Properties().stacksTo(1));
     }
 
     @Override
@@ -49,7 +47,7 @@ public class BrokenBottle extends Item implements ProjectileItem
         );
 
         if (!level.isClientSide) {
-            BottleEntity bottleEntity = new BottleEntity(level, player);
+            BottledLetterEntity bottleEntity = new BottledLetterEntity(level, player);
             bottleEntity.setItem(itemstack);
             bottleEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(bottleEntity);
@@ -61,10 +59,10 @@ public class BrokenBottle extends Item implements ProjectileItem
     }
 
     @Override
-    public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
-        BottleEntity bottleEntity = new BottleEntity(level, pos.x(), pos.y(), pos.z());
+    public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction)
+    {
+        BottledLetterEntity bottleEntity = new BottledLetterEntity(level, pos.x(), pos.y(), pos.z());
         bottleEntity.setItem(stack);
         return bottleEntity;
     }
-
 }

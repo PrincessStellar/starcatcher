@@ -46,6 +46,6 @@ public class NoteContainer extends Item
         //replace with broken bottle
         player.setItemInHand(usedHand, new ItemStack(turnsInto));
 
-        return super.use(level, player, usedHand);
+        return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 }

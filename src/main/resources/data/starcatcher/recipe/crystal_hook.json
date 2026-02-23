@@ -1,5 +1,5 @@
 {
-  "type": "starcatcher:modifier_shaped_recipe",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
     "G": {
@@ -17,6 +17,5 @@
   "result": {
     "count": 1,
     "id": "starcatcher:crystal_hook"
-  },
-  "modifiers" : ["starcatcher:survives_lava"]
+  }
 }
