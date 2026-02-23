@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.registry.ModItems;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -23,10 +24,12 @@ public class MessageInABottleItem extends Item
         if(ModDataComponents.has(itemInHand, ModDataComponents.MESSAGE))
         {
             //give note
-            ItemStack is = new ItemStack(ModItems.LETTER.get());
+            ItemStack is = new ItemStack(ModItems.MESSAGE.get());
             LetterItem.Message message = ModDataComponents.get(itemInHand, ModDataComponents.MESSAGE);
             ModDataComponents.set(is, ModDataComponents.MESSAGE, message.lock());
             player.addItem(is);
+
+            player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);
 
             //replace with broken bottle
             player.setItemInHand(usedHand, new ItemStack(ModItems.BROKEN_BOTTLE.get()));

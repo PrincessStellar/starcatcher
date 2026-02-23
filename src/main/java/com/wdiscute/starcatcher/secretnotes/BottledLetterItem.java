@@ -22,7 +22,8 @@ public class BottledLetterItem extends Item implements ProjectileItem
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+    {
         ItemStack itemstack = player.getItemInHand(hand);
         level.playSound(
                 null,
@@ -46,7 +47,8 @@ public class BottledLetterItem extends Item implements ProjectileItem
                 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
         );
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide)
+        {
             BottledLetterEntity bottleEntity = new BottledLetterEntity(level, player);
             bottleEntity.setItem(itemstack);
             bottleEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);

@@ -55,7 +55,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
             {
                 if(getOwner() instanceof ServerPlayer sp)
                 {
-                    sp.displayClientMessage(Component.translatable("item.starcatcher.message_in_a_bottle.thrown"), true);
+                    sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), true);
                     if(ModDataComponents.has(getItem(), ModDataComponents.MESSAGE))
                     {
                         MessagesSavedData.get(((ServerLevel) level())).addMessage(ModDataComponents.get(getItem(), ModDataComponents.MESSAGE));

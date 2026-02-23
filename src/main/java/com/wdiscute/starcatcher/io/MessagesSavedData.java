@@ -36,6 +36,11 @@ public class MessagesSavedData extends SavedData
         messages.add(message);
     }
 
+    public void removeMessage(LetterItem.Message message)
+    {
+        messages.remove(message);
+    }
+
     public static MessagesSavedData get(ServerLevel level)
     {
         return level.getDataStorage().computeIfAbsent(factory(), NAME);

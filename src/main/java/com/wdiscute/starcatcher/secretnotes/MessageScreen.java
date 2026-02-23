@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.secretnotes;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Starcatcher;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -14,9 +13,9 @@ import java.util.List;
 
 public class MessageScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND_OVERWORLD = Starcatcher.rl("textures/gui/message_overworld.png");
-    private static final ResourceLocation BACKGROUND_NETHER = Starcatcher.rl("textures/gui/message_nether.png");
-    private static final ResourceLocation BACKGROUND_END = Starcatcher.rl("textures/gui/message_end.png");
+    private static final ResourceLocation BACKGROUND_OVERWORLD = Starcatcher.rl("textures/gui/message/message_overworld.png");
+    private static final ResourceLocation BACKGROUND_NETHER = Starcatcher.rl("textures/gui/message/message_nether.png");
+    private static final ResourceLocation BACKGROUND_END = Starcatcher.rl("textures/gui/message/message_end.png");
 
     private final LetterItem.Message message;
     private final ResourceLocation background;
@@ -26,11 +25,10 @@ public class MessageScreen extends Screen
         super(Component.empty());
         this.message = message;
 
-        if (Minecraft.getInstance().level.dimension().location().equals(Level.NETHER))
+        if (message.dimension().equals(Level.NETHER.location()))
             background = BACKGROUND_NETHER;
-        else if (Minecraft.getInstance().level.dimension().location().equals(Level.END)) background = BACKGROUND_END;
+        else if (message.dimension().equals(Level.END.location())) background = BACKGROUND_END;
         else background = BACKGROUND_OVERWORLD;
-
     }
 
     int uiX;
@@ -51,13 +49,16 @@ public class MessageScreen extends Screen
 
         renderImage(guiGraphics, background);
 
+        //render main text
         List<String> text = message.text();
         for (int i = 0; i < text.size(); i++)
         {
             guiGraphics.drawString(this.font, Tooltips.decodeString(text.get(i)), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
         }
 
-        //render player thing
+        //render name
+        guiGraphics.drawString(this.font, Tooltips.decodeString(message.senderDisplayName()), uiX + 255, uiY + 208, 0x635040, false);
+
     }
 
     @Override

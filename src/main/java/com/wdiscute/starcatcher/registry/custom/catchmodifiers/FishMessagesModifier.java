@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 
+import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.io.ModDataComponents;
@@ -15,20 +16,29 @@ import java.util.List;
 
 public class FishMessagesModifier extends AbstractCatchModifier
 {
+    private boolean messageFished = false;
+
     @Override
     public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
     {
-
+        if (U.r.nextDouble() > Config.FISH_PLAYER_MESSAGES_CHANCE.get())
+        {
+            return;
+        }
         List<LetterItem.Message> messages = MessagesSavedData.get(((ServerLevel) instance.level())).getMessages();
 
         //if there are any messages
-        List<LetterItem.Message> list = messages.stream().filter(o -> o.dimension().equals(instance.level().dimension().location())).toList();
+        List<LetterItem.Message> list = messages.stream().filter(o -> o.dimension().equals(instance.level().dimension().location()) && !o.sender().equals(instance.player.getUUID())).toList();
 
         if (!list.isEmpty())
         {
+            messageFished = true;
             ItemStack is = new ItemStack(ModItems.MESSAGE_IN_A_BOTTLE.get());
 
-            ModDataComponents.set(is, ModDataComponents.MESSAGE, list.get(U.r.nextInt(list.size())));
+            LetterItem.Message message = list.get(U.r.nextInt(list.size()));
+            MessagesSavedData.get(((ServerLevel) instance.level())).removeMessage(message);
+
+            ModDataComponents.set(is, ModDataComponents.MESSAGE, message);
 
             //make ItemEntities for fish item stack
             ItemEntity messageInABottle = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);
@@ -40,15 +50,12 @@ public class FishMessagesModifier extends AbstractCatchModifier
             Vec3 vec3 = new Vec3(x, 0.7 + y, z);
             messageInABottle.setDeltaMovement(vec3);
             instance.level().addFreshEntity(messageInABottle);
-
         }
-
     }
 
     @Override
     public boolean shouldCancelBeforeSkipsMinigameCheck()
     {
-        List<LetterItem.Message> messages = MessagesSavedData.get(((ServerLevel) instance.level())).getMessages();
-        return messages.stream().anyMatch(o -> o.dimension().equals(instance.level().dimension().location()));
+        return messageFished;
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
@@ -17,12 +16,7 @@ import java.util.List;
 
 public class MessageWriteScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND_OVERWORLD = Starcatcher.rl("textures/gui/message/message_overworld.png");
-    private static final ResourceLocation BACKGROUND_NETHER = Starcatcher.rl("textures/gui/message/message_nether.png");
-    private static final ResourceLocation BACKGROUND_END = Starcatcher.rl("textures/gui/message/message_end.png");
-
-    private final ResourceLocation background;
-
+    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/message/message.png");
     private final LetterItem.Message message;
 
     private final List<String> text = new ArrayList<>();
@@ -34,12 +28,6 @@ public class MessageWriteScreen extends Screen
         super(Component.empty());
 
         this.message = message;
-
-        if (Minecraft.getInstance().level.dimension().location().equals(Level.NETHER))
-            background = BACKGROUND_NETHER;
-        else if (Minecraft.getInstance().level.dimension().location().equals(Level.END)) background = BACKGROUND_END;
-        else background = BACKGROUND_OVERWORLD;
-
         text.addAll(message.text());
     }
 
@@ -53,8 +41,6 @@ public class MessageWriteScreen extends Screen
         uiX = (width - 512) / 2;
         uiY = (height - 256) / 2;
 
-        boolean firstRun = boxes.isEmpty();
-
         //text
         boxes.clear();
         for (int i = 0; i < 15; i++)
@@ -66,6 +52,7 @@ public class MessageWriteScreen extends Screen
             box.setMaxLength(40);
             box.setTextShadow(false);
             box.setEditable(true);
+            if(message.text().size() > i) box.setValue(message.text().get(i));
             addWidget(box);
             boxes.add(box);
         }
@@ -76,27 +63,10 @@ public class MessageWriteScreen extends Screen
         name.setTextColor(0x635040);
         name.setBordered(false);
         name.setMaxLength(17);
+        name.setValue(message.senderDisplayName());
         name.setTextShadow(false);
         name.setEditable(true);
         addWidget(name);
-
-        //if first run assign textboxes to text from Message data component
-        if (firstRun)
-        {
-            if (message.text().isEmpty())
-            {
-                name.setValue("-" + Minecraft.getInstance().player.getName().getString());
-                boxes.get(0).setValue("[click to edit]");
-                return;
-            }
-
-            name.setValue(message.senderDisplayName());
-            for (int i = 0; i < 15; i++)
-            {
-                boxes.get(i).setValue(text.get(i));
-            }
-        }
-
     }
 
     @Override
@@ -112,7 +82,7 @@ public class MessageWriteScreen extends Screen
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
     {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        renderImage(guiGraphics, background);
+        renderImage(guiGraphics, BACKGROUND);
         boxes.forEach(b -> b.render(guiGraphics, mouseX, mouseY, partialTick));
         if (name != null) name.render(guiGraphics, mouseX, mouseY, partialTick);
     }

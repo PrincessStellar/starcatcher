@@ -10,7 +10,6 @@ import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -51,11 +50,13 @@ public class LetterItem extends Item
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
         Message message = ModDataComponents.getOrDefault(player.getItemInHand(usedHand), ModDataComponents.MESSAGE, Message.empty());
-        if (message.locked)
-            openMessageScreen(message);
-        else
-            openMessageWriteScreen(message);
-
+        if(level.isClientSide)
+        {
+            if (message.locked)
+                openMessageScreen(message);
+            else
+                openMessageWriteScreen(message);
+        }
         return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 
@@ -83,7 +84,7 @@ public class LetterItem extends Item
     {
         public static Message empty()
         {
-            return new Message(UUID.randomUUID(), "", Starcatcher.rl(""), new ArrayList<>(), false);
+            return new Message(UUID.randomUUID(), "-Your Name", Starcatcher.rl(""), new ArrayList<>(List.of("[click to edit]")), false);
         }
 
         public static final Codec<Message> CODEC = RecordCodecBuilder.create(instance ->

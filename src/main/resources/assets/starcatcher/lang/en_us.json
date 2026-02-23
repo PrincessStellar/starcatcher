@@ -1082,7 +1082,7 @@
   "tooltip.starcatcher.bottled_letter.1" : "The only thing left to do now is throw it into",
   "tooltip.starcatcher.bottled_letter.2" : "the ocean and let it start it's journey.",
 
-  "item.starcatcher.message_in_a_bottle.thrown" : "Your message in a bottle stars it's journey...",
+  "item.starcatcher.bottled_letter.thrown" : "Your bottled letter stars it's journey...",
 
   "item.starcatcher.message_in_a_bottle" : "Message in a Bottle",
   "tooltip.starcatcher.message_in_a_bottle.0" : "A bottle containing a message written many moons ago.",

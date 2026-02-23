@@ -98,7 +98,7 @@ public class Config
 
     public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
             .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server")
-            .defineInRange("fish_player_messages_chance", 1d, 0d, 100d);
+            .defineInRange("fish_player_messages_chance", 1d, 0d, 1d);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
