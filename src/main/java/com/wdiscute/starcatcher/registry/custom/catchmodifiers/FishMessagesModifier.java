@@ -26,20 +26,21 @@ public class FishMessagesModifier extends AbstractCatchModifier
 
         if (!list.isEmpty())
         {
-            ItemStack is = new ItemStack(ModItems.SECRET_NOTE.get());
+            ItemStack is = new ItemStack(ModItems.MESSAGE_IN_A_BOTTLE.get());
 
             ModDataComponents.set(is, ModDataComponents.MESSAGE, list.get(U.r.nextInt(list.size())));
 
-
             //make ItemEntities for fish item stack
-            ItemEntity itemFished = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);
+            ItemEntity messageInABottle = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);
 
             //assign delta movement so fish flies towards player
             double x = Math.clamp((instance.player.position().x - instance.position().x) / 25, -1, 1);
             double y = Math.clamp((instance.player.position().y - instance.position().y) / 20, -1, 1);
             double z = Math.clamp((instance.player.position().z - instance.position().z) / 25, -1, 1);
             Vec3 vec3 = new Vec3(x, 0.7 + y, z);
-            itemFished.setDeltaMovement(vec3);
+            messageInABottle.setDeltaMovement(vec3);
+            instance.level().addFreshEntity(messageInABottle);
+
         }
 
     }

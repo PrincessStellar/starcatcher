@@ -45,7 +45,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
         if(level().getFluidState(result.getBlockPos().above()).isEmpty())
         {
             //spawn item if hit block
-            ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y + 0.5f, position().z, getItem());
+            ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
             level().addFreshEntity(itemEntity);
         }
         else
@@ -78,6 +78,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
         return new ItemParticleOption(ParticleTypes.ITEM, itemstack);
     }
 
+    @Override
     public void handleEntityEvent(byte id)
     {
         if (id == 3)
@@ -85,7 +86,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
             ParticleOptions particleoptions = this.getParticle();
             for (int i = 0; i < 8; ++i)
             {
-                this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), (double) 0.0F, (double) 0.0F, (double) 0.0F);
+                this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F, 0.0F);
             }
         }
 
@@ -94,6 +95,10 @@ public class BottledLetterEntity extends ThrowableItemProjectile
     protected void onHitEntity(EntityHitResult result)
     {
         super.onHitEntity(result);
+        //spawn item
+        ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
+        level().addFreshEntity(itemEntity);
+
         Entity entity = result.getEntity();
         level().playSound(
                 null,
@@ -105,7 +110,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
                 0.5F,
                 ((float) (1 + level().getRandom().nextFloat() * 0.3 + 0.15))
         );
-        entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) 5);
+        entity.hurt(this.damageSources().thrown(this, this.getOwner()), (float) 4);
     }
 
     protected void onHit(HitResult result)
