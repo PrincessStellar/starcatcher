@@ -562,6 +562,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             return m.removed;
         });
 
+        //add queued modifiers
+        modifiers.addAll(modifiersToAdd);
+        modifiersToAdd.forEach(o -> o.onAdd(this));
+        modifiersToAdd.clear();
+
         //add queued sweetspots
         activeSweetSpots.addAll(spotsToAdd);
         //trigger onAdd of SweetSpotBehaviour
@@ -569,11 +574,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //trigger onSpotAdded of modifiers
         spotsToAdd.forEach(s -> modifiers.forEach(m -> m.onSpotAdded(s)));
         spotsToAdd.clear();
-
-        //add queued modifiers
-        modifiers.addAll(modifiersToAdd);
-        modifiersToAdd.forEach(o -> o.onAdd(this));
-        modifiersToAdd.clear();
 
         //move pointer
         pointerPos += pointerSpeed * currentRotation;
