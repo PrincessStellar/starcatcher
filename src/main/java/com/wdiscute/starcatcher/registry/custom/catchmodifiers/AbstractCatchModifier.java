@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import javax.swing.table.TableRowSorter;
 import java.util.List;
 
 public abstract class AbstractCatchModifier
@@ -116,6 +117,16 @@ public abstract class AbstractCatchModifier
     }
 
     public boolean forceAwardTreasure(FishingBobEntity fbe, int time, boolean completedTreasure, boolean perfectCatch, int hits)
+    {
+        return false;
+    }
+
+    public boolean shouldBeGolden()
+    {
+        return false;
+    }
+
+    public boolean cancelGolden()
     {
         return false;
     }

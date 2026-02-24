@@ -173,6 +173,11 @@
 
   "tooltip.modifier.starcatcher.add_creeper.0": "An ill-tempered friend might show up",
 
+  "tooltip.modifier.starcatcher.guarantee_golden.0": "A golden fish will be caught if possible",
+  "tooltip.modifier.starcatcher.add_5_golden_chance.0": "Slightly increases the chances of catching a golden fish",
+  "tooltip.modifier.starcatcher.add_50_golden_chance.0": "Tremendously increases the chances of catching a golden fish",
+  "tooltip.modifier.starcatcher.cancel_golden.0": "You can no longer catch golden fishes",
+
   "tooltip.modifier.starcatcher.freeze_on_miss.0": "Missing a sweet-spot will cause your",
   "tooltip.modifier.starcatcher.freeze_on_miss.1": "reel to freeze up for a short period",
 
@@ -899,6 +904,8 @@
   "gui.guide.hover" : "[hover]",
 
 
+  "gui.guide.rarity.golden" : "Golden",
+
   "gui.guide.rarity.common" : "Common",
   "gui.guide.rarity.uncommon" : "<gradient-37>Uncommon</gradient-43>",
   "gui.guide.rarity.rare" : "<gradient-57>Rare</gradient-63>",
@@ -1082,7 +1089,7 @@
   "tooltip.starcatcher.bottled_letter.1" : "The only thing left to do now is throw it into",
   "tooltip.starcatcher.bottled_letter.2" : "the ocean and let it start it's journey.",
 
-  "item.starcatcher.bottled_letter.thrown" : "Your bottled letter stars it's journey...",
+  "item.starcatcher.bottled_letter.thrown" : "Your bottled letter starts it's journey...",
 
   "item.starcatcher.message_in_a_bottle" : "Message in a Bottle",
   "tooltip.starcatcher.message_in_a_bottle.0" : "A bottle containing a message written many moons ago.",

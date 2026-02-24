@@ -182,7 +182,8 @@ public class FishingBobEntity extends Projectile
                 FishProperties.Rarity.UNCOMMON, TrophyProperties.RarityProgress.DEFAULT,
                 FishProperties.Rarity.RARE, TrophyProperties.RarityProgress.DEFAULT,
                 FishProperties.Rarity.EPIC, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.LEGENDARY, TrophyProperties.RarityProgress.DEFAULT
+                FishProperties.Rarity.LEGENDARY, TrophyProperties.RarityProgress.DEFAULT,
+                FishProperties.Rarity.GOLDEN, TrophyProperties.RarityProgress.DEFAULT
         ));
 
         FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->
@@ -190,6 +191,11 @@ public class FishingBobEntity extends Projectile
             all.set(new TrophyProperties.RarityProgress(all.get().total() + counter.count(), all.get().unique()));
 
             progressMap.computeIfPresent(U.getFpFromRl(level(), loc).rarity(), (r, p) -> new TrophyProperties.RarityProgress(p.total() + counter.count(), p.unique() + 1));
+            if (counter.caughtGolden())
+            {
+                int newTotal = progressMap.get(FishProperties.Rarity.GOLDEN).total() + 1;
+                progressMap.put(FishProperties.Rarity.GOLDEN, new TrophyProperties.RarityProgress(newTotal, newTotal));
+            }
         });
 
         //check if any trophy can be caught

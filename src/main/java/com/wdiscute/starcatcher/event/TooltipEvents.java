@@ -70,6 +70,15 @@ public class TooltipEvents {
             SettingsScreen.Units units = Config.UNIT.get();
             CaughtFishInfo sw = ModDataComponents.get(stack, ModDataComponents.CAUGHT_FISH_INFO);
 
+            if(sw.golden())
+            {
+                MutableComponent element = Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
+                if(hasShiftDown)
+                    element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
+                comp.add(1, element);
+
+                return;
+            }
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
             String percentile = " (top " + (int) sw.percentile() + "%)";

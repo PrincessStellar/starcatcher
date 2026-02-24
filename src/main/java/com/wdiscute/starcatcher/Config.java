@@ -100,6 +100,11 @@ public class Config
             .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server")
             .defineInRange("fish_player_messages_chance", 1d, 0d, 1d);
 
+    public static final ModConfigSpec.BooleanValue SAVE_DATA_TO_ITEMS = BUILDER_SERVER
+            .comment("If enabled the size, weight, percentile, rarity & golden values will be saved to the item for displaying")
+            .define("save_data_to_items", true);
+
+
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
 //            .comment("Adjusts the fish decay rate multiplier, useful if you want to adjust the fishes' difficulty globally.")

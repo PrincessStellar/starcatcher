@@ -67,13 +67,20 @@ public class U
                 if(fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
                         player, time, completedTreasure, perfectCatch, hits))) return;
 
-                //pick size and weight
+                //pick size, weight and golden
                 float percentile = r.nextFloat(100);
                 int size = getRandomSize(fp, percentile);
                 int weight = getRandomWeight(fp, percentile);
 
+                //golden if got lucky & hasnt caught golden yet
+                boolean golden = U.r.nextFloat() < fp.sizeWeight().goldenChance() && FishCaughtCounter.canCatchGolden(fp, player);
+                //golden if previous, or any modifier overrides it to be golden
+                golden = golden || fbe.modifiers.stream().anyMatch(AbstractCatchModifier::shouldBeGolden);
+
+                if(fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
+
                 //award fish counter
-                FishCaughtCounter.awardFishCaughtCounter(fp, player, time, size, weight, percentile, perfectCatch, true);
+                FishCaughtCounter.awardFishCaughtCounter(fp, player, time, size, weight, percentile, perfectCatch, true, golden);
 
                 //add score to tournaments
                 TournamentHandler.addScore(player, fp, perfectCatch, size, weight, percentile);
@@ -112,7 +119,7 @@ public class U
                     }
 
                     //set fish item if it's a starcatcher fish entity
-                    if (entity instanceof FishEntity fe) fe.setFish(getFishedItemstackFromFP(fp, size, weight, percentile));
+                    if (entity instanceof FishEntity fe) fe.setFish(getFishedItemstackFromFP(fp, size, weight, percentile, golden));
 
                     entity.setPos(fbe.position().add(0, 1.2f, 0));
 
@@ -139,8 +146,8 @@ public class U
                         is = new ItemStack(fp.catchInfo().fish());
 
                         //store caught fish info data component
-                        //todo golden fish
-                        ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), false));
+                        if(fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+                            ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
 
                         //call modify stack on modifiers (split hook behaviour)
                         for (AbstractCatchModifier acm : fbe.modifiers) is = acm.modifyItemStack(is);
@@ -237,10 +244,11 @@ public class U
         return (int) (average + percentile * dev - dev / 2);
     }
 
-    public static ItemStack getFishedItemstackFromFP(FishProperties fp, int size, int weight, float percentile)
+    public static ItemStack getFishedItemstackFromFP(FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
         ItemStack is = new ItemStack(fp.catchInfo().fish());
-        ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), false));
+        if(fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+            ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
         return is;
     }
 

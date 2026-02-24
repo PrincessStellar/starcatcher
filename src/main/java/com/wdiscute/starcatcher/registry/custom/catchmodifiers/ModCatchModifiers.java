@@ -69,6 +69,12 @@ public interface ModCatchModifiers
     //add creeper
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> ADD_CREEPER = registerCatchModifier("add_creeper", AddCreeperModifier::new);
 
+    //golden
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> GUARANTEE_GOLDEN = registerCatchModifier("guarantee_golden", GuaranteeGolden::new);
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> ADD_5_GOLDEN_CHANCE = registerCatchModifier("add_5_golden_chance", () -> new IncreaseGoldenChance(0.05f));
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> ADD_50_GOLDEN_CHANCE = registerCatchModifier("add_50_golden_chance", () -> new IncreaseGoldenChance(0.5f));
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> CANCEL_GOLDEN = registerCatchModifier("cancel_golden", CancelGolden::new);
+
     static Pair<ResourceLocation, Supplier<AbstractCatchModifier>> registerCatchModifier(String name, Supplier<AbstractCatchModifier> sup)
     {
         REGISTRY.register(name, () -> sup);

@@ -1636,17 +1636,23 @@ public record FishProperties(
     //endregion dif
 
 
-    public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation)
+    public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation, float goldenChance)
     {
-        public static final SizeAndWeight DEFAULT = new SizeAndWeight(41f, 21f, 2001f, 701f);
-        public static final SizeAndWeight NONE = new SizeAndWeight(0, 0, 0, 0);
+        public SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation)
+        {
+            this(sizeAverage, sizeDeviation, weightAverage, weightDeviation, 0.02f);
+        }
+
+        public static final SizeAndWeight DEFAULT = new SizeAndWeight(41f, 21f, 2001f, 701f, 0.02f);
+        public static final SizeAndWeight NONE = new SizeAndWeight(0, 0, 0, 0, 0);
 
         public static final Codec<SizeAndWeight> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
                         Codec.FLOAT.fieldOf("average_size_cm").forGetter(SizeAndWeight::sizeAverage),
                         Codec.FLOAT.fieldOf("deviation_size_cm").forGetter(SizeAndWeight::sizeDeviation),
                         Codec.FLOAT.fieldOf("average_weight_grams").forGetter(SizeAndWeight::weightAverage),
-                        Codec.FLOAT.fieldOf("deviation_weight_grams").forGetter(SizeAndWeight::weightDeviation)
+                        Codec.FLOAT.fieldOf("deviation_weight_grams").forGetter(SizeAndWeight::weightDeviation),
+                        Codec.FLOAT.fieldOf("golden_chance").forGetter(SizeAndWeight::goldenChance)
                 ).apply(instance, SizeAndWeight::new));
 
         public static final StreamCodec<ByteBuf, SizeAndWeight> STREAM_CODEC = StreamCodec.composite(
@@ -1654,6 +1660,7 @@ public record FishProperties(
                 ByteBufCodecs.FLOAT, SizeAndWeight::sizeDeviation,
                 ByteBufCodecs.FLOAT, SizeAndWeight::weightAverage,
                 ByteBufCodecs.FLOAT, SizeAndWeight::weightDeviation,
+                ByteBufCodecs.FLOAT, SizeAndWeight::goldenChance,
                 SizeAndWeight::new
         );
     }
@@ -1665,7 +1672,8 @@ public record FishProperties(
         UNCOMMON("uncommon", 8, "<gradient-37>", "</gradient-43>", Style.EMPTY.applyFormat(ChatFormatting.GREEN), 40),
         RARE("rare", 12, "<gradient-57>", "</gradient-63>", Style.EMPTY.applyFormat(ChatFormatting.BLUE), 30),
         EPIC("epic", 20, "<gradient-80>", "</gradient-90>", Style.EMPTY.applyFormat(ChatFormatting.LIGHT_PURPLE), 10),
-        LEGENDARY("legendary", 35, "<rgb>", "</rgb>", Style.EMPTY.applyFormat(ChatFormatting.GOLD), 10);
+        LEGENDARY("legendary", 35, "<rgb>", "</rgb>", Style.EMPTY.applyFormat(ChatFormatting.GOLD), 10),
+        GOLDEN("golden", 0, "<gradient-09>", "</gradient-16>", Style.EMPTY.applyFormat(ChatFormatting.GOLD), 0);
 
         public static final Codec<Rarity> CODEC = StringRepresentable.fromEnum(Rarity::values);
         public static final StreamCodec<FriendlyByteBuf, Rarity> STREAM_CODEC = NeoForgeStreamCodecs.enumCodec(Rarity.class);

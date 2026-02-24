@@ -53,7 +53,8 @@
     "average_size_cm": 28.0,
     "average_weight_grams": 260.0,
     "deviation_size_cm": 8.0,
-    "deviation_weight_grams": 60.0
+    "deviation_weight_grams": 60.0,
+    "golden_chance": 0.02
   },
   "skips_minigame": false,
   "weather": "all",

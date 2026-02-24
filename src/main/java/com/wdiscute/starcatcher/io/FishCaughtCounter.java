@@ -78,23 +78,33 @@ public record FishCaughtCounter(
         return new FishCaughtCounter(999999, 0, 0, 0, 0, 0, false, false, true);
     }
 
+    public static boolean canCatchGolden(FishProperties fp, ServerPlayer player)
+    {
+        //returns false if player has already caught the golden fish of that fp
+        Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
+        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKeyOrNull(fp);
+        if(!fishesCaught.containsKey(loc)) return true;
+        return !fishesCaught.get(loc).caughtGolden;
+    }
+
     public FishCaughtCounter removeNotification()
     {
         return new FishCaughtCounter(this.count, this.fastestTicks, this.averageTicks, this.size, this.weight, this.firstCatch, this.caughtGolden, perfectCatch, false);
     }
 
     @Nonnull
-    public static FishCaughtCounter create(int ticks, int size, int weight, boolean perfectCatch)
+    public static FishCaughtCounter create(int ticks, int size, int weight, boolean perfectCatch, boolean golden)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, U.getTime(), false, perfectCatch, true);
+        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, U.getTime(), golden, perfectCatch, true);
     }
 
-    public FishCaughtCounter getUpdated(int ticks, int size, int weight, boolean perfectCatch)
+    public FishCaughtCounter getUpdated(int ticks, int size, int weight, boolean perfectCatch, boolean goldenCatch)
     {
         int fastestToSave = Math.min(this.fastestTicks, ticks);
         float averageToSave = (this.averageTicks * this.count + ticks) / (this.count + 1);
         int countToSave = this.count;
         boolean perfect = perfectCatch || this.perfectCatch;
+        boolean golden = goldenCatch || this.caughtGolden;
 
         //if cheated in, fixes trackers
         if (this.fastestTicks == 0) fastestToSave = ticks;
@@ -111,12 +121,12 @@ public record FishCaughtCounter(
                 sizeToSave,
                 weightToSave,
                 this.firstCatch,
-                this.caughtGolden,
+                golden,
                 perfect,
                 true);
     }
 
-    public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam)
+    public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
     {
         //ftb teams compat to share fishes caught to team, does not share size and weight
         if (ModList.get().isLoaded("ftbteams") && awardToTeam && Config.ENABLE_FTB_TEAM_SHARING.get())
@@ -133,14 +143,14 @@ public record FishCaughtCounter(
             boolean newFish = fishCaughtCounter == null;
 
             if (newFish)
-                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch);
+                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch, golden);
             else
-                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch);
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch, golden);
 
             fishesCaught.put(loc, fishCaughtCounter);
 
             //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
-            if (!fpCaught.catchInfo().alwaysSpawnEntity())
+            if (!fpCaught.catchInfo().alwaysSpawnEntity() && fpCaught.hasGuideEntry())
                 PacketDistributor.sendToPlayer(((ServerPlayer) player), new FishCaughtPayload(fpCaught, newFish, size, weight, percentile));
 
             FishingGuideAttachment.setFishesCaught(player, fishesCaught);
