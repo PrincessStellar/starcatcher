@@ -133,6 +133,9 @@ public class FishingBobEntity extends Projectile
             chanceToFishEachTick = acm.adjustChanceToFishEachTick(chanceToFishEachTick);
         }
 
+        minTicksToFish = Math.max(1, minTicksToFish);
+        maxTicksToFish = Math.max(1, maxTicksToFish);
+
         //trigger onBobSummon
         modifiers.forEach(acm -> acm.onAdd(this));
 
