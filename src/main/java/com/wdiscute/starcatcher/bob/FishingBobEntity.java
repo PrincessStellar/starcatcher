@@ -121,9 +121,9 @@ public class FishingBobEntity extends Projectile
 
         survivesLava = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
 
-        minTicksToFish = 100;
-        maxTicksToFish = 300;
-        chanceToFishEachTick = 0.005f;
+        minTicksToFish = Config.BASE_MIN_TICKS_TO_FISH.getAsInt();
+        maxTicksToFish = Config.BASE_MAX_TICKS_TO_FISH.getAsInt();
+        chanceToFishEachTick = (float) Config.BASE_CHANCE_TO_FISH.getAsDouble();
 
         //modify base chances
         for (AbstractCatchModifier acm : modifiers)

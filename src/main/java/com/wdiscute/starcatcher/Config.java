@@ -98,11 +98,23 @@ public class Config
 
     public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
             .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server")
-            .defineInRange("fish_player_messages_chance", 1d, 0d, 1d);
+            .defineInRange("fish_player_messages_chance", 0.05d, 0d, 1d);
 
     public static final ModConfigSpec.BooleanValue SAVE_DATA_TO_ITEMS = BUILDER_SERVER
             .comment("If enabled the size, weight, percentile, rarity & golden values will be saved to the item for displaying")
             .define("save_data_to_items", true);
+
+    public static final ModConfigSpec.IntValue BASE_MIN_TICKS_TO_FISH = BUILDER_SERVER
+            .comment("How many ticks should the bobber bobble for before being allowed to catch a fish (excluding modifiers)")
+            .defineInRange("base_min_ticks", 100, 0, 999999);
+
+    public static final ModConfigSpec.IntValue BASE_MAX_TICKS_TO_FISH = BUILDER_SERVER
+            .comment("How many ticks at the maximum should the bobber bob for (excluding modifiers)")
+            .defineInRange("base_max_ticks", 300, 0, 999999);
+
+    public static final ModConfigSpec.DoubleValue BASE_CHANCE_TO_FISH = BUILDER_SERVER
+            .comment("The base chance to fish every tick (out of 1)")
+            .defineInRange("base_chance", 0.005d, 0, 1);
 
 
     //todo add base modifiers config
