@@ -64,7 +64,7 @@ public class U
                 ModTackleSkins.get(level, fbe.rod).onSuccessfulMinigame(player);
 
                 //if should cancel because of modifier, return
-                if(fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
+                if (fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
                         player, time, completedTreasure, perfectCatch, hits))) return;
 
                 //pick size, weight and golden
@@ -77,7 +77,7 @@ public class U
                 //golden if previous, or any modifier overrides it to be golden
                 golden = golden || fbe.modifiers.stream().anyMatch(AbstractCatchModifier::shouldBeGolden);
 
-                if(fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
+                if (fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
 
                 //award fish counter
                 FishCaughtCounter.awardFishCaughtCounter(fp, player, time, size, weight, percentile, perfectCatch, true, golden);
@@ -87,15 +87,15 @@ public class U
 
                 //award exp
                 int exp = fp.rarity().getXp();
-
                 player.giveExperiencePoints(exp);
 
-                //SPAWN ENTITY if ⏬⏬⏬
+                List<ItemStack> items = new ArrayList<>();
+
+                //if should spawn entity
                 if (fp.catchInfo().alwaysSpawnEntity() ||
                         ModList.get().isLoaded("fishingreal") ||
                         fbe.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity))
                 {
-
                     Vec3 objPos = player.position().subtract(fbe.position());
 
                     double x = objPos.x / 25;
@@ -119,7 +119,8 @@ public class U
                     }
 
                     //set fish item if it's a starcatcher fish entity
-                    if (entity instanceof FishEntity fe) fe.setFish(getFishedItemstackFromFP(fp, size, weight, percentile, golden));
+                    if (entity instanceof FishEntity fe)
+                        fe.setFish(getFishedItemstackFromFP(fp, size, weight, percentile, golden));
 
                     entity.setPos(fbe.position().add(0, 1.2f, 0));
 
@@ -127,43 +128,31 @@ public class U
                     entity.setDeltaMovement(vec3);
                     level.addFreshEntity(entity);
                 }
+                //if not entity then add base item stack
                 else
                 {
-                    //SPAWN ITEMSTACK
-                    ItemStack bait = ModDataComponents.get(fbe.rod, ModDataComponents.BAIT).stack().copy();
-                    boolean isStarcaught = fp.catchInfo().bucketedFish().is(ModItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
-                    boolean isBucketed = !fp.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
+                    ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, size, weight, percentile, golden);
+                    items.add(is);
 
-                    ItemStack is;
-                    //create itemStack
-                    if (isBucketed)
-                    {
-                        is = new ItemStack(fp.catchInfo().bucketedFish());
-                    }
-                    else
-                    {
-                        //make fish itemstack
-                        is = new ItemStack(fp.catchInfo().fish());
+                    //modify base itemstack from modifiers
+                    for (AbstractCatchModifier acm : fbe.modifiers) acm.modifyBaseItemStack(is);
+                }
 
-                        //store caught fish info data component
-                        if(fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
-                            ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+                //add items to list from modifiers
+                for (AbstractCatchModifier acm : fbe.modifiers)
+                    items.addAll(acm.addToFishedItems(time, perfectCatch, hits, completedTreasure));
 
-                        //call modify stack on modifiers (split hook behaviour)
-                        for (AbstractCatchModifier acm : fbe.modifiers) is = acm.modifyItemStack(is);
+                //add treasure
+                if (completedTreasure || fbe.modifiers.stream().anyMatch(acm -> acm.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
+                {
+                    items.add(new ItemStack(fp.catchInfo().treasure()));
+                }
 
-                        //set starcaught bucket data stuff
-                        if (isStarcaught)
-                        {
-                            ItemStack starcaughtBucket = new ItemStack(fp.catchInfo().bucketedFish());
-                            ModDataComponents.set(starcaughtBucket,ModDataComponents.BUCKETED_FISH, new SingleStackContainer(is.copy()));
-                            is = starcaughtBucket;
-                        }
-                    }
-
-
+                //spawn items from list
+                for (ItemStack itemStackToSpawn : items)
+                {
                     //make ItemEntities for fish item stack
-                    ItemEntity itemFished = new ItemEntity(level, fbe.position().x, fbe.position().y + 1.2f, fbe.position().z, is);
+                    ItemEntity itemFished = new ItemEntity(level, fbe.position().x, fbe.position().y + 1.2f, fbe.position().z, itemStackToSpawn);
 
                     //assign delta movement so fish flies towards player
                     double x = Math.clamp((player.position().x - fbe.position().x) / 25, -1, 1);
@@ -174,19 +163,6 @@ public class U
 
                     //add item entity to level
                     level.addFreshEntity(itemFished);
-                }
-
-                //spawn treasure item
-                if (completedTreasure || fbe.modifiers.stream().anyMatch(m -> m.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
-                {
-                    ItemStack treasure = new ItemStack(fp.catchInfo().treasure());
-                    ItemEntity treasureFished = new ItemEntity(level, fbe.position().x, fbe.position().y + 1.2f, fbe.position().z, treasure);
-                    double x = Math.clamp((player.position().x - fbe.position().x) / 25, -1, 1);
-                    double y = Math.clamp((player.position().y - fbe.position().y) / 20, -1, 1);
-                    double z = Math.clamp((player.position().z - fbe.position().z) / 25, -1, 1);
-                    Vec3 vec3 = new Vec3(x, 0.7 + y, z);
-                    treasureFished.setDeltaMovement(vec3);
-                    level.addFreshEntity(treasureFished);
                 }
 
             }
@@ -222,6 +198,39 @@ public class U
         ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB.get());
     }
 
+    public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile, boolean golden)
+    {
+        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.EMPTY).stack().copy();
+        boolean isStarcaught = fp.catchInfo().bucketedFish().is(ModItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
+        boolean isBucketed = !fp.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
+
+        ItemStack is;
+
+        //create itemStack
+        if (isBucketed)
+        {
+            is = new ItemStack(fp.catchInfo().bucketedFish());
+        }
+        else
+        {
+            //make fish itemstack
+            is = new ItemStack(fp.catchInfo().fish());
+
+            //store caught fish info data component
+            if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+                ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+
+            //set starcaught bucket data stuff
+            if (isStarcaught)
+            {
+                ItemStack starcaughtBucket = new ItemStack(fp.catchInfo().bucketedFish());
+                ModDataComponents.set(starcaughtBucket, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(is.copy()));
+                is = starcaughtBucket;
+            }
+        }
+        return is;
+    }
+
     public static int getRandomSize(FishProperties fp, float percentile)
     {
         percentile = Mth.clamp(percentile, 0.01f, 99.999f);
@@ -247,7 +256,7 @@ public class U
     public static ItemStack getFishedItemstackFromFP(FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
         ItemStack is = new ItemStack(fp.catchInfo().fish());
-        if(fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+        if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
             ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
         return is;
     }
@@ -425,28 +434,28 @@ public class U
         String finalString = "";
 
         //days
-        if(ticksRemainingToCalculate > 86400)
+        if (ticksRemainingToCalculate > 86400)
         {
             finalString += ticksRemainingToCalculate / 86400 + "d ";
             ticksRemainingToCalculate = ticksRemainingToCalculate % 86400;
         }
 
         //hours
-        if(ticksRemainingToCalculate > 3600)
+        if (ticksRemainingToCalculate > 3600)
         {
             finalString += ticksRemainingToCalculate / 3600 + "h ";
             ticksRemainingToCalculate = ticksRemainingToCalculate % 3600;
         }
 
         //minutes
-        if(ticksRemainingToCalculate > 60)
+        if (ticksRemainingToCalculate > 60)
         {
             finalString += ticksRemainingToCalculate / 60 + "m ";
             ticksRemainingToCalculate = ticksRemainingToCalculate % 60;
         }
 
         //seconds
-        if(ticksRemainingToCalculate > 0)
+        if (ticksRemainingToCalculate > 0)
         {
             finalString += ticksRemainingToCalculate + "s";
         }

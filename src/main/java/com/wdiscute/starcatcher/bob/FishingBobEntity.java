@@ -288,8 +288,8 @@ public class FishingBobEntity extends Projectile
             //we use a for here so several modifiers can edit the FP
             for (AbstractCatchModifier acm : modifiers)
             {
-                FishProperties fp = acm.overrideFpToClient(fpToClient);
-                if(fp != null) fpToClient = fp;
+                FishProperties fish = acm.overrideFpToClient(fpToClient);
+                if(fish != null) fpToClient = fish;
             }
 
             //send fishing minigame payload to client with FP
@@ -305,7 +305,7 @@ public class FishingBobEntity extends Projectile
         if (level().isClientSide) return false;
 
         //if any modifier wants to stop fishing
-        if (modifiers.stream().anyMatch(acm -> acm.shouldStopFishing())) return true;
+        if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldStopFishing)) return true;
 
         boolean holdingRod = player.getMainHandItem().is(StarcatcherTags.RODS)
                 || player.getOffhandItem().is(StarcatcherTags.RODS);

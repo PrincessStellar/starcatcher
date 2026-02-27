@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Collection;
 import java.util.List;
 
 public abstract class AbstractCatchModifier
@@ -103,12 +104,6 @@ public abstract class AbstractCatchModifier
         return false;
     }
 
-    //server only
-    public ItemStack modifyItemStack(ItemStack is)
-    {
-        return is;
-    }
-
     public boolean shouldCancelBeforeSkipsMinigameCheck()
     {
         return false;
@@ -132,5 +127,15 @@ public abstract class AbstractCatchModifier
     public FishProperties overrideFpToClient(FishProperties fishProperties)
     {
         return null;
+    }
+
+    public void modifyBaseItemStack(ItemStack is)
+    {
+
+    }
+
+    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure)
+    {
+        return List.of();
     }
 }
