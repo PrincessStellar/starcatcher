@@ -130,6 +130,11 @@ public record FishProperties(
             true
     );
 
+    public FishProperties withHideCatch()
+    {
+        return new FishProperties(this.catchInfo.withItemToOverrideWith(ModItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.wr, this.br, this.dif, this.daytime, this.weather, this.skipMinigame, this.hasGuideEntry);
+    }
+
     public static Builder builder()
     {
         return new Builder();

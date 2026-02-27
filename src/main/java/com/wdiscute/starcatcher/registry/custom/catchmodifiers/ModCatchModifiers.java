@@ -75,6 +75,9 @@ public interface ModCatchModifiers
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> ADD_50_GOLDEN_CHANCE = registerCatchModifier("add_50_golden_chance", () -> new IncreaseGoldenChance(0.5f));
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> CANCEL_GOLDEN = registerCatchModifier("cancel_golden", CancelGolden::new);
 
+    //hide catch
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> HIDE_CATCH = registerCatchModifier("hide_catch", HideCatchModifier::new);
+
     static Pair<ResourceLocation, Supplier<AbstractCatchModifier>> registerCatchModifier(String name, Supplier<AbstractCatchModifier> sup)
     {
         REGISTRY.register(name, () -> sup);

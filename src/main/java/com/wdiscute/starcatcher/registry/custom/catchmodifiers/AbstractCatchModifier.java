@@ -1,12 +1,10 @@
 package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
-import javax.swing.table.TableRowSorter;
 import java.util.List;
 
 public abstract class AbstractCatchModifier
@@ -129,5 +127,10 @@ public abstract class AbstractCatchModifier
     public boolean cancelGolden()
     {
         return false;
+    }
+
+    public FishProperties overrideFpToClient(FishProperties fishProperties)
+    {
+        return null;
     }
 }

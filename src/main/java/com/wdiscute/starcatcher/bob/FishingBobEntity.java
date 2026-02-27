@@ -7,8 +7,6 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
@@ -286,10 +284,18 @@ public class FishingBobEntity extends Projectile
         }
         else
         {
-            //otherwise send fishing minigame payload to client
+            FishProperties fpToClient = fpToFish;
+            //we use a for here so several modifiers can edit the FP
+            for (AbstractCatchModifier acm : modifiers)
+            {
+                FishProperties fp = acm.overrideFpToClient(fpToClient);
+                if(fp != null) fpToClient = fp;
+            }
+
+            //send fishing minigame payload to client with FP
             PacketDistributor.sendToPlayer(
                     ((ServerPlayer) player),
-                    new FishingStartedPayload(fpToFish, rod)
+                    new FishingStartedPayload(fpToClient, rod)
             );
         }
     }
