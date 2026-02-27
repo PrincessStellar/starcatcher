@@ -1,0 +1,90 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "bottom": "sand"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/bottom/sand"
+      }
+    },
+
+    {
+      "when": {
+        "bottom": "red_sand"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/bottom/red_sand"
+      }
+    },
+
+    {
+      "when": {
+        "bottom": "stone"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/bottom/stone"
+      }
+    },
+
+    {
+      "when": {
+        "bottom": "gravel"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/bottom/gravel"
+      }
+    },
+
+
+
+
+
+
+    {
+      "when": {
+        "decoration": "seagrass"
+      },
+      "apply": {
+        "model": "minecraft:block/seagrass"
+      }
+    },
+
+    {
+      "when": {
+        "decoration": "kelp"
+      },
+      "apply": {
+        "model": "minecraft:block/kelp_plant"
+      }
+    },
+
+    {
+      "when": {
+        "decoration": "kelp_top"
+      },
+      "apply": {
+        "model": "minecraft:block/kelp"
+      }
+    },
+
+    {
+      "when": {
+        "decoration": "castle_sand"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/decoration/castle_sand"
+      }
+    },
+
+    {
+      "when": {
+        "decoration": "castle_red_sand"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/decoration/castle_red_sand"
+      }
+    }
+
+  ]
+}

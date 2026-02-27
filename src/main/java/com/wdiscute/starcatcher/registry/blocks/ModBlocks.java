@@ -38,6 +38,7 @@ public interface ModBlocks
 
     DeferredBlock<Block> TACKLE_BOX = registerBlock("tackle_box", () -> new Block(BlockBehaviour.Properties.of()));
 
+    DeferredBlock<Block> AQUARIUM = registerBlock("aquarium", AquariumBlock::new);
 
     //hats
     DeferredBlock<Block> FISHERMAN_HAT_WHITE = registerHat("fisherman_hat_white", HatBlock::new);
