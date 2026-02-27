@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.items;
 
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
@@ -7,25 +8,42 @@ import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import org.openjdk.nashorn.api.scripting.ScriptObjectMirror;
 
 public class BucketTooltipRenderer implements ClientTooltipComponent {
     public StarcaughtBucket.BucketTooltip tooltip;
-    public String text = "";
+    public Component text = Component.empty();
 
     public BucketTooltipRenderer(StarcaughtBucket.BucketTooltip tooltip){
         this.tooltip = tooltip;
 
-        if (ModDataComponents.has(tooltip.fish(),ModDataComponents.CAUGHT_FISH_INFO)) {
+        //caught fish info
+        if (ModDataComponents.has(tooltip.fish(), ModDataComponents.CAUGHT_FISH_INFO))
+        {
+            SettingsScreen.Units units = Config.UNIT.get();
             CaughtFishInfo sw = ModDataComponents.get(tooltip.fish(), ModDataComponents.CAUGHT_FISH_INFO);
 
-            SettingsScreen.Units units = Config.UNIT.get();
-
+            if(sw.golden())
+            {
+                MutableComponent element = Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
+                if(Screen.hasShiftDown())
+                    element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
+                text = element;
+                return;
+            }
             String size = units.getSizeAsString(sw.sizeInCentimeters());
             String weight = units.getWeightAsString(sw.weightInGrams());
+            String percentile = " (top " + (int) sw.percentile() + "%)";
 
-            this.text = size + " - " + weight;
+            MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
+            if(Screen.hasShiftDown())
+                element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
+            text = element;
         }
 
     }
@@ -39,7 +57,7 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
     public int getWidth(Font font) {
         if (isEmpty()) return 0;
 
-        int ret = 16 + Math.round(text.length() * 5.8f);
+        int ret = 16 + Math.round(text.getString().length() * 5.8f);
         return hasProperties() ? ret : 16 ;
     }
 
@@ -49,7 +67,7 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
             guiGraphics.renderItem(tooltip.fish(), x, y);
 
             if (hasProperties())
-                guiGraphics.drawString(Minecraft.getInstance().font, Component.literal(text), x + 20, y + 4, 0x888888,true);
+                guiGraphics.drawString(Minecraft.getInstance().font, text, x + 20, y + 4, 0x888888,true);
         }
     }
 

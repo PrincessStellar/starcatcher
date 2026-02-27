@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.mixin;
 import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -19,6 +20,11 @@ public class GetNameMixin
     public void getHoverNameMixin(CallbackInfoReturnable<Component> cir)
     {
         ItemStack stack = (ItemStack) (Object) this;
+
+        if(ModDataComponents.has(stack, ModDataComponents.BUCKETED_FISH))
+        {
+            stack = ModDataComponents.get(stack, ModDataComponents.BUCKETED_FISH).stack();
+        }
 
         if (ModDataComponents.has(stack, ModDataComponents.CAUGHT_FISH_INFO))
         {

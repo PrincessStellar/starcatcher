@@ -87,7 +87,6 @@ public class TooltipEvents {
             if(hasShiftDown)
                 element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
             comp.add(1, element);
-
         }
 
         //tackle skin

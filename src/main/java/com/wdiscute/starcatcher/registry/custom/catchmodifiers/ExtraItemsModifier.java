@@ -10,6 +10,7 @@ import java.util.List;
 public class ExtraItemsModifier extends AbstractCatchModifier
 {
     final int count;
+
     public ExtraItemsModifier(int count)
     {
         this.count = count;
@@ -18,10 +19,10 @@ public class ExtraItemsModifier extends AbstractCatchModifier
     @Override
     public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure)
     {
-        if(!instance.fpToFish.hasGuideEntry()) return List.of();
-        if(instance.fpToFish.catchInfo().alwaysSpawnEntity() ||
+        if (instance.fpToFish.catchInfo().alwaysSpawnEntity() ||
                 ModList.get().isLoaded("fishingreal") ||
-                instance.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity)) return List.of();
+                instance.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity) ||
+                !instance.fpToFish.hasGuideEntry()) return List.of();
 
         List<ItemStack> items = new ArrayList<>();
         for (int i = 0; i < count; i++)
