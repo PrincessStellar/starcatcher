@@ -1,6 +1,9 @@
 package com.wdiscute.starcatcher.registry.blocks;
 
+import com.mojang.serialization.Codec;
+import com.wdiscute.starcatcher.registry.ModDataMaps;
 import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.tournament.Tournament;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
@@ -50,6 +53,8 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     {
         Bottom bottom = state.getValue(BOTTOM);
         Decoration decoration = state.getValue(DECORATION);
+
+        Decoration holdingDecor = stack.getItem().builtInRegistryHolder().getData(ModDataMaps.AQUARIUM_DECOR);
 
         //seagrass
         if (stack.is(Items.SEAGRASS)
@@ -216,6 +221,8 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
         {
             this.name = name;
         }
+
+        public static final Codec<Decoration> CODEC = StringRepresentable.fromEnum(Decoration::values);
 
         @Override
         public @NotNull String getSerializedName()
