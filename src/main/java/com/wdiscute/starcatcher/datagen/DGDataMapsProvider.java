@@ -4,12 +4,9 @@ import com.wdiscute.starcatcher.registry.ModDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.AquariumBlock;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,9 +18,19 @@ public class DGDataMapsProvider extends DataMapProvider {
 
     @Override
     protected void gather(HolderLookup.Provider provider) {
-        var decor = this.builder(ModDataMaps.AQUARIUM_DECOR);
+        var decor = this.builder(ModDataMaps.AQUARIUM_INTERACTION);
 
-        decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Decoration.KELP, false);
-        decor.add(ItemTags.SAND, AquariumBlock.Decoration.CASTLE_RED_SAND, false);
+        //ground
+        decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
+        decor.add(Items.SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SAND, false);
+        decor.add(Items.RED_SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_RED_SAND, false);
+        decor.add(Items.STONE.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_STONE, false);
+
+        //decorations
+        decor.add(ItemTags.SHOVELS, AquariumBlock.Interaction.BUILD_CASTLE, false);
+        decor.add(ItemTags.PICKAXES, AquariumBlock.Interaction.BUILD_CAVE, false);
+        decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
+        decor.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
+
     }
 }

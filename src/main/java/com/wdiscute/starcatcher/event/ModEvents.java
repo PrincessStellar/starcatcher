@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.io.network.*;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
 import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
+import com.wdiscute.starcatcher.registry.ModDataMaps;
 import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -45,6 +46,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
+import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class ModEvents
@@ -180,6 +182,12 @@ public class ModEvents
     public static void registerAttributed(EntityAttributeCreationEvent event)
     {
         event.put(ModEntities.FISH.get(), FishEntity.createAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void registerAttributed(RegisterDataMapTypesEvent event)
+    {
+        event.register(ModDataMaps.AQUARIUM_INTERACTION);
     }
 
     @SubscribeEvent

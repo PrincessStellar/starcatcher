@@ -1,9 +1,10 @@
 {
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
+	"render_type": "cutout_mipped",
 	"textures": {
-		"sand": "minecraft:block/stone",
-		"particle": "minecraft:block/stone"
+		"sand": "minecraft:block/sand",
+		"particle": "minecraft:block/sand"
 	},
 	"elements": [
 		{
