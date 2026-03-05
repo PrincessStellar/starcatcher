@@ -1,8 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
-import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;

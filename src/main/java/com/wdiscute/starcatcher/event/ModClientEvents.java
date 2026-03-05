@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinScreen;
@@ -44,6 +45,7 @@ public class ModClientEvents
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerBlockEntityRenderer(ModBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.AQUARIUM.get(), AquariumRenderer::new);
     }
 
     @SubscribeEvent

@@ -7,6 +7,8 @@
     "minecraft:red_sand": "place_red_sand",
     "minecraft:sand": "place_sand",
     "minecraft:seagrass": "place_seagrass",
-    "minecraft:stone": "place_stone"
+    "minecraft:stone": "place_stone",
+    "starcatcher:driftfin": "place_sand",
+    "starcatcher:starcaught_bucket": "place_sand"
   }
 }

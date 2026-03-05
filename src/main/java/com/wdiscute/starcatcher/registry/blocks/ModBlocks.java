@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.registry.blocks;
 
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBin;

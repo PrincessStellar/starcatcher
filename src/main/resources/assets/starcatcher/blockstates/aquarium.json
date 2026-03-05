@@ -398,10 +398,6 @@
 
 
 
-
-
-
-
     {
       "when": {
         "top": false
@@ -410,6 +406,9 @@
         "model": "starcatcher:block/aquarium/walls/top_center"
       }
     },
+
+
+
 
     {
       "when": {

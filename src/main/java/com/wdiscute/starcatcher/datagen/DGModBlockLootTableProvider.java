@@ -22,6 +22,11 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
     protected void generate()
     {
         HATS.getEntries().forEach(o -> dropSelf(o.get()));
+
+        dropSelf(AQUARIUM.get());
+        dropSelf(TROPHY_BRONZE.get());
+        dropSelf(TROPHY_SILVER.get());
+        dropSelf(TROPHY_GOLD.get());
     }
 
     @Override

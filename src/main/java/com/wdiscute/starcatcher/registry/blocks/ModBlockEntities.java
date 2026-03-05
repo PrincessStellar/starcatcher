@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.registry.blocks;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinBlockEntity;
@@ -37,7 +38,10 @@ public class ModBlockEntities
                     ModBlocks.DISPLAY.get()
             ).build(null));
 
-
+    public static final Supplier<BlockEntityType<AquariumBlockEntity>> AQUARIUM = BLOCK_ENTITIES.register("aquarium",
+            () -> BlockEntityType.Builder.of(AquariumBlockEntity::new,
+                    ModBlocks.AQUARIUM.get()
+            ).build(null));
 
 
     public static void register(IEventBus eventBus) {

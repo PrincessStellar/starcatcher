@@ -1,23 +1,26 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
-import com.wdiscute.starcatcher.registry.blocks.AquariumBlock;
+import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DGDataMapsProvider extends DataMapProvider {
-    protected DGDataMapsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+public class DGDataMapsProvider extends DataMapProvider
+{
+    protected DGDataMapsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
+    {
         super(packOutput, lookupProvider);
     }
 
     @Override
-    protected void gather(HolderLookup.Provider provider) {
+    protected void gather(HolderLookup.Provider provider)
+    {
         var decor = this.builder(ModDataMaps.AQUARIUM_INTERACTION);
 
         //ground
@@ -32,5 +35,6 @@ public class DGDataMapsProvider extends DataMapProvider {
         decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
         decor.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
 
+        decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
     }
 }

@@ -1,25 +1,32 @@
-package com.wdiscute.starcatcher.registry.blocks;
+package com.wdiscute.starcatcher.registry.blocks.aquarium;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
+import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -30,13 +37,15 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.phys.shapes.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class AquariumBlock extends Block implements SimpleWaterloggedBlock
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty EAST = BooleanProperty.create("east");
@@ -48,6 +57,7 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     public static final EnumProperty<Decoration> DECORATION = EnumProperty.create("decoration", Decoration.class);
     public static final EnumProperty<Ground> GROUND = EnumProperty.create("ground", Ground.class);
 
+
     public AquariumBlock()
     {
         super(Properties.of()
@@ -57,23 +67,75 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    public ItemStack pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state)
     {
-        return Shapes.box(0, 0, 0, 1, 0.999d, 1);
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    protected boolean canBeReplaced(BlockState state, Fluid fluid)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean hasDynamicShape()
+    {
+        return true;
     }
 
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid)
     {
-        level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-        return true;
+        return level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
     }
 
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    {
+        if (context instanceof EntityCollisionContext e)
+        {
+            if (e.getEntity() != null)
+            {
+                VoxelShape shape = Shapes.empty();
+
+                if (!state.getValue(BOTTOM)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 2, 18), BooleanOp.OR);
+                //if (!state.getValue(TOP)) shape = Shapes.join(shape, Block.box(-2, 14, -2, 16, 16, 16), BooleanOp.OR);
+
+                if (!state.getValue(NORTH)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 18, 0), BooleanOp.OR);
+                if (!state.getValue(WEST)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 0, 18, 18), BooleanOp.OR);
+
+                if (!state.getValue(EAST)) shape = Shapes.join(shape, Block.box(16, -2, -2, 18, 18, 18), BooleanOp.OR);
+                if (!state.getValue(SOUTH)) shape = Shapes.join(shape, Block.box(-2, -2, 16, 18, 18, 18), BooleanOp.OR);
+
+                return shape;
+            }
+        }
+
+        return Shapes.block();
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    {
+        VoxelShape shape = Shapes.empty();
+
+        if (!state.getValue(BOTTOM)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 2, 18), BooleanOp.OR);
+        //if (!state.getValue(TOP)) shape = Shapes.join(shape, Block.box(-2, 14, -2, 16, 16, 16), BooleanOp.OR);
+
+        if (!state.getValue(NORTH)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 18, 4), BooleanOp.OR);
+        if (!state.getValue(WEST)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 4, 18, 18), BooleanOp.OR);
+
+        if (!state.getValue(EAST)) shape = Shapes.join(shape, Block.box(12, -2, -2, 18, 18, 18), BooleanOp.OR);
+        if (!state.getValue(SOUTH)) shape = Shapes.join(shape, Block.box(-2, -2, 12, 18, 18, 18), BooleanOp.OR);
+
+        return shape;
+    }
 
     @Override
     public boolean shouldDisplayFluidOverlay(BlockState state, BlockAndTintGetter level, BlockPos pos, FluidState fluidState)
     {
-        return true;
+        return false;
     }
 
     @Override
@@ -91,10 +153,17 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        Interaction interaction = ModDataMaps.getOrDefault(stack, ModDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
-        if (interaction.executePlace(level, pos, state))
+        if (stack.getItem() instanceof MobBucketItem bucket)
         {
-            if(interaction.sound != null) player.playSound(interaction.sound);
+            bucket.checkExtraContent(player, level, stack, pos.below());
+            player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));
+            return ItemInteractionResult.SUCCESS;
+        }
+
+        Interaction interaction = ModDataMaps.getOrDefault(stack, ModDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
+        if (interaction.executePlace(level, pos, state, stack))
+        {
+            if (interaction.sound != null) player.playSound(interaction.sound);
             return ItemInteractionResult.SUCCESS;
         }
 
@@ -102,9 +171,20 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos)
+    {
+        if (state.getValue(WATERLOGGED))
+        {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        }
+
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+    }
+
+    @Override
     protected FluidState getFluidState(BlockState state)
     {
-        return Fluids.WATER.getSource(false);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
@@ -197,6 +277,30 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
         return false;
     }
 
+    @Override
+    protected RenderShape getRenderShape(BlockState state)
+    {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec()
+    {
+        return null;
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
+    {
+        return ModBlockEntities.AQUARIUM.get().create(blockPos, blockState);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType)
+    {
+        return TickableBlockEntity.getTicketHelper(level);
+    }
+
     public enum Ground implements StringRepresentable
     {
         NOTHING("nothing"),
@@ -226,21 +330,23 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
 
     public enum Decoration implements StringRepresentable
     {
-        NOTHING("nothing", false),
-        SEAGRASS("seagrass", true),
-        KELP("kelp", false),
-        KELP_TOP("kelp_top", false),
-        CAVE("cave", true),
-        CASTLE_SAND("castle_sand", true),
-        CASTLE_RED_SAND("castle_red_sand", true);
+        NOTHING("nothing", false, true),
+        SEAGRASS("seagrass", true, true),
+        KELP("kelp", false, true),
+        KELP_TOP("kelp_top", false, true),
+        CAVE("cave", true, false),
+        CASTLE_SAND("castle_sand", true, false),
+        CASTLE_RED_SAND("castle_red_sand", true, false);
 
         final String name;
         final boolean requiresGround;
+        final boolean canFishSwimInside;
 
-        Decoration(String name, boolean requiresGround)
+        Decoration(String name, boolean requiresGround, boolean canFishSwimInside)
         {
             this.name = name;
             this.requiresGround = requiresGround;
+            this.canFishSwimInside = canFishSwimInside;
         }
 
         public boolean requiresGround()
@@ -264,12 +370,23 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
     {
         NOTHING("nothing", null, U::alwaysFalse),
 
-        PLACE_SAND("place_sand", SoundEvents.SAND_PLACE, (l, bp, bs) -> placeGround(l, bp, bs, Ground.SAND)),
-        PLACE_RED_SAND("place_red_sand", SoundEvents.SAND_PLACE, (l, bp, bs) -> placeGround(l, bp, bs, Ground.RED_SAND)),
-        PLACE_STONE("place_stone", SoundEvents.STONE_PLACE, (l, bp, bs) -> placeGround(l, bp, bs, Ground.STONE)),
-        PLACE_GRAVEL("place_gravel", SoundEvents.GRAVEL_PLACE, (l, bp, bs) -> placeGround(l, bp, bs, Ground.GRAVEL)),
+        PLACE_FISH("place_sand", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is) ->
+        {
+            if (l.getBlockEntity(bp) instanceof AquariumBlockEntity abe)
+            {
+                abe.setFish(is);
+                return true;
+            }
 
-        PLACE_KELP("place_kelp", SoundEvents.WET_GRASS_PLACE, (l, bp, bs) ->
+            return false;
+        }),
+
+        PLACE_SAND("place_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.SAND)),
+        PLACE_RED_SAND("place_red_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.RED_SAND)),
+        PLACE_STONE("place_stone", SoundEvents.STONE_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.STONE)),
+        PLACE_GRAVEL("place_gravel", SoundEvents.GRAVEL_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.GRAVEL)),
+
+        PLACE_KELP("place_kelp", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is) ->
         {
             if (bs.getValue(DECORATION) == Decoration.KELP) return false;
             if (bs.getValue(DECORATION) == Decoration.KELP_TOP) return false;
@@ -287,14 +404,14 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
             return false;
         }),
 
-        PLACE_SEAGRASS("place_seagrass", SoundEvents.WET_GRASS_PLACE, (l, bp, bs) ->
+        PLACE_SEAGRASS("place_seagrass", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.SEAGRASS));
             else return false;
         }),
 
-        BUILD_CASTLE("build_castle", SoundEvents.SAND_HIT, (l, bp, bs) ->
+        BUILD_CASTLE("build_castle", SoundEvents.SAND_HIT, (l, bp, bs, is) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
             {
@@ -308,7 +425,7 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
             return false;
         }),
 
-        BUILD_CAVE("build_cave", SoundEvents.STONE_HIT, (l, bp, bs) ->
+        BUILD_CAVE("build_cave", SoundEvents.STONE_HIT, (l, bp, bs, is) ->
         {
             if (bs.getValue(GROUND) == Ground.STONE && bs.getValue(DECORATION) != Decoration.CAVE)
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CAVE));
@@ -318,11 +435,11 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
 
         final String name;
         final SoundEvent sound;
-        final Consumer<Level, BlockPos, BlockState, Boolean> place;
+        final Consumer<Level, BlockPos, BlockState, ItemStack, Boolean> place;
 
         public static final Codec<Interaction> CODEC = StringRepresentable.fromEnum(Interaction::values);
 
-        Interaction(String name, SoundEvent sound, Consumer<Level, BlockPos, BlockState, Boolean> place)
+        Interaction(String name, SoundEvent sound, Consumer<Level, BlockPos, BlockState, ItemStack, Boolean> place)
         {
             this.name = name;
             this.sound = sound;
@@ -341,14 +458,14 @@ public class AquariumBlock extends Block implements SimpleWaterloggedBlock
             return name;
         }
 
-        public boolean executePlace(Level level, BlockPos pos, BlockState state)
+        public boolean executePlace(Level level, BlockPos pos, BlockState state, ItemStack is)
         {
-            return place.place(level, pos, state);
+            return place.place(level, pos, state, is);
         }
     }
 
-    public interface Consumer<P1, P2, P3, R>
+    public interface Consumer<P1, P2, P3, P4, R>
     {
-        R place(P1 p1, P2 p2, P3 p3);
+        R place(P1 p1, P2 p2, P3 p3, P4 p4);
     }
 }
