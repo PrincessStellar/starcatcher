@@ -12,6 +12,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.registry.ModEntities;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
@@ -1111,7 +1112,7 @@ public class FishingGuideScreen extends Screen
                 components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(0xa34536)));
             } else
             {
-                if (fp.catchInfo().alwaysSpawnEntity())
+                if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(ModEntities.FISH)))
                     components.add(Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
                 else
                     components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
