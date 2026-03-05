@@ -5,7 +5,7 @@
 	"textures": {
 		"1": "block/spruce_planks",
 		"glass": "block/glass",
-		"particle": "starcatcher:block/aquarium/glass"
+		"particle": "starcatcher:block/aquarium/center"
 	},
 	"elements": [
 		{

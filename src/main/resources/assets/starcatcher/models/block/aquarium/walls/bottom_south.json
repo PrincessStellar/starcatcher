@@ -4,7 +4,7 @@
 	"render_type": "cutout_mipped",
 	"textures": {
 		"glass": "block/glass",
-		"particle": "starcatcher:block/aquarium/glass"
+		"particle": "starcatcher:block/aquarium/center"
 	},
 	"elements": [
 		{
