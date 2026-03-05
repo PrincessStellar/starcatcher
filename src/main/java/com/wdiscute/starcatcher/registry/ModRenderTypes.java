@@ -3,15 +3,22 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.ModDataComponents;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.texture.TextureAtlas;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 
 import java.io.IOException;
+import java.util.function.Function;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class ModRenderTypes extends RenderType {
@@ -20,29 +27,38 @@ public class ModRenderTypes extends RenderType {
     }
 
     static ShaderInstance rendertypeGuiFadeShader;
-    static final RenderStateShard.ShaderStateShard RENDERTYPE_GUI_FADE_SHADER = new RenderStateShard.ShaderStateShard(() -> rendertypeGuiFadeShader);
+    static ShaderInstance goldItemShader;
 
-/*
-    public static final RenderType.CompositeRenderType GUI_FADE = create(
-            Starcatcher.rl("gui_fade").toString(),
-            DefaultVertexFormat.POSITION_COLOR,
-            VertexFormat.Mode.QUADS,
-            1536,
-            RenderType.CompositeState.builder()
-                    .setShaderState(RENDERTYPE_GUI_FADE_SHADER)
-                    .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
-                    .setDepthTestState(LEQUAL_DEPTH_TEST)
-                    .createCompositeState(false)
-    );
-*/
 
     public static ShaderInstance getRendertypeGuiFadeShader() {
         return rendertypeGuiFadeShader;
     }
 
+    public static ShaderInstance getGoldItemShader() {
+        return goldItemShader;
+    }
+
+    public static final Function<ResourceLocation, RenderType> RENDER_TYPE_GOLD = Util.memoize(loc ->
+            create(Starcatcher.rl("gold_item").toString(),
+                    DefaultVertexFormat.NEW_ENTITY,
+                    VertexFormat.Mode.QUADS,
+                    1536,
+                    true,
+                    true,
+                    RenderType.CompositeState.builder()
+                            .setShaderState(new RenderStateShard.ShaderStateShard(ModRenderTypes::getGoldItemShader))
+                            .setTextureState(new RenderStateShard.TextureStateShard(loc, false, false))
+                            .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+                            .setLightmapState(LIGHTMAP)
+                            .setOverlayState(OVERLAY)
+                            .createCompositeState(true)));
+
+    public static final RenderType RENDER_TYPE_GOLD_ITEM = RENDER_TYPE_GOLD.apply(TextureAtlas.LOCATION_BLOCKS);
+
     @SubscribeEvent
     static void registerShaders(RegisterShadersEvent event) throws IOException {
         event.registerShader(new ShaderInstance(event.getResourceProvider(), Starcatcher.rl("gui_fade"), DefaultVertexFormat.POSITION), (shader) -> rendertypeGuiFadeShader = shader);
+        event.registerShader(new ShaderInstance(event.getResourceProvider(), Starcatcher.rl("gold_item"), DefaultVertexFormat.NEW_ENTITY),  (shader) -> goldItemShader = shader);
     }
 
 }

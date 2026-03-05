@@ -7,9 +7,12 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
+import com.wdiscute.starcatcher.registry.ModRenderTypes;
+import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -106,7 +109,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         {
             Item item = itemStack.getItem();
             EntityModel<FishEntity> model = map.get(item);
-            VertexConsumer vertexconsumer = buffer.getBuffer(model.renderType(Starcatcher.rl("textures/entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath() + ".png")));
+            VertexConsumer vertexconsumer = buffer.getBuffer(getGoldRendertype(Starcatcher.rl("textures/entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath() + ".png"), model, itemStack));
             model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         }
         else
@@ -118,5 +121,12 @@ public class FishRenderer extends EntityRenderer<FishEntity>
                     OverlayTexture.NO_OVERLAY, poseStack, buffer, level, U.r.nextInt());
         }
 
+    }
+
+    public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem) {
+        if (FishProperties.Rarity.isGolden(fishItem)){
+            return ModRenderTypes.RENDER_TYPE_GOLD.apply(texture);
+        }
+        return model.renderType(texture);
     }
 }

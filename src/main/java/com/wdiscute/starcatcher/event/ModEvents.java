@@ -4,7 +4,9 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.commands.ModCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.TournamentSavedData;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.*;
@@ -29,6 +31,8 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
@@ -177,6 +181,19 @@ public class ModEvents
             }
         }
     }
+
+    // for testing the gold shader
+/*    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
+    {
+        if (event.getLevel().getBlockState(event.getPos()).is(Blocks.GOLD_BLOCK)){
+            ItemStack stack = event.getEntity().getItemInHand(event.getHand());
+            if (stack.isEmpty()) return;
+
+            stack.set(ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(1, 1, 1, FishProperties.Rarity.GOLDEN, true));
+        }
+    }*/
+
 
     @SubscribeEvent
     public static void registerAttributed(EntityAttributeCreationEvent event)

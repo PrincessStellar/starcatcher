@@ -12,7 +12,6 @@
     { "name": "FADE_RIGHT", "type": "float", "count": 2, "values": [ 0.0, 0.0] },
     { "name": "FADE_UP", "type": "float", "count": 2, "values": [ 0.0, 0.0] },
     { "name": "FADE_DOWN", "type": "float", "count": 2, "values": [ 0.0, 0.0] },
-    { "name": "u_resolution", "type": "float", "count": 2, "values": [ 0.0, 0.0] },
     { "name": "u_invertAlpha", "type": "int", "count": 1, "values": [1] }
 
 

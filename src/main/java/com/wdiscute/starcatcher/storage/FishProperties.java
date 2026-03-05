@@ -9,6 +9,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -1732,6 +1733,14 @@ public record FishProperties(
         public Style getStyle()
         {
             return style;
+        }
+
+        public static boolean isGolden(ItemStack stack) {
+            if (stack.has(ModDataComponents.CAUGHT_FISH_INFO)) {
+                CaughtFishInfo caughtFishInfo = stack.get(ModDataComponents.CAUGHT_FISH_INFO);
+                return caughtFishInfo != null && caughtFishInfo.golden();
+            }
+            return false;
         }
     }
 
