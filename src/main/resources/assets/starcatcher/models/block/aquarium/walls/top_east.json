@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"render_type": "cutout_mipped",
 	"textures": {
-		"glass": "block/glass",
-		"particle": "block/glass"
+		"glass": "starcatcher:block/aquarium/center_top",
+		"particle": "starcatcher:block/aquarium/center_top"
 	},
 	"elements": [
 		{

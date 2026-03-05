@@ -407,9 +407,6 @@
       }
     },
 
-
-
-
     {
       "when": {
         "north": false,
@@ -449,8 +446,5 @@
         "model": "starcatcher:block/aquarium/walls/top_south"
       }
     }
-
-
-
   ]
 }
