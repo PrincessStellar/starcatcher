@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinScreen;
+import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxRenderer;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
@@ -46,6 +47,7 @@ public class ModClientEvents
     {
         event.registerBlockEntityRenderer(ModBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AQUARIUM.get(), AquariumRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.TACKLE_BOX.get(), TackleBoxRenderer::new);
     }
 
     @SubscribeEvent
@@ -91,6 +93,9 @@ public class ModClientEvents
         event.registerLayerDefinition(new FrogTackleSkin().getLayerLocation(), FrogTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ColorfulTackleSkin().getLayerLocation(), ColorfulTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ClearTackleSkin().getLayerLocation(), ClearTackleSkin::createBodyLayer);
+
+        //tackle box
+        event.registerLayerDefinition(TackleBoxRenderer.LAYER_LOCATION, TackleBoxRenderer::createBodyLayer);
 
         //book model
         event.registerLayerDefinition(DisplayBookModel.LAYER_LOCATION, DisplayBookModel::createBodyLayer);

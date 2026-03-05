@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
+import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxBlock;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.items.HatItem;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +25,7 @@ public interface ModBlocks
 {
     DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
     DeferredRegister.Blocks HATS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
+    DeferredRegister.Blocks TACKLE_BOXES = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
 
     DeferredBlock<Block> TROPHY_GOLD = registerBlock("trophy_gold", TrophyBlock::new);
     DeferredBlock<Block> TROPHY_SILVER = registerBlock("trophy_silver", TrophyBlock::new);
@@ -37,9 +39,25 @@ public interface ModBlocks
 
     DeferredBlock<Block> SELLING_BIN = registerBlock("selling_bin", SellingBin::new);
 
-    DeferredBlock<Block> TACKLE_BOX = registerBlock("tackle_box", () -> new Block(BlockBehaviour.Properties.of()));
-
     DeferredBlock<Block> AQUARIUM = registerBlock("aquarium", AquariumBlock::new);
+
+    //tackle boxes
+    DeferredBlock<Block> TACKLE_BOX_WHITE = registerBlock("tackle_box_white", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_LIME = registerBlock("tackle_box_lime", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_ORANGE = registerBlock("tackle_box_orange", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_RED = registerBlock("tackle_box_red", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_GRAY = registerBlock("tackle_box_gray", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_LIGHT_GRAY = registerBlock("tackle_box_light_gray", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_BLACK = registerBlock("tackle_box_black", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_BROWN = registerBlock("tackle_box_brown", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_YELLOW = registerBlock("tackle_box_yellow", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_PINK = registerBlock("tackle_box_pink", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_MAGENTA = registerBlock("tackle_box_magenta", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_PURPLE = registerBlock("tackle_box_purple", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_BLUE = registerBlock("tackle_box_blue", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_LIGHT_BLUE = registerBlock("tackle_box_light_blue", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_CYAN = registerBlock("tackle_box_cyan", TackleBoxBlock::new);
+    DeferredBlock<Block> TACKLE_BOX_GREEN = registerBlock("tackle_box_green", TackleBoxBlock::new);
 
     //hats
     DeferredBlock<Block> FISHERMAN_HAT_WHITE = registerHat("fisherman_hat_white", HatBlock::new);

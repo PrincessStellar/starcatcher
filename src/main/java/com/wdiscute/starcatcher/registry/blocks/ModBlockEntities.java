@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinBlockEntity;
 import com.wdiscute.starcatcher.registry.blocks.stand.StandBlockEntity;
+import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -41,6 +42,26 @@ public class ModBlockEntities
     public static final Supplier<BlockEntityType<AquariumBlockEntity>> AQUARIUM = BLOCK_ENTITIES.register("aquarium",
             () -> BlockEntityType.Builder.of(AquariumBlockEntity::new,
                     ModBlocks.AQUARIUM.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<TackleBoxBlockEntity>> TACKLE_BOX = BLOCK_ENTITIES.register("tackle_box",
+            () -> BlockEntityType.Builder.of(TackleBoxBlockEntity::new,
+                    ModBlocks.TACKLE_BOX_WHITE.get(),
+                    ModBlocks.TACKLE_BOX_LIME.get(),
+                    ModBlocks.TACKLE_BOX_ORANGE.get(),
+                    ModBlocks.TACKLE_BOX_RED.get(),
+                    ModBlocks.TACKLE_BOX_GRAY.get(),
+                    ModBlocks.TACKLE_BOX_LIGHT_GRAY.get(),
+                    ModBlocks.TACKLE_BOX_BLACK.get(),
+                    ModBlocks.TACKLE_BOX_BROWN.get(),
+                    ModBlocks.TACKLE_BOX_YELLOW.get(),
+                    ModBlocks.TACKLE_BOX_PINK.get(),
+                    ModBlocks.TACKLE_BOX_MAGENTA.get(),
+                    ModBlocks.TACKLE_BOX_PURPLE.get(),
+                    ModBlocks.TACKLE_BOX_BLUE.get(),
+                    ModBlocks.TACKLE_BOX_LIGHT_BLUE.get(),
+                    ModBlocks.TACKLE_BOX_CYAN.get(),
+                    ModBlocks.TACKLE_BOX_GREEN.get()
             ).build(null));
 
 
