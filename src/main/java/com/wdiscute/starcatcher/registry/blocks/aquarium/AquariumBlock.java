@@ -67,6 +67,15 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     }
 
     @Override
+    protected float getShadeBrightness(BlockState p_308911_, BlockGetter p_308952_, BlockPos p_308918_) {
+        return 1.0F;
+    }
+
+    protected VoxelShape getVisualShape(BlockState p_309057_, BlockGetter p_308936_, BlockPos p_308956_, CollisionContext p_309006_) {
+        return Shapes.empty();
+    }
+
+    @Override
     public ItemStack pickupBlock(@Nullable Player player, LevelAccessor level, BlockPos pos, BlockState state)
     {
         return ItemStack.EMPTY;
@@ -155,7 +164,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     {
         if (stack.getItem() instanceof MobBucketItem bucket)
         {
-            bucket.checkExtraContent(player, level, stack, pos.below());
+            bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));
             return ItemInteractionResult.SUCCESS;
         }
