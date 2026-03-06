@@ -162,7 +162,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.getItem() instanceof MobBucketItem bucket)
+        if (stack.getItem() instanceof BucketItem bucket)
         {
             bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));
