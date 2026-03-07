@@ -17,10 +17,10 @@ import net.minecraft.world.item.ItemStack;
 public class TackleBoxMenu extends AbstractContainerMenu
 {
     private final Container container;
-    public static final int ROD_SLOT = 14;
-    public static final int BOBBER_SLOT = 15;
-    public static final int BAIT_SLOT = 16;
-    public static final int HOOK_SLOT = 17;
+    public static final int ROD_SLOT = 0;
+    public static final int BOBBER_SLOT = 1;
+    public static final int BAIT_SLOT = 2;
+    public static final int HOOK_SLOT = 3;
 
     public TackleBoxMenu(int containerId, Inventory playerInventory, FriendlyByteBuf extraData)
     {
@@ -34,16 +34,16 @@ public class TackleBoxMenu extends AbstractContainerMenu
         this.container = container;
         container.startOpen(playerInventory.player);
 
-        for (int k = 0; k < 2; ++k)
-            for (int l = 0; l < 7; ++l)
-                this.addSlot(new TackleBoxStorageSlot(container, l + k * 7, l * 18 + 4, 37 + k * 18));
-
-
         this.addSlot(new TackleBoxRodSlot(this, container, ROD_SLOT, 134, 37));
 
         this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BOBBERS, container, BOBBER_SLOT, 158, 11, Starcatcher.rl("item/background/bobber_white")));
         this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BAITS, container, BAIT_SLOT, 158, 31, Starcatcher.rl("item/background/bait_white")));
         this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.HOOKS, container, HOOK_SLOT, 158, 51, Starcatcher.rl("item/background/hook_white")));
+
+
+        for (int k = 0; k < 2; ++k)
+            for (int l = 0; l < 7; ++l)
+                this.addSlot(new TackleBoxStorageSlot(container, 4 + l + k * 7, l * 18 + 4, 37 + k * 18));
 
 
         for (int i1 = 0; i1 < 3; ++i1)
