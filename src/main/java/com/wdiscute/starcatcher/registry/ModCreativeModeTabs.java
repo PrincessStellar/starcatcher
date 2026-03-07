@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;

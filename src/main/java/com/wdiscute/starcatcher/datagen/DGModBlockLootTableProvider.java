@@ -31,6 +31,9 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
         dropSelf(TROPHY_BRONZE.get());
         dropSelf(TROPHY_SILVER.get());
         dropSelf(TROPHY_GOLD.get());
+
+        dropSelf(CLAM.get());
+        dropSelf(CONCH.get());
     }
 
     @Override
@@ -45,6 +48,9 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
         list.add(TROPHY_GOLD.get());
 
         list.add(AQUARIUM.get());
+
+        list.add(CLAM.get());
+        list.add(CONCH.get());
 
         return list::iterator;
     }

@@ -1,5 +1,7 @@
-// 1.21.1	2026-03-07T17:29:21.5431466	Loot Tables
+// 1.21.1	2026-03-07T19:16:41.792465	Loot Tables
 5208d301b75e0729a3653bae953cc2be3345fd65 data/starcatcher/loot_table/blocks/aquarium.json
+2c4789223fa4670a7635c9f364e2cf08e97e862b data/starcatcher/loot_table/blocks/clam.json
+065f2ab8b8f87cd0a766b7a10524d9b7176a1680 data/starcatcher/loot_table/blocks/conch.json
 4cea5e24457eb6e0a14083235a8b143cbc699ff8 data/starcatcher/loot_table/blocks/fisherman_hat_black.json
 5675d9bcacaa82ec43bc9e6db9e98986ea825ef3 data/starcatcher/loot_table/blocks/fisherman_hat_blue.json
 3babc7d05bed0f70af597bb1e75adc85a4420b72 data/starcatcher/loot_table/blocks/fisherman_hat_brown.json

@@ -363,13 +363,13 @@ public class DGRecipeProvider extends RecipeProvider
 
         //bonemeal from clam
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
-                .requires(ModItems.CLAM)
+                .requires(ModBlocks.CLAM)
                 .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_clam"));
 
         //bonemeal from conch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
-                .requires(ModItems.CONCH)
+                .requires(ModBlocks.CONCH)
                 .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_conch"));
 

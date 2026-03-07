@@ -38,8 +38,6 @@ public class DGItemModelProvider extends ItemModelProvider
         simpleItem(LAVA_CRAB);
         simpleItem(CINDER_SQUID);
         simpleItem(CHORUS_CRAB);
-        simpleItem(CONCH);
-        simpleItem(CLAM);
 
         //trash
         simpleItem(BOOT);
@@ -126,11 +124,13 @@ public class DGItemModelProvider extends ItemModelProvider
 
 
 
-
         //trophies block item
         simpleBlockItem(ModBlocks.TROPHY_BRONZE.get());
         simpleBlockItem(ModBlocks.TROPHY_SILVER.get());
         simpleBlockItem(ModBlocks.TROPHY_GOLD.get());
+
+        simpleItem(DeferredItem.createItem(Starcatcher.rl("clam")));
+        simpleItem(DeferredItem.createItem(Starcatcher.rl("conch")));
 
         //hats model, just parents to block
         simpleBlockItem(FISHERMAN_HAT_WHITE.get());
