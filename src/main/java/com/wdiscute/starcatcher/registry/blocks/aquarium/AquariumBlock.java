@@ -63,6 +63,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
         super(Properties.of()
                 .pushReaction(PushReaction.IGNORE)
                 .sound(SoundType.GLASS)
+                .strength(2.0F)
                 .noOcclusion());
     }
 

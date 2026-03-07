@@ -2,13 +2,12 @@
   "values": {
     "#minecraft:pickaxes": "build_cave",
     "#minecraft:shovels": "build_castle",
+    "#starcatcher:starcaught_fishes": "place_sand",
     "minecraft:gravel": "place_gravel",
     "minecraft:kelp": "place_kelp",
     "minecraft:red_sand": "place_red_sand",
     "minecraft:sand": "place_sand",
     "minecraft:seagrass": "place_seagrass",
-    "minecraft:stone": "place_stone",
-    "starcatcher:driftfin": "place_sand",
-    "starcatcher:starcaught_bucket": "place_sand"
+    "minecraft:stone": "place_stone"
   }
 }
