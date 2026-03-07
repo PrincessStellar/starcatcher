@@ -1,13 +1,20 @@
 package com.wdiscute.starcatcher.registry.blocks.tacklebox;
 
+import com.mojang.datafixers.util.Pair;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public class TackleBoxRodSlot extends Slot
 {
+    private static final ResourceLocation BACKGROUND = Starcatcher.rl("item/background/rod");
+
     TackleBoxMenu tackleMenu;
 
     public TackleBoxRodSlot(TackleBoxMenu tackleMenu, Container container, int slot, int x, int y)
@@ -15,6 +22,12 @@ public class TackleBoxRodSlot extends Slot
         super(container, slot, x, y);
         this.tackleMenu = tackleMenu;
         tackleMenu.update();
+    }
+
+    @Override
+    public @Nullable Pair<ResourceLocation, ResourceLocation> getNoItemIcon()
+    {
+        return Pair.of(InventoryMenu.BLOCK_ATLAS, BACKGROUND);
     }
 
     @Override
@@ -28,16 +41,5 @@ public class TackleBoxRodSlot extends Slot
     {
         super.setByPlayer(newStack, oldStack);
         tackleMenu.onPlaceRod(newStack);
-    }
-
-    @Override
-    public void onTake(Player player, ItemStack stack)
-    {
-        super.onTake(player, stack);
-
-        if(player.containerMenu instanceof TackleBoxMenu tbm)
-        {
-            tbm.onTakeRod(player, stack);
-        }
     }
 }
