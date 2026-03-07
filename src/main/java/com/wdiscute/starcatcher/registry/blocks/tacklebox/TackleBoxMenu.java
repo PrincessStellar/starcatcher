@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.tacklebox;
 
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -40,9 +41,9 @@ public class TackleBoxMenu extends AbstractContainerMenu
 
         this.addSlot(new TackleBoxRodSlot(this, container, ROD_SLOT, 134, 37));
 
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BOBBERS, container, BOBBER_SLOT, 158, 11));
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BAITS, container, BAIT_SLOT, 158, 31));
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.HOOKS, container, HOOK_SLOT, 158, 51));
+        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BOBBERS, container, BOBBER_SLOT, 158, 11, Starcatcher.rl("item/background/bobber_white")));
+        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BAITS, container, BAIT_SLOT, 158, 31, Starcatcher.rl("item/background/bait_white")));
+        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.HOOKS, container, HOOK_SLOT, 158, 51, Starcatcher.rl("item/background/hook_white")));
 
 
         for (int i1 = 0; i1 < 3; ++i1)
@@ -92,17 +93,6 @@ public class TackleBoxMenu extends AbstractContainerMenu
     {
         super.removed(player);
         this.container.stopOpen(player);
-    }
-
-    public void onTakeRod(Player player, ItemStack stack)
-    {
-        ModDataComponents.set(stack, ModDataComponents.BOBBER, new SingleStackContainer(container.getItem(BOBBER_SLOT).copy()));
-        ModDataComponents.set(stack, ModDataComponents.BAIT, new SingleStackContainer(container.getItem(BAIT_SLOT).copy()));
-        ModDataComponents.set(stack, ModDataComponents.HOOK, new SingleStackContainer(container.getItem(HOOK_SLOT).copy()));
-
-        container.setItem(BOBBER_SLOT, ItemStack.EMPTY);
-        container.setItem(BAIT_SLOT, ItemStack.EMPTY);
-        container.setItem(HOOK_SLOT, ItemStack.EMPTY);
     }
 
     public void update()
