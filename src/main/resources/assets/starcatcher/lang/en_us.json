@@ -1447,8 +1447,8 @@
   "tooltip.starcatcher.redscaled_tuna.1" : "A single one of these often feeds an entire village.",
 
   "item.starcatcher.sea_bass" : "Sea Bass",
-  "tooltip.starcatcher.sea_bass.0" : "A popular type of bass common to the ocean.",
-  "tooltip.starcatcher.sea_bass.1" : "It hides during the night due to it's lack bravery.",
+  "tooltip.starcatcher.sea_bass.0" : "A sea bass!",
+  "tooltip.starcatcher.sea_bass.1" : "No, wait—it's at least a C+!",
 
   "item.starcatcher.waterlogged_bottle" : "Waterlogged Bottle",
   "tooltip.starcatcher.waterlogged_bottle.0" : "A bottle thrown into the ocean many moons ago.",
