@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -34,6 +35,8 @@ public class DGDataMapsProvider extends DataMapProvider
         decor.add(ItemTags.PICKAXES, AquariumBlock.Interaction.BUILD_CAVE, false);
         decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
         decor.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
+        decor.add(ModBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
+        decor.add(ModBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
     }

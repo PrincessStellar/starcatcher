@@ -8,6 +8,8 @@
     "minecraft:red_sand": "place_red_sand",
     "minecraft:sand": "place_sand",
     "minecraft:seagrass": "place_seagrass",
-    "minecraft:stone": "place_stone"
+    "minecraft:stone": "place_stone",
+    "starcatcher:clam": "place_clam",
+    "starcatcher:conch": "place_conch"
   }
 }

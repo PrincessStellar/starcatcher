@@ -341,6 +341,8 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     public enum Decoration implements StringRepresentable
     {
         NOTHING("nothing", false, true),
+        CLAM("clam", true, true),
+        CONCH("conch", true, true),
         SEAGRASS("seagrass", true, true),
         KELP("kelp", false, true),
         KELP_TOP("kelp_top", false, true),
@@ -418,6 +420,20 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
         {
             if (!bs.getValue(GROUND).isEmpty())
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.SEAGRASS));
+            else return false;
+        }),
+
+        PLACE_CLAM("place_clam", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is) ->
+        {
+            if (!bs.getValue(GROUND).isEmpty())
+                return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CLAM));
+            else return false;
+        }),
+
+        PLACE_CONCH("place_conch", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is) ->
+        {
+            if (!bs.getValue(GROUND).isEmpty())
+                return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CONCH));
             else return false;
         }),
 

@@ -43,6 +43,24 @@
 
     {
       "when": {
+        "decoration": "clam"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/decoration/clam"
+      }
+    },
+
+    {
+      "when": {
+        "decoration": "conch"
+      },
+      "apply": {
+        "model": "starcatcher:block/aquarium/decoration/conch"
+      }
+    },
+
+    {
+      "when": {
         "decoration": "seagrass"
       },
       "apply": {
