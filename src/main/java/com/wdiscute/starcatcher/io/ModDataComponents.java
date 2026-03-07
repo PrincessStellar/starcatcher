@@ -82,9 +82,9 @@ public class ModDataComponents
     public static List<ItemStack> getSlotsInRod(ItemStack itemStack)
     {
         List<ItemStack> list = new ArrayList<>();
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.HOOK, new SingleStackContainer(ItemStack.EMPTY)).stack());
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack());
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BOBBER, new SingleStackContainer(ItemStack.EMPTY)).stack());
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.HOOK, SingleStackContainer.empty()).stack());
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BAIT, SingleStackContainer.empty()).stack());
+        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack());
         return list;
     }
 

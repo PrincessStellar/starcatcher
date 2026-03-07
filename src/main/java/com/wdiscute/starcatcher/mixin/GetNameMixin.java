@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.mixin;
 import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;

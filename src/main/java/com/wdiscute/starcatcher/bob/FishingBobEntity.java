@@ -112,7 +112,7 @@ public class FishingBobEntity extends Projectile
         //add fish messages modifier
         modifiers.add(new FishMessagesModifier());
 
-        SingleStackContainer ssc = ModDataComponents.get(rod, ModDataComponents.HOOK);
+        SingleStackContainer ssc = ModDataComponents.getOrDefault(rod, ModDataComponents.HOOK, SingleStackContainer.empty());
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));
 
         entityData.set(VOID, voidHook);

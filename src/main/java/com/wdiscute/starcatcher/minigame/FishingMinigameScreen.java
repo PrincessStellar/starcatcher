@@ -7,6 +7,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.ModItems;
@@ -127,9 +128,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         else
             this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
 
-        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack().copy();
-        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy();
-        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack().copy();
+        this.bobber = ModDataComponents.getOrDefault(rod, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack();
+        this.bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        this.hook = ModDataComponents.getOrDefault(rod, ModDataComponents.HOOK, SingleStackContainer.empty()).stack();
 
         this.treasureIS = new ItemStack(fp.catchInfo().treasure());
 

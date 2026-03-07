@@ -107,9 +107,9 @@ public class SettingsScreen extends Screen
 
         this.fp = fp;
         this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
-        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack().copy();
-        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy();
-        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack().copy();
+        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack();
+        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack();
+        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack();
 
         posTreasure = Integer.MIN_VALUE;
 

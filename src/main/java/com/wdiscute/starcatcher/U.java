@@ -176,7 +176,7 @@ public class U
             }
 
             //consume bait
-            ItemStack bait = ModDataComponents.get(fbe.rod, ModDataComponents.BAIT).stack().copy();
+            ItemStack bait = ModDataComponents.getOrDefault(fbe.rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
             if (fbe.fpToFish.br().consumesBait())
             {
                 if (!bait.is(Items.BUCKET))
@@ -200,7 +200,7 @@ public class U
 
     public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
-        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.EMPTY).stack().copy();
+        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
         boolean isStarcaught = fp.catchInfo().bucketedFish().is(ModItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
         boolean isBucketed = !fp.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
 

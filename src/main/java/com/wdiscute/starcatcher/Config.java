@@ -116,6 +116,10 @@ public class Config
             .comment("The base chance to fish every tick (out of 1)")
             .defineInRange("base_chance", 0.005d, 0, 1);
 
+    public static final ModConfigSpec.BooleanValue RESTRICT_TACKLE_BOX_TO_TAG = BUILDER_SERVER
+            .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
+            .define("restrict_tackle_box_to_tag", true);
+
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

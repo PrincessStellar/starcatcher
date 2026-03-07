@@ -358,6 +358,36 @@
   "tooltips.starcatcher.unknown_fish.0": "template fish used in the minigame for entries which hide the item being fished",
 
 
+
+
+
+  "container.starcatcher.tackle_box.itemCount" : "%s x%s",
+  "container.starcatcher.tackle_box.unknownContents" : "%s x%s",
+  "container.starcatcher.tackle_box.more" : "container.starcatcher.tackle_box.more",
+
+  "block.starcatcher.tackle_box" : "Tackle Box",
+  "block.starcatcher.tackle_box_white" : "White Tackle Box",
+  "block.starcatcher.tackle_box_lime" : "Lime Tackle Box",
+  "block.starcatcher.tackle_box_orange" : "Orange Tackle Box",
+  "block.starcatcher.tackle_box_red" : "Red Tackle Box",
+  "block.starcatcher.tackle_box_gray" : "Gray Tackle Box",
+  "block.starcatcher.tackle_box_light_gray" : "Light Gray Tackle Box",
+  "block.starcatcher.tackle_box_black" : "Black Tackle Box",
+  "block.starcatcher.tackle_box_brown" : "Brown Tackle Box",
+  "block.starcatcher.tackle_box_yellow" : "Yellow Tackle Box",
+  "block.starcatcher.tackle_box_pink" : "Pink Tackle Box",
+  "block.starcatcher.tackle_box_magenta" : "Magenta Tackle Box",
+  "block.starcatcher.tackle_box_purple" : "Purple Tackle Box",
+  "block.starcatcher.tackle_box_blue" : "Blue Tackle Box",
+  "block.starcatcher.tackle_box_light_blue" : "Light Blue Tackle Box",
+  "block.starcatcher.tackle_box_cyan" : "Cyan Tackle Box",
+  "block.starcatcher.tackle_box_green" : "Green Tackle Box",
+
+  "block.starcatcher.aquarium" : "Aquarium",
+
+  "block.starcatcher.selling_bin" : "Selling Bin",
+
+
   "block.starcatcher.fisherman_hat_black": "Black Fisherman's Hat",
   "block.starcatcher.fisherman_hat_blue": "Blue Fisherman's Hat",
   "block.starcatcher.fisherman_hat_brown": "Brown Fisherman's Hat",

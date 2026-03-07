@@ -112,7 +112,7 @@ public class TackleBoxMenu extends AbstractContainerMenu
         ModDataComponents.set(container.getItem(ROD_SLOT), ModDataComponents.HOOK, new SingleStackContainer(container.getItem(HOOK_SLOT).copy()));
 
         container.setItem(BOBBER_SLOT, ModDataComponents.getOrDefault(container.getItem(ROD_SLOT), ModDataComponents.BOBBER, SingleStackContainer.empty()).stack());
-        container.setItem(BAIT_SLOT, ModDataComponents.getOrDefault(container.getItem(ROD_SLOT), ModDataComponents.BAIT, SingleStackContainer.empty()).stack());
+        container.setItem(BAIT_SLOT, ModDataComponents.getOrDefault(container.getItem(ROD_SLOT), ModDataComponents.BAIT, SingleStackContainer.empty()).stackDoNotUse());
         container.setItem(HOOK_SLOT, ModDataComponents.getOrDefault(container.getItem(ROD_SLOT), ModDataComponents.HOOK, SingleStackContainer.empty()).stack());
     }
 

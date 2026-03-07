@@ -61,8 +61,8 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements M
 
         if(tag.contains("storage"))
         {
-            com.wdiscute.starcatcher.io.SingleStackContainer singleStackContainer = NBTCodecHelper.decode(SingleStackContainer.CODEC, tag, "storage");
-            storage.setStackInSlot(0, singleStackContainer.stack().copy());
+            SingleStackContainer singleStackContainer = NBTCodecHelper.decode(SingleStackContainer.CODEC, tag, "storage");
+            storage.setStackInSlot(0, singleStackContainer.stack());
         }
     }
 
