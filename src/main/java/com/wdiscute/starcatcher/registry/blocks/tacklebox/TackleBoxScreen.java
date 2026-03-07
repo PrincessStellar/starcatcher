@@ -9,7 +9,8 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class TackleBoxScreen extends AbstractContainerScreen<TackleBoxMenu>
 {
-    private static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/tackle_box.png");
+    private static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/tackle_box/tackle_box.png");
+    private static final ResourceLocation ICONS = Starcatcher.rl("textures/gui/tackle_box/tackle_box_icons.png");
 
     public TackleBoxScreen(TackleBoxMenu menu, Inventory playerInventory, Component title)
     {
@@ -30,8 +31,14 @@ public class TackleBoxScreen extends AbstractContainerScreen<TackleBoxMenu>
 
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY)
     {
-        int i = (this.width - this.imageWidth) / 2;
-        int j = (this.height - this.imageHeight) / 2;
-        guiGraphics.blit(TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
+
+        if (!menu.getRod().isEmpty())
+        {
+            guiGraphics.blit(ICONS, x, y, 0, 0, this.imageWidth, this.imageHeight);
+        }
     }
 }

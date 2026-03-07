@@ -30,6 +30,7 @@ public class TackleBoxAttachmentSlot extends Slot
     @Override
     public @Nullable Pair<ResourceLocation, ResourceLocation> getNoItemIcon()
     {
+        if(tackleMenu.getRod().isEmpty()) return null;
         return Pair.of(InventoryMenu.BLOCK_ATLAS, background);
     }
 
