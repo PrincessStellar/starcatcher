@@ -10,6 +10,7 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -26,8 +27,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.server.command.EnumArgument;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +48,7 @@ public class ModCommands
     );
 
     private static final DynamicCommandExceptionType ERROR_EMPTY = new DynamicCommandExceptionType(
-            o -> Component.translatableEscape("commands.starcatcher.rod_not_found", o)
+            o -> Component.translatableEscape("commands.starcatcher.item_empty", o)
     );
 
     private static final DynamicCommandExceptionType ERROR_FISH_ENTRY_INVALID = new DynamicCommandExceptionType(
@@ -79,6 +82,28 @@ public class ModCommands
                                         startMinigameFromFP(
                                                 c.getSource().getPlayerOrException(),
                                                 ResourceArgument.getResource(c, "fish_entry", Starcatcher.FISH_REGISTRY).unwrap().left().get()
+                                        )
+                                )
+                        )
+                )
+
+
+                //starcatcher set_data 100 100 50 epic true
+                .then(Commands.literal("set_data")
+                        .then(Commands.argument("size_in_cm", IntegerArgumentType.integer())
+                                .then(Commands.argument("weight_in_grams", IntegerArgumentType.integer())
+                                        .then(Commands.argument("percentile", IntegerArgumentType.integer(0, 100))
+                                                .then(Commands.argument("rarity", EnumArgument.enumArgument(FishProperties.Rarity.class))
+                                                        .executes(c ->
+                                                                setDataOnStack(
+                                                                        c.getSource().getPlayerOrException(),
+                                                                        IntegerArgumentType.getInteger(c, "size_in_cm"),
+                                                                        IntegerArgumentType.getInteger(c, "weight_in_grams"),
+                                                                        IntegerArgumentType.getInteger(c, "percentile"),
+                                                                        FishProperties.Rarity.valueOf(c.getArgument("rarity", FishProperties.Rarity.class).toString())
+                                                                )
+                                                        )
+                                                )
                                         )
                                 )
                         )
@@ -364,5 +389,24 @@ public class ModCommands
         {
             throw ERROR_FISH_ENTRY_INVALID.create(fish.location());
         }
+    }
+
+    private static int setDataOnStack(ServerPlayer player, int size, int weight, int percentile, FishProperties.Rarity rarity) throws CommandSyntaxException
+    {
+        ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+        ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
+        ItemStack stack;
+
+        if (mainHand.isEmpty() && offHand.isEmpty())
+            throw ERROR_EMPTY.create(null);
+
+        if (mainHand.isEmpty())
+            stack = offHand;
+        else
+            stack = mainHand;
+
+        ModDataComponents.set(stack, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(FishProperties.Rarity.GOLDEN)));
+
+        return 1;
     }
 }
