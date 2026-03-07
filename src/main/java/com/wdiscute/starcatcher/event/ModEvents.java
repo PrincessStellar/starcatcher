@@ -181,20 +181,7 @@ public class ModEvents
             }
         }
     }
-
-    // for testing the gold shader
-/*    @SubscribeEvent
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
-    {
-        if (event.getLevel().getBlockState(event.getPos()).is(Blocks.GOLD_BLOCK)){
-            ItemStack stack = event.getEntity().getItemInHand(event.getHand());
-            if (stack.isEmpty()) return;
-
-            stack.set(ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(1, 1, 1, FishProperties.Rarity.GOLDEN, true));
-        }
-    }*/
-
-
+    
     @SubscribeEvent
     public static void registerAttributed(EntityAttributeCreationEvent event)
     {

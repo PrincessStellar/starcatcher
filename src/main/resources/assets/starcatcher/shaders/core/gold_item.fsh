@@ -1,10 +1,6 @@
 #version 150
 
 #moj_import <fog.glsl>
-#ifndef saturate
-#define saturate(v) clamp(v,0.,1.)
-//      clamp(v,0.,1.)
-#endif
 
 uniform sampler2D Sampler0;
 
@@ -24,7 +20,7 @@ out vec4 fragColor;
 //Sources: https://gist.github.com/yiwenl/745bfea7f04c456e0101, https://gist.github.com/sugi-cho/6a01cae436acddd72bdf
 vec3 hsv2rgb(vec3 c){
 	vec4 K=vec4(1.,2./3.,1./3.,3.);
-	return c.z*mix(K.xxx,saturate(abs(fract(c.x+K.xyz)*6.-K.w)-K.x),c.y);
+	return c.z*mix(K.xxx,clamp(abs(fract(c.x+K.xyz)*6.-K.w)-K.x, 0.,1.),c.y);
 }
 
 //RGB to HSV.

@@ -44,6 +44,19 @@ repositories
     maven {
         url = "https://api.modrinth.com/maven"
     }
+
+    repositories {
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url "https://cursemaven.com"
+                }
+            }
+            filter {
+                includeGroup "curse.maven"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -96,6 +109,12 @@ dependencies {
     //runtimeOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
     //runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
     //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
+
+    //shaders
+    compileOnly "curse.maven:irisshaders-455508:6661598"
+
+    // runtimeOnly "curse.maven:sodium-394468:6382651"
+    // runtimeOnly "curse.maven:irisshaders-455508:6661598"
 
 }
 

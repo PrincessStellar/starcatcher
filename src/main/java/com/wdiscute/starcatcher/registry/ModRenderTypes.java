@@ -3,15 +3,13 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.compat.IrisShadersCompat;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -46,11 +44,13 @@ public class ModRenderTypes extends RenderType {
                     true,
                     true,
                     RenderType.CompositeState.builder()
-                            .setShaderState(new RenderStateShard.ShaderStateShard(ModRenderTypes::getGoldItemShader))
+                            .setShaderState(new RenderStateShard.ShaderStateShard(() -> IrisShadersCompat.withEntityTranslucentFallback(ModRenderTypes::getGoldItemShader)))
                             .setTextureState(new RenderStateShard.TextureStateShard(loc, false, false))
                             .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+                            .setOutputState(ITEM_ENTITY_TARGET)
                             .setLightmapState(LIGHTMAP)
                             .setOverlayState(OVERLAY)
+                            .setWriteMaskState(RenderStateShard.COLOR_DEPTH_WRITE)
                             .createCompositeState(true)));
 
     public static final RenderType RENDER_TYPE_GOLD_ITEM = RENDER_TYPE_GOLD.apply(TextureAtlas.LOCATION_BLOCKS);
