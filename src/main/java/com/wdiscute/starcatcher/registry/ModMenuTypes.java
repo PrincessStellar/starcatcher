@@ -2,7 +2,8 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinMenu;
-import com.wdiscute.starcatcher.rod.FishingRodMenu;
+import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxMenu;
+import com.wdiscute.starcatcher.registry.items.rod.FishingRodMenu;
 import com.wdiscute.starcatcher.tournament.StandMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -28,6 +29,9 @@ public class ModMenuTypes
 
     public static final Supplier<MenuType<SellingBinMenu>> SELLING_BIN_MENU =
             registerMenuType("selling_bin_menu", SellingBinMenu::new);
+
+    public static final Supplier<MenuType<TackleBoxMenu>> TACKLE_BOX =
+            registerMenuType("tackle_box.png", TackleBoxMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
                                                                                                               IContainerFactory<T> factory) {

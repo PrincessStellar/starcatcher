@@ -44,8 +44,9 @@ public class ModBlockEntities
                     ModBlocks.AQUARIUM.get()
             ).build(null));
 
-    public static final Supplier<BlockEntityType<TackleBoxBlockEntity>> TACKLE_BOX = BLOCK_ENTITIES.register("tackle_box",
+    public static final Supplier<BlockEntityType<TackleBoxBlockEntity>> TACKLE_BOX = BLOCK_ENTITIES.register("tackle_box.png",
             () -> BlockEntityType.Builder.of(TackleBoxBlockEntity::new,
+                    ModBlocks.TACKLE_BOX.get(),
                     ModBlocks.TACKLE_BOX_WHITE.get(),
                     ModBlocks.TACKLE_BOX_LIME.get(),
                     ModBlocks.TACKLE_BOX_ORANGE.get(),

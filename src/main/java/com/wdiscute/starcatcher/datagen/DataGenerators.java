@@ -43,11 +43,11 @@ public class DataGenerators
         gen.addProvider(event.includeServer(), new DGItemModelProvider(output, existingFileHelper));
 
         //block tags
-        BlockTagsProvider btp = new DGModBlocksTagProvider(output, lookupProvider, existingFileHelper);
+        BlockTagsProvider btp = new DGModBlocksTagsProvider(output, lookupProvider, existingFileHelper);
         gen.addProvider(event.includeServer(), btp);
 
         //item tags
-        ItemTagsProvider itp = new DGModItemsTagProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
+        ItemTagsProvider itp = new DGModItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
 
         //advancements

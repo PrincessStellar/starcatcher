@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.rod;
+package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
@@ -11,8 +11,6 @@ import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
@@ -39,7 +37,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 .fireResistant()
                 .stacksTo(1)
                 .component(ModDataComponents.BOBBER.get(), new SingleStackContainer(new ItemStack(ModItems.BOBBER.get())))
-                .component(ModDataComponents.BAIT.get(), SingleStackContainer.EMPTY)
+                .component(ModDataComponents.BAIT.get(), SingleStackContainer.empty())
                 .component(ModDataComponents.HOOK.get(), new SingleStackContainer(new ItemStack(ModItems.HOOK.get())))
         );
     }

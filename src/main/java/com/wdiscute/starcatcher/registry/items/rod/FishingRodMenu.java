@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.rod;
+package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
@@ -6,7 +6,6 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -65,9 +64,9 @@ public class FishingRodMenu extends AbstractContainerMenu
             this.addSlot(new Slot(inv, i, 8 + i * 18, 142));
         }
 
-        inventory.setStackInSlot(0, ModDataComponents.get(is, ModDataComponents.BOBBER).stack().copy());
-        inventory.setStackInSlot(1, ModDataComponents.get(is, ModDataComponents.BAIT).stack().copy());
-        inventory.setStackInSlot(2, ModDataComponents.get(is, ModDataComponents.HOOK).stack().copy());
+        inventory.setStackInSlot(0, ModDataComponents.getOrDefault(is, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack());
+        inventory.setStackInSlot(1, ModDataComponents.getOrDefault(is, ModDataComponents.BAIT, SingleStackContainer.empty()).stack());
+        inventory.setStackInSlot(2, ModDataComponents.getOrDefault(is, ModDataComponents.HOOK, SingleStackContainer.empty()).stack());
 
         //bobbers first slot
         this.addSlot(new SlotItemHandler(inventory, 0, 50, 35)
@@ -185,7 +184,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         // Check if the slot clicked is one of the vanilla container slots
         if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT)
         {
-            // This is a vanilla container slot so merge the stack into the tile inventory
+            // This is a vanilla container slot so merge the stackDoNotUse into the tile inventory
             if (!moveItemStackTo(
                     sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
                             + TE_INVENTORY_SLOT_COUNT, false))
@@ -195,7 +194,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         }
         else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT)
         {
-            // This is a TE slot so merge the stack into the playerScores inventory
+            // This is a TE slot so merge the stackDoNotUse into the playerScores inventory
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false))
             {
                 return ItemStack.EMPTY;
@@ -205,7 +204,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         {
             return ItemStack.EMPTY;
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
+        // If stackDoNotUse size == 0 (the entire stackDoNotUse was moved) set slot contents to null
         if (sourceStack.getCount() == 0)
         {
             sourceSlot.set(ItemStack.EMPTY);

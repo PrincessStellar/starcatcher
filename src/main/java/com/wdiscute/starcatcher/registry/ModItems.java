@@ -14,7 +14,7 @@ import com.wdiscute.starcatcher.registry.items.modifieritem.TackleSkinItem;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
-import com.wdiscute.starcatcher.rod.StarcatcherFishingRodItem;
+import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.secretnotes.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;

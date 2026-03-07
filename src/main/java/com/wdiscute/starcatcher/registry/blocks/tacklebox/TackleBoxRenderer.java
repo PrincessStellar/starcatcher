@@ -17,7 +17,7 @@ import net.minecraft.world.phys.AABB;
 
 public class TackleBoxRenderer implements BlockEntityRenderer<TackleBoxBlockEntity>
 {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("tackle_box"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("tackle_box.png"), "main");
 
     private final ModelPart box;
     private final ModelPart lid;
@@ -34,7 +34,7 @@ public class TackleBoxRenderer implements BlockEntityRenderer<TackleBoxBlockEnti
     @Override
     public void render(TackleBoxBlockEntity be, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
-        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutout(Starcatcher.rl("textures/block/tackle_box/tackle_box_white.png")));
+        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutout(Starcatcher.rl("textures/block/tackle_box.png/tackle_box_white.png")));
         box.render(poseStack, vertexConsumer, packedLight, packedOverlay);
         lid.render(poseStack, vertexConsumer, packedLight, packedOverlay);
         tray.render(poseStack, vertexConsumer, packedLight, packedOverlay);

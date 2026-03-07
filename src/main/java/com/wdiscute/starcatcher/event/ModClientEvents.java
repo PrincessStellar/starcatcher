@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
 import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinScreen;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxRenderer;
+import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxScreen;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
@@ -18,7 +19,7 @@ import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.*;
-import com.wdiscute.starcatcher.rod.FishingRodScreen;
+import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -81,6 +82,7 @@ public class ModClientEvents
         event.register(ModMenuTypes.FISHING_ROD_MENU.get(), FishingRodScreen::new);
         event.register(ModMenuTypes.STAND_MENU.get(), StandScreen::new);
         event.register(ModMenuTypes.SELLING_BIN_MENU.get(), SellingBinScreen::new);
+        event.register(ModMenuTypes.TACKLE_BOX.get(), TackleBoxScreen::new);
     }
 
     @SubscribeEvent

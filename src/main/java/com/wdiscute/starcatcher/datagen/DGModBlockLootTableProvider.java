@@ -1,12 +1,14 @@
 package com.wdiscute.starcatcher.datagen;
 
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
@@ -22,15 +24,28 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
     protected void generate()
     {
         HATS.getEntries().forEach(o -> dropSelf(o.get()));
+        TACKLE_BOXES.getEntries().forEach(o -> add(o.get(), createShulkerBoxDrop(o.get())));
 
         dropSelf(AQUARIUM.get());
+
         dropSelf(TROPHY_BRONZE.get());
         dropSelf(TROPHY_SILVER.get());
         dropSelf(TROPHY_GOLD.get());
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.HATS.getEntries().stream().map(Holder::value)::iterator;
+    protected Iterable<Block> getKnownBlocks()
+    {
+        List<Block> list = new ArrayList<>();
+        list.addAll(HATS.getEntries().stream().map(Holder::value).toList());
+        list.addAll(TACKLE_BOXES.getEntries().stream().map(Holder::value).toList());
+
+        list.add(TROPHY_BRONZE.get());
+        list.add(TROPHY_SILVER.get());
+        list.add(TROPHY_GOLD.get());
+
+        list.add(AQUARIUM.get());
+
+        return list::iterator;
     }
 }

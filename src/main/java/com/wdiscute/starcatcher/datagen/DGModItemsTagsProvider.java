@@ -2,23 +2,18 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,11 +21,11 @@ import java.util.concurrent.CompletableFuture;
 import static com.wdiscute.starcatcher.registry.ModItems.*;
 import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
-public class DGModItemsTagProvider extends ItemTagsProvider
+public class DGModItemsTagsProvider extends ItemTagsProvider
 {
 
-    public DGModItemsTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                 CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
+    public DGModItemsTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                  CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
     {
         super(output, lookupProvider, blockTags, Starcatcher.MOD_ID, existingFileHelper);
     }
@@ -119,7 +114,17 @@ public class DGModItemsTagProvider extends ItemTagsProvider
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE)
                 .addTag(StarcatcherTags.HATS);
 
-
+        tag(StarcatcherTags.PLACEABLE_IN_TACKLE_BOX)
+                .addTag(StarcatcherTags.BAITS)
+                .addTag(StarcatcherTags.HOOKS)
+                .addTag(StarcatcherTags.BOBBERS)
+                .addTag(ItemTags.FISHES)
+                .addTag(StarcatcherTags.COMMON_FISHES)
+                .addTag(StarcatcherTags.UNCOMMON_FISHES)
+                .addTag(StarcatcherTags.RARE_FISHES)
+                .addTag(StarcatcherTags.EPIC_FISHES)
+                .addTag(StarcatcherTags.LEGENDARY_FISHES)
+        ;
 
     }
 
