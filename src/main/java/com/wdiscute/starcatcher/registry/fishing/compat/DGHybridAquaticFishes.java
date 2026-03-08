@@ -155,21 +155,21 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "anglerfish"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "anglerfish"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(10.5, 7.5, 585, 295))
+                        .withSizeAndWeight(FishProperties.sizeWeight(10.5f, 7.5f, 585, 295))
                         .withDifficulty(FishProperties.Difficulty.EASY_VANISHING)
                         .withRarity(FishProperties.Rarity.UNCOMMON));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "barreleye"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "barreleye"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 99.25, 42.5))
+                        .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 99.25f, 42.5f))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "dragonfish"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "dragonfish"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(12, 3, 41.5, 11.5))
+                        .withSizeAndWeight(FishProperties.sizeWeight(12, 3, 41.5f, 11.5f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
                         .withDaytime(FishProperties.Daytime.NIGHT));
@@ -184,7 +184,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "oarfish"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "oarfish"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(500, 300, 122727.25, 61363.6))
+                        .withSizeAndWeight(FishProperties.sizeWeight(500, 300, 122727.25f, 61363.6f))
                         .withDifficulty(FishProperties.Difficulty.HARD_VANISHING)
                         .withRarity(FishProperties.Rarity.RARE)
                         .withWeather(FishProperties.Weather.THUNDER));
@@ -199,14 +199,14 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "snailfish"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "snailfish"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(19.65, 9.15, 84, 76))
+                        .withSizeAndWeight(FishProperties.sizeWeight(19.65f, 9.15f, 84, 76))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "john_dory"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "john_dory"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(50, 15, 3846.15, 1153.85))
+                        .withSizeAndWeight(FishProperties.sizeWeight(50, 15, 3846.15f, 1153.85f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
                         .withRarity(FishProperties.Rarity.UNCOMMON));
 
@@ -250,7 +250,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldColdOceanFish(U.holderItem("hybrid-aquatic", "herring"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "herring"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 663.4, 436.6))
+                        .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 663.4f, 436.6f))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON));
 
@@ -271,7 +271,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldOceanFish(U.holderItem("hybrid-aquatic", "pearlfish"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "pearlfish"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(14.45, 2.15, 2.675, 1.435))
+                        .withSizeAndWeight(FishProperties.sizeWeight(14.45f, 2.15f, 2.675f, 1.435f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.COMMON));
 
@@ -331,28 +331,28 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldJungleFish(U.holderItem("hybrid-aquatic", "neon_tetra"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "tetra"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(4, 1, 0.37, 0.12))
+                        .withSizeAndWeight(FishProperties.sizeWeight(4, 1, 0.37f, 0.12f))
                         .withDifficulty(FishProperties.Difficulty.HARD)
                         .withRarity(FishProperties.Rarity.COMMON));
 
         register(
                 overworldJungleFish(U.holderItem("hybrid-aquatic", "tiger_barb"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "tiger_barb"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(10, 3, 1.9, 0.5))
+                        .withSizeAndWeight(FishProperties.sizeWeight(10, 3, 1.9f, 0.5f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.COMMON));
 
         register(
                 overworldJungleFish(U.holderItem("hybrid-aquatic", "betta"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "betta"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(7, 1, 1.8, 0.3))
+                        .withSizeAndWeight(FishProperties.sizeWeight(7, 1, 1.8f, 0.3f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON));
 
         register(
                 overworldJungleFish(U.holderItem("hybrid-aquatic", "danio"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "danio"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(4.4, 0.6, 0.7, 0.2))
+                        .withSizeAndWeight(FishProperties.sizeWeight(4.4f, 0.6f, 0.7f, 0.2f))
                         .withDifficulty(FishProperties.Difficulty.EASY_VANISHING)
                         .withRarity(FishProperties.Rarity.COMMON));
 
@@ -373,7 +373,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
         register(
                 overworldJungleFish(U.holderItem("hybrid-aquatic", "pleco"))
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "pleco"))
-                        .withSizeAndWeight(FishProperties.sizeWeight(35.5, 25.5, 170.1, 122.2))
+                        .withSizeAndWeight(FishProperties.sizeWeight(35.5f, 25.5f, 170.1f, 122.2f))
                         .withDifficulty(FishProperties.Difficulty.EASY_FAST_FISH)
                         .withRarity(FishProperties.Rarity.COMMON));
     }
