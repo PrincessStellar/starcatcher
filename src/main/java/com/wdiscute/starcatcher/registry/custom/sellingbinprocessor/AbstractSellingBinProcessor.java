@@ -2,11 +2,13 @@ package com.wdiscute.starcatcher.registry.custom.sellingbinprocessor;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSellingBinProcessor
@@ -16,7 +18,6 @@ public abstract class AbstractSellingBinProcessor
                     loc -> Starcatcher.SELLING_BIN_REGISTRY.get(loc).getCodecOrThrow());
 
     public static final Codec<List<AbstractSellingBinProcessor>> ABSTRACT_PROCESSOR_CODEC_LIST = ABSTRACT_PROCESSOR_CODEC.listOf();
-
 
     public abstract MapCodec<? extends AbstractSellingBinProcessor> codec();
 
@@ -39,12 +40,33 @@ public abstract class AbstractSellingBinProcessor
     }
 
 
-    abstract public int calculateValue(ItemStack itemStack);
+    abstract public int calculateValue(int baseValue, int currentValue, ItemStack itemStack);
 
     public void onSellComplete(ItemStack itemStack){}
 
-    public List<AbstractSellingBinProcessor> toList()
+    public Instance create(int baseValue)
     {
-        return List.of(this);
+        return new Instance(baseValue, List.of(this));
+    }
+
+    public record Instance(int baseValue, List<AbstractSellingBinProcessor> processors)
+    {
+        public static final Codec<Instance> CODEC = RecordCodecBuilder.create(instance ->
+                instance.group(
+                        Codec.INT.fieldOf("base_value").forGetter(AbstractSellingBinProcessor.Instance::baseValue),
+                        AbstractSellingBinProcessor.ABSTRACT_PROCESSOR_CODEC_LIST.fieldOf("processors").forGetter(AbstractSellingBinProcessor.Instance::processors)
+                ).apply(instance, AbstractSellingBinProcessor.Instance::new));
+
+        public static Instance empty()
+        {
+            return new Instance(0, List.of());
+        }
+
+        public Instance add(AbstractSellingBinProcessor processor)
+        {
+            List<AbstractSellingBinProcessor> list = new ArrayList<>(this.processors);
+            list.add(processor);
+            return new Instance(0, list);
+        }
     }
 }

@@ -43,10 +43,10 @@ public class DGDataMapsProvider extends DataMapProvider
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
 
 
-        bin.add(StarcatcherTags.COMMON_FISHES, new FishSellingBinProcessor(20).toList(), false);
-        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishSellingBinProcessor(50).toList(), false);
-        bin.add(StarcatcherTags.RARE_FISHES, new FishSellingBinProcessor(100).toList(), false);
-        bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor(200).toList(), false);
-        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor(500).toList(), false);
+        bin.add(StarcatcherTags.COMMON_FISHES, new FishSellingBinProcessor().create(20), false);
+        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishSellingBinProcessor().create(50), false);
+        bin.add(StarcatcherTags.RARE_FISHES, new FishSellingBinProcessor().create(100), false);
+        bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor().create(200), false);
+        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor().create(500), false);
     }
 }

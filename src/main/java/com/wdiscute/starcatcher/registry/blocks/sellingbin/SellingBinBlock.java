@@ -98,7 +98,8 @@ public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableM
         BlockPos center = IMultiBlock.getCenter(level, pos);
         if (level.getBlockEntity(center) instanceof SellingBinBlockEntity sbbe)
         {
-            player.openMenu(new SimpleMenuProvider(sbbe, Component.empty()), center);
+            player.openMenu(sbbe);
+            return InteractionResult.SUCCESS;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }

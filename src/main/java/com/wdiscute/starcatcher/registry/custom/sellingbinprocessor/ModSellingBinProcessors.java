@@ -7,7 +7,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public interface ModSellingBinProcessors
@@ -15,22 +14,18 @@ public interface ModSellingBinProcessors
     DeferredRegister<AbstractSellingBinProcessor> REGISTRY =
             DeferredRegister.create(Starcatcher.SELLING_BIN_REGISTRY, Starcatcher.MOD_ID);
 
-
-    DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> SIMPLE_ITEM =
-            registerCatchModifier("simple_item", SimpleItemSellingBinProcessor::new);
-
     DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> FISH = registerCatchModifier("fish_processor", FishSellingBinProcessor::new);
 
 
-    default int calculateFromStack(ItemStack is)
+    static int calculateFromStack(ItemStack is)
     {
-        List<AbstractSellingBinProcessor> processors = ModDataMaps.getOrDefault(is, ModDataMaps.SELLING_BIN_VALUE, List.of());
+        var instance = ModDataMaps.getOrDefault(is, ModDataMaps.SELLING_BIN_VALUE, AbstractSellingBinProcessor.Instance.empty());
 
-        int value = 0;
+        int value = instance.baseValue();
 
-        for (var p : processors)
+        for (var p : instance.processors())
         {
-            value += p.calculateValue(is);
+            value += p.calculateValue(value, instance.baseValue(), is);
         }
 
         return value;

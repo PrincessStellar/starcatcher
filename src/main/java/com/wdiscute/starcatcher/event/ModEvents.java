@@ -193,6 +193,7 @@ public class ModEvents
     public static void registerAttributed(RegisterDataMapTypesEvent event)
     {
         event.register(ModDataMaps.AQUARIUM_INTERACTION);
+        event.register(ModDataMaps.SELLING_BIN_VALUE);
     }
 
     @SubscribeEvent
