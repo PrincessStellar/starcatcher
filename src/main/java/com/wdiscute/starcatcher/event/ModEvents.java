@@ -132,6 +132,7 @@ public class ModEvents
         event.register(Starcatcher.MINIGAME_MODIFIERS_REGISTRY);
         event.register(Starcatcher.CATCH_MODIFIERS_REGISTRY);
         event.register(Starcatcher.TACKLE_SKIN_REGISTRY);
+        event.register(Starcatcher.SELLING_BIN_REGISTRY);
     }
 
     @SubscribeEvent

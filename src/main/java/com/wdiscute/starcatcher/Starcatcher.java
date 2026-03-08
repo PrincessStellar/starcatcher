@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
@@ -39,6 +41,7 @@ public class Starcatcher
     public static final String MOD_ID = "starcatcher";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    //resource keys
     public static final ResourceKey<Registry<FishProperties>> FISH_REGISTRY =
             ResourceKey.createRegistryKey(Starcatcher.rl("fish"));
 
@@ -57,6 +60,10 @@ public class Starcatcher
     public static final ResourceKey<Registry<Supplier<AbstractTackleSkin>>> TACKLE_SKIN =
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
 
+    public static final ResourceKey<Registry<AbstractSellingBinProcessor>> SELLING_BIN =
+            ResourceKey.createRegistryKey(Starcatcher.rl("selling_bin"));
+
+    //registry
     public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
             .sync(true)
             .defaultKey(Starcatcher.rl("normal"))
@@ -75,6 +82,10 @@ public class Starcatcher
     public static final Registry<Supplier<AbstractTackleSkin>> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
             .sync(true)
             .defaultKey(Starcatcher.rl("pearl"))
+            .create();
+
+    public static final Registry<AbstractSellingBinProcessor> SELLING_BIN_REGISTRY = new RegistryBuilder<>(SELLING_BIN)
+            .sync(true)
             .create();
 
     public static ResourceLocation rl(String s)
@@ -118,6 +129,7 @@ public class Starcatcher
         ModDataAttachments.register(modEventBus);
         ModSweetSpotsBehaviour.register(modEventBus);
         ModMinigameModifiers.register(modEventBus);
+        ModSellingBinProcessors.register(modEventBus);
         ModCatchModifiers.register(modEventBus);
         ModTackleSkins.register(modEventBus);
         ModCriterionTriggers.register(modEventBus);

@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.FishSellingBinProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
@@ -23,6 +24,7 @@ public class DGDataMapsProvider extends DataMapProvider
     protected void gather(HolderLookup.Provider provider)
     {
         var decor = this.builder(ModDataMaps.AQUARIUM_INTERACTION);
+        var bin = this.builder(ModDataMaps.SELLING_BIN_VALUE);
 
         //ground
         decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -39,5 +41,12 @@ public class DGDataMapsProvider extends DataMapProvider
         decor.add(ModBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
+
+
+        bin.add(StarcatcherTags.COMMON_FISHES, new FishSellingBinProcessor(20).toList(), false);
+        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishSellingBinProcessor(50).toList(), false);
+        bin.add(StarcatcherTags.RARE_FISHES, new FishSellingBinProcessor(100).toList(), false);
+        bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor(200).toList(), false);
+        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor(500).toList(), false);
     }
 }

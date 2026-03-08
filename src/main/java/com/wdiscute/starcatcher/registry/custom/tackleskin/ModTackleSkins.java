@@ -1,11 +1,8 @@
 package com.wdiscute.starcatcher.registry.custom.tackleskin;
 
-import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;

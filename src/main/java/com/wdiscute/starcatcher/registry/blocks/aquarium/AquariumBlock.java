@@ -170,6 +170,8 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
             return ItemInteractionResult.SUCCESS;
         }
 
+
+
         Interaction interaction = ModDataMaps.getOrDefault(stack, ModDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
         if (interaction.executePlace(level, pos, state, stack))
         {

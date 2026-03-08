@@ -1,0 +1,34 @@
+{
+  "values": {
+    "#starcatcher:common_fishes": [
+      {
+        "type": "starcatcher:fish_processor",
+        "base_value": 20
+      }
+    ],
+    "#starcatcher:epic_fishes": [
+      {
+        "type": "starcatcher:fish_processor",
+        "base_value": 200
+      }
+    ],
+    "#starcatcher:legendary_fishes": [
+      {
+        "type": "starcatcher:fish_processor",
+        "base_value": 500
+      }
+    ],
+    "#starcatcher:rare_fishes": [
+      {
+        "type": "starcatcher:fish_processor",
+        "base_value": 100
+      }
+    ],
+    "#starcatcher:uncommon_fishes": [
+      {
+        "type": "starcatcher:fish_processor",
+        "base_value": 50
+      }
+    ]
+  }
+}
