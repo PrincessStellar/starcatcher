@@ -58,27 +58,33 @@ public class SecretNote extends Item
 
     public enum Note implements StringRepresentable
     {
-        SAMPLE_NOTE("sample_note"),
-        CRYSTAL_HOOK("crystal_hook"),
-        ARNWULF_1("lava_proof_bottle_1"),
-        ARNWULF_2("lava_proof_bottle_2"),
-        HOPEFUL_NOTE("hopeful_note"),
-        HOPELESS_NOTE("hopeless_note"),
-        WITHER("wither_note"),
-        TRUE_BLUE("true_blue");
+        SAMPLE_NOTE("sample_note", "message_overworld"),
+        CRYSTAL_HOOK("crystal_hook", "message_overworld"),
+        ARNWULF_1("lava_proof_bottle_1", "message_overworld"),
+        ARNWULF_2("lava_proof_bottle_2", "message_overworld"),
+        HOPEFUL_NOTE("hopeful_note", "message_overworld"),
+        HOPELESS_NOTE("hopeless_note", "message_overworld"),
+        WITHER("wither_note", "message_nether"),
+        TRUE_BLUE("true_blue", "message_overworld");
 
         public static final Codec<Note> CODEC = StringRepresentable.fromEnum(Note::values);
         public static final StreamCodec<FriendlyByteBuf, Note> STREAM_CODEC = NeoForgeStreamCodecs.enumCodec(Note.class);
         private final String key;
+        private final String texture;
 
-        Note(String key)
+        Note(String key, String texture)
         {
             this.key = key;
+            this.texture = texture;
         }
 
         public @NotNull String getSerializedName()
         {
             return this.key;
+        }
+        public @NotNull String getTexture()
+        {
+            return this.texture;
         }
     }
 

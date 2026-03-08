@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SecretNoteScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/secret_note.png");
+    private final ResourceLocation background;
 
     private final String translationKey;
 
@@ -31,7 +31,7 @@ public class SecretNoteScreen extends Screen
     {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        renderImage(guiGraphics, BACKGROUND);
+        renderImage(guiGraphics, background);
 
         for (int i = 0; i < 20; i++)
         {
@@ -63,6 +63,7 @@ public class SecretNoteScreen extends Screen
     {
         super(Component.empty());
         this.translationKey = "gui.secret_note." + note.getSerializedName() + ".";
+        this.background = Starcatcher.rl("textures/gui/message/" + note.getTexture() + ".png");
     }
 
     private void renderImage(GuiGraphics guiGraphics, ResourceLocation rl)
