@@ -161,7 +161,7 @@ public class ModCommands
                         )
                 )
 
-
+                //starcatcher award_fish ...
                 .then(Commands.literal("award_fish")
                         .executes(c -> awardAllFish(c.getSource().getPlayerOrException()))
                         // -> /starcatcher award_fish all
@@ -218,23 +218,24 @@ public class ModCommands
                                         )
 
                                 )
-
-
-                                .then(Commands.literal("revoke_fish")
-                                        // -> /starcatcher revoke_fish
-                                        .executes(c -> revokeAllFish(c.getSource().getPlayerOrException()))
-                                        // -> /starcatcher revoke_fish all
-                                        .then(Commands.literal("all").executes(c -> revokeAllFish(c.getSource().getPlayerOrException())))
-                                        // -> starcatcher revoke_fish starcatcher:aurora
-                                        .then(Commands.argument("fish", ResourceArgument.resource(context, Starcatcher.FISH_REGISTRY))
-                                                .executes(c -> revokeFish(
-                                                        c.getSource().getPlayerOrException(),
-                                                        ResourceArgument.getResource(c, "fish", Starcatcher.FISH_REGISTRY).key()
-                                                ))
-                                        )
-                                )
-
                         )
+
+                )
+
+                //starcatcher revoke_fish ...
+                .then(Commands.literal("revoke_fish")
+                        // -> /starcatcher revoke_fish
+                        .executes(c -> revokeAllFish(c.getSource().getPlayerOrException()))
+                        // -> /starcatcher revoke_fish all
+                        .then(Commands.literal("all").executes(c -> revokeAllFish(c.getSource().getPlayerOrException())))
+                        // -> starcatcher revoke_fish starcatcher:aurora
+                        .then(Commands.argument("fish", ResourceArgument.resource(context, Starcatcher.FISH_REGISTRY))
+                                .executes(c -> revokeFish(
+                                        c.getSource().getPlayerOrException(),
+                                        ResourceArgument.getResource(c, "fish", Starcatcher.FISH_REGISTRY).key()
+                                ))
+                        )
+
                 )
         );
     }
