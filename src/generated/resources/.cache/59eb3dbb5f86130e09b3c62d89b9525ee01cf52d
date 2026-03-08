@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-07T19:16:41.792465	Loot Tables
+// 1.21.1	2026-03-08T14:30:23.1830397	Loot Tables
 5208d301b75e0729a3653bae953cc2be3345fd65 data/starcatcher/loot_table/blocks/aquarium.json
 2c4789223fa4670a7635c9f364e2cf08e97e862b data/starcatcher/loot_table/blocks/clam.json
 065f2ab8b8f87cd0a766b7a10524d9b7176a1680 data/starcatcher/loot_table/blocks/conch.json
@@ -18,6 +18,7 @@ b8fc0dbc1a08eb57a44dc32bbe623d5f24139b1c data/starcatcher/loot_table/blocks/fish
 20bdd99b3b0b5cd5446397b2b3953dbe7bba58f1 data/starcatcher/loot_table/blocks/fisherman_hat_red.json
 cbbc64dd0a5443293035b1c57cb181237342cfa0 data/starcatcher/loot_table/blocks/fisherman_hat_white.json
 01814ab130cb9e295ada9d93900c0f5f156b15f6 data/starcatcher/loot_table/blocks/fisherman_hat_yellow.json
+b94025d3cf9fb3a9b6357a1fa5c81d9a4ea2ba94 data/starcatcher/loot_table/blocks/selling_bin.json
 8eb7346a32237ea946fd0b39d7bf14fc31ea2dea data/starcatcher/loot_table/blocks/tackle_box.json
 756d2fbf16b6a55ca32b55424fcd7459ef4d1b15 data/starcatcher/loot_table/blocks/tackle_box_black.json
 853c08e0d81572c2992341cfdeed124451c7af24 data/starcatcher/loot_table/blocks/tackle_box_blue.json

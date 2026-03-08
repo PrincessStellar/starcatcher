@@ -5,7 +5,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
-import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBin;
+import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinBlock;
 import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxBlock;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -39,7 +38,7 @@ public interface ModBlocks
 
     DeferredBlock<Block> TELESCOPE = registerBlock("telescope", TelescopeBlock::new);
 
-    DeferredBlock<Block> SELLING_BIN = registerBlock("selling_bin", SellingBin::new);
+    DeferredBlock<Block> SELLING_BIN = registerBlock("selling_bin", SellingBinBlock::new);
 
     DeferredBlock<Block> AQUARIUM = registerBlock("aquarium", AquariumBlock::new);
 

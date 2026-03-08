@@ -50,9 +50,9 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "size_and_weight": {
-    "average_size_cm": 250.0,
-    "average_weight_grams": 10000.0,
-    "deviation_size_cm": 150.0,
+    "average_size_cm": 180.0,
+    "average_weight_grams": 21000.0,
+    "deviation_size_cm": 70.0,
     "deviation_weight_grams": 8000.0,
     "golden_chance": 0.02
   },

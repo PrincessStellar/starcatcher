@@ -50,10 +50,10 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "size_and_weight": {
-    "average_size_cm": 30.0,
-    "average_weight_grams": 150.0,
-    "deviation_size_cm": 20.0,
-    "deviation_weight_grams": 50.0,
+    "average_size_cm": 27.0,
+    "average_weight_grams": 180.0,
+    "deviation_size_cm": 13.0,
+    "deviation_weight_grams": 90.0,
     "golden_chance": 0.02
   },
   "skips_minigame": false,

@@ -8,6 +8,8 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -28,12 +30,27 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Function;
 
-public class SellingBin extends AbstractMultiBlock implements IPreviewableMultiblock
+public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableMultiblock
 {
 
-    public SellingBin()
+    public SellingBinBlock()
     {
-        super(BlockBehaviour.Properties.of().noOcclusion());
+        super(BlockBehaviour.Properties.of()
+                .noOcclusion()
+                .destroyTime(2)
+        );
+    }
+
+    @Override
+    protected float getShadeBrightness(BlockState p_308911_, BlockGetter p_308952_, BlockPos p_308918_)
+    {
+        return 1.0F;
+    }
+
+    @Override
+    protected boolean propagatesSkylightDown(BlockState p_309084_, BlockGetter p_309133_, BlockPos p_309097_)
+    {
+        return true;
     }
 
     @Override
@@ -41,6 +58,12 @@ public class SellingBin extends AbstractMultiBlock implements IPreviewableMultib
     {
         assert direction != null;
         return List.of(center, center.relative(direction.getClockWise()));
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context)
+    {
+        return super.getStateForPlacement(context);
     }
 
     @Override
@@ -61,25 +84,12 @@ public class SellingBin extends AbstractMultiBlock implements IPreviewableMultib
         return FACING;
     }
 
-    @Override
-    public BlockState getStateForEachBlock(BlockState state, BlockPos pos, BlockPos centerOffset, Level level, @Nullable Direction direction)
-    {
-        state = state.setValue(SELLING_BIN_PART, IBlockPosOffsetEnum.fromOffset(SellingBinPart.class, centerOffset, direction, SellingBinPart.CENTER));
-
-        return state;
-    }
-
-
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-
-    //This probably doesn't need to be there since the center property does the same thing
-    public static final EnumProperty<SellingBinPart> SELLING_BIN_PART = EnumProperty.create("part", SellingBinPart.class);
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
         super.createBlockStateDefinition(builder);
-        builder.add(SELLING_BIN_PART);
     }
 
     @Override
@@ -100,39 +110,9 @@ public class SellingBin extends AbstractMultiBlock implements IPreviewableMultib
     }
 
     @Override
-    public boolean hasCustomBE() {
+    public boolean hasCustomBE()
+    {
         return true;
     }
 
-    public enum SellingBinPart implements StringRepresentable, IBlockPosOffsetEnum
-    {
-        CENTER("center", pos -> pos),
-        EAST("east", BlockPos::east);
-
-        private final String name;
-        public final Function<BlockPos, BlockPos> offset;
-
-        SellingBinPart(String name, Function<BlockPos, BlockPos> offset)
-        {
-            this.name = name;
-            this.offset = offset;
-        }
-
-        @Override
-        public String toString()
-        {
-            return this.name;
-        }
-
-        @Override
-        public String getSerializedName()
-        {
-            return this.name;
-        }
-
-        @Override
-        public Function<BlockPos, BlockPos> getOffsetFunction() {
-            return offset;
-        }
-    }
 }

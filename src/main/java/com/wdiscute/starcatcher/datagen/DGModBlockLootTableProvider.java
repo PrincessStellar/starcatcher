@@ -1,11 +1,17 @@
 package com.wdiscute.starcatcher.datagen;
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.nikdo53.tinymultiblocklib.block.AbstractMultiBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +40,10 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
 
         dropSelf(CLAM.get());
         dropSelf(CONCH.get());
+
+        //selling bin because datagen sucks
+        LootTable.Builder builder = LootTable.lootTable().withPool(this.applyExplosionCondition(SELLING_BIN.get(), LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(SELLING_BIN.get()).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(SELLING_BIN.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AbstractMultiBlock.CENTER, true))))));
+        add(SELLING_BIN.get(), builder);
     }
 
     @Override
@@ -52,6 +62,7 @@ public class DGModBlockLootTableProvider extends BlockLootSubProvider
         list.add(CLAM.get());
         list.add(CONCH.get());
 
+        list.add(SELLING_BIN.get());
         return list::iterator;
     }
 }

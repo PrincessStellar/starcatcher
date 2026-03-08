@@ -1460,10 +1460,10 @@
   "tooltip.starcatcher.bigeye_tuna.1" : "This species is only found in deep ocean waters.",
   "tooltip.starcatcher.bigeye_tuna.2" : "It's said to hang around other Kaupen fish.",
 
-  "item.starcatcher.conch" : "Conch",
+  "block.starcatcher.conch" : "Conch",
   "tooltip.starcatcher.conch.0" : "The remains of a mollusk with a spiral shell often used as an ornament.",
 
-  "item.starcatcher.clam" : "Clam",
+  "block.starcatcher.clam" : "Clam",
   "tooltip.starcatcher.clam.0" : "Once a bivalve mollusk living in the sandy shores, now just a shell.",
 
   "item.starcatcher.shroomfish" : "Shroomfish",
