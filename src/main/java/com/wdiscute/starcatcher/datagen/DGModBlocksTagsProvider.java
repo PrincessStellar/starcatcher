@@ -1,8 +1,12 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +26,7 @@ public class DGModBlocksTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
+        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("carryon:block_blacklist"))).add(ModBlocks.STAND.get());
 
     }
 }
