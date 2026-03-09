@@ -120,6 +120,13 @@ public class Config
             .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
             .define("restrict_tackle_box_to_tag", true);
 
+    public static final ModConfigSpec.IntValue SELLING_BIN_LOWEST_VALUE = BUILDER_SERVER
+            .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
+            .defineInRange("selling_bin_lowest_value", 100, 1, 9999999);
+
+
+
+
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

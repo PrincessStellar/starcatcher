@@ -25,7 +25,7 @@ public class FishSellingBinProcessor extends AbstractSellingBinProcessor
     }
 
     @Override
-    public int calculateValue(int baseValue, int currentValue, ItemStack itemStack)
+    public int addValue(int baseValue, int currentValue, ItemStack itemStack)
     {
         if(ModDataComponents.has(itemStack, ModDataComponents.CAUGHT_FISH_INFO))
         {
@@ -34,20 +34,8 @@ public class FishSellingBinProcessor extends AbstractSellingBinProcessor
             assert caughtFishInfo != null;
             if(caughtFishInfo.golden()) return baseValue * 9;
 
-            //😂😂😂😂
-
-            System.out.println("----");
-            System.out.println("base: " + baseValue);
-            System.out.println("perc: " + caughtFishInfo.percentile());
-
-            //double result = baseValue * (1 + 0.25 * (1 - 2 * caughtFishInfo.percentile() / 100.0));
-
-            double result = caughtFishInfo.percentile() * (1 + ((baseValue - 50) / 50.0) * 0.25);
-
-            System.out.println(result);
-
-
-            return (int) result;
+            // -+ 25% of base vale based on percentile, with +0% at 50% percentile
+            return (int) (caughtFishInfo.percentile() * (1 + ((baseValue - 50) / 50.0) * 0.25));
         }
         return 0;
     }

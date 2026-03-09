@@ -27,6 +27,7 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
 {
 
     private NonNullList<ItemStack> itemStacks;
+    public int storedProgress;
 
     public SellingBinBlockEntity(BlockPos pos, BlockState blockState)
     {
@@ -38,7 +39,7 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player)
     {
         if (!player.isSpectator())
-            return new SellingBinMenu(containerId, playerInventory, this);
+            return new SellingBinMenu(containerId, playerInventory, this, this);
         else
             return null;
     }

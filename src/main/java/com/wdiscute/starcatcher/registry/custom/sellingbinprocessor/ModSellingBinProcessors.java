@@ -25,7 +25,7 @@ public interface ModSellingBinProcessors
 
         for (var p : instance.processors())
         {
-            value += p.calculateValue(value, instance.baseValue(), is);
+            value += p.addValue(value, instance.baseValue(), is);
         }
 
         return value;

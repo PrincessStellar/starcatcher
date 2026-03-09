@@ -5,8 +5,13 @@ import net.minecraft.world.inventory.Slot;
 
 public class SellingBinItemSlot extends Slot
 {
-    public SellingBinItemSlot(Container container, int slot, int x, int y)
+    SellingBinMenu menu;
+    boolean isServer;
+
+    public SellingBinItemSlot(SellingBinMenu menu, Container container, int slot, int x, int y, boolean isServer)
     {
         super(container, slot, x, y);
+        this.menu = menu;
+        this.isServer = isServer;
     }
 }

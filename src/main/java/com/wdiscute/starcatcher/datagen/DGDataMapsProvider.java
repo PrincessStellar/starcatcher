@@ -2,8 +2,10 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
+import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.FishSellingBinProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -11,6 +13,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class DGDataMapsProvider extends DataMapProvider
@@ -48,5 +51,7 @@ public class DGDataMapsProvider extends DataMapProvider
         bin.add(StarcatcherTags.RARE_FISHES, new FishSellingBinProcessor().create(100), false);
         bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor().create(200), false);
         bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor().create(500), false);
+
+        bin.add(ModItems.FISH_BONES, AbstractSellingBinProcessor.Instance.empty(20), false);
     }
 }

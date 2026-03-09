@@ -40,7 +40,7 @@ public abstract class AbstractSellingBinProcessor
     }
 
 
-    abstract public int calculateValue(int baseValue, int currentValue, ItemStack itemStack);
+    abstract public int addValue(int baseValue, int currentValue, ItemStack itemStack);
 
     public void onSellComplete(ItemStack itemStack){}
 
@@ -60,6 +60,11 @@ public abstract class AbstractSellingBinProcessor
         public static Instance empty()
         {
             return new Instance(0, List.of());
+        }
+
+        public static Instance empty(int baseValue)
+        {
+            return new Instance(baseValue, List.of());
         }
 
         public Instance add(AbstractSellingBinProcessor processor)
