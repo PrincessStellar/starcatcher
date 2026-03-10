@@ -81,6 +81,7 @@ public class DGStarcatcherFishes
 
         register(overworldLakeFish(ModItems.BOOT).withBaseChance(1)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withHasGuideEntry(false));
 
 
@@ -206,6 +207,7 @@ public class DGStarcatcherFishes
 
         register(overworldSwampFish(ModItems.MOSSY_BOOT).withBaseChance(1)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withHasGuideEntry(false));
 
 
@@ -343,6 +345,7 @@ public class DGStarcatcherFishes
 
         register(overworldRiverFish(ModItems.DRIED_SEAWEED)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withBaseChance(1)
                 .withHasGuideEntry(false));
 
@@ -433,11 +436,13 @@ public class DGStarcatcherFishes
         register(overworldBeachFish(ModBlocks.CONCH.asItem().builtInRegistryHolder())
                 .withSizeAndWeight(FishProperties.sizeWeight(5, 2, 100, 49))
                 .withBaseChance(1)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withDifficulty(FishProperties.Difficulty.TRASH));
 
         register(overworldBeachFish(ModBlocks.CLAM.asItem().builtInRegistryHolder())
                 .withSizeAndWeight(FishProperties.sizeWeight(20, 5, 1000, 400))
                 .withBaseChance(1)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withDifficulty(FishProperties.Difficulty.TRASH));
 
         //mushroom islands
@@ -661,6 +666,7 @@ public class DGStarcatcherFishes
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING));
 
         register(netherLavaFish(ModItems.LAVA_CRAB_CLAW).withBaseChance(1)
+                .withRarity(FishProperties.Rarity.TRASH)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false));
 

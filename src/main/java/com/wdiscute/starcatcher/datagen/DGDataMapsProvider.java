@@ -28,6 +28,7 @@ public class DGDataMapsProvider extends DataMapProvider
     {
         var decor = this.builder(ModDataMaps.AQUARIUM_INTERACTION);
         var bin = this.builder(ModDataMaps.SELLING_BIN_VALUE);
+        var currencies = this.builder(ModDataMaps.SELLING_BIN_CURRENCIES);
 
         //ground
         decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -52,6 +53,13 @@ public class DGDataMapsProvider extends DataMapProvider
         bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor().create(200), false);
         bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor().create(500), false);
 
-        bin.add(ModItems.FISH_BONES, AbstractSellingBinProcessor.Instance.empty(20), false);
+        bin.add(ModItems.FISH_BONES, ModDataMaps.ItemValue.empty(20), false);
+
+
+
+        currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
+        currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);
+
+
     }
 }

@@ -7,7 +7,6 @@ import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
-import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
@@ -21,7 +20,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +35,7 @@ public class TooltipEvents
         ItemStack stack = event.getItemStack();
         boolean hasShiftDown = event.getFlags().hasShiftDown();
 
+        //modifiers
         if (ModDataComponents.has(stack, ModDataComponents.MINIGAME_MODIFIERS) || ModDataComponents.has(stack, ModDataComponents.CATCH_MODIFIERS))
         {
             List<ResourceLocation> modifiers = new ArrayList<>();
@@ -97,33 +96,13 @@ public class TooltipEvents
         //selling bin info
         if (Screen.hasShiftDown())
         {
-            int value = ModSellingBinProcessors.calculateFromStack(stack);
+            int value = ModSellingBinProcessors.calculateValueFromSingleStack(stack);
             if (value > 0)
             {
-                Integer lowestValue = Config.SELLING_BIN_LOWEST_VALUE.get();
-
-                //if (value > lowestValue)
-                {
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    float v = ((float) value / lowestValue);
-                    MutableComponent component = Component.literal(df.format(v) + " Emeralds");
-
-                    if(stack.getCount() > 1)
-                        component.append(Component.literal(" (" + df.format(v * stack.getCount()) + " Emeralds)"));
-
-
-                    comp.add(1, component.withStyle(ChatFormatting.DARK_GRAY));
-                }
-
-                //if (value > Config.SELLING_BIN_LOWEST_VALUE.get())
-                {
-
-                }
-
-                //if (value > Config.SELLING_BIN_LOWEST_VALUE.get())
-                {
-
-                }
+                MutableComponent literal = Component.literal(ModSellingBinProcessors.getStringFromValue(value));
+                if (stack.getCount() > 1)
+                    literal.append(Component.literal(" (" + ModSellingBinProcessors.getStringFromValue(value * stack.getCount()) + ")"));
+                comp.add(1, literal.withStyle(ChatFormatting.DARK_GRAY));
             }
         }
 

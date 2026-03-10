@@ -1067,6 +1067,7 @@ public class FishingGuideScreen extends Screen
         //glow color
         int color = switch (fp.rarity())
         {
+            case TRASH -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.COMMON -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.UNCOMMON -> FastColor.ARGB32.color(255, 0x92f28d);
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(255, 0x78c8ff);
@@ -1309,7 +1310,7 @@ public class FishingGuideScreen extends Screen
 
         int color = switch (fp.rarity())
         {
-            case FishProperties.Rarity.COMMON -> FastColor.ARGB32.color(0, -1);
+            case FishProperties.Rarity.TRASH, FishProperties.Rarity.COMMON -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.UNCOMMON -> FastColor.ARGB32.color(200, 0x92f28d);
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(200, 0x78c8ff);
             case FishProperties.Rarity.EPIC -> FastColor.ARGB32.color(200, 0xc060ff);

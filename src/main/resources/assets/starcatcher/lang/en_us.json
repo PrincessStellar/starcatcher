@@ -437,6 +437,10 @@
   "gui.starcatcher.selling_bin.sell_all" : "Sell All",
   "gui.starcatcher.selling_bin.auto_sell" : "Toggle Auto-Sell",
 
+  "item.minecraft.emerald.plural" : "Emeralds",
+  "block.minecraft.emerald_block.plural" : "Emerald Blocks",
+
+
   "block.starcatcher.fisherman_hat_black": "Black Fisherman's Hat",
   "block.starcatcher.fisherman_hat_blue": "Blue Fisherman's Hat",
   "block.starcatcher.fisherman_hat_brown": "Brown Fisherman's Hat",

@@ -1,8 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
-import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.registry.ModMenuTypes;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -11,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class SellingBinMenu extends AbstractContainerMenu
@@ -93,7 +90,7 @@ public class SellingBinMenu extends AbstractContainerMenu
                     return ItemStack.EMPTY;
                 }
             }
-            else if (!this.moveItemStackTo(itemstack1, 0, this.container.getContainerSize(), false))
+            else if (!this.moveItemStackTo(itemstack1, 0, this.container.getContainerSize() - 1, false))
             {
                 return ItemStack.EMPTY;
             }

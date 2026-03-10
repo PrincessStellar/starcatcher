@@ -2,12 +2,18 @@ package com.wdiscute.starcatcher.registry.custom.sellingbinprocessor;
 
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import oshi.util.tuples.Pair;
 
+import java.awt.*;
+import java.text.DecimalFormat;
+import java.util.List;
 import java.util.function.Supplier;
 
 public interface ModSellingBinProcessors
@@ -20,12 +26,48 @@ public interface ModSellingBinProcessors
 
     static String getStringFromValue(int value)
     {
-        return "wad";
+        List<Pair<Item, Integer>> currencies = ModDataMaps.getCurrencies().reversed();
+
+        boolean found = false;
+
+        String s = "";
+
+        for (Pair<Item, Integer> c : currencies)
+        {
+            if (value > c.getB())
+            {
+                float numOfCurrency = (float) value / c.getB();
+
+                DecimalFormat df = new DecimalFormat("#.##");
+
+                if (numOfCurrency == 1)
+                    s = s + df.format(numOfCurrency) + " " + c.getA().getDescription().getString(100);
+                else
+                    s = s + df.format(numOfCurrency) + " " + U.getPluralTranslation(c.getA()).getString(100);
+
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            float numOfCurrency = (float) value / currencies.getLast().getB();
+            DecimalFormat df = new DecimalFormat("#.##");
+
+            if (numOfCurrency == 1)
+                s = s + df.format(numOfCurrency) + " " + currencies.getLast().getA().getDescription().getString(100);
+            else
+                s = s + df.format(numOfCurrency) + " " + U.getPluralTranslation(currencies.getLast().getA()).getString(100);
+        }
+
+        return s;
     }
 
-    static int calculateValueFromStack(ItemStack is)
+    //this does not take into account stack count!
+    static int calculateValueFromSingleStack(ItemStack is)
     {
-        var instance = ModDataMaps.getOrDefault(is, ModDataMaps.SELLING_BIN_VALUE, AbstractSellingBinProcessor.Instance.empty());
+        var instance = ModDataMaps.getOrDefault(is, ModDataMaps.SELLING_BIN_VALUE, ModDataMaps.ItemValue.empty());
 
         int value = instance.baseValue();
 

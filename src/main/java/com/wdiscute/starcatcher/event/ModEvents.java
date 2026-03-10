@@ -55,20 +55,6 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class ModEvents
 {
-
-    @SubscribeEvent
-    public static void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
-    {
-        if (event.getEntity() instanceof ServerPlayer sp)
-        {
-            var tournament = TournamentHandler.getTournamentForPlayer(sp);
-            if (tournament != null)
-                TournamentHandler.sendActiveTournamentUpdateToClient(sp, tournament);
-            else
-                TournamentHandler.clearTournamentToClient(sp);
-        }
-    }
-
     @SubscribeEvent
     public static void serverStarted(RegisterSpawnPlacementsEvent event)
     {
@@ -106,19 +92,27 @@ public class ModEvents
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
-        if (event.getEntity() instanceof ServerPlayer serverPlayer)
+        if (event.getEntity() instanceof ServerPlayer sp)
         {
-            FishingGuideAttachment fishingGuideAttachment = ModDataAttachments.get(serverPlayer, ModDataAttachments.FISHING_GUIDE);
+            //tournament
+            var tournament = TournamentHandler.getTournamentForPlayer(sp);
+            if (tournament != null)
+                TournamentHandler.sendActiveTournamentUpdateToClient(sp, tournament);
+            else
+                TournamentHandler.clearTournamentToClient(sp);
 
-            if (FishingGuideAttachment.hasLegacyData(serverPlayer))
+            //guide
+            FishingGuideAttachment fishingGuideAttachment = ModDataAttachments.get(sp, ModDataAttachments.FISHING_GUIDE);
+
+            if (FishingGuideAttachment.hasLegacyData(sp))
             {
-                fishingGuideAttachment.loadFromLegacy(serverPlayer);
-                FishingGuideAttachment.sync(serverPlayer);
+                fishingGuideAttachment.loadFromLegacy(sp);
+                FishingGuideAttachment.sync(sp);
             }
 
             if (Config.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
             {
-                serverPlayer.addItem(new ItemStack(ModItems.GUIDE.get()));
+                sp.addItem(new ItemStack(ModItems.GUIDE.get()));
                 fishingGuideAttachment.receivedGuide = true;
             }
         }
@@ -194,6 +188,7 @@ public class ModEvents
     {
         event.register(ModDataMaps.AQUARIUM_INTERACTION);
         event.register(ModDataMaps.SELLING_BIN_VALUE);
+        event.register(ModDataMaps.SELLING_BIN_CURRENCIES);
     }
 
     @SubscribeEvent

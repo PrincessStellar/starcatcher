@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.ModDataMaps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -44,34 +45,8 @@ public abstract class AbstractSellingBinProcessor
 
     public void onSellComplete(ItemStack itemStack){}
 
-    public Instance create(int baseValue)
+    public ModDataMaps.ItemValue create(int baseValue)
     {
-        return new Instance(baseValue, List.of(this));
-    }
-
-    public record Instance(int baseValue, List<AbstractSellingBinProcessor> processors)
-    {
-        public static final Codec<Instance> CODEC = RecordCodecBuilder.create(instance ->
-                instance.group(
-                        Codec.INT.fieldOf("base_value").forGetter(AbstractSellingBinProcessor.Instance::baseValue),
-                        AbstractSellingBinProcessor.ABSTRACT_PROCESSOR_CODEC_LIST.fieldOf("processors").forGetter(AbstractSellingBinProcessor.Instance::processors)
-                ).apply(instance, AbstractSellingBinProcessor.Instance::new));
-
-        public static Instance empty()
-        {
-            return new Instance(0, List.of());
-        }
-
-        public static Instance empty(int baseValue)
-        {
-            return new Instance(baseValue, List.of());
-        }
-
-        public Instance add(AbstractSellingBinProcessor processor)
-        {
-            List<AbstractSellingBinProcessor> list = new ArrayList<>(this.processors);
-            list.add(processor);
-            return new Instance(0, list);
-        }
+        return new ModDataMaps.ItemValue(baseValue, List.of(this));
     }
 }

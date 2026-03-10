@@ -39,6 +39,10 @@
           "type": "starcatcher:fish_processor"
         }
       ]
+    },
+    "starcatcher:fish_bones": {
+      "base_value": 20,
+      "processors": []
     }
   }
 }

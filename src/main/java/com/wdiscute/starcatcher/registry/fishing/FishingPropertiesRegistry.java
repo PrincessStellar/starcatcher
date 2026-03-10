@@ -321,7 +321,7 @@ public class FishingPropertiesRegistry
 
     //endregion
 
-    private static final List<Pair<ResourceKey<FishProperties>, FishProperties>> PROPERTIES = new ArrayList<>();
+    public static final List<Pair<ResourceKey<FishProperties>, FishProperties>> PROPERTIES = new ArrayList<>();
     private static final List<ResourceKey<FishProperties>> COMPAT_KEYS = new ArrayList<>();
 
     static ResourceKey<FishProperties> createKey(FishProperties fp)

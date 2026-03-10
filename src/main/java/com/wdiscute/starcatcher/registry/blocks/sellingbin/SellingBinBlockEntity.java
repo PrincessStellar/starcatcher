@@ -1,9 +1,11 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.registry.ModDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -15,36 +17,40 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ShulkerBoxMenu;
-import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.nikdo53.tinymultiblocklib.blockentities.AbstractMultiBlockEntity;
+import oshi.util.tuples.Pair;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
-public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements Container, MenuProvider
+public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements WorldlyContainer, MenuProvider, TickableBlockEntity
 {
 
     private NonNullList<ItemStack> itemStacks;
     public int storedProgress;
     public boolean instaSell = false;
+    public List<Pair<Item, Integer>> currencies;
+    public List<Pair<Item, Integer>> currenciesReversed;
 
     public SellingBinBlockEntity(BlockPos pos, BlockState blockState)
     {
         super(ModBlockEntities.SELLING_BIN.get(), pos, blockState);
         this.itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
+        this.currencies = ModDataMaps.getCurrencies();
+        this.currenciesReversed = currencies.reversed();
     }
-
-
 
     public void sell(boolean all)
     {
-        int value = ModSellingBinProcessors.calculateFromStack(getItem(SellingBinMenu.ITEM_SLOT));
+        int value = ModSellingBinProcessors.calculateValueFromSingleStack(getItem(SellingBinMenu.ITEM_SLOT));
         if (value <= 0) return;
 
         while (getItem(SellingBinMenu.ITEM_SLOT).getCount() > 0)
@@ -53,22 +59,38 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
             getItem(SellingBinMenu.ITEM_SLOT).shrink(1);
             update();
             updateToClient();
-            if(!all) return;
+            if (!all) return;
         }
         updateToClient();
+    }
+
+    public int getProgressAvailable()
+    {
+        return storedProgress + ModDataMaps.getOrDefault(getItem(SellingBinMenu.RESULT_SLOT), ModDataMaps.SELLING_BIN_CURRENCIES, 0) * getItem(SellingBinMenu.RESULT_SLOT).getCount();
     }
 
     public void update()
     {
         ItemStack is = getItem(SellingBinMenu.RESULT_SLOT);
-        while ((is.isEmpty() || is.getCount() < is.getMaxStackSize()) && storedProgress >= Config.SELLING_BIN_LOWEST_VALUE.get())
+
+        int progressAvailable = getProgressAvailable();
+
+        for (Pair<Item, Integer> c : currenciesReversed)
         {
-            if (is.isEmpty())
-                is = new ItemStack(Items.EMERALD);
-            else
-                is.grow(1);
-            setItem(SellingBinMenu.RESULT_SLOT, is);
-            storedProgress -= Config.SELLING_BIN_LOWEST_VALUE.getAsInt();
+            if (progressAvailable > c.getB() && (is.isEmpty() || is.getCount() < is.getMaxStackSize()))
+            {
+                if (!is.is(c.getA())) is = new ItemStack(c.getA());
+
+                int count = Math.clamp(progressAvailable / c.getB(), 0, c.getA().getMaxStackSize(new ItemStack(c.getA())));
+
+                is.setCount(count);
+
+                setItem(SellingBinMenu.RESULT_SLOT, is);
+
+                storedProgress = progressAvailable - c.getB() * count;
+
+                break;
+            }
         }
 
         updateToClient();
@@ -217,5 +239,32 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
         {
             serverLevel.sendBlockUpdated(getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
         }
+    }
+
+    @Override
+    public int[] getSlotsForFace(Direction direction)
+    {
+        if (direction == Direction.DOWN) return new int[]{1};
+        return new int[]{0};
+    }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int i, ItemStack itemStack, @org.jetbrains.annotations.Nullable Direction direction)
+    {
+        int value = ModSellingBinProcessors.calculateValueFromSingleStack(itemStack);
+        return value > 0 && direction != Direction.DOWN;
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int i, ItemStack itemStack, Direction direction)
+    {
+        return direction == Direction.DOWN;
+    }
+
+    @Override
+    public void tick()
+    {
+        update();
+        if (instaSell) sell(true);
     }
 }

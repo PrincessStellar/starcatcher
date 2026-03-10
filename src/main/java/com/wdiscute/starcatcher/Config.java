@@ -1,10 +1,16 @@
 package com.wdiscute.starcatcher;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
+import com.teamtea.eclipticseasons.api.misc.SeasonLike;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.config.IConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import org.jetbrains.annotations.Nullable;
 
+import java.security.PublicKey;
 import java.util.List;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
@@ -151,13 +157,7 @@ public class Config
     public static final ModConfigSpec.DoubleValue SELLING_BIN_MULTIPLIER = BUILDER_SERVER
             .comment("Adjusts the selling bin sell rates globally")
             .translation("starcatcher.configuration.selling_in_multiplier")
-            .defineInRange("selling_bin_lowest_value", 1d, 0d, 9999999d);
-
-    public static final ModConfigSpec.IntValue SELLING_BIN_LOWEST_VALUE = BUILDER_SERVER
-            .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
-            .translation("starcatcher.configuration.selling_bin_lowest_value")
-            .defineInRange("selling_bin_lowest_value", 100, 1, 9999999);
-
+            .defineInRange("selling_bin_multiplier", 1d, 0d, 9999999d);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
@@ -165,20 +165,5 @@ public class Config
 //            .define("pointer_speed_multiplier", List.of());
 
     static final ModConfigSpec SPEC_SERVER = BUILDER_SERVER.build();
-
-
-//    public static class SellingBinValue extends ModConfigSpec.ConfigValue<Integer>
-//    {
-//        SellingBinValue(ModConfigSpec.Builder parent, List<String> path, Supplier<Integer> defaultSupplier)
-//        {
-//            super(parent, path, defaultSupplier);
-//        }
-//
-//        public Integer getRaw(com.electronwill.nightconfig.core.Config config, List<String> path, Supplier<Integer> defaultSupplier)
-//        {
-//            return config.getIntOrElse(path, () -> defaultSupplier.get());
-//        }
-//    }
-
 
 }

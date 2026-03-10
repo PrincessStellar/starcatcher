@@ -14,6 +14,7 @@ import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -549,6 +550,19 @@ public class U
 
     public static void nothing(Object... o)
     {
+    }
+
+    public static Component getPluralTranslation(ItemStack itemStack)
+    {
+        return getPluralTranslation(itemStack.getItem());
+    }
+
+    public static Component getPluralTranslation(Item item)
+    {
+        if(I18n.exists(item.getDescriptionId() + ".plural"))
+            return Component.translatable(item.getDescriptionId() + ".plural");
+        else
+            return Component.translatable(item.getDescriptionId());
     }
 
     //0-255

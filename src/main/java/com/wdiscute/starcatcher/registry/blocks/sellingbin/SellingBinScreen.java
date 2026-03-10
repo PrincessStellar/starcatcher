@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
-import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -41,7 +41,8 @@ public class SellingBinScreen extends AbstractContainerScreen<SellingBinMenu>
         //sell / sell all
         if (x > 80 && x < 121 && y > 12 && y < 23)
         {
-            Minecraft.getInstance().player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 0.7f, U.r.nextFloat() / 8 + 1f);
+            if(!menu.be.getItem(0).isEmpty())
+                Minecraft.getInstance().player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 0.7f, U.r.nextFloat() / 8 + 1f);
             if (Screen.hasShiftDown())
                 //sell all
                 Minecraft.getInstance().gameMode.handleInventoryButtonClick(this.menu.containerId, 68);
@@ -72,17 +73,19 @@ public class SellingBinScreen extends AbstractContainerScreen<SellingBinMenu>
         double x = mouseX - uiX;
         double y = mouseY - uiY;
 
+
         //arrow tooltip
+        int progressAvailable = menu.be.getProgressAvailable();
+
         if (x > 79 && x < 96 && y > 37 && y < 54)
         {
-            guiGraphics.renderTooltip(this.font, Component.literal(menu.be.storedProgress + "/" + Config.SELLING_BIN_LOWEST_VALUE.get()), mouseX, mouseY);
+            guiGraphics.renderTooltip(this.font, Component.literal(ModSellingBinProcessors.getStringFromValue(progressAvailable)), mouseX, mouseY);
         }
 
         //render arrow
         //scales [0, SELLING_BIN_LOWEST_VALUE]   ->   [0, 16]
-        int arrow = (int) ((((float) menu.be.storedProgress) / ((float) Config.SELLING_BIN_LOWEST_VALUE.get())) * 16);
+        int arrow = (int) ((((float) progressAvailable) / ((float) menu.be.currencies.getFirst().getB())) * 16);
         guiGraphics.blit(TEXTURE, uiX + 80, uiY + 37, 192, 16, Math.clamp(arrow, 0, 16), 16, 256, 256);
-
 
         //sell / sell all text
         if (Screen.hasShiftDown())

@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
+import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -46,6 +47,21 @@ public class DGModItemsTagsProvider extends ItemTagsProvider
         //todo figure out what to do with crabs/eels tags?
 
         //rarity tags
+        FishingPropertiesRegistry.PROPERTIES.forEach(p ->
+        {
+            FishProperties fp = p.getSecond();
+
+            switch (p.getSecond().rarity())
+            {
+                case TRASH -> tag(StarcatcherTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
+                case COMMON -> tag(StarcatcherTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case UNCOMMON -> tag(StarcatcherTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case RARE -> tag(StarcatcherTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case EPIC -> tag(StarcatcherTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case LEGENDARY -> tag(StarcatcherTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+            }
+        });
+
         for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHES)
         {
             switch (fp.rarity())

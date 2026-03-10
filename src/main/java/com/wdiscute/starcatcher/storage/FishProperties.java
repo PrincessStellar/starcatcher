@@ -1674,6 +1674,7 @@ public record FishProperties(
 
     public enum Rarity implements StringRepresentable
     {
+        TRASH("trash", 0, "", "", Style.EMPTY.applyFormat(ChatFormatting.WHITE), 99),
         COMMON("common", 4, "", "", Style.EMPTY.applyFormat(ChatFormatting.WHITE), 40),
         UNCOMMON("uncommon", 8, "<gradient-37>", "</gradient-43>", Style.EMPTY.applyFormat(ChatFormatting.GREEN), 40),
         RARE("rare", 12, "<gradient-57>", "</gradient-63>", Style.EMPTY.applyFormat(ChatFormatting.BLUE), 30),
