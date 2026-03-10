@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.custom.sellingbinprocessor;
 
+import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.ModDataMaps;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +18,12 @@ public interface ModSellingBinProcessors
     DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> FISH = registerCatchModifier("fish_processor", FishSellingBinProcessor::new);
 
 
-    static int calculateFromStack(ItemStack is)
+    static String getStringFromValue(int value)
+    {
+        return "wad";
+    }
+
+    static int calculateValueFromStack(ItemStack is)
     {
         var instance = ModDataMaps.getOrDefault(is, ModDataMaps.SELLING_BIN_VALUE, AbstractSellingBinProcessor.Instance.empty());
 
@@ -28,7 +34,7 @@ public interface ModSellingBinProcessors
             value += p.addValue(value, instance.baseValue(), is);
         }
 
-        return value;
+        return (int) (value * Config.SELLING_BIN_MULTIPLIER.get());
     }
 
     static DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> registerCatchModifier(String name, Supplier<AbstractSellingBinProcessor> sup)
