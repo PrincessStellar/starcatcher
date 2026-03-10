@@ -73,6 +73,52 @@
   "commands.starcatcher.nothing_there" : "There are no fishes available at the current location. Make sure you're standing inside the correct fluid.",
   "commands.starcatcher.item_empty" : "You must have an item in your hand to apply the modifier to",
 
+
+  "starcatcher.configuration.minigame_scale" : "Minigame Scale",
+  "starcatcher.configuration.hit_delay" : "Minigame Hit Delay",
+  "starcatcher.configuration.units" : "Minigame Units",
+  "starcatcher.configuration.sort" : "Guide Sort order",
+  "starcatcher.configuration.enable_villager_sound" : "Minigame Villager Sound",
+  "starcatcher.configuration.enable_hit_sound" : "Minigame Hit Sound",
+  "starcatcher.configuration.enable_miss_sound" : "Minigame Miss Sound",
+  "starcatcher.configuration.vanilla_partial_ticks" : "Vanilla Partial Ticks",
+
+
+  "starcatcher.configuration.give_guide" : "Give Guide",
+  "starcatcher.configuration.show_exclamation_mark_particle" : "Show [!] particle on bite",
+  "starcatcher.configuration.enable_worms" : "Worms From Bonemealing Farmland",
+  "starcatcher.configuration.enable_minigame" : "Enable Fishing Minigame",
+  "starcatcher.configuration.enable_ftb_team_sharing" : "Enable FTBTeams Sharing",
+  "starcatcher.configuration.enable_seasons" : "Enable Seasons Compatibility",
+  "starcatcher.configuration.vanishing_rate_multiplier" : "Global Vanishing Rate Multiplier",
+  "starcatcher.configuration.moving_speed_multiplier" : "Global Moving Speed Multiplier",
+  "starcatcher.configuration.penalty_multiplier" : "Global Penalty Multiplier",
+  "starcatcher.configuration.decay_multiplier" : "Global Decay Multiplier",
+  "starcatcher.configuration.pointer_speed_multiplier" : "Global Pointer Speed Multiplier",
+  "starcatcher.configuration.hide_entries_until_found" : "Hide Guide Entries Until Found",
+  "starcatcher.configuration.fish_player_messages_chance" : "Player Messages Chance To Fish",
+  "starcatcher.configuration.save_data_to_items" : "Size, Weight, Rarity & Golden NBT saving",
+  "starcatcher.configuration.base_min_ticks" : "Minimum Ticks To Fish",
+  "starcatcher.configuration.base_max_ticks" : "Maximum Ticks To Fish",
+  "starcatcher.configuration.base_chance" : "Base Chance To Fish Per Tick",
+  "starcatcher.configuration.restrict_tackle_box_to_tag" : "Restrict Tackle Box To Tag",
+  "starcatcher.configuration.selling_bin_lowest_value" : "Selling Bin Lowest Value",
+  "starcatcher.configuration.selling_in_multiplier" : "Selling Bin Multiplier",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   "entity.starcatcher.fish" : "Starcaught Fish",
 
   "gui.starcatcher.reel_no_fish" : "There are no fishes available for this area...",
