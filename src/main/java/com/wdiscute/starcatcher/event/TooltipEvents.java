@@ -6,8 +6,10 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -19,12 +21,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
-public class TooltipEvents {
+public class TooltipEvents
+{
 
     @SubscribeEvent
     public static void tooltipEvent(ItemTooltipEvent event)
@@ -70,23 +74,57 @@ public class TooltipEvents {
             SettingsScreen.Units units = Config.UNIT.get();
             CaughtFishInfo sw = ModDataComponents.get(stack, ModDataComponents.CAUGHT_FISH_INFO);
 
-            if(sw.golden())
+            if (sw.golden())
             {
                 MutableComponent element = Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
-                if(hasShiftDown)
+                if (hasShiftDown)
                     element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
                 comp.add(1, element);
-
-                return;
             }
-            String size = units.getSizeAsString(sw.sizeInCentimeters());
-            String weight = units.getWeightAsString(sw.weightInGrams());
-            String percentile = " (top " + (int) sw.percentile() + "%)";
+            else
+            {
+                String size = units.getSizeAsString(sw.sizeInCentimeters());
+                String weight = units.getWeightAsString(sw.weightInGrams());
+                String percentile = " (top " + (int) sw.percentile() + "%)";
 
-            MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
-            if(hasShiftDown)
-                element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
-            comp.add(1, element);
+                MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
+                if (hasShiftDown)
+                    element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
+                comp.add(1, element);
+            }
+        }
+
+        //selling bin info
+        if (Screen.hasShiftDown())
+        {
+            int value = ModSellingBinProcessors.calculateFromStack(stack);
+            if (value > 0)
+            {
+                Integer lowestValue = Config.SELLING_BIN_LOWEST_VALUE.get();
+
+                //if (value > lowestValue)
+                {
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    float v = ((float) value / lowestValue);
+                    MutableComponent component = Component.literal(df.format(v) + " Emeralds");
+
+                    if(stack.getCount() > 1)
+                        component.append(Component.literal(" (" + df.format(v * stack.getCount()) + " Emeralds)"));
+
+
+                    comp.add(1, component.withStyle(ChatFormatting.DARK_GRAY));
+                }
+
+                //if (value > Config.SELLING_BIN_LOWEST_VALUE.get())
+                {
+
+                }
+
+                //if (value > Config.SELLING_BIN_LOWEST_VALUE.get())
+                {
+
+                }
+            }
         }
 
         //tackle skin

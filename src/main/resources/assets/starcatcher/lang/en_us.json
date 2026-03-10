@@ -387,6 +387,9 @@
 
   "block.starcatcher.selling_bin" : "Selling Bin",
 
+  "gui.starcatcher.selling_bin.sell" : "Sell",
+  "gui.starcatcher.selling_bin.sell_all" : "Sell All",
+  "gui.starcatcher.selling_bin.auto_sell" : "Toggle Auto-Sell",
 
   "block.starcatcher.fisherman_hat_black": "Black Fisherman's Hat",
   "block.starcatcher.fisherman_hat_blue": "Blue Fisherman's Hat",

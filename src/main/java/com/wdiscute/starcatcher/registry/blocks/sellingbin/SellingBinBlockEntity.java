@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
+import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -9,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
@@ -18,6 +21,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ShulkerBoxMenu;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.nikdo53.tinymultiblocklib.blockentities.AbstractMultiBlockEntity;
 
@@ -28,11 +32,46 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
 
     private NonNullList<ItemStack> itemStacks;
     public int storedProgress;
+    public boolean instaSell = false;
 
     public SellingBinBlockEntity(BlockPos pos, BlockState blockState)
     {
         super(ModBlockEntities.SELLING_BIN.get(), pos, blockState);
         this.itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
+    }
+
+
+
+    public void sell(boolean all)
+    {
+        int value = ModSellingBinProcessors.calculateFromStack(getItem(SellingBinMenu.ITEM_SLOT));
+        if (value <= 0) return;
+
+        while (getItem(SellingBinMenu.ITEM_SLOT).getCount() > 0)
+        {
+            storedProgress += value;
+            getItem(SellingBinMenu.ITEM_SLOT).shrink(1);
+            update();
+            updateToClient();
+            if(!all) return;
+        }
+        updateToClient();
+    }
+
+    public void update()
+    {
+        ItemStack is = getItem(SellingBinMenu.RESULT_SLOT);
+        while ((is.isEmpty() || is.getCount() < is.getMaxStackSize()) && storedProgress >= Config.SELLING_BIN_LOWEST_VALUE.get())
+        {
+            if (is.isEmpty())
+                is = new ItemStack(Items.EMERALD);
+            else
+                is.grow(1);
+            setItem(SellingBinMenu.RESULT_SLOT, is);
+            storedProgress -= Config.SELLING_BIN_LOWEST_VALUE.getAsInt();
+        }
+
+        updateToClient();
     }
 
     @Nullable
@@ -50,6 +89,14 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
         super.saveAdditional(tag, registries);
 
         if (!isCenter()) return;
+
+        //insta sell
+        tag.putBoolean("insta_sell", instaSell);
+
+        //stored progress
+        tag.putInt("stored_progress", storedProgress);
+
+        //save items (from ShulkerBoxBlockEntity)
         ContainerHelper.saveAllItems(tag, this.itemStacks, false, registries);
     }
 
@@ -58,19 +105,19 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
     {
         super.loadAdditional(tag, registries);
         if (!isCenter()) return;
-        //from ShulkerBoxBlockEntity
-        this.loadFromTag(tag, registries);
-    }
 
-    public void loadFromTag(CompoundTag tag, HolderLookup.Provider levelRegistry)
-    {
+        //insta sell
+        if (tag.contains("insta_sell")) instaSell = tag.getBoolean("insta_sell");
+
+        //stored progress
+        if (tag.contains("stored_progress")) storedProgress = tag.getInt("stored_progress");
+
+        //retrieve items (from ShulkerBoxBlockEntity)
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        //from ShulkerBoxBlockEntity
         if (tag.contains("Items", 9))
         {
-            ContainerHelper.loadAllItems(tag, this.itemStacks, levelRegistry);
+            ContainerHelper.loadAllItems(tag, this.itemStacks, registries);
         }
-
     }
 
     @Override
@@ -161,5 +208,14 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements C
     public Component getDisplayName()
     {
         return Component.empty();
+    }
+
+    public void updateToClient()
+    {
+        setChanged();
+        if (level instanceof ServerLevel serverLevel)
+        {
+            serverLevel.sendBlockUpdated(getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 }

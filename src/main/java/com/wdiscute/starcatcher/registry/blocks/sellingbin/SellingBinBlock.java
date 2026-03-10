@@ -96,9 +96,9 @@ public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableM
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
         BlockPos center = IMultiBlock.getCenter(level, pos);
-        if (level.getBlockEntity(center) instanceof SellingBinBlockEntity sbbe)
+        if (level.getBlockEntity(center) instanceof SellingBinBlockEntity sbbe && !level.isClientSide)
         {
-            player.openMenu(sbbe);
+            player.openMenu(sbbe, center);
             return InteractionResult.SUCCESS;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);

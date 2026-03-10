@@ -20,14 +20,21 @@ public class SellingBinResultSlot extends Slot
     @Override
     public boolean mayPickup(Player player)
     {
-        if(isServer) menu.update();
+        if(isServer) menu.be.update();
         return true;
+    }
+
+    @Override
+    public void onTake(Player player, ItemStack stack)
+    {
+        super.onTake(player, stack);
+        if(isServer) menu.be.update();
     }
 
     @Override
     public boolean mayPlace(ItemStack stack)
     {
-        if(isServer) menu.update();
+        if(isServer) menu.be.update();
         return false;
     }
 }

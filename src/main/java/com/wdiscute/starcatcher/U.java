@@ -12,11 +12,14 @@ import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -460,6 +463,20 @@ public class U
             finalString += ticksRemainingToCalculate + "s";
         }
         return finalString;
+    }
+
+    public static void renderString(GuiGraphics guiGraphics, Font font, Component c, int x, int y, int color)
+    {
+        guiGraphics.drawString(font, c, x, y, color, false);
+    }
+
+    public static void renderFatString(GuiGraphics guiGraphics, Font font, Component c, int x, int y, int color)
+    {
+        guiGraphics.drawString(font, c, x + 1, y, 0xffffff, false);
+        guiGraphics.drawString(font, c, x - 1, y, 0xffffff, false);
+        guiGraphics.drawString(font, c, x, y + 1, 0xffffff, false);
+        guiGraphics.drawString(font, c, x, y - 1, 0xffffff, false);
+        guiGraphics.drawString(font, c, x, y, color, false);
     }
 
     @SafeVarargs

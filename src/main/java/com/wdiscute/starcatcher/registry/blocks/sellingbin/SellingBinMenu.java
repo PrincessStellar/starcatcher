@@ -29,34 +29,26 @@ public class SellingBinMenu extends AbstractContainerMenu
     @Override
     public boolean clickMenuButton(Player player, int id)
     {
+        //sell
         if (id == 67)
         {
-            int value = ModSellingBinProcessors.calculateFromStack(container.getItem(ITEM_SLOT));
+            be.sell(false);
+        }
 
-            be.storedProgress += value;
+        //sell all
+        if (id == 68)
+        {
+            be.sell(true);
+        }
 
-            container.getItem(ITEM_SLOT).shrink(1);
-
-            update();
-
-            System.out.println(be.storedProgress);
+        //toggle insta sell
+        if (id == 69)
+        {
+            be.instaSell = !be.instaSell;
+            be.updateToClient();
         }
 
         return super.clickMenuButton(player, id);
-    }
-
-    public void update()
-    {
-        ItemStack is = container.getItem(RESULT_SLOT);
-        while ((is.isEmpty() || is.getCount() < is.getMaxStackSize()) && be.storedProgress >= Config.SELLING_BIN_LOWEST_VALUE.get())
-        {
-            if (is.isEmpty())
-                is = new ItemStack(Items.EMERALD);
-            else
-                is.grow(1);
-            container.setItem(RESULT_SLOT, is);
-            be.storedProgress -= Config.SELLING_BIN_LOWEST_VALUE.getAsInt();
-        }
     }
 
     public SellingBinMenu(int containerId, Inventory playerInventory, Container container, BlockEntity blockEntity)
@@ -112,6 +104,7 @@ public class SellingBinMenu extends AbstractContainerMenu
                 slot.setChanged();
         }
 
+        be.update();
         return itemstack;
     }
 

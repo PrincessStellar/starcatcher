@@ -7,6 +7,8 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 import java.util.function.DoubleSupplier;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 
 public class Config
 {
@@ -126,14 +128,31 @@ public class Config
 
 
 
-
-
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
 //            .comment("Adjusts the fish decay rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
 //            .define("pointer_speed_multiplier", List.of());
 
     static final ModConfigSpec SPEC_SERVER = BUILDER_SERVER.build();
+
+
+
+
+//    public static class SellingBinValue extends ModConfigSpec.ConfigValue<Integer> implements IntSupplier
+//    {
+//        SellingBinValue(ModConfigSpec.Builder parent, List<String> path, Supplier<Integer> defaultSupplier) {
+//            super(parent, path, defaultSupplier);
+//        }
+//
+//        public Integer getRaw(com.electronwill.nightconfig.core.Config config, List<String> path, Supplier<Integer> defaultSupplier) {
+//            return config.getIntOrElse(path, () -> defaultSupplier.get());
+//        }
+//
+//        public int getAsInt() {
+//            return this.get();
+//        }
+//    }
+
 
 
 }

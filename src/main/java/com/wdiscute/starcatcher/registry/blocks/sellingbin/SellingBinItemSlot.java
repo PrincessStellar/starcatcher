@@ -1,7 +1,9 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 public class SellingBinItemSlot extends Slot
 {
@@ -13,5 +15,12 @@ public class SellingBinItemSlot extends Slot
         super(container, slot, x, y);
         this.menu = menu;
         this.isServer = isServer;
+    }
+
+    @Override
+    public boolean mayPlace(ItemStack stack)
+    {
+        int value = ModSellingBinProcessors.calculateFromStack(stack);
+        return value > 0;
     }
 }
