@@ -1,26 +1,14 @@
 package com.wdiscute.starcatcher;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-import com.teamtea.eclipticseasons.api.misc.SeasonLike;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.fml.config.IConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec;
-import org.jetbrains.annotations.Nullable;
-
-import java.security.PublicKey;
-import java.util.List;
-import java.util.function.DoubleSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
 
 public class Config
 {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    private static final ModConfigSpec.Builder BUILDER_CLIENT = new ModConfigSpec.Builder();
 
-    public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER
+    public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER_CLIENT
             .comment("ALL THESE SETTINGS CAN ALSO BE ACCESSED")
             .comment("THROUGH THE IN-GAME SETTING TAB INSIDE")
             .comment("THE STARCATCHER'S GUIDE")
@@ -28,38 +16,43 @@ public class Config
             .defineInRange("minigame_scale", 1.5, 0.1, 6);
 
 
-    public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER
+    public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
 
-    public static final ModConfigSpec.EnumValue<SettingsScreen.Units> UNIT = BUILDER
+    public static final ModConfigSpec.EnumValue<SettingsScreen.Units> UNIT = BUILDER_CLIENT
             .translation("starcatcher.configuration.units")
             .defineEnum("units", SettingsScreen.Units.METRIC);
 
-    public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER
+    public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER_CLIENT
             .translation("starcatcher.configuration.sort")
             .defineEnum("sort", FishingGuideScreen.Sort.ALPHABETICAL_DOWN);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_VILLAGER_SOUND = BUILDER
+    public static final ModConfigSpec.BooleanValue ENABLE_VILLAGER_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_villager_sound")
             .define("enable_villager_sound", true);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUND = BUILDER
+    public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_hit_sound")
             .define("enable_hit_sound", true);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER
+    public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
 
-    public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER
+    public static final ModConfigSpec.BooleanValue ALWAYS_SHOW_SELLING_BIN_PRICE = BUILDER_CLIENT
+            .comment("Always shows the selling bin price of the item hovered instead of only when holding shift")
+            .translation("starcatcher.configuration.always_show_selling_bin_price")
+            .define("always_show_selling_bin_price", false);
+
+    public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER_CLIENT
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
             .comment("Vanilla should look better for most people")
             .translation("starcatcher.configuration.vanilla_partial_ticks")
             .define("vanilla_partial_ticks", true);
 
 
-    static final ModConfigSpec SPEC = BUILDER.build();
+    static final ModConfigSpec SPEC = BUILDER_CLIENT.build();
 
 
     private static final ModConfigSpec.Builder BUILDER_SERVER = new ModConfigSpec.Builder();
