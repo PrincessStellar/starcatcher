@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -55,12 +56,14 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     public void sell(boolean all)
     {
         int value = Currency.calculateValueFromSingleStack(getItem(SellingBinMenu.ITEM_SLOT));
+        ModDataMaps.ItemValue itemValue = ModDataMaps.getOrDefault(getItem(SellingBinMenu.ITEM_SLOT), ModDataMaps.SELLING_BIN_VALUE, ModDataMaps.ItemValue.empty());
         if (value <= 0) return;
 
         while (getItem(SellingBinMenu.ITEM_SLOT).getCount() > 0)
         {
             storedProgress += value;
-            getItem(SellingBinMenu.ITEM_SLOT).shrink(1);
+            if (itemValue.processors().stream().anyMatch(o -> o.shouldCancelShrink(getItem(SellingBinMenu.ITEM_SLOT))))
+                getItem(SellingBinMenu.ITEM_SLOT).shrink(1);
             update();
             updateToClient();
             if (!all) return;
@@ -281,8 +284,8 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     public int[] getSlotsForFace(Direction direction)
     {
         BlockState blockState = level.getBlockState(getBlockPos());
-        if(!blockState.is(ModBlocks.SELLING_BIN)) return new int[0];
-        if(!blockState.getValue(AbstractMultiBlock.CENTER)) return new int[0];
+        //if (!blockState.is(ModBlocks.SELLING_BIN)) return new int[0];
+        //if (!blockState.getValue(AbstractMultiBlock.CENTER)) return new int[0];
 
         if (direction == Direction.DOWN) return new int[]{1};
         return new int[]{0};

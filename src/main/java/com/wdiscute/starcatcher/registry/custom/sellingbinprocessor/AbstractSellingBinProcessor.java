@@ -41,7 +41,15 @@ public abstract class AbstractSellingBinProcessor
     }
 
 
+
     abstract public int addValue(int baseValue, int currentValue, ItemStack itemStack);
+
+    public boolean shouldCancelShrink(ItemStack itemStack)
+    {
+        return false;
+    }
+
+    public void onSellStart(ItemStack itemStack){}
 
     public void onSellComplete(ItemStack itemStack){}
 

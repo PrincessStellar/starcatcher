@@ -55,8 +55,8 @@ public class SellingBinScreen extends AbstractContainerScreen<SellingBinMenu>
         double x = mouseX - uiX;
         double y = mouseY - uiY;
 
-        System.out.println("clicked relative x: " + x);
-        System.out.println("clicked relative y: " + y);
+        //System.out.println("clicked relative x: " + x);
+        //System.out.println("clicked relative y: " + y);
 
 
         //sell / sell all
@@ -116,7 +116,9 @@ public class SellingBinScreen extends AbstractContainerScreen<SellingBinMenu>
 
         //render arrow
         //scales [0, SELLING_BIN_LOWEST_VALUE]   ->   [0, 16]
-        int arrow = (int) ((((float) progressAvailable) / ((float) menu.be.currencies.getFirst().value())) * 16);
+        Currency currency = menu.be.currencySelected;
+        if(currency.isNone()) currency = menu.be.currencies.getFirst();
+        int arrow = (int) ((((float) progressAvailable) / ((float) currency.value())) * 16);
         guiGraphics.blit(TEXTURE, uiX + 80, uiY + 37, 192, 16, Math.clamp(arrow, 0, 16), 16, 256, 256);
 
         //insta sell pressed

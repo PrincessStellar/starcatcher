@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
+import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.DurabilitySellingBinProcessor;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.FishSellingBinProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -54,8 +55,6 @@ public class DGDataMapsProvider extends DataMapProvider
         bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor().create(500), false);
 
         bin.add(ModItems.FISH_BONES, ModDataMaps.ItemValue.empty(20), false);
-
-
 
         currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
         currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);

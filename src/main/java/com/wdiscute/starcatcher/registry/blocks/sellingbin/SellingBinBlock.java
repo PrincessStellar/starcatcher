@@ -8,10 +8,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.WorldlyContainerHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -33,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Function;
 
-public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableMultiblock
+public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableMultiblock, WorldlyContainerHolder
 {
 
     public SellingBinBlock()
@@ -124,4 +127,19 @@ public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableM
         return true;
     }
 
+    @Override
+    public WorldlyContainer getContainer(BlockState blockState, LevelAccessor levelAccessor, BlockPos blockPos)
+    {
+        if (blockState.getValue(AbstractMultiBlock.CENTER))
+            if (levelAccessor.getBlockEntity(blockPos) instanceof SellingBinBlockEntity sbbe) return sbbe;
+
+        if (levelAccessor.getBlockEntity(blockPos) instanceof SellingBinBlockEntity notCenter)
+        {
+            if (levelAccessor.getBlockEntity(blockPos.offset(notCenter.getOffset().multiply(-1))) instanceof SellingBinBlockEntity center)
+            {
+                return center;
+            }
+        }
+        return null;
+    }
 }
