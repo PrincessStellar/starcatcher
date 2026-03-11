@@ -13,6 +13,8 @@ public interface ModSellingBinProcessors
             DeferredRegister.create(Starcatcher.SELLING_BIN_REGISTRY, Starcatcher.MOD_ID);
 
     DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> FISH = register("fish_processor", FishSellingBinProcessor::new);
+    DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> DURABILITY = register("durability_processor", DurabilitySellingBinProcessor::new);
+    //DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> SHULKER_BOX = register("shulker_box_processor", ShulkerBoxProcessor::new);
 
     static DeferredHolder<AbstractSellingBinProcessor, AbstractSellingBinProcessor> register(String name, Supplier<AbstractSellingBinProcessor> sup)
     {
