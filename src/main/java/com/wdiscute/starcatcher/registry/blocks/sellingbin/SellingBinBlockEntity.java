@@ -62,7 +62,7 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
         while (getItem(SellingBinMenu.ITEM_SLOT).getCount() > 0)
         {
             storedProgress += value;
-            if (itemValue.processors().stream().anyMatch(o -> o.shouldCancelShrink(getItem(SellingBinMenu.ITEM_SLOT))))
+            if (itemValue.processors().stream().noneMatch(o -> o.shouldCancelShrink(getItem(SellingBinMenu.ITEM_SLOT))))
                 getItem(SellingBinMenu.ITEM_SLOT).shrink(1);
             update();
             updateToClient();
