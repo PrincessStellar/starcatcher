@@ -108,9 +108,8 @@ public class SellingBinBlock extends AbstractMultiBlock implements IPreviewableM
         if (level.getBlockEntity(center) instanceof SellingBinBlockEntity sbbe && !level.isClientSide)
         {
             player.openMenu(sbbe, center);
-            return InteractionResult.SUCCESS;
         }
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

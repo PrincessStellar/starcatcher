@@ -45,6 +45,13 @@ public class SellingBinMenu extends AbstractContainerMenu
             be.updateToClient();
         }
 
+        //cycle currency
+        if (id == 70)
+        {
+            be.cycleCurrency();
+            be.updateToClient();
+        }
+
         return super.clickMenuButton(player, id);
     }
 

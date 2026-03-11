@@ -81,6 +81,7 @@
   "starcatcher.configuration.enable_villager_sound" : "Minigame Villager Sound",
   "starcatcher.configuration.enable_hit_sound" : "Minigame Hit Sound",
   "starcatcher.configuration.enable_miss_sound" : "Minigame Miss Sound",
+  "starcatcher.configuration.always_show_selling_bin_price" : "Always Show Selling Bin Prices",
   "starcatcher.configuration.vanilla_partial_ticks" : "Vanilla Partial Ticks",
 
 
@@ -434,8 +435,9 @@
   "block.starcatcher.selling_bin" : "Selling Bin",
 
   "gui.starcatcher.selling_bin.sell" : "Sell",
-  "gui.starcatcher.selling_bin.sell_all" : "Sell All",
   "gui.starcatcher.selling_bin.auto_sell" : "Toggle Auto-Sell",
+  "gui.starcatcher.selling_bin.currency_selected" : "Currency:",
+  "gui.starcatcher.selling_bin.highest" : "Highest Possible",
 
   "item.minecraft.emerald.plural" : "Emeralds",
   "block.minecraft.emerald_block.plural" : "Emerald Blocks",

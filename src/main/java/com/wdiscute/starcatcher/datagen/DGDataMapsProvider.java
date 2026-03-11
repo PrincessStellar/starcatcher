@@ -59,7 +59,5 @@ public class DGDataMapsProvider extends DataMapProvider
 
         currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
         currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);
-
-
     }
 }

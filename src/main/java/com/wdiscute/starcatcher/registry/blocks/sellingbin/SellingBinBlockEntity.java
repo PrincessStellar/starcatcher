@@ -1,7 +1,9 @@
 package com.wdiscute.starcatcher.registry.blocks.sellingbin;
 
 import com.wdiscute.starcatcher.registry.ModDataMaps;
+import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.core.BlockPos;
@@ -25,6 +27,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.nikdo53.tinymultiblocklib.block.AbstractMultiBlock;
 import net.nikdo53.tinymultiblocklib.blockentities.AbstractMultiBlockEntity;
 import oshi.util.tuples.Pair;
 
@@ -37,20 +40,21 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     private NonNullList<ItemStack> itemStacks;
     public int storedProgress;
     public boolean instaSell = false;
-    public List<Pair<Item, Integer>> currencies;
-    public List<Pair<Item, Integer>> currenciesReversed;
+    public Currency currencySelected = Currency.NONE;
+    public List<Currency> currencies;
+    public List<Currency> currenciesReversed;
 
     public SellingBinBlockEntity(BlockPos pos, BlockState blockState)
     {
         super(ModBlockEntities.SELLING_BIN.get(), pos, blockState);
         this.itemStacks = NonNullList.withSize(2, ItemStack.EMPTY);
-        this.currencies = ModDataMaps.getCurrencies();
+        this.currencies = Currency.getCurrencies();
         this.currenciesReversed = currencies.reversed();
     }
 
     public void sell(boolean all)
     {
-        int value = ModSellingBinProcessors.calculateValueFromSingleStack(getItem(SellingBinMenu.ITEM_SLOT));
+        int value = Currency.calculateValueFromSingleStack(getItem(SellingBinMenu.ITEM_SLOT));
         if (value <= 0) return;
 
         while (getItem(SellingBinMenu.ITEM_SLOT).getCount() > 0)
@@ -69,29 +73,46 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
         return storedProgress + ModDataMaps.getOrDefault(getItem(SellingBinMenu.RESULT_SLOT), ModDataMaps.SELLING_BIN_CURRENCIES, 0) * getItem(SellingBinMenu.RESULT_SLOT).getCount();
     }
 
+    //updates result slot to the highest possible currency
     public void update()
     {
         ItemStack is = getItem(SellingBinMenu.RESULT_SLOT);
 
         int progressAvailable = getProgressAvailable();
 
-        for (Pair<Item, Integer> c : currenciesReversed)
-        {
-            if (progressAvailable > c.getB() && (is.isEmpty() || is.getCount() < is.getMaxStackSize()))
+        //if none run through all currencies to find the highest one
+        if (currencySelected.isNone())
+            for (Currency c : currenciesReversed)
             {
-                if (!is.is(c.getA())) is = new ItemStack(c.getA());
+                if (progressAvailable > c.value())
+                {
+                    if (!is.is(c.item())) is = new ItemStack(c.item());
 
-                int count = Math.clamp(progressAvailable / c.getB(), 0, c.getA().getMaxStackSize(new ItemStack(c.getA())));
+                    int count = Math.clamp(progressAvailable / c.value(), 0, c.item().getMaxStackSize(new ItemStack(c.item())));
 
-                is.setCount(count);
+                    is.setCount(count);
 
-                setItem(SellingBinMenu.RESULT_SLOT, is);
+                    setItem(SellingBinMenu.RESULT_SLOT, is);
 
-                storedProgress = progressAvailable - c.getB() * count;
+                    storedProgress = progressAvailable - c.value() * count;
 
-                break;
+                    break;
+                }
             }
+        else
+        {
+            //else run the math for the selected currency
+            if (!is.is(currencySelected.item())) is = new ItemStack(currencySelected.item());
+
+            int count = Math.clamp(progressAvailable / currencySelected.value(), 0, currencySelected.item().getMaxStackSize(new ItemStack(currencySelected.item())));
+
+            is.setCount(count);
+
+            setItem(SellingBinMenu.RESULT_SLOT, is);
+
+            storedProgress = progressAvailable - currencySelected.value() * count;
         }
+
 
         updateToClient();
     }
@@ -115,6 +136,15 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
         //insta sell
         tag.putBoolean("insta_sell", instaSell);
 
+        //currency selected
+        if (!currencySelected.isNone())
+        {
+            for (int i = 0; i < currencies.size(); i++)
+                if (currencySelected.equals(currencies.get(i))) tag.putInt("currency", i);
+        }
+        else
+            tag.putInt("currency", -1);
+
         //stored progress
         tag.putInt("stored_progress", storedProgress);
 
@@ -130,6 +160,12 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
 
         //insta sell
         if (tag.contains("insta_sell")) instaSell = tag.getBoolean("insta_sell");
+
+        //currency
+        if (tag.contains("currency"))
+            if (tag.getInt("currency") == -1) currencySelected = Currency.NONE;
+            else if (currencies.size() > tag.getInt("currency"))
+                currencySelected = currencies.get(tag.getInt("currency"));
 
         //stored progress
         if (tag.contains("stored_progress")) storedProgress = tag.getInt("stored_progress");
@@ -244,6 +280,10 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     @Override
     public int[] getSlotsForFace(Direction direction)
     {
+        BlockState blockState = level.getBlockState(getBlockPos());
+        if(!blockState.is(ModBlocks.SELLING_BIN)) return new int[0];
+        if(!blockState.getValue(AbstractMultiBlock.CENTER)) return new int[0];
+
         if (direction == Direction.DOWN) return new int[]{1};
         return new int[]{0};
     }
@@ -251,7 +291,7 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     @Override
     public boolean canPlaceItemThroughFace(int i, ItemStack itemStack, @org.jetbrains.annotations.Nullable Direction direction)
     {
-        int value = ModSellingBinProcessors.calculateValueFromSingleStack(itemStack);
+        int value = Currency.calculateValueFromSingleStack(itemStack);
         return value > 0 && direction != Direction.DOWN;
     }
 
@@ -266,5 +306,32 @@ public class SellingBinBlockEntity extends AbstractMultiBlockEntity implements W
     {
         update();
         if (instaSell) sell(true);
+    }
+
+    public void cycleCurrency()
+    {
+        if (currencySelected.isNone())
+        {
+            currencySelected = currencies.getFirst();
+            update();
+            return;
+        }
+
+
+        for (int i = 0; i < currencies.size() - 1; i++)
+        {
+            if (currencies.get(i).equals(currencySelected))
+            {
+                currencySelected = currencies.get(i + 1);
+                update();
+                return;
+            }
+
+        }
+
+
+        currencySelected = Currency.NONE;
+        update();
+        updateToClient();
     }
 }
