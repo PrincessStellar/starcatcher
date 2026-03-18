@@ -11,7 +11,7 @@ modId="starcatcher"
 version="${mod_version}"
 displayName="${mod_name}"
 displayURL="http://curseforge.com/minecraft/mc-mods/starcatcher"
-logoFile="starcatcher 256x256.png" #optional
+logoFile = "icon.png"
 mod_authors="${mod_authors}" #optional
 description='''A fishing mod with lots of fishes to collect!
 
@@ -22,7 +22,7 @@ Nikdo53 - Fishing minigame art & miscellaneous texture tweeks
 ScribbleDemon - Guide book, Fish radar and "Fish Caught!" notification art
 DayTheMagpie - Trophy Models, Tournament UI & models, Secret Notes art, Fisherman's Hats, Selling Bin UI, Bobbers Models, & various other Items and UI art
 Spring - 3D Fish models and some item sprite tweaks
-Redeix - Selling Bin model, Tackle Box model and animations, Farmer's delight food, and several item textures
+Redeix - Selling Bin model, Tackle Box model and animations, Farmer's delight food sprites, and several item textures
 Identidade470 - Conches & Clams textures and models
 Burning Sulphur - Aiding in adding compatibility with mods
 Axtro - Help with Farmer's Delight Addon

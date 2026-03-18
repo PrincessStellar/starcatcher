@@ -1,20 +1,16 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.registry.ModDataMaps;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.DurabilitySellingBinProcessor;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.FishSellingBinProcessor;
+import com.wdiscute.starcatcher.sellingbin.FishProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class DGDataMapsProvider extends DataMapProvider
@@ -27,9 +23,9 @@ public class DGDataMapsProvider extends DataMapProvider
     @Override
     protected void gather(HolderLookup.Provider provider)
     {
-        var decor = this.builder(ModDataMaps.AQUARIUM_INTERACTION);
-        var bin = this.builder(ModDataMaps.SELLING_BIN_VALUE);
-        var currencies = this.builder(ModDataMaps.SELLING_BIN_CURRENCIES);
+        var decor = this.builder(SCDataMaps.AQUARIUM_INTERACTION);
+        var currencies = this.builder(com.wdiscute.sellingbin.registry.ModDataMaps.SELLING_BIN_CURRENCIES);
+        var bin = this.builder(com.wdiscute.sellingbin.registry.ModDataMaps.SELLING_BIN_VALUE);
 
         //ground
         decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -47,16 +43,14 @@ public class DGDataMapsProvider extends DataMapProvider
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
 
-
-        bin.add(StarcatcherTags.COMMON_FISHES, new FishSellingBinProcessor().create(20), false);
-        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishSellingBinProcessor().create(50), false);
-        bin.add(StarcatcherTags.RARE_FISHES, new FishSellingBinProcessor().create(100), false);
-        bin.add(StarcatcherTags.EPIC_FISHES, new FishSellingBinProcessor().create(200), false);
-        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishSellingBinProcessor().create(500), false);
-
-        bin.add(ModItems.FISH_BONES, ModDataMaps.ItemValue.empty(20), false);
-
         currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
         currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);
+
+        bin.add(StarcatcherTags.COMMON_FISHES, new FishProcessor(2f, 10f).create(25), false);
+        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishProcessor(2f, 10f).create(50), false);
+        bin.add(StarcatcherTags.RARE_FISHES, new FishProcessor(2f, 10f).create(100), false);
+        bin.add(StarcatcherTags.EPIC_FISHES, new FishProcessor(2f, 10f).create(150), false);
+        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishProcessor(2f, 10f).create(200), false);
+
     }
 }

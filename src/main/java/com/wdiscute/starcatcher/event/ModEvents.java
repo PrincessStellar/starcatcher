@@ -4,35 +4,28 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.commands.ModCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.ModDataAttachments;
-import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.TournamentSavedData;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.*;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
 import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
-import com.wdiscute.starcatcher.registry.ModDataMaps;
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
-import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
@@ -59,7 +52,7 @@ public class ModEvents
     public static void serverStarted(RegisterSpawnPlacementsEvent event)
     {
         event.register(
-                ModEntities.FISH.get(), SpawnPlacementTypes.IN_WATER,
+                SCEntities.FISH.get(), SpawnPlacementTypes.IN_WATER,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 FishEntity::validSpawnPlacement,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
@@ -112,7 +105,7 @@ public class ModEvents
 
             if (Config.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
             {
-                sp.addItem(new ItemStack(ModItems.GUIDE.get()));
+                sp.addItem(new ItemStack(SCItems.GUIDE.get()));
                 fishingGuideAttachment.receivedGuide = true;
             }
         }
@@ -126,7 +119,6 @@ public class ModEvents
         event.register(Starcatcher.MINIGAME_MODIFIERS_REGISTRY);
         event.register(Starcatcher.CATCH_MODIFIERS_REGISTRY);
         event.register(Starcatcher.TACKLE_SKIN_REGISTRY);
-        event.register(Starcatcher.SELLING_BIN_REGISTRY);
     }
 
     @SubscribeEvent
@@ -154,11 +146,11 @@ public class ModEvents
                 ItemStack is;
                 float i = level.getRandom().nextFloat();
                 if (i < 0.8f)
-                    is = new ItemStack(ModItems.WORM.get());
+                    is = new ItemStack(SCItems.WORM.get());
                 else if (i < 0.99f)
-                    is = new ItemStack(ModItems.ALMIGHTY_WORM.get());
+                    is = new ItemStack(SCItems.ALMIGHTY_WORM.get());
                 else
-                    is = new ItemStack(ModItems.SEEKING_WORM.get());
+                    is = new ItemStack(SCItems.SEEKING_WORM.get());
 
                 Vec3 vec3 = Vec3.atLowerCornerWithOffset(pos, 0.5F, 1.01, 0.5F).offsetRandom(level.random, 0.7F);
                 ItemEntity itementity = new ItemEntity(level, vec3.x(), vec3.y(), vec3.z(), is);
@@ -180,15 +172,13 @@ public class ModEvents
     @SubscribeEvent
     public static void registerAttributed(EntityAttributeCreationEvent event)
     {
-        event.put(ModEntities.FISH.get(), FishEntity.createAttributes().build());
+        event.put(SCEntities.FISH.get(), FishEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerAttributed(RegisterDataMapTypesEvent event)
     {
-        event.register(ModDataMaps.AQUARIUM_INTERACTION);
-        event.register(ModDataMaps.SELLING_BIN_VALUE);
-        event.register(ModDataMaps.SELLING_BIN_CURRENCIES);
+        event.register(SCDataMaps.AQUARIUM_INTERACTION);
     }
 
     @SubscribeEvent

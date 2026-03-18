@@ -1,11 +1,10 @@
 package com.wdiscute.starcatcher.registry.blocks;
 
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
-import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinBlock;
 import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxBlock;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
@@ -37,8 +36,6 @@ public interface ModBlocks
     DeferredBlock<Block> DISPLAY = registerBlock("display", DisplayBlock::new);
 
     DeferredBlock<Block> TELESCOPE = registerBlock("telescope", TelescopeBlock::new);
-
-    DeferredBlock<Block> SELLING_BIN = registerBlock("selling_bin", SellingBinBlock::new);
 
     DeferredBlock<Block> AQUARIUM = registerBlock("aquarium", AquariumBlock::new);
 
@@ -87,7 +84,7 @@ public interface ModBlocks
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        ModItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
+        SCItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 
@@ -95,16 +92,16 @@ public interface ModBlocks
     {
         DeferredBlock<T> toReturn = HATS.register(name, block);
         if (modifiers.length == 0)
-            ModItems.ITEMS.register(name, () -> new HatItem(toReturn.get()));
+            SCItems.ITEMS.register(name, () -> new HatItem(toReturn.get()));
         else
-            ModItems.ITEMS.register(name, () -> new HatItem(toReturn.get(), modifiers));
+            SCItems.ITEMS.register(name, () -> new HatItem(toReturn.get(), modifiers));
         return toReturn;
     }
 
     private static <T extends Block> DeferredBlock<T> registerTackleBox(String name, Supplier<T> block, ResourceLocation... modifiers)
     {
         DeferredBlock<T> toReturn = TACKLE_BOXES.register(name, block);
-        ModItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
+        SCItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
         return toReturn;
     }
 

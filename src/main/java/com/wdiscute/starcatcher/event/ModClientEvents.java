@@ -9,7 +9,6 @@ import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
-import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinScreen;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxRenderer;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxScreen;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
@@ -33,11 +32,10 @@ import net.neoforged.neoforge.client.event.*;
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class ModClientEvents
 {
-
     @SubscribeEvent
     public static void keyPressed(InputEvent.Key event)
     {
-        if(event.getAction() == 0 && event.getKey() == ModKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
+        if(event.getAction() == 0 && event.getKey() == SCKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
         {
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
         }
@@ -54,11 +52,11 @@ public class ModClientEvents
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event)
     {
-        EntityRenderers.register(ModEntities.FISHING_BOB.get(), FishingBobRenderer::new);
-        EntityRenderers.register(ModEntities.BROKEN_BOTTLE.get(), ThrownItemRenderer::new);
-        EntityRenderers.register(ModEntities.BOTTLED_LETTER.get(), ThrownItemRenderer::new);
-        EntityRenderers.register(ModEntities.FISH.get(), FishRenderer::new);
-        event.enqueueWork(ModItemProperties::addCustomItemProperties);
+        EntityRenderers.register(SCEntities.FISHING_BOB.get(), FishingBobRenderer::new);
+        EntityRenderers.register(SCEntities.BROKEN_BOTTLE.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(SCEntities.BOTTLED_LETTER.get(), ThrownItemRenderer::new);
+        EntityRenderers.register(SCEntities.FISH.get(), FishRenderer::new);
+        event.enqueueWork(SCItemProperties::addCustomItemProperties);
     }
 
     @SubscribeEvent
@@ -71,18 +69,17 @@ public class ModClientEvents
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event)
     {
-        event.registerSpriteSet(ModParticles.FISHING_NOTIFICATION.get(), FishingNotificationParticles.Provider::new);
-        event.registerSpriteSet(ModParticles.FISHING_BITING.get(), FishingBitingParticles.Provider::new);
-        event.registerSpriteSet(ModParticles.FISHING_BITING_LAVA.get(), FishingBitingLavaParticles.Provider::new);
+        event.registerSpriteSet(SCParticles.FISHING_NOTIFICATION.get(), FishingNotificationParticles.Provider::new);
+        event.registerSpriteSet(SCParticles.FISHING_BITING.get(), FishingBitingParticles.Provider::new);
+        event.registerSpriteSet(SCParticles.FISHING_BITING_LAVA.get(), FishingBitingLavaParticles.Provider::new);
     }
 
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event)
     {
-        event.register(ModMenuTypes.FISHING_ROD_MENU.get(), FishingRodScreen::new);
-        event.register(ModMenuTypes.STAND_MENU.get(), StandScreen::new);
-        event.register(ModMenuTypes.SELLING_BIN_MENU.get(), SellingBinScreen::new);
-        event.register(ModMenuTypes.TACKLE_BOX.get(), TackleBoxScreen::new);
+        event.register(SCMenuTypes.FISHING_ROD_MENU.get(), FishingRodScreen::new);
+        event.register(SCMenuTypes.STAND_MENU.get(), StandScreen::new);
+        event.register(SCMenuTypes.TACKLE_BOX.get(), TackleBoxScreen::new);
     }
 
     @SubscribeEvent
@@ -134,8 +131,8 @@ public class ModClientEvents
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event)
     {
-        event.register(ModKeymappings.MINIGAME_HIT);
-        event.register(ModKeymappings.EXPAND_TOURNAMENT);
+        event.register(SCKeymappings.MINIGAME_HIT);
+        event.register(SCKeymappings.EXPAND_TOURNAMENT);
     }
 
     @SubscribeEvent
