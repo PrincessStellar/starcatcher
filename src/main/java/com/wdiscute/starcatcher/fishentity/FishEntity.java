@@ -5,7 +5,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -80,7 +80,7 @@ public class FishEntity extends AbstractFish
 
             for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
             {
-                if (FishProperties.getChance(fp, this, ModItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
+                if (FishProperties.getChance(fp, this, SCItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
                     available.add(fp);
             }
 
@@ -112,7 +112,7 @@ public class FishEntity extends AbstractFish
     @Override
     public ItemStack getBucketItemStack()
     {
-        ItemStack is = new ItemStack(ModItems.STARCAUGHT_BUCKET.get());
+        ItemStack is = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
         ModDataComponents.set(is, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
         return is;
     }

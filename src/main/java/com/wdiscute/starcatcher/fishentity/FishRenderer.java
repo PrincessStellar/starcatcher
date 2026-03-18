@@ -4,10 +4,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
-import com.wdiscute.starcatcher.registry.ModRenderTypes;
+import com.wdiscute.starcatcher.registry.SCRenderTypes;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -44,32 +44,32 @@ public class FishRenderer extends EntityRenderer<FishEntity>
     {
         if (!map.isEmpty()) return;
 
-        map.put(ModItems.AGAVE_BREAM.get(), new AgaveBream<>(modelSet.bakeLayer(AgaveBream.LAYER_LOCATION)));
-        map.put(ModItems.BIGEYE_TUNA.get(), new BigeyeTuna<>(modelSet.bakeLayer(BigeyeTuna.LAYER_LOCATION)));
-        map.put(ModItems.BOREAL.get(), new Boreal<>(modelSet.bakeLayer(Boreal.LAYER_LOCATION)));
-        map.put(ModItems.CACTIFISH.get(), new CactiFish<>(modelSet.bakeLayer(CactiFish.LAYER_LOCATION)));
-        map.put(ModItems.CHARFISH.get(), new Charfish<>(modelSet.bakeLayer(Charfish.LAYER_LOCATION)));
-        map.put(ModItems.CRYSTALBACK_BOREAL.get(), new CrystalbackBoreal<>(modelSet.bakeLayer(CrystalbackBoreal.LAYER_LOCATION)));
-        map.put(ModItems.CRYSTALBACK_MINNOW.get(), new CrystalbackMinnow<>(modelSet.bakeLayer(CrystalbackMinnow.LAYER_LOCATION)));
-        map.put(ModItems.DEEPJAW_HERRING.get(), new DeepjawHerring<>(modelSet.bakeLayer(DeepjawHerring.LAYER_LOCATION)));
-        map.put(ModItems.DOWNFALL_BREAM.get(), new DownfallBream<>(modelSet.bakeLayer(DownfallBream.LAYER_LOCATION)));
-        map.put(ModItems.DRIFTFIN.get(), new Driftfin<>(modelSet.bakeLayer(Driftfin.LAYER_LOCATION)));
-        map.put(ModItems.DRIFTING_BREAM.get(), new DriftingBream<>(modelSet.bakeLayer(DriftingBream.LAYER_LOCATION)));
-        map.put(ModItems.DUSKTAIL_SNAPPER.get(), new DusktailSnapper<>(modelSet.bakeLayer(DusktailSnapper.LAYER_LOCATION)));
-        map.put(ModItems.LILY_SNAPPER.get(), new LilySnapper<>(modelSet.bakeLayer(LilySnapper.LAYER_LOCATION)));
-        map.put(ModItems.PINK_KOI.get(), new PinkKoi<>(modelSet.bakeLayer(PinkKoi.LAYER_LOCATION)));
-        map.put(ModItems.SILVERVEIL_PERCH.get(), new SilverveilPerch<>(modelSet.bakeLayer(SilverveilPerch.LAYER_LOCATION)));
-        map.put(ModItems.SLUDGE_CATFISH.get(), new SludgeCatfish<>(modelSet.bakeLayer(SludgeCatfish.LAYER_LOCATION)));
-        map.put(ModItems.WHITEVEIL.get(), new Whiteveil<>(modelSet.bakeLayer(Whiteveil.LAYER_LOCATION)));
-        map.put(ModItems.WILLOW_BREAM.get(), new WillowBream<>(modelSet.bakeLayer(WillowBream.LAYER_LOCATION)));
-        map.put(ModItems.WINTERY_PIKE.get(), new WinteryPike<>(modelSet.bakeLayer(WinteryPike.LAYER_LOCATION)));
-        map.put(ModItems.CRYSTALBACK_TROUT.get(), new CrystalbackTrout<>(modelSet.bakeLayer(CrystalbackTrout.LAYER_LOCATION)));
-        map.put(ModItems.EMBERGILL.get(), new Embergill<>(modelSet.bakeLayer(Embergill.LAYER_LOCATION)));
-        map.put(ModItems.FROSTGILL_CHUB.get(), new FrostgillChub<>(modelSet.bakeLayer(FrostgillChub.LAYER_LOCATION)));
-        map.put(ModItems.FROSTJAW_TROUT.get(), new FrostjawTrout<>(modelSet.bakeLayer(FrostjawTrout.LAYER_LOCATION)));
-        map.put(ModItems.HOLLOWBELLY_DARTER.get(), new HollowbellyDarter<>(modelSet.bakeLayer(HollowbellyDarter.LAYER_LOCATION)));
-        map.put(ModItems.ICETOOTH_STURGEON.get(), new IcetoothSturgeon<>(modelSet.bakeLayer(IcetoothSturgeon.LAYER_LOCATION)));
-        map.put(ModItems.MISTBACK_CHUB.get(), new MistbackChub<>(modelSet.bakeLayer(MistbackChub.LAYER_LOCATION)));
+        map.put(SCItems.AGAVE_BREAM.get(), new AgaveBream<>(modelSet.bakeLayer(AgaveBream.LAYER_LOCATION)));
+        map.put(SCItems.BIGEYE_TUNA.get(), new BigeyeTuna<>(modelSet.bakeLayer(BigeyeTuna.LAYER_LOCATION)));
+        map.put(SCItems.BOREAL.get(), new Boreal<>(modelSet.bakeLayer(Boreal.LAYER_LOCATION)));
+        map.put(SCItems.CACTIFISH.get(), new CactiFish<>(modelSet.bakeLayer(CactiFish.LAYER_LOCATION)));
+        map.put(SCItems.CHARFISH.get(), new Charfish<>(modelSet.bakeLayer(Charfish.LAYER_LOCATION)));
+        map.put(SCItems.CRYSTALBACK_BOREAL.get(), new CrystalbackBoreal<>(modelSet.bakeLayer(CrystalbackBoreal.LAYER_LOCATION)));
+        map.put(SCItems.CRYSTALBACK_MINNOW.get(), new CrystalbackMinnow<>(modelSet.bakeLayer(CrystalbackMinnow.LAYER_LOCATION)));
+        map.put(SCItems.DEEPJAW_HERRING.get(), new DeepjawHerring<>(modelSet.bakeLayer(DeepjawHerring.LAYER_LOCATION)));
+        map.put(SCItems.DOWNFALL_BREAM.get(), new DownfallBream<>(modelSet.bakeLayer(DownfallBream.LAYER_LOCATION)));
+        map.put(SCItems.DRIFTFIN.get(), new Driftfin<>(modelSet.bakeLayer(Driftfin.LAYER_LOCATION)));
+        map.put(SCItems.DRIFTING_BREAM.get(), new DriftingBream<>(modelSet.bakeLayer(DriftingBream.LAYER_LOCATION)));
+        map.put(SCItems.DUSKTAIL_SNAPPER.get(), new DusktailSnapper<>(modelSet.bakeLayer(DusktailSnapper.LAYER_LOCATION)));
+        map.put(SCItems.LILY_SNAPPER.get(), new LilySnapper<>(modelSet.bakeLayer(LilySnapper.LAYER_LOCATION)));
+        map.put(SCItems.PINK_KOI.get(), new PinkKoi<>(modelSet.bakeLayer(PinkKoi.LAYER_LOCATION)));
+        map.put(SCItems.SILVERVEIL_PERCH.get(), new SilverveilPerch<>(modelSet.bakeLayer(SilverveilPerch.LAYER_LOCATION)));
+        map.put(SCItems.SLUDGE_CATFISH.get(), new SludgeCatfish<>(modelSet.bakeLayer(SludgeCatfish.LAYER_LOCATION)));
+        map.put(SCItems.WHITEVEIL.get(), new Whiteveil<>(modelSet.bakeLayer(Whiteveil.LAYER_LOCATION)));
+        map.put(SCItems.WILLOW_BREAM.get(), new WillowBream<>(modelSet.bakeLayer(WillowBream.LAYER_LOCATION)));
+        map.put(SCItems.WINTERY_PIKE.get(), new WinteryPike<>(modelSet.bakeLayer(WinteryPike.LAYER_LOCATION)));
+        map.put(SCItems.CRYSTALBACK_TROUT.get(), new CrystalbackTrout<>(modelSet.bakeLayer(CrystalbackTrout.LAYER_LOCATION)));
+        map.put(SCItems.EMBERGILL.get(), new Embergill<>(modelSet.bakeLayer(Embergill.LAYER_LOCATION)));
+        map.put(SCItems.FROSTGILL_CHUB.get(), new FrostgillChub<>(modelSet.bakeLayer(FrostgillChub.LAYER_LOCATION)));
+        map.put(SCItems.FROSTJAW_TROUT.get(), new FrostjawTrout<>(modelSet.bakeLayer(FrostjawTrout.LAYER_LOCATION)));
+        map.put(SCItems.HOLLOWBELLY_DARTER.get(), new HollowbellyDarter<>(modelSet.bakeLayer(HollowbellyDarter.LAYER_LOCATION)));
+        map.put(SCItems.ICETOOTH_STURGEON.get(), new IcetoothSturgeon<>(modelSet.bakeLayer(IcetoothSturgeon.LAYER_LOCATION)));
+        map.put(SCItems.MISTBACK_CHUB.get(), new MistbackChub<>(modelSet.bakeLayer(MistbackChub.LAYER_LOCATION)));
     }
 
     @Override
@@ -125,7 +125,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
     public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem) {
         if (FishProperties.Rarity.isGolden(fishItem)){
-            return ModRenderTypes.RENDER_TYPE_GOLD.apply(texture);
+            return SCRenderTypes.RENDER_TYPE_GOLD.apply(texture);
         }
         return model.renderType(texture);
     }

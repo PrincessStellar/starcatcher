@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModMenuTypes;
+import com.wdiscute.starcatcher.registry.SCMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -29,7 +29,7 @@ public class TackleBoxMenu extends AbstractContainerMenu
 
     public TackleBoxMenu(int containerId, Inventory playerInventory, Container container)
     {
-        super(ModMenuTypes.TACKLE_BOX.get(), containerId);
+        super(SCMenuTypes.TACKLE_BOX.get(), containerId);
         checkContainerSize(container, 27);
         this.container = container;
         container.startOpen(playerInventory.player);

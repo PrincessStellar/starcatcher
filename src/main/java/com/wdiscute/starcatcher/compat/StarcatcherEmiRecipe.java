@@ -1,8 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import dev.emi.emi.api.recipe.EmiRecipe;
@@ -11,8 +10,6 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -26,8 +23,8 @@ public class StarcatcherEmiRecipe implements EmiRecipe {
     private final List<EmiStack> output;
     private final TrophyProperties tp;
     private final List<EmiIngredient> input = List.of(
-            EmiIngredient.of(Ingredient.of(ModItems.GUIDE)),
-            EmiIngredient.of(Ingredient.of(ModItems.ROD)));
+            EmiIngredient.of(Ingredient.of(SCItems.GUIDE)),
+            EmiIngredient.of(Ingredient.of(SCItems.ROD)));
     private final ItemStack is;
 
     public StarcatcherEmiRecipe(ResourceLocation id, FishProperties fp) {

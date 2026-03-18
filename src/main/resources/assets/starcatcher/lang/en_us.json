@@ -81,7 +81,6 @@
   "starcatcher.configuration.enable_villager_sound" : "Minigame Villager Sound",
   "starcatcher.configuration.enable_hit_sound" : "Minigame Hit Sound",
   "starcatcher.configuration.enable_miss_sound" : "Minigame Miss Sound",
-  "starcatcher.configuration.always_show_selling_bin_price" : "Always Show Selling Bin Prices",
   "starcatcher.configuration.vanilla_partial_ticks" : "Vanilla Partial Ticks",
 
 
@@ -103,11 +102,11 @@
   "starcatcher.configuration.base_max_ticks" : "Maximum Ticks To Fish",
   "starcatcher.configuration.base_chance" : "Base Chance To Fish Per Tick",
   "starcatcher.configuration.restrict_tackle_box_to_tag" : "Restrict Tackle Box To Tag",
-  "starcatcher.configuration.selling_bin_lowest_value" : "Selling Bin Lowest Value",
-  "starcatcher.configuration.selling_in_multiplier" : "Selling Bin Multiplier",
 
 
 
+  "gui.starcatcher.processor.fishes_processor.percentile" : "- Price is increased by +%s% based on top 50%",
+  "gui.starcatcher.processor.fishes_processor.golden" : "- Price is multiplied by if %sx golden.",
 
 
 
@@ -431,17 +430,6 @@
   "block.starcatcher.tackle_box_green" : "Green Tackle Box",
 
   "block.starcatcher.aquarium" : "Aquarium",
-
-  "block.starcatcher.selling_bin" : "Selling Bin",
-
-  "gui.starcatcher.selling_bin.sell" : "Sell",
-  "gui.starcatcher.selling_bin.auto_sell" : "Toggle Auto-Sell",
-  "gui.starcatcher.selling_bin.currency_selected" : "Currency:",
-  "gui.starcatcher.selling_bin.highest" : "Highest Possible",
-
-  "item.minecraft.emerald.plural" : "Emeralds",
-  "block.minecraft.emerald_block.plural" : "Emerald Blocks",
-
 
   "block.starcatcher.fisherman_hat_black": "Black Fisherman's Hat",
   "block.starcatcher.fisherman_hat_blue": "Blue Fisherman's Hat",

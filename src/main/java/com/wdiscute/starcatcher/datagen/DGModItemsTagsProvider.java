@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.wdiscute.starcatcher.registry.ModItems.*;
+import static com.wdiscute.starcatcher.registry.SCItems.*;
 import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
 public class DGModItemsTagsProvider extends ItemTagsProvider

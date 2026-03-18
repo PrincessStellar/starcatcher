@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +33,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
         if (!list.isEmpty())
         {
             messageFished = true;
-            ItemStack is = new ItemStack(ModItems.MESSAGE_IN_A_BOTTLE.get());
+            ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
 
             LetterItem.Message message = list.get(U.r.nextInt(list.size()));
             MessagesSavedData.get(((ServerLevel) instance.level())).removeMessage(message);

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.blocks.display;
 
 import com.mojang.serialization.MapCodec;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -190,7 +189,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
 
         //place book
-        if (!state.getValue(HAS_BOOK) && stack.is(ModItems.GUIDE))
+        if (!state.getValue(HAS_BOOK) && stack.is(SCItems.GUIDE))
         {
             if (!level.isClientSide && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
             {

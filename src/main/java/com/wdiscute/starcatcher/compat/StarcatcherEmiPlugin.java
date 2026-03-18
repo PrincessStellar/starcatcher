@@ -1,8 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
@@ -18,20 +17,17 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SmithingRecipe;
 
-import java.util.Arrays;
 import java.util.function.Supplier;
 
 @EmiEntrypoint
 public class StarcatcherEmiPlugin implements EmiPlugin
 {
     public static final ResourceLocation MY_SPRITE_SHEET = Starcatcher.rl("textures/gui/emi_simplified_textures.png");
-    public static final EmiStack MY_WORKSTATION = EmiStack.of(ModItems.ROD);
+    public static final EmiStack MY_WORKSTATION = EmiStack.of(SCItems.ROD);
     public static final EmiRecipeCategory STARCATCHER_CATEGORY
             = new EmiRecipeCategory(
             Starcatcher.rl("fishing"),

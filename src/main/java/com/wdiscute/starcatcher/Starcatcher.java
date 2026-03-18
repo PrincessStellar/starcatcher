@@ -1,8 +1,6 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.AbstractSellingBinProcessor;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
@@ -17,6 +15,7 @@ import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
+import com.wdiscute.starcatcher.sellingbin.SCProcessors;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.client.Minecraft;
@@ -62,9 +61,6 @@ public class Starcatcher
     public static final ResourceKey<Registry<Supplier<AbstractTackleSkin>>> TACKLE_SKIN =
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
 
-    public static final ResourceKey<Registry<AbstractSellingBinProcessor>> SELLING_BIN =
-            ResourceKey.createRegistryKey(Starcatcher.rl("selling_bin"));
-
     //registry
     public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
             .sync(true)
@@ -84,10 +80,6 @@ public class Starcatcher
     public static final Registry<Supplier<AbstractTackleSkin>> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
             .sync(true)
             .defaultKey(Starcatcher.rl("pearl"))
-            .create();
-
-    public static final Registry<AbstractSellingBinProcessor> SELLING_BIN_REGISTRY = new RegistryBuilder<>(SELLING_BIN)
-            .sync(true)
             .create();
 
     public static ResourceLocation rl(String s)
@@ -117,30 +109,37 @@ public class Starcatcher
 
     public Starcatcher(IEventBus modEventBus, ModContainer modContainer)
     {
-        ModCreativeModeTabs.register(modEventBus);
+        SCCreativeModeTabs.register(modEventBus);
 
-        ModItems.register(modEventBus);
+        SCItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModDataComponents.register(modEventBus);
-        ModSounds.register(modEventBus);
-        ModEntities.register(modEventBus);
-        ModParticles.register(modEventBus);
-        ModRecipes.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
+        SCSounds.register(modEventBus);
+        SCEntities.register(modEventBus);
+        SCParticles.register(modEventBus);
+        SCRecipes.register(modEventBus);
+        SCMenuTypes.register(modEventBus);
         ModDataAttachments.register(modEventBus);
         ModSweetSpotsBehaviour.register(modEventBus);
         ModMinigameModifiers.register(modEventBus);
-        ModSellingBinProcessors.register(modEventBus);
         ModCatchModifiers.register(modEventBus);
         ModTackleSkins.register(modEventBus);
-        ModCriterionTriggers.register(modEventBus);
+        SCCriterionTriggers.register(modEventBus);
+        SCProcessors.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC_SERVER);
 
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        SCItems.registerExtra();
+    }
 
-        ModItems.registerExtra();
+    @Mod(value = Starcatcher.MOD_ID, dist = Dist.CLIENT)
+    public static class Client
+    {
+        public Client(ModContainer modContainer)
+        {
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
     }
 }

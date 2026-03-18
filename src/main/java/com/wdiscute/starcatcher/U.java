@@ -6,15 +6,14 @@ import com.wdiscute.starcatcher.datagen.TrustedHolder;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.ModCriterionTriggers;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCCriterionTriggers;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -59,7 +58,7 @@ public class U
             {
                 FishProperties fp = fbe.fpToFish;
 
-                ModCriterionTriggers.MINIGAME_COMPLETED.get().trigger(player, hits, perfectCatch, completedTreasure, time, fp.catchInfo().fish());
+                SCCriterionTriggers.MINIGAME_COMPLETED.get().trigger(player, hits, perfectCatch, completedTreasure, time, fp.catchInfo().fish());
 
                 //trigger modifiers
                 fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(player, time, completedTreasure, perfectCatch, hits));
@@ -189,7 +188,7 @@ public class U
                     ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
                 }
 
-                if (bait.is(Items.BUCKET) && !fbe.fpToFish.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()) && time != -1)
+                if (bait.is(Items.BUCKET) && !fbe.fpToFish.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && time != -1)
                 {
                     bait.shrink(1);
                     ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
@@ -205,8 +204,8 @@ public class U
     public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
         ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
-        boolean isStarcaught = fp.catchInfo().bucketedFish().is(ModItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
-        boolean isBucketed = !fp.catchInfo().bucketedFish().is(ModItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
+        boolean isStarcaught = fp.catchInfo().bucketedFish().is(SCItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
+        boolean isBucketed = !fp.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
 
         ItemStack is;
 
@@ -550,19 +549,6 @@ public class U
 
     public static void nothing(Object... o)
     {
-    }
-
-    public static Component getPluralTranslation(ItemStack itemStack)
-    {
-        return getPluralTranslation(itemStack.getItem());
-    }
-
-    public static Component getPluralTranslation(Item item)
-    {
-        if(I18n.exists(item.getDescriptionId() + ".plural"))
-            return Component.translatable(item.getDescriptionId() + ".plural");
-        else
-            return Component.translatable(item.getDescriptionId());
     }
 
     //0-255

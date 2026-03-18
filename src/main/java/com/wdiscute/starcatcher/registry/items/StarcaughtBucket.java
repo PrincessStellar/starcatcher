@@ -3,8 +3,8 @@ package com.wdiscute.starcatcher.registry.items;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +33,7 @@ public class StarcaughtBucket extends BucketItem
         super(
                 fluid, new Item.Properties().stacksTo(16));
 
-        entity = ModEntities.FISH.get();
+        entity = SCEntities.FISH.get();
     }
 
     @Override
@@ -52,7 +52,7 @@ public class StarcaughtBucket extends BucketItem
         if(ModDataComponents.has(bucketedMobStack, ModDataComponents.BUCKETED_FISH))
             fishEntity.setFish(getFish(bucketedMobStack));
         else
-            fishEntity.setFish(ModItems.AURORA.toStack());
+            fishEntity.setFish(SCItems.AURORA.toStack());
     }
 
     private static ItemStack getFish(ItemStack bucket) {

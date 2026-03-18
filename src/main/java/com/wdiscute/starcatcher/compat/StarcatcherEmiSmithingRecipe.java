@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
@@ -48,7 +48,7 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
         this.template = EmiIngredient.of(Ingredient.of(item));
         this.input = EmiIngredient.of(Ingredient.of(StarcatcherTags.RODS));
 
-        ItemStack is = ModItems.ROD.get().getDefaultInstance();
+        ItemStack is = SCItems.ROD.get().getDefaultInstance();
 
         ResourceLocation wadd = ModDataComponents.get(item.getDefaultInstance(), ModDataComponents.TACKLE_SKIN);
 

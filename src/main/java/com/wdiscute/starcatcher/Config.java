@@ -40,11 +40,6 @@ public class Config
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
 
-    public static final ModConfigSpec.BooleanValue ALWAYS_SHOW_SELLING_BIN_PRICE = BUILDER_CLIENT
-            .comment("Always shows the selling bin price of the item hovered instead of only when holding shift")
-            .translation("starcatcher.configuration.always_show_selling_bin_price")
-            .define("always_show_selling_bin_price", false);
-
     public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER_CLIENT
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
             .comment("Vanilla should look better for most people")
@@ -146,11 +141,6 @@ public class Config
             .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
             .translation("starcatcher.configuration.restrict_tackle_box_to_tag")
             .define("restrict_tackle_box_to_tag", true);
-
-    public static final ModConfigSpec.DoubleValue SELLING_BIN_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the selling bin sell rates globally")
-            .translation("starcatcher.configuration.selling_in_multiplier")
-            .defineInRange("selling_bin_multiplier", 1d, 0d, 9999999d);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

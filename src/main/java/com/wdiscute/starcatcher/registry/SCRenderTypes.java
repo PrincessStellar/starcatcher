@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.function.Function;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
-public class ModRenderTypes extends RenderType {
-    public ModRenderTypes(String name, VertexFormat format, VertexFormat.Mode mode, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState) {
+public class SCRenderTypes extends RenderType {
+    public SCRenderTypes(String name, VertexFormat format, VertexFormat.Mode mode, int bufferSize, boolean affectsCrumbling, boolean sortOnUpload, Runnable setupState, Runnable clearState) {
         super(name, format, mode, bufferSize, affectsCrumbling, sortOnUpload, setupState, clearState);
     }
 
@@ -44,7 +44,7 @@ public class ModRenderTypes extends RenderType {
                     true,
                     true,
                     RenderType.CompositeState.builder()
-                            .setShaderState(new RenderStateShard.ShaderStateShard(() -> IrisShadersCompat.withEntityTranslucentFallback(ModRenderTypes::getGoldItemShader)))
+                            .setShaderState(new RenderStateShard.ShaderStateShard(() -> IrisShadersCompat.withEntityTranslucentFallback(SCRenderTypes::getGoldItemShader)))
                             .setTextureState(new RenderStateShard.TextureStateShard(loc, false, false))
                             .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
                             .setOutputState(ITEM_ENTITY_TARGET)

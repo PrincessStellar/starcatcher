@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
@@ -66,7 +66,7 @@ public class DGCollectorsReapFishes extends FishingPropertiesRegistry
                 .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
                         .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/chieftain_crab")))
                 .withAlwaysSpawnEntity(true)
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
         );
     }
 }

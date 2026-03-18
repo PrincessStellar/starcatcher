@@ -3,8 +3,8 @@ package com.wdiscute.starcatcher.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.ModRecipes;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.SCRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -65,7 +65,7 @@ public class FishingRodSkinSmithingRecipe implements SmithingRecipe
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
-        ItemStack itemstack = new ItemStack(ModItems.ROD.get());
+        ItemStack itemstack = new ItemStack(SCItems.ROD.get());
         ModDataComponents.set(itemstack, ModDataComponents.NETHERITE_UPGRADE, true);
         return itemstack;
     }
@@ -73,7 +73,7 @@ public class FishingRodSkinSmithingRecipe implements SmithingRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.FISHING_ROD_SKIN_SMITHING.get();
+        return SCRecipes.FISHING_ROD_SKIN_SMITHING.get();
     }
 
     @Override

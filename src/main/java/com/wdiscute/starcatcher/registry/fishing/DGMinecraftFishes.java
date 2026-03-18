@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
@@ -60,7 +60,7 @@ public class DGMinecraftFishes
                                 .withCorrectBaitChanceAdded(200)
                 )
                 .withDifficulty(FishProperties.Difficulty.WITHER)
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
         );
 
@@ -74,7 +74,7 @@ public class DGMinecraftFishes
                                 .withCorrectBaitChanceAdded(100)
                 )
                 .withDifficulty(FishProperties.Difficulty.CREEPER)
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
                 .withRarity(FishProperties.Rarity.EPIC)
         );
 

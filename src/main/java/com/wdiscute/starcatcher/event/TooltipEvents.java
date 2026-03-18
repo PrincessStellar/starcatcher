@@ -6,8 +6,6 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.registry.blocks.sellingbin.Currency;
-import com.wdiscute.starcatcher.registry.custom.sellingbinprocessor.ModSellingBinProcessors;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
@@ -91,19 +89,6 @@ public class TooltipEvents
                 if (hasShiftDown)
                     element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
                 comp.add(1, element);
-            }
-        }
-
-        //selling bin info
-        if (Screen.hasShiftDown() || Config.ALWAYS_SHOW_SELLING_BIN_PRICE.get())
-        {
-            int value = Currency.calculateValueFromSingleStack(stack);
-            if (value > 0)
-            {
-                MutableComponent literal = Component.literal(Currency.getStringFromValue(value));
-                if (stack.getCount() > 1)
-                    literal.append(Component.literal(" (" + Currency.getStringFromValue(value * stack.getCount()) + ")"));
-                comp.add(1, literal.withStyle(ChatFormatting.DARK_GRAY));
             }
         }
 

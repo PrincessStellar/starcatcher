@@ -10,8 +10,8 @@ import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModParticles;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCParticles;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
@@ -102,7 +102,7 @@ public class FishingBobEntity extends Projectile
     //server
     public FishingBobEntity(Level level, Player player, ItemStack rod)
     {
-        super(ModEntities.FISHING_BOB.get(), level);
+        super(SCEntities.FISHING_BOB.get(), level);
 
         this.setOwner(player);
         this.player = player;
@@ -181,7 +181,8 @@ public class FishingBobEntity extends Projectile
                 FishProperties.Rarity.RARE, TrophyProperties.RarityProgress.DEFAULT,
                 FishProperties.Rarity.EPIC, TrophyProperties.RarityProgress.DEFAULT,
                 FishProperties.Rarity.LEGENDARY, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.GOLDEN, TrophyProperties.RarityProgress.DEFAULT
+                FishProperties.Rarity.GOLDEN, TrophyProperties.RarityProgress.DEFAULT,
+                FishProperties.Rarity.TRASH, TrophyProperties.RarityProgress.DEFAULT
         ));
 
         FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->
@@ -412,14 +413,14 @@ public class FishingBobEntity extends Projectile
             {
                 if (level().getFluidState(blockpos).is(Fluids.LAVA))
                     level().addParticle(
-                            ModParticles.FISHING_BITING_LAVA.get(),
+                            SCParticles.FISHING_BITING_LAVA.get(),
                             position().x + random.nextFloat() - 0.5,
                             position().y + random.nextFloat() * 0.5 - 0.25,
                             position().z + random.nextFloat() - 0.5,
                             0, 0, 0);
                 else
                     level().addParticle(
-                            ModParticles.FISHING_BITING.get(),
+                            SCParticles.FISHING_BITING.get(),
                             position().x + random.nextFloat() - 0.5,
                             position().y + random.nextFloat() * 0.5 - 0.25,
                             position().z + random.nextFloat() - 0.5,
@@ -518,7 +519,7 @@ public class FishingBobEntity extends Projectile
             {
                 if (Config.SHOW_EXCLAMATION_MARK_PARTICLE.get())
                     ((ServerLevel) level()).sendParticles(
-                            ModParticles.FISHING_NOTIFICATION.get(),
+                            SCParticles.FISHING_NOTIFICATION.get(),
                             position().x, position().y + 1, position().z,
                             1, 0, 0, 0, 0);
 

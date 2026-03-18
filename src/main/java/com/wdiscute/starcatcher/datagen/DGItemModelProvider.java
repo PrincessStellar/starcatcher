@@ -10,7 +10,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-import static com.wdiscute.starcatcher.registry.ModItems.*;
+import static com.wdiscute.starcatcher.registry.SCItems.*;
 import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
 
 public class DGItemModelProvider extends ItemModelProvider

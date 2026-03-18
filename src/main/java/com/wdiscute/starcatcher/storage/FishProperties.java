@@ -15,7 +15,7 @@ import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -133,7 +133,7 @@ public record FishProperties(
 
     public FishProperties withHideCatch()
     {
-        return new FishProperties(this.catchInfo.withItemToOverrideWith(ModItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.wr, this.br, this.dif, this.daytime, this.weather, this.skipMinigame, this.hasGuideEntry);
+        return new FishProperties(this.catchInfo.withItemToOverrideWith(SCItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.wr, this.br, this.dif, this.daytime, this.weather, this.skipMinigame, this.hasGuideEntry);
     }
 
     public static Builder builder()
@@ -325,8 +325,8 @@ public record FishProperties(
                         BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("fish_bucket").forGetter(CatchInfo::bucketedFish),
                         BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().fieldOf("entity").forGetter(CatchInfo::entityToSpawn),
                         Codec.BOOL.fieldOf("always_spawn_entity").forGetter(CatchInfo::alwaysSpawnEntity),
-                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", ModItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
-                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", ModItems.MISSINGNO).forGetter(CatchInfo::treasure)
+                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
+                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", SCItems.MISSINGNO).forGetter(CatchInfo::treasure)
                 ).apply(instance, CatchInfo::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, CatchInfo> STREAM_CODEC = StreamCodec.composite(
@@ -340,13 +340,13 @@ public record FishProperties(
         );
 
         public static final CatchInfo DEFAULT = new CatchInfo(
-                ModItems.MISSINGNO,
-                ModItems.MISSINGNO,
+                SCItems.MISSINGNO,
+                SCItems.MISSINGNO,
                 //cant use entity reference as its not registered for the psf
                 U.holderEntity("starcatcher", "fish"),
                 false,
-                ModItems.MISSINGNO,
-                ModItems.WATERLOGGED_SATCHEL
+                SCItems.MISSINGNO,
+                SCItems.WATERLOGGED_SATCHEL
         );
 
         public CatchInfo withItemToOverrideWith(Holder<Item> itemToOverrideWith)
@@ -356,12 +356,12 @@ public record FishProperties(
 
         public static class Builder
         {
-            private Holder<Item> fish = ModItems.MISSINGNO;
-            private Holder<Item> bucketedFish = ModItems.MISSINGNO;
+            private Holder<Item> fish = SCItems.MISSINGNO;
+            private Holder<Item> bucketedFish = SCItems.MISSINGNO;
             private Holder<EntityType<?>> entityToSpawn = U.holderEntity("starcatcher", "fish");
             private boolean alwaysSpawnEntity = false;
-            private Holder<Item> itemToOverrideWith = ModItems.MISSINGNO;
-            private Holder<Item> treasure = ModItems.WATERLOGGED_SATCHEL;
+            private Holder<Item> itemToOverrideWith = SCItems.MISSINGNO;
+            private Holder<Item> treasure = SCItems.WATERLOGGED_SATCHEL;
 
             public Builder withFish(Holder<Item> fish)
             {
@@ -508,37 +508,37 @@ public record FishProperties(
                 20);
 
         public static final BaitRestrictions CHERRY_BAIT = new BaitRestrictions(
-                List.of(ModItems.CHERRY_BAIT.getId()),
+                List.of(SCItems.CHERRY_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions LUSH_BAIT = new BaitRestrictions(
-                List.of(ModItems.LUSH_BAIT.getId()),
+                List.of(SCItems.LUSH_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions SCULK_BAIT = new BaitRestrictions(
-                List.of(ModItems.SCULK_BAIT.getId()),
+                List.of(SCItems.SCULK_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions DRIPSTONE_BAIT = new BaitRestrictions(
-                List.of(ModItems.DRIPSTONE_BAIT.getId()),
+                List.of(SCItems.DRIPSTONE_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions MURKWATER_BAIT = new BaitRestrictions(
-                List.of(ModItems.MURKWATER_BAIT.getId()),
+                List.of(SCItems.MURKWATER_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions LEGENDARY_BAIT = new BaitRestrictions(
-                List.of(ModItems.LEGENDARY_BAIT.getId()),
+                List.of(SCItems.LEGENDARY_BAIT.getId()),
                 true,
                 15);
 
         public static final BaitRestrictions LEGENDARY_BAIT_VOIDBITER = new BaitRestrictions(
-                List.of(ModItems.LEGENDARY_BAIT.getId()),
+                List.of(SCItems.LEGENDARY_BAIT.getId()),
                 true,
                 50);
 
@@ -1871,7 +1871,7 @@ public record FishProperties(
 
     public static int getChance(FishProperties fp, Level level, BlockPos bp, ItemStack rod)
     {
-        if(ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(ModItems.DEV_WORM)) return fp.baseChance;
+        if(ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM)) return fp.baseChance;
 
         if (!isSeasonCorrect(level, fp)) return 0;
 
@@ -1918,7 +1918,7 @@ public record FishProperties(
     {
         ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
 
-        if (!bait.is(ModItems.METEOROLOGICAL_BAIT))
+        if (!bait.is(SCItems.METEOROLOGICAL_BAIT))
         {
             //clear check
             if (fp.weather() == Weather.CLEAR && (level.getRainLevel(0) > 0.5 || level.getThunderLevel(0) > 0.5))

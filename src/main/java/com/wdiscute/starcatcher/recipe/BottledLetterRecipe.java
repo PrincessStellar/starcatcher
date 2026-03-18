@@ -5,18 +5,14 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModRecipes;
+import com.wdiscute.starcatcher.registry.SCRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-
-import java.util.List;
 
 public class BottledLetterRecipe implements CraftingRecipe
 {
@@ -38,7 +34,7 @@ public class BottledLetterRecipe implements CraftingRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.BOTTLED_LETTER.get();
+        return SCRecipes.BOTTLED_LETTER.get();
     }
 
     @Override

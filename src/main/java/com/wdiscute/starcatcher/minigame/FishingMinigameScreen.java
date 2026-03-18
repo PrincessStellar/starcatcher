@@ -10,8 +10,8 @@ import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseMinigameModifier;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.ModKeymappings;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
@@ -123,7 +123,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         this.rarity = fp.rarity();
 
         //if override is not missingno (default) then use the override item set
-        if (!fp.catchInfo().overrideMinigameWith().is(ModItems.MISSINGNO.getKey()))
+        if (!fp.catchInfo().overrideMinigameWith().is(SCItems.MISSINGNO.getKey()))
             this.itemBeingFished = new ItemStack(fp.catchInfo().overrideMinigameWith());
         else
             this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
@@ -419,7 +419,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public boolean keyReleased(int keyCode, int scanCode, int keyModifiers)
     {
-        if (keyCode == ModKeymappings.MINIGAME_HIT.getKey().getValue())
+        if (keyCode == SCKeymappings.MINIGAME_HIT.getKey().getValue())
         {
             isHoldingKey = false;
             holdingTicks = 0;
@@ -460,7 +460,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         //hit input
-        if (ModKeymappings.MINIGAME_HIT.isActiveAndMatches(mouseKey))
+        if (SCKeymappings.MINIGAME_HIT.isActiveAndMatches(mouseKey))
         {
             if (!isHoldingKey) inputPressed();
 

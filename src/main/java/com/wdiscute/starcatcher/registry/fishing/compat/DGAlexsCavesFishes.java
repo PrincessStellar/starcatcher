@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.storage.FishProperties;
 
@@ -107,7 +107,7 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                         .withBiomes(U.rl("alexscaves", "primordial_caves")))
                 .withAlwaysSpawnEntity(true)
                 .withEntityToSpawn(U.holderEntity("alexscaves", "trilocaris"))
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
         );
     }
 }

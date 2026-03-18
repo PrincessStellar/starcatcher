@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.registry.ModEntities;
+import com.wdiscute.starcatcher.registry.SCEntities;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +19,7 @@ public class FishItem extends Item
     {
         if(context.getPlayer().isCreative())
         {
-            FishEntity fe = new FishEntity(ModEntities.FISH.get(), context.getLevel());
+            FishEntity fe = new FishEntity(SCEntities.FISH.get(), context.getLevel());
             fe.setFish(context.getItemInHand().copyWithCount(1));
             fe.setPos(context.getClickedPos().relative(context.getClickedFace()).getCenter());
 

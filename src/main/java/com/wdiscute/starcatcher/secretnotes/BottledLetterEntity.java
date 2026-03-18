@@ -2,8 +2,8 @@ package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -32,11 +32,11 @@ public class BottledLetterEntity extends ThrowableItemProjectile
     }
 
     public BottledLetterEntity(Level level, LivingEntity shooter) {
-        super(ModEntities.BOTTLED_LETTER.get(), shooter, level);
+        super(SCEntities.BOTTLED_LETTER.get(), shooter, level);
     }
 
     public BottledLetterEntity(Level level, double x, double y, double z) {
-        super(ModEntities.BOTTLED_LETTER.get(), x, y, z, level);
+        super(SCEntities.BOTTLED_LETTER.get(), x, y, z, level);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
     @Override
     protected Item getDefaultItem()
     {
-        return ModItems.BOTTLED_LETTER.get();
+        return SCItems.BOTTLED_LETTER.get();
     }
 
     private ParticleOptions getParticle()

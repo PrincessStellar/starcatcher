@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ModRecipes
+public class SCRecipes
 {
     public static final DeferredRegister<RecipeSerializer<?>> REGISTRY =
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, Starcatcher.MOD_ID);

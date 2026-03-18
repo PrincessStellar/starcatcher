@@ -2,9 +2,7 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,7 +18,7 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 
-public class ModCreativeModeTabs
+public class SCCreativeModeTabs
 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Starcatcher.MOD_ID);
@@ -51,61 +49,61 @@ public class ModCreativeModeTabs
     );
 
     public static final Supplier<CreativeModeTab> STARCATCHER = CREATIVE_MODE_TABS.register(
-            "starcatcher", () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ROD.get()))
+            "starcatcher", () -> CreativeModeTab.builder().icon(() -> new ItemStack(SCItems.ROD.get()))
                     .title(Component.translatable("creativetab.starcatcher.starcatcher"))
                     .displayItems((itemDisplayParameters, output) ->
                     {
 
-                        output.accept(ModItems.ROD);
+                        output.accept(SCItems.ROD);
 
                         //adds items
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.ITEMS.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.ITEMS.getEntries())
                         {
-                            if (item.equals(ModItems.ROD)) continue;
+                            if (item.equals(SCItems.ROD)) continue;
 
-                            if (item.equals(ModItems.BOTTLED_LETTER))
+                            if (item.equals(SCItems.BOTTLED_LETTER))
                             {
-                                ItemStack is = new ItemStack(ModItems.BOTTLED_LETTER.get());
+                                ItemStack is = new ItemStack(SCItems.BOTTLED_LETTER.get());
 
                                 ModDataComponents.set(is, ModDataComponents.MESSAGE, MESSAGE);
                                 output.accept(is);
                                 continue;
                             }
 
-                            if (item.equals(ModItems.MESSAGE_IN_A_BOTTLE))
+                            if (item.equals(SCItems.MESSAGE_IN_A_BOTTLE))
                             {
-                                ItemStack is = new ItemStack(ModItems.MESSAGE_IN_A_BOTTLE.get());
+                                ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
 
                                 ModDataComponents.set(is, ModDataComponents.MESSAGE, MESSAGE);
                                 output.accept(is);
                                 continue;
                             }
 
-                            if (item.equals(ModItems.MESSAGE)) continue;
+                            if (item.equals(SCItems.MESSAGE)) continue;
 
                             output.accept(item.get());
                         }
 
 
                         //adds bobbers
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.BOBBERS_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.BOBBERS_REGISTRY.getEntries())
                             output.accept(item.get());
 
                         //adds hooks
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.HOOKS_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.HOOKS_REGISTRY.getEntries())
                             output.accept(item.get());
 
                         //adds templates
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.TEMPLATES_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.TEMPLATES_REGISTRY.getEntries())
                             output.accept(item.get());
 
                         //adds rods besides default
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.RODS_REGISTRY.getEntries())
-                            if (!item.equals(ModItems.ROD))
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.RODS_REGISTRY.getEntries())
+                            if (!item.equals(SCItems.ROD))
                                 output.accept(item.get());
 
                         //adds fish
-                        for (DeferredHolder<Item, ? extends Item> item : ModItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
+                        for (DeferredHolder<Item, ? extends Item> item : SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
                             output.accept(item.get());
 
                     })

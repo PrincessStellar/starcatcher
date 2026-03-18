@@ -6,7 +6,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataAttachments;
 import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModMenuTypes;
+import com.wdiscute.starcatcher.registry.SCMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -46,7 +46,7 @@ public class FishingRodMenu extends AbstractContainerMenu
 
     public FishingRodMenu(int containerId, Inventory inv, ItemStack itemStack)
     {
-        super(ModMenuTypes.FISHING_ROD_MENU.get(), containerId);
+        super(SCMenuTypes.FISHING_ROD_MENU.get(), containerId);
 
         is = itemStack;
 

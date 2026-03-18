@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.sellingbin.SellingBinMenu;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxMenu;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodMenu;
 import com.wdiscute.starcatcher.tournament.StandMenu;
@@ -16,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ModMenuTypes
+public class SCMenuTypes
 {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(Registries.MENU, Starcatcher.MOD_ID);
@@ -26,9 +25,6 @@ public class ModMenuTypes
 
     public static final Supplier<MenuType<StandMenu>> STAND_MENU =
             registerMenuType("stand_menu", StandMenu::new);
-
-    public static final Supplier<MenuType<SellingBinMenu>> SELLING_BIN_MENU =
-            registerMenuType("selling_bin_menu", SellingBinMenu::new);
 
     public static final Supplier<MenuType<TackleBoxMenu>> TACKLE_BOX =
             registerMenuType("tackle_box.png", TackleBoxMenu::new);

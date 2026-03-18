@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.fishspotter;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.DeltaTracker;
@@ -69,7 +69,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
         if (Minecraft.getInstance().player == null) return;
         else player = Minecraft.getInstance().player;
 
-        boolean shouldShow = player.getMainHandItem().is(ModItems.FISH_RADAR) || player.getOffhandItem().is(ModItems.FISH_RADAR);
+        boolean shouldShow = player.getMainHandItem().is(SCItems.FISH_RADAR) || player.getOffhandItem().is(SCItems.FISH_RADAR);
 
         //smoothly moves ui in and out of screen
         if (!shouldShow)
@@ -124,7 +124,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
 
         for (int i = 0; i < fpsInArea.size(); i++)
         {
-            ItemStack is = new ItemStack(ModItems.MISSINGNO.get());
+            ItemStack is = new ItemStack(SCItems.MISSINGNO.get());
 
             if (fishesCaught.contains(fpsInArea.get(i)))
             {

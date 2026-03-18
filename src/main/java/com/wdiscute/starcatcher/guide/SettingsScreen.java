@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.guide;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.HitFakeParticle;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -115,7 +115,7 @@ public class SettingsScreen extends Screen
 
         unitSelected = Config.UNIT.get();
 
-        hand = Minecraft.getInstance().player.getMainHandItem().is(ModItems.ROD) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+        hand = Minecraft.getInstance().player.getMainHandItem().is(SCItems.ROD) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
     }
 
     private int getRandomFreePosition()

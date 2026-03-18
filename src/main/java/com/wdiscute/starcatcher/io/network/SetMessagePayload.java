@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -45,8 +45,8 @@ public record SetMessagePayload(List<String> text, String name) implements Custo
                 ItemStack main = player.getMainHandItem();
                 ItemStack off = player.getOffhandItem();
 
-                if(main.is(ModItems.LETTER)) is = main;
-                if(off.is(ModItems.LETTER)) is = off;
+                if(main.is(SCItems.LETTER)) is = main;
+                if(off.is(SCItems.LETTER)) is = off;
                 if(is == null) return;
 
                 LetterItem.Message message = new LetterItem.Message(player.getUUID(), name, level.dimension().location(), text(), false);

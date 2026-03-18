@@ -26,9 +26,10 @@ public class DataGenerators
     {
         DataGenerator gen = event.getGenerator();
 
-        //fish properties
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput output = gen.getPackOutput();
+
+        //fish properties
         gen.addProvider(
                 event.includeServer(),
                 new DGFishingPropertiesProvider(output, lookupProvider)

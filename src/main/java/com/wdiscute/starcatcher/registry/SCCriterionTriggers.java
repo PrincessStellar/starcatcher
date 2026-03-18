@@ -9,7 +9,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public interface ModCriterionTriggers {
+public interface SCCriterionTriggers
+{
     DeferredRegister<CriterionTrigger<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.TRIGGER_TYPES, Starcatcher.MOD_ID);
 
     Supplier<MinigameCompletedTrigger> MINIGAME_COMPLETED = REGISTRY.register("minigame_completed", MinigameCompletedTrigger::new);

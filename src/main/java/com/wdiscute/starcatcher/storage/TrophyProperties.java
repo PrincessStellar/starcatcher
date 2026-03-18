@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -41,7 +41,7 @@ public record TrophyProperties(
      */
     @Deprecated(forRemoval = true)
     public static final TrophyProperties DEFAULT = new TrophyProperties(
-            FishProperties.builder().withFish(ModItems.MISSINGNO).build(),
+            FishProperties.builder().withFish(SCItems.MISSINGNO).build(),
             false,
             TrophyType.EXTRA,
             RarityProgress.DEFAULT,
@@ -93,7 +93,7 @@ public record TrophyProperties(
 
     public static class Builder
     {
-        private FishProperties.Builder fp = FishProperties.builder().withFish(ModItems.MISSINGNO);
+        private FishProperties.Builder fp = FishProperties.builder().withFish(SCItems.MISSINGNO);
         private boolean hide_until_caught = false;
         private TrophyType trophyType = TrophyType.EXTRA;
         private RarityProgress all = RarityProgress.DEFAULT;

@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.blocks.aquarium;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModDataMaps;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
@@ -17,7 +17,6 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
@@ -40,10 +39,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
@@ -172,7 +167,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
 
 
-        Interaction interaction = ModDataMaps.getOrDefault(stack, ModDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
+        Interaction interaction = SCDataMaps.getOrDefault(stack, SCDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
         if (interaction.executePlace(level, pos, state, stack))
         {
             if (interaction.sound != null) player.playSound(interaction.sound);

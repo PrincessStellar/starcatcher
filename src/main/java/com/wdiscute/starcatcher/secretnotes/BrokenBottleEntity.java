@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,17 +25,17 @@ public class BrokenBottleEntity extends ThrowableItemProjectile
     }
 
     public BrokenBottleEntity(Level level, LivingEntity shooter) {
-        super(ModEntities.BROKEN_BOTTLE.get(), shooter, level);
+        super(SCEntities.BROKEN_BOTTLE.get(), shooter, level);
     }
 
     public BrokenBottleEntity(Level level, double x, double y, double z) {
-        super(ModEntities.BROKEN_BOTTLE.get(), x, y, z, level);
+        super(SCEntities.BROKEN_BOTTLE.get(), x, y, z, level);
     }
 
     @Override
     protected Item getDefaultItem()
     {
-        return ModItems.BROKEN_BOTTLE.get();
+        return SCItems.BROKEN_BOTTLE.get();
     }
 
     private ParticleOptions getParticle()

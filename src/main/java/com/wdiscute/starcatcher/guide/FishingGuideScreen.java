@@ -12,14 +12,13 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.registry.ModEntities;
+import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
-import com.wdiscute.starcatcher.io.ModDataComponents;
 import com.wdiscute.starcatcher.io.network.FPsSeenPayload;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
@@ -481,8 +480,8 @@ public class FishingGuideScreen extends Screen
             {
                 Minecraft.getInstance().setScreen(
                         new NewSettingsScreen(
-                                FishProperties.builder().withFish(ModItems.AURORA).build(),
-                                new ItemStack(ModItems.ROD.get()
+                                FishProperties.builder().withFish(SCItems.AURORA).build(),
+                                new ItemStack(SCItems.ROD.get()
                                 )
                         ));
                 return;
@@ -675,7 +674,7 @@ public class FishingGuideScreen extends Screen
 
                     guiGraphics.renderTooltip(this.font, list, Optional.empty(), mouseX, mouseY);
                 }
-                is = new ItemStack(ModItems.MISSINGNO.get());
+                is = new ItemStack(SCItems.MISSINGNO.get());
             }
 
             guiGraphics.renderOutline(xrender - 10, y - 2, 20, 20, 0xff000000);
@@ -1094,7 +1093,7 @@ public class FishingGuideScreen extends Screen
         if (caught != 0 || !Config.HIDE_ENTRIES_UNTIL_FOUND.get())
             renderItem(is, xOffset, yOffset, 1);
         else
-            renderItem(new ItemStack(ModItems.MISSINGNO.get()), xOffset, yOffset, 1);
+            renderItem(new ItemStack(SCItems.MISSINGNO.get()), xOffset, yOffset, 1);
 
         //render fish notification icon
         if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification())
@@ -1113,7 +1112,7 @@ public class FishingGuideScreen extends Screen
                 components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(0xa34536)));
             } else
             {
-                if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(ModEntities.FISH)))
+                if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(SCEntities.FISH)))
                     components.add(Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
                 else
                     components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
@@ -1226,7 +1225,7 @@ public class FishingGuideScreen extends Screen
                 uiX + xOffset + 73, uiY + 93, 0, false);
 
         //render bucketable
-        if (!fp.catchInfo().bucketedFish().is(ModItems.MISSINGNO))
+        if (!fp.catchInfo().bucketedFish().is(SCItems.MISSINGNO))
         {
             guiGraphics.blit(BUCKET, uiX + 77 + xOffset, uiY + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > uiX + xOffset + 75 && mouseX < uiX + xOffset + 90 && mouseY > uiY + 105 && mouseY < uiY + 115)
@@ -1604,7 +1603,7 @@ public class FishingGuideScreen extends Screen
         {
             ItemStack bait = new ItemStack(BuiltInRegistries.ITEM.get(fp.br().correctBait().getFirst()));
 
-            if (bait.is(ModItems.LEGENDARY_BAIT.get()))
+            if (bait.is(SCItems.LEGENDARY_BAIT.get()))
             {
                 guiGraphics.drawString(
                         this.font,
@@ -2173,13 +2172,13 @@ public class FishingGuideScreen extends Screen
         BuiltInRegistries.ITEM.getTag(StarcatcherTags.EQUIPMENTS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
 
         //index
-        basicsIndexIcon = new ItemStack(ModItems.ROD.get());
+        basicsIndexIcon = new ItemStack(SCItems.ROD.get());
         upgradeIndexIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
-        addonsIndexIcon = new ItemStack(ModItems.HOOK.get());
-        cosmeticsIndexIcon = new ItemStack(ModItems.PEARL_SMITHING_TEMPLATE.get());
+        addonsIndexIcon = new ItemStack(SCItems.HOOK.get());
+        cosmeticsIndexIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
         tournamentIndexIcon = new ItemStack(ModBlocks.STAND.get());
         trophiesIndexIcon = new ItemStack(ModBlocks.TROPHY_GOLD.get());
-        settingsIndexIcon = new ItemStack(ModItems.SETTINGS.get());
+        settingsIndexIcon = new ItemStack(SCItems.SETTINGS.get());
         indexEntries = new ArrayList<>(List.of(
                 Pair.of(basicsIndexIcon, "gui.guide.index.basics"),
                 Pair.of(upgradeIndexIcon, "gui.guide.index.upgrades"),
@@ -2191,16 +2190,16 @@ public class FishingGuideScreen extends Screen
         ));
 
         //other items
-        sweetspotsIcon = new ItemStack(ModItems.AURORA.get());
-        treasureIcon = new ItemStack(ModItems.WATERLOGGED_SATCHEL.get());
+        sweetspotsIcon = new ItemStack(SCItems.AURORA.get());
+        treasureIcon = new ItemStack(SCItems.WATERLOGGED_SATCHEL.get());
         equipmentIcon = new ItemStack(ModBlocks.FISHERMAN_HAT_GREEN.get());
-        cosmeticsIcon = new ItemStack(ModItems.AZURE_CRYSTAL_ROD.get());
-        gadgetsIcon = new ItemStack(ModItems.FISH_RADAR.get());
+        cosmeticsIcon = new ItemStack(SCItems.AZURE_CRYSTAL_ROD.get());
+        gadgetsIcon = new ItemStack(SCItems.FISH_RADAR.get());
 
-        hookIcon = new ItemStack(ModItems.HOOK.get());
-        baitIcon = new ItemStack(ModItems.CHERRY_BAIT.get());
-        secretsIcon = new ItemStack(ModItems.HOPEFUL_BOTTLE.get());
+        hookIcon = new ItemStack(SCItems.HOOK.get());
+        baitIcon = new ItemStack(SCItems.CHERRY_BAIT.get());
+        secretsIcon = new ItemStack(SCItems.HOPEFUL_BOTTLE.get());
 
-        templateIcon = new ItemStack(ModItems.PEARL_SMITHING_TEMPLATE.get());
+        templateIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
     }
 }

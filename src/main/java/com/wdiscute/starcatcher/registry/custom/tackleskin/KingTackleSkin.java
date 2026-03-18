@@ -1,12 +1,11 @@
 package com.wdiscute.starcatcher.registry.custom.tackleskin;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.ModSounds;
+import com.wdiscute.starcatcher.registry.SCSounds;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -52,20 +51,20 @@ public class KingTackleSkin extends AbstractTackleSkin
     {
         super.onMissed(player);
         Vec3 p = player.position();
-        player.level().playSound(null, p.x, p.y, p.z, ModSounds.KING_GRR.get(), SoundSource.NEUTRAL, 1f, 1f);
+        player.level().playSound(null, p.x, p.y, p.z, SCSounds.KING_GRR.get(), SoundSource.NEUTRAL, 1f, 1f);
     }
 
     @Override
     public void onSuccessfulMinigame(Player player)
     {
         Vec3 p = player.position();
-        player.level().playSound(null, p.x, p.y, p.z, ModSounds.KING_HEHEHA.get(), SoundSource.NEUTRAL, 1f, 1f);
+        player.level().playSound(null, p.x, p.y, p.z, SCSounds.KING_HEHEHA.get(), SoundSource.NEUTRAL, 1f, 1f);
     }
 
     @Override
     public void onFailedMinigame(Player player)
     {
         Vec3 p = player.position();
-        player.level().playSound(null, p.x, p.y, p.z, ModSounds.KING_CRY.get(), SoundSource.NEUTRAL, 1f, 1f);
+        player.level().playSound(null, p.x, p.y, p.z, SCSounds.KING_CRY.get(), SoundSource.NEUTRAL, 1f, 1f);
     }
 }

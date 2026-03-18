@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -24,7 +24,7 @@ public class MessageInABottleItem extends Item
         if(ModDataComponents.has(itemInHand, ModDataComponents.MESSAGE))
         {
             //give note
-            ItemStack is = new ItemStack(ModItems.MESSAGE.get());
+            ItemStack is = new ItemStack(SCItems.MESSAGE.get());
             LetterItem.Message message = ModDataComponents.get(itemInHand, ModDataComponents.MESSAGE);
             ModDataComponents.set(is, ModDataComponents.MESSAGE, message.lock());
             player.addItem(is);
@@ -32,7 +32,7 @@ public class MessageInABottleItem extends Item
             player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);
 
             //replace with broken bottle
-            player.setItemInHand(usedHand, new ItemStack(ModItems.BROKEN_BOTTLE.get()));
+            player.setItemInHand(usedHand, new ItemStack(SCItems.BROKEN_BOTTLE.get()));
         }
 
         return InteractionResultHolder.success(player.getItemInHand(usedHand));

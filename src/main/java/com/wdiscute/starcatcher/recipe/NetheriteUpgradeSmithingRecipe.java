@@ -2,34 +2,20 @@ package com.wdiscute.starcatcher.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.ModRecipes;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.SCRecipes;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.armortrim.ArmorTrim;
-import net.minecraft.world.item.armortrim.TrimMaterial;
-import net.minecraft.world.item.armortrim.TrimMaterials;
-import net.minecraft.world.item.armortrim.TrimPattern;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
@@ -90,7 +76,7 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
-        ItemStack itemstack = new ItemStack(ModItems.ROD.get());
+        ItemStack itemstack = new ItemStack(SCItems.ROD.get());
         ModDataComponents.set(itemstack, ModDataComponents.NETHERITE_UPGRADE, true);
         return itemstack;
     }
@@ -98,7 +84,7 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
     @Override
     public RecipeSerializer<?> getSerializer()
     {
-        return ModRecipes.FISHING_ROD_SMITHING.get();
+        return SCRecipes.FISHING_ROD_SMITHING.get();
     }
 
     @Override

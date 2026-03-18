@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class ModItemProperties
+public class SCItemProperties
 {
 
     public static void addCustomItemProperties()
     {
 
-        for (DeferredHolder<Item, ? extends Item> item : ModItems.RODS_REGISTRY.getEntries())
+        for (DeferredHolder<Item, ? extends Item> item : SCItems.RODS_REGISTRY.getEntries())
         {
             ItemProperties.register(
                     item.get(),

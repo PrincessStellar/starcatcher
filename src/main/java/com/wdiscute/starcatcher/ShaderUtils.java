@@ -2,9 +2,8 @@ package com.wdiscute.starcatcher;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import com.wdiscute.starcatcher.registry.ModRenderTypes;
+import com.wdiscute.starcatcher.registry.SCRenderTypes;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
@@ -20,7 +19,7 @@ public class ShaderUtils {
     public static void setUpFadeShader(float width, float height,
                                        Vec2 fadeLeft, Vec2 fadeRight, Vec2 fadeUp, Vec2 fadeDown, boolean invertAlpha) {
 
-        ShaderInstance shader = ModRenderTypes.getRendertypeGuiFadeShader();
+        ShaderInstance shader = SCRenderTypes.getRendertypeGuiFadeShader();
         if (shader == null) {
             throw new IllegalStateException("Rendertype GuiFadeShader is null");
         }

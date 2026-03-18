@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
 import com.wdiscute.starcatcher.registry.fishing.compat.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -333,7 +333,7 @@ public class FishingPropertiesRegistry
 
     public static void registerStarcatcherBucketAndEntity(FishProperties.Builder builder)
     {
-        builder.withBucketedFish(ModItems.STARCAUGHT_BUCKET);
+        builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
         builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
         DGStarcatcherFishes.STARCATCHER_FISHES.add(builder.build());
         register(builder);

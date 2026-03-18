@@ -25,7 +25,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 
-public interface ModItems
+public interface SCItems
 {
 
     static void registerExtra()
