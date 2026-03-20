@@ -1,5 +1,8 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.wdiscute.sellingbin.processors.FoodProcessor;
+import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
+import com.wdiscute.sellingbin.registry.ModDataMaps;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
@@ -7,10 +10,15 @@ import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class DGDataMapsProvider extends DataMapProvider
@@ -43,14 +51,41 @@ public class DGDataMapsProvider extends DataMapProvider
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
 
+        //selling bin currencies
         currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
         currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);
 
-        bin.add(StarcatcherTags.COMMON_FISHES, new FishProcessor(2f, 10f).create(25), false);
-        bin.add(StarcatcherTags.UNCOMMON_FISHES, new FishProcessor(2f, 10f).create(50), false);
-        bin.add(StarcatcherTags.RARE_FISHES, new FishProcessor(2f, 10f).create(100), false);
-        bin.add(StarcatcherTags.EPIC_FISHES, new FishProcessor(2f, 10f).create(150), false);
-        bin.add(StarcatcherTags.LEGENDARY_FISHES, new FishProcessor(2f, 10f).create(200), false);
+        //selling bin fishes
+        Map<ResourceLocation, Float> qualities = Map.of(
+                ResourceLocation.fromNamespaceAndPath("quality_food", "diamond"), 2f,
+                ResourceLocation.fromNamespaceAndPath("quality_food", "gold"), 1.5f,
+                ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
+        );
+
+        bin.add(StarcatcherTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
+                new FishProcessor(2, 10f),
+                new QualityFoodsProcessor(qualities)
+        )), false);
+
+        bin.add(StarcatcherTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
+                new FishProcessor(2, 10f),
+                new QualityFoodsProcessor(qualities)
+        )), false);
+
+        bin.add(StarcatcherTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
+                new FishProcessor(2, 10f),
+                new QualityFoodsProcessor(qualities)
+        )), false);
+
+        bin.add(StarcatcherTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
+                new FishProcessor(2, 10f),
+                new QualityFoodsProcessor(qualities)
+        )), false);
+
+        bin.add(StarcatcherTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
+                new FishProcessor(2, 10f),
+                new QualityFoodsProcessor(qualities)
+        )), false);
 
     }
 }

@@ -1,5 +1,7 @@
 package com.wdiscute.starcatcher.event;
 
+import com.wdiscute.sellingbin.SellingBin;
+import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.commands.ModCommands;
@@ -18,7 +20,11 @@ import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -31,6 +37,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -56,6 +63,36 @@ public class ModEvents
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 FishEntity::validSpawnPlacement,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    }
+
+    @SubscribeEvent
+    public static void addPackFinders(AddPackFindersEvent event)
+    {
+        PackSource packSource = new DefaultPackSource(){
+            @Override
+            public boolean shouldAddAutomatically()
+            {
+                return true;
+            }
+        };
+
+        event.addPackFinders(
+                Starcatcher.rl("built_in_datapacks/selling_bin_emeralds"),
+                PackType.SERVER_DATA,
+                Component.literal("Selling Bin - Emeralds"),
+                packSource,
+                false,
+                Pack.Position.TOP
+        );
+
+        event.addPackFinders(
+                Starcatcher.rl("built_in_datapacks/selling_bin_fishes"),
+                PackType.SERVER_DATA,
+                Component.literal("Selling Bin - Fishes"),
+                packSource,
+                false,
+                Pack.Position.TOP
+        );
     }
 
     @SubscribeEvent
@@ -233,5 +270,4 @@ public class ModEvents
                 SetMessagePayload::handle
         );
     }
-
 }
