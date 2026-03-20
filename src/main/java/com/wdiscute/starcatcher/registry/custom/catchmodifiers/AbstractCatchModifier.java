@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Collection;
@@ -134,7 +135,7 @@ public abstract class AbstractCatchModifier
 
     }
 
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure)
+    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         return List.of();
     }

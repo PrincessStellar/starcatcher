@@ -106,6 +106,10 @@ dependencies {
     //runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
     //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
 
+    //quality foods compat
+    compileOnly("maven.modrinth:quality-food:vLFBpk1n")
+    runtimeOnly("maven.modrinth:quality-food:vLFBpk1n")
+
     //shaders
     compileOnly "curse.maven:irisshaders-455508:6661598"
 

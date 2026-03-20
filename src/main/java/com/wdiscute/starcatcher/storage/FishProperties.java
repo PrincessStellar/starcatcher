@@ -1,21 +1,26 @@
 package com.wdiscute.starcatcher.storage;
 
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
+import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.ExtraComposites;
-import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
+import com.wdiscute.starcatcher.fishentity.FishEntity;
+import com.wdiscute.starcatcher.io.*;
+import com.wdiscute.starcatcher.registry.SCCriterionTriggers;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
+import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -31,19 +36,26 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
+import net.minecraft.util.Mth;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
@@ -1364,7 +1376,8 @@ public record FishProperties(
             this(sweetSpotType, texturePath, size, reward, false, 0, 0, particleColor, List.of());
         }
 
-        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, boolean isFlip, float vanishingRate, float movingRate, int particleColor){
+        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, boolean isFlip, float vanishingRate, float movingRate, int particleColor)
+        {
             this(sweetSpotType, texturePath, size, reward, isFlip, vanishingRate, movingRate, particleColor, List.of());
         }
 
@@ -1642,7 +1655,8 @@ public record FishProperties(
     //endregion dif
 
 
-    public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation, float goldenChance)
+    public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation,
+                                float goldenChance)
     {
         public SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation)
         {
@@ -1669,6 +1683,28 @@ public record FishProperties(
                 ByteBufCodecs.FLOAT, SizeAndWeight::goldenChance,
                 SizeAndWeight::new
         );
+
+        public static int getRandomSize(FishProperties fp, float percentile)
+        {
+            percentile = Mth.clamp(percentile, 0.01f, 99.999f);
+            percentile = 100 - percentile;
+            percentile = percentile / 100;
+            float dev = fp.sizeWeight().sizeDeviation() * 2;
+            float average = fp.sizeWeight().sizeAverage();
+
+            return (int) (average + percentile * dev - dev / 2);
+        }
+
+        public static int getRandomWeight(FishProperties fp, float percentile)
+        {
+            percentile = Mth.clamp(percentile, 0.01f, 99.999f);
+            percentile = 100 - percentile;
+            percentile = percentile / 100;
+            float dev = fp.sizeWeight().weightDeviation() * 2;
+            float average = fp.sizeWeight().weightAverage();
+
+            return (int) (average + percentile * dev - dev / 2);
+        }
     }
 
 
@@ -1736,8 +1772,10 @@ public record FishProperties(
             return style;
         }
 
-        public static boolean isGolden(ItemStack stack) {
-            if (stack.has(ModDataComponents.CAUGHT_FISH_INFO)) {
+        public static boolean isGolden(ItemStack stack)
+        {
+            if (stack.has(ModDataComponents.CAUGHT_FISH_INFO))
+            {
                 CaughtFishInfo caughtFishInfo = stack.get(ModDataComponents.CAUGHT_FISH_INFO);
                 return caughtFishInfo != null && caughtFishInfo.golden();
             }
@@ -1871,7 +1909,8 @@ public record FishProperties(
 
     public static int getChance(FishProperties fp, Level level, BlockPos bp, ItemStack rod)
     {
-        if(ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM)) return fp.baseChance;
+        if (ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM))
+            return fp.baseChance;
 
         if (!isSeasonCorrect(level, fp)) return 0;
 
@@ -2047,6 +2086,205 @@ public record FishProperties(
     public static ResourceLocation rl(String ns, String path)
     {
         return ResourceLocation.fromNamespaceAndPath(ns, path);
+    }
+
+    public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile, boolean golden, Player player, boolean perfectCatch)
+    {
+        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        boolean isStarcaught = fp.catchInfo().bucketedFish().is(SCItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
+        boolean isBucketed = !fp.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
+
+
+        //starcaught bucketed fish
+        if (isStarcaught)
+        {
+            ItemStack fish = new ItemStack(fp.catchInfo().fish());
+            //quality food compat
+            if(ModList.get().isLoaded("quality_food")) QualityFoodCompat.addQuality(fish, player, player.level(), golden, perfectCatch, percentile);
+            ItemStack bucket = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
+            ModDataComponents.set(bucket, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(fish));
+            return bucket;
+        }
+
+        //bucketed fish - non starcaught
+        if (isBucketed)
+            return new ItemStack(fp.catchInfo().bucketedFish());
+
+        //normal itemstack
+        ItemStack fish = new ItemStack(fp.catchInfo().fish());
+
+        //store caught fish info data component
+        if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+            ModDataComponents.set(fish, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+
+        //quality food compat
+        if(ModList.get().isLoaded("quality_food")) QualityFoodCompat.addQuality(fish, player, player.level(), golden, perfectCatch, percentile);
+
+        return fish;
+    }
+
+    public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
+    {
+        ServerLevel level = ((ServerLevel) player.level());
+
+        if (ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).isEmpty()) return;
+
+        Entity levelEntity = level.getEntity(ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).getUuid());
+        if (levelEntity instanceof FishingBobEntity fbe)
+        {
+            if (time != -1)
+            {
+                FishProperties fp = fbe.fpToFish;
+
+                SCCriterionTriggers.MINIGAME_COMPLETED.get().trigger(player, hits, perfectCatch, completedTreasure, time, fp.catchInfo().fish());
+
+                //trigger modifiers
+                fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(player, time, completedTreasure, perfectCatch, hits));
+
+                //play sound
+                ModTackleSkins.get(level, fbe.rod).onSuccessfulMinigame(player);
+
+                //if should cancel because of modifier, return
+                if (fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
+                        player, time, completedTreasure, perfectCatch, hits))) return;
+
+                //pick size, weight and golden
+                float percentile = U.r.nextFloat(100);
+                int size = SizeAndWeight.getRandomSize(fp, percentile);
+                int weight = SizeAndWeight.getRandomWeight(fp, percentile);
+
+                //golden if got lucky & hasn't caught golden yet
+                boolean golden = U.r.nextFloat() < fp.sizeWeight().goldenChance() && FishCaughtCounter.canCatchGolden(fp, player);
+                //golden if previous, or any modifier overrides it to be golden
+                golden = golden || fbe.modifiers.stream().anyMatch(AbstractCatchModifier::shouldBeGolden);
+
+                if (fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
+
+                //award fish counter
+                FishCaughtCounter.awardFishCaughtCounter(fp, player, time, size, weight, percentile, perfectCatch, true, golden);
+
+                //add score to tournaments
+                TournamentHandler.addScore(player, fp, perfectCatch, size, weight, percentile);
+
+                //award exp
+                int exp = fp.rarity().getXp();
+                player.giveExperiencePoints(exp);
+
+                List<ItemStack> items = new ArrayList<>();
+
+                //if should spawn entity
+                if (fp.catchInfo().alwaysSpawnEntity() ||
+                        ModList.get().isLoaded("fishingreal") ||
+                        fbe.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity))
+                {
+                    Vec3 objPos = player.position().subtract(fbe.position());
+
+                    double x = objPos.x / 25;
+                    double y = objPos.y / 20;
+                    double z = objPos.z / 25;
+
+                    x = Math.clamp(x, -1, 1);
+                    y = Math.clamp(y, -1, 1);
+                    z = Math.clamp(z, -1, 1);
+
+                    x *= 2.5;
+                    y *= 2;
+                    z *= 2.5;
+
+                    Entity entity = fp.catchInfo().entityToSpawn().value().create(level);
+
+                    if (entity == null)
+                    {
+                        LogUtils.getLogger().warn("starcatcher doesnt like when the flag or whatever is not enabled");
+                        return;
+                    }
+
+                    //set fish item if it's a starcatcher fish entity
+                    if (entity instanceof FishEntity fe)
+                        fe.setFish(getFishedItemStackFromFPForStarcatcherFishEntitySpecifically(fp, size, weight, percentile, golden));
+
+                    entity.setPos(fbe.position().add(0, 1.2f, 0));
+
+                    Vec3 vec3 = new Vec3(x, 0.7 + y, z);
+                    entity.setDeltaMovement(vec3);
+                    level.addFreshEntity(entity);
+                }
+                //if not entity then add base item stack
+                else
+                {
+                    ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, size, weight, percentile, golden, player, perfectCatch);
+                    items.add(is);
+
+                    //modify base itemstack from modifiers
+                    for (AbstractCatchModifier acm : fbe.modifiers) acm.modifyBaseItemStack(is);
+                }
+
+                //add items to list from modifiers
+                for (AbstractCatchModifier acm : fbe.modifiers)
+                    items.addAll(acm.addToFishedItems(time, perfectCatch, hits, completedTreasure, player));
+
+                //add treasure
+                if (completedTreasure || fbe.modifiers.stream().anyMatch(acm -> acm.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
+                {
+                    items.add(new ItemStack(fp.catchInfo().treasure()));
+                }
+
+                //spawn items from list
+                for (ItemStack itemStackToSpawn : items)
+                {
+                    //make ItemEntities for fish item stack
+                    ItemEntity itemFished = new ItemEntity(level, fbe.position().x, fbe.position().y + 1.2f, fbe.position().z, itemStackToSpawn);
+
+                    //assign delta movement so fish flies towards player
+                    double x = Math.clamp((player.position().x - fbe.position().x) / 25, -1, 1);
+                    double y = Math.clamp((player.position().y - fbe.position().y) / 20, -1, 1);
+                    double z = Math.clamp((player.position().z - fbe.position().z) / 25, -1, 1);
+                    Vec3 vec3 = new Vec3(x, 0.7 + y, z);
+                    itemFished.setDeltaMovement(vec3);
+
+                    //add item entity to level
+                    level.addFreshEntity(itemFished);
+                }
+
+            }
+            else
+            {
+                //if fish minigame failed/canceled
+                fbe.modifiers.forEach(AbstractCatchModifier::onFailedMinigame);
+
+                //play sound from tackle skin
+                ModTackleSkins.get(level, fbe.rod).onFailedMinigame(player);
+            }
+
+            //consume bait
+            ItemStack bait = ModDataComponents.getOrDefault(fbe.rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+            if (fbe.fpToFish.br().consumesBait())
+            {
+                if (!bait.is(Items.BUCKET))
+                {
+                    bait.shrink(1);
+                    ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                }
+
+                if (bait.is(Items.BUCKET) && !fbe.fpToFish.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && time != -1)
+                {
+                    bait.shrink(1);
+                    ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                }
+            }
+
+            fbe.kill();
+        }
+
+        ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB.get());
+    }
+
+    private static ItemStack getFishedItemStackFromFPForStarcatcherFishEntitySpecifically(FishProperties fp, int size, int weight, float percentile, boolean golden)
+    {
+        ItemStack is = new ItemStack(fp.catchInfo().fish());
+        if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+            ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+        return is;
     }
 
 }

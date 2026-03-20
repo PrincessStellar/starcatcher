@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.storage.FishProperties;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.ModList;
 
@@ -17,7 +19,7 @@ public class ExtraItemsModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure)
+    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         if (instance.fpToFish.catchInfo().alwaysSpawnEntity() ||
                 ModList.get().isLoaded("fishingreal") ||
@@ -29,9 +31,9 @@ public class ExtraItemsModifier extends AbstractCatchModifier
         {
             //pick size, weight and golden
             float percentile = U.r.nextFloat(100);
-            int size = U.getRandomSize(instance.fpToFish, percentile);
-            int weight = U.getRandomWeight(instance.fpToFish, percentile);
-            ItemStack stack = U.makeItemStack(ItemStack.EMPTY, instance.fpToFish, size, weight, percentile, false);
+            int size = FishProperties.SizeAndWeight.getRandomSize(instance.fpToFish, percentile);
+            int weight = FishProperties.SizeAndWeight.getRandomWeight(instance.fpToFish, percentile);
+            ItemStack stack = FishProperties.makeItemStack(ItemStack.EMPTY, instance.fpToFish, size, weight, percentile, false, player, perfectCatch);
             items.add(stack);
         }
         return items;

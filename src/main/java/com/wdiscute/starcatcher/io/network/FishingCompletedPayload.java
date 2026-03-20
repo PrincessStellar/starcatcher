@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.storage.FishProperties;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -35,7 +36,7 @@ public record FishingCompletedPayload(int time, boolean completedTreasure, boole
     public void handle(IPayloadContext context)
     {
         context.enqueueWork( () -> {
-            U.spawnFishFromPlayerFishing(((ServerPlayer) context.player()), time, completedTreasure, perfectCatch, hits);
+            FishProperties.spawnFishFromPlayerFishing(((ServerPlayer) context.player()), time, completedTreasure, perfectCatch, hits);
         });
     }
 }
