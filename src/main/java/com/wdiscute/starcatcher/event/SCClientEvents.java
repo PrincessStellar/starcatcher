@@ -22,6 +22,7 @@ import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

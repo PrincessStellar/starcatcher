@@ -171,6 +171,7 @@ public interface SCItems
     DeferredItem<Item> WATERLOGGED_SATCHEL = ITEMS.register("waterlogged_satchel", WaterloggedSatchel::new);
 
     DeferredItem<Item> FISH_BONES = ITEMS.register("fish_bones", BasicItem::new);
+    DeferredItem<Item> PEARL = ITEMS.register("pearl", BasicItem::new);
 
     //
     //  ,---. ,--.         ,--.

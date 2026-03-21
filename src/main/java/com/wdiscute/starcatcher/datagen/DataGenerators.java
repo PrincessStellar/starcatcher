@@ -41,7 +41,7 @@ public class DataGenerators
 
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        gen.addProvider(event.includeServer(), new DGItemModelProvider(output, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGSCItemModelProvider(output, existingFileHelper));
 
         //block tags
         BlockTagsProvider btp = new DGSCBlocksTagsProvider(output, lookupProvider, existingFileHelper);

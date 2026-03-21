@@ -13,9 +13,9 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import static com.wdiscute.starcatcher.registry.SCItems.*;
 import static com.wdiscute.starcatcher.registry.blocks.SCBlocks.*;
 
-public class DGItemModelProvider extends ItemModelProvider
+public class DGSCItemModelProvider extends ItemModelProvider
 {
-    public DGItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
+    public DGSCItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
     {
         super(output, Starcatcher.MOD_ID, existingFileHelper);
     }
@@ -53,6 +53,7 @@ public class DGItemModelProvider extends ItemModelProvider
         simpleItem(STARCATCHER_TWINE);
         simpleItem(WATERLOGGED_SATCHEL);
         simpleItem(FISH_BONES);
+        simpleItem(PEARL);
         simpleItem(STARCAUGHT_BUCKET);
         simpleItem(COOKED_STARCAUGHT_FISH);
         simpleItem(SETTINGS);

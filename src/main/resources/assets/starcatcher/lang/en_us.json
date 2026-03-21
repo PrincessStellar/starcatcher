@@ -16,6 +16,9 @@
   "emi.info.starcatcher.worms.1" : "Worms may have different modifiers useful for fishing.",
   "emi.info.starcatcher.worms.2" : "They may also be used in a Composter.",
 
+  "emi.info.starcatcher.pearls.0" : "Clams placed on sand will slowly create pearls.",
+  "emi.info.starcatcher.pearls.1" : "Once the clam has opened up you may click on it to harvest a pearl.",
+
   "tag.starcatcher.is_beach" : "Beaches",
   "tag.starcatcher.is_birch_forest" : "Birch Forests",
   "tag.starcatcher.is_cherry_grove" : "Cherry Groves",
@@ -456,9 +459,12 @@
   "tooltip.starcatcher.fish_radar.0": "A handy radar which displays the fishes",
   "tooltip.starcatcher.fish_radar.1": "around the area in a total futuristic way.",
 
+  "item.starcatcher.pearl" : "Pearl",
+  "tooltip.starcatcher.pearl.0" : "A beautiful pearl obtained from a clam.",
+
   "item.starcatcher.fish_bones" : "Fish Bones",
-  "item.starcatcher.fish_bones.0" : "Some fish bones. All that",
-  "item.starcatcher.fish_bones.1" : "remains of a once happy fish.",
+  "tooltip.starcatcher.fish_bones.0" : "Some fish bones. All that",
+  "tooltip.starcatcher.fish_bones.1" : "remains of a once happy fish.",
 
   "item.starcatcher.waterlogged_satchel" : "Waterlogged Satchel",
   "tooltip.starcatcher.waterlogged_satchel.0" : "A satchel containing many secrets",

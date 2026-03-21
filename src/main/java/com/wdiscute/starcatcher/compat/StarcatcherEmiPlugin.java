@@ -4,6 +4,7 @@ import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import dev.emi.emi.api.EmiEntrypoint;
@@ -21,6 +22,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -57,6 +59,15 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 ),
                 SellingBin.rl("/worms")));
 
+        //clams info
+        registry.addRecipe(new EmiInfoRecipe(List.of(
+                EmiIngredient.of(Ingredient.of(SCItems.PEARL.get())),
+                EmiIngredient.of(Ingredient.of(SCBlocks.CLAM.get()))),
+                List.of(
+                        Component.translatable("emi.info.starcatcher.pearls.0"),
+                        Component.translatable("emi.info.starcatcher.pearls.1")
+                ),
+                SellingBin.rl("/pearls")));
 
         //todo rework emi starcatcher compat, make a custom multipurpose book-like screen to show a specific fish/trophy restrictions
         Registry<FishProperties> fps = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY);

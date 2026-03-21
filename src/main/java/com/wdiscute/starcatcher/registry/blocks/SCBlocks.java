@@ -41,7 +41,7 @@ public interface SCBlocks
 
     DeferredBlock<Block> CLAM = registerBlock("clam", ClamBlock::new);
 
-    DeferredBlock<Block> CONCH = registerBlock("conch", ClamBlock::new);
+    DeferredBlock<Block> CONCH = registerBlock("conch", ConchBlock::new);
 
 
     //tackle boxes
