@@ -6,16 +6,10 @@ import net.minecraft.world.item.Item;
 
 public class TackleSkinItem extends Item
 {
-    public TackleSkinItem(ResourceLocation tackleSkin)
-    {
-        this(1, tackleSkin);
-    }
-
-    public TackleSkinItem(int maxStackSize, ResourceLocation rl)
+    public TackleSkinItem(ResourceLocation rl)
     {
         super(new Item.Properties()
                 .component(SCDataComponents.TACKLE_SKIN, rl)
-                .stacksTo(maxStackSize)
         );
     }
 }

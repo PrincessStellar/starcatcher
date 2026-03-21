@@ -384,7 +384,7 @@ public class DGRecipeProvider extends RecipeProvider
 
 
         //templates
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.PEARL_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.PEARL_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.PEARL_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', SCItems.PEARL)
@@ -394,7 +394,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_pearl", has(SCItems.PEARL_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KIMBE_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KIMBE_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.KIMBE_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', SCItems.WILLISH)
@@ -404,7 +404,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_kimbe", has(SCItems.KIMBE_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.COLORFUL_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.COLORFUL_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.COLORFUL_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Tags.Items.DYES)
@@ -414,7 +414,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_colorful", has(SCItems.COLORFUL_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLEAR_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLEAR_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.CLEAR_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.GLASS)
@@ -424,7 +424,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_clean", has(SCItems.CLEAR_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FROG_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FROG_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.FROG_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.TADPOLE_BUCKET)
@@ -434,7 +434,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_frog", has(SCItems.FROG_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KING_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KING_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.KING_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.GOLD_INGOT)
@@ -444,7 +444,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_king", has(SCItems.KING_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', ItemTags.SAPLINGS)
@@ -454,7 +454,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_naturalist", has(SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.PACKED_ICE)
@@ -464,7 +464,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_iceborn", has(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.MAGMA_CREAM)
@@ -474,7 +474,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_magmaforged", has(SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SLIMED_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SLIMED_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.SLIMED_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.SLIME_BALL)
@@ -484,7 +484,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_slimed", has(SCItems.SLIMED_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', SCItems.AZURE_CRYSTALBACK_MINNOW)
@@ -495,7 +495,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .save(output);
 
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.BAMBOO)
@@ -505,7 +505,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_bamboo", has(SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', SCItems.OBSIDIAN_EEL)
@@ -515,7 +515,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_obsidian", has(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ALPHA_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.GRASS_BLOCK)
@@ -525,7 +525,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.FISHING_ROD)
@@ -535,7 +535,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BONER_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BONER_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.BONER_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.BONE_BLOCK)
@@ -545,7 +545,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_boner", has(SCItems.BONER_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SKY_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SKY_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.SKY_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.PHANTOM_MEMBRANE)
@@ -555,7 +555,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_sky", has(SCItems.SKY_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', SCItems.LUSH_PIKE)
@@ -565,7 +565,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_lush", has(SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.STICK)
