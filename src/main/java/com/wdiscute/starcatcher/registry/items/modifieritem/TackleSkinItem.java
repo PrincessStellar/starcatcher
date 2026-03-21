@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.items.modifieritem;
 
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
@@ -14,7 +14,7 @@ public class TackleSkinItem extends Item
     public TackleSkinItem(int maxStackSize, ResourceLocation rl)
     {
         super(new Item.Properties()
-                .component(ModDataComponents.TACKLE_SKIN, rl)
+                .component(SCDataComponents.TACKLE_SKIN, rl)
                 .stacksTo(maxStackSize)
         );
     }

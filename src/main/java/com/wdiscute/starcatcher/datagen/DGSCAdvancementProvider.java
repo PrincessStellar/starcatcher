@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class DGModAdvancementProvider extends AdvancementProvider {
-    public DGModAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
+public class DGSCAdvancementProvider extends AdvancementProvider {
+    public DGSCAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
         super(output, registries, existingFileHelper, List.of(new Generator()));
     }
 

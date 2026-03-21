@@ -20,13 +20,13 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.wdiscute.starcatcher.registry.SCItems.*;
-import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
+import static com.wdiscute.starcatcher.registry.blocks.SCBlocks.*;
 
-public class DGModItemsTagsProvider extends ItemTagsProvider
+public class DGSCItemsTagsProvider extends ItemTagsProvider
 {
 
-    public DGModItemsTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                  CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
+    public DGSCItemsTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                 CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper)
     {
         super(output, lookupProvider, blockTags, Starcatcher.MOD_ID, existingFileHelper);
     }

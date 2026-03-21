@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -12,7 +11,7 @@ import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
@@ -37,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class ModCommands
+public class SCCommands
 {
     private static final DynamicCommandExceptionType ERROR_ROD = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.rod_not_found", o)
@@ -285,9 +284,9 @@ public class ModCommands
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
 
-        if (ModDataComponents.has(stack, ModDataComponents.MINIGAME_MODIFIERS))
+        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
         {
-            ModDataComponents.remove(stack, ModDataComponents.MINIGAME_MODIFIERS);
+            SCDataComponents.remove(stack, SCDataComponents.MINIGAME_MODIFIERS);
         }
         return 1;
     }
@@ -297,9 +296,9 @@ public class ModCommands
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
 
-        if (ModDataComponents.has(stack, ModDataComponents.CATCH_MODIFIERS))
+        if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
         {
-            ModDataComponents.remove(stack, ModDataComponents.CATCH_MODIFIERS);
+            SCDataComponents.remove(stack, SCDataComponents.CATCH_MODIFIERS);
         }
         return 1;
     }
@@ -309,15 +308,15 @@ public class ModCommands
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
 
-        if (ModDataComponents.has(stack, ModDataComponents.MINIGAME_MODIFIERS))
+        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
         {
-            List<ResourceLocation> mods = new ArrayList<>(ModDataComponents.get(stack, ModDataComponents.MINIGAME_MODIFIERS));
+            List<ResourceLocation> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.MINIGAME_MODIFIERS));
             mods.add(modifier.location());
-            ModDataComponents.set(stack, ModDataComponents.MINIGAME_MODIFIERS, mods);
+            SCDataComponents.set(stack, SCDataComponents.MINIGAME_MODIFIERS, mods);
         }
         else
         {
-            ModDataComponents.set(stack, ModDataComponents.MINIGAME_MODIFIERS, List.of(modifier.location()));
+            SCDataComponents.set(stack, SCDataComponents.MINIGAME_MODIFIERS, List.of(modifier.location()));
         }
 
         return 1;
@@ -328,15 +327,15 @@ public class ModCommands
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
 
-        if (ModDataComponents.has(stack, ModDataComponents.CATCH_MODIFIERS))
+        if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
         {
-            List<ResourceLocation> mods = new ArrayList<>(ModDataComponents.get(stack, ModDataComponents.CATCH_MODIFIERS));
+            List<ResourceLocation> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS));
             mods.add(modifier.location());
-            ModDataComponents.set(stack, ModDataComponents.CATCH_MODIFIERS, mods);
+            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, mods);
         }
         else
         {
-            ModDataComponents.set(stack, ModDataComponents.CATCH_MODIFIERS, List.of(modifier.location()));
+            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, List.of(modifier.location()));
         }
 
         return 1;
@@ -347,7 +346,7 @@ public class ModCommands
         ItemStack stack = player.getMainHandItem();
         if (!stack.is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
 
-        ModDataComponents.set(stack, ModDataComponents.TACKLE_SKIN, tackleSkin.location());
+        SCDataComponents.set(stack, SCDataComponents.TACKLE_SKIN, tackleSkin.location());
 
         return 1;
     }
@@ -406,7 +405,7 @@ public class ModCommands
         else
             stack = mainHand;
 
-        ModDataComponents.set(stack, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(FishProperties.Rarity.GOLDEN)));
+        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(FishProperties.Rarity.GOLDEN)));
 
         return 1;
     }

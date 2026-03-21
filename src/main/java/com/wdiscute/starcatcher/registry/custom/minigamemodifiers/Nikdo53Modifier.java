@@ -40,7 +40,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.NIKDO53_MODIFIER;
+        return SCMinigameModifiers.NIKDO53_MODIFIER;
     }
 
     public Nikdo53Modifier(){

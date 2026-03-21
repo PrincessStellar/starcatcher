@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.compat.CuriosCompat;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public interface ModMinigameModifiers
+public interface SCMinigameModifiers
 {
     DeferredRegister<Supplier<AbstractMinigameModifier>> REGISTRY =
             DeferredRegister.create(Starcatcher.MINIGAME_MODIFIERS_REGISTRY, Starcatcher.MOD_ID);
@@ -91,12 +91,12 @@ public interface ModMinigameModifiers
         if (main.is(StarcatcherTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(main));
-            ModDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+            SCDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
         else if (player.getOffhandItem().is(StarcatcherTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(off));
-            ModDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
+            SCDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
 
         //armor
@@ -123,7 +123,7 @@ public interface ModMinigameModifiers
 
     static List<ResourceLocation> getMinigameModifiersRLs(ItemStack itemStack)
     {
-        List<ResourceLocation> resourceLocations = ModDataComponents.get(itemStack, ModDataComponents.MINIGAME_MODIFIERS);
+        List<ResourceLocation> resourceLocations = SCDataComponents.get(itemStack, SCDataComponents.MINIGAME_MODIFIERS);
         if (resourceLocations == null) return List.of();
         return resourceLocations;
     }

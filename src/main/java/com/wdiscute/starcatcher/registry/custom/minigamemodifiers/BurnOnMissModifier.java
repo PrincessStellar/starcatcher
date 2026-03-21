@@ -34,7 +34,7 @@ public class BurnOnMissModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.BURN_ON_MISS;
+        return SCMinigameModifiers.BURN_ON_MISS;
     }
 
     @Override

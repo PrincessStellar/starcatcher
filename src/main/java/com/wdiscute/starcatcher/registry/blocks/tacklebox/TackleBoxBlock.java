@@ -2,8 +2,8 @@ package com.wdiscute.starcatcher.registry.blocks.tacklebox;
 
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,7 +25,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -243,7 +242,7 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)
     {
         ItemStack itemstack = super.getCloneItemStack(level, pos, state);
-        level.getBlockEntity(pos, ModBlockEntities.TACKLE_BOX.get()).ifPresent((ebbe) -> ebbe.saveToItem(itemstack, level.registryAccess()));
+        level.getBlockEntity(pos, SCBlockEntities.TACKLE_BOX.get()).ifPresent((ebbe) -> ebbe.saveToItem(itemstack, level.registryAccess()));
         return itemstack;
     }
 
@@ -263,28 +262,28 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     {
         if (color == null)
         {
-            return ModBlocks.TACKLE_BOX;
+            return SCBlocks.TACKLE_BOX;
         }
         else
         {
             return switch (color)
             {
-                case WHITE -> ModBlocks.TACKLE_BOX_WHITE;
-                case ORANGE -> ModBlocks.TACKLE_BOX_ORANGE;
-                case MAGENTA ->  ModBlocks.TACKLE_BOX_MAGENTA;
-                case LIGHT_BLUE -> ModBlocks.TACKLE_BOX_LIGHT_BLUE;
-                case YELLOW -> ModBlocks.TACKLE_BOX_YELLOW;
-                case LIME -> ModBlocks.TACKLE_BOX_LIME;
-                case PINK -> ModBlocks.TACKLE_BOX_PINK;
-                case GRAY -> ModBlocks.TACKLE_BOX_GRAY;
-                case LIGHT_GRAY -> ModBlocks.TACKLE_BOX_LIGHT_GRAY;
-                case CYAN -> ModBlocks.TACKLE_BOX_CYAN;
-                case BLUE -> ModBlocks.TACKLE_BOX_BLUE;
-                case BROWN -> ModBlocks.TACKLE_BOX_BROWN;
-                case GREEN -> ModBlocks.TACKLE_BOX_GREEN;
-                case RED -> ModBlocks.TACKLE_BOX_RED;
-                case BLACK -> ModBlocks.TACKLE_BOX_BLACK;
-                case PURPLE -> ModBlocks.TACKLE_BOX_PURPLE;
+                case WHITE -> SCBlocks.TACKLE_BOX_WHITE;
+                case ORANGE -> SCBlocks.TACKLE_BOX_ORANGE;
+                case MAGENTA ->  SCBlocks.TACKLE_BOX_MAGENTA;
+                case LIGHT_BLUE -> SCBlocks.TACKLE_BOX_LIGHT_BLUE;
+                case YELLOW -> SCBlocks.TACKLE_BOX_YELLOW;
+                case LIME -> SCBlocks.TACKLE_BOX_LIME;
+                case PINK -> SCBlocks.TACKLE_BOX_PINK;
+                case GRAY -> SCBlocks.TACKLE_BOX_GRAY;
+                case LIGHT_GRAY -> SCBlocks.TACKLE_BOX_LIGHT_GRAY;
+                case CYAN -> SCBlocks.TACKLE_BOX_CYAN;
+                case BLUE -> SCBlocks.TACKLE_BOX_BLUE;
+                case BROWN -> SCBlocks.TACKLE_BOX_BROWN;
+                case GREEN -> SCBlocks.TACKLE_BOX_GREEN;
+                case RED -> SCBlocks.TACKLE_BOX_RED;
+                case BLACK -> SCBlocks.TACKLE_BOX_BLACK;
+                case PURPLE -> SCBlocks.TACKLE_BOX_PURPLE;
             };
         }
     }

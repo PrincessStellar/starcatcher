@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -51,7 +51,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
 
         //render tackle based on tackle skin, defaults to BaseTackleSkin
-        ResourceLocation tackleRl = ModDataAttachments.get(fishingBobEntity, ModDataAttachments.TACKLE_SKIN);
+        ResourceLocation tackleRl = SCDataAttachments.get(fishingBobEntity, SCDataAttachments.TACKLE_SKIN);
         Optional<Supplier<AbstractTackleSkin>> optional = fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(tackleRl);
         optional.ifPresent(supplier -> supplier.get().renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight));
         poseStack.popPose();

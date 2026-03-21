@@ -7,7 +7,6 @@ import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.function.Supplier;
 
@@ -35,7 +34,7 @@ public class FreezeOnMissModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.FREEZE_ON_MISS;
+        return SCMinigameModifiers.FREEZE_ON_MISS;
     }
 
     @Override

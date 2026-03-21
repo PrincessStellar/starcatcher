@@ -11,7 +11,7 @@ public class FishItem extends Item
 {
     public FishItem()
     {
-        super(new Item.Properties().food(ModFoodProperties.BASIC_RAW_FISH));
+        super(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH));
     }
 
     @Override

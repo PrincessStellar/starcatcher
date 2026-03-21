@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.io.attachments;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -76,33 +76,33 @@ public class FishingGuideAttachment {
     }
 
     public static FishingGuideAttachment get(Entity holder){
-        return holder.getData(ModDataAttachments.FISHING_GUIDE);
+        return holder.getData(SCDataAttachments.FISHING_GUIDE);
     }
 
     public static void sync(Player player){
-        player.syncData(ModDataAttachments.FISHING_GUIDE);
+        player.syncData(SCDataAttachments.FISHING_GUIDE);
     }
 
     @SuppressWarnings("deprecation")
     public static boolean hasLegacyData(Player player){
-        return ModDataAttachments.get(player, ModDataAttachments.RECEIVED_GUIDE) || FishingGuideAttachment.getFishesCaught(player).size() > 1;
+        return SCDataAttachments.get(player, SCDataAttachments.RECEIVED_GUIDE) || FishingGuideAttachment.getFishesCaught(player).size() > 1;
     }
 
     @SuppressWarnings("deprecation")
     public void loadFromLegacy(Player player){
 
-        ModDataAttachments.get(player, ModDataAttachments.FISHES_CAUGHT).forEach(legacy -> {
+        SCDataAttachments.get(player, SCDataAttachments.FISHES_CAUGHT).forEach(legacy -> {
             fishesCaught.putIfAbsent(legacy.fp(), legacy.covert());
         });
 
-        ModDataAttachments.get(player, ModDataAttachments.TROPHIES_CAUGHT).forEach(loc -> trophiesCaught.putIfAbsent(loc, 0));
+        SCDataAttachments.get(player, SCDataAttachments.TROPHIES_CAUGHT).forEach(loc -> trophiesCaught.putIfAbsent(loc, 0));
 
-        receivedGuide = ModDataAttachments.get(player, ModDataAttachments.RECEIVED_GUIDE) || receivedGuide;
+        receivedGuide = SCDataAttachments.get(player, SCDataAttachments.RECEIVED_GUIDE) || receivedGuide;
 
-        ModDataAttachments.remove(player, ModDataAttachments.FISHES_CAUGHT);
-        ModDataAttachments.remove(player, ModDataAttachments.FISHES_NOTIFICATION);
-        ModDataAttachments.remove(player, ModDataAttachments.TROPHIES_CAUGHT);
-        ModDataAttachments.remove(player, ModDataAttachments.RECEIVED_GUIDE);
+        SCDataAttachments.remove(player, SCDataAttachments.FISHES_CAUGHT);
+        SCDataAttachments.remove(player, SCDataAttachments.FISHES_NOTIFICATION);
+        SCDataAttachments.remove(player, SCDataAttachments.TROPHIES_CAUGHT);
+        SCDataAttachments.remove(player, SCDataAttachments.RECEIVED_GUIDE);
 
         sync(player);
     }

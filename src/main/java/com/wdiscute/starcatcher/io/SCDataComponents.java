@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-public class ModDataComponents
+public class SCDataComponents
 {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES =
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, Starcatcher.MOD_ID);
@@ -82,9 +82,9 @@ public class ModDataComponents
     public static List<ItemStack> getSlotsInRod(ItemStack itemStack)
     {
         List<ItemStack> list = new ArrayList<>();
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.HOOK, SingleStackContainer.empty()).stack());
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BAIT, SingleStackContainer.empty()).stack());
-        list.add(ModDataComponents.getOrDefault(itemStack, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack());
+        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack());
+        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack());
+        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack());
         return list;
     }
 

@@ -17,9 +17,9 @@ import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.SCCriterionTriggers;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.*;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
+import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.SCSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.ChatFormatting;
@@ -1327,7 +1327,7 @@ public record FishProperties(
 
         public static Difficulty CERBERAY = new Difficulty(
                 16, 10, 1.5f,
-                List.of(new SpawnSweetSpotsModifier(-1, 4, 0.50f, SweetSpot.TNT, true).toDoubleSup(), ModMinigameModifiers.NIKDO53_MODIFIER),
+                List.of(new SpawnSweetSpotsModifier(-1, 4, 0.50f, SweetSpot.TNT, true).toDoubleSup(), SCMinigameModifiers.NIKDO53_MODIFIER),
                 SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
         );
 
@@ -1433,7 +1433,7 @@ public record FishProperties(
 
 
         public static SweetSpot TRASH = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NORMAL,
                 22,
                 30,
@@ -1441,7 +1441,7 @@ public record FishProperties(
         );
 
         public static SweetSpot NORMAL_STEADY = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NORMAL_STEADY,
                 33,
                 15,
@@ -1449,7 +1449,7 @@ public record FishProperties(
         );
 
         public static SweetSpot NORMAL = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NORMAL,
                 22,
                 15,
@@ -1457,7 +1457,7 @@ public record FishProperties(
         );
 
         public static SweetSpot THIN_STEADY = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_THIN_STEADY,
                 20,
                 20,
@@ -1465,7 +1465,7 @@ public record FishProperties(
         );
 
         public static SweetSpot THIN_STEADY_MOSSY = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_THIN_STEADY_MOSSY,
                 20,
                 10,
@@ -1474,7 +1474,7 @@ public record FishProperties(
         );
 
         public static SweetSpot THIN = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_THIN,
                 15,
                 20,
@@ -1482,7 +1482,7 @@ public record FishProperties(
         );
 
         public static SweetSpot FREEZE = new SweetSpot(
-                ModSweetSpotsBehaviour.FROZEN,
+                SCSweetSpotsBehaviour.FROZEN,
                 RL_FREEZE,
                 33,
                 15,
@@ -1490,7 +1490,7 @@ public record FishProperties(
         );
 
         public static SweetSpot NORMAL_HEAVY = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NORMAL,
                 22,
                 1,
@@ -1498,7 +1498,7 @@ public record FishProperties(
         );
 
         public static SweetSpot TREASURE = new SweetSpot(
-                ModSweetSpotsBehaviour.TREASURE,
+                SCSweetSpotsBehaviour.TREASURE,
                 RL_TREASURE,
                 20,
                 15,
@@ -1506,7 +1506,7 @@ public record FishProperties(
         );
 
         public static SweetSpot WITHER = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_WITHER,
                 22,
                 15,
@@ -1517,7 +1517,7 @@ public record FishProperties(
         );
 
         public static SweetSpot WITHER_BIG = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_WITHER_BIG,
                 33,
                 15,
@@ -1525,7 +1525,7 @@ public record FishProperties(
         );
 
         public static SweetSpot CREEPER = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_CREEPER,
                 22,
                 15,
@@ -1533,7 +1533,7 @@ public record FishProperties(
         );
 
         public static SweetSpot TNT = new SweetSpot(
-                ModSweetSpotsBehaviour.TNT,
+                SCSweetSpotsBehaviour.TNT,
                 RL_TNT,
                 33,
                 30,
@@ -1541,7 +1541,7 @@ public record FishProperties(
         );
 
         public static SweetSpot STONE_5 = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_STONE,
                 33,
                 5,
@@ -1550,7 +1550,7 @@ public record FishProperties(
 
 
         public static SweetSpot STONE = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_STONE,
                 33,
                 1,
@@ -1558,7 +1558,7 @@ public record FishProperties(
         );
 
         public static SweetSpot AQUA = new SweetSpot(
-                ModSweetSpotsBehaviour.AQUA,
+                SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA,
                 22,
                 8,
@@ -1566,57 +1566,57 @@ public record FishProperties(
         );
 
         public static SweetSpot AQUA_1 = new SweetSpot(
-                ModSweetSpotsBehaviour.AQUA,
+                SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA, 22, 1, 0x387982
         );
 
         public static SweetSpot AQUA_5 = new SweetSpot(
-                ModSweetSpotsBehaviour.AQUA,
+                SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA, 22, 1, 0x387982
         );
 
         public static SweetSpot AQUA_10 = new SweetSpot(
-                ModSweetSpotsBehaviour.AQUA,
+                SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA, 22, 10, 0x387982
         );
 
         public static SweetSpot DEEPSLATE_CRAB_CLAW = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_DEEPSLATE_CRAB_CLAW, 24, 10, 0xff8400
         );
 
         public static SweetSpot DEEPSLATE_CRAB_LEG = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_DEEPSLATE_CRAB_LEG, 15, 1, 0xff8400
         );
 
         public static SweetSpot OBSIDIAN_CRAB_CLAW = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_OBSIDIAN_CRAB_CLAW, 24, 10, 0x3b2754
         );
 
         public static SweetSpot OBSIDIAN_CRAB_LEG = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_OBSIDIAN_CRAB_LEG, 15, 1, 0x3b2754
         );
 
         public static SweetSpot NETHER_CRAB_CLAW = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NETHER_CRAB_CLAW, 24, 10, 0xcd4545
         );
 
         public static SweetSpot NETHER_CRAB_LEG = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_NETHER_CRAB_LEG, 15, 1, 0xcd4545
         );
 
         public static SweetSpot END_CRAB_CLAW = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_END_CRAB_CLAW, 24, 10, 0xc67ed9
         );
 
         public static SweetSpot END_CRAB_LEG = new SweetSpot(
-                ModSweetSpotsBehaviour.NORMAL,
+                SCSweetSpotsBehaviour.NORMAL,
                 RL_END_CRAB_LEG, 15, 1, 0xc67ed9
         );
 
@@ -1774,9 +1774,9 @@ public record FishProperties(
 
         public static boolean isGolden(ItemStack stack)
         {
-            if (stack.has(ModDataComponents.CAUGHT_FISH_INFO))
+            if (stack.has(SCDataComponents.CAUGHT_FISH_INFO))
             {
-                CaughtFishInfo caughtFishInfo = stack.get(ModDataComponents.CAUGHT_FISH_INFO);
+                CaughtFishInfo caughtFishInfo = stack.get(SCDataComponents.CAUGHT_FISH_INFO);
                 return caughtFishInfo != null && caughtFishInfo.golden();
             }
             return false;
@@ -1909,7 +1909,7 @@ public record FishProperties(
 
     public static int getChance(FishProperties fp, Level level, BlockPos bp, ItemStack rod)
     {
-        if (ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM))
+        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM))
             return fp.baseChance;
 
         if (!isSeasonCorrect(level, fp)) return 0;
@@ -1933,7 +1933,7 @@ public record FishProperties(
             return 0;
 
         //correct bait chance bonus
-        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         if (fp.br().correctBait().contains(BuiltInRegistries.ITEM.getKey(bait.getItem())))
         {
             return fp.baseChance() + fp.br().correctBaitChanceAdded();
@@ -1955,7 +1955,7 @@ public record FishProperties(
 
     public static boolean isWeatherCorrect(Level level, FishProperties fp, ItemStack rod)
     {
-        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
 
         if (!bait.is(SCItems.METEOROLOGICAL_BAIT))
         {
@@ -2090,7 +2090,7 @@ public record FishProperties(
 
     public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile, boolean golden, Player player, boolean perfectCatch)
     {
-        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         boolean isStarcaught = fp.catchInfo().bucketedFish().is(SCItems.STARCAUGHT_BUCKET.getKey()) && bait.is(Items.BUCKET);
         boolean isBucketed = !fp.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && !isStarcaught && bait.is(Items.BUCKET);
 
@@ -2102,7 +2102,7 @@ public record FishProperties(
             //quality food compat
             if(ModList.get().isLoaded("quality_food")) QualityFoodCompat.addQuality(fish, player, player.level(), golden, perfectCatch, percentile);
             ItemStack bucket = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
-            ModDataComponents.set(bucket, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(fish));
+            SCDataComponents.set(bucket, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(fish));
             return bucket;
         }
 
@@ -2115,7 +2115,7 @@ public record FishProperties(
 
         //store caught fish info data component
         if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
-            ModDataComponents.set(fish, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+            SCDataComponents.set(fish, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
 
         //quality food compat
         if(ModList.get().isLoaded("quality_food")) QualityFoodCompat.addQuality(fish, player, player.level(), golden, perfectCatch, percentile);
@@ -2127,9 +2127,9 @@ public record FishProperties(
     {
         ServerLevel level = ((ServerLevel) player.level());
 
-        if (ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).isEmpty()) return;
+        if (SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) return;
 
-        Entity levelEntity = level.getEntity(ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).getUuid());
+        Entity levelEntity = level.getEntity(SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).getUuid());
         if (levelEntity instanceof FishingBobEntity fbe)
         {
             if (time != -1)
@@ -2142,7 +2142,7 @@ public record FishProperties(
                 fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(player, time, completedTreasure, perfectCatch, hits));
 
                 //play sound
-                ModTackleSkins.get(level, fbe.rod).onSuccessfulMinigame(player);
+                SCTackleSkins.get(level, fbe.rod).onSuccessfulMinigame(player);
 
                 //if should cancel because of modifier, return
                 if (fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
@@ -2253,37 +2253,37 @@ public record FishProperties(
                 fbe.modifiers.forEach(AbstractCatchModifier::onFailedMinigame);
 
                 //play sound from tackle skin
-                ModTackleSkins.get(level, fbe.rod).onFailedMinigame(player);
+                SCTackleSkins.get(level, fbe.rod).onFailedMinigame(player);
             }
 
             //consume bait
-            ItemStack bait = ModDataComponents.getOrDefault(fbe.rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+            ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
             if (fbe.fpToFish.br().consumesBait())
             {
                 if (!bait.is(Items.BUCKET))
                 {
                     bait.shrink(1);
-                    ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                    SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
                 }
 
                 if (bait.is(Items.BUCKET) && !fbe.fpToFish.catchInfo().bucketedFish().is(SCItems.MISSINGNO.getKey()) && time != -1)
                 {
                     bait.shrink(1);
-                    ModDataComponents.set(fbe.rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                    SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
                 }
             }
 
             fbe.kill();
         }
 
-        ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB.get());
+        SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());
     }
 
     private static ItemStack getFishedItemStackFromFPForStarcatcherFishEntitySpecifically(FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
         ItemStack is = new ItemStack(fp.catchInfo().fish());
         if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
-            ModDataComponents.set(is, ModDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
         return is;
     }
 

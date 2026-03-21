@@ -4,10 +4,9 @@ import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -35,14 +34,14 @@ public class TooltipEvents
         boolean hasShiftDown = event.getFlags().hasShiftDown();
 
         //modifiers
-        if (ModDataComponents.has(stack, ModDataComponents.MINIGAME_MODIFIERS) || ModDataComponents.has(stack, ModDataComponents.CATCH_MODIFIERS))
+        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS) || SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
         {
             List<ResourceLocation> modifiers = new ArrayList<>();
 
-            if (ModDataComponents.has(stack, ModDataComponents.CATCH_MODIFIERS))
-                modifiers.addAll(Objects.requireNonNull(ModDataComponents.get(stack, ModDataComponents.CATCH_MODIFIERS)));
-            if (ModDataComponents.has(stack, ModDataComponents.MINIGAME_MODIFIERS))
-                modifiers.addAll(Objects.requireNonNull(ModDataComponents.get(stack, ModDataComponents.MINIGAME_MODIFIERS)));
+            if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
+                modifiers.addAll(Objects.requireNonNull(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS)));
+            if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
+                modifiers.addAll(Objects.requireNonNull(SCDataComponents.get(stack, SCDataComponents.MINIGAME_MODIFIERS)));
 
             if (!modifiers.isEmpty())
             {
@@ -67,10 +66,10 @@ public class TooltipEvents
         }
 
         //caught fish info
-        if (ModDataComponents.has(stack, ModDataComponents.CAUGHT_FISH_INFO))
+        if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
             SettingsScreen.Units units = Config.UNIT.get();
-            CaughtFishInfo sw = ModDataComponents.get(stack, ModDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
             if (sw.golden())
             {
@@ -93,9 +92,9 @@ public class TooltipEvents
         }
 
         //tackle skin
-        if (ModDataComponents.has(stack, ModDataComponents.TACKLE_SKIN))
+        if (SCDataComponents.has(stack, SCDataComponents.TACKLE_SKIN))
         {
-            ResourceLocation rl = ModDataComponents.get(stack, ModDataComponents.TACKLE_SKIN);
+            ResourceLocation rl = SCDataComponents.get(stack, SCDataComponents.TACKLE_SKIN);
             comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
 
             for (int i = 0; i < 100; i++)
@@ -110,9 +109,9 @@ public class TooltipEvents
         }
 
         //Netherite Upgrade
-        if (ModDataComponents.has(stack, ModDataComponents.NETHERITE_UPGRADE))
+        if (SCDataComponents.has(stack, SCDataComponents.NETHERITE_UPGRADE))
         {
-            if (Boolean.TRUE.equals(ModDataComponents.get(stack, ModDataComponents.NETHERITE_UPGRADE)))
+            if (Boolean.TRUE.equals(SCDataComponents.get(stack, SCDataComponents.NETHERITE_UPGRADE)))
             {
                 comp.add(1, Tooltips.decodeTranslationKey("tooltip.starcatcher.rod.netherite"));
             }

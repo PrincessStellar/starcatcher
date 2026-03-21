@@ -41,6 +41,7 @@ public class StarcatcherTags
     public static final TagKey<Item> HATS = ItemTags.create(Starcatcher.rl("hats"));
 
     public static final TagKey<Item> PLACEABLE_IN_TACKLE_BOX = ItemTags.create(Starcatcher.rl("placeable_in_tacle_box"));
+    public static final TagKey<Item> WORMS = ItemTags.create(Starcatcher.rl("worms"));
 
     public static final TagKey<Item> RODS = ItemTags.create(Starcatcher.rl("rods"));
 

@@ -1,20 +1,10 @@
 package com.wdiscute.starcatcher.secretnotes;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ExtraComposites;
-import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import io.netty.buffer.ByteBuf;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -27,15 +17,11 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 public class SecretNote extends Item
 {
     public SecretNote()
     {
-        super(new Properties().stacksTo(1).component(ModDataComponents.SECRET_NOTE, Note.SAMPLE_NOTE));
+        super(new Properties().stacksTo(1).component(SCDataComponents.SECRET_NOTE, Note.SAMPLE_NOTE));
     }
 
     @Override
@@ -45,7 +31,7 @@ public class SecretNote extends Item
         if (!level.isClientSide) return InteractionResultHolder.success(itemInHand);
 
         //read note
-        openNoteScreen(ModDataComponents.getOrDefault(itemInHand, ModDataComponents.SECRET_NOTE, Note.SAMPLE_NOTE));
+        openNoteScreen(SCDataComponents.getOrDefault(itemInHand, SCDataComponents.SECRET_NOTE, Note.SAMPLE_NOTE));
 
         return InteractionResultHolder.success(itemInHand);
     }

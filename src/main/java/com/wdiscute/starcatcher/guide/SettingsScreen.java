@@ -7,7 +7,7 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.HitFakeParticle;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -107,9 +107,9 @@ public class SettingsScreen extends Screen
 
         this.fp = fp;
         this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
-        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack();
-        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack();
-        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack();
+        this.bobber = SCDataComponents.get(rod, SCDataComponents.BOBBER).stack();
+        this.bait = SCDataComponents.get(rod, SCDataComponents.BAIT).stack();
+        this.hook = SCDataComponents.get(rod, SCDataComponents.HOOK).stack();
 
         posTreasure = Integer.MIN_VALUE;
 

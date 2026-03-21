@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
 import net.minecraft.core.HolderLookup;
@@ -32,8 +32,8 @@ public class TackleSkinSmithingRecipe implements SmithingRecipe
 
     public boolean matches(SmithingRecipeInput input, Level level)
     {
-        ResourceLocation rodSkin = ModDataComponents.get(input.base(), ModDataComponents.TACKLE_SKIN);
-        ResourceLocation templateSkin = ModDataComponents.get(input.template(), ModDataComponents.TACKLE_SKIN);
+        ResourceLocation rodSkin = SCDataComponents.get(input.base(), SCDataComponents.TACKLE_SKIN);
+        ResourceLocation templateSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
 
         if(rodSkin == null) return false;
         if(templateSkin == null) return false;
@@ -47,7 +47,7 @@ public class TackleSkinSmithingRecipe implements SmithingRecipe
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
     {
         ItemStack newRod = input.base().copy();
-        ModDataComponents.set(newRod, ModDataComponents.TACKLE_SKIN, ModDataComponents.get(input.template(), ModDataComponents.TACKLE_SKIN));
+        SCDataComponents.set(newRod, SCDataComponents.TACKLE_SKIN, SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN));
         return newRod;
     }
 
@@ -73,7 +73,7 @@ public class TackleSkinSmithingRecipe implements SmithingRecipe
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
         ItemStack itemstack = new ItemStack(SCItems.ROD.get());
-        ModDataComponents.set(itemstack, ModDataComponents.NETHERITE_UPGRADE, true);
+        SCDataComponents.set(itemstack, SCDataComponents.NETHERITE_UPGRADE, true);
         return itemstack;
     }
 

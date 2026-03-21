@@ -44,22 +44,22 @@ public class DataGenerators
         gen.addProvider(event.includeServer(), new DGItemModelProvider(output, existingFileHelper));
 
         //block tags
-        BlockTagsProvider btp = new DGModBlocksTagsProvider(output, lookupProvider, existingFileHelper);
+        BlockTagsProvider btp = new DGSCBlocksTagsProvider(output, lookupProvider, existingFileHelper);
         gen.addProvider(event.includeServer(), btp);
 
         //item tags
-        ItemTagsProvider itp = new DGModItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
+        ItemTagsProvider itp = new DGSCItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
 
         //advancements
-        gen.addProvider(event.includeServer(), new DGModAdvancementProvider(output, lookupProvider, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));
 
         //biome tags
         gen.addProvider(event.includeServer(), new DGBiomeTagsProvider(output, lookupProvider, existingFileHelper));
 
         //loot table
         gen.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(DGModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+                List.of(new LootTableProvider.SubProviderEntry(DGSCBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
         //recipes
         gen.addProvider(event.includeServer(), new DGRecipeProvider(output, lookupProvider));

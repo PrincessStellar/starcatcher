@@ -13,7 +13,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCEntities;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
@@ -2176,8 +2176,8 @@ public class FishingGuideScreen extends Screen
         upgradeIndexIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
         addonsIndexIcon = new ItemStack(SCItems.HOOK.get());
         cosmeticsIndexIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
-        tournamentIndexIcon = new ItemStack(ModBlocks.STAND.get());
-        trophiesIndexIcon = new ItemStack(ModBlocks.TROPHY_GOLD.get());
+        tournamentIndexIcon = new ItemStack(SCBlocks.STAND.get());
+        trophiesIndexIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
         settingsIndexIcon = new ItemStack(SCItems.SETTINGS.get());
         indexEntries = new ArrayList<>(List.of(
                 Pair.of(basicsIndexIcon, "gui.guide.index.basics"),
@@ -2192,7 +2192,7 @@ public class FishingGuideScreen extends Screen
         //other items
         sweetspotsIcon = new ItemStack(SCItems.AURORA.get());
         treasureIcon = new ItemStack(SCItems.WATERLOGGED_SATCHEL.get());
-        equipmentIcon = new ItemStack(ModBlocks.FISHERMAN_HAT_GREEN.get());
+        equipmentIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_GREEN.get());
         cosmeticsIcon = new ItemStack(SCItems.AZURE_CRYSTAL_ROD.get());
         gadgetsIcon = new ItemStack(SCItems.FISH_RADAR.get());
 

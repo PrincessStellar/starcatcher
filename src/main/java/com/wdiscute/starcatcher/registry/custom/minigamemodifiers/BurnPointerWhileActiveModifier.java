@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.Minecraft;
@@ -44,7 +43,7 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder()
     {
-        return ModMinigameModifiers.FROZEN_POINTER;
+        return SCMinigameModifiers.FROZEN_POINTER;
     }
 
     @Override

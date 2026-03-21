@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.NBTCodecHelper;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.tournament.StandMenu;
 import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
@@ -49,7 +49,7 @@ public class StandBlockEntity extends AbstractMultiBlockEntity implements MenuPr
 
     public StandBlockEntity(BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.STAND.get(), pos, blockState);
+        super(SCBlockEntities.STAND.get(), pos, blockState);
     }
 
     public Tournament makeOrGetTournament()

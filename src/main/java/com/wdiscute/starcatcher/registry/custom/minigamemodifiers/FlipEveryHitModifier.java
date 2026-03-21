@@ -28,7 +28,7 @@ public class FlipEveryHitModifier extends AbstractTimedModifier
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder()
     {
-        return ModMinigameModifiers.FLIP_EVERY_HIT;
+        return SCMinigameModifiers.FLIP_EVERY_HIT;
     }
 
     @Override

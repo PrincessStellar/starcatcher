@@ -1,12 +1,11 @@
 package com.wdiscute.starcatcher.event;
 
-import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.commands.ModCommands;
+import com.wdiscute.starcatcher.commands.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.io.TournamentSavedData;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.*;
@@ -53,7 +52,7 @@ import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
-public class ModEvents
+public class SCEvents
 {
     @SubscribeEvent
     public static void serverStarted(RegisterSpawnPlacementsEvent event)
@@ -116,7 +115,7 @@ public class ModEvents
     @SubscribeEvent
     public static void addCommand(RegisterCommandsEvent event)
     {
-        ModCommands.register(event.getDispatcher(), event.getBuildContext());
+        SCCommands.register(event.getDispatcher(), event.getBuildContext());
     }
 
     @SubscribeEvent
@@ -132,7 +131,7 @@ public class ModEvents
                 TournamentHandler.clearTournamentToClient(sp);
 
             //guide
-            FishingGuideAttachment fishingGuideAttachment = ModDataAttachments.get(sp, ModDataAttachments.FISHING_GUIDE);
+            FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(sp, SCDataAttachments.FISHING_GUIDE);
 
             if (FishingGuideAttachment.hasLegacyData(sp))
             {

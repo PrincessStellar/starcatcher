@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -65,7 +65,7 @@ public class SCCreativeModeTabs
                             {
                                 ItemStack is = new ItemStack(SCItems.BOTTLED_LETTER.get());
 
-                                ModDataComponents.set(is, ModDataComponents.MESSAGE, MESSAGE);
+                                SCDataComponents.set(is, SCDataComponents.MESSAGE, MESSAGE);
                                 output.accept(is);
                                 continue;
                             }
@@ -74,7 +74,7 @@ public class SCCreativeModeTabs
                             {
                                 ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
 
-                                ModDataComponents.set(is, ModDataComponents.MESSAGE, MESSAGE);
+                                SCDataComponents.set(is, SCDataComponents.MESSAGE, MESSAGE);
                                 output.accept(is);
                                 continue;
                             }

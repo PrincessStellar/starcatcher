@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.secretnotes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.UUIDUtil;
@@ -32,15 +32,15 @@ public class LetterItem extends Item
 {
     public LetterItem()
     {
-        super(new Properties().stacksTo(1).component(ModDataComponents.MESSAGE, Message.empty()));
+        super(new Properties().stacksTo(1).component(SCDataComponents.MESSAGE, Message.empty()));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
     {
-        if(ModDataComponents.has(stack, ModDataComponents.MESSAGE) && tooltipFlag.isAdvanced())
+        if(SCDataComponents.has(stack, SCDataComponents.MESSAGE) && tooltipFlag.isAdvanced())
         {
-            Message wd = ModDataComponents.get(stack, ModDataComponents.MESSAGE);
+            Message wd = SCDataComponents.get(stack, SCDataComponents.MESSAGE);
             tooltipComponents.add(Component.literal("written by uuid: " + wd.sender).withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_GRAY)));
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
@@ -49,7 +49,7 @@ public class LetterItem extends Item
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
-        Message message = ModDataComponents.getOrDefault(player.getItemInHand(usedHand), ModDataComponents.MESSAGE, Message.empty());
+        Message message = SCDataComponents.getOrDefault(player.getItemInHand(usedHand), SCDataComponents.MESSAGE, Message.empty());
         if(level.isClientSide)
         {
             if (message.locked)

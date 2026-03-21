@@ -5,7 +5,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.checkerframework.checker.index.qual.PolyUpperBound;
 
 import java.util.function.Supplier;
 
@@ -39,7 +38,7 @@ public class HeavyHookModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.SLOWER_MOVING_SWEET_SPOTS;
+        return SCMinigameModifiers.SLOWER_MOVING_SWEET_SPOTS;
     }
 
     @Override

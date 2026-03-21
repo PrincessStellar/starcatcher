@@ -2,12 +2,12 @@ package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -36,9 +36,9 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 .rarity(Rarity.EPIC)
                 .fireResistant()
                 .stacksTo(1)
-                .component(ModDataComponents.BOBBER.get(), new SingleStackContainer(new ItemStack(SCItems.BOBBER.get())))
-                .component(ModDataComponents.BAIT.get(), SingleStackContainer.empty())
-                .component(ModDataComponents.HOOK.get(), new SingleStackContainer(new ItemStack(SCItems.HOOK.get())))
+                .component(SCDataComponents.BOBBER.get(), new SingleStackContainer(new ItemStack(SCItems.BOBBER.get())))
+                .component(SCDataComponents.BAIT.get(), SingleStackContainer.empty())
+                .component(SCDataComponents.HOOK.get(), new SingleStackContainer(new ItemStack(SCItems.HOOK.get())))
         );
     }
 
@@ -49,7 +49,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
         if (!is.is(StarcatcherTags.RODS))
             return InteractionResultHolder.pass(is);
 
-        FishingBobAttachment fishingBobAttachment = ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB.get());
+        FishingBobAttachment fishingBobAttachment = SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB.get());
         if (player.isCrouching() && fishingBobAttachment.isEmpty())
         {
             player.openMenu(this);
@@ -61,7 +61,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
         if (fishingBobAttachment.isEmpty())
         {
-            ModTackleSkins.get(player.level(), player.getItemInHand(hand)).onCast(player);
+            SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onCast(player);
 
             if (level instanceof ServerLevel)
             {
@@ -72,8 +72,8 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(player.getX(), entity.getEyeY(), player.getZ()));
 
                 fishingBobAttachment.setUuid(player, entity.getUUID());
-                if(ModDataComponents.has(is, ModDataComponents.TACKLE_SKIN))
-                    ModDataAttachments.set(entity, ModDataAttachments.TACKLE_SKIN.get(), ModDataComponents.get(is, ModDataComponents.TACKLE_SKIN));
+                if(SCDataComponents.has(is, SCDataComponents.TACKLE_SKIN))
+                    SCDataAttachments.set(entity, SCDataAttachments.TACKLE_SKIN.get(), SCDataComponents.get(is, SCDataComponents.TACKLE_SKIN));
             }
         }
         else
@@ -87,10 +87,10 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 {
                     if (entity instanceof FishingBobEntity fbe && !fbe.checkBiting())
                     {
-                        ModTackleSkins.get(player.level(), player.getItemInHand(hand)).onRetrieve(player);
+                        SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onRetrieve(player);
 
                         fbe.kill();
-                        ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB.get());
+                        SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());
                     }
                 }
             }

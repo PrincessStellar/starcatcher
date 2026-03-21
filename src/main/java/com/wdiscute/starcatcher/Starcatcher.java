@@ -2,13 +2,13 @@ package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.ModSweetSpotsBehaviour;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.SCSweetSpotsBehaviour;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.*;
@@ -112,19 +112,19 @@ public class Starcatcher
         SCCreativeModeTabs.register(modEventBus);
 
         SCItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
-        ModDataComponents.register(modEventBus);
+        SCBlocks.register(modEventBus);
+        SCBlockEntities.register(modEventBus);
+        SCDataComponents.register(modEventBus);
         SCSounds.register(modEventBus);
         SCEntities.register(modEventBus);
         SCParticles.register(modEventBus);
         SCRecipes.register(modEventBus);
         SCMenuTypes.register(modEventBus);
-        ModDataAttachments.register(modEventBus);
-        ModSweetSpotsBehaviour.register(modEventBus);
-        ModMinigameModifiers.register(modEventBus);
-        ModCatchModifiers.register(modEventBus);
-        ModTackleSkins.register(modEventBus);
+        SCDataAttachments.register(modEventBus);
+        SCSweetSpotsBehaviour.register(modEventBus);
+        SCMinigameModifiers.register(modEventBus);
+        SCCatchModifiers.register(modEventBus);
+        SCTackleSkins.register(modEventBus);
         SCCriterionTriggers.register(modEventBus);
         SCProcessors.register(modEventBus);
 

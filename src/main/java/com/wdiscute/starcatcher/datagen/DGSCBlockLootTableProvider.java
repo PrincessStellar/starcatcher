@@ -1,27 +1,20 @@
 package com.wdiscute.starcatcher.datagen;
 
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.nikdo53.tinymultiblocklib.block.AbstractMultiBlock;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
+import static com.wdiscute.starcatcher.registry.blocks.SCBlocks.*;
 
-public class DGModBlockLootTableProvider extends BlockLootSubProvider
+public class DGSCBlockLootTableProvider extends BlockLootSubProvider
 {
-    protected DGModBlockLootTableProvider(HolderLookup.Provider registries)
+    protected DGSCBlockLootTableProvider(HolderLookup.Provider registries)
     {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }

@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.mixin;
 
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -22,8 +22,8 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(stack.is(thisItem.getItem()))
         {
-            ModDataComponents.remove(stack, ModDataComponents.CAUGHT_FISH_INFO);
-            ModDataComponents.remove(thisItem, ModDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(stack, SCDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(thisItem, SCDataComponents.CAUGHT_FISH_INFO);
         }
 
     }
@@ -36,8 +36,8 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(itemBeingClickedOn.is(itemInHand.getItem()))
         {
-            ModDataComponents.remove(itemInHand,  ModDataComponents.CAUGHT_FISH_INFO);
-            ModDataComponents.remove(itemBeingClickedOn,ModDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(itemInHand,  SCDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(itemBeingClickedOn, SCDataComponents.CAUGHT_FISH_INFO);
         }
     }
 

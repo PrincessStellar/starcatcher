@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.fishentity;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -113,7 +113,7 @@ public class FishEntity extends AbstractFish
     public ItemStack getBucketItemStack()
     {
         ItemStack is = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
-        ModDataComponents.set(is, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
+        SCDataComponents.set(is, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
         return is;
     }
 

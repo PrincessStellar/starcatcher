@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -38,7 +38,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
             LetterItem.Message message = list.get(U.r.nextInt(list.size()));
             MessagesSavedData.get(((ServerLevel) instance.level())).removeMessage(message);
 
-            ModDataComponents.set(is, ModDataComponents.MESSAGE, message);
+            SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
 
             //make ItemEntities for fish item stack
             ItemEntity messageInABottle = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);

@@ -3,8 +3,8 @@ package com.wdiscute.starcatcher.registry.blocks.aquarium;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.NBTCodecHelper;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.blocks.TickableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,7 +37,7 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
 
     public AquariumBlockEntity(BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.AQUARIUM.get(), pos, blockState);
+        super(SCBlockEntities.AQUARIUM.get(), pos, blockState);
     }
 
     public void setFish(ItemStack fish)
@@ -67,7 +67,7 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
         for (int i = 0; i < 5; i++)
         {
             BlockState bsToMoveTo = level.getBlockState(bpToMoveTo.relative(dir));
-            if (bsToMoveTo.is(ModBlocks.AQUARIUM) && level.random.nextFloat() > 0.5f)
+            if (bsToMoveTo.is(SCBlocks.AQUARIUM) && level.random.nextFloat() > 0.5f)
             {
                 //only move if decoration allows swimming inside
                 if(bsToMoveTo.getValue(AquariumBlock.DECORATION).canFishSwimInside) bpToMoveTo = bpToMoveTo.relative(dir);

@@ -7,7 +7,7 @@ import com.wdiscute.starcatcher.registry.blocks.Telescope.TelescopeBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
 import com.wdiscute.starcatcher.registry.blocks.stand.StandBlock;
 import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxBlock;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.items.HatItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -21,7 +21,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public interface ModBlocks
+public interface SCBlocks
 {
     DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
     DeferredRegister.Blocks HATS = DeferredRegister.createBlocks(Starcatcher.MOD_ID);
@@ -65,12 +65,12 @@ public interface ModBlocks
 
     //hats
     DeferredBlock<Block> FISHERMAN_HAT_WHITE = registerHat("fisherman_hat_white", HatBlock::new);
-    DeferredBlock<Block> FISHERMAN_HAT_LIME = registerHat("fisherman_hat_lime", HatBlock::new, ModCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(), ModCatchModifiers.ADD_CREEPER.getFirst());
+    DeferredBlock<Block> FISHERMAN_HAT_LIME = registerHat("fisherman_hat_lime", HatBlock::new, SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.ADD_CREEPER.getFirst());
     DeferredBlock<Block> FISHERMAN_HAT_ORANGE = registerHat("fisherman_hat_orange", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_RED = registerHat("fisherman_hat_red", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_GRAY = registerHat("fisherman_hat_gray", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_LIGHT_GRAY = registerHat("fisherman_hat_light_gray", HatBlock::new);
-    DeferredBlock<Block> FISHERMAN_HAT_BLACK = registerHat("fisherman_hat_black", HatBlock::new, ModCatchModifiers.HIDE_CATCH.getFirst(), ModCatchModifiers.EXTRA_ITEM.getFirst());
+    DeferredBlock<Block> FISHERMAN_HAT_BLACK = registerHat("fisherman_hat_black", HatBlock::new, SCCatchModifiers.HIDE_CATCH.getFirst(), SCCatchModifiers.EXTRA_ITEM.getFirst());
     DeferredBlock<Block> FISHERMAN_HAT_BROWN = registerHat("fisherman_hat_brown", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_YELLOW = registerHat("fisherman_hat_yellow", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_PINK = registerHat("fisherman_hat_pink", HatBlock::new);
@@ -79,7 +79,7 @@ public interface ModBlocks
     DeferredBlock<Block> FISHERMAN_HAT_BLUE = registerHat("fisherman_hat_blue", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_LIGHT_BLUE = registerHat("fisherman_hat_light_blue", HatBlock::new);
     DeferredBlock<Block> FISHERMAN_HAT_CYAN = registerHat("fisherman_hat_cyan", HatBlock::new);
-    DeferredBlock<Block> FISHERMAN_HAT_GREEN = registerHat("fisherman_hat_green", HatBlock::new, ModCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst());
+    DeferredBlock<Block> FISHERMAN_HAT_GREEN = registerHat("fisherman_hat_green", HatBlock::new, SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst());
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {

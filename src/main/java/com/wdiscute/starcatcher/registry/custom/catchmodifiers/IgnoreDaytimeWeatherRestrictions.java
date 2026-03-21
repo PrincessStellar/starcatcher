@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.custom.catchmodifiers;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bob.FishingBobEntity;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -54,7 +54,7 @@ public class IgnoreDaytimeWeatherRestrictions extends AbstractCatchModifier
             return 0;
 
         //correct bait chance bonus
-        ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         if (fp.br().correctBait().contains(BuiltInRegistries.ITEM.getKey(bait.getItem())))
         {
             return fp.baseChance() + fp.br().correctBaitChanceAdded();

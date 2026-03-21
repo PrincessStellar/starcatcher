@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.wdiscute.starcatcher.registry.SCItems.*;
-import static com.wdiscute.starcatcher.registry.blocks.ModBlocks.*;
+import static com.wdiscute.starcatcher.registry.blocks.SCBlocks.*;
 
 public class DGItemModelProvider extends ItemModelProvider
 {
@@ -125,9 +125,9 @@ public class DGItemModelProvider extends ItemModelProvider
 
 
         //trophies block item
-        simpleBlockItem(ModBlocks.TROPHY_BRONZE.get());
-        simpleBlockItem(ModBlocks.TROPHY_SILVER.get());
-        simpleBlockItem(ModBlocks.TROPHY_GOLD.get());
+        simpleBlockItem(SCBlocks.TROPHY_BRONZE.get());
+        simpleBlockItem(SCBlocks.TROPHY_SILVER.get());
+        simpleBlockItem(SCBlocks.TROPHY_GOLD.get());
 
         simpleItem(DeferredItem.createItem(Starcatcher.rl("clam")));
         simpleItem(DeferredItem.createItem(Starcatcher.rl("conch")));
@@ -149,7 +149,7 @@ public class DGItemModelProvider extends ItemModelProvider
         simpleBlockItem(FISHERMAN_HAT_LIGHT_BLUE.get());
         simpleBlockItem(FISHERMAN_HAT_CYAN.get());
         simpleBlockItem(FISHERMAN_HAT_GREEN.get());
-        
+
         //tacklebox
         simpleBlockItem(TACKLE_BOX.get());
         simpleBlockItem(TACKLE_BOX_WHITE.get());

@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
 import net.minecraft.tags.BiomeTags;
@@ -432,13 +432,13 @@ public class DGStarcatcherFishes
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING));
 
         //beach
-        register(overworldBeachFish(ModBlocks.CONCH.asItem().builtInRegistryHolder())
+        register(overworldBeachFish(SCBlocks.CONCH.asItem().builtInRegistryHolder())
                 .withSizeAndWeight(FishProperties.sizeWeight(5, 2, 100, 49))
                 .withBaseChance(1)
                 .withRarity(FishProperties.Rarity.TRASH)
                 .withDifficulty(FishProperties.Difficulty.TRASH));
 
-        register(overworldBeachFish(ModBlocks.CLAM.asItem().builtInRegistryHolder())
+        register(overworldBeachFish(SCBlocks.CLAM.asItem().builtInRegistryHolder())
                 .withSizeAndWeight(FishProperties.sizeWeight(20, 5, 1000, 400))
                 .withBaseChance(1)
                 .withRarity(FishProperties.Rarity.TRASH)

@@ -19,7 +19,7 @@ public class SteadyBobberModifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.BIGGER_GREEN_SWEET_SPOTS;
+        return SCMinigameModifiers.BIGGER_GREEN_SWEET_SPOTS;
     }
 
     @Override

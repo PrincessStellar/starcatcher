@@ -3,8 +3,8 @@ package com.wdiscute.starcatcher.registry.items.rod;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -64,9 +64,9 @@ public class FishingRodMenu extends AbstractContainerMenu
             this.addSlot(new Slot(inv, i, 8 + i * 18, 142));
         }
 
-        inventory.setStackInSlot(0, ModDataComponents.getOrDefault(is, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack());
-        inventory.setStackInSlot(1, ModDataComponents.getOrDefault(is, ModDataComponents.BAIT, SingleStackContainer.empty()).stack());
-        inventory.setStackInSlot(2, ModDataComponents.getOrDefault(is, ModDataComponents.HOOK, SingleStackContainer.empty()).stack());
+        inventory.setStackInSlot(0, SCDataComponents.getOrDefault(is, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack());
+        inventory.setStackInSlot(1, SCDataComponents.getOrDefault(is, SCDataComponents.BAIT, SingleStackContainer.empty()).stack());
+        inventory.setStackInSlot(2, SCDataComponents.getOrDefault(is, SCDataComponents.HOOK, SingleStackContainer.empty()).stack());
 
         //bobbers first slot
         this.addSlot(new SlotItemHandler(inventory, 0, 50, 35)
@@ -148,9 +148,9 @@ public class FishingRodMenu extends AbstractContainerMenu
 
         if (!player.level().isClientSide)
         {
-            ModDataComponents.set(is, ModDataComponents.BOBBER, new SingleStackContainer(inventory.getStackInSlot(0)));
-            ModDataComponents.set(is, ModDataComponents.BAIT, new SingleStackContainer(inventory.getStackInSlot(1)));
-            ModDataComponents.set(is, ModDataComponents.HOOK, new SingleStackContainer(inventory.getStackInSlot(2)));
+            SCDataComponents.set(is, SCDataComponents.BOBBER, new SingleStackContainer(inventory.getStackInSlot(0)));
+            SCDataComponents.set(is, SCDataComponents.BAIT, new SingleStackContainer(inventory.getStackInSlot(1)));
+            SCDataComponents.set(is, SCDataComponents.HOOK, new SingleStackContainer(inventory.getStackInSlot(2)));
         }
 
     }
@@ -220,7 +220,7 @@ public class FishingRodMenu extends AbstractContainerMenu
     @Override
     public boolean stillValid(Player player)
     {
-        return (player.getMainHandItem().is(StarcatcherTags.RODS) && ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).isEmpty()) ||
-                (player.getOffhandItem().is(StarcatcherTags.RODS) && ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).isEmpty());
+        return (player.getMainHandItem().is(StarcatcherTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) ||
+                (player.getOffhandItem().is(StarcatcherTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty());
     }
 }

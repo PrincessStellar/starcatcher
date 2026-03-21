@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.function.Supplier;
 
@@ -28,7 +27,7 @@ public class ShinyHookModifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS;
+        return SCMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS;
     }
 
     @Override

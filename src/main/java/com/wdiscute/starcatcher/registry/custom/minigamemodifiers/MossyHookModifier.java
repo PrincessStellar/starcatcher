@@ -18,7 +18,7 @@ public class MossyHookModifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT;
+        return SCMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT;
     }
 
     @Override

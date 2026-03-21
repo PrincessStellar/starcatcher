@@ -30,7 +30,7 @@ public class ClearBobberModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.SLOWER_VANISHING;
+        return SCMinigameModifiers.SLOWER_VANISHING;
     }
 
     @Override

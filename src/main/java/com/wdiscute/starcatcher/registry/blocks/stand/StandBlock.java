@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.stand;
 
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.tournament.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -197,7 +197,7 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return ModBlockEntities.STAND.get().create(blockPos, blockState);
+        return SCBlockEntities.STAND.get().create(blockPos, blockState);
     }
 
     @Override

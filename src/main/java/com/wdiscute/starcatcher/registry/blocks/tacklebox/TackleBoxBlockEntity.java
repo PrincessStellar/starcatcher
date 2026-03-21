@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.tacklebox;
 
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -34,14 +34,14 @@ public class TackleBoxBlockEntity extends RandomizableContainerBlockEntity imple
 
     public TackleBoxBlockEntity(@Nullable DyeColor color, BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.TACKLE_BOX.get(), pos, blockState);
+        super(SCBlockEntities.TACKLE_BOX.get(), pos, blockState);
         this.itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
         this.color = color;
     }
 
     public TackleBoxBlockEntity(BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.TACKLE_BOX.get(), pos, blockState);
+        super(SCBlockEntities.TACKLE_BOX.get(), pos, blockState);
         this.itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
         this.color = TackleBoxBlock.getColorFromBlock(blockState.getBlock());
     }

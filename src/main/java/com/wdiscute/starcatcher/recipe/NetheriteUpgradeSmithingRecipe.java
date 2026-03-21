@@ -2,10 +2,10 @@ package com.wdiscute.starcatcher.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -38,7 +38,7 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
         return this.template.test(input.template())
                 && this.base.test(input.base())
                 && this.addition.test(input.addition())
-                && !ModDataComponents.getOrDefault(input.base(), ModDataComponents.NETHERITE_UPGRADE, false);
+                && !SCDataComponents.getOrDefault(input.base(), SCDataComponents.NETHERITE_UPGRADE, false);
     }
 
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
@@ -46,12 +46,12 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
         ItemStack newRod = input.base().copy();
 
         //assemble netherite upgraded rod
-        List<ResourceLocation> catchModifiers = ModDataComponents.getOrDefault(newRod, ModDataComponents.CATCH_MODIFIERS, new ArrayList<>());
+        List<ResourceLocation> catchModifiers = SCDataComponents.getOrDefault(newRod, SCDataComponents.CATCH_MODIFIERS, new ArrayList<>());
 
-        catchModifiers.add(ModCatchModifiers.SURVIVES_LAVA.getFirst());
+        catchModifiers.add(SCCatchModifiers.SURVIVES_LAVA.getFirst());
 
-        ModDataComponents.set(newRod, ModDataComponents.CATCH_MODIFIERS, catchModifiers);
-        ModDataComponents.set(newRod, ModDataComponents.NETHERITE_UPGRADE, true);
+        SCDataComponents.set(newRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        SCDataComponents.set(newRod, SCDataComponents.NETHERITE_UPGRADE, true);
         return newRod;
     }
 
@@ -77,7 +77,7 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
         ItemStack itemstack = new ItemStack(SCItems.ROD.get());
-        ModDataComponents.set(itemstack, ModDataComponents.NETHERITE_UPGRADE, true);
+        SCDataComponents.set(itemstack, SCDataComponents.NETHERITE_UPGRADE, true);
         return itemstack;
     }
 

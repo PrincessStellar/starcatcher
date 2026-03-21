@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.io.MessagesSavedData;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -56,9 +56,9 @@ public class BottledLetterEntity extends ThrowableItemProjectile
                 if(getOwner() instanceof ServerPlayer sp)
                 {
                     sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), true);
-                    if(ModDataComponents.has(getItem(), ModDataComponents.MESSAGE))
+                    if(SCDataComponents.has(getItem(), SCDataComponents.MESSAGE))
                     {
-                        MessagesSavedData.get(((ServerLevel) level())).addMessage(ModDataComponents.get(getItem(), ModDataComponents.MESSAGE));
+                        MessagesSavedData.get(((ServerLevel) level())).addMessage(SCDataComponents.get(getItem(), SCDataComponents.MESSAGE));
                     }
                 }
             }

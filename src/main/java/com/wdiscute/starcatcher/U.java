@@ -1,17 +1,9 @@
 package com.wdiscute.starcatcher;
 
-import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.bob.FishingBobEntity;
 import com.wdiscute.starcatcher.datagen.TrustedHolder;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.SCCriterionTriggers;
-import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
-import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
@@ -22,18 +14,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.ArrayList;

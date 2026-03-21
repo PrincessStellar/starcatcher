@@ -45,7 +45,7 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier{
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.SPAWN_SWEET_SPOTS;
+        return SCMinigameModifiers.SPAWN_SWEET_SPOTS;
     }
 
     @Override

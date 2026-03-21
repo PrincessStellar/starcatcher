@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -331,7 +331,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .save(output);
 
         //stand
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STAND)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.STAND)
                 .define('G', Items.BOOK)
                 .define('P', ItemTags.PLANKS)
                 .define('B', Items.BARREL)
@@ -353,13 +353,13 @@ public class DGRecipeProvider extends RecipeProvider
 
         //bonemeal from clam
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
-                .requires(ModBlocks.CLAM)
+                .requires(SCBlocks.CLAM)
                 .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_clam"));
 
         //bonemeal from conch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
-                .requires(ModBlocks.CONCH)
+                .requires(SCBlocks.CONCH)
                 .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_conch"));
 
@@ -412,21 +412,21 @@ public class DGRecipeProvider extends RecipeProvider
     );
 
     List<Item> hats = List.of(
-            ModBlocks.FISHERMAN_HAT_BLACK.asItem(),
-            ModBlocks.FISHERMAN_HAT_BLUE.asItem(),
-            ModBlocks.FISHERMAN_HAT_BROWN.asItem(),
-            ModBlocks.FISHERMAN_HAT_CYAN.asItem(),
-            ModBlocks.FISHERMAN_HAT_GRAY.asItem(),
-            ModBlocks.FISHERMAN_HAT_GREEN.asItem(),
-            ModBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem(),
-            ModBlocks.FISHERMAN_HAT_LIGHT_GRAY.asItem(),
-            ModBlocks.FISHERMAN_HAT_LIME.asItem(),
-            ModBlocks.FISHERMAN_HAT_MAGENTA.asItem(),
-            ModBlocks.FISHERMAN_HAT_ORANGE.asItem(),
-            ModBlocks.FISHERMAN_HAT_PINK.asItem(),
-            ModBlocks.FISHERMAN_HAT_PURPLE.asItem(),
-            ModBlocks.FISHERMAN_HAT_RED.asItem(),
-            ModBlocks.FISHERMAN_HAT_YELLOW.asItem(),
-            ModBlocks.FISHERMAN_HAT_WHITE.asItem()
+            SCBlocks.FISHERMAN_HAT_BLACK.asItem(),
+            SCBlocks.FISHERMAN_HAT_BLUE.asItem(),
+            SCBlocks.FISHERMAN_HAT_BROWN.asItem(),
+            SCBlocks.FISHERMAN_HAT_CYAN.asItem(),
+            SCBlocks.FISHERMAN_HAT_GRAY.asItem(),
+            SCBlocks.FISHERMAN_HAT_GREEN.asItem(),
+            SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem(),
+            SCBlocks.FISHERMAN_HAT_LIGHT_GRAY.asItem(),
+            SCBlocks.FISHERMAN_HAT_LIME.asItem(),
+            SCBlocks.FISHERMAN_HAT_MAGENTA.asItem(),
+            SCBlocks.FISHERMAN_HAT_ORANGE.asItem(),
+            SCBlocks.FISHERMAN_HAT_PINK.asItem(),
+            SCBlocks.FISHERMAN_HAT_PURPLE.asItem(),
+            SCBlocks.FISHERMAN_HAT_RED.asItem(),
+            SCBlocks.FISHERMAN_HAT_YELLOW.asItem(),
+            SCBlocks.FISHERMAN_HAT_WHITE.asItem()
     );
 }

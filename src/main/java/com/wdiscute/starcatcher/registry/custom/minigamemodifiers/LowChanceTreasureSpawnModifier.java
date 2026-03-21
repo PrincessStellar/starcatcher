@@ -20,7 +20,7 @@ public class LowChanceTreasureSpawnModifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.LOW_CHANCE_TREASURE_SPAWN;
+        return SCMinigameModifiers.LOW_CHANCE_TREASURE_SPAWN;
     }
 
     @Override

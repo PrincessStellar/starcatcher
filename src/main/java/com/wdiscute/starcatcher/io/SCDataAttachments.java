@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import net.dries007.tfc.client.overworld.Star;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +15,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ModDataAttachments
+public class SCDataAttachments
 {
     private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(
             NeoForgeRegistries.ATTACHMENT_TYPES, Starcatcher.MOD_ID);

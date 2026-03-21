@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -13,12 +13,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DGModBlocksTagsProvider extends BlockTagsProvider
+public class DGSCBlocksTagsProvider extends BlockTagsProvider
 {
 
-    public DGModBlocksTagsProvider(PackOutput output,
-                                   CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                   @Nullable ExistingFileHelper existingFileHelper)
+    public DGSCBlocksTagsProvider(PackOutput output,
+                                  CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                  @Nullable ExistingFileHelper existingFileHelper)
     {
         super(output, lookupProvider, Starcatcher.MOD_ID, existingFileHelper);
     }
@@ -26,7 +26,7 @@ public class DGModBlocksTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("carryon:block_blacklist"))).add(ModBlocks.STAND.get());
+        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("carryon:block_blacklist"))).add(SCBlocks.STAND.get());
 
     }
 }

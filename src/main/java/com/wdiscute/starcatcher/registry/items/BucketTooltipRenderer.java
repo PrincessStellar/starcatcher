@@ -4,7 +4,7 @@ import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,7 +13,6 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import org.openjdk.nashorn.api.scripting.ScriptObjectMirror;
 
 public class BucketTooltipRenderer implements ClientTooltipComponent {
     public StarcaughtBucket.BucketTooltip tooltip;
@@ -23,10 +22,10 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
         this.tooltip = tooltip;
 
         //caught fish info
-        if (ModDataComponents.has(tooltip.fish(), ModDataComponents.CAUGHT_FISH_INFO))
+        if (SCDataComponents.has(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO))
         {
             SettingsScreen.Units units = Config.UNIT.get();
-            CaughtFishInfo sw = ModDataComponents.get(tooltip.fish(), ModDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo sw = SCDataComponents.get(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO);
 
             if(sw.golden())
             {
@@ -77,6 +76,6 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
 
     public boolean hasProperties() {
         if (isEmpty()) return false;
-        return ModDataComponents.has(tooltip.fish(),ModDataComponents.CAUGHT_FISH_INFO);
+        return SCDataComponents.has(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO);
     }
 }

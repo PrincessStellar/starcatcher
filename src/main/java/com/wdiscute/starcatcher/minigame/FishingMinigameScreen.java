@@ -6,14 +6,14 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
+import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.custom.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -128,15 +128,15 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         else
             this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
 
-        this.bobber = ModDataComponents.getOrDefault(rod, ModDataComponents.BOBBER, SingleStackContainer.empty()).stack();
-        this.bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, SingleStackContainer.empty()).stack();
-        this.hook = ModDataComponents.getOrDefault(rod, ModDataComponents.HOOK, SingleStackContainer.empty()).stack();
+        this.bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
+        this.bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        this.hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
 
         this.treasureIS = new ItemStack(fp.catchInfo().treasure());
 
-        if (ModDataComponents.has(rod, ModDataComponents.TACKLE_SKIN))
+        if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
         {
-            ResourceLocation rl = ModDataComponents.get(rod, ModDataComponents.TACKLE_SKIN);
+            ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
 
             Optional<Supplier<AbstractTackleSkin>> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
             if (optional.isPresent())
@@ -176,7 +176,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         //add modifiers in armor/curios/rod
-        modifiersToAdd.addAll(ModMinigameModifiers.getMinigameModifiers(player));
+        modifiersToAdd.addAll(SCMinigameModifiers.getMinigameModifiers(player));
 
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())

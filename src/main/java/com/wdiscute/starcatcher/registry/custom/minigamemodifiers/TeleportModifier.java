@@ -44,7 +44,7 @@ public class TeleportModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.TELEPORT;
+        return SCMinigameModifiers.TELEPORT;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.blocks.Telescope;
 
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +11,7 @@ public class TelescopeBlockEntity extends BlockEntity
 {
     public TelescopeBlockEntity(BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.TELESCOPE.get(), pos, blockState);
+        super(SCBlockEntities.TELESCOPE.get(), pos, blockState);
     }
 
     @Override

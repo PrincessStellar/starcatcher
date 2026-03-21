@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.registry.SCItems;
 import dev.emi.emi.api.recipe.EmiRecipe;
@@ -37,7 +37,7 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
 
         ItemStack stack = Arrays.stream(recipe.base.getItems()).findFirst().get().copy();
 
-        ModDataComponents.set(stack, ModDataComponents.NETHERITE_UPGRADE, true);
+        SCDataComponents.set(stack, SCDataComponents.NETHERITE_UPGRADE, true);
         isNetheriteUpgrade = true;
 
         this.output = EmiStack.of(stack);
@@ -50,9 +50,9 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
 
         ItemStack is = SCItems.ROD.get().getDefaultInstance();
 
-        ResourceLocation wadd = ModDataComponents.get(item.getDefaultInstance(), ModDataComponents.TACKLE_SKIN);
+        ResourceLocation wadd = SCDataComponents.get(item.getDefaultInstance(), SCDataComponents.TACKLE_SKIN);
 
-        ModDataComponents.set(is, ModDataComponents.TACKLE_SKIN, wadd);
+        SCDataComponents.set(is, SCDataComponents.TACKLE_SKIN, wadd);
         isNetheriteUpgrade = false;
 
         this.output = EmiStack.of(is);

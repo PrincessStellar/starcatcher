@@ -34,7 +34,7 @@ public class AquaBobberModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.ADD_AQUA_SWEET_SPOT;
+        return SCMinigameModifiers.ADD_AQUA_SWEET_SPOT;
     }
 
     @Override

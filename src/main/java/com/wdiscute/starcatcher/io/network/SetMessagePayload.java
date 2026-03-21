@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import io.netty.buffer.ByteBuf;
@@ -50,7 +50,7 @@ public record SetMessagePayload(List<String> text, String name) implements Custo
                 if(is == null) return;
 
                 LetterItem.Message message = new LetterItem.Message(player.getUUID(), name, level.dimension().location(), text(), false);
-                ModDataComponents.set(is, ModDataComponents.MESSAGE, message);
+                SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
             }
 
         });

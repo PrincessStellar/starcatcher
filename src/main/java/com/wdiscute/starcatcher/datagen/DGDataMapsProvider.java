@@ -1,11 +1,10 @@
 package com.wdiscute.starcatcher.datagen;
 
-import com.wdiscute.sellingbin.processors.FoodProcessor;
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.ModDataMaps;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
 import net.minecraft.core.HolderLookup;
@@ -13,10 +12,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -46,8 +43,8 @@ public class DGDataMapsProvider extends DataMapProvider
         decor.add(ItemTags.PICKAXES, AquariumBlock.Interaction.BUILD_CAVE, false);
         decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
         decor.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
-        decor.add(ModBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
-        decor.add(ModBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
+        decor.add(SCBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
+        decor.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
 

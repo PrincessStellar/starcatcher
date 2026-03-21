@@ -9,10 +9,10 @@ import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.FishMessagesModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCParticles;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.ModTackleSkins;
+import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.client.Minecraft;
@@ -89,7 +89,7 @@ public class FishingBobEntity extends Projectile
     {
         super(entityType, level);
         this.player = getPlayer();
-        this.modifiers = ModCatchModifiers.getCatchModifiers(player);
+        this.modifiers = SCCatchModifiers.getCatchModifiers(player);
         modifiers.forEach(acm -> acm.onAdd(this));
     }
 
@@ -107,17 +107,17 @@ public class FishingBobEntity extends Projectile
         this.setOwner(player);
         this.player = player;
         this.rod = rod;
-        this.modifiers = ModCatchModifiers.getCatchModifiers(player);
+        this.modifiers = SCCatchModifiers.getCatchModifiers(player);
 
         //add fish messages modifier
         modifiers.add(new FishMessagesModifier());
 
-        SingleStackContainer ssc = ModDataComponents.getOrDefault(rod, ModDataComponents.HOOK, SingleStackContainer.empty());
+        SingleStackContainer ssc = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty());
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));
 
         entityData.set(VOID, voidHook);
 
-        survivesLava = ModDataComponents.getOrDefault(rod, ModDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
+        survivesLava = SCDataComponents.getOrDefault(rod, SCDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
 
         minTicksToFish = Config.BASE_MIN_TICKS_TO_FISH.getAsInt();
         maxTicksToFish = Config.BASE_MAX_TICKS_TO_FISH.getAsInt();
@@ -157,7 +157,7 @@ public class FishingBobEntity extends Projectile
         this.xRotO = this.getXRot();
 
         if (!level.isClientSide)
-            ModDataAttachments.get(player, ModDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
+            SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
         currentState = FishHookState.FLYING;
     }
@@ -341,7 +341,7 @@ public class FishingBobEntity extends Projectile
     @Override
     public void kill()
     {
-        ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB);
+        SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB);
         super.kill();
     }
 
@@ -371,7 +371,7 @@ public class FishingBobEntity extends Projectile
         if (player == null || this.shouldStopFishing(player))
         {
             this.discard();
-            if (player != null) ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB);
+            if (player != null) SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB);
         }
 
         BlockPos blockpos = this.blockPosition();
@@ -429,14 +429,14 @@ public class FishingBobEntity extends Projectile
 
             if (timeBiting > 80)
             {
-                ModDataAttachments.remove(player, ModDataAttachments.FISHING_BOB);
-                ModTackleSkins.get(level(), rod).onMissed(player);
+                SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB);
+                SCTackleSkins.get(level(), rod).onMissed(player);
 
-                ItemStack bait = ModDataComponents.getOrDefault(rod, ModDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack();
+                ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack();
                 if (!bait.is(Items.BUCKET))
                 {
                     bait.shrink(1);
-                    ModDataComponents.set(rod, ModDataComponents.BAIT, new SingleStackContainer(bait));
+                    SCDataComponents.set(rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
                 }
 
                 kill();

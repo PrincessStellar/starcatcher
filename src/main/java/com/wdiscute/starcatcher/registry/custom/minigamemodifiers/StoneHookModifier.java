@@ -30,7 +30,7 @@ public class StoneHookModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.STOP_DECAY_ON_HIT;
+        return SCMinigameModifiers.STOP_DECAY_ON_HIT;
     }
 
     @Override

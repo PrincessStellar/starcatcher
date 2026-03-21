@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.storage.TrophyProperties;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
+import dev.emi.emi.api.recipe.EmiInfoRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
@@ -44,6 +45,8 @@ public class StarcatcherEmiPlugin implements EmiPlugin
 
         Registry<FishProperties> fps = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY);
 
+        registry.addRecipe(new EmiInfoRecipe(StarcatcherTags.WORMS));
+
         for (FishProperties fp : fps)
         {
             registry.addRecipe(new StarcatcherEmiRecipe(fps.getKey(fp), fp));
@@ -72,15 +75,4 @@ public class StarcatcherEmiPlugin implements EmiPlugin
         }
 
     }
-
-    private static void addRecipeSafe(EmiRegistry registry, Supplier<EmiRecipe> supplier)
-    {
-        registry.addRecipe(supplier.get());
-    }
-
-    private static <C extends RecipeInput, T extends Recipe<C>> Iterable<T> getRecipes(EmiRegistry registry, RecipeType<T> type)
-    {
-        return registry.getRecipeManager().getAllRecipesFor(type).stream().map(e -> e.value())::iterator;
-    }
-
 }

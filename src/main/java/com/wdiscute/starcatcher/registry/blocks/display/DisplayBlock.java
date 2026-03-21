@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.blocks.display;
 
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -104,7 +104,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
     {
-        return ModBlockEntities.DISPLAY.get().create(pos, state);
+        return SCBlockEntities.DISPLAY.get().create(pos, state);
     }
 
     @Override
@@ -225,7 +225,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType)
     {
-        return level.isClientSide ? createTickerHelper(blockEntityType, ModBlockEntities.DISPLAY.get(), DisplayBlockEntity::bookAnimationTick) : null;
+        return level.isClientSide ? createTickerHelper(blockEntityType, SCBlockEntities.DISPLAY.get(), DisplayBlockEntity::bookAnimationTick) : null;
     }
 
     @Override

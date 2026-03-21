@@ -36,7 +36,7 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.BASE;
+        return SCMinigameModifiers.BASE;
     }
 
     @Override

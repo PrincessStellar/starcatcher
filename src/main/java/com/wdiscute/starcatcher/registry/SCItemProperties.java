@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -20,7 +20,7 @@ public class SCItemProperties
                     (stack, level, entity, seed) ->
                     {
                         if(entity == null) return 0.0f;
-                        return  !ModDataAttachments.get(entity, ModDataAttachments.FISHING_BOB).isEmpty() && (entity.getMainHandItem() == stack || (entity.getOffhandItem() == stack)) ? 1.0f : 0.0f;
+                        return  !SCDataAttachments.get(entity, SCDataAttachments.FISHING_BOB).isEmpty() && (entity.getMainHandItem() == stack || (entity.getOffhandItem() == stack)) ? 1.0f : 0.0f;
                     }
             );
         }

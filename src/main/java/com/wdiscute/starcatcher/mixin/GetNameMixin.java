@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.mixin;
 
 import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -20,12 +20,12 @@ public class GetNameMixin
     {
         ItemStack stack = (ItemStack) (Object) this;
 
-        if(ModDataComponents.has(stack, ModDataComponents.BUCKETED_FISH))
+        if(SCDataComponents.has(stack, SCDataComponents.BUCKETED_FISH))
         {
-            stack = ModDataComponents.get(stack, ModDataComponents.BUCKETED_FISH).stack();
+            stack = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH).stack();
         }
 
-        if (ModDataComponents.has(stack, ModDataComponents.CAUGHT_FISH_INFO))
+        if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
             Component baseName;
             Component customName = stack.get(DataComponents.CUSTOM_NAME);
@@ -42,7 +42,7 @@ public class GetNameMixin
             else baseName = stack.getItem().getName(stack);
 
             //get sw
-            CaughtFishInfo sw = ModDataComponents.get(stack, ModDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
             //if golden, use golden rarity color
             FishProperties.Rarity rarity = sw.golden() ? FishProperties.Rarity.GOLDEN : sw.rarity();

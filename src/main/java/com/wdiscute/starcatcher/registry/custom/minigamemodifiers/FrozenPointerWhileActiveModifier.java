@@ -10,7 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.sounds.SoundEvents;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.function.Supplier;
 
@@ -37,7 +36,7 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
 
     @Override
     public DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> getRegistryHolder() {
-        return ModMinigameModifiers.FROZEN_POINTER;
+        return SCMinigameModifiers.FROZEN_POINTER;
     }
 
     @Override

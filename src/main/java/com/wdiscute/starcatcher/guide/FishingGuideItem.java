@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.guide;
 
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockEntity;
 import net.minecraft.client.Minecraft;
@@ -41,7 +41,7 @@ public class FishingGuideItem extends Item
         {
             if(!blockState.getValue(LecternBlock.HAS_BOOK))
             {
-                level.setBlockAndUpdate(clickedPos, ModBlocks.DISPLAY.get().defaultBlockState()
+                level.setBlockAndUpdate(clickedPos, SCBlocks.DISPLAY.get().defaultBlockState()
                         .setValue(DisplayBlock.HAS_BOOK, true)
                         .setValue(BlockStateProperties.WATERLOGGED, false)
                 );

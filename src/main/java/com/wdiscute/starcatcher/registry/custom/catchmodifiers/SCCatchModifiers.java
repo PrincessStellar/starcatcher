@@ -4,7 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.compat.CuriosCompat;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public interface ModCatchModifiers
+public interface SCCatchModifiers
 {
     DeferredRegister<Supplier<AbstractCatchModifier>> REGISTRY =
             DeferredRegister.create(Starcatcher.CATCH_MODIFIERS_REGISTRY, Starcatcher.MOD_ID);
@@ -105,12 +105,12 @@ public interface ModCatchModifiers
         if (main.is(StarcatcherTags.RODS))
         {
             rls.addAll(getCatchModifiersRLs(main));
-            ModDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
+            SCDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
         }
         else if (player.getOffhandItem().is(StarcatcherTags.RODS))
         {
             rls.addAll(getCatchModifiersRLs(off));
-            ModDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
+            SCDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
         }
 
         //armor
@@ -129,7 +129,7 @@ public interface ModCatchModifiers
 
     static List<ResourceLocation> getCatchModifiersRLs(ItemStack itemStack)
     {
-        List<ResourceLocation> resourceLocations = ModDataComponents.get(itemStack, ModDataComponents.CATCH_MODIFIERS);
+        List<ResourceLocation> resourceLocations = SCDataComponents.get(itemStack, SCDataComponents.CATCH_MODIFIERS);
         if (resourceLocations == null) return List.of();
         return resourceLocations;
     }

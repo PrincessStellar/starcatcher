@@ -1,10 +1,7 @@
 package com.wdiscute.starcatcher.registry.items;
 
-import com.mojang.datafixers.util.Pair;
-import com.wdiscute.starcatcher.io.ModDataComponents;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.ModCatchModifiers;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.ModMinigameModifiers;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
@@ -12,9 +9,7 @@ import net.minecraft.world.item.Equipable;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class HatItem extends BlockItem implements Equipable
 {
@@ -23,7 +18,7 @@ public class HatItem extends BlockItem implements Equipable
     {
         super(block, new Properties()
                 .stacksTo(1)
-                .component(ModDataComponents.CATCH_MODIFIERS, List.of(modifiers))
+                .component(SCDataComponents.CATCH_MODIFIERS, List.of(modifiers))
         );
     }
 
@@ -31,7 +26,7 @@ public class HatItem extends BlockItem implements Equipable
     {
         super(block, new Properties()
                 .stacksTo(1)
-                .component(ModDataComponents.CATCH_MODIFIERS, List.of(ModCatchModifiers.DECREASES_LURE_TIME.getFirst()))
+                .component(SCDataComponents.CATCH_MODIFIERS, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()))
         );
     }
 

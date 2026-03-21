@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.blocks.display;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -87,7 +87,7 @@ public class DisplayBlockEntity extends BlockEntity
 
     public DisplayBlockEntity(BlockPos pos, BlockState blockState)
     {
-        super(ModBlockEntities.DISPLAY.get(), pos, blockState);
+        super(SCBlockEntities.DISPLAY.get(), pos, blockState);
     }
 
     public ItemStack getBook()

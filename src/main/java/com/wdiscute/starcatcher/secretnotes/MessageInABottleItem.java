@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -21,12 +21,12 @@ public class MessageInABottleItem extends Item
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
         ItemStack itemInHand = player.getItemInHand(usedHand);
-        if(ModDataComponents.has(itemInHand, ModDataComponents.MESSAGE))
+        if(SCDataComponents.has(itemInHand, SCDataComponents.MESSAGE))
         {
             //give note
             ItemStack is = new ItemStack(SCItems.MESSAGE.get());
-            LetterItem.Message message = ModDataComponents.get(itemInHand, ModDataComponents.MESSAGE);
-            ModDataComponents.set(is, ModDataComponents.MESSAGE, message.lock());
+            LetterItem.Message message = SCDataComponents.get(itemInHand, SCDataComponents.MESSAGE);
+            SCDataComponents.set(is, SCDataComponents.MESSAGE, message.lock());
             player.addItem(is);
 
             player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);

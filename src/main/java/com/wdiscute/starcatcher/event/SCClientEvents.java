@@ -5,7 +5,7 @@ import com.wdiscute.starcatcher.bob.FishingBobRenderer;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
-import com.wdiscute.starcatcher.registry.blocks.ModBlockEntities;
+import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
 import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
@@ -30,7 +30,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
-public class ModClientEvents
+public class SCClientEvents
 {
     @SubscribeEvent
     public static void keyPressed(InputEvent.Key event)
@@ -44,8 +44,8 @@ public class ModClientEvents
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event)
     {
-        event.registerBlockEntityRenderer(ModBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.AQUARIUM.get(), AquariumRenderer::new);
+        event.registerBlockEntityRenderer(SCBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
+        event.registerBlockEntityRenderer(SCBlockEntities.AQUARIUM.get(), AquariumRenderer::new);
         //event.registerBlockEntityRenderer(ModBlockEntities.TACKLE_BOX.get(), TackleBoxRenderer::new);
     }
 

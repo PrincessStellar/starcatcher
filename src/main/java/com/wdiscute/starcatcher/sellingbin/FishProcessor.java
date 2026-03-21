@@ -5,12 +5,11 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.sellingbin.processors.AbstractProcessor;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.fml.ISystemReportExtender;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
@@ -77,9 +76,9 @@ public class FishProcessor extends AbstractProcessor
     @Override
     public int addValue(int baseValue, int currentValue, ItemStack itemStack, BlockEntity blockEntity, Player player)
     {
-        if(!ModDataComponents.has(itemStack, ModDataComponents.CAUGHT_FISH_INFO)) return 0;
+        if(!SCDataComponents.has(itemStack, SCDataComponents.CAUGHT_FISH_INFO)) return 0;
 
-        CaughtFishInfo caughtFishInfo = ModDataComponents.get(itemStack, ModDataComponents.CAUGHT_FISH_INFO);
+        CaughtFishInfo caughtFishInfo = SCDataComponents.get(itemStack, SCDataComponents.CAUGHT_FISH_INFO);
 
         if(caughtFishInfo.golden()) return (int) (baseValue * goldenMultiplier);
 

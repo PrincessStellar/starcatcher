@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.registry.items.modifieritem;
 
-import com.mojang.datafixers.util.Pair;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -23,7 +22,7 @@ public class MinigameModifierItem extends Item
     public MinigameModifierItem(int maxStackSize, DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>>... modifiers)
     {
         super(new Item.Properties()
-                .component(ModDataComponents.MINIGAME_MODIFIERS, getAsList(modifiers))
+                .component(SCDataComponents.MINIGAME_MODIFIERS, getAsList(modifiers))
                 .stacksTo(maxStackSize)
         );
     }

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -49,14 +49,14 @@ public class StarcaughtBucket extends BucketItem
     private void spawn(ServerLevel serverLevel, ItemStack bucketedMobStack, BlockPos pos)
     {
         FishEntity fishEntity = this.entity.spawn(serverLevel, bucketedMobStack, null, pos, MobSpawnType.BUCKET, true, false);
-        if(ModDataComponents.has(bucketedMobStack, ModDataComponents.BUCKETED_FISH))
+        if(SCDataComponents.has(bucketedMobStack, SCDataComponents.BUCKETED_FISH))
             fishEntity.setFish(getFish(bucketedMobStack));
         else
             fishEntity.setFish(SCItems.AURORA.toStack());
     }
 
     private static ItemStack getFish(ItemStack bucket) {
-        return ModDataComponents.getOrDefault(bucket,ModDataComponents.BUCKETED_FISH, new SingleStackContainer(ItemStack.EMPTY)).stack();
+        return SCDataComponents.getOrDefault(bucket, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(ItemStack.EMPTY)).stack();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class StarcaughtBucket extends BucketItem
     @Override
     public Component getName(ItemStack stack)
     {
-        SingleStackContainer ssc = ModDataComponents.get(stack, ModDataComponents.BUCKETED_FISH);
+        SingleStackContainer ssc = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH);
 
         if (ssc == null)
             return super.getName(stack);

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.custom.tackleskin;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public interface ModTackleSkins
+public interface SCTackleSkins
 {
     DeferredRegister<Supplier<AbstractTackleSkin>> REGISTRY =
             DeferredRegister.create(Starcatcher.TACKLE_SKIN_REGISTRY, Starcatcher.MOD_ID);
@@ -50,9 +50,9 @@ public interface ModTackleSkins
 
     static AbstractTackleSkin get(Level level, ItemStack itemInHand)
     {
-        if (ModDataComponents.has(itemInHand, ModDataComponents.TACKLE_SKIN))
+        if (SCDataComponents.has(itemInHand, SCDataComponents.TACKLE_SKIN))
         {
-            ResourceLocation rl = ModDataComponents.get(itemInHand, ModDataComponents.TACKLE_SKIN);
+            ResourceLocation rl = SCDataComponents.get(itemInHand, SCDataComponents.TACKLE_SKIN);
 
             Optional<Supplier<AbstractTackleSkin>> optional = level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
             if (optional.isPresent()) return optional.get().get();

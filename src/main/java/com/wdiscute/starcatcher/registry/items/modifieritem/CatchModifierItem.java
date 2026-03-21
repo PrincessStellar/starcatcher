@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.items.modifieritem;
 
 import com.mojang.datafixers.util.Pair;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -22,7 +22,7 @@ public class CatchModifierItem extends Item
     public CatchModifierItem(int maxStackSize, Pair<ResourceLocation, Supplier<AbstractCatchModifier>>... modifiers)
     {
         super(new Item.Properties()
-                .component(ModDataComponents.CATCH_MODIFIERS, getAsList(modifiers))
+                .component(SCDataComponents.CATCH_MODIFIERS, getAsList(modifiers))
                 .stacksTo(maxStackSize)
         );
     }

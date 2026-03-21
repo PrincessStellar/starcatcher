@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
+import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishing.TrophyPropertiesRegistry;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
@@ -19,21 +19,21 @@ public class DGTrophies extends TrophyPropertiesRegistry
 
 
         registerTrophy(TrophyProperties.builder()
-                        .setFish(ModBlocks.TROPHY_BRONZE.asItem().builtInRegistryHolder())
+                        .setFish(SCBlocks.TROPHY_BRONZE.asItem().builtInRegistryHolder())
                         .hideUntilCaught()
                         .setTrophyType(TrophyProperties.TrophyType.TROPHY)
                         .setAllProgress(new TrophyProperties.RarityProgress(50, 20))
         );
 
         registerTrophy(TrophyProperties.builder()
-                        .setFish(ModBlocks.TROPHY_SILVER.asItem().builtInRegistryHolder())
+                        .setFish(SCBlocks.TROPHY_SILVER.asItem().builtInRegistryHolder())
                         .hideUntilCaught()
                         .setTrophyType(TrophyProperties.TrophyType.TROPHY)
                         .setAllProgress(new TrophyProperties.RarityProgress(100, 50))
         );
 
         registerTrophy(TrophyProperties.builder()
-                        .setFish(ModBlocks.TROPHY_GOLD.asItem().builtInRegistryHolder())
+                        .setFish(SCBlocks.TROPHY_GOLD.asItem().builtInRegistryHolder())
                         .hideUntilCaught()
                         .setTrophyType(TrophyProperties.TrophyType.TROPHY)
                         .setAllProgress(new TrophyProperties.RarityProgress(200, 0))
