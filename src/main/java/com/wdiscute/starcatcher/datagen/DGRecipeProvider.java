@@ -427,7 +427,7 @@ public class DGRecipeProvider extends RecipeProvider
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FROG_SMITHING_TEMPLATE)
                 .define('T', SCItems.FROG_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
-                .define('C', Items.FROGSPAWN)
+                .define('C', Items.TADPOLE_BUCKET)
                 .pattern("DTD")
                 .pattern("DCD")
                 .pattern("DDD")
