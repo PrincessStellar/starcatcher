@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-23T18:35:28.4487567	Item Models: starcatcher
+// 1.21.1	2026-03-21T18:04:54.5409936	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -178,6 +178,23 @@ c60f4d91d247f92cdef24770d406e46d63c06d97 assets/starcatcher/models/item/steady_b
 f6e70d2ff0e47b07921c5a689281124766ae7cb6 assets/starcatcher/models/item/suneater.json
 fae193138ec4619b25eeea36f035ddde469644b8 assets/starcatcher/models/item/sunny_sturgeon.json
 26429ac8538354e824cd9798074b9acc024ced85 assets/starcatcher/models/item/sun_seeking_carp.json
+f4d8afe7dbe79c84d5f52e2e8173b2bea1ab1478 assets/starcatcher/models/item/tackle_box.json
+89075825526b5828e0c3a5745c20150d2de08c20 assets/starcatcher/models/item/tackle_box_black.json
+78e50edc0dd6c592a701ddbc010eac0efe3869bd assets/starcatcher/models/item/tackle_box_blue.json
+55cc1bdbecc3d34087c19d320f8b1d67a6d8d996 assets/starcatcher/models/item/tackle_box_brown.json
+84c06f7974dfad57bc2eb040f537169c4ab20c86 assets/starcatcher/models/item/tackle_box_cyan.json
+fa3cb99d4b806757a86ebfca24aaae95c80928d9 assets/starcatcher/models/item/tackle_box_gray.json
+d0142e324f9e9c96a96bec3e730c41946a6de852 assets/starcatcher/models/item/tackle_box_green.json
+3032d522a87166c3a77754793b61388416826d6d assets/starcatcher/models/item/tackle_box_light_blue.json
+59a5c29056e7839d26af3deabc093b9a67c8b15c assets/starcatcher/models/item/tackle_box_light_gray.json
+fb51fce835931bc99cd5f0924274ad07afe6c2d4 assets/starcatcher/models/item/tackle_box_lime.json
+f79c9be34618db935d84ff0ae1e6c947fa8b4950 assets/starcatcher/models/item/tackle_box_magenta.json
+45e6320e26dc280dd8cbabc1e5f892a798a8aeb7 assets/starcatcher/models/item/tackle_box_orange.json
+5fa8fcd88991b89a074a76f08356c455ec006303 assets/starcatcher/models/item/tackle_box_pink.json
+33903fb65b4ba34afb62c1826f8bf0571c30a34b assets/starcatcher/models/item/tackle_box_purple.json
+6904cf1daea5ab0e6d906758ef3c013da07f1de2 assets/starcatcher/models/item/tackle_box_red.json
+04080a05bc7c4162712a7e1bb244a98c7acd206f assets/starcatcher/models/item/tackle_box_white.json
+6b2ecf046f44c4cf0a066fc34d964b4dcf4bafcd assets/starcatcher/models/item/tackle_box_yellow.json
 823d63cbbbccf33e7a72a185090a0b5e3d3f3e04 assets/starcatcher/models/item/the_quarrish.json
 19136e6b93fb18168335f453de71640a302b47ec assets/starcatcher/models/item/thunder_bass.json
 8f4b8363de632382072902511ab494a4e8cee2ad assets/starcatcher/models/item/trophy_bronze.json

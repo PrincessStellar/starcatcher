@@ -46,7 +46,7 @@ public class ModClientEvents
     {
         event.registerBlockEntityRenderer(ModBlockEntities.DISPLAY.get(), DisplayBlockRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.AQUARIUM.get(), AquariumRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.TACKLE_BOX.get(), TackleBoxRenderer::new);
+        //event.registerBlockEntityRenderer(ModBlockEntities.TACKLE_BOX.get(), TackleBoxRenderer::new);
     }
 
     @SubscribeEvent

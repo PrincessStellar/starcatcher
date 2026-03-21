@@ -149,6 +149,26 @@ public class DGItemModelProvider extends ItemModelProvider
         simpleBlockItem(FISHERMAN_HAT_LIGHT_BLUE.get());
         simpleBlockItem(FISHERMAN_HAT_CYAN.get());
         simpleBlockItem(FISHERMAN_HAT_GREEN.get());
+        
+        //tacklebox
+        simpleBlockItem(TACKLE_BOX.get());
+        simpleBlockItem(TACKLE_BOX_WHITE.get());
+        simpleBlockItem(TACKLE_BOX_LIME.get());
+        simpleBlockItem(TACKLE_BOX_ORANGE.get());
+        simpleBlockItem(TACKLE_BOX_RED.get());
+        simpleBlockItem(TACKLE_BOX_GRAY.get());
+        simpleBlockItem(TACKLE_BOX_LIGHT_GRAY.get());
+        simpleBlockItem(TACKLE_BOX_BLACK.get());
+        simpleBlockItem(TACKLE_BOX_BROWN.get());
+        simpleBlockItem(TACKLE_BOX_YELLOW.get());
+        simpleBlockItem(TACKLE_BOX_PINK.get());
+        simpleBlockItem(TACKLE_BOX_MAGENTA.get());
+        simpleBlockItem(TACKLE_BOX_PURPLE.get());
+        simpleBlockItem(TACKLE_BOX_BLUE.get());
+        simpleBlockItem(TACKLE_BOX_LIGHT_BLUE.get());
+        simpleBlockItem(TACKLE_BOX_CYAN.get());
+        simpleBlockItem(TACKLE_BOX_GREEN.get());
+
     }
 
 

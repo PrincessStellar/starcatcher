@@ -20,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
@@ -28,11 +29,15 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
 import javax.annotation.Nullable;
@@ -45,6 +50,9 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     public static final ResourceLocation CONTENTS = U.rl("minecraft", "contents");
     @javax.annotation.Nullable
     private final DyeColor color;
+
+    private static final VoxelShape NORTH_SOUTH = Block.box(0.5f, 0, 2.5f, 15.5f, 10f, 13.5f);
+    private static final VoxelShape EAST_WEST = Block.box(2.5f, 0, 0.5f, 13.5f, 10f, 15.5f);
 
     public MapCodec<TackleBoxBlock> codec()
     {
@@ -63,6 +71,19 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     }
 
     @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
+    {
+        if(state.getValue(FACING) == Direction.NORTH || state.getValue(FACING) == Direction.SOUTH) return NORTH_SOUTH;
+        return EAST_WEST;
+    }
+
+    @Override
+    protected FluidState getFluidState(BlockState state)
+    {
+        return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
     {
         return new TackleBoxBlockEntity(this.color, pos, state);
@@ -71,7 +92,7 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Override
     protected RenderShape getRenderShape(BlockState state)
     {
-        return RenderShape.ENTITYBLOCK_ANIMATED;
+        return RenderShape.MODEL;
     }
 
     @Override
@@ -105,7 +126,10 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context)
     {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        BlockState bs = defaultBlockState();
+        bs = bs.setValue(FACING, context.getHorizontalDirection().getOpposite());
+        bs = bs.setValue(BlockStateProperties.WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+        return bs;
     }
 
     @Override
@@ -113,6 +137,7 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
     {
         super.createBlockStateDefinition(builder);
         builder.add(FACING);
+        builder.add(BlockStateProperties.WATERLOGGED);
     }
 
     @Override

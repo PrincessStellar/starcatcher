@@ -409,7 +409,7 @@
 
   "container.starcatcher.tackle_box.itemCount" : "%s x%s",
   "container.starcatcher.tackle_box.unknownContents" : "%s x%s",
-  "container.starcatcher.tackle_box.more" : "container.starcatcher.tackle_box.more",
+  "container.starcatcher.tackle_box.more" : "and %s more...",
 
   "block.starcatcher.tackle_box" : "Tackle Box",
   "block.starcatcher.tackle_box_white" : "White Tackle Box",

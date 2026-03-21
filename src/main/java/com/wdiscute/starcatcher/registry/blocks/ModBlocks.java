@@ -101,7 +101,7 @@ public interface ModBlocks
     private static <T extends Block> DeferredBlock<T> registerTackleBox(String name, Supplier<T> block, ResourceLocation... modifiers)
     {
         DeferredBlock<T> toReturn = TACKLE_BOXES.register(name, block);
-        SCItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties()));
+        SCItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties().stacksTo(1)));
         return toReturn;
     }
 
