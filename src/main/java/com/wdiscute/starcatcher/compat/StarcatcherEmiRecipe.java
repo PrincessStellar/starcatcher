@@ -21,7 +21,6 @@ public class StarcatcherEmiRecipe implements EmiRecipe {
 
     private final ResourceLocation id;
     private final List<EmiStack> output;
-    private final TrophyProperties tp;
     private final List<EmiIngredient> input = List.of(
             EmiIngredient.of(Ingredient.of(SCItems.GUIDE)),
             EmiIngredient.of(Ingredient.of(SCItems.ROD)));
@@ -30,16 +29,12 @@ public class StarcatcherEmiRecipe implements EmiRecipe {
     public StarcatcherEmiRecipe(ResourceLocation id, FishProperties fp) {
         this.output = List.of(EmiStack.of(fp.catchInfo().fish().value()));
         this.id = id;
-        this.tp = null;
         this.is = new ItemStack(fp.catchInfo().fish());
-
     }
 
     public StarcatcherEmiRecipe(ResourceLocation id, TrophyProperties tp) {
         this.output = List.of(EmiStack.of(tp.fish().value()));
         this.id = id;
-        this.tp = tp;
-
         this.is = new ItemStack(tp.fish());
     }
 

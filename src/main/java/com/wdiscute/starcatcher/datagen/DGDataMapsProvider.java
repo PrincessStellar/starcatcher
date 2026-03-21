@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.ModDataMaps;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
@@ -13,6 +14,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.DataMapProvider;
+import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 import java.util.List;
 import java.util.Map;
@@ -29,8 +32,9 @@ public class DGDataMapsProvider extends DataMapProvider
     protected void gather(HolderLookup.Provider provider)
     {
         var decor = this.builder(SCDataMaps.AQUARIUM_INTERACTION);
-        var currencies = this.builder(com.wdiscute.sellingbin.registry.ModDataMaps.SELLING_BIN_CURRENCIES);
-        var bin = this.builder(com.wdiscute.sellingbin.registry.ModDataMaps.SELLING_BIN_VALUE);
+        var currencies = this.builder(ModDataMaps.SELLING_BIN_CURRENCIES);
+        var bin = this.builder(ModDataMaps.SELLING_BIN_VALUE);
+        var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
 
         //ground
         decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -47,6 +51,9 @@ public class DGDataMapsProvider extends DataMapProvider
         decor.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
         decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
+
+        //compostable
+        compostable.add(StarcatcherTags.WORMS, new Compostable(0.65F, false), false);
 
         //selling bin datagen
         //shouldn't be run as the JSONs are manually moved to a
