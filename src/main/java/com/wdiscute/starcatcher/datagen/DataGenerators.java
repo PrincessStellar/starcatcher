@@ -65,7 +65,7 @@ public class DataGenerators
         gen.addProvider(event.includeServer(), new DGRecipeProvider(output, lookupProvider));
 
         //data maps
-        gen.addProvider(event.includeServer(), new DGDataMapsProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer(), new DGSCDataMapsProvider(output, lookupProvider));
 
     }
 }

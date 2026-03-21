@@ -89,6 +89,10 @@
           }
         }
       ]
+    },
+    "starcatcher:pearl": {
+      "base_value": 50,
+      "processors": []
     }
   }
 }

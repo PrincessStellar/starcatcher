@@ -1,10 +1,11 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.wdiscute.sellingbin.processors.AbstractProcessor;
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.ModDataMaps;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
@@ -21,9 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class DGDataMapsProvider extends DataMapProvider
+public class DGSCDataMapsProvider extends DataMapProvider
 {
-    protected DGDataMapsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
+    protected DGSCDataMapsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider)
     {
         super(packOutput, lookupProvider);
     }
@@ -33,7 +34,7 @@ public class DGDataMapsProvider extends DataMapProvider
     {
         var decor = this.builder(SCDataMaps.AQUARIUM_INTERACTION);
         var currencies = this.builder(ModDataMaps.SELLING_BIN_CURRENCIES);
-        var bin = this.builder(ModDataMaps.SELLING_BIN_VALUE);
+        var sellable = this.builder(ModDataMaps.SELLING_BIN_VALUE);
         var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
 
         //ground
@@ -55,46 +56,48 @@ public class DGDataMapsProvider extends DataMapProvider
         //compostable
         compostable.add(StarcatcherTags.WORMS, new Compostable(0.65F, false), false);
 
-        //selling bin datagen
+        //selling sellable datagen
         //shouldn't be run as the JSONs are manually moved to a
         //built-in datapack instead of hard coded into the mod's resources
         if(false)
         {
-            //selling bin currencies
+            //selling sellable currencies
             currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
             currencies.add(Items.EMERALD_BLOCK.builtInRegistryHolder(), 900, false);
 
-            //selling bin fishes
+            //selling sellable fishes
             Map<ResourceLocation, Float> qualities = Map.of(
                     ResourceLocation.fromNamespaceAndPath("quality_food", "diamond"), 2f,
                     ResourceLocation.fromNamespaceAndPath("quality_food", "gold"), 1.5f,
                     ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
             );
 
-            bin.add(StarcatcherTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
+            sellable.add(StarcatcherTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            bin.add(StarcatcherTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
+            sellable.add(StarcatcherTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            bin.add(StarcatcherTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
+            sellable.add(StarcatcherTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            bin.add(StarcatcherTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
+            sellable.add(StarcatcherTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            bin.add(StarcatcherTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
+            sellable.add(StarcatcherTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
+
+            sellable.add(SCItems.PEARL.get().asItem().builtInRegistryHolder(), AbstractProcessor.createEmpty(50), false);
         }
 
     }
