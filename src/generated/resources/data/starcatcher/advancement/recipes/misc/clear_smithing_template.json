@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_template_pearl": {
+    "has_template_clean": {
       "conditions": {
         "items": [
           {
-            "items": "starcatcher:pearl_smithing_template"
+            "items": "starcatcher:clear_smithing_template"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "starcatcher:pearl_smithing_template"
+        "recipe": "starcatcher:clear_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_template_pearl"
+      "has_template_clean"
     ]
   ],
   "rewards": {
     "recipes": [
-      "starcatcher:pearl_smithing_template"
+      "starcatcher:clear_smithing_template"
     ]
   }
 }

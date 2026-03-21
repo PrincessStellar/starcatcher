@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-21T18:04:54.5409936	Item Models: starcatcher
+// 1.21.1	2026-03-21T20:30:35.1519525	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -135,6 +135,7 @@ a7f1f64d2fa0d02b33ca86786c89635b32586b84 assets/starcatcher/models/item/obsidian
 3ea0bf60cf9ba92db35d3726ded71838e8de735a assets/starcatcher/models/item/pale_carp.json
 175bdef8bb5d5fbbcd5bf40422528df2aa447cef assets/starcatcher/models/item/pale_pinfish.json
 f03df0085ca72f8e6b99ee8170144ec41fc4c357 assets/starcatcher/models/item/peakdweller.json
+5835db7e920a22e1ab5a328ba5099f399f0c9bbc assets/starcatcher/models/item/pearl.json
 4b718f5bc360344ece03347659be3349071fa77a assets/starcatcher/models/item/pearl_smithing_template.json
 1c347b5111e4d05d07f04b8a6f1d5c05def1b973 assets/starcatcher/models/item/petaldrift_carp.json
 2d6e48df616372258bc4a7b0aa18266971189927 assets/starcatcher/models/item/pinfish.json

@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -381,6 +382,198 @@ public class DGRecipeProvider extends RecipeProvider
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
 
+
+        //templates
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.PEARL_SMITHING_TEMPLATE)
+                .define('T', SCItems.PEARL_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', SCItems.PEARL)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_pearl", has(SCItems.PEARL_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KIMBE_SMITHING_TEMPLATE)
+                .define('T', SCItems.KIMBE_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', SCItems.WILLISH)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_kimbe", has(SCItems.KIMBE_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.COLORFUL_SMITHING_TEMPLATE)
+                .define('T', SCItems.COLORFUL_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Tags.Items.DYES)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_colorful", has(SCItems.COLORFUL_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLEAR_SMITHING_TEMPLATE)
+                .define('T', SCItems.CLEAR_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.GLASS)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_clean", has(SCItems.CLEAR_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FROG_SMITHING_TEMPLATE)
+                .define('T', SCItems.FROG_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.FROGSPAWN)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_frog", has(SCItems.FROG_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KING_SMITHING_TEMPLATE)
+                .define('T', SCItems.KING_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.GOLD_INGOT)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_king", has(SCItems.KING_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', ItemTags.SAPLINGS)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_naturalist", has(SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.PACKED_ICE)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_iceborn", has(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.MAGMA_CREAM)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_magmaforged", has(SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SLIMED_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.SLIMED_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.SLIME_BALL)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_slimed", has(SCItems.SLIMED_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', SCItems.AZURE_CRYSTALBACK_MINNOW)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_azure", has(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.BAMBOO)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_bamboo", has(SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', SCItems.OBSIDIAN_EEL)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_obsidian", has(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.GRASS_BLOCK)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.FISHING_ROD)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BONER_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.BONER_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.BONE_BLOCK)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_boner", has(SCItems.BONER_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SKY_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.SKY_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.PHANTOM_MEMBRANE)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_sky", has(SCItems.SKY_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', SCItems.LUSH_PIKE)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_lush", has(SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
+                .define('D', Items.DIAMOND)
+                .define('C', Items.STICK)
+                .pattern("DTD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .unlockedBy("has_template_lush", has(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
+                .save(output);
     }
 
     protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group) {
