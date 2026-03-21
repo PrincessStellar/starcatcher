@@ -12,9 +12,9 @@
 
   "emi.category.starcatcher.fishing" : "Starcatcher's Fishing",
 
-  "emi.info.starcatcher.worms.0" : "Worms may be obtained by bonemealing farmland.",
-  "emi.info.starcatcher.worms.1" : "Worms may have different modifiers useful for fishing.",
-  "emi.info.starcatcher.worms.2" : "They may also be used in a Composter.",
+  "emi.info.starcatcher.worms.0" : "Worms have different fishing modifiers when used as bait.",
+  "emi.info.starcatcher.worms.1" : "Obtainable by bonemealing farmland.",
+  "emi.info.starcatcher.worms.2" : "Compostable.",
 
   "emi.info.starcatcher.pearls.0" : "Clams placed on sand will slowly create pearls.",
   "emi.info.starcatcher.pearls.1" : "Once the clam has opened up you may click on it to harvest a pearl.",
