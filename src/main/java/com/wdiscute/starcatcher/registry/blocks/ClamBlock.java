@@ -4,6 +4,8 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -65,6 +67,8 @@ public class ClamBlock extends HorizontalDirectionalBlock implements SimpleWater
     {
         if (state.getValue(HAS_PEARL))
         {
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS);
+            level.playSound(null, pos, SoundEvents.BONE_BLOCK_PLACE, SoundSource.BLOCKS, 0.6f, 0.6f);
             level.setBlockAndUpdate(pos, state.setValue(HAS_PEARL, false));
             Vec3 vec3 = Vec3.atLowerCornerWithOffset(pos, 0.5F, 0.4, 0.5F).offsetRandom(level.random, 0.7F);
             ItemEntity itementity = new ItemEntity(level, vec3.x(), vec3.y(), vec3.z(), new ItemStack(SCItems.PEARL.get()));
@@ -73,6 +77,7 @@ public class ClamBlock extends HorizontalDirectionalBlock implements SimpleWater
             return InteractionResult.SUCCESS;
         }
 
+        level.playSound(null, pos, SoundEvents.BONE_BLOCK_BREAK, SoundSource.BLOCKS);
         playerDestroy(level, player, pos, state, null, player.getItemBySlot(EquipmentSlot.MAINHAND));
         level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
         return InteractionResult.SUCCESS;

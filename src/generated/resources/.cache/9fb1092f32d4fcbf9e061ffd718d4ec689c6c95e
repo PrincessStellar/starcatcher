@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-21T20:30:35.1549527	Recipes
+// 1.21.1	2026-03-21T20:33:36.6510502	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -111,7 +111,7 @@ b4c71a88d2f862c56dab2446dc9b7093135cdcdf data/starcatcher/recipe/clear_smithing_
 cb8b762710572baa54717b7419f52a9c3eb77352 data/starcatcher/recipe/crystal_hook.json
 0dfff00c3e355a5dc8c81521d5458f8d0b8df3c8 data/starcatcher/recipe/dripstone_bait.json
 7f2be50478cfa80ef1d51b2827541967269305c0 data/starcatcher/recipe/dripstone_bait_from_pointed_dripstone.json
-b732c8d6d9c8116193d94c64b2865f7f79883602 data/starcatcher/recipe/frog_smithing_template.json
+813f630e222cc023c60ad2868d2cca4c00366e40 data/starcatcher/recipe/frog_smithing_template.json
 36970da614d74cdf155aac109381bc997e15fd2a data/starcatcher/recipe/gold_hook.json
 08b4be1261d9765f11bfa824ff0ceedc798574ff data/starcatcher/recipe/good_old_skin_smithing_template.json
 833f0ab3136be419f587d229fca4c67cda507c2e data/starcatcher/recipe/gunpowder_bait.json
