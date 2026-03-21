@@ -47,6 +47,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
         // Add all the workstations your category uses
         registry.addWorkstation(STARCATCHER_CATEGORY, MY_WORKSTATION);
 
+        //worms info
         registry.addRecipe(new EmiInfoRecipe(List.of(
                 EmiIngredient.of(StarcatcherTags.WORMS)),
                 List.of(
