@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -52,7 +53,7 @@ public class ClamBlock extends HorizontalDirectionalBlock implements SimpleWater
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random)
     {
-        if(!state.getValue(HAS_PEARL) && random.nextFloat() > 0.99f && !level.isClientSide)
+        if(!state.getValue(HAS_PEARL) && random.nextFloat() > 0.99f && !level.isClientSide && level.getBlockState(pos.below()).is(BlockTags.SAND))
         {
             level.setBlockAndUpdate(pos, state.setValue(HAS_PEARL, true));
         }
