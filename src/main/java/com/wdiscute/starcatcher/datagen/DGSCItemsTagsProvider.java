@@ -74,6 +74,11 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             }
         }
 
+        //worms
+        tag(StarcatcherTags.WORMS)
+                .add(WORM.get())
+                .add(ALMIGHTY_WORM.get())
+                .add(SEEKING_WORM.get());
 
         //baits tag
         tag(StarcatcherTags.BAITS)
