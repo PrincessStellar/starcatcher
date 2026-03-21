@@ -21,6 +21,8 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -62,7 +64,8 @@ public class StarcatcherEmiPlugin implements EmiPlugin
         //clams info
         registry.addRecipe(new EmiInfoRecipe(List.of(
                 EmiIngredient.of(Ingredient.of(SCItems.PEARL.get())),
-                EmiIngredient.of(Ingredient.of(SCBlocks.CLAM.get()))),
+                EmiIngredient.of(Ingredient.of(SCBlocks.CLAM.get())),
+                EmiIngredient.of(Ingredient.of(ItemTags.SAND))),
                 List.of(
                         Component.translatable("emi.info.starcatcher.pearls.0"),
                         Component.translatable("emi.info.starcatcher.pearls.1")
