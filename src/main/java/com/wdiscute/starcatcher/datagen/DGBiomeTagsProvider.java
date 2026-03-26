@@ -34,6 +34,22 @@ public class DGBiomeTagsProvider extends BiomeTagsProvider
                 .addOptionalTag(Tags.Biomes.IS_BEACH)
         ;
 
+        this.tag(create(StarcatcherTags.IS_WARPED_FOREST))
+                .addOptional(Biomes.WARPED_FOREST.location())
+        ;
+
+        this.tag(create(StarcatcherTags.IS_SOUL_SAND_VALLEY))
+                .addOptional(Biomes.SOUL_SAND_VALLEY.location())
+        ;
+
+        this.tag(create(StarcatcherTags.IS_BASALT_DELTAS))
+                .addOptional(Biomes.BASALT_DELTAS.location())
+        ;
+
+        this.tag(create(StarcatcherTags.IS_CRIMSON_FOREST))
+                .addOptional(Biomes.CRIMSON_FOREST.location())
+        ;
+
         this.tag(create(StarcatcherTags.IS_BIRCH_FOREST))
                 .addOptional(Biomes.BIRCH_FOREST.location())
                 .addOptional(Biomes.OLD_GROWTH_BIRCH_FOREST.location())

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumBlock;
+import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

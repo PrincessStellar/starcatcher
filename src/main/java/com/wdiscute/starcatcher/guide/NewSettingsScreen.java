@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.guide;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;

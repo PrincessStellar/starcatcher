@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.items.modifieritem;
 
 import com.wdiscute.starcatcher.io.SCDataComponents;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;

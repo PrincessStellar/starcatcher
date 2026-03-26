@@ -22,9 +22,7 @@ public class DGMinersDelightFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 20, 1300, 700))
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_MOVING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE
-                        .withBiomesTags(StarcatcherTags.IS_OCEAN, StarcatcherTags.IS_RIVER)
-                )
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_OCEAN)
         );
 
         register(overworldUndergroundFish(U.holderItem("miners_delight", "glow_squid"))

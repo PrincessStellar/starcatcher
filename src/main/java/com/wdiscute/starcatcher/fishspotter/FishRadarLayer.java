@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -49,10 +50,16 @@ public class FishRadarLayer implements LayeredDraw.Layer
 
     private void recalculate()
     {
-        fpsInArea = FishProperties.getFpsWithGuideEntryForArea(player);
+        fpsInArea.clear();
+
+        for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+            if (fp.hasGuideEntry() && FishProperties.getChance(fp, player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_IN_AREA) > 0)
+                fpsInArea.add(fp);
+
         fishesCaught.clear();
 
-        FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->{
+        FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->
+        {
             fishesCaught.add(U.getFpFromRl(level, loc));
         });
     }

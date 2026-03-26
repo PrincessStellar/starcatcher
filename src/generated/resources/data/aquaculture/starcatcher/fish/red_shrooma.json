@@ -5,11 +5,6 @@
       "modid": "aquaculture"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
@@ -18,7 +13,6 @@
     "item": "aquaculture:red_shrooma",
     "treasure": "aquaculture:treasure_chest"
   },
-  "daytime": "all",
   "difficulty": {
     "decay": 0.0,
     "missPenalty": 20,
@@ -69,6 +63,31 @@
   },
   "has_guide_entry": true,
   "rarity": "epic",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_mushroom_fields"
+      ],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": ""
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 100.0,
     "average_weight_grams": 3000.0,
@@ -76,26 +95,5 @@
     "deviation_weight_grams": 500.0,
     "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 2147483647,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_mushroom_fields"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "all"
-    ]
-  }
+  "skips_minigame": false
 }

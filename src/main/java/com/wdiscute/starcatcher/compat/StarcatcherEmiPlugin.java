@@ -4,14 +4,13 @@ import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiInfoRecipe;
-import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
@@ -20,18 +19,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeInput;
-import net.minecraft.world.item.crafting.RecipeType;
 
-import java.awt.*;
 import java.util.List;
-import java.util.function.Supplier;
 
 @EmiEntrypoint
 public class StarcatcherEmiPlugin implements EmiPlugin

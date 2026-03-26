@@ -1,11 +1,4 @@
 {
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 15,
-    "correct_baits": [
-      "starcatcher:murkwater_bait"
-    ]
-  },
   "base_chance": 8,
   "catch_info": {
     "always_spawn_entity": false,
@@ -14,7 +7,6 @@
     "item": "starcatcher:sage_catfish",
     "treasure": "starcatcher:waterlogged_satchel"
   },
-  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 30,
@@ -35,6 +27,61 @@
   },
   "has_guide_entry": true,
   "rarity": "epic",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_swamp"
+      ],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:murkwater_bait": 50
+      },
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_spring": 0,
+        "early_summer": 0,
+        "late_spring": 0,
+        "late_winter": 0,
+        "mid_spring": 0
+      },
+      "translation_override": "gui.guide.seasons.around_spring"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:weather_restriction",
+      "clear_extra_chance": 0,
+      "rain_extra_chance": -9999,
+      "thunder_extra_chance": -9999,
+      "translation_override": "gui.guide.weather.clear"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 100.0,
     "average_weight_grams": 10000.0,
@@ -52,28 +99,5 @@
     "name": "aldebaran",
     "x": 2965,
     "y": 1590
-  },
-  "weather": "clear",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 2147483647,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_swamp"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "early_spring",
-      "autumn",
-      "winter"
-    ]
   }
 }

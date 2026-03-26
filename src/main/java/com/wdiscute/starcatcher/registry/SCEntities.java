@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.secretnotes.BottledLetterEntity;
 import com.wdiscute.starcatcher.secretnotes.BrokenBottleEntity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.bob.FishingBobEntity;
+import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

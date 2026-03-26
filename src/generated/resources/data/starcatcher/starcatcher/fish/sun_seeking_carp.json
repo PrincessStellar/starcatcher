@@ -1,9 +1,4 @@
 {
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 15,
   "catch_info": {
     "always_spawn_entity": false,
@@ -12,7 +7,6 @@
     "item": "starcatcher:sun_seeking_carp",
     "treasure": "starcatcher:waterlogged_satchel"
   },
-  "daytime": "noon",
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 5,
@@ -43,6 +37,49 @@
   },
   "has_guide_entry": true,
   "rarity": "rare",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [
+        "starcatcher:is_ocean",
+        "starcatcher:is_river",
+        "starcatcher:is_mushroom_fields"
+      ],
+      "biomes_tags": [],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_summer": 0,
+        "late_spring": 0,
+        "late_summer": 0,
+        "mid_summer": 0
+      },
+      "translation_override": "gui.guide.seasons.around_spring"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [],
+      "translation_override": ""
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 60.0,
     "average_weight_grams": 6000.0,
@@ -59,30 +96,5 @@
     "name": "elnath",
     "x": 2796,
     "y": 1512
-  },
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 100,
-    "below_y": 2147483647,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [
-      "starcatcher:is_ocean",
-      "starcatcher:is_river",
-      "starcatcher:is_mushroom_fields"
-    ],
-    "biomes_tags": [],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "late_spring",
-      "summer",
-      "early_autumn"
-    ]
   }
 }

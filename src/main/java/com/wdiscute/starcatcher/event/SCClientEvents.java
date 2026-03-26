@@ -1,37 +1,33 @@
 package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.bob.FishingBobRenderer;
+import com.wdiscute.starcatcher.bobberentity.FishingBobRenderer;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
-import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.aquarium.AquariumRenderer;
-import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockRenderer;
-import com.wdiscute.starcatcher.registry.blocks.display.DisplayBookModel;
-import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxRenderer;
-import com.wdiscute.starcatcher.registry.blocks.tacklebox.TackleBoxScreen;
+import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.blocks.aquarium.AquariumRenderer;
+import com.wdiscute.starcatcher.blocks.display.DisplayBlockRenderer;
+import com.wdiscute.starcatcher.blocks.display.DisplayBookModel;
+import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxRenderer;
+import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxScreen;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
 import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.*;
+import com.wdiscute.starcatcher.registry.tackleskin.*;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
-import top.theillusivec4.curios.api.type.util.ICuriosHelper;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class SCClientEvents

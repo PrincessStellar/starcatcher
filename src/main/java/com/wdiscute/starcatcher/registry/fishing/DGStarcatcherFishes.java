@@ -2,9 +2,9 @@ package com.wdiscute.starcatcher.registry.fishing;
 
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 
@@ -24,16 +24,16 @@ public class DGStarcatcherFishes
 
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.MORGANITE)
                 .withStar(Constellations.UrsaMinor.POLARIS)
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(120, 80, 7000, 1000))
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withBaseChance(8)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.SILVERVEIL_PERCH)
                 .withStar(Constellations.UrsaMinor.YILDUN)
-                .withSeasons(Seasons.SPRING, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(27.0f, 11, 500, 352))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING));
@@ -41,7 +41,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.ELDERSCALE)
                 .withStar(Constellations.UrsaMinor.ZETA_UMI)
                 .withSizeAndWeight(FishProperties.sizeWeight(160.0f, 85, 2300, 652))
-                .withSeasons(Seasons.LATE_SPRING, Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withDifficulty(FishProperties.Difficulty.EASY_VANISHING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withBaseChance(3));
@@ -49,33 +49,33 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.DRIFTFIN)
                 .withStar(Constellations.UrsaMinor.KOCHAB)
                 .withSizeAndWeight(FishProperties.sizeWeight(16.0f, 3, 167, 70))
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
-                .withWeather(FishProperties.Weather.CLEAR));
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
+                .withWeather(WeatherRestriction.CLEAR));
 
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.TWILIGHT_KOI)
                 .withStar(Constellations.UrsaMinor.ETA_UMI)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                 .withBaseChance(25)
-                .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withRarity(FishProperties.Rarity.EPIC)
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING));
 
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.THUNDER_BASS)
                 .withStar(Constellations.UrsaMinor.PHERKAD)
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1200, 800))
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withRarity(FishProperties.Rarity.RARE)
                 .withBaseChance(15)
-                .withWeather(FishProperties.Weather.THUNDER)
+                .withWeather(WeatherRestriction.THUNDER)
                 .withDifficulty(FishProperties.Difficulty.HARD));
 
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.LIGHTNING_BASS)
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1300, 620))
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withBaseChance(15)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWeather(FishProperties.Weather.THUNDER)
+                .withWeather(WeatherRestriction.THUNDER)
                 .withDifficulty(FishProperties.Difficulty.HARD_VANISHING));
 
         register(overworldLakeFish(SCItems.BOOT).withBaseChance(1)
@@ -94,7 +94,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(SCItems.CRYSTALBACK_TROUT)
                 .withStar(Constellations.UrsaMajor.MIZAR)
                 .withSizeAndWeight(FishProperties.sizeWeight(35, 8, 1600, 1200))
-                .withSeasons(Seasons.AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AUTUMN_WINTER)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(SCItems.AURORA)
@@ -102,13 +102,13 @@ public class DGStarcatcherFishes
                 .withTreasure(SCItems.AZURE_CRYSTAL_ROD)
                 .withSizeAndWeight(FishProperties.sizeWeight(10, 8, 120, 30))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withBaseChance(2)
                 .withDifficulty(FishProperties.Difficulty.NON_STOP_ACTION_AQUA));
 
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(SCItems.WINTERY_PIKE)
                 .withStar(Constellations.UrsaMajor.MEGREZ)
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.LATE_AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(75, 20, 5000, 3000))
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING));
 
@@ -117,37 +117,37 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldWarmLakeFish(SCItems.SANDTAIL)
                 .withStar(Constellations.UrsaMajor.PHECDA)
                 .withSizeAndWeight(FishProperties.sizeWeight(200, 100, 1600, 1200))
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT));
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT));
 
         registerStarcatcherBucketAndEntity(overworldWarmLakeFish(SCItems.MIRAGE_CARP)
                 .withStar(Constellations.UrsaMajor.MERAK)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM)
-                .withDaytime(FishProperties.Daytime.DAY)
-                .withWeather(FishProperties.Weather.CLEAR)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
+                .withWeather(WeatherRestriction.CLEAR)
                 .withRarity(FishProperties.Rarity.UNCOMMON));
 
         registerStarcatcherBucketAndEntity(overworldWarmLakeFish(SCItems.SCORCHFISH)
                 .withStar(Constellations.UrsaMajor.DUBHE)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER, Seasons.AUTUMN)
-                .withWeather(FishProperties.Weather.CLEAR));
+                .withSeasons(SeasonRestriction.NOT_WINTER)
+                .withWeather(WeatherRestriction.CLEAR));
 
         registerStarcatcherBucketAndEntity(overworldWarmLakeFish(SCItems.CACTIFISH)
                 .withStar(Constellations.Cassiopeia.CAPH)
                 .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 10000, 3000))
-                .withSeasons(Seasons.SUMMER, Seasons.SUMMER)
-                .withDaytime(FishProperties.Daytime.DAY));
+                .withSeasons(SeasonRestriction.SUMMER)
+                .withDaytimeRestriction(DaytimeRestriction.DAY));
 
         registerStarcatcherBucketAndEntity(overworldWarmLakeFish(SCItems.AGAVE_BREAM)
                 .withStar(Constellations.Cassiopeia.SHEDAR)
                 .withSizeAndWeight(FishProperties.sizeWeight(36, 12, 2000, 1000))
                 .withRarity(FishProperties.Rarity.RARE)
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
-                .withWeather(FishProperties.Weather.CLEAR)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                .withWeather(WeatherRestriction.CLEAR)
                 .withDifficulty(FishProperties.Difficulty.HARD));
 
 
@@ -155,15 +155,15 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldMountainFish(SCItems.SUNNY_STURGEON)
                 .withStar(Constellations.Cassiopeia.NAVI)
                 .withSizeAndWeight(FishProperties.sizeWeight(400, 200, 100000, 50000))
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withDaytime(FishProperties.Daytime.DAY)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withBaseChance(2));
 
         registerStarcatcherBucketAndEntity(overworldMountainFish(SCItems.PEAKDWELLER)
                 .withStar(Constellations.Cassiopeia.RUCHBAH)
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 10000, 5000))
                 .withDifficulty(FishProperties.Difficulty.HARD));
 
@@ -174,18 +174,18 @@ public class DGStarcatcherFishes
 
         registerStarcatcherBucketAndEntity(overworldMountainFish(SCItems.SUN_SEEKING_CARP)
                 .withStar(Constellations.TAURUS.ELNATH)
-                .withSeasons(Seasons.LATE_SPRING, Seasons.SUMMER, Seasons.EARLY_AUTUMN)
+                .withSeasons(SeasonRestriction.AROUND_SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
                 .withRarity(FishProperties.Rarity.RARE)
                 .withBaseChance(15)
-                .withDaytime(FishProperties.Daytime.NOON));
+                .withDaytimeRestriction(DaytimeRestriction.NOON));
 
 
         //swamp
         registerStarcatcherBucketAndEntity(overworldSwampFish(SCItems.SLUDGE_CATFISH)
                 .withStar(Constellations.TAURUS.TAU_TARI)
                 .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 10000, 3000))
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withRarity(FishProperties.Rarity.UNCOMMON));
 
         registerStarcatcherBucketAndEntity(overworldSwampFish(SCItems.LILY_SNAPPER)
@@ -197,12 +197,12 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldSwampFish(SCItems.SAGE_CATFISH)
                 .withStar(Constellations.TAURUS.ALDEBARAN)
                 .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 10000, 3000))
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withRarity(FishProperties.Rarity.EPIC)
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST)
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
-                .withWeather(FishProperties.Weather.CLEAR));
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                .withWeather(WeatherRestriction.CLEAR));
 
         register(overworldSwampFish(SCItems.MOSSY_BOOT).withBaseChance(1)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
@@ -214,9 +214,9 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldDarkForestFish(SCItems.PALE_PINFISH)
                 .withStar(Constellations.TAURUS.ZETA_TAURI)
                 .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 150, 100))
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.LATE_AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withBaseChance(15)
-                .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withRarity(FishProperties.Rarity.RARE)
                 .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN));
 
@@ -224,50 +224,50 @@ public class DGStarcatcherFishes
                 .withStar(Constellations.TAURUS.GAMMA_TAURI)
                 .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 150, 100))
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
         registerStarcatcherBucketAndEntity(overworldDarkForestFish(SCItems.PALE_CARP)
                 .withStar(Constellations.TAURUS.LAMBDA_TAURI)
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.LATE_AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
-                .withDaytime(FishProperties.Daytime.DAY));
+                .withDaytimeRestriction(DaytimeRestriction.DAY));
 
 
         //cherry grove
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(SCItems.VESANI)
                 .withStar(Constellations.TAURUS.OMICRON_TAURI)
-                .withSeasons(Seasons.SPRING, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(10, 3, 67, 0))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
                 .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN_VANISHING));
 
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(SCItems.BLOSSOMFISH)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
-                .withWeather(FishProperties.Weather.CLEAR));
+                .withWeather(WeatherRestriction.CLEAR));
 
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(SCItems.PETALDRIFT_CARP)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM)
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withBaseChance(8)
                 .withRarity(FishProperties.Rarity.UNCOMMON));
 
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(SCItems.PINK_KOI)
-                .withSeasons(Seasons.SPRING, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SPRING_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 3000, 2000))
                 .withBaseChance(8)
-                .withWeather(FishProperties.Weather.RAIN));
+                .withWeather(WeatherRestriction.RAIN));
 
         registerStarcatcherBucketAndEntity(overworldCherryGroveFish(SCItems.ROSE_SIAMESE_FISH)
-                .withSeasons(Seasons.SPRING, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SPRING_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1000, 500))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
-                .withDaytime(FishProperties.Daytime.DAY)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withBaseChance(8)
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withRarity(FishProperties.Rarity.EPIC));
 
 
@@ -276,7 +276,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(400, 200, 100000, 50000)));
 
         registerStarcatcherBucketAndEntity(overworldColdMountainFish(SCItems.ICETOOTH_STURGEON)
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_SPRING)
                 .withSizeAndWeight(FishProperties.sizeWeight(400, 200, 100000, 50000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
@@ -284,11 +284,11 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 15, 1000, 200))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING_MOVING)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withBaseChance(3));
 
         registerStarcatcherBucketAndEntity(overworldColdMountainFish(SCItems.CRYSTALBACK_BOREAL)
-                .withSeasons(Seasons.SUMMER, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 15, 6000, 2000))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
@@ -296,39 +296,39 @@ public class DGStarcatcherFishes
         //river
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.DOWNFALL_BREAM)
                 .withSizeAndWeight(FishProperties.sizeWeight(36, 12, 2000, 1000))
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withBaseChance(18)
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withDifficulty(FishProperties.Difficulty.EASY_VANISHING));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.DRIFTING_BREAM)
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(36, 12, 2000, 1000))
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.WILLOW_BREAM)
-                .withSeasons(Seasons.SUMMER, Seasons.AUTUMN)
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(FishProperties.sizeWeight(36, 12, 2000, 1000))
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withDifficulty(FishProperties.Difficulty.HARD_VANISHING)
                 .withRarity(FishProperties.Rarity.EPIC));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.HOLLOWBELLY_DARTER)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(6, 2, 7, 6))
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.MISTBACK_CHUB)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
-                .withDaytime(FishProperties.Daytime.DAY)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1400, 600)));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.BLUEGIGI)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
-                .withDaytime(FishProperties.Daytime.DAY)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withSizeAndWeight(FishProperties.sizeWeight(20, 5, 400, 100)));
 
         registerStarcatcherBucketAndEntity(overworldRiverFish(SCItems.SILVERFIN_PIKE)
@@ -352,45 +352,45 @@ public class DGStarcatcherFishes
         //cold river
         registerStarcatcherBucketAndEntity(overworldColdRiverFish(SCItems.FROSTGILL_CHUB)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1400, 600))
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER, Seasons.AUTUMN));
+                .withSeasons(SeasonRestriction.NOT_WINTER));
 
         registerStarcatcherBucketAndEntity(overworldColdRiverFish(SCItems.CRYSTALBACK_MINNOW)
                 .withSizeAndWeight(FishProperties.sizeWeight(6, 4, 5, 3))
-                .withSeasons(Seasons.WINTER)
+                .withSeasons(SeasonRestriction.WINTER)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT));
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT));
 
         registerStarcatcherBucketAndEntity(overworldColdRiverFish(SCItems.AZURE_CRYSTALBACK_MINNOW)
                 .withSizeAndWeight(FishProperties.sizeWeight(6, 4, 5, 3))
                 .withBaseChance(25)
-                .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(FishProperties.Difficulty.NON_STOP_ACTION_THREE_BIG));
 
         registerStarcatcherBucketAndEntity(overworldColdRiverFish(SCItems.BLUE_CRYSTAL_FIN)
-                .withSeasons(Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_SPRING)
                 .withSizeAndWeight(FishProperties.sizeWeight(12, 4, 70, 30))
-                .withDaytime(FishProperties.Daytime.DAY)
+                .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                 .withRarity(FishProperties.Rarity.UNCOMMON));
 
 
         //ocean
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.SEA_BASS)
-                .withSeasons(Seasons.EARLY_SPRING, Seasons.MID_AUTUMN, Seasons.LATE_AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.NOT_SPRING)
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1600, 1100))
                 .withBaseChance(15)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                .withDaytime(FishProperties.Daytime.DAY));
+                .withDaytimeRestriction(DaytimeRestriction.DAY));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.BLUE_HERRING)
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1600, 1100))
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
                 .withBaseChance(3)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withDaytime(FishProperties.Daytime.DAY));
+                .withDaytimeRestriction(DaytimeRestriction.DAY));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.IRONJAW_HERRING)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 8, 300, 100))
@@ -399,35 +399,35 @@ public class DGStarcatcherFishes
                 .withRarity(FishProperties.Rarity.UNCOMMON));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.DEEPJAW_HERRING)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 8, 300, 100))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.DUSKTAIL_SNAPPER)
-                .withSeasons(Seasons.SPRING, Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000)));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.JOEL)
-                .withSeasons(Seasons.SUMMER)
+                .withSeasons(SeasonRestriction.SUMMER)
                 .withSizeAndWeight(FishProperties.sizeWeight(69, 0, 2000, 600))
                 .withDifficulty(FishProperties.Difficulty.JOEL)
                 .withBaseChance(1)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(FishProperties.Rarity.LEGENDARY));
 
         registerStarcatcherBucketAndEntity(overworldOceanFish(SCItems.REDSCALED_TUNA)
                 .withSizeAndWeight(FishProperties.sizeWeight(150, 50, 120000, 60000))
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST));
 
         //deep ocean
         registerStarcatcherBucketAndEntity(overworldDeepOceanFish(SCItems.BIGEYE_TUNA)
-                .withSeasons(Seasons.SPRING, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(FishProperties.sizeWeight(150, 50, 120000, 60000))
                 .withBaseChance(8)
-                .withDaytime(FishProperties.Daytime.NIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING));
 
@@ -448,7 +448,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldMushroomFieldsFish(SCItems.SHROOMFISH)
                 .withSizeAndWeight(FishProperties.sizeWeight(70, 50, 4000, 2000))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(FishProperties.Difficulty.EIGHT_THIN_MOVING_VANISHING));
 
         registerStarcatcherBucketAndEntity(overworldMushroomFieldsFish(SCItems.SPOREFISH)
@@ -485,8 +485,8 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 16000, 7000))
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST)
                 .withRarity(FishProperties.Rarity.EPIC)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_STONE_CAVES.withMustBeCaughtBelowY(-20)
-                        .withMustBeCaughtAboveY(-40)));
+                .addRestrictions(DimensionRestriction.OVERWORLD,
+                        new ElevationRestriction(-20, -40, "")));
 
         //dripstone caves
         registerStarcatcherBucketAndEntity(overworldDripstoneCavesFish(SCItems.FOSSILIZED_ANGELFISH)
@@ -508,7 +508,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldLushCavesFish(SCItems.LUSH_PIKE)
                 .withSizeAndWeight(FishProperties.sizeWeight(75, 20, 5000, 3000))
                 .withDifficulty(FishProperties.Difficulty.HEAVY_EIGHT_AQUA_MOVING)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
                 .withBaseChance(2));
 
@@ -522,8 +522,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(620, 270, 700000, 300000))
                 .withDifficulty(FishProperties.Difficulty.HEAVY_FIVE_NORMAL)
                 .withRarity(FishProperties.Rarity.EPIC)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD.withBiomes(Biomes.LUSH_CAVES.location())
-                        .withBiomesTags(BiomeTags.IS_JUNGLE.location())));
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LUSH_CAVES_AND_JUNGLES));
 
 
         //deepslate
@@ -567,7 +566,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(overworldDeepDarkFish(SCItems.WARD)
                 .withSizeAndWeight(FishProperties.sizeWeight(50, 10, 2600, 600))
                 .withDifficulty(FishProperties.Difficulty.HEAVY_EIGHT_AQUA)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
                 .withBaseChance(2));
 
@@ -590,10 +589,10 @@ public class DGStarcatcherFishes
 
         registerStarcatcherOnlyEntity(overworldSurfaceLava(SCItems.OBSIDIAN_EEL)
                 .withSizeAndWeight(FishProperties.sizeWeight(500, 150, 70000, 13000))
-                .withWeather(FishProperties.Weather.RAIN)
+                .withWeather(WeatherRestriction.RAIN)
                 .withBaseChance(8)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING_MOVING)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(FishProperties.Rarity.LEGENDARY));
 
         //overworld underground lava
@@ -647,7 +646,7 @@ public class DGStarcatcherFishes
         registerStarcatcherBucketAndEntity(netherLavaFish(SCItems.CERBERAY)
                 .withSizeAndWeight(FishProperties.sizeWeight(200, 53, 4000, 300))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(FishProperties.Difficulty.CERBERAY));
 
         registerStarcatcherBucketAndEntity(netherLavaFish(SCItems.SCALDING_PIKE)
@@ -690,7 +689,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(50, 15, 2000, 200))
                 .withRarity(FishProperties.Rarity.EPIC)
                 .withDifficulty(FishProperties.Difficulty.VOIDBITER)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT_VOIDBITER));
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT));
 
 
     }

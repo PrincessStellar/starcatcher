@@ -2,6 +2,8 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 
 public class DGHybridAquaticFishes extends FishingPropertiesRegistry
@@ -25,8 +27,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(8, 3, 140, 60))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR)
         );
 
         register(
@@ -35,8 +37,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 600, 200))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "blowfish"))
@@ -44,8 +46,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(18, 4, 5, 3)) // Haven't measured this yet.
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "boxfish"))
@@ -53,8 +55,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(27, 13, 180, 90)) // The weight is just an estimate.
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "damselfish"))
@@ -62,8 +64,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(6, 3, 18, 5))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "moray_eel"))
@@ -71,7 +73,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(180, 70, 21000, 8000))
                         .withDifficulty(FishProperties.Difficulty.HARD_VANISHING)
                         .withRarity(FishProperties.Rarity.RARE)
-                        .withDaytime(FishProperties.Daytime.NIGHT));
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "blue_spotted_stingray"))
@@ -79,8 +81,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(50, 30, 4000, 1000)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.HARD)
                         .withRarity(FishProperties.Rarity.RARE)
-                        .withDaytime(FishProperties.Daytime.NOON)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "spotted_eagle_ray"))
@@ -88,8 +90,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 100, 20000, 3000)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.HARD)
                         .withRarity(FishProperties.Rarity.RARE)
-                        .withDaytime(FishProperties.Daytime.NOON)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "lionfish"))
@@ -97,8 +99,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(33, 5, 900, 150)) // I don't think I've measured this.
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NOON)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "needlefish"))
@@ -106,8 +108,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(100, 10, 2300, 300)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.HARD)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "stonefish"))
@@ -115,8 +117,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(35, 5, 1500, 500)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NOON)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "parrotfish"))
@@ -124,8 +126,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(40, 10, 1600, 1400)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.COMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "seahorse"))
@@ -133,8 +135,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(15, 10, 20, 15)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "triggerfish"))
@@ -142,8 +144,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(90, 10, 4300, 2500)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldWarmOceanFish(U.holderItem("hybrid-aquatic", "flying_fish"))
@@ -172,7 +174,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(12, 3, 41.5f, 11.5f))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NIGHT));
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "coelacanth"))
@@ -187,7 +189,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(500, 300, 122727.25f, 61363.6f))
                         .withDifficulty(FishProperties.Difficulty.HARD_VANISHING)
                         .withRarity(FishProperties.Rarity.RARE)
-                        .withWeather(FishProperties.Weather.THUNDER));
+                        .withWeather(WeatherRestriction.THUNDER));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "ratfish"))
@@ -215,7 +217,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "flashlight_fish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(20, 10, 80, 40))
                         .withDifficulty(FishProperties.Difficulty.EASY_FAST_FISH)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(FishProperties.Rarity.COMMON));
 
         register(
@@ -223,7 +225,7 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("hybrid-aquatic", "squirrelfish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(21, 3, 300, 100)) // The weight is an estimate.
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(FishProperties.Rarity.COMMON));
 
         register(
@@ -288,8 +290,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(90, 10, 4300, 2500)) // Haven't measured yet.
                         .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldDeepOceanFish(U.holderItem("hybrid-aquatic", "ocean_sunfish"))
@@ -297,8 +299,8 @@ public class DGHybridAquaticFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(230, 100, 1273500, 1026500))
                         .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
                         .withRarity(FishProperties.Rarity.RARE)
-                        .withDaytime(FishProperties.Daytime.DAY)
-                        .withWeather(FishProperties.Weather.CLEAR));
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withWeather(WeatherRestriction.CLEAR));
 
         register(
                 overworldCherryGroveFish(U.holderItem("hybrid-aquatic", "goldfish"))

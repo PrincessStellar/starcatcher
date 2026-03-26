@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -80,7 +81,7 @@ public class FishEntity extends AbstractFish
 
             for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
             {
-                if (FishProperties.getChance(fp, this, SCItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
+                if (FishProperties.getChance(fp, this, level(), SCItems.ROD.toStack(), AbstractFishRestriction.Context.FISH_ENTITY) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
                     available.add(fp);
             }
 
@@ -119,8 +120,9 @@ public class FishEntity extends AbstractFish
 
     public static boolean validSpawnPlacement(EntityType<FishEntity> entity, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource)
     {
+        //todo fix this shit
         for (FishProperties fp : serverLevelAccessor.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
-            if (FishProperties.getChance(fp, serverLevelAccessor.getLevel(), blockPos, ItemStack.EMPTY) > 0)
+            if (FishProperties.getChance(fp, entity.create(serverLevelAccessor.getLevel()), serverLevelAccessor.getLevel(), ItemStack.EMPTY, AbstractFishRestriction.Context.FISH_ENTITY) > 0)
                 return true;
 
         return false;

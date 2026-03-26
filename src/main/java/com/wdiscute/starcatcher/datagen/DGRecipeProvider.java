@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;

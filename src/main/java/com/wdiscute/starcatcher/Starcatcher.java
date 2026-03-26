@@ -1,19 +1,21 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.SCMinigameModifiers;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.SCSweetSpotsBehaviour;
-import com.wdiscute.starcatcher.registry.blocks.SCBlockEntities;
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
+import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
+import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.custom.sweetspotbehaviour.AbstractSweetSpotBehaviour;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -49,11 +51,14 @@ public class Starcatcher
     public static final ResourceKey<Registry<TrophyProperties>> TROPHY_REGISTRY =
             ResourceKey.createRegistryKey(Starcatcher.rl("trophy"));
 
-    public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEET_SPOT_BEHAVIOUR =
-            ResourceKey.createRegistryKey(Starcatcher.rl("sweet_spot_behaviour"));
+    public static final ResourceKey<Registry<AbstractFishRestriction>> FISH_RESTRICTIONS =
+            ResourceKey.createRegistryKey(Starcatcher.rl("fish_restrictions"));
 
     public static final ResourceKey<Registry<Supplier<AbstractMinigameModifier>>> MINIGAME_MODIFIERS =
             ResourceKey.createRegistryKey(Starcatcher.rl("minigame_modifiers"));
+
+    public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEET_SPOT_BEHAVIOUR =
+            ResourceKey.createRegistryKey(Starcatcher.rl("sweet_spot_behaviour"));
 
     public static final ResourceKey<Registry<Supplier<AbstractCatchModifier>>> CATCH_MODIFIERS =
             ResourceKey.createRegistryKey(Starcatcher.rl("catch_modifiers"));
@@ -62,14 +67,19 @@ public class Starcatcher
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
 
     //registry
-    public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
+    public static final Registry<AbstractFishRestriction> FISH_RESTRICTIONS_REGISTRY = new RegistryBuilder<>(FISH_RESTRICTIONS)
             .sync(true)
-            .defaultKey(Starcatcher.rl("normal"))
+            .defaultKey(Starcatcher.rl("empty"))
             .create();
 
     public static final Registry<Supplier<AbstractMinigameModifier>> MINIGAME_MODIFIERS_REGISTRY = new RegistryBuilder<>(MINIGAME_MODIFIERS)
             .sync(true)
             .defaultKey(Starcatcher.rl("slower_vanishing"))
+            .create();
+
+    public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
+            .sync(true)
+            .defaultKey(Starcatcher.rl("normal"))
             .create();
 
     public static final Registry<Supplier<AbstractCatchModifier>> CATCH_MODIFIERS_REGISTRY = new RegistryBuilder<>(CATCH_MODIFIERS)
@@ -122,6 +132,7 @@ public class Starcatcher
         SCMenuTypes.register(modEventBus);
         SCDataAttachments.register(modEventBus);
         SCSweetSpotsBehaviour.register(modEventBus);
+        SCFishRestrictions.register(modEventBus);
         SCMinigameModifiers.register(modEventBus);
         SCCatchModifiers.register(modEventBus);
         SCTackleSkins.register(modEventBus);

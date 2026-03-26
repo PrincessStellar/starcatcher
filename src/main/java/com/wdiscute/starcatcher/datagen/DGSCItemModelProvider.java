@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.wdiscute.starcatcher.registry.SCItems.*;
-import static com.wdiscute.starcatcher.registry.blocks.SCBlocks.*;
+import static com.wdiscute.starcatcher.blocks.SCBlocks.*;
 
 public class DGSCItemModelProvider extends ItemModelProvider
 {

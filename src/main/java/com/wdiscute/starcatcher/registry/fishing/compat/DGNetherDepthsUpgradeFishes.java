@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 
 public class DGNetherDepthsUpgradeFishes extends FishingPropertiesRegistry
@@ -39,7 +40,7 @@ public class DGNetherDepthsUpgradeFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "blazefish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(160, 29, 5200, 1200))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(FishProperties.Difficulty.HARD_VANISHING)
         );
 

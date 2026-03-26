@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.event;
 import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.commands.SCCommands;
+import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.io.TournamentSavedData;
@@ -155,6 +155,7 @@ public class SCEvents
         event.register(Starcatcher.MINIGAME_MODIFIERS_REGISTRY);
         event.register(Starcatcher.CATCH_MODIFIERS_REGISTRY);
         event.register(Starcatcher.TACKLE_SKIN_REGISTRY);
+        event.register(Starcatcher.FISH_RESTRICTIONS_REGISTRY);
     }
 
     @SubscribeEvent

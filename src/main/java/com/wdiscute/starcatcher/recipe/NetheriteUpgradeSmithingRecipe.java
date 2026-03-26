@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
-import com.wdiscute.starcatcher.registry.custom.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

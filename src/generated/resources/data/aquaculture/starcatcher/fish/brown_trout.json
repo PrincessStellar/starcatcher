@@ -5,11 +5,6 @@
       "modid": "aquaculture"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
@@ -18,7 +13,6 @@
     "item": "aquaculture:brown_trout",
     "treasure": "aquaculture:box"
   },
-  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 5,
@@ -49,6 +43,58 @@
   },
   "has_guide_entry": true,
   "rarity": "common",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_river"
+      ],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_summer": 0,
+        "early_winter": 0,
+        "late_autumn": 0,
+        "late_summer": 0,
+        "late_winter": 0,
+        "mid_autumn": 0,
+        "mid_summer": 0,
+        "mid_winter": 0
+      },
+      "translation_override": "gui.guide.seasons.not_spring"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:weather_restriction",
+      "clear_extra_chance": 0,
+      "rain_extra_chance": -9999,
+      "thunder_extra_chance": -9999,
+      "translation_override": "gui.guide.weather.clear"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 45.0,
     "average_weight_grams": 3000.0,
@@ -56,28 +102,5 @@
     "deviation_weight_grams": 2000.0,
     "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "clear",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_river"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "summer",
-      "autumn",
-      "winter"
-    ]
-  }
+  "skips_minigame": false
 }

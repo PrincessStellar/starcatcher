@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.guide;
 
-import com.wdiscute.starcatcher.registry.blocks.SCBlocks;
-import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlock;
-import com.wdiscute.starcatcher.registry.blocks.display.DisplayBlockEntity;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.display.DisplayBlock;
+import com.wdiscute.starcatcher.blocks.display.DisplayBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;

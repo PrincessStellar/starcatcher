@@ -5,11 +5,6 @@
       "modid": "aquaculture"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": false,
@@ -18,7 +13,6 @@
     "item": "aquaculture:atlantic_cod",
     "treasure": "aquaculture:box"
   },
-  "daytime": "day",
   "difficulty": {
     "decay": 1.0,
     "missPenalty": 5,
@@ -53,6 +47,45 @@
   },
   "has_guide_entry": true,
   "rarity": "common",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_cold_ocean"
+      ],
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": ""
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_winter": 0,
+        "late_winter": 0,
+        "mid_winter": 0
+      },
+      "translation_override": "gui.guide.seasons.winter"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [],
+      "translation_override": ""
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 100.0,
     "average_weight_grams": 15000.0,
@@ -60,26 +93,5 @@
     "deviation_weight_grams": 10000.0,
     "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_cold_ocean"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "winter"
-    ]
-  }
+  "skips_minigame": false
 }

@@ -13,7 +13,6 @@ public class StarcatcherTags
     public static final ResourceLocation IS_COLD_LAKE = Starcatcher.rl("is_cold_lake");
     public static final ResourceLocation IS_COLD_RIVER = Starcatcher.rl("is_cold_river");
     public static final ResourceLocation IS_COLD_OCEAN = Starcatcher.rl("is_cold_ocean");
-    public static final ResourceLocation IS_FROZEN_OCEAN = Starcatcher.rl("is_cold_ocean");
 
     public static final ResourceLocation IS_WARM_LAKE = Starcatcher.rl("is_warm_lake");
     public static final ResourceLocation IS_WARM_RIVER = Starcatcher.rl("is_warm_river");
@@ -31,6 +30,11 @@ public class StarcatcherTags
     public static final ResourceLocation IS_MUSHROOM_FIELDS = Starcatcher.rl("is_mushroom_fields");
     public static final ResourceLocation IS_DARK_FOREST = Starcatcher.rl("is_dark_forest");
     public static final ResourceLocation IS_BIRCH_FOREST = Starcatcher.rl("is_birch_forest");
+
+    public static final ResourceLocation IS_CRIMSON_FOREST = Starcatcher.rl("is_crimson_forest");
+    public static final ResourceLocation IS_WARPED_FOREST = Starcatcher.rl("is_warped_forest");
+    public static final ResourceLocation IS_SOUL_SAND_VALLEY = Starcatcher.rl("is_soul_sand_valley");
+    public static final ResourceLocation IS_BASALT_DELTAS = Starcatcher.rl("is_basalt_deltas");
 
     public static final TagKey<Item> HOOKS = ItemTags.create(Starcatcher.rl("hooks"));
     public static final TagKey<Item> BOBBERS = ItemTags.create(Starcatcher.rl("bobbers"));

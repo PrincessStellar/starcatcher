@@ -524,26 +524,45 @@
   "gui.starcatcher.toast.fish_caught" : "New Fish Caught!",
 
 
-  "gui.guide.seasons" : "Seasons:",
+  "gui.guide.season" : "Season: ",
+  "gui.guide.seasons" : "Seasons: ",
 
   "gui.guide.seasons.all" : "All",
 
   "gui.guide.seasons.spring" : "Spring",
+  "gui.guide.seasons.summer" : "Summer",
+  "gui.guide.seasons.autumn" : "Autumn",
+  "gui.guide.seasons.winter" : "Winter",
+
+  "gui.guide.seasons.not_spring" : "Not Spring",
+  "gui.guide.seasons.not_summer" : "Not Summer",
+  "gui.guide.seasons.not_autumn" : "Not Autumn",
+  "gui.guide.seasons.not_winter" : "Not Winter",
+
+  "gui.guide.seasons.spring_summer" : "Spring & Summer",
+  "gui.guide.seasons.spring_autumn" : "Spring & Autumn",
+  "gui.guide.seasons.spring_winter" : "Spring & Winter",
+  "gui.guide.seasons.summer_autumn" : "Summer & Autumn",
+  "gui.guide.seasons.summer_winter" : "Summer & Winter",
+  "gui.guide.seasons.autumn_winter" : "Autumn & Winter",
+
+  "gui.guide.seasons.around_spring" : "Around Spring",
+  "gui.guide.seasons.around_summer" : "Around Summer",
+  "gui.guide.seasons.around_autumn" : "Around Autumn",
+  "gui.guide.seasons.around_winter" : "Around Winter",
+
   "gui.guide.seasons.early_spring" : "Early Spring",
   "gui.guide.seasons.mid_spring" : "Mid Spring",
   "gui.guide.seasons.late_spring" : "Late Spring",
 
-  "gui.guide.seasons.summer" : "Summer",
   "gui.guide.seasons.early_summer" : "Early Summer",
   "gui.guide.seasons.mid_summer" : "Mid Summer",
   "gui.guide.seasons.late_summer" : "Late Summer",
 
-  "gui.guide.seasons.autumn" : "Autumn",
   "gui.guide.seasons.early_autumn" : "Early Autumn",
   "gui.guide.seasons.mid_autumn" : "Mid Autumn",
   "gui.guide.seasons.late_autumn" : "Late Autumn",
 
-  "gui.guide.seasons.winter" : "Winter",
   "gui.guide.seasons.early_winter" : "Early Winter",
   "gui.guide.seasons.mid_winter" : "Mid Winter",
   "gui.guide.seasons.late_winter" : "Late Winter",
@@ -551,6 +570,11 @@
 
   "gui.guide.seasons.in_season" : "In season!",
   "gui.guide.seasons.not_in_season" : "Not in season",
+
+  "gui.guide.weather.clear" : "Clear Skies",
+  "gui.guide.weather.rain" : "Raining",
+  "gui.guide.weather.thunder" : "Thundering",
+
 
   "gui.guide.sort" : "[sort]",
 
@@ -628,14 +652,14 @@
   "gui.guide.lava_fishing" : " Lava Fishing",
   "gui.guide.modifiers" : "     Modifiers",
   "gui.guide.hooks_and_bobbers" : "  Hooks & Bobbers",
-  "gui.guide.baits" : "      Baits",
-  "gui.guide.gadgets" : "   Gadgets",
-  "gui.guide.cosmetics" : "    Cosmetics",
-  "gui.guide.templates" : "    Templates",
-  "gui.guide.equipment" : "    Equipment",
+  "gui.guide.baits" : "Baits",
+  "gui.guide.gadgets" : "Gadgets",
+  "gui.guide.cosmetics" : "Cosmetics",
+  "gui.guide.templates" : "Templates",
+  "gui.guide.equipment" : "Equipment",
   "gui.guide.tournaments" : "Fishing Tournaments",
-  "gui.guide.trophies" : "    Trophies",
-  "gui.guide.secrets" : "      Secrets",
+  "gui.guide.trophies" : "Trophies",
+  "gui.guide.secrets" : "Secrets",
 
 
   "gui.guide.page.basics.left.0" : "",
@@ -962,6 +986,7 @@
   "gui.guide.biome" : "Biome: ",
   "gui.guide.biome_tags" : "Biome Tags: ",
   "gui.guide.biomes" : "Biomes: ",
+  "gui.guide.biomes.empty" : "[No Biomes]",
   "gui.guide.blacklisted_biomes" : "Blacklisted Biomes: ",
   "gui.guide.blacklisted_biome_tags" : "Blacklisted Biome Tags: ",
   "gui.guide.blacklisted_dimensions" : "Blacklisted Dimensions: ",
@@ -969,23 +994,25 @@
   "gui.guide.weather" : "Weather: ",
   "gui.guide.raining" : "Raining",
   "gui.guide.thundering" : "Thundering",
-  "gui.guide.clear" : "Clear",
+  "gui.guide.clear_chance" : "Clear weather chance added: %s",
+  "gui.guide.rain_chance" : "Raining chance added: %s",
+  "gui.guide.thunder_chance" : "Thunderstorm chance added: %s",
   "gui.guide.daytime" : "Daytime: ",
   "gui.guide.day" : "Day",
   "gui.guide.noon" : "Noon",
   "gui.guide.night" : "Night",
   "gui.guide.midnight" : "Midnight",
   "gui.guide.elevation" : "Elevation: ",
-  "gui.guide.below" : "Below ",
-  "gui.guide.above" : "Above ",
-  "gui.guide.mountain" : "Mountains",
-  "gui.guide.surface" : "Surface",
-  "gui.guide.underground" : "Underground",
-  "gui.guide.caves" : "Caves",
-  "gui.guide.deepslate" : "Deepslate",
+  "gui.guide.below" : "Below %s",
+  "gui.guide.above" : "Above %s",
+  "gui.guide.around" : "Around %s",
+  "gui.guide.extra_chance" : "Extra chance at %s: %s",
+  "gui.guide.range" : "Extra Chance Range: %s",
   "gui.guide.fluid" : "Fluid: ",
   "gui.guide.no_restriction" : "-------",
   "gui.guide.bait_required" : "The correct bait is required for this catch!",
+  "gui.guide.bait_chance_added" : "Chance added by bait:",
+  "gui.guide.fluif_chance_added" : "Chance added by fluid:",
   "gui.guide.hover" : "[hover]",
 
 

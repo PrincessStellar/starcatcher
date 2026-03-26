@@ -3,16 +3,22 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
+
+import java.util.Map;
 
 import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
 
 
 public class DGMinecraftFishes
 {
-    public static void bootstrap() {
+    public static void bootstrap()
+    {
 
         //ocean
         register(overworldOceanFish(U.holderItem("minecraft", "cod"))
@@ -48,17 +54,12 @@ public class DGMinecraftFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 10000, 8000))
         );
 
-
         //mobs
         register(fish(BuiltInRegistries.ITEM.wrapAsHolder(Items.NETHER_STAR))
                 .withAlwaysSpawnEntity(true)
                 .withEntityToSpawn(U.holderEntity("minecraft", "wither"))
                 .withBaseChance(0)
-                .withBaitRestrictions(
-                        FishProperties.BaitRestrictions.DEFAULT
-                                .withCorrectBait(BuiltInRegistries.ITEM.getKey(Items.WITHER_SKELETON_SKULL))
-                                .withCorrectBaitChanceAdded(200)
-                )
+                .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), ""))
                 .withDifficulty(FishProperties.Difficulty.WITHER)
                 .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
@@ -68,11 +69,7 @@ public class DGMinecraftFishes
                 .withAlwaysSpawnEntity(true)
                 .withEntityToSpawn(U.holderEntity("minecraft", "creeper"))
                 .withBaseChance(0)
-                .withBaitRestrictions(
-                        FishProperties.BaitRestrictions.DEFAULT
-                                .withCorrectBait(Starcatcher.rl("gunpowder_bait"))
-                                .withCorrectBaitChanceAdded(100)
-                )
+                .addRestrictions(new BaitRestriction(Map.of(Starcatcher.rl("gunpowder_bait"), 200), ""))
                 .withDifficulty(FishProperties.Difficulty.CREEPER)
                 .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
                 .withRarity(FishProperties.Rarity.EPIC)
@@ -81,8 +78,8 @@ public class DGMinecraftFishes
         register(overworldSurfaceFish(U.holderItem("minecraft", "rotten_flesh"))
                 .withEntityToSpawn(U.holderEntity("minecraft", "drowned"))
                 .withBaseChance(1)
-                .withDaytime(FishProperties.Daytime.NIGHT)
-                .withWeather(FishProperties.Weather.RAIN)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                .withWeather(WeatherRestriction.RAIN)
                 .withHasGuideEntry(false)
                 .withAlwaysSpawnEntity()
                 .withSkipMinigame(true));

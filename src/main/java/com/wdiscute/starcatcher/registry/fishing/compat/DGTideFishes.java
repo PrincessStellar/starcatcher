@@ -2,7 +2,10 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
+
+import java.util.List;
 
 public class DGTideFishes extends FishingPropertiesRegistry
 {
@@ -24,7 +27,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(27, 11, 500, 352))
                         .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON)
-                        .withDaytime(FishProperties.Daytime.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
         );
 
         register(
@@ -78,7 +81,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withBucketedFish(U.holderItem("tide", "carp_bucket"))
                         .withEntityToSpawn(U.holderEntity("tide", "carp"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
-                        .withDaytime(FishProperties.Daytime.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
                         .withRarity(FishProperties.Rarity.COMMON)
         );
@@ -111,7 +114,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
                         .withDifficulty(FishProperties.Difficulty.HARD)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
         );
 
 
@@ -122,7 +125,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 6000, 4000))
                         .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
                         .withRarity(FishProperties.Rarity.UNCOMMON)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
         );
 
 
@@ -134,7 +137,6 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN)
                         .withRarity(FishProperties.Rarity.RARE)
         );
-
 
 
         register(
@@ -153,7 +155,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "mirage_catfish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 10000, 3000))
                         .withDifficulty(FishProperties.Difficulty.SINGLE_AQUA)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withRarity(FishProperties.Rarity.RARE)
         );
 
@@ -172,7 +174,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "sand_tiger_shark"))
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 120, 16000, 11000))
                         .withDifficulty(FishProperties.Difficulty.TWO_AQUA_ONE_THIN)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(FishProperties.Rarity.RARE)
         );
 
@@ -203,7 +205,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "mooneye"))
                         .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1600, 1100))
                         .withDifficulty(FishProperties.Difficulty.SINGLE_THIN_FAST)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -214,10 +216,9 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "bull_shark"))
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 120, 16000, 11000))
                         .withDifficulty(FishProperties.Difficulty.SINGLE_THIN_FAST)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
-
 
 
         //oceans
@@ -348,7 +349,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "neptune_koi"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                         .withDifficulty(FishProperties.Difficulty.SINGLE_AQUA)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -359,7 +360,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "pluto_snail"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                         .withDifficulty(FishProperties.Difficulty.TWO_AQUA)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -369,7 +370,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "sun_emblem"))
                         .withSizeAndWeight(FishProperties.sizeWeight(10, 3, 40, 10))
                         .withDifficulty(FishProperties.Difficulty.TWO_THIN)
-                        .withDaytime(FishProperties.Daytime.NOON)
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -380,7 +381,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "saturn_cuttlefish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                         .withDifficulty(FishProperties.Difficulty.TWO_THIN)
-                        .withDaytime(FishProperties.Daytime.NOON)
+                        .withDaytimeRestriction(DaytimeRestriction.NOON)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -391,7 +392,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "marstilus"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                         .withDifficulty(FishProperties.Difficulty.TWO_THIN)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -402,7 +403,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "uranias_pisces"))
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 13, 3500, 731))
                         .withDifficulty(FishProperties.Difficulty.TWO_THIN)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -412,7 +413,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "great_white_shark"))
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 120, 16000, 11000))
                         .withDifficulty(FishProperties.Difficulty.HARD)
-                        .withDaytime(FishProperties.Daytime.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -422,9 +423,9 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "shooting_starfish"))
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 120, 16000, 11000))
                         .withDifficulty(FishProperties.Difficulty.TWO_THIN)
-                        .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withBaseChance(1)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .withRarity(FishProperties.Rarity.EPIC)
         );
 
@@ -434,13 +435,11 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withEntityToSpawn(U.holderEntity("tide", "coelacanth"))
                         .withSizeAndWeight(FishProperties.sizeWeight(400, 120, 16000, 11000))
                         .withDifficulty(FishProperties.Difficulty.SINGLE_AQUA_MOVING)
-                        .withDaytime(FishProperties.Daytime.NIGHT)
-                        .withWeather(FishProperties.Weather.RAIN)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withWeather(WeatherRestriction.RAIN)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .withRarity(FishProperties.Rarity.LEGENDARY)
         );
-
-
 
 
         //underground
@@ -615,7 +614,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withRarity(FishProperties.Rarity.LEGENDARY)
                         .withDifficulty(FishProperties.Difficulty.SINGLE_THIN_FAST)
                         .withBaseChance(1)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
         );
 
         register(
@@ -625,12 +624,11 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(35, 25, 1000, 700))
                         .withRarity(FishProperties.Rarity.LEGENDARY)
                         .withDifficulty(FishProperties.Difficulty.SINGLE_THIN_FAST)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
-                        .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_STONE_CAVES
-                                .withMustBeCaughtAboveY(20)
-                                .withMustBeCaughtBelowY(30))
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
+                        .addRestrictions(DimensionRestriction.OVERWORLD,
+                                new ElevationRestriction(20, 30, "")
+                        )
         );
-
 
 
         //lava
@@ -973,7 +971,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(60, 20, 7000, 2000))
                         .withDifficulty(FishProperties.Difficulty.NON_STOP_ACTION_AQUA)
                         .withRarity(FishProperties.Rarity.LEGENDARY)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .withBaseChance(3)
         );
 
@@ -984,7 +982,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                         .withSkipMinigame(true)
                         .withRarity(FishProperties.Rarity.LEGENDARY)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .withBaseChance(3)
         );
 
@@ -995,7 +993,7 @@ public class DGTideFishes extends FishingPropertiesRegistry
                         .withSizeAndWeight(FishProperties.sizeWeight(500, 150, 700000, 130000))
                         .withDifficulty(FishProperties.Difficulty.WITHER)
                         .withRarity(FishProperties.Rarity.LEGENDARY)
-                        .withBaitRestrictions(FishProperties.BaitRestrictions.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .withBaseChance(3)
         );
 

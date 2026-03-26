@@ -1,12 +1,16 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.ElevationRestriction;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
+
+import java.util.List;
 
 public class DGFintasticFishes extends FishingPropertiesRegistry
 {
@@ -26,8 +30,21 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "minnow_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "minnow"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE
-                        .withBiomesTags(BiomeTags.IS_JUNGLE.location(), StarcatcherTags.IS_SWAMP, StarcatcherTags.IS_RIVER))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        ElevationRestriction.FIFTY_TO_HUNDRED,
+                        new BiomeRestriction(
+                                List.of(),
+                                List.of(
+                                        BiomeTags.IS_JUNGLE.location(),
+                                        StarcatcherTags.IS_SWAMP,
+                                        BiomeTags.IS_RIVER.location()
+                                ),
+                                List.of(),
+                                List.of(),
+                                ""
+                        )
+                )
                 .withRarity(FishProperties.Rarity.COMMON)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
         );
@@ -36,7 +53,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "featherback_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "featherback"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
         );
@@ -45,7 +62,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "guppy_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "guppy"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.EASY)
         );
@@ -54,7 +71,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "arapaima_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "arapaima"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLE)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLE)
                 .withDifficulty(FishProperties.Difficulty.HARD)
                 .withRarity(FishProperties.Rarity.RARE)
         );
@@ -63,7 +80,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "pleco_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "pleco"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.EASY_FAST_FISH)
         );
@@ -72,9 +89,23 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "moony_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "moony"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE
-                        .withBiomes(Biomes.BEACH.location(), Biomes.MANGROVE_SWAMP.location())
-                        .withBiomesTags(StarcatcherTags.IS_LUKEWARM_OCEAN, StarcatcherTags.IS_WARM_OCEAN))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        ElevationRestriction.FIFTY_TO_HUNDRED,
+                        new BiomeRestriction(
+                                List.of(
+                                        Biomes.BEACH.location(),
+                                        Biomes.MANGROVE_SWAMP.location()
+                                ),
+                                List.of(
+                                        StarcatcherTags.IS_LUKEWARM_OCEAN,
+                                        StarcatcherTags.IS_WARM_OCEAN
+                                ),
+                                List.of(),
+                                List.of(),
+                                ""
+                        )
+                )
                 .withRarity(FishProperties.Rarity.EPIC)
                 .withDifficulty(FishProperties.Difficulty.SINGLE_AQUA)
         );
@@ -82,8 +113,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
         register(fish(U.holderItem("fintastic", "coelacanth_spawn_egg"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "coelacanth"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE
-                        .withBiomesTags(StarcatcherTags.IS_WARM_OCEAN))
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_OCEAN)
                 .withRarity(FishProperties.Rarity.RARE)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING_MOVING)
         );
@@ -92,8 +122,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "gourami_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "gourami"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(StarcatcherTags.IS_SWAMP))
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
         );
@@ -102,7 +131,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "daphnia_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "daphnia"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
                 .withRarity(FishProperties.Rarity.COMMON)
                 .withDifficulty(FishProperties.Difficulty.HARD)
         );
@@ -111,7 +140,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("fintastic", "artemia_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "artemia"))
                 .withAlwaysSpawnEntity()
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_LAKE)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_LAKE)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
         );

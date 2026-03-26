@@ -271,6 +271,11 @@ public class U
         return ResourceLocation.fromNamespaceAndPath(ns, path);
     }
 
+    public static ResourceLocation rl(String path)
+    {
+        return ResourceLocation.fromNamespaceAndPath("minecraft", path);
+    }
+
     public static Holder<Item> holderItem(String ns, String path)
     {
         return TrustedHolder.createStandAlone(BuiltInRegistries.ITEM.holderOwner(), ResourceKey.create(Registries.ITEM, rl(ns, path)));

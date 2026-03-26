@@ -1,13 +1,13 @@
 package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.bob.FishingBobEntity;
+import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.SCTackleSkins;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
