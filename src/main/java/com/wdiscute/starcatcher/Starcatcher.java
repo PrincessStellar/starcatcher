@@ -142,7 +142,7 @@ public class Starcatcher
         modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC_SERVER);
 
-        SCItems.registerExtra();
+//        SCItems.registerExtra();
     }
 
     @Mod(value = Starcatcher.MOD_ID, dist = Dist.CLIENT)

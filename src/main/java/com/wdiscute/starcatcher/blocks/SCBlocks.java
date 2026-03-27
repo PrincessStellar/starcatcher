@@ -43,7 +43,6 @@ public interface SCBlocks
 
     DeferredBlock<Block> CONCH = registerBlock("conch", ConchBlock::new);
 
-
     //tackle boxes
     DeferredBlock<Block> TACKLE_BOX = registerTackleBox("tackle_box", () -> new TackleBoxBlock(null, MapColor.TERRACOTTA_WHITE));
     DeferredBlock<Block> TACKLE_BOX_WHITE = registerTackleBox("tackle_box_white", () -> new TackleBoxBlock(DyeColor.WHITE, MapColor.SNOW));

@@ -17,6 +17,7 @@ import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
 import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
+import com.wdiscute.starcatcher.compat.curios.CuriosEvents;
 import com.wdiscute.starcatcher.registry.tackleskin.*;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
@@ -25,6 +26,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
@@ -57,6 +59,11 @@ public class SCClientEvents
         EntityRenderers.register(SCEntities.BOTTLED_LETTER.get(), ThrownItemRenderer::new);
         EntityRenderers.register(SCEntities.FISH.get(), FishRenderer::new);
         event.enqueueWork(SCItemProperties::addCustomItemProperties);
+
+        if (ModList.get().isLoaded("curios"))
+        {
+            CuriosEvents.registerRenderers();
+        }
     }
 
     @SubscribeEvent
