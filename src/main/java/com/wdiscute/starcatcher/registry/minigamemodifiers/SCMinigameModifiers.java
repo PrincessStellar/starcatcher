@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.minigamemodifiers;
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.compat.CuriosCompat;
+import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
