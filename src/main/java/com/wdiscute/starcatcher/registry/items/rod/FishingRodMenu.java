@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -40,7 +40,7 @@ public class FishingRodMenu extends AbstractContainerMenu
 
     public FishingRodMenu(int containerId, Inventory inv, FriendlyByteBuf extraData)
     {
-        this(containerId, inv, inv.player.getMainHandItem().is(StarcatcherTags.RODS) ? inv.player.getMainHandItem() : inv.player.getOffhandItem());
+        this(containerId, inv, inv.player.getMainHandItem().is(SCTags.RODS) ? inv.player.getMainHandItem() : inv.player.getOffhandItem());
 
     }
 
@@ -74,7 +74,7 @@ public class FishingRodMenu extends AbstractContainerMenu
             @Override
             public boolean mayPlace(ItemStack stack)
             {
-                return stack.is(StarcatcherTags.BOBBERS);
+                return stack.is(SCTags.BOBBERS);
             }
 
             @Override
@@ -90,7 +90,7 @@ public class FishingRodMenu extends AbstractContainerMenu
             @Override
             public boolean mayPlace(ItemStack stack)
             {
-                return stack.is(StarcatcherTags.BAITS);
+                return stack.is(SCTags.BAITS);
             }
 
             @Override
@@ -106,7 +106,7 @@ public class FishingRodMenu extends AbstractContainerMenu
             @Override
             public boolean mayPlace(ItemStack stack)
             {
-                return stack.is(StarcatcherTags.HOOKS);
+                return stack.is(SCTags.HOOKS);
             }
 
             @Override
@@ -220,7 +220,7 @@ public class FishingRodMenu extends AbstractContainerMenu
     @Override
     public boolean stillValid(Player player)
     {
-        return (player.getMainHandItem().is(StarcatcherTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) ||
-                (player.getOffhandItem().is(StarcatcherTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty());
+        return (player.getMainHandItem().is(SCTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) ||
+                (player.getOffhandItem().is(SCTags.RODS) && SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty());
     }
 }

@@ -3,65 +3,81 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class WeatherRestriction extends AbstractFishRestriction
 {
-    private final int clearChance;
-    private final int rainChance;
-    private final int thunderChance;
+    private final Weather weather;
     private final String translationOverride;
 
     public static final MapCodec<WeatherRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.fieldOf("clear_extra_chance").forGetter(WeatherRestriction::getClearChance),
-                    Codec.INT.fieldOf("rain_extra_chance").forGetter(WeatherRestriction::getRainChance),
-                    Codec.INT.fieldOf("thunder_extra_chance").forGetter(WeatherRestriction::getThunderChance),
+                    Weather.CODEC.fieldOf("weather").forGetter(WeatherRestriction::getWeather),
                     Codec.STRING.fieldOf("translation_override").forGetter(WeatherRestriction::getTranslationOverride)
             ).apply(instance, WeatherRestriction::new));
 
+    public enum Weather implements StringRepresentable
+    {
+        CLEAR("clear", (level) -> level.getRainLevel(0) < 0.2f && level.getThunderLevel(0) < 0.2f),
+        RAIN("rain", (level) -> level.getRainLevel(0) > 0.2f),
+        THUNDER("thunder", (level) -> level.getThunderLevel(0) > 0.2f),
+        CLEAR_OR_RAIN("clear_or_rain", (level) -> CLEAR.isCorrect.test(level) || RAIN.isCorrect.test(level)),
+        CLEAR_OR_THUNDER("clear_or_thunder", (level) -> CLEAR.isCorrect.test(level) || THUNDER.isCorrect.test(level)),
+        RAIN_OR_THUNDER("rain_or_thunder", (level) -> RAIN.isCorrect.test(level) || THUNDER.isCorrect.test(level));
+
+        public static final Codec<Weather> CODEC = StringRepresentable.fromEnum(Weather::values);
+
+        private final String name;
+        public final Predicate<Level> isCorrect;
+
+        Weather(String name, Predicate<Level> isCorrect)
+        {
+            this.name = name;
+            this.isCorrect = isCorrect;
+        }
+
+        @Override
+        public String getSerializedName()
+        {
+            return name;
+        }
+    }
+
     public WeatherRestriction()
     {
-        this.clearChance = 0;
-        this.rainChance = 0;
-        this.thunderChance = 0;
+        this.weather = Weather.CLEAR;
         this.translationOverride = "";
     }
 
-    public WeatherRestriction(int clearChance, int rainChance, int thunderChance, String translationOverride)
+    public WeatherRestriction(Weather weather)
     {
-        this.clearChance = clearChance;
-        this.rainChance = rainChance;
-        this.thunderChance = thunderChance;
+        this.weather = weather;
+        this.translationOverride = "";
+    }
+
+    public WeatherRestriction(Weather weather, String translationOverride)
+    {
+        this.weather = weather;
         this.translationOverride = translationOverride;
     }
 
-    public int getClearChance()
+    public Weather getWeather()
     {
-        return clearChance;
-    }
-
-    public int getRainChance()
-    {
-        return rainChance;
-    }
-
-    public int getThunderChance()
-    {
-        return thunderChance;
+        return weather;
     }
 
     public String getTranslationOverride()
@@ -85,44 +101,37 @@ public class WeatherRestriction extends AbstractFishRestriction
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         //fishes in area for guidebook ignores this restriction
-        if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
-
-        float currentRainfall = level.getRainLevel(0);
-        float currentThunder = level.getThunderLevel(0);
-
-        int chance = 0;
-
-        if (currentRainfall > 0.5f) chance += rainChance;
-        if (currentThunder > 0.5f) chance += thunderChance;
-        if (currentRainfall < 0.5f && currentThunder < 0.5f) chance += clearChance;
-
-        return chance;
+        if (context.equals(Context.GUIDE_FISHES_IN_AREA) || weather.isCorrect.test(level))
+            return 0;
+        else
+            return -9999;
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
     {
-        MutableComponent comp = translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride);
-        List<Component> hover = new ArrayList<>();
-        List<Component> blacklist = List.of();
-
-
-        hover.add(Component.translatable("gui.guide.clear_chance", clearChance));
-        hover.add(Component.translatable("gui.guide.rain_chance", rainChance));
-        hover.add(Component.translatable("gui.guide.thunder_chance", thunderChance));
-
-
-        return new Triple<>(Component.translatable("gui.guide.elevation").copy().append(comp), hover, blacklist);
+        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+            return List.of(Component.translatable("gui.guide.hover.weather.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+        else
+            return List.of(Component.translatable("gui.guide.hover.weather.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
     }
 
+    @Override
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0 ?
+                SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
 
-    public static final WeatherRestriction CLEAR = new WeatherRestriction(
-            0, -9999, -9999, "gui.guide.weather.clear");
+        return Component.translatable("gui.guide.weather").copy().append(
+                translationOverride.isEmpty() ?
+                        Component.translatable("gui.guide.weather." + weather.name).withStyle(Style.EMPTY.withColor(color)) :
+                        Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color))
+        );
+    }
 
-    public static final WeatherRestriction RAIN = new WeatherRestriction(
-            -9999, 0, -9999, "gui.guide.weather.rain");
+    public static final WeatherRestriction CLEAR = new WeatherRestriction(Weather.CLEAR);
+    public static final WeatherRestriction RAIN = new WeatherRestriction(Weather.RAIN);
+    public static final WeatherRestriction THUNDER = new WeatherRestriction(Weather.THUNDER);
 
-    public static final WeatherRestriction THUNDER = new WeatherRestriction(
-            -9999, -9999, 0, "gui.guide.weather.thunder");
 
 }

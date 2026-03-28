@@ -193,7 +193,7 @@ public class DGTrophies extends TrophyPropertiesRegistry
                         overworldFish(SCItems.SKY_ROD)
                                 .addRestrictions(
                                         DimensionRestriction.OVERWORLD,
-                                        new ElevationRestriction(300, Integer.MAX_VALUE, "")))
+                                        ElevationRestriction.ABOVE_TWO_HUNDRED))
                 .setTrophyType(TrophyProperties.TrophyType.EXTRA)
                 .withChanceToCatch(1)
                 .withRepeatable(true)

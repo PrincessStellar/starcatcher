@@ -49,20 +49,22 @@
         "dimensions": [
           "minecraft:overworld"
         ],
-        "dimensions_blacklist": []
+        "dimensions_blacklist": [],
+        "translation_override": ""
       },
       {
         "type": "starcatcher:dimension",
         "dimensions": [
           "minecraft:overworld"
         ],
-        "dimensions_blacklist": []
+        "dimensions_blacklist": [],
+        "translation_override": ""
       },
       {
         "type": "starcatcher:elevation_restriction",
         "max_y": 2147483647,
-        "min_y": 300,
-        "translation_override": ""
+        "min_y": 100,
+        "translation_override": "gui.guide.elevation.skies"
       }
     ],
     "size_and_weight": {

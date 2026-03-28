@@ -3,13 +3,11 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.storage.FishProperties;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -21,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -77,21 +74,20 @@ public class BaitRestriction extends AbstractFishRestriction
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return fp.baseChance() == 0 ? -9999 : 0;
+        if (context.equals(Context.GUIDE_FISHES_HOVER)) return fp.baseChance() == 0 ? -9999 : 0;
 
         Item bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack().getItem();
 
-        if (baits.containsKey(BuiltInRegistries.ITEM.getKey(bait))) return baits.get(BuiltInRegistries.ITEM.getKey(bait));
+        if (baits.containsKey(BuiltInRegistries.ITEM.getKey(bait)))
+            return baits.get(BuiltInRegistries.ITEM.getKey(bait));
 
         return 0;
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
     {
         Component comp;
-        List<Component> hover = new ArrayList<>();
-        List<Component> blacklist = fp.baseChance() == 0 ? List.of(Component.translatable("gui.guide.bait_required")) : List.of();
 
         //bait name / [hover]
         if (baits.size() == 1)
@@ -99,17 +95,27 @@ public class BaitRestriction extends AbstractFishRestriction
         else
             comp = Component.translatable("gui.guide.hover");
 
-        //hover - Chance added by bait:
-        hover.add(Component.translatable("gui.guide.bait_chance_added").withStyle(Style.EMPTY.withBold(true)));
-        hover.add(Component.empty());
-
-        // 10 - Legendary Bait
-        baits.forEach((item, value) -> hover.add(Component.literal(value + " - ").append(BuiltInRegistries.ITEM.get(baits.keySet().stream().findFirst().get()).getName(null))));
-
         if (!translationOverride.isEmpty())
             comp = Component.translatable(translationOverride);
 
-        return new Triple<>(Component.translatable("gui.guide.bait").copy().append(comp), hover, blacklist);
+        return Component.translatable("gui.guide.bait").copy().append(comp);
+    }
+
+    @Override
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        List<Component> hover = new ArrayList<>();
+        //hover - Chance added by bait:
+        hover.add(Component.translatable("gui.guide.bait_chance_added").withStyle(Style.EMPTY.withBold(true)));
+        hover.add(Component.empty());
+        baits.forEach((item, value) -> hover.add(Component.literal(value + " - ").append(BuiltInRegistries.ITEM.get(baits.keySet().stream().findFirst().get()).getName(null))));
+        return hover;
+    }
+
+    @Override
+    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return fp.baseChance() == 0 ? List.of(Component.translatable("gui.guide.bait_required")) : List.of();
     }
 
     public static final BaitRestriction CHERRY_BAIT = new BaitRestriction(Map.of(SCItems.CHERRY_BAIT.getId(), 50), "");

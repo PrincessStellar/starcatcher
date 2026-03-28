@@ -49,13 +49,14 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": 0,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.stone_caves"
     }
   ],
   "size_and_weight": {

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -46,7 +46,7 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
     public StarcatcherEmiSmithingRecipe(Item item)
     {
         this.template = EmiIngredient.of(Ingredient.of(item));
-        this.input = EmiIngredient.of(Ingredient.of(StarcatcherTags.RODS));
+        this.input = EmiIngredient.of(Ingredient.of(SCTags.RODS));
 
         ItemStack is = SCItems.ROD.get().getDefaultInstance();
 

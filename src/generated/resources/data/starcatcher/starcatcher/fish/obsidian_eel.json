@@ -47,27 +47,26 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.surface"
     },
     {
       "type": "starcatcher:fluid",
-      "fluids": {
-        "minecraft:lava": 0
-      },
+      "fluids": [
+        "minecraft:lava"
+      ],
       "translation_override": ""
     },
     {
       "type": "starcatcher:weather_restriction",
-      "clear_extra_chance": -9999,
-      "rain_extra_chance": 0,
-      "thunder_extra_chance": -9999,
-      "translation_override": "gui.guide.weather.rain"
+      "translation_override": "",
+      "weather": "rain"
     },
     {
       "type": "starcatcher:bait",

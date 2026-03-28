@@ -92,16 +92,19 @@ public class ElevationBias extends AbstractFishRestriction
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        MutableComponent comp = translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride);
+        return Component.translatable("gui.guide.elevation").copy().append(
+                translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride)
+        );
+    }
 
-        List<Component> hover = List.of(
+    @Override
+    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return List.of(
                 Component.translatable("gui.guide.extra_chance", bestY, extraChance),
                 Component.translatable("gui.guide.range", bestY - range + " - " + bestY + range)
         );
-
-
-        return new Triple<>(Component.translatable("gui.guide.elevation").copy().append(comp), hover, List.of());
     }
 }

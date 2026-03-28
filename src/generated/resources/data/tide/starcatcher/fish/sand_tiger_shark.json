@@ -59,7 +59,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -75,12 +76,17 @@
       "type": "starcatcher:elevation_restriction",
       "max_y": 100,
       "min_y": 50,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.surface"
     },
     {
       "type": "starcatcher:daytime_restriction",
-      "ranges": [],
-      "translation_override": ""
+      "ranges": [
+        {
+          "first": 12700,
+          "second": 23000
+        }
+      ],
+      "translation_override": "gui.guide.night"
     }
   ],
   "size_and_weight": {

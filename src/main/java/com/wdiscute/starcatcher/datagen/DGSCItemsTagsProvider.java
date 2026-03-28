@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -40,8 +40,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             tag(ItemTags.FISHES).add(item.get());
             tag(ItemTags.CAT_FOOD).add(item.get());
             tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
-            tag(StarcatcherTags.BUCKETABLE_FISHES).add(item.get());
-            tag(StarcatcherTags.STARCAUGHT_FISHES).add(item.get());
+            tag(SCTags.BUCKETABLE_FISHES).add(item.get());
+            tag(SCTags.STARCAUGHT_FISHES).add(item.get());
         }
 
         //todo figure out what to do with crabs/eels tags?
@@ -53,12 +53,12 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
 
             switch (p.getSecond().rarity())
             {
-                case TRASH -> tag(StarcatcherTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
-                case COMMON -> tag(StarcatcherTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case UNCOMMON -> tag(StarcatcherTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case RARE -> tag(StarcatcherTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case EPIC -> tag(StarcatcherTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case LEGENDARY -> tag(StarcatcherTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case TRASH -> tag(SCTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
+                case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case RARE -> tag(SCTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
             }
         });
 
@@ -66,22 +66,22 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         {
             switch (fp.rarity())
             {
-                case COMMON -> tag(StarcatcherTags.COMMON_FISHES).add(fp.catchInfo().fish().value());
-                case UNCOMMON -> tag(StarcatcherTags.UNCOMMON_FISHES).add(fp.catchInfo().fish().value());
-                case RARE -> tag(StarcatcherTags.RARE_FISHES).add(fp.catchInfo().fish().value());
-                case EPIC -> tag(StarcatcherTags.EPIC_FISHES).add(fp.catchInfo().fish().value());
-                case LEGENDARY -> tag(StarcatcherTags.LEGENDARY_FISHES).add(fp.catchInfo().fish().value());
+                case COMMON -> tag(SCTags.COMMON_FISHES).add(fp.catchInfo().fish().value());
+                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).add(fp.catchInfo().fish().value());
+                case RARE -> tag(SCTags.RARE_FISHES).add(fp.catchInfo().fish().value());
+                case EPIC -> tag(SCTags.EPIC_FISHES).add(fp.catchInfo().fish().value());
+                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).add(fp.catchInfo().fish().value());
             }
         }
 
         //worms
-        tag(StarcatcherTags.WORMS)
+        tag(SCTags.WORMS)
                 .add(WORM.get())
                 .add(ALMIGHTY_WORM.get())
                 .add(SEEKING_WORM.get());
 
         //baits tag
-        tag(StarcatcherTags.BAITS)
+        tag(SCTags.BAITS)
                 .add(WORM.get())
                 .add(ALMIGHTY_WORM.get())
                 .add(SEEKING_WORM.get())
@@ -108,43 +108,43 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         ;
 
         //templates tag
-        TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.TEMPLATES).add(o.get()));
+        TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(SCTags.TEMPLATES).add(o.get()));
 
         //Equipment tag
-        RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
+        RODS_REGISTRY.getEntries().forEach(o -> tag(SCTags.EQUIPMENTS).add(o.get()));
         //ModItems.HATS_REGISTRY.getEntries().stream().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
 
         //gadgets
-        tag(StarcatcherTags.GADGETS).add(FISH_RADAR.get());
+        tag(SCTags.GADGETS).add(FISH_RADAR.get());
 
         //hooks tag
-        HOOKS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.HOOKS).add(o.get()));
-        tag(StarcatcherTags.HOOKS).addOptional(rl("tide", "void_fishing_hook"));
+        HOOKS_REGISTRY.getEntries().forEach(o -> tag(SCTags.HOOKS).add(o.get()));
+        tag(SCTags.HOOKS).addOptional(rl("tide", "void_fishing_hook"));
 
         //bobbers tag
-        BOBBERS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.BOBBERS).add(o.get()));
+        BOBBERS_REGISTRY.getEntries().forEach(o -> tag(SCTags.BOBBERS).add(o.get()));
 
         //rods and tools/fishing_rod
-        RODS_REGISTRY.getEntries().forEach(o -> tag(StarcatcherTags.RODS).add(o.get()));
+        RODS_REGISTRY.getEntries().forEach(o -> tag(SCTags.RODS).add(o.get()));
         RODS_REGISTRY.getEntries().forEach(o -> tag(Tags.Items.TOOLS_FISHING_ROD).add(o.get()));
 
         //hats
-        HATS.getEntries().forEach(o -> tag(StarcatcherTags.HATS).add(((DeferredBlock<?>) o).asItem()));
+        HATS.getEntries().forEach(o -> tag(SCTags.HATS).add(((DeferredBlock<?>) o).asItem()));
 
         //equippable hats
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE)
-                .addTag(StarcatcherTags.HATS);
+                .addTag(SCTags.HATS);
 
-        tag(StarcatcherTags.PLACEABLE_IN_TACKLE_BOX)
-                .addTag(StarcatcherTags.BAITS)
-                .addTag(StarcatcherTags.HOOKS)
-                .addTag(StarcatcherTags.BOBBERS)
+        tag(SCTags.PLACEABLE_IN_TACKLE_BOX)
+                .addTag(SCTags.BAITS)
+                .addTag(SCTags.HOOKS)
+                .addTag(SCTags.BOBBERS)
                 .addTag(ItemTags.FISHES)
-                .addTag(StarcatcherTags.COMMON_FISHES)
-                .addTag(StarcatcherTags.UNCOMMON_FISHES)
-                .addTag(StarcatcherTags.RARE_FISHES)
-                .addTag(StarcatcherTags.EPIC_FISHES)
-                .addTag(StarcatcherTags.LEGENDARY_FISHES)
+                .addTag(SCTags.COMMON_FISHES)
+                .addTag(SCTags.UNCOMMON_FISHES)
+                .addTag(SCTags.RARE_FISHES)
+                .addTag(SCTags.EPIC_FISHES)
+                .addTag(SCTags.LEGENDARY_FISHES)
         ;
 
     }

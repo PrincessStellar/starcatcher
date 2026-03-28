@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCMenuTypes;
@@ -36,9 +36,9 @@ public class TackleBoxMenu extends AbstractContainerMenu
 
         this.addSlot(new TackleBoxRodSlot(this, container, ROD_SLOT, 134, 37));
 
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BOBBERS, container, BOBBER_SLOT, 158, 11, Starcatcher.rl("item/background/bobber_white")));
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.BAITS, container, BAIT_SLOT, 158, 31, Starcatcher.rl("item/background/bait_white")));
-        this.addSlot(new TackleBoxAttachmentSlot(this, StarcatcherTags.HOOKS, container, HOOK_SLOT, 158, 51, Starcatcher.rl("item/background/hook_white")));
+        this.addSlot(new TackleBoxAttachmentSlot(this, SCTags.BOBBERS, container, BOBBER_SLOT, 158, 11, Starcatcher.rl("item/background/bobber_white")));
+        this.addSlot(new TackleBoxAttachmentSlot(this, SCTags.BAITS, container, BAIT_SLOT, 158, 31, Starcatcher.rl("item/background/bait_white")));
+        this.addSlot(new TackleBoxAttachmentSlot(this, SCTags.HOOKS, container, HOOK_SLOT, 158, 51, Starcatcher.rl("item/background/hook_white")));
 
 
         for (int k = 0; k < 2; ++k)

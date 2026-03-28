@@ -6,10 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.libtooltips.Tooltips;
-import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCEntities;
@@ -202,7 +199,7 @@ public class FishingGuideScreen extends Screen
 
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
         {
-            if (fp.hasGuideEntry() && FishProperties.getChance(fp, player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_IN_AREA) > 0)
+            if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER) > 0)
                 fishInArea.add(fp);
         }
 
@@ -1120,39 +1117,57 @@ public class FishingGuideScreen extends Screen
         //render tooltip
         if (mouseX > xOffset - 3 && mouseX < xOffset + 21 - 3 && mouseY > yOffset - 3 && mouseY < yOffset + 21 - 3)
         {
-            List<Component> components = new ArrayList<>();
-
-            if (caught == 0 && Config.HIDE_ENTRIES_UNTIL_FOUND.get())
-            {
-                components.add(Component.translatable("gui.guide.not_caught_fish_name"));
-                components.add(Tooltips.decodeTranslationKey("gui.guide.rarity." + fp.rarity().getSerializedName()));
-                components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(0xa34536)));
-            }
-            else
-            {
-                if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(SCEntities.FISH)))
-                    components.add(Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
-                else
-                    components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
-
-                components.add(Tooltips.decodeTranslationKey("gui.guide.rarity." + fp.rarity().getSerializedName()));
-                components.add(Component.translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(0x40752c)));
-            }
-
-            //todo on hover
-
-            //<fish name>
-            //
-            //dimension
-            //biome
-            //weather
-            //etc
-            //
-            //In Season!
+            ArrayList<Component> components = new ArrayList<>(getCachedTooltipForHoverEntry(fp, caught));
+            components.add(1, Tooltips.decodeTranslationKey("gui.guide.rarity." + fp.rarity().getSerializedName()));
 
             guiGraphics.renderTooltip(this.font, components, Optional.empty(), mouseX, mouseY);
         }
+    }
 
+    private FishProperties cachedFp = null;
+    private List<Component> cachedHoverList = List.of();
+    private List<Component> getCachedTooltipForHoverEntry(FishProperties fp, int caught)
+    {
+        if(fp == cachedFp && cachedFp != null) return cachedHoverList;
+        cachedFp = fp;
+
+        List<Component> components = new ArrayList<>();
+
+        if (caught == 0 && Config.HIDE_ENTRIES_UNTIL_FOUND.get())
+        {
+            components.add(Component.translatable("gui.guide.not_caught_fish_name"));
+            components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
+        }
+        else
+        {
+            if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(SCEntities.FISH)))
+                components.add(Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
+            else
+                components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
+
+            components.add(Component.translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+        }
+
+        //Aurora
+        //Legendary
+        //Not Caught yet!
+        //
+        //✅ dimension
+        //❌ biome
+        //Not in Season!
+
+        components.add(Component.empty());
+        for (AbstractFishRestriction restriction : fp.restrictions())
+        {
+            if(!restriction.isEnabled()) continue;
+            List<Component> indexHover = restriction.getIndexHover(level, fp, player);
+            components.addAll(indexHover);
+        }
+
+        if(components.getLast().equals(Component.empty())) components.removeLast();
+
+        cachedHoverList = components;
+        return components;
     }
 
     private void renderEntry(GuiGraphics guiGraphics, int mouseX, int mouseY, int xOffset, int entry)
@@ -1539,12 +1554,12 @@ public class FishingGuideScreen extends Screen
         super(Component.empty());
 
         //get all items in bobbers/hooks/baits tags
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.BOBBERS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.HOOKS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.BAITS).ifPresent(o -> o.stream().forEach(i -> baits.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.GADGETS).ifPresent(o -> o.stream().forEach(i -> gadgets.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.TEMPLATES).ifPresent(o -> o.stream().forEach(i -> templates.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(StarcatcherTags.EQUIPMENTS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.BOBBERS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.HOOKS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.BAITS).ifPresent(o -> o.stream().forEach(i -> baits.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.GADGETS).ifPresent(o -> o.stream().forEach(i -> gadgets.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.TEMPLATES).ifPresent(o -> o.stream().forEach(i -> templates.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.EQUIPMENTS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
 
         //index
         basicsIndexIcon = new ItemStack(SCItems.ROD.get());
@@ -1588,14 +1603,14 @@ public class FishingGuideScreen extends Screen
         int mouseX = absoluteMouseX - x;
         int mouseY = absoluteMouseY - y;
 
-        if (false && U.r.nextFloat() > 0.99f)
-        {
-            System.out.println("------");
-            System.out.println(mouseX);
-            System.out.println(mouseY);
-            System.out.println(x);
-            System.out.println(y);
-        }
+//        if (false && U.r.nextFloat() > 0.99f)
+//        {
+//            System.out.println("------");
+//            System.out.println(mouseX);
+//            System.out.println(mouseY);
+//            System.out.println(x);
+//            System.out.println(y);
+//        }
 
         //render caught:
         //caught:
@@ -1638,7 +1653,7 @@ public class FishingGuideScreen extends Screen
 
         //render almighty wormable
         if ((!fp.catchInfo().entityToSpawn().equals(U.holderEntity("starcatcher", "fish")) && !fp.catchInfo().alwaysSpawnEntity())
-                || (fp.catchInfo().entityToSpawn().equals(U.holderEntity("starcatcher", "fish")) && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES)))
+                || (fp.catchInfo().entityToSpawn().equals(U.holderEntity("starcatcher", "fish")) && fp.catchInfo().fish().is(SCTags.BUCKETABLE_FISHES)))
         {
             guiGraphics.blit(ENTITY, x + 93, y + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > 92 && mouseX < 107 && mouseY > 105 && mouseY < 115)
@@ -1738,30 +1753,32 @@ public class FishingGuideScreen extends Screen
 
 
         //render restrictions
-        for (var res : fp.restrictions())
+        for (var restriction : fp.restrictions())
         {
+            if(!restriction.isEnabled()) continue;
             counter++;
-            if(counter > 5) break;
+            if(counter > 6) break;
             //todo make system to allow scrolling
             boolean hoveringMain = mouseX > 0 && mouseX < 126 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
             boolean hoveringBlacklist = mouseX > 128 && mouseX < 139 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
 
-            var description = res.getPageDescription(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
-            guiGraphics.drawString(font, description.a, x, yOffset, 0x635040, false);
+            Component description = restriction.getDescription(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+            List<Component> hover = restriction.getHover(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+            List<Component> blacklist = restriction.getBlacklist(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+            guiGraphics.drawString(font, description, x, yOffset, 0x635040, false);
 
             //if has hover and cursor is hovering
-            if (!description.b.isEmpty() && hoveringMain)
+            if (!hover.isEmpty() && hoveringMain)
             {
-                guiGraphics.renderTooltip(font, description.b, Optional.empty(), absoluteMouseX, absoluteMouseY);
+                guiGraphics.renderTooltip(font, hover, Optional.empty(), absoluteMouseX, absoluteMouseY);
             }
 
             //if blacklist then render [!]
-            if (!description.c.isEmpty())
+            if (!blacklist.isEmpty())
             {
-                System.out.println("dwad");
-                guiGraphics.drawString(font, "[!]", x + 129, yOffset, 0xa34536, false);
+                guiGraphics.drawString(font, "[!]", x + 129, yOffset, SCColors.GUIDE_RED, false);
                 if (hoveringBlacklist)
-                    guiGraphics.renderTooltip(font, description.c, Optional.empty(), absoluteMouseX, absoluteMouseY);
+                    guiGraphics.renderTooltip(font, blacklist, Optional.empty(), absoluteMouseX, absoluteMouseY);
             }
 
             yOffset += 12;

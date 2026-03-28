@@ -47,19 +47,20 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": -2147483648,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.underground"
     },
     {
       "type": "starcatcher:fluid",
-      "fluids": {
-        "minecraft:lava": 0
-      },
+      "fluids": [
+        "minecraft:lava"
+      ],
       "translation_override": ""
     }
   ],

@@ -114,7 +114,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super(Component.empty());
 
-        handToSwing = Minecraft.getInstance().player.getMainHandItem().is(StarcatcherTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+        handToSwing = Minecraft.getInstance().player.getMainHandItem().is(SCTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
         renderScale = Config.MINIGAME_RENDER_SCALE.get().floatValue();
         hitDelay = Config.HIT_DELAY.get().floatValue();

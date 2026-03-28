@@ -73,7 +73,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -89,7 +90,7 @@
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": -2147483648,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.underground"
     },
     {
       "type": "starcatcher:bait",
@@ -103,7 +104,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -121,7 +123,7 @@
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": -2147483648,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.underground"
     }
   ],
   "size_and_weight": {

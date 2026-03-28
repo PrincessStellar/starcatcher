@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
@@ -37,7 +37,7 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                                 List.of(),
                                 List.of(
                                         BiomeTags.IS_JUNGLE.location(),
-                                        StarcatcherTags.IS_SWAMP,
+                                        SCTags.IS_SWAMP,
                                         BiomeTags.IS_RIVER.location()
                                 ),
                                 List.of(),
@@ -98,8 +98,8 @@ public class DGFintasticFishes extends FishingPropertiesRegistry
                                         Biomes.MANGROVE_SWAMP.location()
                                 ),
                                 List.of(
-                                        StarcatcherTags.IS_LUKEWARM_OCEAN,
-                                        StarcatcherTags.IS_WARM_OCEAN
+                                        SCTags.IS_LUKEWARM_OCEAN,
+                                        SCTags.IS_WARM_OCEAN
                                 ),
                                 List.of(),
                                 List.of(),

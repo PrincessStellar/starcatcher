@@ -49,7 +49,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -65,7 +66,7 @@
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.surface"
     },
     {
       "type": "starcatcher:season",
@@ -81,10 +82,8 @@
     },
     {
       "type": "starcatcher:weather_restriction",
-      "clear_extra_chance": -9999,
-      "rain_extra_chance": 0,
-      "thunder_extra_chance": -9999,
-      "translation_override": "gui.guide.weather.rain"
+      "translation_override": "",
+      "weather": "rain"
     }
   ],
   "size_and_weight": {

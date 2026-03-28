@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +16,6 @@ public class TackleBoxStorageSlot extends Slot
     @Override
     public boolean mayPlace(ItemStack stack)
     {
-        return !Config.RESTRICT_TACKLE_BOX_TO_TAG.get() || stack.is(StarcatcherTags.PLACEABLE_IN_TACKLE_BOX);
+        return !Config.RESTRICT_TACKLE_BOX_TO_TAG.get() || stack.is(SCTags.PLACEABLE_IN_TACKLE_BOX);
     }
 }

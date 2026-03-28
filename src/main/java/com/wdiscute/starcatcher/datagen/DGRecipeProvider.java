@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.core.HolderLookup;
@@ -60,122 +60,122 @@ public class DGRecipeProvider extends RecipeProvider
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.DRIPSTONE_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.DRIPSTONE_BLOCK)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.DRIPSTONE_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.POINTED_DRIPSTONE)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("dripstone_bait_from_pointed_dripstone"));
 
         //murkwater bait
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.MURKWATER_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.MANGROVE_LEAVES)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.MURKWATER_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.LILY_PAD)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("murkwater_bait_from_lilypad"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.MURKWATER_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.MANGROVE_ROOTS)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("murkwater_bait_from_mangrove_roots"));
 
         //cherry bait
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.CHERRY_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.PINK_PETALS)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //gunpowder bait
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.GUNPOWDER_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.GUNPOWDER)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //lush bait
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LUSH_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.MOSS_BLOCK)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LUSH_BAIT, 2)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.MOSS_CARPET)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("lust_bait_from_moss_carpet"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LUSH_BAIT, 8)
                 .requires(Items.BONE_MEAL)
                 .requires(SCItems.MOSSY_BOOT)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("lust_bait_from_mossy_boot"));
 
         //moss block from mossy boot
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MOSS_BLOCK, 1)
                 .requires(SCItems.MOSSY_BOOT)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //sculk
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.SCULK_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.SCULK)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.SCULK_BAIT, 16)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.SCULK_CATALYST)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("sculk_bait_from_sculk_catalyst"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.SCULK_BAIT, 16)
                 .requires(Items.BONE_MEAL)
                 .requires(SCItems.SCULKFISH)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("sculk_bait_from_sculkfish"));
 
         //legendary bait
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LEGENDARY_BAIT, 4)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.GOLDEN_APPLE)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LEGENDARY_BAIT, 64)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.ENCHANTED_GOLDEN_APPLE)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("legendary_bait_from_enchanted_golden_apple"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LEGENDARY_BAIT, 16)
                 .requires(Items.BONE_MEAL)
-                .requires(StarcatcherTags.LEGENDARY_FISHES)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .requires(SCTags.LEGENDARY_FISHES)
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("legendary_bait_from_legendary_fish"));
 
         //meteorological
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.METEOROLOGICAL_BAIT, 32)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.HEART_OF_THE_SEA)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.METEOROLOGICAL_BAIT, 8)
                 .requires(Items.BONE_MEAL)
-                .requires(StarcatcherTags.EPIC_FISHES)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .requires(SCTags.EPIC_FISHES)
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("meteorological_bait_from_epic_fishes"));
 
         //hats
@@ -189,7 +189,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" PS")
                 .pattern("PWP")
                 .pattern("SP ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //steady bobber
@@ -201,7 +201,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" IS")
                 .pattern("CBC")
                 .pattern("SC ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //clear bobber
@@ -212,7 +212,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" GS")
                 .pattern("GBG")
                 .pattern("SG ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //aqua bobber
@@ -224,7 +224,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" HS")
                 .pattern("DBD")
                 .pattern("SD ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //vanilla bobber
@@ -235,13 +235,13 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" WS")
                 .pattern("WBW")
                 .pattern("SW ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //vanilla bobber from rod
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.VANILLA_BOBBER)
                 .requires(Items.FISHING_ROD)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("vanilla_bobber_from_vanilla_fishing_rod"));
 
         //hook
@@ -251,7 +251,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("I I")
                 .pattern(" I ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //crystal hook
@@ -262,7 +262,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("D  ")
                 .pattern("GHG")
                 .pattern(" G ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //shiny hook
@@ -273,7 +273,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("I  ")
                 .pattern("DHD")
                 .pattern(" D ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //gold hook
@@ -284,7 +284,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("GHG")
                 .pattern(" G ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //mossy
@@ -295,7 +295,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("MHM")
                 .pattern(" M ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //stone hook
@@ -306,7 +306,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("SHS")
                 .pattern(" S ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //split hook
@@ -317,7 +317,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("CHC")
                 .pattern(" C ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //heavy hook
@@ -328,7 +328,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern("N  ")
                 .pattern("IHI")
                 .pattern(" I ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //stand
@@ -339,7 +339,7 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" G ")
                 .pattern("PPP")
                 .pattern(" B ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //twine
@@ -349,36 +349,36 @@ public class DGRecipeProvider extends RecipeProvider
                 .pattern(" T ")
                 .pattern("TST")
                 .pattern(" T ")
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
         //bonemeal from clam
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
                 .requires(SCBlocks.CLAM)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_clam"));
 
         //bonemeal from conch
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
                 .requires(SCBlocks.CONCH)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_conch"));
 
         //bonemeal from fishbones
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BONE_MEAL, 4)
                 .requires(SCItems.FISH_BONES)
-                .unlockedBy("has_starcatcher_rod", has(StarcatcherTags.RODS))
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("bone_meal_from_fish_bones"));
 
         //cooked fish
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(StarcatcherTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
-                .unlockedBy("has_starcaught_fish", has(StarcatcherTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smelting"));
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(StarcatcherTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
-                .unlockedBy("has_starcaught_fish", has(StarcatcherTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_campfire"));
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(StarcatcherTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
-                .unlockedBy("has_starcaught_fish", has(StarcatcherTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
 

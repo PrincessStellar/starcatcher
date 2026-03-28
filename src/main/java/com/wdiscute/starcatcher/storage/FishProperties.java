@@ -1609,17 +1609,17 @@ public record FishProperties(
         return registryAccess.registryOrThrow(Starcatcher.FISH_REGISTRY).stream().toList();
     }
 
-    public static int getChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
+    public int calculateChance(Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
         //if dev worm return base chance
         if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM))
             return 1;
 
-        int chance = fp.baseChance();
+        int chance = baseChance;
 
-        for (var restriction : fp.restrictions)
+        for (var restriction : restrictions)
         {
-            restriction.getFishChance(chance, level, fp, entity, rod, context);
+            chance += restriction.getFishChance(chance, level, this, entity, rod, context);
         }
 
         return chance;

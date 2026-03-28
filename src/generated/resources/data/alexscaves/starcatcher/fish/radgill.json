@@ -49,7 +49,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -63,9 +64,9 @@
     },
     {
       "type": "starcatcher:fluid",
-      "fluids": {
-        "alexscaves:acid": 0
-      },
+      "fluids": [
+        "alexscaves:acid"
+      ],
       "translation_override": ""
     }
   ],

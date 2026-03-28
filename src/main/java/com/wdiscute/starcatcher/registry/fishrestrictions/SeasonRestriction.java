@@ -9,7 +9,6 @@ import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -71,6 +69,13 @@ public class SeasonRestriction extends AbstractFishRestriction
     }
 
     @Override
+    public boolean isEnabled()
+    {
+        return Config.ENABLE_SEASONS.get() && (
+                ModList.get().isLoaded("sereneseasons") || ModList.get().isLoaded("eclipticseasons"));
+    }
+
+    @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         Seasons currentSeason = Seasons.ALL;
@@ -102,21 +107,34 @@ public class SeasonRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
     {
-        MutableComponent comp = translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride);
+        if(getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) > 0)
+            return List.of(Component.translatable("gui.guide.seasons.in_season"));
+        else
+            return List.of(Component.translatable("gui.guide.seasons.not_in_season"));
+    }
+
+    @Override
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return Component.translatable("gui.guide.season").copy().append(
+                translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride));
+    }
+
+    @Override
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         List<Component> hover = new ArrayList<>();
-        List<Component> blacklist = List.of();
 
         hover.add(Component.translatable("gui.guide.seasons"));
 
         for (Map.Entry<Seasons, Integer> entry : seasons.entrySet())
-        {
-            hover.add(Component.translatable("gui.guide.seasons." + entry.getKey().getSerializedName()).append(Component.literal("  - +" + entry.getValue())));
-        }
+            hover.add(Component.translatable("gui.guide.seasons." + entry.getKey().getSerializedName()));
 
-        return new Triple<>(Component.translatable("gui.guide.season").copy().append(comp), hover, blacklist);
+        return hover;
     }
+
 
     public enum Seasons implements StringRepresentable
     {

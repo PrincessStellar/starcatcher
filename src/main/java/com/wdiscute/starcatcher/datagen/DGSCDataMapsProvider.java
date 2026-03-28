@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.sellingbin.processors.AbstractProcessor;
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.ModDataMaps;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
@@ -51,10 +51,10 @@ public class DGSCDataMapsProvider extends DataMapProvider
         decor.add(SCBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
         decor.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
-        decor.add(StarcatcherTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
+        decor.add(SCTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
 
         //compostable
-        compostable.add(StarcatcherTags.WORMS, new Compostable(0.65F, false), false);
+        compostable.add(SCTags.WORMS, new Compostable(0.65F, false), false);
 
         //selling sellable datagen
         //shouldn't be run as the JSONs are manually moved to a
@@ -72,27 +72,27 @@ public class DGSCDataMapsProvider extends DataMapProvider
                     ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
             );
 
-            sellable.add(StarcatcherTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
+            sellable.add(SCTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(StarcatcherTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
+            sellable.add(SCTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(StarcatcherTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
+            sellable.add(SCTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(StarcatcherTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
+            sellable.add(SCTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(StarcatcherTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
+            sellable.add(SCTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);

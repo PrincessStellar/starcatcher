@@ -47,13 +47,14 @@
       "dimensions": [
         "minecraft:the_nether"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:fluid",
-      "fluids": {
-        "minecraft:lava": 0
-      },
+      "fluids": [
+        "minecraft:lava"
+      ],
       "translation_override": ""
     }
   ],

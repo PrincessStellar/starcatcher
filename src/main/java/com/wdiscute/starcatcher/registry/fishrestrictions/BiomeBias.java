@@ -3,28 +3,22 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BiomeBias extends AbstractFishRestriction
@@ -104,19 +98,30 @@ public class BiomeBias extends AbstractFishRestriction
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
     {
+        //todo finish this :)
         MutableComponent comp = Component.literal("todo");
-        List<Component> hover = new ArrayList<>();
-        List<Component> blacklist = new ArrayList<>();
-
-
 
         Component start = Component.translatable("gui.guide.biome");
 
         if (!translationOverride.isEmpty())
             comp = Component.translatable(translationOverride);
 
-        return new Triple<>(start.copy().append(comp), hover, blacklist);
+        return start.copy().append(comp);
+    }
+
+    @Override
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        //todo finish this :)
+        return List.of();
+    }
+
+    @Override
+    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        //todo finish this :)
+        return List.of();
     }
 }

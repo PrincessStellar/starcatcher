@@ -47,7 +47,8 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     },
     {
       "type": "starcatcher:biome",
@@ -63,7 +64,7 @@
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 100,
-      "translation_override": ""
+      "translation_override": "gui.guide.elevation.mountains"
     },
     {
       "type": "starcatcher:season",

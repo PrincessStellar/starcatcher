@@ -7,7 +7,7 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
@@ -345,7 +345,7 @@ public class SCCommands
     private static int addTackleSkin(ServerPlayer player, ResourceKey<Supplier<AbstractTackleSkin>> tackleSkin) throws CommandSyntaxException
     {
         ItemStack stack = player.getMainHandItem();
-        if (!stack.is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
+        if (!stack.is(SCTags.RODS)) throw ERROR_ROD.create(null);
 
         SCDataComponents.set(stack, SCDataComponents.TACKLE_SKIN, tackleSkin.location());
 
@@ -354,12 +354,12 @@ public class SCCommands
 
     private static int startMinigame(ServerPlayer player) throws CommandSyntaxException
     {
-        if (!player.getMainHandItem().is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
+        if (!player.getMainHandItem().is(SCTags.RODS)) throw ERROR_ROD.create(null);
 
         List<FishProperties> available = new ArrayList<>();
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
         {
-            if (FishProperties.getChance(fp, player, player.level(), player.getMainHandItem(), AbstractFishRestriction.Context.COMMAND) > 0)
+            if (fp.calculateChance(player, player.level(), player.getMainHandItem(), AbstractFishRestriction.Context.COMMAND) > 0)
                 available.add(fp);
         }
 
@@ -377,7 +377,7 @@ public class SCCommands
 
     private static int startMinigameFromFP(ServerPlayer player, ResourceKey<FishProperties> fish) throws CommandSyntaxException
     {
-        if (!player.getMainHandItem().is(StarcatcherTags.RODS)) throw ERROR_ROD.create(null);
+        if (!player.getMainHandItem().is(SCTags.RODS)) throw ERROR_ROD.create(null);
 
         Optional<FishProperties> optional = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getOptional(fish);
 

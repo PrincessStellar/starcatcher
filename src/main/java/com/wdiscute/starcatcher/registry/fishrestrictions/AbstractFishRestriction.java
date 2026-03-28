@@ -13,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -54,9 +53,33 @@ public abstract class AbstractFishRestriction
 
     public abstract int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context);
 
-    public abstract Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @NotNull Player player, Context context);
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return Component.empty();
+    }
 
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, Context context)
+    public boolean isEnabled()
+    {
+        return true;
+    }
+
+
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
+    {
+        return List.of();
+    }
+
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return List.of();
+    }
+
+    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return List.of();
+    }
+
+    public void render(GuiGraphics guiGraphics, int topLeftX, int topLeftY, int mouseX, int mouseY, Context context)
     {
     }
 
@@ -66,6 +89,7 @@ public abstract class AbstractFishRestriction
         FISHING,
         GUIDE_ENTRY,
         GUIDE_FISHES_IN_AREA,
+        GUIDE_FISHES_HOVER,
         FISH_ENTITY,
         EMI,
         OTHER

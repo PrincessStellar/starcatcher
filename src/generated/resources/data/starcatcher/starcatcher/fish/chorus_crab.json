@@ -107,7 +107,8 @@
       "dimensions": [
         "minecraft:the_end"
       ],
-      "dimensions_blacklist": []
+      "dimensions_blacklist": [],
+      "translation_override": ""
     }
   ],
   "size_and_weight": {

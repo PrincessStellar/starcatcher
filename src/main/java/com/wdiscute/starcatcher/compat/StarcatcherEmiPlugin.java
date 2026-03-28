@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.sellingbin.SellingBin;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
@@ -45,7 +45,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
 
         //worms info
         registry.addRecipe(new EmiInfoRecipe(List.of(
-                EmiIngredient.of(StarcatcherTags.WORMS)),
+                EmiIngredient.of(SCTags.WORMS)),
                 List.of(
                         Component.translatable("emi.info.starcatcher.worms.0"),
                         Component.translatable("emi.info.starcatcher.worms.1"),
@@ -87,7 +87,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
 //            }
 //        }
 
-        for (Holder<Item> item : BuiltInRegistries.ITEM.getTag(StarcatcherTags.TEMPLATES).get())
+        for (Holder<Item> item : BuiltInRegistries.ITEM.getTag(SCTags.TEMPLATES).get())
         {
             registry.addRecipe(new StarcatcherEmiSmithingRecipe(item.value()));
         }

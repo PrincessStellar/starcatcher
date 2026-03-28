@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
@@ -88,12 +88,12 @@ public interface SCMinigameModifiers
         //rod
         ItemStack main = player.getMainHandItem();
         ItemStack off = player.getOffhandItem();
-        if (main.is(StarcatcherTags.RODS))
+        if (main.is(SCTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(main));
             SCDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
-        else if (player.getOffhandItem().is(StarcatcherTags.RODS))
+        else if (player.getOffhandItem().is(SCTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(off));
             SCDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));

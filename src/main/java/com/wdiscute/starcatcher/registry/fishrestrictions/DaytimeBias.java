@@ -5,13 +5,11 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.antlr.v4.runtime.misc.Triple;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -83,7 +81,7 @@ public class DaytimeBias extends AbstractFishRestriction
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         //fishes in area for guidebook ignores this restriction
-        if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
+        if (context.equals(Context.GUIDE_FISHES_HOVER)) return 0;
 
         //returns the extra chance scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
         int distance = Math.abs(entity.blockPosition().getY() - bestDaytime);
@@ -94,16 +92,19 @@ public class DaytimeBias extends AbstractFishRestriction
     }
 
     @Override
-    public Triple<Component, List<Component>, List<Component>> getPageDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        MutableComponent comp = translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride);
+        return Component.translatable("gui.guide.elevation").copy().append(
+                translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride)
+        );
+    }
 
-        List<Component> hover = List.of(
+    @Override
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return List.of(
                 Component.translatable("gui.guide.extra_chance", bestDaytime, extraChance),
                 Component.translatable("gui.guide.range", bestDaytime - range + " - " + bestDaytime + range)
         );
-
-
-        return new Triple<>(Component.translatable("gui.guide.elevation").copy().append(comp), hover, List.of());
     }
 }

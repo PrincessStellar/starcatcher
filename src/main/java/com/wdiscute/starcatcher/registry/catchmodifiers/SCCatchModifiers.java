@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
@@ -102,12 +102,12 @@ public interface SCCatchModifiers
         //rod
         ItemStack main = player.getMainHandItem();
         ItemStack off = player.getOffhandItem();
-        if (main.is(StarcatcherTags.RODS))
+        if (main.is(SCTags.RODS))
         {
             rls.addAll(getCatchModifiersRLs(main));
             SCDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));
         }
-        else if (player.getOffhandItem().is(StarcatcherTags.RODS))
+        else if (player.getOffhandItem().is(SCTags.RODS))
         {
             rls.addAll(getCatchModifiersRLs(off));
             SCDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getCatchModifiersRLs(o)));

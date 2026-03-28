@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.tournament;
 
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
@@ -161,7 +162,7 @@ public class StandScreen extends AbstractContainerScreen<StandMenu>
             guiGraphics.drawString(this.font, Component.translatable("gui.starcatcher.tournament.signed_up"), uiX + 65, uiY + 116, 0x9c897c, false);
         } else
         {
-            int color = tournament.settings.canSignUp(minecraft.player) ? 0x40752c : 0xa34536;
+            int color = tournament.settings.canSignUp(minecraft.player) ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
             guiGraphics.drawString(this.font, Component.translatable("gui.starcatcher.tournament.sign_up"), uiX + 65, uiY + 116, color, false);
         }
 

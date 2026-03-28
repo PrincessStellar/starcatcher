@@ -574,7 +574,20 @@
   "gui.guide.weather.clear" : "Clear Skies",
   "gui.guide.weather.rain" : "Raining",
   "gui.guide.weather.thunder" : "Thundering",
+  "gui.guide.weather.clear_or_rain" : "Clear or Raining",
+  "gui.guide.weather.clear_or_thunder" : "Clear or Thundering",
+  "gui.guide.weather.rain_or_thunder" : "Raining or Thundering",
 
+
+  "gui.guide.elevation.between" : "Between %s and %s",
+
+  "gui.guide.elevation.surface" : "Surface",
+  "gui.guide.elevation.mountains" : "Mountains",
+  "gui.guide.elevation.skies" : "Skies",
+  "gui.guide.elevation.deepslate" : "Deepslate",
+  "gui.guide.elevation.void" : "Void",
+  "gui.guide.elevation.stone_caves" : "Stone Caves",
+  "gui.guide.elevation.underground" : "Underground",
 
   "gui.guide.sort" : "[sort]",
 
@@ -981,6 +994,17 @@
   "gui.guide.lakes" : "Lakes",
   "gui.guide.lakes.hover" : "Surface biomes besides Rivers and Oceans",
 
+  "gui.guide.hover.dimension.correct" : "✅ Dimension",
+  "gui.guide.hover.dimension.incorrect" : "❌ Dimension",
+  "gui.guide.hover.biome.correct" : "✅ Biome",
+  "gui.guide.hover.biome.incorrect" : "❌ Biome",
+  "gui.guide.hover.daytime.correct" : "✅ Daytime",
+  "gui.guide.hover.daytime.incorrect" : "❌ Daytime",
+  "gui.guide.hover.weather.correct" : "✅ Weather",
+  "gui.guide.hover.weather.incorrect" : "❌ Weather",
+  "gui.guide.hover.elevation.correct" : "✅ Elevation",
+  "gui.guide.hover.elevation.incorrect" : "❌ Elevation",
+
   "gui.guide.dimension" : "Dimension: ",
   "gui.guide.dimensions" : "Dimensions: ",
   "gui.guide.biome" : "Biome: ",
@@ -1012,7 +1036,6 @@
   "gui.guide.no_restriction" : "-------",
   "gui.guide.bait_required" : "The correct bait is required for this catch!",
   "gui.guide.bait_chance_added" : "Chance added by bait:",
-  "gui.guide.fluif_chance_added" : "Chance added by fluid:",
   "gui.guide.hover" : "[hover]",
 
 

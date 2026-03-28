@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -32,7 +32,7 @@ public class TackleBoxRodSlot extends Slot
     @Override
     public boolean mayPlace(ItemStack stack)
     {
-        return stack.is(StarcatcherTags.RODS);
+        return stack.is(SCTags.RODS);
     }
 
     @Override

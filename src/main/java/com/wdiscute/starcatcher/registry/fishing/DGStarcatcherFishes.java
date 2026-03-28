@@ -481,7 +481,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 26000, 7000))
                 .withDifficulty(FishProperties.Difficulty.FOUR_STONE_SPOTS));
 
-        registerStarcatcherBucketAndEntity(overworldCavesFish(SCItems.AMETHYSTBACK)
+        registerStarcatcherBucketAndEntity(fish(SCItems.AMETHYSTBACK)
                 .withSizeAndWeight(FishProperties.sizeWeight(300, 150, 16000, 7000))
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST)
                 .withRarity(FishProperties.Rarity.EPIC)

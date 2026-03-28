@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.bobberentity;
 
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -210,7 +210,7 @@ public class FishingBobEntity extends Projectile
 
             if (check(all.get(), tp.all())
                     && !trophiesCaught.contains(tp)
-                    && FishProperties.getChance(tp.fp(), this, level(), rod, AbstractFishRestriction.Context.FISHING) > 0
+                    && tp.fp().calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING) > 0
                     && random.nextIntBetweenInclusive(0, 99) < tp.chanceToCatch()
             )
             {
@@ -243,7 +243,7 @@ public class FishingBobEntity extends Projectile
         //if no trophy is available, get chances of getting each fish
         for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
         {
-            int chance = FishProperties.getChance(fp, this, level(), rod, AbstractFishRestriction.Context.FISHING);
+            int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
 
             for (int i = 0; i < chance; i++)
             {
@@ -309,8 +309,8 @@ public class FishingBobEntity extends Projectile
         //if any modifier wants to stop fishing
         if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldStopFishing)) return true;
 
-        boolean holdingRod = player.getMainHandItem().is(StarcatcherTags.RODS)
-                || player.getOffhandItem().is(StarcatcherTags.RODS);
+        boolean holdingRod = player.getMainHandItem().is(SCTags.RODS)
+                || player.getOffhandItem().is(SCTags.RODS);
 
         if (!player.isRemoved() && player.isAlive() && holdingRod && !(this.distanceToSqr(player) > 1024))
         {

@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.bobberentity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -114,7 +114,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
     {
         int i = player.getMainArm() == HumanoidArm.RIGHT ? 1 : -1;
         ItemStack itemstack = player.getMainHandItem();
-        if (!itemstack.is(StarcatcherTags.RODS))
+        if (!itemstack.is(SCTags.RODS))
         {
             i = -i;
         }

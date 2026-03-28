@@ -1,13 +1,11 @@
 package com.wdiscute.starcatcher;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.material.Fluid;
 
-public class StarcatcherTags
+public class SCTags
 {
 
     public static final ResourceLocation IS_COLD_LAKE = Starcatcher.rl("is_cold_lake");

@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.items.rod;
 
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.io.SCDataComponents;
@@ -46,7 +46,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
     {
         ItemStack is = player.getItemInHand(hand);
 
-        if (!is.is(StarcatcherTags.RODS))
+        if (!is.is(SCTags.RODS))
             return InteractionResultHolder.pass(is);
 
         FishingBobAttachment fishingBobAttachment = SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB.get());
@@ -123,7 +123,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player)
     {
-        if (player.getMainHandItem().is(StarcatcherTags.RODS))
+        if (player.getMainHandItem().is(SCTags.RODS))
             return new FishingRodMenu(i, inventory, player.getMainHandItem());
         else
             return new FishingRodMenu(i, inventory, player.getOffhandItem());
