@@ -1014,7 +1014,7 @@
   "gui.guide.blacklisted_biomes" : "Blacklisted Biomes: ",
   "gui.guide.blacklisted_biome_tags" : "Blacklisted Biome Tags: ",
   "gui.guide.blacklisted_dimensions" : "Blacklisted Dimensions: ",
-  "gui.guide.bait" : "Bait: ",
+  "gui.guide.bait" : "Prefers: ",
   "gui.guide.weather" : "Weather: ",
   "gui.guide.raining" : "Raining",
   "gui.guide.thundering" : "Thundering",

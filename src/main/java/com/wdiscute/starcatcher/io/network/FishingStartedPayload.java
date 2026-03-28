@@ -18,10 +18,8 @@ public record FishingStartedPayload(FishProperties fp, ItemStack rod) implements
     public static final Type<FishingStartedPayload> TYPE = new Type<>(Starcatcher.rl("fishing_started"));
 
     public static final StreamCodec<ByteBuf, FishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(FishProperties.CODEC),
-            FishingStartedPayload::fp,
-            ByteBufCodecs.fromCodec(ItemStack.CODEC),
-            FishingStartedPayload::rod,
+            ByteBufCodecs.fromCodec(FishProperties.CODEC), FishingStartedPayload::fp,
+            ByteBufCodecs.fromCodec(ItemStack.CODEC), FishingStartedPayload::rod,
             FishingStartedPayload::new
     );
 

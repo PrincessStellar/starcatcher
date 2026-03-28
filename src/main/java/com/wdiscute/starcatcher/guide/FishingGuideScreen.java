@@ -17,9 +17,11 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestrictio
 import com.wdiscute.starcatcher.storage.FishProperties;
 import com.wdiscute.starcatcher.storage.TrophyProperties;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -34,6 +36,8 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
+import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -1126,9 +1130,10 @@ public class FishingGuideScreen extends Screen
 
     private FishProperties cachedFp = null;
     private List<Component> cachedHoverList = List.of();
+
     private List<Component> getCachedTooltipForHoverEntry(FishProperties fp, int caught)
     {
-        if(fp == cachedFp && cachedFp != null) return cachedHoverList;
+        if (fp == cachedFp && cachedFp != null) return cachedHoverList;
         cachedFp = fp;
 
         List<Component> components = new ArrayList<>();
@@ -1159,12 +1164,12 @@ public class FishingGuideScreen extends Screen
         components.add(Component.empty());
         for (AbstractFishRestriction restriction : fp.restrictions())
         {
-            if(!restriction.isEnabled()) continue;
+            if (!restriction.isEnabled()) continue;
             List<Component> indexHover = restriction.getIndexHover(level, fp, player);
             components.addAll(indexHover);
         }
 
-        if(components.getLast().equals(Component.empty())) components.removeLast();
+        if (components.getLast().equals(Component.empty())) components.removeLast();
 
         cachedHoverList = components;
         return components;
@@ -1664,8 +1669,8 @@ public class FishingGuideScreen extends Screen
         if (fp.catchInfo().alwaysSpawnEntity())
         {
             guiGraphics.blit(ALWAYS_ENTITY, x + 93, y + 103, 0, 0, 14, 14, 14, 14);
-            if (mouseX > x + 92 && mouseX < x + 107 && mouseY > y + 105 && mouseY < y + 115)
-                guiGraphics.renderTooltip(font, Component.translatable("gui.guide.always_entity"), mouseX, mouseY);
+            if (mouseX > 92 && mouseX < 107 && mouseY > 105 && mouseY < 115)
+                guiGraphics.renderTooltip(font, Component.translatable("gui.guide.always_entity"), absoluteMouseX, absoluteMouseY);
         }
 
         if (fishToDisplay != ItemStack.EMPTY)
@@ -1711,13 +1716,50 @@ public class FishingGuideScreen extends Screen
         {
             //if entity, display entity name
             if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get()))
-                guiGraphics.renderTooltip(font, Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")), mouseX, mouseY);
+                guiGraphics.renderTooltip(font, Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")), absoluteMouseX, absoluteMouseY);
                 //else display itemstack name if not empty
             else if (fishToDisplay != ItemStack.EMPTY)
                 guiGraphics.renderTooltip(font, fishToDisplay, absoluteMouseX, absoluteMouseY);
         }
 
-        //render stats tooltip
+        int yOffset = y + 132;
+        int counter = 0;
+
+
+        //render restrictions
+        for (var restriction : fp.restrictions())
+        {
+            if (!restriction.isEnabled()) continue;
+            counter++;
+            if (counter > 6) break;
+            //todo make system to allow scrolling
+            boolean hoveringMain = mouseX > 0 && mouseX < 126 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
+            boolean hoveringBlacklist = mouseX > 128 && mouseX < 139 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
+
+            Component description = restriction.getDescription(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+            List<Component> hover = restriction.getHover(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+            List<Component> blacklist = restriction.getBlacklist(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
+
+            renderScrollingString(guiGraphics, font, description, x, x, yOffset - 2, x + 128, yOffset + 10, hoveringMain);
+
+            //if has hover and cursor is hovering
+            if (!hover.isEmpty() && hoveringMain)
+            {
+                guiGraphics.renderTooltip(font, hover, Optional.empty(), absoluteMouseX, absoluteMouseY);
+            }
+
+            //if blacklist then render [!]
+            if (!blacklist.isEmpty())
+            {
+                guiGraphics.drawString(font, "[!]", x + 129, yOffset, SCColors.GUIDE_RED, false);
+                if (hoveringBlacklist)
+                    guiGraphics.renderTooltip(font, blacklist, Optional.empty(), absoluteMouseX, absoluteMouseY);
+            }
+
+            yOffset += 12;
+        }
+
+        //render stats tooltip (at the end because of the scisor bug)
         if (mouseX > 70 && mouseX < 132 && mouseY > 62 && mouseY < 100 && fcc != null)
         {
             List<Component> components = new ArrayList<>();
@@ -1748,41 +1790,30 @@ public class FishingGuideScreen extends Screen
             guiGraphics.renderTooltip(font, components, Optional.empty(), absoluteMouseX, absoluteMouseY);
         }
 
-        int yOffset = y + 132;
-        int counter = 0;
-
-
-        //render restrictions
-        for (var restriction : fp.restrictions())
-        {
-            if(!restriction.isEnabled()) continue;
-            counter++;
-            if(counter > 6) break;
-            //todo make system to allow scrolling
-            boolean hoveringMain = mouseX > 0 && mouseX < 126 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
-            boolean hoveringBlacklist = mouseX > 128 && mouseX < 139 && mouseY > yOffset - y - 2 && mouseY < yOffset - y - 2 + 12;
-
-            Component description = restriction.getDescription(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
-            List<Component> hover = restriction.getHover(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
-            List<Component> blacklist = restriction.getBlacklist(level, fp, Minecraft.getInstance().player, AbstractFishRestriction.Context.GUIDE_ENTRY);
-            guiGraphics.drawString(font, description, x, yOffset, 0x635040, false);
-
-            //if has hover and cursor is hovering
-            if (!hover.isEmpty() && hoveringMain)
-            {
-                guiGraphics.renderTooltip(font, hover, Optional.empty(), absoluteMouseX, absoluteMouseY);
-            }
-
-            //if blacklist then render [!]
-            if (!blacklist.isEmpty())
-            {
-                guiGraphics.drawString(font, "[!]", x + 129, yOffset, SCColors.GUIDE_RED, false);
-                if (hoveringBlacklist)
-                    guiGraphics.renderTooltip(font, blacklist, Optional.empty(), absoluteMouseX, absoluteMouseY);
-            }
-
-            yOffset += 12;
-        }
     }
 
+    public static void renderScrollingString(GuiGraphics guiGraphics, Font font, Component text, int centerX, int minX, int minY, int maxX, int maxY, boolean hovering)
+    {
+        int i = font.width(text);
+        int j = (minY + maxY - 9) / 2 + 1;
+        int k = maxX - minX;
+        if (i > k)
+        {
+            int l = i - k;
+            double d0 = (double) Util.getMillis() / (double) 300.0F;
+            double d1 = Math.max((double) l * (double) 0.5F, 3.0F);
+            double d2 = Math.sin((Math.PI / 2D) * Math.cos((Math.PI * 2D) * d0 / d1)) / (double) 2.0F + (double) 0.5F;
+            double d3 = Mth.lerp(d2, 0.0F, l);
+            guiGraphics.enableScissor(minX, minY, maxX, maxY);
+            int x = minX - (int) d3;
+            if(!hovering) x = minX;
+            guiGraphics.drawString(font, text, x, j, SCColors.GUIDE_TEXT_DARK, false);
+            guiGraphics.disableScissor();
+        }
+        else
+        {
+            int i1 = Mth.clamp(centerX, minX + i / 2, maxX - i / 2);
+            guiGraphics.drawString(font, text.getVisualOrderText(), i1 - font.width(text.getVisualOrderText()) / 2, j, SCColors.GUIDE_TEXT_DARK, false);
+        }
+    }
 }
