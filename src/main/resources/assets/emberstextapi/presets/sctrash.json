@@ -1,0 +1,7 @@
+{
+  "format_version": 1,
+  "effects": [
+    { "type": "gradient", "params": { "from": "a9a9a9", "to": "8c8c8c" , "f" : "0.15", "sp" : "70"} },
+    { "type": "shadow", "params": { "a": 0 } }
+  ]
+}

@@ -1491,6 +1491,11 @@ public record FishProperties(
             return Component.literal("<sc" + getSerializedName() + ">" + s + "</sc" + getSerializedName() + ">");
         }
 
+        public String wrapWithRarityMarkdownAsString(String s)
+        {
+            return "<sc" + getSerializedName() + ">" + s + "</sc" + getSerializedName() + ">";
+        }
+
         public String getSerializedName()
         {
             return this.key;

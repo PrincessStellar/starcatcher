@@ -84,6 +84,7 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": [],
+      "hover_translation": "",
       "translation_override": ""
     },
     {
@@ -117,6 +118,7 @@
       "biomes_tags": [
         "minecraft:is_jungle"
       ],
+      "hover_translation": "",
       "translation_override": ""
     },
     {

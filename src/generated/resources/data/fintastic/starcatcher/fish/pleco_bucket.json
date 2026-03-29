@@ -61,6 +61,7 @@
         "minecraft:is_jungle",
         "starcatcher:is_swamp"
       ],
+      "hover_translation": "",
       "translation_override": ""
     },
     {

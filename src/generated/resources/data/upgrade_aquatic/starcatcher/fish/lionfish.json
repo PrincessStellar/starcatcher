@@ -80,6 +80,7 @@
       "biomes_tags": [
         "upgrade_aquatic:biome/has_spawn/lionfish"
       ],
+      "hover_translation": "",
       "translation_override": ""
     }
   ],

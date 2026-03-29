@@ -3,9 +3,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
@@ -69,6 +67,7 @@ public class DGMinecraftFishes
                 .withAlwaysSpawnEntity(true)
                 .withEntityToSpawn(U.holderEntity("minecraft", "creeper"))
                 .withBaseChance(0)
+                .addRestrictions(DimensionRestriction.OVERWORLD)
                 .addRestrictions(new BaitRestriction(Map.of(Starcatcher.rl("gunpowder_bait"), 200), ""))
                 .withDifficulty(FishProperties.Difficulty.CREEPER)
                 .withItemToOverrideWith(SCItems.UNKNOWN_FISH)

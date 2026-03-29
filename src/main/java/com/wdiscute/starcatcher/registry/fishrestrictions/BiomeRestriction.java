@@ -34,6 +34,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     private final List<ResourceLocation> biomesBlacklist;
     private final List<ResourceLocation> biomesBlacklistTags;
     private final String translationOverride;
+    private final String hover;
 
     public static final MapCodec<BiomeRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
@@ -41,6 +42,7 @@ public class BiomeRestriction extends AbstractFishRestriction
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_tags").forGetter(BiomeRestriction::getBiomesTags),
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_blacklist").forGetter(BiomeRestriction::getBiomesBlacklist),
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_blacklist_tags").forGetter(BiomeRestriction::getBiomesBlacklistTags),
+                    Codec.STRING.fieldOf("hover_translation").forGetter(BiomeRestriction::getTranslationOverride),
                     Codec.STRING.fieldOf("translation_override").forGetter(BiomeRestriction::getTranslationOverride)
             ).apply(instance, BiomeRestriction::new));
 
@@ -51,6 +53,7 @@ public class BiomeRestriction extends AbstractFishRestriction
         this.biomesBlacklist = List.of();
         this.biomesBlacklistTags = List.of();
         this.translationOverride = "";
+        this.hover = "";
     }
 
     public BiomeRestriction(ResourceLocation biome, String translationOverride)
@@ -60,6 +63,7 @@ public class BiomeRestriction extends AbstractFishRestriction
         this.biomesBlacklist = List.of();
         this.biomesBlacklistTags = List.of();
         this.translationOverride = translationOverride;
+        this.hover = "";
     }
 
     public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String translationOverride)
@@ -69,6 +73,17 @@ public class BiomeRestriction extends AbstractFishRestriction
         this.biomesBlacklist = biomesBlacklist;
         this.biomesBlacklistTags = biomesBlacklistTags;
         this.translationOverride = translationOverride;
+        this.hover = "";
+    }
+
+    public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String translationOverride, String hover)
+    {
+        this.biomes = biomes;
+        this.biomesTags = biomesTags;
+        this.biomesBlacklist = biomesBlacklist;
+        this.biomesBlacklistTags = biomesBlacklistTags;
+        this.translationOverride = translationOverride;
+        this.hover = hover;
     }
 
     public List<ResourceLocation> getBiomes()
@@ -153,7 +168,7 @@ public class BiomeRestriction extends AbstractFishRestriction
         int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
 
         if (!translationOverride.isEmpty())
-            return Component.translatable(translationOverride);
+            return Component.translatable("gui.guide.biome").append(Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color)));
 
         MutableComponent comp;
 
@@ -183,6 +198,8 @@ public class BiomeRestriction extends AbstractFishRestriction
     {
         List<Component> hover = new ArrayList<>();
         List<ResourceLocation> biomesList = FishProperties.getBiomesAsListFromTags(biomes, biomesTags, level);
+
+        if(!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
 
         if (!biomesList.isEmpty())
         {
@@ -246,7 +263,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     public static final BiomeRestriction COLD_AND_LUKEWARM_OCEAN = new BiomeRestriction(List.of(), List.of(SCTags.IS_LUKEWARM_OCEAN, SCTags.IS_COLD_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction WARM_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction DEEP_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_DEEP_OCEAN), List.of(), List.of(), "");
-    public static final BiomeRestriction LAKES = new BiomeRestriction(List.of(), List.of(), List.of(), List.of(SCTags.IS_OCEAN, SCTags.IS_RIVER, SCTags.IS_MUSHROOM_FIELDS), "");
+    public static final BiomeRestriction LAKES = new BiomeRestriction(List.of(), List.of(), List.of(), List.of(SCTags.IS_OCEAN, SCTags.IS_RIVER, SCTags.IS_MUSHROOM_FIELDS), "gui.guide.lakes", "gui.guide.lakes.hover");
     public static final BiomeRestriction WARM_LAKES = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_LAKE), List.of(), List.of(), "");
     public static final BiomeRestriction COLD_RIVERS = new BiomeRestriction(List.of(), List.of(SCTags.IS_COLD_RIVER), List.of(), List.of(), "");
     public static final BiomeRestriction COLD_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_COLD_OCEAN), List.of(), List.of(), "");

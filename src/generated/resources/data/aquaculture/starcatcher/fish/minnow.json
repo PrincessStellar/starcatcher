@@ -62,7 +62,8 @@
         "starcatcher:is_mushroom_fields"
       ],
       "biomes_tags": [],
-      "translation_override": ""
+      "hover_translation": "gui.guide.lakes",
+      "translation_override": "gui.guide.lakes"
     },
     {
       "type": "starcatcher:elevation_restriction",

@@ -68,6 +68,7 @@
         "starcatcher:is_swamp",
         "minecraft:is_river"
       ],
+      "hover_translation": "",
       "translation_override": ""
     }
   ],

@@ -60,6 +60,7 @@
       "biomes_tags": [
         "upgrade_aquatic:biome/has_spawn/perch"
       ],
+      "hover_translation": "",
       "translation_override": ""
     }
   ],

@@ -57,6 +57,14 @@
   "rarity": "epic",
   "restrictions": [
     {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": [],
+      "translation_override": ""
+    },
+    {
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:gunpowder_bait": 200
