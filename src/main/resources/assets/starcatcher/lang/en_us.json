@@ -134,11 +134,11 @@
   "tooltip.minecraft.fishing_rod.0": "A simple fishing rod used for catching",
   "tooltip.minecraft.fishing_rod.1": "the most basic of fishes.",
   "tooltip.minecraft.fishing_rod.2": "One can only dream of upgrading",
-  "tooltip.minecraft.fishing_rod.3": "it to a <gradient-67>Starcatcher's rod</gradient-90>.",
+  "tooltip.minecraft.fishing_rod.3": "it to a <sclegendary>Starcatcher's rod</sclegendary>.",
 
 
 
-  "tooltip.starcatcher.rod.netherite" : "<rgb>Netherite Upgraded</rgb>",
+  "tooltip.starcatcher.rod.netherite" : "<sclegendary>Netherite Upgraded</sclegendary>",
 
   "item.starcatcher.starcatcher_rod": "Starcatcher's Rod",
   "tooltip.starcatcher.starcatcher_rod.0": "A special fishing rod which allows",
@@ -171,9 +171,9 @@
   "tooltip.starcatcher.sharktooth_rod.1": "Left behind inside a satchel by whoever owned in.",
 
   "item.starcatcher.azure_crystal_rod": "Azure Crystal Rod",
-  "tooltip.starcatcher.azure_crystal_rod.0": "A <rgb>Legendary</rgb> rod made of pure azure crystals.",
-  "tooltip.starcatcher.azure_crystal_rod.1": "It's said the <gradient-30>Older Anglers</gradient-50> gift this rod",
-  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <rgb>Aurora</rgb>",
+  "tooltip.starcatcher.azure_crystal_rod.0": "A <sclegendary>Legendary</sclegendary> rod made of pure azure crystals.",
+  "tooltip.starcatcher.azure_crystal_rod.1": "It's said the <scuncommon>Older Anglers</scuncommon> gift this rod",
+  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <sclegendary>Aurora</sclegendary>",
 
   "item.starcatcher.good_old_rod": "Good Ol' Rod",
   "tooltip.starcatcher.good_old_rod.0": "A simple rod, now supportive of bobbers, hooks and baits.",
@@ -374,8 +374,8 @@
   "tooltip.starcatcher.meteorological_bait.2": "specific weather! Very handy.",
 
   "item.starcatcher.legendary_bait": "Legendary Bait",
-  "tooltip.starcatcher.legendary_bait.name": "<rgb>Legendary Bait</rgb>",
-  "tooltip.starcatcher.legendary_bait.0": "A shiny golden bait which <rgb>legendary</rgb>",
+  "tooltip.starcatcher.legendary_bait.name": "<sclegendary>Legendary Bait</sclegendary>",
+  "tooltip.starcatcher.legendary_bait.0": "A shiny golden bait which <sclegendary>legendary</sclegendary>",
   "tooltip.starcatcher.legendary_bait.1": "fish can't seem to swim past.",
 
 
@@ -506,19 +506,19 @@
   "tooltip.starcatcher.trophy.once" : "once ",
   "tooltip.starcatcher.trophy.have_been_caught" : " have been caught.",
 
-  "tooltip.starcatcher.trophy.unique" : "<rgb>[&]</rgb> unique$fishes",
-  "tooltip.starcatcher.trophy.total" : "<rgb>[&]</rgb> total$fishes",
+  "tooltip.starcatcher.trophy.unique" : "<sclegendary>[&]</sclegendary> unique$fishes",
+  "tooltip.starcatcher.trophy.total" : "<sclegendary>[&]</sclegendary> total$fishes",
 
   "tooltip.starcatcher.trophy.all" : " ",
   "tooltip.starcatcher.trophy.common" : " common ",
-  "tooltip.starcatcher.trophy.uncommon" : " <gradient-37>uncommon</gradient-43> ",
-  "tooltip.starcatcher.trophy.rare" : " <gradient-57>rare</gradient-63> ",
-  "tooltip.starcatcher.trophy.epic" : " <gradient-80>epic</gradient-90> ",
-  "tooltip.starcatcher.trophy.legendary" : " <rgb>legendary</rgb> ",
+  "tooltip.starcatcher.trophy.uncommon" : " <scuncommon>uncommon</scuncommon> ",
+  "tooltip.starcatcher.trophy.rare" : " <scrare>rare</scrare> ",
+  "tooltip.starcatcher.trophy.epic" : " <scepic>epic</scepic> ",
+  "tooltip.starcatcher.trophy.legendary" : " <sclegendary>legendary</sclegendary> ",
 
 
-  "tooltip.starcatcher.trophy.both.0" : "once both <rgb>[&]</rgb> unique fishes,",
-  "tooltip.starcatcher.trophy.both.1" : "and <rgb>[&]</rgb> total fishes have been caught!",
+  "tooltip.starcatcher.trophy.both.0" : "once both <sclegendary>[&]</sclegendary> unique fishes,",
+  "tooltip.starcatcher.trophy.both.1" : "and <sclegendary>[&]</sclegendary> total fishes have been caught!",
 
 
   "gui.starcatcher.toast.fish_caught" : "New Fish Caught!",
@@ -683,7 +683,7 @@
   "gui.guide.page.basics.left.5" : "  If you wish to catch more",
   "gui.guide.page.basics.left.6" : "than measly salmon or cod",
   "gui.guide.page.basics.left.7" : "you'll  first need a",
-  "gui.guide.page.basics.left.8" : "<gradient-67>Starcatcher's rod</gradient-90>!",
+  "gui.guide.page.basics.left.8" : "<sclegendary>Starcatcher's rod</sclegendary>!",
   "gui.guide.page.basics.left.9" : "  Once you get your hands",
   "gui.guide.page.basics.left.10" : "on one, it's time to cast! ",
   "gui.guide.page.basics.left.11" : "  Keep your eyes on the",
@@ -707,7 +707,7 @@
   "gui.guide.page.basics.right.14" : "  Not every fish will fight",
   "gui.guide.page.basics.right.15" : "the same way so be ready",
   "gui.guide.page.basics.right.16" : "for anything! Especially",
-  "gui.guide.page.basics.right.17" : "those <rgb>legendary</rgb> fish that",
+  "gui.guide.page.basics.right.17" : "those <sclegendary>legendary</sclegendary> fish that",
   "gui.guide.page.basics.right.18" : "you might have heard about!",
 
 
@@ -756,7 +756,7 @@
   "gui.guide.page.treasure.left.7" : "might feel something extra ",
   "gui.guide.page.treasure.left.8" : "pulling your hook down!",
   "gui.guide.page.treasure.left.9" : "",
-  "gui.guide.page.treasure.left.10" : "You've found a <gradient-08>treasure</gradient-15>!",
+  "gui.guide.page.treasure.left.10" : "You've found a <scgolden>treasure</scgolden>!",
 
   "gui.guide.page.treasure.right.0" : "",
   "gui.guide.page.treasure.right.1" : "",
@@ -792,7 +792,7 @@
   "gui.guide.page.upgrades.left.10" : "  Dangerous fluids such as",
   "gui.guide.page.upgrades.left.11" : "lava will require either a",
   "gui.guide.page.upgrades.left.12" : "crystal hook or a",
-  "gui.guide.page.upgrades.left.13" : "<rgb>Netherite Upgraded</rgb> rod!",
+  "gui.guide.page.upgrades.left.13" : "<sclegendary>Netherite Upgraded</sclegendary> rod!",
   "gui.guide.page.upgrades.left.14" : "  Much like armor or tools,",
   "gui.guide.page.upgrades.left.15" : "you may upgrade your rod",
   "gui.guide.page.upgrades.left.16" : "in a Smithing Table with",
@@ -805,7 +805,7 @@
   "gui.guide.page.upgrades.right.4" : "",
   "gui.guide.page.upgrades.right.5" : "  As you experiment with",
   "gui.guide.page.upgrades.right.6" : "different items, you'll find",
-  "gui.guide.page.upgrades.right.7" : "some may contain <rgb>Modifiers</rgb>.",
+  "gui.guide.page.upgrades.right.7" : "some may contain <sclegendary>Modifiers</sclegendary>.",
   "gui.guide.page.upgrades.right.8" : "",
   "gui.guide.page.upgrades.right.9" : "  You'll first encounter them",
   "gui.guide.page.upgrades.right.10" : "in Hooks, Bobbers, and baits,",
@@ -975,17 +975,17 @@
   "gui.guide.trophy.common.total" : "Total common fishes: ",
   "gui.guide.trophy.common.unique" : "Unique common fishes: ",
 
-  "gui.guide.trophy.uncommon.total" : "Total <gradient-37>Uncommon</gradient-43> fishes: ",
-  "gui.guide.trophy.uncommon.unique" : "Unique <gradient-37>Uncommon</gradient-43> fishes: ",
+  "gui.guide.trophy.uncommon.total" : "Total <scuncommon>Uncommon<scuncommon> fishes: ",
+  "gui.guide.trophy.uncommon.unique" : "Unique <scuncommon>Uncommon</scuncommon> fishes: ",
 
-  "gui.guide.trophy.rare.total" : "Total <gradient-57>Rare</gradient-63> fishes: ",
-  "gui.guide.trophy.rare.unique" : "Unique <gradient-57>Rare</gradient-63> fishes: ",
+  "gui.guide.trophy.rare.total" : "Total <scrare>Rare</scrare> fishes: ",
+  "gui.guide.trophy.rare.unique" : "Unique <scrare>Rare</scrare> fishes: ",
 
-  "gui.guide.trophy.epic.total" : "Total <gradient-80>Epic</gradient-90> fishes: ",
-  "gui.guide.trophy.epic.unique" : "Unique <gradient-80>Epic</gradient-90> fishes: ",
+  "gui.guide.trophy.epic.total" : "Total <scepic>Epic</scepic> fishes: ",
+  "gui.guide.trophy.epic.unique" : "Unique <scepic>Epic</scepic> fishes: ",
 
-  "gui.guide.trophy.legendary.total" : "Total <rgb>Legendary</rgb> fishes: ",
-  "gui.guide.trophy.legendary.unique" : "Unique <rgb>Legendary</rgb> fishes: ",
+  "gui.guide.trophy.legendary.total" : "Total <sclegendary>Legendary</sclegendary> fishes: ",
+  "gui.guide.trophy.legendary.unique" : "Unique <sclegendary>Legendary</sclegendary> fishes: ",
 
 
   "gui.guide.available" : "Fishes in the area:",
@@ -1042,10 +1042,10 @@
   "gui.guide.rarity.golden" : "Golden",
 
   "gui.guide.rarity.common" : "Common",
-  "gui.guide.rarity.uncommon" : "<gradient-37>Uncommon</gradient-43>",
-  "gui.guide.rarity.rare" : "<gradient-57>Rare</gradient-63>",
-  "gui.guide.rarity.epic" : "<gradient-80>Epic</gradient-90>",
-  "gui.guide.rarity.legendary" : "<rgb>Legendary</rgb>",
+  "gui.guide.rarity.uncommon" : "<scuncommon>Uncommon</scuncommon>",
+  "gui.guide.rarity.rare" : "<scrare>Rare</scrare>",
+  "gui.guide.rarity.epic" : "<epic>Epic</epic>",
+  "gui.guide.rarity.legendary" : "<sclegendary>Legendary</sclegendary>",
 
 
 
@@ -1104,24 +1104,24 @@
   "gui.secret_note.crystal_hook.10" : "If anyone finds this letter drifting amid the",
   "gui.secret_note.crystal_hook.11" : "oceans, you are welcome to take my precious",
   "gui.secret_note.crystal_hook.12" : "Crystal Hook. Once you've caught at least",
-  "gui.secret_note.crystal_hook.13" : "one epic fish, the <gradient-30>Older Anglers</gradient-50>",
+  "gui.secret_note.crystal_hook.13" : "one epic fish, the <scuncommon>Older Anglers</scuncommon>",
   "gui.secret_note.crystal_hook.14" : "will shine their blessing upon you and",
   "gui.secret_note.crystal_hook.15" : "my crystal hook will bite your hook.",
   "gui.secret_note.crystal_hook.16" : "-Roguy",
 
   "gui.secret_note.lava_proof_bottle_1.0" : "'Buy my bottles! Buy my bottles!'",
-  "gui.secret_note.lava_proof_bottle_1.1" : "'They are <gradient-00>Lava-Proof™</gradient-14>!!'",
+  "gui.secret_note.lava_proof_bottle_1.1" : "'They are <sclava>Lava-Proof™</sclava4>!!'",
   "gui.secret_note.lava_proof_bottle_1.2" : "",
-  "gui.secret_note.lava_proof_bottle_1.3" : "'I promise they really are <gradient-00>Lava-Proof™</gradient-14>™!'",
+  "gui.secret_note.lava_proof_bottle_1.3" : "'I promise they really are <sclava>Lava-Proof™</sclava>™!'",
   "gui.secret_note.lava_proof_bottle_1.4" : "",
   "gui.secret_note.lava_proof_bottle_1.5" : "I am so tired of these SCAMMERS promising",
-  "gui.secret_note.lava_proof_bottle_1.6" : "<gradient-00>Lava-Proof™</gradient-14> bottles, as if anything could",
+  "gui.secret_note.lava_proof_bottle_1.6" : "<sclava>Lava-Proof™</sclava> bottles, as if anything could",
   "gui.secret_note.lava_proof_bottle_1.7" : "survive being submerged in lava! Wanna see",
-  "gui.secret_note.lava_proof_bottle_1.8" : "what I think of your stupid <gradient-00>Lava-Proof™</gradient-14>",
+  "gui.secret_note.lava_proof_bottle_1.8" : "what I think of your stupid <sclava>Lava-Proof™</sclava>",
   "gui.secret_note.lava_proof_bottle_1.9" : "bottles??",
   "gui.secret_note.lava_proof_bottle_1.10" : "",
   "gui.secret_note.lava_proof_bottle_1.11" : "This letter is going right into this so-called",
-  "gui.secret_note.lava_proof_bottle_1.12" : "'<gradient-00>Lava-Proof™</gradient-14> Bottle' and straight to the",
+  "gui.secret_note.lava_proof_bottle_1.12" : "'<sclava>Lava-Proof™</sclava> Bottle' and straight to the",
   "gui.secret_note.lava_proof_bottle_1.13" : "nearest lava pool I can find! Heh that will",
   "gui.secret_note.lava_proof_bottle_1.14" : "show them.",
   "gui.secret_note.lava_proof_bottle_1.15" : "",
@@ -1131,10 +1131,10 @@
   "gui.secret_note.lava_proof_bottle_2.1" : "If anyone finds this letter, I would like",
   "gui.secret_note.lava_proof_bottle_2.2" : "to apologise about my previous letter.",
   "gui.secret_note.lava_proof_bottle_2.3" : "",
-  "gui.secret_note.lava_proof_bottle_2.4" : "These <gradient-00>Lava-Proof™</gradient-14> bottles really work.",
+  "gui.secret_note.lava_proof_bottle_2.4" : "These <sclava>Lava-Proof™</sclava> bottles really work.",
   "gui.secret_note.lava_proof_bottle_2.5" : "",
   "gui.secret_note.lava_proof_bottle_2.6" : "I must admit after so many scams and",
-  "gui.secret_note.lava_proof_bottle_2.7" : "promises of <gradient-00>Lava-Proof™</gradient-14> bottles I was",
+  "gui.secret_note.lava_proof_bottle_2.7" : "promises of <sclava>Lava-Proof™</sclava> bottles I was",
   "gui.secret_note.lava_proof_bottle_2.8" : "skeptical and never even gave them a shot.",
   "gui.secret_note.lava_proof_bottle_2.9" : "",
   "gui.secret_note.lava_proof_bottle_2.10" : "What can I say, you live and you learn.",
@@ -1152,7 +1152,7 @@
   "gui.secret_note.hopeful_note.4" : "",
   "gui.secret_note.hopeful_note.5" : "It has now been over half a year since I",
   "gui.secret_note.hopeful_note.6" : "embarked on this journey to find a",
-  "gui.secret_note.hopeful_note.7" : "<gradient-55>Heart of the Sea</gradient-65>. My hope grows dim but",
+  "gui.secret_note.hopeful_note.7" : "<scrare>Heart of the Sea</scrare>. My hope grows dim but",
   "gui.secret_note.hopeful_note.8" : "I will search for it until the end of my days.",
   "gui.secret_note.hopeful_note.9" : "",
   "gui.secret_note.hopeful_note.10" : "",
@@ -1168,8 +1168,8 @@
   "gui.secret_note.hopeless_note.2" : "",
   "gui.secret_note.hopeless_note.3" : "Day 202",
   "gui.secret_note.hopeless_note.4" : "",
-  "gui.secret_note.hopeless_note.5" : "This is hopeless. There is no <gradient-55>Heart of the</gradient-65>",
-  "gui.secret_note.hopeless_note.6" : "<gradient-55>Sea</gradient-65>. Those BASTARDS lied to me. I am",
+  "gui.secret_note.hopeless_note.5" : "This is hopeless. There is no <scrare>Heart of the</scrare>",
+  "gui.secret_note.hopeless_note.6" : "<scrare>Sea</scrare>. Those BASTARDS lied to me. I am",
   "gui.secret_note.hopeless_note.7" : "never returning home. Little Jimmy will forever",
   "gui.secret_note.hopeless_note.8" : "live with the thought his dad went after an",
   "gui.secret_note.hopeless_note.9" : "imaginary all-powerful item.",
@@ -1249,14 +1249,14 @@
 
   "item.starcatcher.scalding_bottle" : "Scalding Bottle",
   "tooltip.starcatcher.scalding_bottle.0" : "A scalding hot Bottle. Nothing remarkable about it.",
-  "tooltip.starcatcher.scalding_bottle.1" : "Wait... Could this really be a <gradient-00>Lava-Proof™</gradient-14> bottle!?",
+  "tooltip.starcatcher.scalding_bottle.1" : "Wait... Could this really be a <sclava>Lava-Proof™</sclava> bottle!?",
   "tooltip.starcatcher.scalding_bottle.2" : "I never thought these were real!",
   "tooltip.starcatcher.scalding_bottle.3" : "Unfortunately it seems like breaking it open is the",
   "tooltip.starcatcher.scalding_bottle.4" : "only way to get the message out...",
 
   "item.starcatcher.burning_bottle" : "Burning Bottle",
   "tooltip.starcatcher.burning_bottle.0" : "A burning bottle. There is no hiding it, this",
-  "tooltip.starcatcher.burning_bottle.1" : "must be a <gradient-00>Lava-Proof™</gradient-14> bottle!",
+  "tooltip.starcatcher.burning_bottle.1" : "must be a <sclava>Lava-Proof™</sclava> bottle!",
 
   "item.starcatcher.hopeless_bottle" : "Hopeless Bottle",
   "tooltip.starcatcher.hopeless_bottle.0" : "A hopeless Bottle. Or rather, the message inside is.",
@@ -1330,8 +1330,7 @@
   "tooltip.starcatcher.crystalback_trout.1" : "back as a way to protect itself when attacked.",
 
   "item.starcatcher.aurora" : "Aurora",
-  "tooltip.starcatcher.aurora.name" : "<rgb>Aurora</rgb>",
-  "tooltip.starcatcher.aurora.0" : "A beautiful <rgb>legendary</rgb> fish. It's size makes for an",
+  "tooltip.starcatcher.aurora.0" : "A beautiful <sclegendary>legendary</sclegendary> fish. It's size makes for an",
   "tooltip.starcatcher.aurora.1" : "incredibly hard and evasive catch, not letting the angler",
   "tooltip.starcatcher.aurora.2" : "rest if they wish to take it home as proof of their skills.",
 
@@ -1460,13 +1459,13 @@
   "tooltip.starcatcher.icetooth_sturgeon.1" : "uses it's sharp petrified ice teeth to bite down on prey.",
 
   "item.starcatcher.boreal" : "Boreal",
-  "tooltip.starcatcher.boreal.0" : "A <rgb>legendary</rgb> fish found in icy mountains.",
+  "tooltip.starcatcher.boreal.0" : "A <sclegendary>legendary</sclegendary> fish found in icy mountains.",
   "tooltip.starcatcher.boreal.1" : "A real challenge even for skilled anglers, they are",
   "tooltip.starcatcher.boreal.2" : "known for blending into the icy waters making it hard",
   "tooltip.starcatcher.boreal.3" : "follow their quick movements.",
 
   "item.starcatcher.crystalback_boreal" : "Crystalback Boreal",
-  "tooltip.starcatcher.crystalback_boreal.0" : "Although named after the <rgb>legendary</rgb> fish <rgb>Boreal</rgb>, this",
+  "tooltip.starcatcher.crystalback_boreal.0" : "Although named after the <sclegendary>legendary</sclegendary> fish <sclegendary>Boreal</sclegendary>, this",
   "tooltip.starcatcher.crystalback_boreal.1" : "fish is not nearly as hard to catch. Its shiny back makes it",
   "tooltip.starcatcher.crystalback_boreal.2" : "easy to keep track and the crystallized back slows down its swimming speed.",
 
@@ -1542,8 +1541,8 @@
   "tooltip.starcatcher.dusktail_snapper.0" : "A heavy fish for it's size often used in dishes.",
 
   "item.starcatcher.joel" : "Joel",
-  "tooltip.starcatcher.joel.0" : "A rare <rgb>legendary</rgb> fish found in oceans.",
-  "tooltip.starcatcher.joel.1" : "It has a <rgb>nice</rgb> size.",
+  "tooltip.starcatcher.joel.0" : "A rare <sclegendary>legendary</sclegendary> fish found in oceans.",
+  "tooltip.starcatcher.joel.1" : "It has a <sclegendary>nice</sclegendary> size.",
 
   "item.starcatcher.redscaled_tuna" : "Redscaled Tuna",
   "tooltip.starcatcher.redscaled_tuna.0" : "A large tuna with red colored scales.",
@@ -1558,7 +1557,6 @@
   "tooltip.starcatcher.waterlogged_bottle.1" : "Whatever it once held, it's long gone by now.",
 
   "item.starcatcher.bigeye_tuna" : "Bigeye Tuna",
-  "tooltip.starcatcher.bigeye_tuna.name" : "<gradient-37>Bigeye Tuna</gradient-43>",
   "tooltip.starcatcher.bigeye_tuna.0" : "A big heavy fish known for it's big eye.",
   "tooltip.starcatcher.bigeye_tuna.1" : "This species is only found in deep ocean waters.",
   "tooltip.starcatcher.bigeye_tuna.2" : "It's said to hang around other Kaupen fish.",
@@ -1570,7 +1568,7 @@
   "tooltip.starcatcher.clam.0" : "Once a bivalve mollusk living in the sandy shores, now just a shell.",
 
   "item.starcatcher.shroomfish" : "Shroomfish",
-  "tooltip.starcatcher.shroomfish.0" : "An antique <rgb>legendary</rgb> fish species taken over by the spores",
+  "tooltip.starcatcher.shroomfish.0" : "An antique <sclegendary>legendary</sclegendary> fish species taken over by the spores",
   "tooltip.starcatcher.shroomfish.1" : "of the Mushroom Islands. A really tasty dish for mushroom enjoyers.",
 
   "item.starcatcher.sporefish" : "Sporefish",
@@ -1626,7 +1624,7 @@
 
 
   "item.starcatcher.lush_pike" : "Lush Pike",
-  "tooltip.starcatcher.lush_pike.0" : "A mossy <rgb>legendary</rgb> pike rarely",
+  "tooltip.starcatcher.lush_pike.0" : "A mossy <sclegendary>legendary</sclegendary> pike rarely",
   "tooltip.starcatcher.lush_pike.1" : "found in the Lush Caves. A real tough",
   "tooltip.starcatcher.lush_pike.2" : "catch even for experienced anglers.",
 
@@ -1669,7 +1667,7 @@
   "tooltip.starcatcher.sculkfish.0" : "A tricky fish corrupted by Sculk.",
 
   "item.starcatcher.ward" : "Ward",
-  "tooltip.starcatcher.ward.0" : "A <rgb>legendary</rgb> fish said to be best friends with the warden.",
+  "tooltip.starcatcher.ward.0" : "A <sclegendary>legendary</sclegendary> fish said to be best friends with the warden.",
   "tooltip.starcatcher.ward.1" : "Instead of resisting Sculk, this fish embraced it and became stronger for it.",
 
   "item.starcatcher.glowing_dark" : "Glowing Dark",
@@ -1685,7 +1683,7 @@
   "tooltip.starcatcher.pyrotrout.0" : "A trout adapted to live in the surface lava of the Overworld.",
 
   "item.starcatcher.obsidian_eel" : "Obsidian Eel",
-  "tooltip.starcatcher.obsidian_eel.0" : "A <rgb>legendary</rgb> species of eel made of obsidian, found",
+  "tooltip.starcatcher.obsidian_eel.0" : "A <sclegendary>legendary</sclegendary> species of eel made of obsidian, found",
   "tooltip.starcatcher.obsidian_eel.1" : "during rainy days inside Overworld lava lakes.",
   "tooltip.starcatcher.obsidian_eel.2" : "It often requires several anglers to carry",
   "tooltip.starcatcher.obsidian_eel.3" : "it back to the village.",
@@ -1762,8 +1760,8 @@
   "tooltip.starcatcher.end_glow.1" : "Enderman don't seem to mind it.",
 
   "item.starcatcher.voidbiter" : "Voidbiter",
-  "tooltip.starcatcher.voidbiter.0" : "A <rgb>legendary</rgb> fish found in outer islands of The End.",
+  "tooltip.starcatcher.voidbiter.0" : "A <sclegendary>legendary</sclegendary> fish found in outer islands of The End.",
   "tooltip.starcatcher.voidbiter.1" : "So few anglers have seen it that it's only rumored to exist.",
-  "tooltip.starcatcher.voidbiter.2" : "It's said only <gradient-30>Older Anglers</gradient-50> have successfully",
+  "tooltip.starcatcher.voidbiter.2" : "It's said only <scuncommon>Older Anglers</scuncommon> have successfully",
   "tooltip.starcatcher.voidbiter.3" : "caught it before."
 }

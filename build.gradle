@@ -45,6 +45,11 @@ repositories
         url = "https://api.modrinth.com/maven"
     }
 
+    //tyson the ember
+    repositories {
+        maven { url = 'https://maven.tysontheember.dev' }
+    }
+
     repositories {
         exclusiveContent {
             forRepository {
@@ -61,7 +66,7 @@ repositories
 
 dependencies {
     //libtooltips
-    jarJar(implementation("maven.modrinth:libtooltips:9K6qaLUx"))
+    jarJar(implementation("maven.modrinth:libtooltips:5J15zxaI"))
 
     //selling bin
     jarJar(implementation("curse.maven:project-1483881:7771665"))

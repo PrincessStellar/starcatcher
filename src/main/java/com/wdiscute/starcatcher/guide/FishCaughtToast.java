@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.guide;
 
-import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -22,17 +21,14 @@ public class FishCaughtToast implements Toast
     private static final String gibberish = "§kaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     private int old;
     private final ItemStack is;
-    private final String pre;
-    private final String post;
+    private FishProperties.Rarity rarity;
 
     public FishCaughtToast(FishProperties fp)
     {
         this.is = new ItemStack(fp.catchInfo().fish());
         this.title = Component.translatable("gui.starcatcher.toast.fish_caught");
         this.description = is.getHoverName().getString();
-
-        pre = fp.rarity().getPre();
-        post = fp.rarity().getPost();
+        this.rarity = fp.rarity();
     }
 
     @Override
@@ -63,7 +59,7 @@ public class FishCaughtToast implements Toast
             old = lettersRevealed;
         }
 
-        Component comp = Tooltips.decodeString(pre + description.substring(0, lettersRevealed) + post).copy()
+        Component comp = rarity.wrapWithRarityMarkdown(description.substring(0, lettersRevealed)).copy()
                 .append(Component.literal(gibberish.substring(0, description.length() - lettersRevealed + 2)).withStyle(Style.EMPTY.withColor(0x635040)));
 
         guiGraphics.drawString(toastComponent.getMinecraft().font, comp, 40, 22, 0x635040, false);

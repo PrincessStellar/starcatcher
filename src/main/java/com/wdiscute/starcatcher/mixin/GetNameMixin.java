@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.mixin;
 
-import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.storage.FishProperties;
@@ -47,11 +46,8 @@ public class GetNameMixin
             //if golden, use golden rarity color
             FishProperties.Rarity rarity = sw.golden() ? FishProperties.Rarity.GOLDEN : sw.rarity();
 
-            //build name string
-            String name = rarity.getPre() + baseName.getString(100) + rarity.getPost();
-
             //decode name string and return value
-            cir.setReturnValue(Tooltips.decodeString(name));
+            cir.setReturnValue(rarity.wrapWithRarityMarkdown(baseName.getString()));
             cir.cancel();
         }
     }

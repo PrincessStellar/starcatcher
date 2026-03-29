@@ -38,7 +38,7 @@ public class SecretNoteScreen extends Screen
             String key = translationKey + i;
             if (I18n.exists(key))
             {
-                guiGraphics.drawString(this.font, Tooltips.decodeTranslationKey(key), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
+                guiGraphics.drawString(this.font, Component.translatable(key), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
             }
             else
             {

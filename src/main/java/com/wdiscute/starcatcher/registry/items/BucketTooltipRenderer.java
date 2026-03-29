@@ -29,7 +29,7 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
 
             if(sw.golden())
             {
-                MutableComponent element = Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
+                MutableComponent element = Component.empty().append(Component.translatable("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
                 if(Screen.hasShiftDown())
                     element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
                 text = element;

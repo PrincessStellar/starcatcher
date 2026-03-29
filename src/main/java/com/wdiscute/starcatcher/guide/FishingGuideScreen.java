@@ -576,14 +576,14 @@ public class FishingGuideScreen extends Screen
         for (int i = 0; i < 40; i++)
         {
             if (!I18n.exists("gui.guide.page." + pageName + ".left." + i)) break;
-            Component comp = Tooltips.decodeTranslationKey("gui.guide.page." + pageName + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            Component comp = Component.translatable("gui.guide.page." + pageName + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 52, uiY + 10 * i + 13, 0xff000000, false);
         }
 
         for (int i = 0; i < 40; i++)
         {
             if (!I18n.exists("gui.guide.page." + pageName + ".right." + i)) break;
-            Component comp = Tooltips.decodeTranslationKey("gui.guide.page." + pageName + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            Component comp = Component.translatable("gui.guide.page." + pageName + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 213, uiY + 10 * i + 13, 0xff000000, false);
         }
     }
@@ -662,9 +662,9 @@ public class FishingGuideScreen extends Screen
                     List<Component> list = new ArrayList<>(List.of(Component.literal("Requirements:")));
 
                     if (tp.all().total() != 0)
-                        list.add(Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.trophy.all.total")).append("[" + all.total() + "/" + tp.all().total() + "]"));
+                        list.add(Component.empty().append(Component.translatable("gui.guide.trophy.all.total")).append("[" + all.total() + "/" + tp.all().total() + "]"));
                     if (tp.all().unique() != 0)
-                        list.add(Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.trophy.all.unique")).append("[" + all.unique() + "/" + tp.all().unique() + "]"));
+                        list.add(Component.empty().append(Component.translatable("gui.guide.trophy.all.unique")).append("[" + all.unique() + "/" + tp.all().unique() + "]"));
 
                     for (FishProperties.Rarity value : FishProperties.Rarity.values())
                     {
@@ -672,11 +672,11 @@ public class FishingGuideScreen extends Screen
                         TrophyProperties.RarityProgress active = this.progressMap.get(value);
                         if (progress.total() != 0)
                         {
-                            list.add(Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.trophy." + value.getSerializedName() + ".total")).append("[" + active.total() + "/" + progress.total() + "]"));
+                            list.add(Component.empty().append(Component.translatable("gui.guide.trophy." + value.getSerializedName() + ".total")).append("[" + active.total() + "/" + progress.total() + "]"));
                         }
                         if (progress.unique() != 0)
                         {
-                            list.add(Component.empty().append(Tooltips.decodeTranslationKey("gui.guide.trophy." + value.getSerializedName() + ".unique")).append("[" + active.unique() + "/" + progress.unique() + "]"));
+                            list.add(Component.empty().append(Component.translatable("gui.guide.trophy." + value.getSerializedName() + ".unique")).append("[" + active.unique() + "/" + progress.unique() + "]"));
                         }
                     }
 
@@ -1089,7 +1089,7 @@ public class FishingGuideScreen extends Screen
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(255, 0x78c8ff);
             case FishProperties.Rarity.EPIC -> FastColor.ARGB32.color(255, 0xc060ff);
             case FishProperties.Rarity.LEGENDARY, FishProperties.Rarity.GOLDEN ->
-                    FastColor.ARGB32.color(175, Color.HSBtoRGB(Tooltips.hue * 2, 1, 1));
+                    FastColor.ARGB32.color(175, Color.HSBtoRGB((float) Util.getMillis() / 10000, 1, 1));
         };
 
         float red = FastColor.ARGB32.red(color) / 255f;
@@ -1122,7 +1122,7 @@ public class FishingGuideScreen extends Screen
         if (mouseX > xOffset - 3 && mouseX < xOffset + 21 - 3 && mouseY > yOffset - 3 && mouseY < yOffset + 21 - 3)
         {
             ArrayList<Component> components = new ArrayList<>(getCachedTooltipForHoverEntry(fp, caught));
-            components.add(1, Tooltips.decodeTranslationKey("gui.guide.rarity." + fp.rarity().getSerializedName()));
+            components.add(1, Component.translatable("gui.guide.rarity." + fp.rarity().getSerializedName()));
 
             guiGraphics.renderTooltip(this.font, components, Optional.empty(), mouseX, mouseY);
         }
@@ -1645,7 +1645,7 @@ public class FishingGuideScreen extends Screen
                 x + 73, y + 84, 0x9c897c, false);
         //common
         guiGraphics.drawString(
-                font, Tooltips.decodeTranslationKey("gui.guide.rarity." + fp.rarity().getSerializedName()),
+                font, Component.translatable("gui.guide.rarity." + fp.rarity().getSerializedName()),
                 x + 73, y + 93, 0, false);
 
         //render bucketable
@@ -1689,7 +1689,7 @@ public class FishingGuideScreen extends Screen
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(200, 0x78c8ff);
             case FishProperties.Rarity.EPIC -> FastColor.ARGB32.color(200, 0xc060ff);
             case FishProperties.Rarity.LEGENDARY, GOLDEN ->
-                    FastColor.ARGB32.color(175, Color.HSBtoRGB(Tooltips.hue * 2, 1, 1));
+                    FastColor.ARGB32.color(175, Color.HSBtoRGB((float) Util.getMillis() / 1000, 1, 1));
         };
 
         float red = FastColor.ARGB32.red(color) / 255f;
