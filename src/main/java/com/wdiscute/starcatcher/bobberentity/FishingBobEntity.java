@@ -5,7 +5,6 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.catchmodifiers.FishMessagesModifier;
@@ -27,10 +26,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
@@ -47,10 +44,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class FishingBobEntity extends Projectile
 {
@@ -219,9 +213,7 @@ public class FishingBobEntity extends Projectile
         else
         {
             //send fishing minigame payload to client with FP
-            FishProperties fp = fpToFish.loadTreasureToClient();
-            FishingStartedPayload payload = new FishingStartedPayload(fp, rod);
-
+            FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
     }

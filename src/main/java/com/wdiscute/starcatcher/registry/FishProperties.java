@@ -158,27 +158,6 @@ public record FishProperties(
         );
     }
 
-    public FishProperties loadTreasureToClient()
-    {
-        //if treasure itemstack already exists, dont do anything
-        if(catchInfo.treasureIs.isEmpty()) return this;
-
-        ItemStack is = new ItemStack(catchInfo.treasureIs.getItem());
-
-        return new FishProperties(
-                new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
-                        catchInfo.overrideMinigameWith, catchInfo.treasure, is, catchInfo.fishEntryType),
-                star,
-                baseChance,
-                sizeWeight,
-                rarity,
-                restrictions,
-                dif,
-                skipMinigame,
-                hasGuideEntry
-        );
-    }
-
     public ResourceLocation toLoc(Level level)
     {
         return U.getRlFromFp(level, this);
@@ -428,7 +407,7 @@ public record FishProperties(
                 instance.group(
                         BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("item").forGetter(CatchInfo::fish),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("fish_bucket", SCItems.MISSINGNO).forGetter(CatchInfo::bucketedFish),
-                        BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", U.holderEntity("starcatcher", "fish")).forGetter(CatchInfo::entityToSpawn),
+                        BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", SCEntities.FISH).forGetter(CatchInfo::entityToSpawn),
                         Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
                         ResourceLocation.CODEC.optionalFieldOf("treasure_loot_table", U.rl("gameplay/fishing/treasure")).forGetter(CatchInfo::treasure),

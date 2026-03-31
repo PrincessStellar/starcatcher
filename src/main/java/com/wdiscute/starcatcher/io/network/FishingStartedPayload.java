@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -17,9 +18,9 @@ public record FishingStartedPayload(FishProperties fp, ItemStack rod) implements
 
     public static final Type<FishingStartedPayload> TYPE = new Type<>(Starcatcher.rl("fishing_started"));
 
-    public static final StreamCodec<ByteBuf, FishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.fromCodec(FishProperties.CODEC), FishingStartedPayload::fp,
-            ByteBufCodecs.fromCodec(ItemStack.CODEC), FishingStartedPayload::rod,
+    public static final StreamCodec<RegistryFriendlyByteBuf, FishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
+            FishProperties.STREAM_CODEC, FishingStartedPayload::fp,
+            ItemStack.STREAM_CODEC, FishingStartedPayload::rod,
             FishingStartedPayload::new
     );
 
