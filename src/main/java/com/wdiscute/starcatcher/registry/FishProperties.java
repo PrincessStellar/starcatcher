@@ -314,9 +314,32 @@ public record FishProperties(
             Holder<EntityType<?>> entityToSpawn,
             boolean alwaysSpawnEntity,
             Holder<Item> overrideMinigameWith,
-            Holder<Item> treasure
+            Holder<Item> treasure,
+            FishEntryType fishEntryType
     )
     {
+        public enum FishEntryType implements StringRepresentable
+        {
+            FISH("fish"),
+            TROPHY("trophy"),
+            SECRET("secret"),
+            OTHER("secret");
+
+            public static final Codec<FishEntryType> CODEC = StringRepresentable.fromEnum(FishEntryType::values);
+            public static final StreamCodec<RegistryFriendlyByteBuf, FishEntryType> STREAM_CODEC = NeoForgeStreamCodecs.enumCodec(FishEntryType.class);
+            private final String name;
+
+            FishEntryType(String key)
+            {
+                this.name = key;
+            }
+
+            public String getSerializedName()
+            {
+                return this.name;
+            }
+        }
+
         public static final Codec<CatchInfo> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
                         BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("item").forGetter(CatchInfo::fish),
@@ -324,16 +347,18 @@ public record FishProperties(
                         BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", U.holderEntity("starcatcher", "fish")).forGetter(CatchInfo::entityToSpawn),
                         Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
-                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", SCItems.MISSINGNO).forGetter(CatchInfo::treasure)
+                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", SCItems.MISSINGNO).forGetter(CatchInfo::treasure),
+                        FishEntryType.CODEC.optionalFieldOf("type", FishEntryType.FISH).forGetter(CatchInfo::fishEntryType)
                 ).apply(instance, CatchInfo::new));
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, CatchInfo> STREAM_CODEC = StreamCodec.composite(
+        public static final StreamCodec<RegistryFriendlyByteBuf, CatchInfo> STREAM_CODEC = ExtraComposites.composite(
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::fish,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::bucketedFish,
                 ByteBufCodecs.holderRegistry(Registries.ENTITY_TYPE), CatchInfo::entityToSpawn,
                 ByteBufCodecs.BOOL, CatchInfo::alwaysSpawnEntity,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::overrideMinigameWith,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::treasure,
+                FishEntryType.STREAM_CODEC, CatchInfo::fishEntryType,
                 CatchInfo::new
         );
 
@@ -344,12 +369,13 @@ public record FishProperties(
                 U.holderEntity("starcatcher", "fish"),
                 false,
                 SCItems.MISSINGNO,
-                SCItems.WATERLOGGED_SATCHEL
+                SCItems.WATERLOGGED_SATCHEL,
+                FishEntryType.FISH
         );
 
         public CatchInfo withItemToOverrideWith(Holder<Item> itemToOverrideWith)
         {
-            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasure);
+            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasure, this.fishEntryType);
         }
 
         public static class Builder
@@ -360,6 +386,7 @@ public record FishProperties(
             private boolean alwaysSpawnEntity = false;
             private Holder<Item> itemToOverrideWith = SCItems.MISSINGNO;
             private Holder<Item> treasure = SCItems.WATERLOGGED_SATCHEL;
+            private FishEntryType fishEntryType = FishEntryType.FISH;
 
             public Builder withFish(Holder<Item> fish)
             {
@@ -391,9 +418,15 @@ public record FishProperties(
                 return this;
             }
 
+            public Builder withFishEntryType(FishEntryType fishEntryType)
+            {
+                this.fishEntryType = fishEntryType;
+                return this;
+            }
+
             public CatchInfo build()
             {
-                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasure);
+                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasure, fishEntryType);
             }
         }
     }

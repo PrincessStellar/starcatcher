@@ -51,6 +51,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         {
             FishProperties fp = p.getSecond();
 
+            if (fp.catchInfo().alwaysSpawnEntity()) return;
+
             switch (p.getSecond().rarity())
             {
                 case TRASH -> tag(SCTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
@@ -60,6 +62,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
                 case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
             }
+
+
         });
 
         for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHES)

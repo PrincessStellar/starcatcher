@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "minecraft:creeper_head",
-      "required": false
-    },
-    {
       "id": "starcatcher:twilight_koi",
       "required": false
     },
@@ -185,31 +181,7 @@
       "required": false
     },
     {
-      "id": "betterend:gelatine",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:wizard_jelly_bucket",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_snowflake",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:zebra_cornetfish_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:lobed_skipper_bucket",
-      "required": false
-    },
-    {
-      "id": "spawn:baby_sunfish_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:moony_bucket",
       "required": false
     },
     "starcatcher:twilight_koi",

@@ -1494,15 +1494,6 @@ public class FishingGuideScreen extends Screen
         int mouseX = absoluteMouseX - x;
         int mouseY = absoluteMouseY - y;
 
-//        if (false && U.r.nextFloat() > 0.99f)
-//        {
-//            System.out.println("------");
-//            System.out.println(mouseX);
-//            System.out.println(mouseY);
-//            System.out.println(x);
-//            System.out.println(y);
-//        }
-
         //render caught:
         //caught:
         guiGraphics.drawString(
@@ -1594,17 +1585,6 @@ public class FishingGuideScreen extends Screen
         if (fcc != null && fcc.hasGuideNotification())
             guiGraphics.blit(NEW_FISH, x + 120, y + 95, 0, 0, 32, 32, 32, 32);
 
-        //render fish tooltip
-        if (mouseX > 6 && mouseX < 61 && mouseY > 51 && mouseY < 105)
-        {
-            //if entity, display entity name
-            if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get()))
-                guiGraphics.renderTooltip(font, Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")), absoluteMouseX, absoluteMouseY);
-                //else display itemstack name if not empty
-            else if (fishToDisplay != ItemStack.EMPTY)
-                guiGraphics.renderTooltip(font, fishToDisplay, absoluteMouseX, absoluteMouseY);
-        }
-
         int yOffset = y + 132;
         int counter = 0;
 
@@ -1640,6 +1620,15 @@ public class FishingGuideScreen extends Screen
             }
 
             yOffset += 12;
+        }
+
+        //render fish tooltip
+        if (mouseX > 6 && mouseX < 61 && mouseY > 51 && mouseY < 105)
+        {
+            if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get()))
+                guiGraphics.renderTooltip(font, fp.getDisplayName(), absoluteMouseX, absoluteMouseY);
+            else if(fishToDisplay != ItemStack.EMPTY)
+                guiGraphics.renderTooltip(font, fishToDisplay, absoluteMouseX, absoluteMouseY);
         }
 
         //render stats tooltip (at the end because of the scisor bug)

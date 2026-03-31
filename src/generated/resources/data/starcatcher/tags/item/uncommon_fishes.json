@@ -253,14 +253,6 @@
       "required": false
     },
     {
-      "id": "environmental:slabfish_bucket",
-      "required": false
-    },
-    {
-      "id": "collectorsreap:chieftain_crab",
-      "required": false
-    },
-    {
       "id": "miners_delight:squid",
       "required": false
     },
@@ -286,10 +278,6 @@
     },
     {
       "id": "alexscaves:sweetish_fish_yellow",
-      "required": false
-    },
-    {
-      "id": "crittersandcompanions:dumbo_octopus_bucket",
       "required": false
     },
     {
@@ -393,19 +381,7 @@
       "required": false
     },
     {
-      "id": "tfc:blubber",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_beaked_herring",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:tribble_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:blizzardfin_bucket",
       "required": false
     },
     {
@@ -413,23 +389,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:spoon_shark_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:sea_pancake_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:porcupine_lobsta_bucket",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_sneep_snorp",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:clownthorn_shark_bucket",
       "required": false
     },
     {
@@ -437,19 +397,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:ripper_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:pinkfin_idol_bucket",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_drooping_gourami",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:muddytop_snail_bucket",
       "required": false
     },
     {
@@ -458,42 +406,6 @@
     },
     {
       "id": "unusualfishmod:raw_eyelash",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:rhino_tetra_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_hatchetfish",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:shockcat_bucket",
-      "required": false
-    },
-    {
-      "id": "spawn:tuna_egg_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:featherback_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:guppy_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:pleco_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:gourami_bucket",
-      "required": false
-    },
-    {
-      "id": "fintastic:artemia_bucket",
       "required": false
     },
     "starcatcher:morganite",
