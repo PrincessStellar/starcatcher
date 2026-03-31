@@ -1,7 +1,9 @@
 package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.serialization.MapCodec;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
@@ -47,6 +49,11 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
         instance.kimbeMarkerPos = instance.getPointerPosPrecise();
 
         instance.consecutiveHits++;
+
+        if(U.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
+        {
+            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.TREASURE));
+        }
 
         return super.onHit(ass);
     }

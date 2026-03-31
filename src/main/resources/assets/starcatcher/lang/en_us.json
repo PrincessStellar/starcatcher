@@ -247,8 +247,7 @@
 
   "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots.0": "Explosive sweet-spots might show up",
 
-  "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits.0": "Successfully hitting 3 sweet-spots in a row",
-  "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits.1": "will summon a treasure chest",
+  "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits.0": "Successfully hitting 3 sweet-spots in a row will summon a treasure chest",
 
   "tooltip.modifier.starcatcher.slower_moving_sweet_spots.0": "Slows down moving sweet-spots",
 
@@ -281,7 +280,9 @@
 
 
 
-  "tooltip.modifier.starcatcher.vanilla_loot.0": "Restores vanilla fishing behaviour and loot",
+  "tooltip.modifier.starcatcher.vanilla_loot.0": "Restores vanilla fishing loot",
+
+  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_loot.0": "Skips minigame when used alongside the vanilla-flavoured bobber",
 
   "tooltip.modifier.starcatcher.extra_exp_based_on_performance.0": "Extra exp is awarded based on your performance",
 

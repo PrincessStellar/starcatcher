@@ -1,0 +1,55 @@
+{
+  "values": {
+    "starcatcher:almighty_worm": [
+      "starcatcher:decrease_lure_time",
+      "starcatcher:fish_entity"
+    ],
+    "starcatcher:cherry_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:crystal_hook": [
+      "starcatcher:survives_lava"
+    ],
+    "starcatcher:dripstone_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:gold_hook": [
+      "starcatcher:extra_exp_based_on_performance"
+    ],
+    "starcatcher:gunpowder_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:legendary_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:lush_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:meteorological_bait": [
+      "starcatcher:decrease_lure_time",
+      "starcatcher:ignore_daytime_and_weather_restrictions"
+    ],
+    "starcatcher:murkwater_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:sculk_bait": [
+      "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:seeking_worm": [
+      "starcatcher:decrease_lure_time",
+      "starcatcher:guarantee_new_fish_always"
+    ],
+    "starcatcher:split_hook": [
+      "starcatcher:extra_item"
+    ],
+    "starcatcher:stone_hook": [
+      "starcatcher:increase_lure_time"
+    ],
+    "starcatcher:vanilla_bobber": [
+      "starcatcher:vanilla_loot"
+    ],
+    "starcatcher:worm": [
+      "starcatcher:decrease_lure_time"
+    ]
+  }
+}

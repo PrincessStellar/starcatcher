@@ -48,14 +48,6 @@ public class FishingGuideAttachment {
             FishingGuideAttachment::new
     );
 
-    public static Map<ResourceLocation, Integer> getTrophiesCaught(Player player) {
-        return get(player).trophiesCaught;
-    }
-
-    public static void setTrophiesCaught(Player player, Map<ResourceLocation, Integer> trophiesCaught) {
-        get(player).trophiesCaught = trophiesCaught;
-        sync(player);
-    }
 
     public static Map<ResourceLocation, FishCaughtCounter> getFishesCaught(Player player) {
         return get(player).fishesCaught;

@@ -17,6 +17,7 @@ import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviou
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -48,6 +49,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
@@ -135,6 +141,18 @@ public record FishProperties(
             true
     );
 
+    public static final FishProperties VANILLA_FISH = new FishProperties(
+            CatchInfo.VANILLA,
+            Star.DEFAULT,
+            -348,
+            SizeAndWeight.DEFAULT,
+            Rarity.COMMON,
+            new ArrayList<>(),
+            Difficulty.EASY,
+            false,
+            false
+    );
+
     public FishProperties withHideCatch()
     {
         return new FishProperties(this.catchInfo.withItemToOverrideWith(SCItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry);
@@ -170,7 +188,7 @@ public record FishProperties(
             return this;
         }
 
-        public Builder withTreasure(Holder<Item> treasure)
+        public Builder withTreasure(ResourceLocation treasure)
         {
             this.catchInfo.treasure = treasure;
             return this;
@@ -314,7 +332,7 @@ public record FishProperties(
             Holder<EntityType<?>> entityToSpawn,
             boolean alwaysSpawnEntity,
             Holder<Item> overrideMinigameWith,
-            Holder<Item> treasure,
+            ResourceLocation treasure,
             FishEntryType fishEntryType
     )
     {
@@ -347,7 +365,7 @@ public record FishProperties(
                         BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", U.holderEntity("starcatcher", "fish")).forGetter(CatchInfo::entityToSpawn),
                         Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
-                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", SCItems.MISSINGNO).forGetter(CatchInfo::treasure),
+                        ResourceLocation.CODEC.optionalFieldOf("treasure", U.rl("gameplay/fishing/treasure")).forGetter(CatchInfo::treasure),
                         FishEntryType.CODEC.optionalFieldOf("type", FishEntryType.FISH).forGetter(CatchInfo::fishEntryType)
                 ).apply(instance, CatchInfo::new));
 
@@ -357,7 +375,7 @@ public record FishProperties(
                 ByteBufCodecs.holderRegistry(Registries.ENTITY_TYPE), CatchInfo::entityToSpawn,
                 ByteBufCodecs.BOOL, CatchInfo::alwaysSpawnEntity,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::overrideMinigameWith,
-                ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::treasure,
+                ResourceLocation.STREAM_CODEC, CatchInfo::treasure,
                 FishEntryType.STREAM_CODEC, CatchInfo::fishEntryType,
                 CatchInfo::new
         );
@@ -369,7 +387,17 @@ public record FishProperties(
                 U.holderEntity("starcatcher", "fish"),
                 false,
                 SCItems.MISSINGNO,
-                SCItems.WATERLOGGED_SATCHEL,
+                U.rl("gameplay/fishing/treasure"),
+                FishEntryType.FISH
+        );
+
+        public static final CatchInfo VANILLA = new CatchInfo(
+                SCItems.MISSINGNO,
+                SCItems.MISSINGNO,
+                U.holderEntity("starcatcher", "fish"),
+                false,
+                SCItems.UNKNOWN_FISH,
+                U.rl("gameplay/fishing/treasure"),
                 FishEntryType.FISH
         );
 
@@ -385,7 +413,7 @@ public record FishProperties(
             private Holder<EntityType<?>> entityToSpawn = U.holderEntity("starcatcher", "fish");
             private boolean alwaysSpawnEntity = false;
             private Holder<Item> itemToOverrideWith = SCItems.MISSINGNO;
-            private Holder<Item> treasure = SCItems.WATERLOGGED_SATCHEL;
+            private ResourceLocation treasure = U.rl("gameplay/fishing/treasure");
             private FishEntryType fishEntryType = FishEntryType.FISH;
 
             public Builder withFish(Holder<Item> fish)
@@ -1831,7 +1859,8 @@ public record FishProperties(
                 //add treasure
                 if (completedTreasure || fbe.modifiers.stream().anyMatch(acm -> acm.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
                 {
-                    items.add(new ItemStack(fp.catchInfo().treasure()));
+
+
                 }
 
                 //spawn items from list

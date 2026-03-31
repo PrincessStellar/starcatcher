@@ -41,6 +41,7 @@ public interface SCCatchModifiers
 
     //vanilla bobber
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> VANILLA_LOOT = registerCatchModifier("vanilla_loot", VanillaLootModifier::new);
+    Pair<ResourceLocation, Supplier<AbstractCatchModifier>> SKIP_MINIGAME_IF_VANILLA_LOOT = registerCatchModifier("skip_minigame_if_vanilla_loot", SkipMinigameIfVanillaLoot::new);
 
     //almighty worm
     Pair<ResourceLocation, Supplier<AbstractCatchModifier>> FISH_ENTITY = registerCatchModifier("fish_entity", ForceFishEntityModifier::new);

@@ -1,8 +1,10 @@
 package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
+import com.wdiscute.sellingbin.registry.ModDataMaps;
 import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
@@ -16,9 +18,12 @@ import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -36,9 +41,12 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
+import net.neoforged.neoforge.event.ItemStackedOnOtherEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.item.ItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
@@ -49,6 +57,8 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class SCEvents
@@ -64,9 +74,32 @@ public class SCEvents
     }
 
     @SubscribeEvent
+    public static void modifyItemAttribute(ItemAttributeModifierEvent event)
+    {
+        ItemStack itemStack = event.getItemStack();
+
+        List<ResourceLocation> catchModifiers = ModDataMaps.getOrDefault(itemStack, SCDataMaps.CATCH_MODIFIERS, null);
+
+        if (catchModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.CATCH_MODIFIERS) == null)
+        {
+            SCDataComponents.set(itemStack, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        }
+
+        List<ResourceLocation> minigameModifiers = ModDataMaps.getOrDefault(itemStack, SCDataMaps.MINIGAME_MODIFIERS, null);
+
+        if (minigameModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.MINIGAME_MODIFIERS) == null)
+        {
+            SCDataComponents.set(itemStack, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
+        }
+
+    }
+
+
+    @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event)
     {
-        PackSource packSource = new DefaultPackSource(){
+        PackSource packSource = new DefaultPackSource()
+        {
             @Override
             public boolean shouldAddAutomatically()
             {
@@ -200,7 +233,7 @@ public class SCEvents
             }
         }
     }
-    
+
     @SubscribeEvent
     public static void registerAttributed(EntityAttributeCreationEvent event)
     {
@@ -211,6 +244,8 @@ public class SCEvents
     public static void registerAttributed(RegisterDataMapTypesEvent event)
     {
         event.register(SCDataMaps.AQUARIUM_INTERACTION);
+        event.register(SCDataMaps.CATCH_MODIFIERS);
+        event.register(SCDataMaps.MINIGAME_MODIFIERS);
     }
 
     @SubscribeEvent

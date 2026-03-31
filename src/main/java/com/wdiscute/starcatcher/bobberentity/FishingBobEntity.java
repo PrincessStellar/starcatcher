@@ -169,11 +169,6 @@ public class FishingBobEntity extends Projectile
         //server only
         List<FishProperties> available = new ArrayList<>();
 
-        Map<ResourceLocation, Integer> data = FishingGuideAttachment.getTrophiesCaught(player);
-
-        //trigger modifiers
-        modifiers.forEach(AbstractCatchModifier::onReelAfterTreasureCheck);
-
         //if no trophy is available, get chances of getting each fish
         for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
         {
