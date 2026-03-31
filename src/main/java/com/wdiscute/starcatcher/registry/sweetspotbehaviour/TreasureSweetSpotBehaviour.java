@@ -28,6 +28,12 @@ public class TreasureSweetSpotBehaviour extends AbstractSweetSpotBehaviour
     public void onAdd(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         super.onAdd(instance, ass);
+        //if no treasure item is set, doesnt add it
+        if(instance.treasureIS.isEmpty())
+        {
+            ass.removed = true;
+            return;
+        }
         if(!instance.treasureActive) instance.treasureActive = true;
         if(instance.treasureProgress >= 100) ass.removed = true;
     }
