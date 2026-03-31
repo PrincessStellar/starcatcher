@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "alexscaves:lanternfish",
     "fish_bucket": "alexscaves:lanternfish_bucket",
-    "item": "alexscaves:lanternfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "alexscaves:lanternfish"
   },
   "difficulty": {
     "decay": 1.0,

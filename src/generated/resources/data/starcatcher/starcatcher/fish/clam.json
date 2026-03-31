@@ -1,8 +1,7 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:clam",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:clam"
   },
   "difficulty": {
     "decay": 0.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:clownthorn_shark",
     "fish_bucket": "unusualfishmod:clownthorn_shark_bucket",
-    "item": "unusualfishmod:clownthorn_shark_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:clownthorn_shark_bucket"
   },
   "difficulty": {
     "decay": 1.0,

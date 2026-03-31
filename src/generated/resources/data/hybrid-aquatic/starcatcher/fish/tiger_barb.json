@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:tiger_barb",
-    "item": "hybrid-aquatic:tiger_barb",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:tiger_barb"
   },
   "difficulty": {
     "decay": 1.0,

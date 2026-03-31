@@ -1,8 +1,7 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:dried_seaweed",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:dried_seaweed"
   },
   "difficulty": {
     "decay": 0.0,

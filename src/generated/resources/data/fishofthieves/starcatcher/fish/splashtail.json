@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:splashtail",
     "fish_bucket": "fishofthieves:splashtail_bucket",
-    "item": "fishofthieves:splashtail",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:splashtail"
   },
   "difficulty": {
     "decay": 1.0,

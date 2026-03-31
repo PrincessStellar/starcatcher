@@ -10,7 +10,7 @@
     "entity": "aquaculture:synodontis",
     "fish_bucket": "aquaculture:synodontis_bucket",
     "item": "aquaculture:synodontis",
-    "treasure": "aquaculture:treasure_chest"
+    "treasure_loot_table": "aquaculture:treasure_chest"
   },
   "difficulty": {
     "decay": 1.0,

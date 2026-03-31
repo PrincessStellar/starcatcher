@@ -10,7 +10,7 @@
     "entity": "aquaculture:boulti",
     "fish_bucket": "aquaculture:boulti_bucket",
     "item": "aquaculture:boulti",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:shadow_shark",
     "fish_bucket": "tide:shadow_shark_bucket",
-    "item": "tide:shadow_shark",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:shadow_shark"
   },
   "difficulty": {
     "decay": 0.0,

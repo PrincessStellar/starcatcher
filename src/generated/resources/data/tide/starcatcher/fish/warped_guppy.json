@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:warped_guppy",
     "fish_bucket": "tide:warped_guppy_bucket",
-    "item": "tide:warped_guppy",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:warped_guppy"
   },
   "difficulty": {
     "decay": 1.0,

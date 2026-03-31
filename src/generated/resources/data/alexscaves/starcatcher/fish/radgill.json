@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "alexscaves:radgill",
     "fish_bucket": "alexscaves:radgill_bucket",
-    "item": "alexscaves:radgill",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "alexscaves:radgill"
   },
   "difficulty": {
     "decay": 1.0,

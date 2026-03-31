@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:coelacanth",
     "fish_bucket": "tide:coelacanth_bucket",
-    "item": "tide:coelacanth",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:coelacanth"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:neptune_koi",
     "fish_bucket": "tide:neptune_koi_bucket",
-    "item": "tide:neptune_koi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:neptune_koi"
   },
   "difficulty": {
     "decay": 1.0,

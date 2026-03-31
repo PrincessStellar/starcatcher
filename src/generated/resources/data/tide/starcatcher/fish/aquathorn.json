@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:aquathorn",
     "fish_bucket": "tide:aquathorn_bucket",
-    "item": "tide:aquathorn",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:aquathorn"
   },
   "difficulty": {
     "decay": 1.0,

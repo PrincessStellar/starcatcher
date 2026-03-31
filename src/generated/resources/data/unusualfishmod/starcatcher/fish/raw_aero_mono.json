@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:aero_mono",
     "fish_bucket": "unusualfishmod:aero_mono_bucket",
-    "item": "unusualfishmod:raw_aero_mono",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_aero_mono"
   },
   "difficulty": {
     "decay": 1.0,

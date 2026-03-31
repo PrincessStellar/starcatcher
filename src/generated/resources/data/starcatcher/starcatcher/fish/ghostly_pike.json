@@ -2,8 +2,7 @@
   "base_chance": 2,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:ghostly_pike",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:ghostly_pike"
   },
   "difficulty": {
     "decay": 1.0,

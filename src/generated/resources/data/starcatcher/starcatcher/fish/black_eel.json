@@ -1,8 +1,7 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:black_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:black_eel"
   },
   "difficulty": {
     "decay": 1.0,

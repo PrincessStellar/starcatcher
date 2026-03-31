@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.items.rod;
 
+import com.sun.jna.platform.win32.Variant;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
@@ -91,6 +92,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
                         fbe.kill();
                         SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());
+                        break;
                     }
                 }
             }

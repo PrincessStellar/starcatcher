@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:dragon_fish",
     "fish_bucket": "tide:dragon_fish_bucket",
-    "item": "tide:dragon_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:dragon_fish"
   },
   "difficulty": {
     "decay": 1.0,

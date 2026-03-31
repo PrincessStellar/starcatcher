@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:golden_dorado",
-    "item": "hybrid-aquatic:golden_dorado",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:golden_dorado"
   },
   "difficulty": {
     "decay": 1.0,

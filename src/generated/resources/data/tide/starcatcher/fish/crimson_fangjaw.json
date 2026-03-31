@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:crimson_fangjaw",
     "fish_bucket": "tide:crimson_fangjaw_bucket",
-    "item": "tide:crimson_fangjaw",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:crimson_fangjaw"
   },
   "difficulty": {
     "decay": 1.0,

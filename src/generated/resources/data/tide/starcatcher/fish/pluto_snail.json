@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:pluto_snail",
     "fish_bucket": "tide:pluto_snail_bucket",
-    "item": "tide:pluto_snail",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:pluto_snail"
   },
   "difficulty": {
     "decay": 1.0,

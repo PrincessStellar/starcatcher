@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:crystal_shrimp",
     "fish_bucket": "tide:crystal_shrimp_bucket",
-    "item": "tide:crystal_shrimp",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:crystal_shrimp"
   },
   "difficulty": {
     "decay": 1.0,

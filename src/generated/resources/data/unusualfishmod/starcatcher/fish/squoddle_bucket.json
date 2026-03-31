@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:squoddle",
     "fish_bucket": "unusualfishmod:squoddle_bucket",
-    "item": "unusualfishmod:squoddle_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:squoddle_bucket"
   },
   "difficulty": {
     "decay": 1.0,

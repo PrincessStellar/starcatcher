@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:devils_hole_pupfish",
     "fish_bucket": "tide:devils_hole_pupfish_bucket",
-    "item": "tide:devils_hole_pupfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:devils_hole_pupfish"
   },
   "difficulty": {
     "decay": 1.0,

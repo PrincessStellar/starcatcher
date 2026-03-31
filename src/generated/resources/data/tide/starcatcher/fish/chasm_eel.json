@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:chasm_eel",
     "fish_bucket": "tide:chasm_eel_bucket",
-    "item": "tide:chasm_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:chasm_eel"
   },
   "difficulty": {
     "decay": 1.0,

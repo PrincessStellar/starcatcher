@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:snook",
     "fish_bucket": "tide:snook_bucket",
-    "item": "tide:snook",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:snook"
   },
   "difficulty": {
     "decay": 1.0,

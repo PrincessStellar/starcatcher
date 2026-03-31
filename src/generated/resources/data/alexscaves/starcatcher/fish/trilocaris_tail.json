@@ -11,8 +11,7 @@
     "entity": "alexscaves:trilocaris",
     "fish_bucket": "alexscaves:trilocaris_bucket",
     "item": "alexscaves:trilocaris_tail",
-    "override_minigame_item": "starcatcher:unknown_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "override_minigame_item": "starcatcher:unknown_fish"
   },
   "difficulty": {
     "decay": 1.0,

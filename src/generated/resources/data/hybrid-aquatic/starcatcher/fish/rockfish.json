@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:rockfish",
-    "item": "hybrid-aquatic:rockfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:rockfish"
   },
   "difficulty": {
     "decay": 1.0,

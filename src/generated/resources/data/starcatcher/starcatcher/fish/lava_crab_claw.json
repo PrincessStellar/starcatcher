@@ -1,8 +1,7 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:lava_crab_claw",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:lava_crab_claw"
   },
   "difficulty": {
     "decay": 0.0,

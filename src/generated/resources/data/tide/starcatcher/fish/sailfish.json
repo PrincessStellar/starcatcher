@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:sailfish",
     "fish_bucket": "tide:sailfish_bucket",
-    "item": "tide:sailfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:sailfish"
   },
   "difficulty": {
     "decay": 0.0,

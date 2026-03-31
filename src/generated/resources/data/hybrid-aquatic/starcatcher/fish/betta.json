@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:betta",
-    "item": "hybrid-aquatic:betta",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:betta"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:enderfin",
     "fish_bucket": "tide:enderfin_bucket",
-    "item": "tide:incandescent_larva",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:incandescent_larva"
   },
   "difficulty": {
     "decay": 1.0,

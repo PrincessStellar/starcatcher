@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "betterend:cubozoa",
     "fish_bucket": "betterend:bucket_cubozoa",
-    "item": "betterend:gelatine",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "betterend:gelatine"
   },
   "difficulty": {
     "decay": 1.0,

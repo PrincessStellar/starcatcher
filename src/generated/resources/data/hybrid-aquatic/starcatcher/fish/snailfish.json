@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:snailfish",
-    "item": "hybrid-aquatic:snailfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:snailfish"
   },
   "difficulty": {
     "decay": 1.0,

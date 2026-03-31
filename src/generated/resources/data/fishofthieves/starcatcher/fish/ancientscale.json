@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:ancientscale",
     "fish_bucket": "fishofthieves:ancientscale_bucket",
-    "item": "fishofthieves:ancientscale",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:ancientscale"
   },
   "difficulty": {
     "decay": 1.0,

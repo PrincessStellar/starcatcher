@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:snowflaketail",
     "fish_bucket": "unusualfishmod:snowflake_tail_fish_bucket",
-    "item": "unusualfishmod:raw_snowflake",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_snowflake"
   },
   "difficulty": {
     "decay": 1.0,

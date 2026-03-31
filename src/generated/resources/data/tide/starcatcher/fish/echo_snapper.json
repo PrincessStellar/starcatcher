@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:echo_snapper",
     "fish_bucket": "tide:echo_snapper_bucket",
-    "item": "tide:echo_snapper",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:echo_snapper"
   },
   "difficulty": {
     "decay": 0.0,

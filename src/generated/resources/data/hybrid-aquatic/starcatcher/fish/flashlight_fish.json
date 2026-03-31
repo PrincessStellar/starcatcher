@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:flashlight_fish",
-    "item": "hybrid-aquatic:flashlight_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:flashlight_fish"
   },
   "difficulty": {
     "decay": 1.0,

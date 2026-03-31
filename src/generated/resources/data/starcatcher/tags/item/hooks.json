@@ -8,6 +8,7 @@
     "starcatcher:stone_hook",
     "starcatcher:split_hook",
     "starcatcher:heavy_hook",
+    "starcatcher:vanilla_hook",
     {
       "id": "tide:void_fishing_hook",
       "required": false

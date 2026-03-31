@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:glowdine",
     "fish_bucket": "netherdepthsupgrade:glowdine_bucket",
-    "item": "netherdepthsupgrade:glowdine",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:glowdine"
   },
   "difficulty": {
     "decay": 1.0,

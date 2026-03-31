@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:ender_glider",
     "fish_bucket": "tide:ender_glider_bucket",
-    "item": "tide:ender_glider",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:ender_glider"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:uranias_pisces",
     "fish_bucket": "tide:uranias_pisces_bucket",
-    "item": "tide:uranias_pisces",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:uranias_pisces"
   },
   "difficulty": {
     "decay": 1.0,

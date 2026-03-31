@@ -10,7 +10,7 @@
     "entity": "aquaculture:piranha",
     "fish_bucket": "aquaculture:piranha_bucket",
     "item": "aquaculture:piranha",
-    "treasure": "aquaculture:treasure_chest"
+    "treasure_loot_table": "aquaculture:treasure_chest"
   },
   "difficulty": {
     "decay": 0.0,

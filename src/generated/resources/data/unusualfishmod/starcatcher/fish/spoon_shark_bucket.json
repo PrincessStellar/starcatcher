@@ -9,8 +9,7 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:spoon_shark",
-    "item": "unusualfishmod:spoon_shark_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:spoon_shark_bucket"
   },
   "difficulty": {
     "decay": 1.0,

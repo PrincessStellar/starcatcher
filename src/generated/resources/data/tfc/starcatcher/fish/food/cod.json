@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tfc:cod",
     "fish_bucket": "tfc:bucket/cod",
-    "item": "tfc:food/cod",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:food/cod"
   },
   "difficulty": {
     "decay": 1.0,

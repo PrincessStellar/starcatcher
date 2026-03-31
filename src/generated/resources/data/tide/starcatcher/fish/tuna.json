@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:tuna",
     "fish_bucket": "tide:tuna_bucket",
-    "item": "tide:tuna",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:tuna"
   },
   "difficulty": {
     "decay": 1.0,

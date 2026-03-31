@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:damselfish",
-    "item": "hybrid-aquatic:damselfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:damselfish"
   },
   "difficulty": {
     "decay": 1.0,

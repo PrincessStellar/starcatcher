@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:stonefish",
-    "item": "hybrid-aquatic:stonefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:stonefish"
   },
   "difficulty": {
     "decay": 1.0,

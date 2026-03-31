@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:snatcher_squid",
     "fish_bucket": "tide:snatcher_squid_bucket",
-    "item": "tide:snatcher_squid",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:snatcher_squid"
   },
   "difficulty": {
     "decay": 0.0,

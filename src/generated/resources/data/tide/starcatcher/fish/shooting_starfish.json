@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:shooting_starfish",
     "fish_bucket": "tide:shooting_starfish_bucket",
-    "item": "tide:shooting_starfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:shooting_starfish"
   },
   "difficulty": {
     "decay": 1.0,

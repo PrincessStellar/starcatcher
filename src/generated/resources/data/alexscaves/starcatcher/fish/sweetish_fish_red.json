@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "alexscaves:sweetish_fish",
     "fish_bucket": "alexscaves:sweetish_fish_red_bucket",
-    "item": "alexscaves:sweetish_fish_red",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "alexscaves:sweetish_fish_red"
   },
   "difficulty": {
     "decay": 1.0,

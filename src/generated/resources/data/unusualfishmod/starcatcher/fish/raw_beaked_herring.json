@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:beaked_herring",
     "fish_bucket": "unusualfishmod:beaked_herring_bucket",
-    "item": "unusualfishmod:raw_beaked_herring",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_beaked_herring"
   },
   "difficulty": {
     "decay": 1.0,

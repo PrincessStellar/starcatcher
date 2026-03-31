@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:wizard_jelly",
     "fish_bucket": "unusualfishmod:wizard_jelly_bucket",
-    "item": "unusualfishmod:wizard_jelly_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:wizard_jelly_bucket"
   },
   "difficulty": {
     "decay": 1.0,

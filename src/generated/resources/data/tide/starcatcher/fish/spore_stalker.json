@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:spore_stalker",
     "fish_bucket": "tide:spore_stalker_bucket",
-    "item": "tide:spore_stalker",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:spore_stalker"
   },
   "difficulty": {
     "decay": 1.0,

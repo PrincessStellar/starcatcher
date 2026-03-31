@@ -10,7 +10,7 @@
     "entity": "aquaculture:muskellunge",
     "fish_bucket": "aquaculture:muskellunge_bucket",
     "item": "aquaculture:muskellunge",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "spawn:tuna",
     "fish_bucket": "spawn:tuna_egg_bucket",
-    "item": "spawn:tuna_egg_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "spawn:tuna_egg_bucket"
   },
   "difficulty": {
     "decay": 1.0,

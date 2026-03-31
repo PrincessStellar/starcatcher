@@ -1,8 +1,7 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:boot",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:boot"
   },
   "difficulty": {
     "decay": 0.0,

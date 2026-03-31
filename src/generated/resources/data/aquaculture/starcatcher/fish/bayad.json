@@ -10,7 +10,7 @@
     "entity": "aquaculture:bayad",
     "fish_bucket": "aquaculture:bayad_bucket",
     "item": "aquaculture:bayad",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-31T01:12:06.737963	Item Models: starcatcher
+// 1.21.1	2026-03-31T18:31:46.1981919	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -197,6 +197,7 @@ a8acb4695fdb9758d18a41ff8aceaecd7edfb5f7 assets/starcatcher/models/item/trophy_g
 0d146fe6435760833a0678c8ffda95f73a139b12 assets/starcatcher/models/item/twilight_koi.json
 c9e4806b81ff40a7424f42dcc56ee59e8736cabd assets/starcatcher/models/item/unknown_fish.json
 2e39ade97290d6287dc4d3e326be10567302ed1e assets/starcatcher/models/item/vanilla_bobber.json
+f8244e258c3aa09083edb536856e8ed6d1343e34 assets/starcatcher/models/item/vanilla_hook.json
 8e7e929a1bb8b539880cf10ea60c810b48071a69 assets/starcatcher/models/item/vesani.json
 38d92c7bf5f06561e97a46df04099c8c0354ec7d assets/starcatcher/models/item/vivid_moss.json
 f52bb9144ddc25b53baa049f5ae12af3f707a9bb assets/starcatcher/models/item/voidbiter.json

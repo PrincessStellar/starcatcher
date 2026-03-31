@@ -8,7 +8,7 @@
   "base_chance": 1,
   "catch_info": {
     "item": "aquaculture:goldfish",
-    "treasure": "aquaculture:box"
+    "treasure_loot_table": "aquaculture:box"
   },
   "difficulty": {
     "decay": 1.0,

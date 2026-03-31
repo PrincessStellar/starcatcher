@@ -3,8 +3,7 @@
   "catch_info": {
     "entity": "minecraft:cod",
     "fish_bucket": "minecraft:cod_bucket",
-    "item": "minecraft:cod",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "minecraft:cod"
   },
   "difficulty": {
     "decay": 1.0,

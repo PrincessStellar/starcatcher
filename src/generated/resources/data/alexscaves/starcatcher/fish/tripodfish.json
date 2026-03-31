@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "alexscaves:tripodfish",
     "fish_bucket": "alexscaves:tripodfish_bucket",
-    "item": "alexscaves:tripodfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "alexscaves:tripodfish"
   },
   "difficulty": {
     "decay": 1.0,

@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:ocean_sunfish",
-    "item": "hybrid-aquatic:ocean_sunfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:ocean_sunfish"
   },
   "difficulty": {
     "decay": 1.0,

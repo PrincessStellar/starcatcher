@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:soulscale",
     "fish_bucket": "tide:soulscale_bucket",
-    "item": "tide:soulscale",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:soulscale"
   },
   "difficulty": {
     "decay": 1.0,

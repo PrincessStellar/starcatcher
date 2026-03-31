@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:anglerfish",
-    "item": "hybrid-aquatic:anglerfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:anglerfish"
   },
   "difficulty": {
     "decay": 1.0,

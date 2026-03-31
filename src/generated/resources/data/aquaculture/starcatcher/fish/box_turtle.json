@@ -9,7 +9,7 @@
   "catch_info": {
     "entity": "aquaculture:box_turtle",
     "item": "aquaculture:box_turtle",
-    "treasure": "aquaculture:treasure_chest"
+    "treasure_loot_table": "aquaculture:treasure_chest"
   },
   "difficulty": {
     "decay": 1.0,

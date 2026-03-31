@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:stingray",
-    "item": "hybrid-aquatic:blue_spotted_stingray",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:blue_spotted_stingray"
   },
   "difficulty": {
     "decay": 1.0,

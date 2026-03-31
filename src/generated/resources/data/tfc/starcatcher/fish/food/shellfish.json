@@ -8,8 +8,7 @@
   "base_chance": 1,
   "catch_info": {
     "entity": "tfc:crayfish",
-    "item": "tfc:food/shellfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:food/shellfish"
   },
   "difficulty": {
     "decay": 1.0,

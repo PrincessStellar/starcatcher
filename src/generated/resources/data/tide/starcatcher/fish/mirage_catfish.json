@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:mirage_catfish",
     "fish_bucket": "tide:mirage_catfish_bucket",
-    "item": "tide:mirage_catfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:mirage_catfish"
   },
   "difficulty": {
     "decay": 1.0,

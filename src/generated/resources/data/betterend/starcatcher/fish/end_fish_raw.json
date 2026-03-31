@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "betterend:end_fish",
     "fish_bucket": "betterend:bucket_end_fish",
-    "item": "betterend:end_fish_raw",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "betterend:end_fish_raw"
   },
   "difficulty": {
     "decay": 1.0,

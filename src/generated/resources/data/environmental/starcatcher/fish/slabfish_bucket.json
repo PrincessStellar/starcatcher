@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "environmental:slabfish",
     "fish_bucket": "environmental:slabfish_bucket",
-    "item": "environmental:slabfish_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "environmental:slabfish_bucket"
   },
   "difficulty": {
     "decay": 1.0,

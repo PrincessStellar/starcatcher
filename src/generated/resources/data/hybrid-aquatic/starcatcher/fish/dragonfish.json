@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:dragonfish",
-    "item": "hybrid-aquatic:dragonfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:dragonfish"
   },
   "difficulty": {
     "decay": 1.0,

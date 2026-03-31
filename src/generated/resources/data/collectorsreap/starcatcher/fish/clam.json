@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "collectorsreap:clam",
     "fish_bucket": "collectorsreap:clam_bucket",
-    "item": "collectorsreap:clam",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "collectorsreap:clam"
   },
   "difficulty": {
     "decay": 1.0,

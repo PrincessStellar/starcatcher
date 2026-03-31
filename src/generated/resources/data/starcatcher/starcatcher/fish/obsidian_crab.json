@@ -1,8 +1,7 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:obsidian_crab",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:obsidian_crab"
   },
   "difficulty": {
     "decay": 1.0,

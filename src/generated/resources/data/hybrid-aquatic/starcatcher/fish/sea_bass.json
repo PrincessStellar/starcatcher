@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:sea_bass",
-    "item": "hybrid-aquatic:sea_bass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:sea_bass"
   },
   "difficulty": {
     "decay": 1.0,

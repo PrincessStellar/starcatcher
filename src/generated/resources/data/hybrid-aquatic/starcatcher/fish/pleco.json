@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:pleco",
-    "item": "hybrid-aquatic:pleco",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:pleco"
   },
   "difficulty": {
     "decay": 1.0,

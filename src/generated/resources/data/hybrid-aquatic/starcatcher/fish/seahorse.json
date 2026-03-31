@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:seahorse",
-    "item": "hybrid-aquatic:seahorse",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:seahorse"
   },
   "difficulty": {
     "decay": 1.0,

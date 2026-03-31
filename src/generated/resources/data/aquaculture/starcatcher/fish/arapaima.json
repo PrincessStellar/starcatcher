@@ -10,7 +10,7 @@
     "entity": "aquaculture:arapaima",
     "fish_bucket": "aquaculture:arapaima_bucket",
     "item": "aquaculture:arapaima",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

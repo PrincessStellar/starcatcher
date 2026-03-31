@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:judgment_fish",
     "fish_bucket": "tide:judgment_fish_bucket",
-    "item": "tide:judgment_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:judgment_fish"
   },
   "difficulty": {
     "decay": 1.0,

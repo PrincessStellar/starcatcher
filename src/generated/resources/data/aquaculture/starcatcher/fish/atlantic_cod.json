@@ -10,7 +10,7 @@
     "entity": "aquaculture:atlantic_cod",
     "fish_bucket": "aquaculture:atlantic_cod_bucket",
     "item": "aquaculture:atlantic_cod",
-    "treasure": "aquaculture:box"
+    "treasure_loot_table": "aquaculture:box"
   },
   "difficulty": {
     "decay": 1.0,

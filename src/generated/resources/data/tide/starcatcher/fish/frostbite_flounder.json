@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:frostbite_flounder",
     "fish_bucket": "tide:frostbite_flounder_bucket",
-    "item": "tide:frostbite_flounder",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:frostbite_flounder"
   },
   "difficulty": {
     "decay": 1.0,

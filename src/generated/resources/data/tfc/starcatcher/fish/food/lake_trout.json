@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tfc:lake_trout",
     "fish_bucket": "tfc:bucket/lake_trout",
-    "item": "tfc:food/lake_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:food/lake_trout"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:endergazer",
     "fish_bucket": "tide:endergazer_bucket",
-    "item": "tide:endergazer",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:endergazer"
   },
   "difficulty": {
     "decay": 1.0,

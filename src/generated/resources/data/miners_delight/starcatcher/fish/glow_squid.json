@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "minecraft:glow_squid",
-    "item": "miners_delight:glow_squid",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "miners_delight:glow_squid"
   },
   "difficulty": {
     "decay": 1.0,

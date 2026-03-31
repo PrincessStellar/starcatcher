@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "collectorsreap:urchin",
     "fish_bucket": "collectorsreap:urchin_bucket",
-    "item": "collectorsreap:urchin",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "collectorsreap:urchin"
   },
   "difficulty": {
     "decay": 1.0,

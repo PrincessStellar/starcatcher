@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "upgrade_aquatic:great_thrasher",
     "item": "upgrade_aquatic:thrasher_tooth",
-    "override_minigame_item": "starcatcher:unknown_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "override_minigame_item": "starcatcher:unknown_fish"
   },
   "difficulty": {
     "decay": 0.0,

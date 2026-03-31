@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:obsidian_pike",
     "fish_bucket": "tide:obsidian_pike_bucket",
-    "item": "tide:obsidian_pike",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:obsidian_pike"
   },
   "difficulty": {
     "decay": 1.0,

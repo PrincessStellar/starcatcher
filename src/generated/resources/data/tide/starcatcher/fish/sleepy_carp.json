@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:sleepy_carp",
     "fish_bucket": "tide:sleepy_carp_bucket",
-    "item": "tide:sleepy_carp",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:sleepy_carp"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:abyss_angler",
     "fish_bucket": "tide:abyss_angler_bucket",
-    "item": "tide:abyss_angler",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:abyss_angler"
   },
   "difficulty": {
     "decay": 1.0,

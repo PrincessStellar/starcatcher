@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:tetra",
-    "item": "hybrid-aquatic:neon_tetra",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:neon_tetra"
   },
   "difficulty": {
     "decay": 1.0,

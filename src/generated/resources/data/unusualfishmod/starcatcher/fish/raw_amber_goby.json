@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:amber_goby",
     "fish_bucket": "unusualfishmod:amber_goby_bucket",
-    "item": "unusualfishmod:raw_amber_goby",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_amber_goby"
   },
   "difficulty": {
     "decay": 1.0,

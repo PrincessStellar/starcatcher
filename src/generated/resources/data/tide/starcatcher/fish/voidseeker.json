@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:voidseeker",
     "fish_bucket": "tide:voidseeker_bucket",
-    "item": "tide:voidseeker",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:voidseeker"
   },
   "difficulty": {
     "decay": 0.2,

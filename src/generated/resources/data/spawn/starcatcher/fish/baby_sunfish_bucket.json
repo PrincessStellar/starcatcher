@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "spawn:sunfish",
     "fish_bucket": "spawn:baby_sunfish_bucket",
-    "item": "spawn:baby_sunfish_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "spawn:baby_sunfish_bucket"
   },
   "difficulty": {
     "decay": 1.0,

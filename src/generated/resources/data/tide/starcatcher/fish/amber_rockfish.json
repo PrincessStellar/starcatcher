@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:amber_rockfish",
     "fish_bucket": "tide:amber_rockfish_bucket",
-    "item": "tide:amber_rockfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:amber_rockfish"
   },
   "difficulty": {
     "decay": 0.0,

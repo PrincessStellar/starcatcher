@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:blindsailfin",
     "fish_bucket": "unusualfishmod:blind_sailfin_bucket",
-    "item": "unusualfishmod:raw_blind_sailfin",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_blind_sailfin"
   },
   "difficulty": {
     "decay": 1.0,

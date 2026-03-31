@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:manta_ray",
     "fish_bucket": "tide:manta_ray_bucket",
-    "item": "tide:manta_ray",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:manta_ray"
   },
   "difficulty": {
     "decay": 0.0,

@@ -2,8 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:frostjaw_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:frostjaw_trout"
   },
   "difficulty": {
     "decay": 0.0,

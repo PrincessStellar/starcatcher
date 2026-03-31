@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:demon_herring",
     "fish_bucket": "unusualfishmod:demon_herring_bucket",
-    "item": "unusualfishmod:raw_demon_herring",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_demon_herring"
   },
   "difficulty": {
     "decay": 1.0,

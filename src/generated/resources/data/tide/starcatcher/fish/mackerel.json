@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:mackerel",
     "fish_bucket": "tide:mackerel_bucket",
-    "item": "tide:mackerel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:mackerel"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:mantyvern",
     "fish_bucket": "tide:mantyvern_bucket",
-    "item": "tide:mantyvern",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:mantyvern"
   },
   "difficulty": {
     "decay": 1.0,

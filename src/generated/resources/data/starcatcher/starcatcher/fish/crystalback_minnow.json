@@ -2,8 +2,7 @@
   "base_chance": 8,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:crystalback_minnow",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:crystalback_minnow"
   },
   "difficulty": {
     "decay": 1.0,

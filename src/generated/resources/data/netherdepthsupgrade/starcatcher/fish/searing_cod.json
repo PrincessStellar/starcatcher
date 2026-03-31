@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:searing_cod",
     "fish_bucket": "netherdepthsupgrade:searing_cod_bucket",
-    "item": "netherdepthsupgrade:searing_cod",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:searing_cod"
   },
   "difficulty": {
     "decay": 1.0,

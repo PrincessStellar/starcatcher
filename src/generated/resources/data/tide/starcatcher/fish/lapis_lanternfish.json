@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:lapis_lanternfish",
     "fish_bucket": "tide:lapis_lanternfish_bucket",
-    "item": "tide:lapis_lanternfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:lapis_lanternfish"
   },
   "difficulty": {
     "decay": 1.0,

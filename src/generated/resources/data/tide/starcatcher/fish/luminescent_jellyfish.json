@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:crystalline_carp",
     "fish_bucket": "tide:crystalline_carp_bucket",
-    "item": "tide:luminescent_jellyfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:luminescent_jellyfish"
   },
   "difficulty": {
     "decay": 1.0,

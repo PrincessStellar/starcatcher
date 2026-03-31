@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:oscar",
-    "item": "hybrid-aquatic:oscar",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:oscar"
   },
   "difficulty": {
     "decay": 1.0,

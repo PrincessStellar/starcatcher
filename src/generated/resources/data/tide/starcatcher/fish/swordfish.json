@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:swordfish",
     "fish_bucket": "tide:swordfish_bucket",
-    "item": "tide:swordfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:swordfish"
   },
   "difficulty": {
     "decay": 0.0,

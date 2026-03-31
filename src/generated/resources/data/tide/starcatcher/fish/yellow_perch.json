@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:yellow_perch",
     "fish_bucket": "tide:yellow_perch_bucket",
-    "item": "tide:yellow_perch",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:yellow_perch"
   },
   "difficulty": {
     "decay": 1.0,

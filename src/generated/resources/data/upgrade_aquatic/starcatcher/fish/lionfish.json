@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "upgrade_aquatic:lionfish",
     "fish_bucket": "upgrade_aquatic:lionfish_bucket",
-    "item": "upgrade_aquatic:lionfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "upgrade_aquatic:lionfish"
   },
   "difficulty": {
     "decay": 0.0,

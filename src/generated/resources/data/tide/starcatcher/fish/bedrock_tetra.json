@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:bedrock_tetra",
     "fish_bucket": "tide:bedrock_tetra_bucket",
-    "item": "tide:bedrock_tetra",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:bedrock_tetra"
   },
   "difficulty": {
     "decay": 0.0,

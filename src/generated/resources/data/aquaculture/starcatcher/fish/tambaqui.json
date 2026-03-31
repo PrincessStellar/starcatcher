@@ -10,7 +10,7 @@
     "entity": "aquaculture:tambaqui",
     "fish_bucket": "aquaculture:tambaqui_bucket",
     "item": "aquaculture:tambaqui",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

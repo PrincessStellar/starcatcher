@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:windbass",
     "fish_bucket": "tide:windbass_bucket",
-    "item": "tide:windbass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:windbass"
   },
   "difficulty": {
     "decay": 0.0,

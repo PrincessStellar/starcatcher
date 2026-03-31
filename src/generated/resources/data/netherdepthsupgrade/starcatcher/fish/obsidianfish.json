@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:obsidianfish",
     "fish_bucket": "netherdepthsupgrade:obsidianfish_bucket",
-    "item": "netherdepthsupgrade:obsidianfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:obsidianfish"
   },
   "difficulty": {
     "decay": 0.0,

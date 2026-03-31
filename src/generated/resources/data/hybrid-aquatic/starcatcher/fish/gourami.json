@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:gourami",
-    "item": "hybrid-aquatic:gourami",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:gourami"
   },
   "difficulty": {
     "decay": 1.0,

@@ -2,8 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:crystalback_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:crystalback_trout"
   },
   "difficulty": {
     "decay": 1.0,

@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:barreleye",
-    "item": "hybrid-aquatic:barreleye",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:barreleye"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:white_crappie",
     "fish_bucket": "tide:white_crappie_bucket",
-    "item": "tide:white_crappie",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:white_crappie"
   },
   "difficulty": {
     "decay": 1.0,

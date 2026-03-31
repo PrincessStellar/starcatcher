@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:stout_bichir",
     "fish_bucket": "unusualfishmod:stout_bichir_bucket",
-    "item": "unusualfishmod:stout_bichir_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:stout_bichir_bucket"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:walleye",
     "fish_bucket": "tide:walleye_bucket",
-    "item": "tide:walleye",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:walleye"
   },
   "difficulty": {
     "decay": 1.0,

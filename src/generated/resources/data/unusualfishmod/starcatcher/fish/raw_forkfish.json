@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:forkfish",
     "fish_bucket": "unusualfishmod:forkfish_bucket",
-    "item": "unusualfishmod:raw_forkfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_forkfish"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:hatchet_fish",
     "fish_bucket": "unusualfishmod:hatchet_fish_bucket",
-    "item": "unusualfishmod:raw_hatchetfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_hatchetfish"
   },
   "difficulty": {
     "decay": 1.0,

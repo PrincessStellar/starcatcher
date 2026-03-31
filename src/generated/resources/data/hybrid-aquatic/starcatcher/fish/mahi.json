@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:mahi",
-    "item": "hybrid-aquatic:mahi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:mahi"
   },
   "difficulty": {
     "decay": 1.0,

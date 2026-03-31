@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:clownfish",
-    "item": "hybrid-aquatic:clownfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:clownfish"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:volcano_tuna",
     "fish_bucket": "tide:volcano_tuna_bucket",
-    "item": "tide:volcano_tuna",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:volcano_tuna"
   },
   "difficulty": {
     "decay": 1.0,

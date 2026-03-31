@@ -2,8 +2,7 @@
   "base_chance": 2,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:ward",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:ward"
   },
   "difficulty": {
     "decay": 0.0,

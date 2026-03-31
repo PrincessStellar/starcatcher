@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:pondie",
     "fish_bucket": "fishofthieves:pondie_bucket",
-    "item": "fishofthieves:pondie",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:pondie"
   },
   "difficulty": {
     "decay": 1.0,

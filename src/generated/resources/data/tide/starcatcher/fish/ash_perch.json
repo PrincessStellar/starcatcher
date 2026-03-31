@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:ash_perch",
     "fish_bucket": "tide:ash_perch_bucket",
-    "item": "tide:ash_perch",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:ash_perch"
   },
   "difficulty": {
     "decay": 1.0,

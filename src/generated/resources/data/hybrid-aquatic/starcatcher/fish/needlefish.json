@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:needlefish",
-    "item": "hybrid-aquatic:needlefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:needlefish"
   },
   "difficulty": {
     "decay": 1.0,

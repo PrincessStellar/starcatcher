@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:marstilus",
     "fish_bucket": "tide:marstilus_bucket",
-    "item": "tide:marstilus",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:marstilus"
   },
   "difficulty": {
     "decay": 1.0,

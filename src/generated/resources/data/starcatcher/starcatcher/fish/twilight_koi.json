@@ -2,8 +2,7 @@
   "base_chance": 25,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:twilight_koi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:twilight_koi"
   },
   "difficulty": {
     "decay": 1.0,

@@ -1,8 +1,7 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:geode_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:geode_eel"
   },
   "difficulty": {
     "decay": 1.0,

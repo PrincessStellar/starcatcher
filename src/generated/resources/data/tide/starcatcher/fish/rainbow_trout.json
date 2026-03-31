@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:rainbow_trout",
     "fish_bucket": "tide:rainbow_trout_bucket",
-    "item": "tide:rainbow_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:rainbow_trout"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:ember_koi",
     "fish_bucket": "tide:ember_koi_bucket",
-    "item": "tide:ember_koi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:ember_koi"
   },
   "difficulty": {
     "decay": 1.0,

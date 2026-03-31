@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:magmacubefish",
     "fish_bucket": "netherdepthsupgrade:magmacubefish_bucket",
-    "item": "netherdepthsupgrade:magmacubefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:magmacubefish"
   },
   "difficulty": {
     "decay": 1.0,

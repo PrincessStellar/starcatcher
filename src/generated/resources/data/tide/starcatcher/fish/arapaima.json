@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:arapaima",
     "fish_bucket": "tide:arapaima_bucket",
-    "item": "tide:arapaima",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:arapaima"
   },
   "difficulty": {
     "decay": 1.0,

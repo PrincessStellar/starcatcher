@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:slimy_salmon",
     "fish_bucket": "tide:slimy_salmon_bucket",
-    "item": "tide:slimy_salmon",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:slimy_salmon"
   },
   "difficulty": {
     "decay": 1.0,

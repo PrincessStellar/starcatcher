@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "upgrade_aquatic:perch",
     "fish_bucket": "upgrade_aquatic:perch_bucket",
-    "item": "upgrade_aquatic:perch",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "upgrade_aquatic:perch"
   },
   "difficulty": {
     "decay": 1.0,

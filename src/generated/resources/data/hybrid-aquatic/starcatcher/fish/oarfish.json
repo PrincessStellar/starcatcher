@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:oarfish",
-    "item": "hybrid-aquatic:oarfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:oarfish"
   },
   "difficulty": {
     "decay": 1.0,

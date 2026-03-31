@@ -2,8 +2,7 @@
   "base_chance": 1,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:joel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:joel"
   },
   "difficulty": {
     "decay": 1.0,

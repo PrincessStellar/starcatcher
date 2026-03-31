@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:plentifin",
     "fish_bucket": "fishofthieves:plentifin_bucket",
-    "item": "fishofthieves:plentifin",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:plentifin"
   },
   "difficulty": {
     "decay": 1.0,

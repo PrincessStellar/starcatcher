@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:carp",
     "fish_bucket": "tide:carp_bucket",
-    "item": "tide:carp",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:carp"
   },
   "difficulty": {
     "decay": 1.0,

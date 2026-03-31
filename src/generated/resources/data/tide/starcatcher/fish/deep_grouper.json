@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:deep_grouper",
     "fish_bucket": "tide:deep_grouper_bucket",
-    "item": "tide:deep_grouper",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:deep_grouper"
   },
   "difficulty": {
     "decay": 1.0,

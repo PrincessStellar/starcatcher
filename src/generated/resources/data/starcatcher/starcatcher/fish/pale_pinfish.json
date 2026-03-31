@@ -2,8 +2,7 @@
   "base_chance": 15,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:pale_pinfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:pale_pinfish"
   },
   "difficulty": {
     "decay": 0.0,

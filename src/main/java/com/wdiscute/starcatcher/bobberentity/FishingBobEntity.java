@@ -207,6 +207,9 @@ public class FishingBobEntity extends Projectile
             return;
         }
 
+        //load treasure itemstack
+        fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
+
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !Config.ENABLE_MINIGAME.get())
                 || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(Config.ENABLE_MINIGAME.get())))
@@ -215,19 +218,11 @@ public class FishingBobEntity extends Projectile
         }
         else
         {
-            FishProperties fpToClient = fpToFish;
-            //we use a for here so several modifiers can edit the FP
-            for (AbstractCatchModifier acm : modifiers)
-            {
-                FishProperties fish = acm.overrideFpToClient(fpToClient);
-                if(fish != null) fpToClient = fish;
-            }
-
             //send fishing minigame payload to client with FP
-            PacketDistributor.sendToPlayer(
-                    ((ServerPlayer) player),
-                    new FishingStartedPayload(fpToClient, rod)
-            );
+            FishProperties fp = fpToFish.loadTreasureToClient();
+            FishingStartedPayload payload = new FishingStartedPayload(fp, rod);
+
+            PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
     }
 

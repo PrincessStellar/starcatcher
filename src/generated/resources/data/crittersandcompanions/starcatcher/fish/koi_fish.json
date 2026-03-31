@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "crittersandcompanions:koi_fish",
     "fish_bucket": "crittersandcompanions:koi_fish_bucket",
-    "item": "crittersandcompanions:koi_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "crittersandcompanions:koi_fish"
   },
   "difficulty": {
     "decay": 1.0,

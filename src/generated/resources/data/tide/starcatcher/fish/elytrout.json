@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:elytrout",
     "fish_bucket": "tide:elytrout_bucket",
-    "item": "tide:elytrout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:elytrout"
   },
   "difficulty": {
     "decay": 1.0,

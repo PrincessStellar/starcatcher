@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:glowfish",
     "fish_bucket": "tide:glowfish_bucket",
-    "item": "tide:glowfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:glowfish"
   },
   "difficulty": {
     "decay": 1.0,

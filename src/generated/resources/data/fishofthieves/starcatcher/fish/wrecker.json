@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:wrecker",
     "fish_bucket": "fishofthieves:wrecker_bucket",
-    "item": "fishofthieves:wrecker",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:wrecker"
   },
   "difficulty": {
     "decay": 1.0,

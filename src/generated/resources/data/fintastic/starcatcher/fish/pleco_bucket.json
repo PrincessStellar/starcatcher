@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "fintastic:pleco",
     "fish_bucket": "fintastic:pleco_bucket",
-    "item": "fintastic:pleco_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fintastic:pleco_bucket"
   },
   "difficulty": {
     "decay": 1.0,

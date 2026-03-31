@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:dutchman_sock",
     "fish_bucket": "tide:dutchman_sock_bucket",
-    "item": "tide:dutchman_sock",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:dutchman_sock"
   },
   "difficulty": {
     "decay": 0.0,

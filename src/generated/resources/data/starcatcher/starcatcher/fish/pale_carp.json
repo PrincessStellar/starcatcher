@@ -2,8 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:pale_carp",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:pale_carp"
   },
   "difficulty": {
     "decay": 1.0,

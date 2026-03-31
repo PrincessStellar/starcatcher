@@ -10,7 +10,7 @@
     "entity": "aquaculture:gar",
     "fish_bucket": "aquaculture:gar_bucket",
     "item": "aquaculture:gar",
-    "treasure": "aquaculture:box"
+    "treasure_loot_table": "aquaculture:box"
   },
   "difficulty": {
     "decay": 1.0,
@@ -66,9 +66,9 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "max_y": 2147483647,
+      "min_y": 100,
+      "translation_override": "gui.guide.elevation.mountains"
     },
     {
       "type": "starcatcher:season",

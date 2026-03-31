@@ -10,7 +10,7 @@
     "entity": "aquaculture:carp",
     "fish_bucket": "aquaculture:carp_bucket",
     "item": "aquaculture:carp",
-    "treasure": "aquaculture:lockbox"
+    "treasure_loot_table": "aquaculture:lockbox"
   },
   "difficulty": {
     "decay": 1.0,

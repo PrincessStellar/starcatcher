@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:wrasse",
-    "item": "hybrid-aquatic:sheepshead_wrasse",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:sheepshead_wrasse"
   },
   "difficulty": {
     "decay": 1.0,

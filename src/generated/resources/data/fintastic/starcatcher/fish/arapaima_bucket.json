@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "fintastic:arapaima",
     "fish_bucket": "fintastic:arapaima_bucket",
-    "item": "fintastic:arapaima_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fintastic:arapaima_bucket"
   },
   "difficulty": {
     "decay": 1.0,

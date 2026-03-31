@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "collectorsreap:tiger_prawn",
     "fish_bucket": "collectorsreap:tiger_prawn_bucket",
-    "item": "collectorsreap:tiger_prawn",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "collectorsreap:tiger_prawn"
   },
   "difficulty": {
     "decay": 1.0,

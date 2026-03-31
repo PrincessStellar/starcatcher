@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:porcupine_lobsta",
     "fish_bucket": "unusualfishmod:porcupine_lobsta_bucket",
-    "item": "unusualfishmod:porcupine_lobsta_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:porcupine_lobsta_bucket"
   },
   "difficulty": {
     "decay": 1.0,

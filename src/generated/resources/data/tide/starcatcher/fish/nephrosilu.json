@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:nephrosilu",
     "fish_bucket": "tide:nephrosilu_bucket",
-    "item": "tide:nephrosilu",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:nephrosilu"
   },
   "difficulty": {
     "decay": 0.0,

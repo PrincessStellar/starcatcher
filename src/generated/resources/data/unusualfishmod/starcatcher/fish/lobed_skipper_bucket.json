@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:skipper",
     "fish_bucket": "unusualfishmod:lobed_skipper_bucket",
-    "item": "unusualfishmod:lobed_skipper_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:lobed_skipper_bucket"
   },
   "difficulty": {
     "decay": 1.0,

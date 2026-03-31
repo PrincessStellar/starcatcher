@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:deep_crawler",
     "fish_bucket": "unusualfishmod:deep_crawler_bucket",
-    "item": "unusualfishmod:deep_crawler_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:deep_crawler_bucket"
   },
   "difficulty": {
     "decay": 1.0,

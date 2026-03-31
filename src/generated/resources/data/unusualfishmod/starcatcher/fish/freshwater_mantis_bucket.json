@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:freshwater_mantis",
     "fish_bucket": "unusualfishmod:freshwater_mantis_bucket",
-    "item": "unusualfishmod:freshwater_mantis_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:freshwater_mantis_bucket"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:picklefish",
     "fish_bucket": "unusualfishmod:picklefish_bucket",
-    "item": "unusualfishmod:picklefish_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:picklefish_bucket"
   },
   "difficulty": {
     "decay": 1.0,

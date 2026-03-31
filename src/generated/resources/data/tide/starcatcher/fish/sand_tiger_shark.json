@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:sand_tiger_shark",
     "fish_bucket": "tide:sand_tiger_shark_bucket",
-    "item": "tide:sand_tiger_shark",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:sand_tiger_shark"
   },
   "difficulty": {
     "decay": 0.0,

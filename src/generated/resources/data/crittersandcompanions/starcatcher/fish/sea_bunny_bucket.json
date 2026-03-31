@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "crittersandcompanions:sea_bunny",
     "fish_bucket": "crittersandcompanions:sea_bunny_bucket",
-    "item": "crittersandcompanions:sea_bunny_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "crittersandcompanions:sea_bunny_bucket"
   },
   "difficulty": {
     "decay": 1.0,

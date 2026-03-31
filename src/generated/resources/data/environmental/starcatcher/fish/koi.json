@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "environmental:koi",
     "fish_bucket": "environmental:koi_bucket",
-    "item": "environmental:koi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "environmental:koi"
   },
   "difficulty": {
     "decay": 1.0,

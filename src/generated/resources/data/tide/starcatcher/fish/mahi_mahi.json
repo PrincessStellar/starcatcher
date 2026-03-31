@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:mahi_mahi",
     "fish_bucket": "tide:mahi_mahi_bucket",
-    "item": "tide:mahi_mahi",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:mahi_mahi"
   },
   "difficulty": {
     "decay": 0.0,

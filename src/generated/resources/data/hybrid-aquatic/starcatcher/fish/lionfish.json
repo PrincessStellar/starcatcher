@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:lionfish",
-    "item": "hybrid-aquatic:lionfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:lionfish"
   },
   "difficulty": {
     "decay": 1.0,

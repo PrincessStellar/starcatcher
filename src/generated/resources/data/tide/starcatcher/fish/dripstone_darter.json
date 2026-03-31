@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:dripstone_darter",
     "fish_bucket": "tide:dripstone_darter_bucket",
-    "item": "tide:dripstone_darter",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:dripstone_darter"
   },
   "difficulty": {
     "decay": 1.0,

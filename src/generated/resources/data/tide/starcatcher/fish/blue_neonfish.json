@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:blue_neonfish",
     "fish_bucket": "tide:blue_neonfish_bucket",
-    "item": "tide:blue_neonfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:blue_neonfish"
   },
   "difficulty": {
     "decay": 1.0,

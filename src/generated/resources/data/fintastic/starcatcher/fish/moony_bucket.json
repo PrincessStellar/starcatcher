@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "fintastic:moony",
     "fish_bucket": "fintastic:moony_bucket",
-    "item": "fintastic:moony_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fintastic:moony_bucket"
   },
   "difficulty": {
     "decay": 1.0,

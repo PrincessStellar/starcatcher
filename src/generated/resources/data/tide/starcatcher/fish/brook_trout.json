@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:brook_trout",
     "fish_bucket": "tide:brook_trout_bucket",
-    "item": "tide:brook_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:brook_trout"
   },
   "difficulty": {
     "decay": 1.0,

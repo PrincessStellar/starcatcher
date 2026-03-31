@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tfc:smallmouth_bass",
     "fish_bucket": "tfc:bucket/smallmouth_bass",
-    "item": "tfc:food/smallmouth_bass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:food/smallmouth_bass"
   },
   "difficulty": {
     "decay": 1.0,

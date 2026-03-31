@@ -9,6 +9,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
+import com.wdiscute.starcatcher.guide.NewSettingsScreen;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
@@ -45,6 +46,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -120,6 +123,62 @@ public record FishProperties(
             return Component.translatable(catchInfo.fish.value().getDescriptionId());
     }
 
+    public FishProperties loadTreasure(ServerPlayer player)
+    {
+        //if treasure itemstack already exists, dont do anything
+        if(!catchInfo.treasureIs.isEmpty()) return this;
+
+        //otherwise create itemstack from loot pool
+        LootParams lootparams = new LootParams.Builder((ServerLevel) player.level())
+                .withParameter(LootContextParams.ORIGIN, player.position())
+                .withParameter(LootContextParams.TOOL, player.getMainHandItem())
+                .withParameter(LootContextParams.THIS_ENTITY, player)
+                .withLuck(player.getLuck())
+                .create(LootContextParamSets.FISHING);
+
+        LootTable table = player.level().getServer().reloadableRegistries().getLootTable(
+                ResourceKey.create(Registries.LOOT_TABLE, catchInfo.treasure)
+        );
+
+        ObjectArrayList<ItemStack> randomItems = table.getRandomItems(lootparams);
+
+        System.out.println(randomItems);
+
+        return new FishProperties(
+                new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
+                        catchInfo.overrideMinigameWith, catchInfo.treasure, randomItems.get(0), catchInfo.fishEntryType),
+                star,
+                baseChance,
+                sizeWeight,
+                rarity,
+                restrictions,
+                dif,
+                skipMinigame,
+                hasGuideEntry
+        );
+    }
+
+    public FishProperties loadTreasureToClient()
+    {
+        //if treasure itemstack already exists, dont do anything
+        if(catchInfo.treasureIs.isEmpty()) return this;
+
+        ItemStack is = new ItemStack(catchInfo.treasureIs.getItem());
+
+        return new FishProperties(
+                new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
+                        catchInfo.overrideMinigameWith, catchInfo.treasure, is, catchInfo.fishEntryType),
+                star,
+                baseChance,
+                sizeWeight,
+                rarity,
+                restrictions,
+                dif,
+                skipMinigame,
+                hasGuideEntry
+        );
+    }
+
     public ResourceLocation toLoc(Level level)
     {
         return U.getRlFromFp(level, this);
@@ -191,6 +250,12 @@ public record FishProperties(
         public Builder withTreasure(ResourceLocation treasure)
         {
             this.catchInfo.treasure = treasure;
+            return this;
+        }
+
+        public Builder withTreasure(ItemStack itemStack)
+        {
+            this.catchInfo.treasureIs = itemStack;
             return this;
         }
 
@@ -333,6 +398,7 @@ public record FishProperties(
             boolean alwaysSpawnEntity,
             Holder<Item> overrideMinigameWith,
             ResourceLocation treasure,
+            ItemStack treasureIs,
             FishEntryType fishEntryType
     )
     {
@@ -365,7 +431,8 @@ public record FishProperties(
                         BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", U.holderEntity("starcatcher", "fish")).forGetter(CatchInfo::entityToSpawn),
                         Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
-                        ResourceLocation.CODEC.optionalFieldOf("treasure", U.rl("gameplay/fishing/treasure")).forGetter(CatchInfo::treasure),
+                        ResourceLocation.CODEC.optionalFieldOf("treasure_loot_table", U.rl("gameplay/fishing/treasure")).forGetter(CatchInfo::treasure),
+                        ItemStack.OPTIONAL_CODEC.optionalFieldOf("treasure_item", ItemStack.EMPTY).forGetter(CatchInfo::treasureIs),
                         FishEntryType.CODEC.optionalFieldOf("type", FishEntryType.FISH).forGetter(CatchInfo::fishEntryType)
                 ).apply(instance, CatchInfo::new));
 
@@ -376,6 +443,7 @@ public record FishProperties(
                 ByteBufCodecs.BOOL, CatchInfo::alwaysSpawnEntity,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::overrideMinigameWith,
                 ResourceLocation.STREAM_CODEC, CatchInfo::treasure,
+                ItemStack.OPTIONAL_STREAM_CODEC, CatchInfo::treasureIs,
                 FishEntryType.STREAM_CODEC, CatchInfo::fishEntryType,
                 CatchInfo::new
         );
@@ -388,6 +456,7 @@ public record FishProperties(
                 false,
                 SCItems.MISSINGNO,
                 U.rl("gameplay/fishing/treasure"),
+                ItemStack.EMPTY,
                 FishEntryType.FISH
         );
 
@@ -398,12 +467,13 @@ public record FishProperties(
                 false,
                 SCItems.UNKNOWN_FISH,
                 U.rl("gameplay/fishing/treasure"),
+                ItemStack.EMPTY,
                 FishEntryType.FISH
         );
 
         public CatchInfo withItemToOverrideWith(Holder<Item> itemToOverrideWith)
         {
-            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasure, this.fishEntryType);
+            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasure, this.treasureIs, this.fishEntryType);
         }
 
         public static class Builder
@@ -414,6 +484,7 @@ public record FishProperties(
             private boolean alwaysSpawnEntity = false;
             private Holder<Item> itemToOverrideWith = SCItems.MISSINGNO;
             private ResourceLocation treasure = U.rl("gameplay/fishing/treasure");
+            private ItemStack treasureIs = ItemStack.EMPTY;
             private FishEntryType fishEntryType = FishEntryType.FISH;
 
             public Builder withFish(Holder<Item> fish)
@@ -452,9 +523,21 @@ public record FishProperties(
                 return this;
             }
 
+            public Builder withTreasure(ResourceLocation rl)
+            {
+                treasure = rl;
+                return this;
+            }
+
+            public Builder withTreasure(ItemStack is)
+            {
+                treasureIs = is;
+                return this;
+            }
+
             public CatchInfo build()
             {
-                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasure, fishEntryType);
+                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasure, treasureIs, fishEntryType);
             }
         }
     }
@@ -637,6 +720,13 @@ public record FishProperties(
                 );
 
         public static final List<AbstractFishRestriction> OVERWORLD_MOUNTAIN =
+                List.of(
+                        DimensionRestriction.OVERWORLD,
+                        BiomeRestriction.LAKES,
+                        ElevationRestriction.ABOVE_HUNDRED
+                );
+
+        public static final List<AbstractFishRestriction> OVERWORLD_LAKE =
                 List.of(
                         DimensionRestriction.OVERWORLD,
                         BiomeRestriction.LAKES,
@@ -1859,8 +1949,7 @@ public record FishProperties(
                 //add treasure
                 if (completedTreasure || fbe.modifiers.stream().anyMatch(acm -> acm.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
                 {
-
-
+                    items.add(fp.loadTreasure(player).catchInfo.treasureIs);
                 }
 
                 //spawn items from list

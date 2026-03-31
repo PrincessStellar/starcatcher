@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:inferno_guppy",
     "fish_bucket": "tide:inferno_guppy_bucket",
-    "item": "tide:inferno_guppy",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:inferno_guppy"
   },
   "difficulty": {
     "decay": 1.0,

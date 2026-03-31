@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:eyeball_fish",
     "fish_bucket": "netherdepthsupgrade:eyeball_fish_bucket",
-    "item": "netherdepthsupgrade:eyeball_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:eyeball_fish"
   },
   "difficulty": {
     "decay": 1.0,

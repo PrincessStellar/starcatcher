@@ -2,8 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:stonefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:stonefish"
   },
   "difficulty": {
     "decay": 0.0,

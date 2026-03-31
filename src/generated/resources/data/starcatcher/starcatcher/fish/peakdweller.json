@@ -2,8 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:peakdweller",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:peakdweller"
   },
   "difficulty": {
     "decay": 1.0,
@@ -59,9 +58,9 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "max_y": 2147483647,
+      "min_y": 100,
+      "translation_override": "gui.guide.elevation.mountains"
     },
     {
       "type": "starcatcher:season",

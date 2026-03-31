@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:surgeonfish",
-    "item": "hybrid-aquatic:surgeonfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:surgeonfish"
   },
   "difficulty": {
     "decay": 1.0,

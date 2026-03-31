@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:sailor_barb",
     "fish_bucket": "unusualfishmod:sailor_barb_bucket",
-    "item": "unusualfishmod:raw_sailor_barb",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_sailor_barb"
   },
   "difficulty": {
     "decay": 1.0,

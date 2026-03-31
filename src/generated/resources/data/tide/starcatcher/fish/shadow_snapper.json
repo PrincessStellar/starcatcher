@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:shadow_snapper",
     "fish_bucket": "tide:shadow_snapper_bucket",
-    "item": "tide:shadow_snapper",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:shadow_snapper"
   },
   "difficulty": {
     "decay": 1.0,

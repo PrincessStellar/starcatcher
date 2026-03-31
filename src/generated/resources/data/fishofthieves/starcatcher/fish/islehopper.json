@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:islehopper",
     "fish_bucket": "fishofthieves:islehopper_bucket",
-    "item": "fishofthieves:islehopper",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:islehopper"
   },
   "difficulty": {
     "decay": 1.0,

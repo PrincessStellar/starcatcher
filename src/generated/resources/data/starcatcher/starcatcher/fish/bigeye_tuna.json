@@ -2,8 +2,7 @@
   "base_chance": 8,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:bigeye_tuna",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:bigeye_tuna"
   },
   "difficulty": {
     "decay": 1.0,

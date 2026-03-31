@@ -2,8 +2,7 @@
   "base_chance": 2,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:cinder_squid",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:cinder_squid"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:coral_skrimp",
     "fish_bucket": "unusualfishmod:coral_skrimp_bucket",
-    "item": "unusualfishmod:coral_skrimp_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:coral_skrimp_bucket"
   },
   "difficulty": {
     "decay": 1.0,

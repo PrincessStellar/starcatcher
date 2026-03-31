@@ -3,8 +3,7 @@
   "catch_info": {
     "entity": "minecraft:salmon",
     "fish_bucket": "minecraft:salmon_bucket",
-    "item": "minecraft:salmon",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "minecraft:salmon"
   },
   "difficulty": {
     "decay": 1.0,

@@ -11,8 +11,7 @@
     "entity": "collectorsreap:chieftain_crab",
     "fish_bucket": "collectorsreap:chieftain_crab_bucket",
     "item": "collectorsreap:chieftain_crab",
-    "override_minigame_item": "starcatcher:unknown_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "override_minigame_item": "starcatcher:unknown_fish"
   },
   "difficulty": {
     "decay": 1.0,

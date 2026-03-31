@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:largemouth_bass",
     "fish_bucket": "tide:largemouth_bass_bucket",
-    "item": "tide:largemouth_bass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:largemouth_bass"
   },
   "difficulty": {
     "decay": 1.0,

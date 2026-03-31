@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:trumpet_squid",
     "fish_bucket": "unusualfishmod:trumpet_squid_bucket",
-    "item": "unusualfishmod:trumpet_squid_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:trumpet_squid_bucket"
   },
   "difficulty": {
     "decay": 1.0,

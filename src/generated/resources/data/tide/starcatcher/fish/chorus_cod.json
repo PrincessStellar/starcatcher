@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:chorus_cod",
     "fish_bucket": "tide:chorus_cod_bucket",
-    "item": "tide:chorus_cod",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:chorus_cod"
   },
   "difficulty": {
     "decay": 1.0,

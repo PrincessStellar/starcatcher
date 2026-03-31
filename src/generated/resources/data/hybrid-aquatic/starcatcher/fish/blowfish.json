@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:blowfish",
-    "item": "hybrid-aquatic:blowfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:blowfish"
   },
   "difficulty": {
     "decay": 1.0,

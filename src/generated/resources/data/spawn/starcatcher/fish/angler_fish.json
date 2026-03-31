@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "spawn:angler_fish",
     "fish_bucket": "spawn:angler_fish_bucket",
-    "item": "spawn:angler_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "spawn:angler_fish"
   },
   "difficulty": {
     "decay": 1.0,

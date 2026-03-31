@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:sea_mosquito",
     "fish_bucket": "unusualfishmod:sea_mosquito_bucket",
-    "item": "unusualfishmod:sea_mosquito_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:sea_mosquito_bucket"
   },
   "difficulty": {
     "decay": 1.0,

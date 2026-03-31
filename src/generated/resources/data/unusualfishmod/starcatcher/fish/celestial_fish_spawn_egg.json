@@ -9,8 +9,7 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:celestial",
-    "item": "unusualfishmod:celestial_fish_spawn_egg",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:celestial_fish_spawn_egg"
   },
   "difficulty": {
     "decay": 1.0,

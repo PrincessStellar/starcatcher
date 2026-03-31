@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:cave_eel",
     "fish_bucket": "tide:cave_eel_bucket",
-    "item": "tide:cave_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:cave_eel"
   },
   "difficulty": {
     "decay": 1.0,

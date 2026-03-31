@@ -10,7 +10,7 @@
     "entity": "aquaculture:catfish",
     "fish_bucket": "aquaculture:catfish_bucket",
     "item": "aquaculture:catfish",
-    "treasure": "aquaculture:treasure_chest"
+    "treasure_loot_table": "aquaculture:treasure_chest"
   },
   "difficulty": {
     "decay": 0.0,
@@ -66,9 +66,9 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "max_y": 2147483647,
+      "min_y": 100,
+      "translation_override": "gui.guide.elevation.mountains"
     },
     {
       "type": "starcatcher:weather_restriction",

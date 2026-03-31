@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:drooping_gourami",
     "fish_bucket": "unusualfishmod:drooping_gourami_bucket",
-    "item": "unusualfishmod:raw_drooping_gourami",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_drooping_gourami"
   },
   "difficulty": {
     "decay": 1.0,

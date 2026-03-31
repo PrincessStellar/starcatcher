@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "unusualfishmod:triple_twirl_pleco",
     "fish_bucket": "unusualfishmod:triple_twirl_pleco_bucket",
-    "item": "unusualfishmod:raw_triple_twirl_pleco",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:raw_triple_twirl_pleco"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:bull_shark",
     "fish_bucket": "tide:bull_shark_bucket",
-    "item": "tide:bull_shark",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:bull_shark"
   },
   "difficulty": {
     "decay": 1.0,

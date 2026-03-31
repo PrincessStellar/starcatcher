@@ -2,8 +2,7 @@
   "base_chance": 15,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:sea_bass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:sea_bass"
   },
   "difficulty": {
     "decay": 1.0,

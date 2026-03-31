@@ -223,7 +223,7 @@ public class FishingPropertiesRegistry
     public static FishProperties.Builder overworldLakeFish(Holder<Item> fish)
     {
         return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_MOUNTAIN);
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAKE);
     }
 
     public static FishProperties.Builder overworldOceanFish(Holder<Item> fish)

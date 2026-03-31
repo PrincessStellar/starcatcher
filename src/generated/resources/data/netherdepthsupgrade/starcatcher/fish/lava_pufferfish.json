@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:lava_pufferfish",
     "fish_bucket": "netherdepthsupgrade:lava_pufferfish_bucket",
-    "item": "netherdepthsupgrade:lava_pufferfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:lava_pufferfish"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:volt_angler",
-    "item": "unusualfishmod:volt_angler_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:volt_angler_bucket"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:tiger_puffer",
     "fish_bucket": "unusualfishmod:tiger_puffer_bucket",
-    "item": "unusualfishmod:tiger_puffer_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:tiger_puffer_bucket"
   },
   "difficulty": {
     "decay": 0.0,

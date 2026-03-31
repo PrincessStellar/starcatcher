@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:sun_emblem",
     "fish_bucket": "tide:sun_emblem_bucket",
-    "item": "tide:sun_emblem",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:sun_emblem"
   },
   "difficulty": {
     "decay": 1.0,

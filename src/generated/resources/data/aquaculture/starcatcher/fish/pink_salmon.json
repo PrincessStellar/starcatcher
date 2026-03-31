@@ -10,7 +10,7 @@
     "entity": "aquaculture:pink_salmon",
     "fish_bucket": "aquaculture:pink_salmon_bucket",
     "item": "aquaculture:pink_salmon",
-    "treasure": "aquaculture:treasure_chest"
+    "treasure_loot_table": "aquaculture:treasure_chest"
   },
   "difficulty": {
     "decay": 1.0,

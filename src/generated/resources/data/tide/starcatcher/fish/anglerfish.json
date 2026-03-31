@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:anglerfish",
     "fish_bucket": "tide:anglerfish_bucket",
-    "item": "tide:anglerfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:anglerfish"
   },
   "difficulty": {
     "decay": 1.0,

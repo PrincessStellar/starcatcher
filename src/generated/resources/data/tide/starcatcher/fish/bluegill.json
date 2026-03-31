@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:bluegill",
     "fish_bucket": "tide:bluegill_bucket",
-    "item": "tide:bluegill",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:bluegill"
   },
   "difficulty": {
     "decay": 1.0,

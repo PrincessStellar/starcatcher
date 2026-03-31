@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:red_40",
     "fish_bucket": "tide:red_40_bucket",
-    "item": "tide:red_40",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:red_40"
   },
   "difficulty": {
     "decay": 0.0,

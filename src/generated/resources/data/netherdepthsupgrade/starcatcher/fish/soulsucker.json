@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:soulsucker",
     "fish_bucket": "netherdepthsupgrade:soulsucker_bucket",
-    "item": "netherdepthsupgrade:soulsucker",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:soulsucker"
   },
   "difficulty": {
     "decay": 1.0,

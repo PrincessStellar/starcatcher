@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:moray_eel",
-    "item": "hybrid-aquatic:moray_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:moray_eel"
   },
   "difficulty": {
     "decay": 1.0,

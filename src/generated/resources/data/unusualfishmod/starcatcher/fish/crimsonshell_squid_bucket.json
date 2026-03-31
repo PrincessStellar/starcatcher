@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:crimsonshell",
     "fish_bucket": "unusualfishmod:crimsonshell_squid_bucket",
-    "item": "unusualfishmod:crimsonshell_squid_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:crimsonshell_squid_bucket"
   },
   "difficulty": {
     "decay": 0.0,

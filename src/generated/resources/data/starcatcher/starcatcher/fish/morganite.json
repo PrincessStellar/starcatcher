@@ -2,8 +2,7 @@
   "base_chance": 8,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:morganite",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:morganite"
   },
   "difficulty": {
     "decay": 1.0,

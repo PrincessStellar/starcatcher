@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "spawn:herring",
     "fish_bucket": "spawn:herring_bucket",
-    "item": "spawn:herring",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "spawn:herring"
   },
   "difficulty": {
     "decay": 1.0,

@@ -8,8 +8,7 @@
   "base_chance": 1,
   "catch_info": {
     "entity": "spawn:octopus",
-    "item": "spawn:captured_octopus",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "spawn:captured_octopus"
   },
   "difficulty": {
     "decay": 1.0,

@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:blazefish",
     "fish_bucket": "netherdepthsupgrade:blazefish_bucket",
-    "item": "netherdepthsupgrade:blazefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:blazefish"
   },
   "difficulty": {
     "decay": 1.0,

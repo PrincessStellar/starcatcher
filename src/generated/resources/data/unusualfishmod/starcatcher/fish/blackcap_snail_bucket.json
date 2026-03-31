@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:blackcap_snail",
     "fish_bucket": "unusualfishmod:blackcap_snail_bucket",
-    "item": "unusualfishmod:blackcap_snail_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:blackcap_snail_bucket"
   },
   "difficulty": {
     "decay": 1.0,

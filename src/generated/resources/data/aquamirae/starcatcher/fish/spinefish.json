@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "aquamirae:spinefish",
     "fish_bucket": "aquamirae:spinefish_bucket",
-    "item": "aquamirae:spinefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "aquamirae:spinefish"
   },
   "difficulty": {
     "decay": 1.0,

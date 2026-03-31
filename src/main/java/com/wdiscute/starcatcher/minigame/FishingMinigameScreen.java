@@ -135,7 +135,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         this.bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         this.hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
 
-        this.treasureIS = new ItemStack(fp.catchInfo().treasure());
+        this.treasureIS = fp.catchInfo().treasureIs();
 
         if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
         {

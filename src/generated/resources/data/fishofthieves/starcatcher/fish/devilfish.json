@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "fishofthieves:devilfish",
     "fish_bucket": "fishofthieves:devilfish_bucket",
-    "item": "fishofthieves:devilfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fishofthieves:devilfish"
   },
   "difficulty": {
     "decay": 1.0,

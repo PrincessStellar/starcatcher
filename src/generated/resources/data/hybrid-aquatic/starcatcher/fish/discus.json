@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:discus",
-    "item": "hybrid-aquatic:discus",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:discus"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "fintastic:gourami",
     "fish_bucket": "fintastic:gourami_bucket",
-    "item": "fintastic:gourami_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fintastic:gourami_bucket"
   },
   "difficulty": {
     "decay": 1.0,

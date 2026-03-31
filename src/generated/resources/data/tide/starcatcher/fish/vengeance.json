@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:vengeance",
     "fish_bucket": "tide:vengeance_bucket",
-    "item": "tide:vengeance",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:vengeance"
   },
   "difficulty": {
     "decay": 0.0,

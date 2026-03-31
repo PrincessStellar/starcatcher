@@ -1,8 +1,7 @@
 {
   "base_chance": 8,
   "catch_info": {
-    "item": "starcatcher:obsidian_eel",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:obsidian_eel"
   },
   "difficulty": {
     "decay": 1.0,

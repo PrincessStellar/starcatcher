@@ -8,8 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "hybrid-aquatic:opah",
-    "item": "hybrid-aquatic:opah",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "hybrid-aquatic:opah"
   },
   "difficulty": {
     "decay": 1.0,

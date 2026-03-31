@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "netherdepthsupgrade:bonefish",
     "fish_bucket": "netherdepthsupgrade:bonefish_bucket",
-    "item": "netherdepthsupgrade:bonefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "netherdepthsupgrade:bonefish"
   },
   "difficulty": {
     "decay": 1.0,

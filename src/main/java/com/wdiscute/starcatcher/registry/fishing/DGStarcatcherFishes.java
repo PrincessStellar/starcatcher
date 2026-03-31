@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +98,6 @@ public class DGStarcatcherFishes
 
         registerStarcatcherBucketAndEntity(overworldColdLakeFish(SCItems.AURORA)
                 .withStar(Constellations.UrsaMajor.ALIOTH)
-                .withTreasure(SCItems.AZURE_CRYSTAL_ROD)
                 .withSizeAndWeight(FishProperties.sizeWeight(10, 8, 120, 30))
                 .withRarity(FishProperties.Rarity.LEGENDARY)
                 .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
@@ -365,6 +365,7 @@ public class DGStarcatcherFishes
                 .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withRarity(FishProperties.Rarity.LEGENDARY)
                 .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
+                .withTreasure(new ItemStack(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE.get()))
                 .withDifficulty(FishProperties.Difficulty.NON_STOP_ACTION_THREE_BIG));
 
         registerStarcatcherBucketAndEntity(overworldColdRiverFish(SCItems.BLUE_CRYSTAL_FIN)

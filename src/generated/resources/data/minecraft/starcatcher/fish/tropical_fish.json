@@ -3,8 +3,7 @@
   "catch_info": {
     "entity": "minecraft:tropical_fish",
     "fish_bucket": "minecraft:tropical_fish_bucket",
-    "item": "minecraft:tropical_fish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "minecraft:tropical_fish"
   },
   "difficulty": {
     "decay": 1.0,

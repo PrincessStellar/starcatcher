@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "upgrade_aquatic:pike",
     "fish_bucket": "upgrade_aquatic:pike_bucket",
-    "item": "upgrade_aquatic:pike",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "upgrade_aquatic:pike"
   },
   "difficulty": {
     "decay": 1.0,

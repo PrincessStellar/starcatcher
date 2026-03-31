@@ -2,8 +2,7 @@
   "base_chance": 2,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:aurora",
-    "treasure": "starcatcher:azure_crystal_rod"
+    "item": "starcatcher:aurora"
   },
   "difficulty": {
     "decay": 0.2,

@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "crittersandcompanions:dumbo_octopus",
     "fish_bucket": "crittersandcompanions:dumbo_octopus_bucket",
-    "item": "crittersandcompanions:dumbo_octopus_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "crittersandcompanions:dumbo_octopus_bucket"
   },
   "difficulty": {
     "decay": 1.0,

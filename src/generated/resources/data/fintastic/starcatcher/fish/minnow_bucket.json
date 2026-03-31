@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "fintastic:minnow",
     "fish_bucket": "fintastic:minnow_bucket",
-    "item": "fintastic:minnow_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "fintastic:minnow_bucket"
   },
   "difficulty": {
     "decay": 1.0,

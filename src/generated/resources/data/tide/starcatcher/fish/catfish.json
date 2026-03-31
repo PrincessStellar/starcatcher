@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:catfish",
     "fish_bucket": "tide:catfish_bucket",
-    "item": "tide:catfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:catfish"
   },
   "difficulty": {
     "decay": 1.0,

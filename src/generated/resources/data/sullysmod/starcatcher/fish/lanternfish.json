@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "sullysmod:lanternfish",
     "fish_bucket": "sullysmod:lanternfish_bucket",
-    "item": "sullysmod:lanternfish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "sullysmod:lanternfish"
   },
   "difficulty": {
     "decay": 1.0,

@@ -10,7 +10,7 @@
     "entity": "aquaculture:red_grouper",
     "fish_bucket": "aquaculture:red_grouper_bucket",
     "item": "aquaculture:red_grouper",
-    "treasure": "aquaculture:box"
+    "treasure_loot_table": "aquaculture:box"
   },
   "difficulty": {
     "decay": 1.0,

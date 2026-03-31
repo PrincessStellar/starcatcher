@@ -9,8 +9,7 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:tribble",
-    "item": "unusualfishmod:tribble_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:tribble_bucket"
   },
   "difficulty": {
     "decay": 1.0,

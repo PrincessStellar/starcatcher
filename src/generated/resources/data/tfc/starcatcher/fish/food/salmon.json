@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tfc:salmon",
     "fish_bucket": "tfc:bucket/salmon",
-    "item": "tfc:food/salmon",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:food/salmon"
   },
   "difficulty": {
     "decay": 1.0,

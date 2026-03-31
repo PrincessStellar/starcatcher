@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:ripper",
     "fish_bucket": "unusualfishmod:ripper_bucket",
-    "item": "unusualfishmod:ripper_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:ripper_bucket"
   },
   "difficulty": {
     "decay": 1.0,

@@ -48,6 +48,9 @@
     "starcatcher:vanilla_bobber": [
       "starcatcher:vanilla_loot"
     ],
+    "starcatcher:vanilla_hook": [
+      "starcatcher:skip_minigame_if_vanilla_loot"
+    ],
     "starcatcher:worm": [
       "starcatcher:decrease_lure_time"
     ]

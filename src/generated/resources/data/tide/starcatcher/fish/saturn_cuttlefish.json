@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:saturn_cuttlefish",
     "fish_bucket": "tide:saturn_cuttlefish_bucket",
-    "item": "tide:saturn_cuttlefish",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:saturn_cuttlefish"
   },
   "difficulty": {
     "decay": 1.0,

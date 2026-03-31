@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "tide:flounder",
     "fish_bucket": "tide:flounder_bucket",
-    "item": "tide:flounder",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:flounder"
   },
   "difficulty": {
     "decay": 1.0,

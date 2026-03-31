@@ -9,8 +9,7 @@
   "catch_info": {
     "entity": "collectorsreap:platinum_bass",
     "fish_bucket": "collectorsreap:platinum_bass_bucket",
-    "item": "collectorsreap:platinum_bass",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "collectorsreap:platinum_bass"
   },
   "difficulty": {
     "decay": 1.0,

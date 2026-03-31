@@ -10,8 +10,7 @@
     "always_spawn_entity": true,
     "entity": "unusualfishmod:brick_snail",
     "fish_bucket": "unusualfishmod:brick_snail_bucket",
-    "item": "unusualfishmod:brick_snail_bucket",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "unusualfishmod:brick_snail_bucket"
   },
   "difficulty": {
     "decay": 1.0,
