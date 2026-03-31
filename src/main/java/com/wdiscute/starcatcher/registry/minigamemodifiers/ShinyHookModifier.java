@@ -38,6 +38,7 @@ public class ShinyHookModifier extends AbstractMinigameModifier
         if(hits == 3 && !instance.treasureActive && instance.treasureProgress == 0)
         {
             instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.TREASURE));
+            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.TREASURE));
             removed = true;
         }
 

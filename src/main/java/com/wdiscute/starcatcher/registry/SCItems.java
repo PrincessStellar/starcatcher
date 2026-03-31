@@ -7,9 +7,7 @@ import com.wdiscute.starcatcher.registry.items.*;
 import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
-import com.wdiscute.starcatcher.registry.items.modifieritem.CatchModifierItem;
-import com.wdiscute.starcatcher.registry.items.modifieritem.MinigameModifierItem;
-import com.wdiscute.starcatcher.registry.items.modifieritem.TackleSkinItem;
+import com.wdiscute.starcatcher.registry.items.TackleSkinItem;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
@@ -56,38 +54,36 @@ public interface SCItems
 
     //hooks
     DeferredItem<Item> HOOK = HOOKS_REGISTRY.register("hook", SingleStackBasicItem::new);
-    DeferredItem<Item> CRYSTAL_HOOK = HOOKS_REGISTRY.register("crystal_hook", () -> new CatchModifierItem(SCCatchModifiers.SURVIVES_LAVA));
-    DeferredItem<Item> SHINY_HOOK = HOOKS_REGISTRY.register("shiny_hook", () -> new MinigameModifierItem(SCMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS));
-    DeferredItem<Item> GOLD_HOOK = HOOKS_REGISTRY.register("gold_hook", () -> new CatchModifierItem(SCCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE));
-    DeferredItem<Item> MOSSY_HOOK = HOOKS_REGISTRY.register("mossy_hook", () -> new MinigameModifierItem(SCMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT));
-    DeferredItem<Item> STONE_HOOK = HOOKS_REGISTRY.register("stone_hook", () -> new Item(new Item.Properties().stacksTo(1)
-            .component(SCDataComponents.CATCH_MODIFIERS, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()))
-            .component(SCDataComponents.MINIGAME_MODIFIERS, List.of(SCMinigameModifiers.STOP_DECAY_ON_HIT.getId()))
-    ));
-    DeferredItem<Item> SPLIT_HOOK = HOOKS_REGISTRY.register("split_hook", () -> new CatchModifierItem(SCCatchModifiers.EXTRA_ITEM));
-    DeferredItem<Item> HEAVY_HOOK = HOOKS_REGISTRY.register("heavy_hook", () -> new MinigameModifierItem(SCMinigameModifiers.SLOWER_MOVING_SWEET_SPOTS));
+    DeferredItem<Item> CRYSTAL_HOOK = HOOKS_REGISTRY.register("crystal_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> SHINY_HOOK = HOOKS_REGISTRY.register("shiny_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> GOLD_HOOK = HOOKS_REGISTRY.register("gold_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> MOSSY_HOOK = HOOKS_REGISTRY.register("mossy_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> STONE_HOOK = HOOKS_REGISTRY.register("stone_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> SPLIT_HOOK = HOOKS_REGISTRY.register("split_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> HEAVY_HOOK = HOOKS_REGISTRY.register("heavy_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> VANILLA_HOOK = HOOKS_REGISTRY.register("vanilla_hook", SingleStackBasicItem::new);
 
     //bobbers
     DeferredItem<Item> BOBBER = BOBBERS_REGISTRY.register("bobber", SingleStackBasicItem::new);
-    DeferredItem<Item> STEADY_BOBBER = BOBBERS_REGISTRY.register("steady_bobber", () -> new MinigameModifierItem(SCMinigameModifiers.BIGGER_GREEN_SWEET_SPOTS));
-    DeferredItem<Item> CLEAR_BOBBER = BOBBERS_REGISTRY.register("clear_bobber", () -> new MinigameModifierItem(SCMinigameModifiers.SLOWER_VANISHING));
-    DeferredItem<Item> AQUA_BOBBER = BOBBERS_REGISTRY.register("aqua_bobber", () -> new MinigameModifierItem(SCMinigameModifiers.ADD_AQUA_SWEET_SPOT));
-    DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", () -> new CatchModifierItem(SCCatchModifiers.VANILLA_LOOT));
+    DeferredItem<Item> STEADY_BOBBER = BOBBERS_REGISTRY.register("steady_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> CLEAR_BOBBER = BOBBERS_REGISTRY.register("clear_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> AQUA_BOBBER = BOBBERS_REGISTRY.register("aqua_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", SingleStackBasicItem::new);
 
     //baits
-    DeferredItem<Item> WORM = ITEMS.register("worm", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> ALMIGHTY_WORM = ITEMS.register("almighty_worm", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME, SCCatchModifiers.FISH_ENTITY));
-    DeferredItem<Item> SEEKING_WORM = ITEMS.register("seeking_worm", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME, SCCatchModifiers.GUARANTEE_NEW_FISH_ALWAYS));
+    DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);
+    DeferredItem<Item> ALMIGHTY_WORM = ITEMS.register("almighty_worm", BasicItem::new);
+    DeferredItem<Item> SEEKING_WORM = ITEMS.register("seeking_worm", BasicItem::new);
     DeferredItem<Item> DEV_WORM = ITEMS.register("dev_worm", BasicItem::new);
 
-    DeferredItem<Item> GUNPOWDER_BAIT = ITEMS.register("gunpowder_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> CHERRY_BAIT = ITEMS.register("cherry_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> LUSH_BAIT = ITEMS.register("lush_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> SCULK_BAIT = ITEMS.register("sculk_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> DRIPSTONE_BAIT = ITEMS.register("dripstone_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> MURKWATER_BAIT = ITEMS.register("murkwater_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> LEGENDARY_BAIT = ITEMS.register("legendary_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME));
-    DeferredItem<Item> METEOROLOGICAL_BAIT = ITEMS.register("meteorological_bait", () -> new CatchModifierItem(64, SCCatchModifiers.DECREASES_LURE_TIME, SCCatchModifiers.IGNORE_DAYTIME_AND_WEATHER_RESTRICTIONS));
+    DeferredItem<Item> GUNPOWDER_BAIT = ITEMS.register("gunpowder_bait", BasicItem::new);
+    DeferredItem<Item> CHERRY_BAIT = ITEMS.register("cherry_bait", BasicItem::new);
+    DeferredItem<Item> LUSH_BAIT = ITEMS.register("lush_bait", BasicItem::new);
+    DeferredItem<Item> SCULK_BAIT = ITEMS.register("sculk_bait", BasicItem::new);
+    DeferredItem<Item> DRIPSTONE_BAIT = ITEMS.register("dripstone_bait", BasicItem::new);
+    DeferredItem<Item> MURKWATER_BAIT = ITEMS.register("murkwater_bait", BasicItem::new);
+    DeferredItem<Item> LEGENDARY_BAIT = ITEMS.register("legendary_bait", BasicItem::new);
+    DeferredItem<Item> METEOROLOGICAL_BAIT = ITEMS.register("meteorological_bait", BasicItem::new);
 
 
     //tackle templates

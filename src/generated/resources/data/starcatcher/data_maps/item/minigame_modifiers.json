@@ -1,0 +1,25 @@
+{
+  "values": {
+    "starcatcher:aqua_bobber": [
+      "starcatcher:add_aqua_sweet_spot"
+    ],
+    "starcatcher:clear_bobber": [
+      "starcatcher:slower_vanishing"
+    ],
+    "starcatcher:heavy_hook": [
+      "starcatcher:slower_moving_sweet_spots"
+    ],
+    "starcatcher:mossy_hook": [
+      "starcatcher:harder_with_treasure_on_perfect"
+    ],
+    "starcatcher:shiny_hook": [
+      "starcatcher:spawn_treasure_on_three_hits"
+    ],
+    "starcatcher:steady_bobber": [
+      "starcatcher:bigger_green_sweet_spots"
+    ],
+    "starcatcher:stone_hook": [
+      "starcatcher:stop_decay_on_hit"
+    ]
+  }
+}

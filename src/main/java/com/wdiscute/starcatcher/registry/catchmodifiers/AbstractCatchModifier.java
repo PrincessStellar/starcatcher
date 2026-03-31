@@ -54,12 +54,6 @@ public abstract class AbstractCatchModifier
     }
 
     //server only
-    public void onReelAfterTreasureCheck()
-    {
-
-    }
-
-    //server only
     public List<FishProperties> modifyAvailablePool(List<FishProperties> available)
     {
         return available;

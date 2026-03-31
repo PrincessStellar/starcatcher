@@ -85,6 +85,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(STONE_HOOK);
         simpleItem(SPLIT_HOOK);
         simpleItem(HEAVY_HOOK);
+        simpleItem(VANILLA_HOOK);
 
         //bobbers
         simpleItem(BOBBER);
