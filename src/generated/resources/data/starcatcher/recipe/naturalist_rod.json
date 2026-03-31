@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "minecraft:saplings"
+  },
+  "base": {
+    "tag": "starcatcher:rods"
+  },
+  "result": {
+    "count": 1,
+    "id": "starcatcher:naturalist_rod"
+  },
+  "template": {
+    "item": "starcatcher:naturalist_skin_smithing_template"
+  }
+}

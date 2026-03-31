@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:stick"
+  },
+  "base": {
+    "tag": "starcatcher:rods"
+  },
+  "result": {
+    "count": 1,
+    "id": "starcatcher:humble_rod"
+  },
+  "template": {
+    "item": "starcatcher:humble_skin_smithing_template"
+  }
+}
