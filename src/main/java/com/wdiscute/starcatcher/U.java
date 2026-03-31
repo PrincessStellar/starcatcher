@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher;
 
-import com.wdiscute.starcatcher.datagen.TrustedHolder;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.gui.Font;
@@ -193,7 +192,7 @@ public class U
 
     public static Holder<Item> holderItem(String ns, String path)
     {
-        return TrustedHolder.createStandAlone(BuiltInRegistries.ITEM.holderOwner(), ResourceKey.create(Registries.ITEM, rl(ns, path)));
+        return Holder.Reference.createStandAlone(BuiltInRegistries.ITEM.holderOwner(), ResourceKey.create(Registries.ITEM, rl(ns, path)));
     }
 
     public static Holder<Item> holderItem(DeferredItem<Item> item)
@@ -213,7 +212,7 @@ public class U
 
     public static Holder<EntityType<?>> holderEntity(String ns, String path)
     {
-        return TrustedHolder.createStandAlone(BuiltInRegistries.ENTITY_TYPE.holderOwner(), ResourceKey.create(Registries.ENTITY_TYPE, rl(ns, path)));
+        return Holder.Reference.createStandAlone(BuiltInRegistries.ENTITY_TYPE.holderOwner(), ResourceKey.create(Registries.ENTITY_TYPE, rl(ns, path)));
     }
 
     public static Holder<EntityType<?>> holderEntity(Supplier<EntityType<FishEntity>> entity)
