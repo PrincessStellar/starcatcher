@@ -9,14 +9,24 @@ public class Config
     private static final ModConfigSpec.Builder BUILDER_CLIENT = new ModConfigSpec.Builder();
 
     public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER_CLIENT
+            .push("minigame_window")
             .comment("ALL THESE SETTINGS CAN ALSO BE ACCESSED")
             .comment("THROUGH THE IN-GAME SETTING TAB INSIDE")
             .comment("THE STARCATCHER'S GUIDE")
             .translation("starcatcher.configuration.minigame_scale")
             .defineInRange("minigame_scale", 1.5, 0.1, 6);
 
+    public static final ModConfigSpec.IntValue MINIGAME_X_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.x_offset")
+            .defineInRange("minigame_x_offset", 0, -10000, 10000);
+
+    public static final ModConfigSpec.IntValue MINIGAME_Y_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.y_offset")
+            .defineInRange("minigame_y_offset", 0, -10000, 10000);
+
 
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
+            .pop()
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
 

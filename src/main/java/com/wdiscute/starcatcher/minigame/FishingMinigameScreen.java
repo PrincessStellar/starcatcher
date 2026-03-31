@@ -103,6 +103,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected boolean isHoldingMouse = false;
 
     public float renderScale;
+    public int xOffset = Config.MINIGAME_X_OFFSET.getAsInt();
+    public int yOffset = Config.MINIGAME_X_OFFSET.getAsInt();
+
 
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();
     protected final List<ActiveSweetSpot> spotsToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
@@ -248,7 +251,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.pushPose();
         poseStack.translate(width >> 1, height >> 1, 0);
+
+        poseStack.translate(xOffset, yOffset, 0);
+
         poseStack.scale(renderScale, renderScale, 1);
+
         poseStack.translate( -width >> 1, -height >> 1, 0);
 
         //render modifiers background

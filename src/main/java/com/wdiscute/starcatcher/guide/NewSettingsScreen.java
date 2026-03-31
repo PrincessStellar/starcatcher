@@ -37,7 +37,6 @@ public class NewSettingsScreen extends FishingMinigameScreen {
 
         hitDelay = (Config.HIT_DELAY.get().floatValue());
         unitSelected = Config.UNIT.get();
-
         //Use widgets instead of doing hovering/clicking logic manually
         // addRenderableWidget(new GuiScaleWidget(width / 2 - 50, 0, 100, 50));
 
@@ -72,6 +71,26 @@ public class NewSettingsScreen extends FishingMinigameScreen {
                 null,
                 Component.literal("Speed"),
                 width / 2 + 100, height / 2 + 10, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
+
+        //Speed
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> xOffset, // the value to render
+                () -> xOffset--, // left button action
+                () -> xOffset++, // right button action
+                null,
+                null,
+                Component.literal("X Offset"),
+                width / 2 + 100, height / 2 + 30, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
+
+        //Speed
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> yOffset, // the value to render
+                () -> yOffset++, // left button action
+                () -> yOffset--, // right button action
+                null,
+                null,
+                Component.literal("Y Offset"),
+                width / 2 + 100, height / 2 + 50, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
 
         //Units
@@ -124,6 +143,13 @@ public class NewSettingsScreen extends FishingMinigameScreen {
 
         Config.MINIGAME_RENDER_SCALE.set((double) renderScale);
         Config.MINIGAME_RENDER_SCALE.save();
+
+        Config.MINIGAME_X_OFFSET.set(xOffset);
+        Config.MINIGAME_Y_OFFSET.set(yOffset);
+        Config.MINIGAME_X_OFFSET.save();
+        Config.MINIGAME_Y_OFFSET.save();
+
+
 
         Config.UNIT.set(unitSelected);
         Config.UNIT.save();

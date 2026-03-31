@@ -118,8 +118,9 @@
   "gui.starcatcher.processor.fishes_processor.percentile" : "- Price is increased by +%s%% based on top 50%%",
   "gui.starcatcher.processor.fishes_processor.golden" : "- Price is multiplied by %sx if golden.",
 
-
-
+  "starcatcher.configuration.y_offset": "Y Offset",
+  "starcatcher.configuration.x_offset": "X Offset",
+  "starcatcher.configuration.minigame_window": "Minigame Windows Settings",
 
 
 
