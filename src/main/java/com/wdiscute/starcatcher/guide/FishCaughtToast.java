@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;

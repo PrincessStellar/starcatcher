@@ -6,7 +6,7 @@ import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;

@@ -16,7 +16,7 @@ import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModif
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;

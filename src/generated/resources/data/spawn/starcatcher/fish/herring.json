@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "spawn:herring",
     "fish_bucket": "spawn:herring_bucket",
     "item": "spawn:herring",

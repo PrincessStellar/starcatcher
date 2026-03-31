@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -154,7 +154,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.biome.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));

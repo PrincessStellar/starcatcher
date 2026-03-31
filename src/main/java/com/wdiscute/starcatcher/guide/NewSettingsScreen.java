@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Config;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
@@ -22,14 +22,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public class NewSettingsScreen extends FishingMinigameScreen {
-    public static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/minigame/minigame.png");
-    public static final ResourceLocation TANK = Starcatcher.rl("textures/gui/minigame/surface.png");
     public static final ResourceLocation SETTINGS = Starcatcher.rl("textures/gui/minigame/settings.png");
     public static final ResourceLocation GUI_SCALE = Starcatcher.rl("textures/gui/minigame/gui_scale.png");
-
-    boolean changeRotation;
-    boolean moveMarkers = false;
-    boolean isHoveringWidgets = false;
 
     SettingsScreen.Units unitSelected;
 
@@ -90,8 +84,6 @@ public class NewSettingsScreen extends FishingMinigameScreen {
                 Component.literal("Units"),
                 width / 2, height / 2 + 80, 136, 25, 34, 222, 256, 256, SETTINGS, 16));
 
-
-        //TODO: make a boolean / buttonList widget for the little buttons
     }
 
     public Options getOptions() {

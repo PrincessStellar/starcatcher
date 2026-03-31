@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:flounder",
     "fish_bucket": "tide:flounder_bucket",
     "item": "tide:flounder",

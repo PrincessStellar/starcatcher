@@ -9,7 +9,6 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:sea_pancake",
-    "fish_bucket": "starcatcher:missingno",
     "item": "unusualfishmod:sea_pancake_spawn_egg",
     "treasure": "starcatcher:waterlogged_satchel"
   },

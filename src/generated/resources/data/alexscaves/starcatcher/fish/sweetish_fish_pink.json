@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "alexscaves:sweetish_fish",
     "fish_bucket": "alexscaves:sweetish_fish_pink_bucket",
     "item": "alexscaves:sweetish_fish_pink",

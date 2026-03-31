@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:wrasse",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:sheepshead_wrasse",
     "treasure": "starcatcher:waterlogged_satchel"
   },

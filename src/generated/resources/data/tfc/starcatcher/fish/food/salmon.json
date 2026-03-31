@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tfc:salmon",
     "fish_bucket": "tfc:bucket/salmon",
     "item": "tfc:food/salmon",

@@ -4,7 +4,6 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.items.*;
-import com.wdiscute.starcatcher.registry.items.cheater.*;
 import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
@@ -152,20 +151,6 @@ public interface SCItems
     DeferredItem<Item> HOPELESS_BOTTLE = ITEMS.register("hopeless_bottle", () -> new NoteContainer(SecretNote.Note.HOPELESS_NOTE));
     DeferredItem<Item> TRUE_BLUE_BOTTLE = ITEMS.register("true_blue_bottle", () -> new NoteContainer(SecretNote.Note.TRUE_BLUE));
     DeferredItem<Item> WITHERED_BOTTLE = ITEMS.register("withered_bottle", () -> new NoteContainer(SecretNote.Note.WITHER));
-
-
-    //cheater items
-    DeferredItem<Item> AWARD_ALL_FISHES = ITEMS.register("award_all_fishes", AwardAllFishes::new);
-    DeferredItem<Item> AWARD_ONE_FISH = ITEMS.register("award_one_fish", AwardOneFish::new);
-    DeferredItem<Item> REVOKE_ALL_FISHES = ITEMS.register("revoke_all_fishes", RevokeAllFishes::new);
-
-    DeferredItem<Item> AWARD_ALL_TROPHIES = ITEMS.register("award_all_trophies", AwardAllTrophies::new);
-    DeferredItem<Item> REVOKE_ALL_TROPHIES = ITEMS.register("revoke_all_trophies", RevokeAllTrophies::new);
-
-    DeferredItem<Item> AWARD_ALL_SECRETS = ITEMS.register("award_all_secrets", AwardAllSecrets::new);
-    DeferredItem<Item> REVOKE_ALL_SECRETS = ITEMS.register("revoke_all_secrets", RevokeAllSecrets::new);
-
-    DeferredItem<Item> REVOKE_ALL_EXTRAS = ITEMS.register("revoke_all_extras", RevokeAllExtras::new);
 
     //treasure
     DeferredItem<Item> WATERLOGGED_SATCHEL = ITEMS.register("waterlogged_satchel", WaterloggedSatchel::new);

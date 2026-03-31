@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:iron_tetra",
     "fish_bucket": "tide:iron_tetra_bucket",
     "item": "tide:iron_tetra",

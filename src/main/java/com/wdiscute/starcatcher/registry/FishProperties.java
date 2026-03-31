@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.storage;
+package com.wdiscute.starcatcher.registry;
 
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
@@ -10,12 +10,10 @@ import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.registry.SCCriterionTriggers;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import io.netty.buffer.ByteBuf;
@@ -53,6 +51,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -97,6 +96,23 @@ public record FishProperties(
             ByteBufCodecs.BOOL, FishProperties::hasGuideEntry,
             FishProperties::new
     );
+
+    @Override
+    public @NotNull String toString()
+    {
+        if (catchInfo.alwaysSpawnEntity)
+            return "[FishProperties] " + catchInfo.entityToSpawn;
+        else
+            return "[FishProperties] " + catchInfo.fish;
+    }
+
+    public Component getDisplayName()
+    {
+        if (catchInfo.alwaysSpawnEntity)
+            return Component.translatable("entity." + catchInfo.entityToSpawn.getRegisteredName().replace(":", "."));
+        else
+            return Component.translatable(catchInfo.fish.value().getDescriptionId());
+    }
 
     public ResourceLocation toLoc(Level level)
     {
@@ -304,9 +320,9 @@ public record FishProperties(
         public static final Codec<CatchInfo> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
                         BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("item").forGetter(CatchInfo::fish),
-                        BuiltInRegistries.ITEM.holderByNameCodec().fieldOf("fish_bucket").forGetter(CatchInfo::bucketedFish),
-                        BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().fieldOf("entity").forGetter(CatchInfo::entityToSpawn),
-                        Codec.BOOL.fieldOf("always_spawn_entity").forGetter(CatchInfo::alwaysSpawnEntity),
+                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("fish_bucket", SCItems.MISSINGNO).forGetter(CatchInfo::bucketedFish),
+                        BuiltInRegistries.ENTITY_TYPE.holderByNameCodec().optionalFieldOf("entity", U.holderEntity("starcatcher", "fish")).forGetter(CatchInfo::entityToSpawn),
+                        Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("treasure", SCItems.MISSINGNO).forGetter(CatchInfo::treasure)
                 ).apply(instance, CatchInfo::new));

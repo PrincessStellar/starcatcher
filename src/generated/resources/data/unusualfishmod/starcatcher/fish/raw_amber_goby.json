@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:amber_goby",
     "fish_bucket": "unusualfishmod:amber_goby_bucket",
     "item": "unusualfishmod:raw_amber_goby",

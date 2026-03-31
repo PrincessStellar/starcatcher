@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:lapis_lanternfish",
     "fish_bucket": "tide:lapis_lanternfish_bucket",
     "item": "tide:lapis_lanternfish",

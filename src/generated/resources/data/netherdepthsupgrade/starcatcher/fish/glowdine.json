@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "netherdepthsupgrade:glowdine",
     "fish_bucket": "netherdepthsupgrade:glowdine_bucket",
     "item": "netherdepthsupgrade:glowdine",

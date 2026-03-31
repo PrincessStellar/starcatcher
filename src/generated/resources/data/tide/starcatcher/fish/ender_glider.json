@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:ender_glider",
     "fish_bucket": "tide:ender_glider_bucket",
     "item": "tide:ender_glider",

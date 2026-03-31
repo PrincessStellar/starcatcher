@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.world.level.Level;
 
 import java.util.List;

@@ -12,6 +12,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmithingRecipe;
+import net.minecraft.world.item.crafting.SmithingTransformRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
@@ -382,8 +384,8 @@ public class DGRecipeProvider extends RecipeProvider
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
 
-
         //templates
+        //tackle skins
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.PEARL_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.PEARL_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -444,6 +446,8 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_king", has(SCItems.KING_SMITHING_TEMPLATE))
                 .save(output);
 
+        //rod skins
+        //naturalist
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -454,6 +458,18 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_naturalist", has(SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(ItemTags.SAPLINGS),
+                        RecipeCategory.TOOLS,
+                        SCItems.NATURALIST_ROD.get()
+                )
+                .unlocks("has_template_naturalist", has(SCItems.NATURALIST_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("naturalist_rod")
+                );
+
+        //iceborn
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -464,6 +480,19 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_iceborn", has(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.PACKED_ICE),
+                        RecipeCategory.TOOLS,
+                        SCItems.ICEBORN_ROD.get()
+                )
+                .unlocks("has_template_iceborn", has(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("iceborn_rod")
+                );
+
+
+        //magmaformed
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -474,6 +503,20 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_magmaforged", has(SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.MAGMA_CREAM),
+                        RecipeCategory.TOOLS,
+                        SCItems.MAGMAFORGED_ROD.get()
+                )
+                .unlocks("has_template_magmaforged", has(SCItems.MAGMAFORGED_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("magmaforged_rod")
+                );
+
+
+
+        //slimed
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SLIMED_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.SLIMED_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -484,6 +527,21 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_slimed", has(SCItems.SLIMED_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.SLIMED_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.SLIME_BALL),
+                        RecipeCategory.TOOLS,
+                        SCItems.SLIMED_ROD.get()
+                )
+                .unlocks("has_template_slimed", has(SCItems.SLIMED_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("slimed_rod")
+                );
+
+
+
+
+        //azure
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -494,7 +552,20 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_azure", has(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(SCItems.AZURE_CRYSTALBACK_MINNOW),
+                        RecipeCategory.TOOLS,
+                        SCItems.AZURE_CRYSTAL_ROD.get()
+                )
+                .unlocks("has_template_azure", has(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("azure_rod")
+                );
 
+
+
+        //bamboo
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -505,6 +576,20 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_bamboo", has(SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.BAMBOO),
+                        RecipeCategory.TOOLS,
+                        SCItems.BAMBOO_ROD.get()
+                )
+                .unlocks("has_template_bamboo", has(SCItems.BAMBOO_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("bamboo_rod")
+                );
+
+
+
+        //obsidian
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -515,6 +600,19 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_obsidian", has(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(SCItems.OBSIDIAN_EEL),
+                        RecipeCategory.TOOLS,
+                        SCItems.OBSIDIAN_ROD.get()
+                )
+                .unlocks("has_template_obsidian", has(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("obsidian_rod")
+                );
+
+
+        //alpha
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ALPHA_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -525,6 +623,19 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.GRASS_BLOCK),
+                        RecipeCategory.TOOLS,
+                        SCItems.ALPHA_ROD.get()
+                )
+                .unlocks("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("alpha_rod")
+                );
+
+
+        //good old
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -535,6 +646,19 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.FISHING_ROD),
+                        RecipeCategory.TOOLS,
+                        SCItems.GOOD_OLD_ROD.get()
+                )
+                .unlocks("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("good_old_rod")
+                );
+
+
+        //boner
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BONER_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.BONER_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -545,6 +669,18 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_boner", has(SCItems.BONER_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.BONER_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.BONE_BLOCK),
+                        RecipeCategory.TOOLS,
+                        SCItems.BONER_ROD.get()
+                )
+                .unlocks("has_template_boner", has(SCItems.BONER_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("boner_rod")
+                );
+
+        //sky
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SKY_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.SKY_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -555,6 +691,19 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_sky", has(SCItems.SKY_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.SKY_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.PHANTOM_MEMBRANE),
+                        RecipeCategory.TOOLS,
+                        SCItems.SKY_ROD.get()
+                )
+                .unlocks("has_template_sky", has(SCItems.SKY_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("sky_rod")
+                );
+
+
+        //lush
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -565,19 +714,45 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_lush", has(SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE))
                 .save(output);
 
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(SCItems.LUSH_PIKE),
+                        RecipeCategory.TOOLS,
+                        SCItems.LUSH_GLOWBERRY_ROD.get()
+                )
+                .unlocks("has_template_lush", has(SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("lush_rod")
+                );
+
+
+        //humble
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE, 2)
-                .define('T', SCItems.LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE)
+                .define('T', SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
                 .define('C', Items.STICK)
                 .pattern("DTD")
                 .pattern("DCD")
                 .pattern("DDD")
-                .unlockedBy("has_template_lush", has(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
+                .unlockedBy("has_template_humble", has(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
                 .save(output);
+
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.STICK),
+                        RecipeCategory.TOOLS,
+                        SCItems.HUMBLE_ROD.get()
+                )
+                .unlocks("has_template_humble", has(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("humble_rod")
+                );
     }
 
-    protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group) {
-        for(int i = 0; i < dyes.size(); ++i) {
+    protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group)
+    {
+        for (int i = 0; i < dyes.size(); ++i)
+        {
             Item item = dyes.get(i);
             Item item1 = dyeableItems.get(i);
             ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, item1).requires(item).requires(Ingredient.of(dyeableItems.stream().filter((p_288265_) -> !p_288265_.equals(item1)).map(ItemStack::new))).group(group).unlockedBy("has_needed_dye", has(item)).save(recipeOutput, "dye_" + getItemName(item1));

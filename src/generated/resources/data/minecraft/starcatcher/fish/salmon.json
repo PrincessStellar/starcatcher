@@ -1,7 +1,6 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "minecraft:salmon",
     "fish_bucket": "minecraft:salmon_bucket",
     "item": "minecraft:salmon",

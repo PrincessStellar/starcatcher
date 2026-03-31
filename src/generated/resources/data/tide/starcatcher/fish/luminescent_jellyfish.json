@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:crystalline_carp",
     "fish_bucket": "tide:crystalline_carp_bucket",
     "item": "tide:luminescent_jellyfish",

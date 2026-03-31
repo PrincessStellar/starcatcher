@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:boulti",
     "fish_bucket": "aquaculture:boulti_bucket",
     "item": "aquaculture:boulti",

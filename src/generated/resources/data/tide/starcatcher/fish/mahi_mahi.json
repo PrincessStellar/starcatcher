@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:mahi_mahi",
     "fish_bucket": "tide:mahi_mahi_bucket",
     "item": "tide:mahi_mahi",

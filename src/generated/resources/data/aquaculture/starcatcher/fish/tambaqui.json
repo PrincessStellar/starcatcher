@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:tambaqui",
     "fish_bucket": "aquaculture:tambaqui_bucket",
     "item": "aquaculture:tambaqui",

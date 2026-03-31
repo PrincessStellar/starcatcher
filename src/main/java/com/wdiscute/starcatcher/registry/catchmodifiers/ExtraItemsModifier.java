@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.ModList;

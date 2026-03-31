@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public class DGNetherDepthsUpgradeFishes extends FishingPropertiesRegistry
 {

@@ -7,9 +7,7 @@
   ],
   "base_chance": 1,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "spawn:octopus",
-    "fish_bucket": "starcatcher:missingno",
     "item": "spawn:captured_octopus",
     "treasure": "starcatcher:waterlogged_satchel"
   },

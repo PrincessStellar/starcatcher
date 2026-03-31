@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "minecraft:glow_squid",
-    "fish_bucket": "starcatcher:missingno",
     "item": "miners_delight:glow_squid",
     "treasure": "starcatcher:waterlogged_satchel"
   },

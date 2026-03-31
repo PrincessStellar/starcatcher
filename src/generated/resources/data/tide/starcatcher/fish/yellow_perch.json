@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:yellow_perch",
     "fish_bucket": "tide:yellow_perch_bucket",
     "item": "tide:yellow_perch",

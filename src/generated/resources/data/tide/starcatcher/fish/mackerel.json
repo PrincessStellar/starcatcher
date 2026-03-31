@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:mackerel",
     "fish_bucket": "tide:mackerel_bucket",
     "item": "tide:mackerel",

@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.io;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public record CaughtFishInfo(
         int sizeInCentimeters,

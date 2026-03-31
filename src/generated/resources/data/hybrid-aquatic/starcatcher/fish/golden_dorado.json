@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:golden_dorado",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:golden_dorado",
     "treasure": "starcatcher:waterlogged_satchel"
   },

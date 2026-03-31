@@ -76,16 +76,6 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(TRUE_BLUE_BOTTLE);
         simpleItem(WITHERED_BOTTLE);
 
-        //cheater items
-        simpleItem(AWARD_ALL_FISHES);
-        simpleItem(AWARD_ONE_FISH);
-        simpleItem(REVOKE_ALL_FISHES);
-        simpleItem(AWARD_ALL_TROPHIES);
-        simpleItem(REVOKE_ALL_TROPHIES);
-        simpleItem(AWARD_ALL_SECRETS);
-        simpleItem(REVOKE_ALL_SECRETS);
-        simpleItem(REVOKE_ALL_EXTRAS);
-
         //hooks
         simpleItem(HOOK);
         simpleItem(CRYSTAL_HOOK);

@@ -7,9 +7,7 @@
   ],
   "base_chance": 0,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "upgrade_aquatic:great_thrasher",
-    "fish_bucket": "starcatcher:missingno",
     "item": "upgrade_aquatic:thrasher_tooth",
     "override_minigame_item": "starcatcher:unknown_fish",
     "treasure": "starcatcher:waterlogged_satchel"

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:deep_grouper",
     "fish_bucket": "tide:deep_grouper_bucket",
     "item": "tide:deep_grouper",

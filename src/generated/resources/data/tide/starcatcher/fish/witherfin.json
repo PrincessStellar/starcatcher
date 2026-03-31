@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:witherfin",
     "fish_bucket": "tide:witherfin_bucket",
     "item": "tide:witherfin",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:beaked_herring",
     "fish_bucket": "unusualfishmod:beaked_herring_bucket",
     "item": "unusualfishmod:raw_beaked_herring",

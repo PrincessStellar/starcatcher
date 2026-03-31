@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:demon_herring",
     "fish_bucket": "unusualfishmod:demon_herring_bucket",
     "item": "unusualfishmod:raw_demon_herring",

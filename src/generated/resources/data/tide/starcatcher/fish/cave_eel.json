@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:cave_eel",
     "fish_bucket": "tide:cave_eel_bucket",
     "item": "tide:cave_eel",

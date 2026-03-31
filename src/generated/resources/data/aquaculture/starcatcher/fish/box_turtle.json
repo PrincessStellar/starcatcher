@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:box_turtle",
-    "fish_bucket": "starcatcher:missingno",
     "item": "aquaculture:box_turtle",
     "treasure": "aquaculture:treasure_chest"
   },

@@ -1,7 +1,6 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "minecraft:pufferfish",
     "fish_bucket": "minecraft:pufferfish_bucket",
     "item": "minecraft:pufferfish",

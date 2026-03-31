@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:sea_bass",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:sea_bass",
     "treasure": "starcatcher:waterlogged_satchel"
   },

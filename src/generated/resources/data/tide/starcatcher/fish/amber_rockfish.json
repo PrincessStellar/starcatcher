@@ -7,7 +7,6 @@
   ],
   "base_chance": 20,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:amber_rockfish",
     "fish_bucket": "tide:amber_rockfish_bucket",
     "item": "tide:amber_rockfish",

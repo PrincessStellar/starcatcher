@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:aero_mono",
     "fish_bucket": "unusualfishmod:aero_mono_bucket",
     "item": "unusualfishmod:raw_aero_mono",

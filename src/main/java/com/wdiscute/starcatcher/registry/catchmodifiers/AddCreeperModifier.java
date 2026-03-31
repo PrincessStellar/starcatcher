@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;

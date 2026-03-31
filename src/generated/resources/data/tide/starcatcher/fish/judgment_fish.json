@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:judgment_fish",
     "fish_bucket": "tide:judgment_fish_bucket",
     "item": "tide:judgment_fish",

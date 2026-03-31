@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:capitaine",
     "fish_bucket": "aquaculture:capitaine_bucket",
     "item": "aquaculture:capitaine",

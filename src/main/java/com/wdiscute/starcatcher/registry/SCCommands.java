@@ -18,7 +18,6 @@ import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.storage.FishProperties;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;

@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:darkness_eater",
     "fish_bucket": "tide:darkness_eater_bucket",
     "item": "tide:darkness_eater",

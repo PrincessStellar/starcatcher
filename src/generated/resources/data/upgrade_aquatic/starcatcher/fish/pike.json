@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "upgrade_aquatic:pike",
     "fish_bucket": "upgrade_aquatic:pike_bucket",
     "item": "upgrade_aquatic:pike",

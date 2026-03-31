@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:rainbow_trout",
     "fish_bucket": "aquaculture:rainbow_trout_bucket",
     "item": "aquaculture:rainbow_trout",

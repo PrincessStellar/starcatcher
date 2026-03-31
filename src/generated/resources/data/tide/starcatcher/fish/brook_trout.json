@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:brook_trout",
     "fish_bucket": "tide:brook_trout_bucket",
     "item": "tide:brook_trout",

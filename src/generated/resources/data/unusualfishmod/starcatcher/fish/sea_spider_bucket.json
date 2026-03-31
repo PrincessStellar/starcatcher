@@ -9,7 +9,6 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:sea_spider",
-    "fish_bucket": "starcatcher:missingno",
     "item": "unusualfishmod:sea_spider_bucket",
     "treasure": "starcatcher:waterlogged_satchel"
   },

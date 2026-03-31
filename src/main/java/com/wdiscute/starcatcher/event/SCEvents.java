@@ -15,8 +15,7 @@ import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChang
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -164,10 +163,6 @@ public class SCEvents
         event.dataPackRegistry(
                 Starcatcher.FISH_REGISTRY, FishProperties.CODEC, FishProperties.CODEC,
                 builder -> builder.maxId(512));
-
-        event.dataPackRegistry(
-                Starcatcher.TROPHY_REGISTRY, TrophyProperties.CODEC, TrophyProperties.CODEC,
-                builder -> builder.maxId(256));
     }
 
     @SubscribeEvent

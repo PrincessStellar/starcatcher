@@ -10,6 +10,9 @@
 
   "creativetab.starcatcher.starcatcher": "Starcatcher",
 
+  "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
+  "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",
+
   "emi.category.starcatcher.fishing" : "Starcatcher's Fishing",
 
   "emi.info.starcatcher.worms.0" : "Worms have different fishing modifiers when used as bait.",
@@ -113,7 +116,7 @@
 
 
   "gui.starcatcher.processor.fishes_processor.percentile" : "- Price is increased by +%s%% based on top 50%%",
-  "gui.starcatcher.processor.fishes_processor.golden" : "- Price is multiplied by if %sx golden.",
+  "gui.starcatcher.processor.fishes_processor.golden" : "- Price is multiplied by %sx if golden.",
 
 
 
@@ -173,7 +176,7 @@
   "item.starcatcher.azure_crystal_rod": "Azure Crystal Rod",
   "tooltip.starcatcher.azure_crystal_rod.0": "A <sclegendary>Legendary</sclegendary> rod made of pure azure crystals.",
   "tooltip.starcatcher.azure_crystal_rod.1": "It's said the <scuncommon>Older Anglers</scuncommon> gift this rod",
-  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <sclegendary>Aurora</sclegendary>",
+  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <sclegendary>Azure Crystalback Minnow</sclegendary>",
 
   "item.starcatcher.good_old_rod": "Good Ol' Rod",
   "tooltip.starcatcher.good_old_rod.0": "A simple rod, now supportive of bobbers, hooks and baits.",
@@ -568,8 +571,8 @@
   "gui.guide.seasons.late_winter" : "Late Winter",
 
 
-  "gui.guide.seasons.in_season" : "In season!",
-  "gui.guide.seasons.not_in_season" : "Not in season",
+  "gui.guide.seasons.in_season" : "✅ In season!",
+  "gui.guide.seasons.not_in_season" : "❌ Not in season",
 
   "gui.guide.weather.clear" : "Clear Skies",
   "gui.guide.weather.rain" : "Raining",

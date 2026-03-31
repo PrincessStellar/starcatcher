@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "fishofthieves:wrecker",
     "fish_bucket": "fishofthieves:wrecker_bucket",
     "item": "fishofthieves:wrecker",

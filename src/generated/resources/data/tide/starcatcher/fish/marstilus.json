@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:marstilus",
     "fish_bucket": "tide:marstilus_bucket",
     "item": "tide:marstilus",

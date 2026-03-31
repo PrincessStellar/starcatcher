@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "netherdepthsupgrade:searing_cod",
     "fish_bucket": "netherdepthsupgrade:searing_cod_bucket",
     "item": "netherdepthsupgrade:searing_cod",

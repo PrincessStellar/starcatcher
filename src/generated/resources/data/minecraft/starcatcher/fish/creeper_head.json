@@ -3,7 +3,6 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "minecraft:creeper",
-    "fish_bucket": "starcatcher:missingno",
     "item": "minecraft:creeper_head",
     "override_minigame_item": "starcatcher:unknown_fish",
     "treasure": "starcatcher:waterlogged_satchel"

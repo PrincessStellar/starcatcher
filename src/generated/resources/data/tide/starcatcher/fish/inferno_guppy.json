@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:inferno_guppy",
     "fish_bucket": "tide:inferno_guppy_bucket",
     "item": "tide:inferno_guppy",

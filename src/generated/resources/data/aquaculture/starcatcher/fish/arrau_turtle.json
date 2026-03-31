@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:arrau_turtle",
-    "fish_bucket": "starcatcher:missingno",
     "item": "aquaculture:arrau_turtle",
     "treasure": "aquaculture:box"
   },

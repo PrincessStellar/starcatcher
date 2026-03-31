@@ -7,7 +7,6 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:windbass",
     "fish_bucket": "tide:windbass_bucket",
     "item": "tide:windbass",

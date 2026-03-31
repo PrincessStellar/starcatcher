@@ -14,8 +14,7 @@ import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCParticles;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -171,71 +170,6 @@ public class FishingBobEntity extends Projectile
         List<FishProperties> available = new ArrayList<>();
 
         Map<ResourceLocation, Integer> data = FishingGuideAttachment.getTrophiesCaught(player);
-
-        List<TrophyProperties> trophiesCaught = new ArrayList<>(U.getTpsFromRls(level(), data.keySet().stream().toList()));
-
-        //-1 on the common to account for the default "fish" unfortunately, there's probably a way to fix this
-        AtomicReference<TrophyProperties.RarityProgress> all = new AtomicReference<>(TrophyProperties.RarityProgress.fromAttachment(player));
-        Map<FishProperties.Rarity, TrophyProperties.RarityProgress> progressMap = new EnumMap<>(Map.of(
-                FishProperties.Rarity.COMMON, new TrophyProperties.RarityProgress(0, -1),
-                FishProperties.Rarity.UNCOMMON, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.RARE, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.EPIC, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.LEGENDARY, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.GOLDEN, TrophyProperties.RarityProgress.DEFAULT,
-                FishProperties.Rarity.TRASH, TrophyProperties.RarityProgress.DEFAULT
-        ));
-
-        FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->
-        {
-            all.set(new TrophyProperties.RarityProgress(all.get().total() + counter.count(), all.get().unique()));
-
-            progressMap.computeIfPresent(U.getFpFromRl(level(), loc).rarity(), (r, p) -> new TrophyProperties.RarityProgress(p.total() + counter.count(), p.unique() + 1));
-            if (counter.caughtGolden())
-            {
-                int newTotal = progressMap.get(FishProperties.Rarity.GOLDEN).total() + 1;
-                progressMap.put(FishProperties.Rarity.GOLDEN, new TrophyProperties.RarityProgress(newTotal, newTotal));
-            }
-        });
-
-        //check if any trophy can be caught
-        e:
-        for (TrophyProperties tp : level().registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY))
-        {
-            //if tp can be caught
-            for (FishProperties.Rarity value : FishProperties.Rarity.values())
-            {
-                if (!check(progressMap.get(value), tp.getProgress(value))) continue e;
-            }
-
-            if (check(all.get(), tp.all())
-                    && !trophiesCaught.contains(tp)
-                    && tp.fp().calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING) > 0
-                    && random.nextIntBetweenInclusive(0, 99) < tp.chanceToCatch()
-            )
-            {
-
-                ItemStack is = new ItemStack(tp.fish().value());
-
-                Entity itemFished = new ItemEntity(
-                        level(), position().x, position().y + 1.2f, position().z, is);
-
-                Vec3 vec3 = new Vec3(
-                        Math.clamp((player.position().x - position().x) / 25, -1, 1),
-                        0.7 + Math.clamp((player.position().y - position().y) / 20, -1, 1),
-                        Math.clamp((player.position().z - position().z) / 25, -1, 1));
-
-                itemFished.setDeltaMovement(vec3);
-                level().addFreshEntity(itemFished);
-
-                trophiesCaught.add(tp);
-
-                U.getRlsFromTps(level(), trophiesCaught).forEach(loc -> data.putIfAbsent(loc, 0));
-
-                kill();
-                return;
-            }
-        }
 
         //trigger modifiers
         modifiers.forEach(AbstractCatchModifier::onReelAfterTreasureCheck);
@@ -546,10 +480,4 @@ public class FishingBobEntity extends Projectile
         builder.define(STATE, 0);
         builder.define(VOID, false);
     }
-
-    public static boolean check(TrophyProperties.RarityProgress current, TrophyProperties.RarityProgress restriction)
-    {
-        return current.total() >= restriction.total() && current.unique() >= restriction.unique();
-    }
-
 }

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:ash_perch",
     "fish_bucket": "tide:ash_perch_bucket",
     "item": "tide:ash_perch",

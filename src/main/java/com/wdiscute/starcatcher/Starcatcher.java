@@ -18,8 +18,7 @@ import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModif
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -47,9 +46,6 @@ public class Starcatcher
     //resource keys
     public static final ResourceKey<Registry<FishProperties>> FISH_REGISTRY =
             ResourceKey.createRegistryKey(Starcatcher.rl("fish"));
-
-    public static final ResourceKey<Registry<TrophyProperties>> TROPHY_REGISTRY =
-            ResourceKey.createRegistryKey(Starcatcher.rl("trophy"));
 
     public static final ResourceKey<Registry<AbstractFishRestriction>> FISH_RESTRICTIONS =
             ResourceKey.createRegistryKey(Starcatcher.rl("fish_restrictions"));

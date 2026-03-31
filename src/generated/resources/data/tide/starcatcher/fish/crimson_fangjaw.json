@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:crimson_fangjaw",
     "fish_bucket": "tide:crimson_fangjaw_bucket",
     "item": "tide:crimson_fangjaw",

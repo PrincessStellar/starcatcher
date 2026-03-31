@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "fishofthieves:islehopper",
     "fish_bucket": "fishofthieves:islehopper_bucket",
     "item": "fishofthieves:islehopper",

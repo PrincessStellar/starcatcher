@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:triple_twirl_pleco",
     "fish_bucket": "unusualfishmod:triple_twirl_pleco_bucket",
     "item": "unusualfishmod:raw_triple_twirl_pleco",

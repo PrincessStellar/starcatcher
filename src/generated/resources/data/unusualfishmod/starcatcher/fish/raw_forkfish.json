@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:forkfish",
     "fish_bucket": "unusualfishmod:forkfish_bucket",
     "item": "unusualfishmod:raw_forkfish",

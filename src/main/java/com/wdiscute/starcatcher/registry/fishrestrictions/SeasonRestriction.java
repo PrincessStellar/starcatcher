@@ -4,11 +4,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -107,12 +109,15 @@ public class SeasonRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
+        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0 ?
+                SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+
         if(getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) > 0)
-            return List.of(Component.translatable("gui.guide.seasons.in_season"));
+            return List.of(Component.translatable("gui.guide.seasons.in_season").withStyle(Style.EMPTY.withColor(color)));
         else
-            return List.of(Component.translatable("gui.guide.seasons.not_in_season"));
+            return List.of(Component.translatable("gui.guide.seasons.not_in_season").withStyle(Style.EMPTY.withColor(color)));
     }
 
     @Override

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:carp",
     "fish_bucket": "tide:carp_bucket",
     "item": "tide:carp",

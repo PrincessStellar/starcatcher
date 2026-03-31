@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "fishofthieves:stormfish",
     "fish_bucket": "fishofthieves:stormfish_bucket",
     "item": "fishofthieves:stormfish",

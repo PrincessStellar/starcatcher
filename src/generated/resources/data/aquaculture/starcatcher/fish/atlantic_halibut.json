@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:atlantic_halibut",
     "fish_bucket": "aquaculture:atlantic_halibut_bucket",
     "item": "aquaculture:atlantic_halibut",

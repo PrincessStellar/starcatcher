@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:violet_carp",
     "fish_bucket": "tide:violet_carp_bucket",
     "item": "tide:violet_carp",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tfc:rainbow_trout",
     "fish_bucket": "tfc:bucket/rainbow_trout",
     "item": "tfc:food/rainbow_trout",

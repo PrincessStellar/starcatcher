@@ -9,7 +9,6 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "unusualfishmod:roughback_guitarfish_spawn_egg",
-    "fish_bucket": "starcatcher:missingno",
     "item": "unusualfishmod:roughback_guitarfish_spawn_egg",
     "treasure": "starcatcher:waterlogged_satchel"
   },

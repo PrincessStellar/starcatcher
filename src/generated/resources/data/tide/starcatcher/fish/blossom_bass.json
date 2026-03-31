@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:blossom_bass",
     "fish_bucket": "tide:blossom_bass_bucket",
     "item": "tide:blossom_bass",

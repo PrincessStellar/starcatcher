@@ -1,7 +1,6 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "minecraft:cod",
     "fish_bucket": "minecraft:cod_bucket",
     "item": "minecraft:cod",

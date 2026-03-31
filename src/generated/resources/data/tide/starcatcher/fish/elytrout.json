@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:elytrout",
     "fish_bucket": "tide:elytrout_bucket",
     "item": "tide:elytrout",

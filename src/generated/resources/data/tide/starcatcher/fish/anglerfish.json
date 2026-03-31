@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:anglerfish",
     "fish_bucket": "tide:anglerfish_bucket",
     "item": "tide:anglerfish",

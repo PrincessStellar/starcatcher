@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:snook",
     "fish_bucket": "tide:snook_bucket",
     "item": "tide:snook",

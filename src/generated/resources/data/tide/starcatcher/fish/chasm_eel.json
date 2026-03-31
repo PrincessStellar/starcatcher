@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:chasm_eel",
     "fish_bucket": "tide:chasm_eel_bucket",
     "item": "tide:chasm_eel",

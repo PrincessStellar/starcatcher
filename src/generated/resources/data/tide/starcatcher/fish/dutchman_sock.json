@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:dutchman_sock",
     "fish_bucket": "tide:dutchman_sock_bucket",
     "item": "tide:dutchman_sock",

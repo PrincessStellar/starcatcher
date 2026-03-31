@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:deep_blue",
     "fish_bucket": "tide:deep_blue_bucket",
     "item": "tide:deep_blue",

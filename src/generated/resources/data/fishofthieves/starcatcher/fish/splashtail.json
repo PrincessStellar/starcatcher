@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "fishofthieves:splashtail",
     "fish_bucket": "fishofthieves:splashtail_bucket",
     "item": "fishofthieves:splashtail",

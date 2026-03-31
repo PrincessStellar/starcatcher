@@ -5,7 +5,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
-import com.wdiscute.libtooltips.Tooltips;
+import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -14,14 +14,12 @@ import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.io.network.FPsSeenPayload;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -29,6 +27,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -36,7 +35,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -46,6 +44,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.checkerframework.checker.units.qual.C;
+import org.joml.Quaternionf;
 
 import java.awt.*;
 import java.time.Instant;
@@ -63,6 +63,8 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation BACKGROUND_INDEX_SECOND = Starcatcher.rl("textures/gui/guide/background_index_second.png");
     private static final ResourceLocation BACKGROUND_ENTRY = Starcatcher.rl("textures/gui/guide/background_entry.png");
     private static final ResourceLocation BACKGROUND_BASICS = Starcatcher.rl("textures/gui/guide/background_basics.png");
+
+    private static final ResourceLocation COMPASS = Starcatcher.rl("textures/gui/guide/compass.png");
 
     private static final ResourceLocation HIGHLIGHT_LEFT = Starcatcher.rl("textures/gui/guide/highlight_page_left.png");
     private static final ResourceLocation HIGHLIGHT_RIGHT = Starcatcher.rl("textures/gui/guide/highlight_page_right.png");
@@ -167,19 +169,8 @@ public class FishingGuideScreen extends Screen
 
     List<ResourceLocation> fpsSeen = new ArrayList<>();
     List<FishProperties> entries = new ArrayList<>(999);
-    List<TrophyProperties> trophiesTps = new ArrayList<>();
-    List<TrophyProperties> secretsTps = new ArrayList<>();
     List<FishProperties> fishInArea = new ArrayList<>();
     Map<ResourceLocation, FishCaughtCounter> fishCaughtCounterMap = new HashMap<>();
-
-    TrophyProperties.RarityProgress all = TrophyProperties.RarityProgress.DEFAULT;
-    private final Map<FishProperties.Rarity, TrophyProperties.RarityProgress> progressMap = new EnumMap<>(Map.of(
-            FishProperties.Rarity.COMMON, TrophyProperties.RarityProgress.DEFAULT,
-            FishProperties.Rarity.UNCOMMON, TrophyProperties.RarityProgress.DEFAULT,
-            FishProperties.Rarity.RARE, TrophyProperties.RarityProgress.DEFAULT,
-            FishProperties.Rarity.EPIC, TrophyProperties.RarityProgress.DEFAULT,
-            FishProperties.Rarity.LEGENDARY, TrophyProperties.RarityProgress.DEFAULT
-    ));
 
     @Override
     protected void init()
@@ -187,8 +178,6 @@ public class FishingGuideScreen extends Screen
         super.init();
 
         entries = new ArrayList<>();
-        trophiesTps = new ArrayList<>();
-        secretsTps = new ArrayList<>();
 
         imageWidth = 420;
         imageHeight = 260;
@@ -212,25 +201,6 @@ public class FishingGuideScreen extends Screen
         for (FishProperties fp : FishProperties.getFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
         entries = sortEntries(Config.SORT.get(), entries, player);
         fishInArea = sortEntries(Config.SORT.get(), fishInArea, player);
-
-        for (TrophyProperties tp : level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY))
-            if (tp.trophyType() == TrophyProperties.TrophyType.TROPHY) trophiesTps.add(tp);
-
-        for (TrophyProperties tp : level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY))
-        {
-            if (tp.trophyType() == TrophyProperties.TrophyType.SECRET
-                    && FishingGuideAttachment.getTrophiesCaught(player).containsKey(level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY).getKey(tp)))
-                secretsTps.add(tp);
-        }
-
-        all = TrophyProperties.RarityProgress.fromAttachment(player);
-
-        fishCaughtCounterMap.forEach((rl, counter) ->
-        {
-            all = new TrophyProperties.RarityProgress(all.total() + counter.count(), all.unique() + 1);
-
-            this.progressMap.computeIfPresent(U.getFpFromRl(level, rl).rarity(), (r, p) -> new TrophyProperties.RarityProgress(p.total() + counter.count(), p.unique() + 1));
-        });
     }
 
     @Override
@@ -499,12 +469,14 @@ public class FishingGuideScreen extends Screen
                 if (page == 0) renderImage(guiGraphics, BACKGROUND_INDEX_FIRST);
                 else renderImage(guiGraphics, BACKGROUND_INDEX_SECOND);
                 renderIndex(guiGraphics, mouseX, mouseY);
+                renderCompass(guiGraphics);
             }
             //render help pages
             case 1 ->
             {
                 renderImage(guiGraphics, BACKGROUND_BASICS);
                 renderTheBasics(guiGraphics, mouseX, mouseY);
+                renderCompass(guiGraphics);
             }
             //render entries
             case 2 ->
@@ -512,11 +484,13 @@ public class FishingGuideScreen extends Screen
                 renderImage(guiGraphics, BACKGROUND_ENTRY);
                 renderEntry(guiGraphics, mouseX, mouseY, 52, page * 2);
                 renderEntry(guiGraphics, mouseX, mouseY, 212, page * 2 + 1);
+                renderCompass(guiGraphics);
             }
 
             case 3 ->
             {
                 renderImage(guiGraphics, BACKGROUND_LAST_PAGE);
+                renderCompass(guiGraphics);
             }
         }
 
@@ -549,6 +523,20 @@ public class FishingGuideScreen extends Screen
         }
 
         clicked = false;
+    }
+
+    private void renderCompass(GuiGraphics guiGraphics)
+    {
+        float yRot = Minecraft.getInstance().player.getYRot();
+
+        PoseStack pose = guiGraphics.pose();
+
+        pose.pushPose();
+        pose.translate(uiX + 16 + 16.5, uiY + 16 + 34.5, 0);
+        pose.mulPose(Axis.ZP.rotationDegrees(-yRot -45 - 180));
+        pose.translate(-16, -16, 0);
+        guiGraphics.blit(COMPASS, 0, 0, 0, 0, 32, 32, 32, 32);
+        pose.popPose();
     }
 
     private void renderCover(GuiGraphics guiGraphics, int mouseX, int mouseY)
@@ -585,108 +573,6 @@ public class FishingGuideScreen extends Screen
             if (!I18n.exists("gui.guide.page." + pageName + ".right." + i)) break;
             Component comp = Component.translatable("gui.guide.page." + pageName + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 213, uiY + 10 * i + 13, 0xff000000, false);
-        }
-    }
-
-    private void renderSecrets(GuiGraphics guiGraphics, int mouseX, int mouseY)
-    {
-        for (int i = 0; i < secretsTps.size(); i++)
-        {
-            int rowSize = Math.min(6, (secretsTps.size() - i / 6 * 6));
-            int x = 70 - rowSize * 23 / 2;
-
-            int xrender = x + (i % 6) * 23;
-            int y = i / 6 * 25;
-
-            //offset to page
-            xrender += uiX + 223;
-            y += uiY + 110;
-
-            TrophyProperties tp = secretsTps.get(i);
-
-            ItemStack is;
-
-            is = new ItemStack(tp.fish());
-
-            guiGraphics.renderOutline(xrender - 10, y - 2, 20, 20, 0xff000000);
-            renderItem(is, xrender - 8, y, 1);
-
-            if (mouseX > xrender - 10 && mouseX < xrender + 10 && mouseY > y - 2 && mouseY < y + 18)
-            {
-                guiGraphics.renderTooltip(this.font, is, mouseX, mouseY);
-            }
-
-            //todo fix this
-//            if (clickedX > xrender - 10 && clickedX < xrender + 10 && clickedY > y - 2 && clickedY < y + 18)
-//            {
-//                if (is.getItem() instanceof NoteContainer nc)
-//                {
-//                    Minecraft.getInstance().setScreen(new SecretNoteScreen(nc.note));
-//                }
-//            }
-        }
-    }
-
-    private void renderTrophies(GuiGraphics guiGraphics, int mouseX, int mouseY)
-    {
-        for (int i = 0; i < trophiesTps.size(); i++)
-        {
-            int rowSize = Math.min(6, (trophiesTps.size() - i / 6 * 6));
-            int x = 60 - rowSize * 23 / 2;
-
-            int xrender = x + (i % 6) * 23;
-            int y = i / 6 * 25;
-
-            //offset to page
-            xrender += uiX + 73;
-            y += uiY + 120;
-
-            TrophyProperties tp = trophiesTps.get(i);
-
-            ItemStack is;
-            boolean isMouseOnTop = mouseX > xrender - 10 && mouseX < xrender + 10 && mouseY > y - 2 && mouseY < y + 18;
-
-            //if caught
-            if (FishingGuideAttachment.getTrophiesCaught(player).containsKey(level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY).getKey(tp)))
-            {
-                is = new ItemStack(tp.fish());
-                if (isMouseOnTop)
-                {
-                    guiGraphics.renderTooltip(this.font, is, mouseX, mouseY);
-                }
-            }
-            else
-            {
-                if (isMouseOnTop)
-                {
-                    List<Component> list = new ArrayList<>(List.of(Component.literal("Requirements:")));
-
-                    if (tp.all().total() != 0)
-                        list.add(Component.empty().append(Component.translatable("gui.guide.trophy.all.total")).append("[" + all.total() + "/" + tp.all().total() + "]"));
-                    if (tp.all().unique() != 0)
-                        list.add(Component.empty().append(Component.translatable("gui.guide.trophy.all.unique")).append("[" + all.unique() + "/" + tp.all().unique() + "]"));
-
-                    for (FishProperties.Rarity value : FishProperties.Rarity.values())
-                    {
-                        TrophyProperties.RarityProgress progress = tp.getProgress(value);
-                        TrophyProperties.RarityProgress active = this.progressMap.get(value);
-                        if (progress.total() != 0)
-                        {
-                            list.add(Component.empty().append(Component.translatable("gui.guide.trophy." + value.getSerializedName() + ".total")).append("[" + active.total() + "/" + progress.total() + "]"));
-                        }
-                        if (progress.unique() != 0)
-                        {
-                            list.add(Component.empty().append(Component.translatable("gui.guide.trophy." + value.getSerializedName() + ".unique")).append("[" + active.unique() + "/" + progress.unique() + "]"));
-                        }
-                    }
-
-                    guiGraphics.renderTooltip(this.font, list, Optional.empty(), mouseX, mouseY);
-                }
-                is = new ItemStack(SCItems.MISSINGNO.get());
-            }
-
-            guiGraphics.renderOutline(xrender - 10, y - 2, 20, 20, 0xff000000);
-            renderItem(is, xrender - 8, y, 1);
         }
     }
 
@@ -919,9 +805,9 @@ public class FishingGuideScreen extends Screen
                 renderItem(trophiesIndexIcon, uiX + 166, uiY + 39, 1);
                 renderItem(secretsIcon, uiX + 321, uiY + 39, 1);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.trophies"), uiX + 60, uiY + 45, 0x635040, false);
-                renderTrophies(guiGraphics, mouseX, mouseY);
+                //renderTrophies(guiGraphics, mouseX, mouseY);
                 guiGraphics.drawString(this.font, Component.translatable("gui.guide.secrets"), uiX + 230, uiY + 45, 0x635040, false);
-                renderSecrets(guiGraphics, mouseX, mouseY);
+                //renderSecrets(guiGraphics, mouseX, mouseY);
             }
 
         }
@@ -1165,7 +1051,7 @@ public class FishingGuideScreen extends Screen
         for (AbstractFishRestriction restriction : fp.restrictions())
         {
             if (!restriction.isEnabled()) continue;
-            List<Component> indexHover = restriction.getIndexHover(level, fp, player);
+            List<Component> indexHover = restriction.getIndexHover(level, fp, player, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER);
             components.addAll(indexHover);
         }
 
@@ -1675,11 +1561,8 @@ public class FishingGuideScreen extends Screen
 
         if (fishToDisplay != ItemStack.EMPTY)
         {
-            MutableComponent compName = Component.translatable(fp.catchInfo().fish().value().getDescriptionId());
-            if (fp.catchInfo().alwaysSpawnEntity())
-                compName = Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", "."));
             renderItem(fishToDisplay, x + 26, y + 70);
-            guiGraphics.drawString(font, compName, x + 30, y + 36, 0x635040, false);
+            guiGraphics.drawString(font, fp.getDisplayName(), x + 30, y + 36, 0x635040, false);
         }
 
         int color = switch (fp.rarity())
@@ -1689,7 +1572,7 @@ public class FishingGuideScreen extends Screen
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(200, 0x78c8ff);
             case FishProperties.Rarity.EPIC -> FastColor.ARGB32.color(200, 0xc060ff);
             case FishProperties.Rarity.LEGENDARY, GOLDEN ->
-                    FastColor.ARGB32.color(175, Color.HSBtoRGB((float) Util.getMillis() / 1000, 1, 1));
+                    FastColor.ARGB32.color(175, Color.HSBtoRGB((float) Util.getMillis() / 10000, 1, 1));
         };
 
         float red = FastColor.ARGB32.red(color) / 255f;

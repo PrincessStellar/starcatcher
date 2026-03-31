@@ -1,12 +1,11 @@
-package com.wdiscute.starcatcher.compat;
+package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
@@ -37,10 +36,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
     @Override
     public void register(EmiRegistry registry)
     {
-        // Tell EMI to add a tab for your category
         registry.addCategory(STARCATCHER_CATEGORY);
-
-        // Add all the workstations your category uses
         registry.addWorkstation(STARCATCHER_CATEGORY, MY_WORKSTATION);
 
         //worms info
@@ -64,33 +60,12 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 ),
                 SellingBin.rl("/pearls")));
 
-        //todo rework emi starcatcher compat, make a custom multipurpose book-like screen to show a specific fish/trophy restrictions
         Registry<FishProperties> fps = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY);
 
         for (FishProperties fp : fps)
-            registry.addRecipe(new StarcatcherEmiRecipe(fps.getKey(fp), fp));
+            registry.addRecipe(new StarcatcherEmiFPRecipe(fps.getKey(fp), fp));
 
-
-        Registry<TrophyProperties> trophies = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TROPHY_REGISTRY);
-
-        for (TrophyProperties fp : trophies)
-        {
-            if (fp.trophyType().equals(TrophyProperties.TrophyType.TROPHY) || fp.trophyType().equals(TrophyProperties.TrophyType.SECRET))
-                registry.addRecipe(new StarcatcherEmiRecipe(trophies.getKey(fp), fp));
-        }
-
-//        for (SmithingRecipe recipe : getRecipes(registry, RecipeType.SMITHING))
-//        {
-//            if (recipe instanceof NetheriteUpgradeSmithingRecipe frsr && Arrays.stream(((NetheriteUpgradeSmithingRecipe) recipe).template().getItems()).anyMatch(o -> o.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE)))
-//            {
-//                registry.addRecipe(new StarcatcherEmiSmithingRecipe(frsr));
-//            }
-//        }
-
-        for (Holder<Item> item : BuiltInRegistries.ITEM.getTag(SCTags.TEMPLATES).get())
-        {
-            registry.addRecipe(new StarcatcherEmiSmithingRecipe(item.value()));
-        }
-
+        //todo add netherrite recipe
+        //todo add template recipes
     }
 }

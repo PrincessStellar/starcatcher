@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:circus",
     "fish_bucket": "unusualfishmod:circus_bucket",
     "item": "unusualfishmod:raw_circus",

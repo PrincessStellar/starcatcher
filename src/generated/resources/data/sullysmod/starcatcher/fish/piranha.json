@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "sullysmod:piranha",
     "fish_bucket": "sullysmod:piranha_bucket",
     "item": "sullysmod:piranha",

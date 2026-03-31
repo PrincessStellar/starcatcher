@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:obsidian_pike",
     "fish_bucket": "tide:obsidian_pike_bucket",
     "item": "tide:obsidian_pike",

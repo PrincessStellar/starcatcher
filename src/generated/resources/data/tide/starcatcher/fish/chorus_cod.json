@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:chorus_cod",
     "fish_bucket": "tide:chorus_cod_bucket",
     "item": "tide:chorus_cod",

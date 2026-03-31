@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "betterend:end_fish",
     "fish_bucket": "betterend:bucket_end_fish",
     "item": "betterend:end_fish_raw",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "sullysmod:lanternfish",
     "fish_bucket": "sullysmod:lanternfish_bucket",
     "item": "sullysmod:lanternfish",

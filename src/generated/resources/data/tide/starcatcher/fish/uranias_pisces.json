@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:uranias_pisces",
     "fish_bucket": "tide:uranias_pisces_bucket",
     "item": "tide:uranias_pisces",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:brown_trout",
     "fish_bucket": "aquaculture:brown_trout_bucket",
     "item": "aquaculture:brown_trout",

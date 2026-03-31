@@ -37,8 +37,6 @@ public class DataGenerators
 
         gen.addProvider(event.includeServer(), new DGBiomeModifierProvider(output, lookupProvider));
 
-        gen.addProvider(event.includeServer(), new DGTrophyPropertiesProvider(output, lookupProvider));
-
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         gen.addProvider(event.includeServer(), new DGSCItemModelProvider(output, existingFileHelper));

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "collectorsreap:platinum_bass",
     "fish_bucket": "collectorsreap:platinum_bass_bucket",
     "item": "collectorsreap:platinum_bass",

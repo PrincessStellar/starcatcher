@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:red_40",
     "fish_bucket": "tide:red_40_bucket",
     "item": "tide:red_40",

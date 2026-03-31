@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:stingray",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:blue_spotted_stingray",
     "treasure": "starcatcher:waterlogged_satchel"
   },

@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -64,7 +64,7 @@ public abstract class AbstractFishRestriction
     }
 
 
-    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         return List.of();
     }

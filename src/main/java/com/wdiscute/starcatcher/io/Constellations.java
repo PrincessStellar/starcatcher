@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.io;
 
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public class Constellations
 {

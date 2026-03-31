@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:synodontis",
     "fish_bucket": "aquaculture:synodontis_bucket",
     "item": "aquaculture:synodontis",

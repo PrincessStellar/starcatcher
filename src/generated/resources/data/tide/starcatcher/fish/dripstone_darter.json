@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:dripstone_darter",
     "fish_bucket": "tide:dripstone_darter_bucket",
     "item": "tide:dripstone_darter",

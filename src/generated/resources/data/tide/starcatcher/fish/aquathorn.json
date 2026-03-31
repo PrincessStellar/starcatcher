@@ -7,7 +7,6 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:aquathorn",
     "fish_bucket": "tide:aquathorn_bucket",
     "item": "tide:aquathorn",

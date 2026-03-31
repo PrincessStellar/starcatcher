@@ -7,7 +7,6 @@
   ],
   "base_chance": 20,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:pale_clubfish",
     "fish_bucket": "tide:pale_clubfish_bucket",
     "item": "tide:pale_clubfish",

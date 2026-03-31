@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:white_crappie",
     "fish_bucket": "tide:white_crappie_bucket",
     "item": "tide:white_crappie",

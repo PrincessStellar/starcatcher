@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:mantyvern",
     "fish_bucket": "tide:mantyvern_bucket",
     "item": "tide:mantyvern",

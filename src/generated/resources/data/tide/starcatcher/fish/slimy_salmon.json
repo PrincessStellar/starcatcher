@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:slimy_salmon",
     "fish_bucket": "tide:slimy_salmon_bucket",
     "item": "tide:slimy_salmon",

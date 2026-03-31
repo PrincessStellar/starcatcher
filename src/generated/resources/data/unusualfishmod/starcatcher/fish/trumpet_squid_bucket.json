@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:trumpet_squid",
     "fish_bucket": "unusualfishmod:trumpet_squid_bucket",
     "item": "unusualfishmod:trumpet_squid_bucket",

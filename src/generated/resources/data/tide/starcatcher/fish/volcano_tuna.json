@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:volcano_tuna",
     "fish_bucket": "tide:volcano_tuna_bucket",
     "item": "tide:volcano_tuna",

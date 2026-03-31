@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.compat;
+package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;

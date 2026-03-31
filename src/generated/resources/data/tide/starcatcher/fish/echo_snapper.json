@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:echo_snapper",
     "fish_bucket": "tide:echo_snapper_bucket",
     "item": "tide:echo_snapper",

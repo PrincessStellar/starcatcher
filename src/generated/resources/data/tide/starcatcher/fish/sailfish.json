@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:sailfish",
     "fish_bucket": "tide:sailfish_bucket",
     "item": "tide:sailfish",

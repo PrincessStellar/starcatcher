@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "collectorsreap:urchin",
     "fish_bucket": "collectorsreap:urchin_bucket",
     "item": "collectorsreap:urchin",

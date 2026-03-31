@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:smallmouth_bass",
     "fish_bucket": "aquaculture:smallmouth_bass_bucket",
     "item": "aquaculture:smallmouth_bass",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 20,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:sleepy_carp",
     "fish_bucket": "tide:sleepy_carp_bucket",
     "item": "tide:sleepy_carp",

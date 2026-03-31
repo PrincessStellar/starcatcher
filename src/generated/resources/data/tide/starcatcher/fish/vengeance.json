@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:vengeance",
     "fish_bucket": "tide:vengeance_bucket",
     "item": "tide:vengeance",

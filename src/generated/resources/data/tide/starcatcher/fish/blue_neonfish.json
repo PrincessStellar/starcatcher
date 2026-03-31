@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:blue_neonfish",
     "fish_bucket": "tide:blue_neonfish_bucket",
     "item": "tide:blue_neonfish",

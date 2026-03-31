@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:sun_emblem",
     "fish_bucket": "tide:sun_emblem_bucket",
     "item": "tide:sun_emblem",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:spore_stalker",
     "fish_bucket": "tide:spore_stalker_bucket",
     "item": "tide:spore_stalker",

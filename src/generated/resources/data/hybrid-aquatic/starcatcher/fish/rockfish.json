@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:rockfish",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:rockfish",
     "treasure": "starcatcher:waterlogged_satchel"
   },

@@ -7,7 +7,6 @@
   ],
   "base_chance": 20,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:enderfin",
     "fish_bucket": "tide:enderfin_bucket",
     "item": "tide:incandescent_larva",

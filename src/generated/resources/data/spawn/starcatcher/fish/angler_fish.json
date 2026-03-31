@@ -7,7 +7,6 @@
   ],
   "base_chance": 20,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "spawn:angler_fish",
     "fish_bucket": "spawn:angler_fish_bucket",
     "item": "spawn:angler_fish",

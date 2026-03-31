@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "crittersandcompanions:koi_fish",
     "fish_bucket": "crittersandcompanions:koi_fish_bucket",
     "item": "crittersandcompanions:koi_fish",

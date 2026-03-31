@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "netherdepthsupgrade:lava_pufferfish",
     "fish_bucket": "netherdepthsupgrade:lava_pufferfish_bucket",
     "item": "netherdepthsupgrade:lava_pufferfish",

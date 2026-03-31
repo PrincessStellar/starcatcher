@@ -7,7 +7,6 @@
   ],
   "base_chance": 1,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:shooting_starfish",
     "fish_bucket": "tide:shooting_starfish_bucket",
     "item": "tide:shooting_starfish",

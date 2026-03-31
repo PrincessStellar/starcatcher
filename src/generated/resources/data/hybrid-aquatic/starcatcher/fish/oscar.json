@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:oscar",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:oscar",
     "treasure": "starcatcher:waterlogged_satchel"
   },

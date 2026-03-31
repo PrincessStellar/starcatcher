@@ -7,7 +7,6 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:nephrosilu",
     "fish_bucket": "tide:nephrosilu_bucket",
     "item": "tide:nephrosilu",

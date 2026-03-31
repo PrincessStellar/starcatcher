@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:arapaima",
     "fish_bucket": "aquaculture:arapaima_bucket",
     "item": "aquaculture:arapaima",

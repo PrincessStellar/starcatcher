@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tfc:bluegill",
     "fish_bucket": "tfc:bucket/bluegill",
     "item": "tfc:food/largemouth_bass",

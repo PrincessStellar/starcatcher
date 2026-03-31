@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "unusualfishmod:bark_angelfish",
     "fish_bucket": "unusualfishmod:bark_angelfish_bucket",
     "item": "unusualfishmod:raw_bark_angelfish",

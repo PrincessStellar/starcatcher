@@ -9,7 +9,6 @@
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "fintastic:coelacanth",
-    "fish_bucket": "starcatcher:missingno",
     "item": "fintastic:coelacanth_spawn_egg",
     "treasure": "starcatcher:waterlogged_satchel"
   },

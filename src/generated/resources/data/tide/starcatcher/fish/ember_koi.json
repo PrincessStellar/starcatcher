@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:ember_koi",
     "fish_bucket": "tide:ember_koi_bucket",
     "item": "tide:ember_koi",

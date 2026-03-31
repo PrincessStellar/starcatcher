@@ -7,9 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "hybrid-aquatic:blowfish",
-    "fish_bucket": "starcatcher:missingno",
     "item": "hybrid-aquatic:blowfish",
     "treasure": "starcatcher:waterlogged_satchel"
   },

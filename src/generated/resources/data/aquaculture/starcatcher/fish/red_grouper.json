@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:red_grouper",
     "fish_bucket": "aquaculture:red_grouper_bucket",
     "item": "aquaculture:red_grouper",

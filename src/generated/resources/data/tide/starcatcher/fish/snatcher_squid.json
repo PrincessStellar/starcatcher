@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:snatcher_squid",
     "fish_bucket": "tide:snatcher_squid_bucket",
     "item": "tide:snatcher_squid",

@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:mirage_catfish",
     "fish_bucket": "tide:mirage_catfish_bucket",
     "item": "tide:mirage_catfish",

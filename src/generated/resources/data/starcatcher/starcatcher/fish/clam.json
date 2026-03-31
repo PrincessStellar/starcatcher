@@ -1,9 +1,6 @@
 {
   "base_chance": 1,
   "catch_info": {
-    "always_spawn_entity": false,
-    "entity": "starcatcher:fish",
-    "fish_bucket": "starcatcher:missingno",
     "item": "starcatcher:clam",
     "treasure": "starcatcher:waterlogged_satchel"
   },

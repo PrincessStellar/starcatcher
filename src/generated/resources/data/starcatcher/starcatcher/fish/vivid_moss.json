@@ -1,8 +1,6 @@
 {
   "base_chance": 4,
   "catch_info": {
-    "always_spawn_entity": false,
-    "entity": "starcatcher:fish",
     "fish_bucket": "starcatcher:starcaught_bucket",
     "item": "starcatcher:vivid_moss",
     "treasure": "starcatcher:waterlogged_satchel"

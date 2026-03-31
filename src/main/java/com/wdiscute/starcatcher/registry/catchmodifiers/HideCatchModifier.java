@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public class HideCatchModifier extends AbstractCatchModifier
 {

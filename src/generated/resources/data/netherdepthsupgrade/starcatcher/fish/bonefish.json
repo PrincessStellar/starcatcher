@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "netherdepthsupgrade:bonefish",
     "fish_bucket": "netherdepthsupgrade:bonefish_bucket",
     "item": "netherdepthsupgrade:bonefish",

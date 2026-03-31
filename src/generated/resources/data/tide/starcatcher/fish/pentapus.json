@@ -7,7 +7,6 @@
   ],
   "base_chance": 10,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:pentapus",
     "fish_bucket": "tide:pentapus_bucket",
     "item": "tide:pentapus",

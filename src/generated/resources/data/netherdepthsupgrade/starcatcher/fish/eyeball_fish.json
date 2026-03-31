@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "netherdepthsupgrade:eyeball_fish",
     "fish_bucket": "netherdepthsupgrade:eyeball_fish_bucket",
     "item": "netherdepthsupgrade:eyeball_fish",

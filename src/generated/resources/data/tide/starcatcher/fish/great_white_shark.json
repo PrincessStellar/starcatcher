@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:great_white_shark",
     "fish_bucket": "tide:great_white_shark_bucket",
     "item": "tide:great_white_shark",

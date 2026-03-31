@@ -2,8 +2,7 @@ package com.wdiscute.starcatcher;
 
 import com.wdiscute.starcatcher.datagen.TrustedHolder;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.TrophyProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
@@ -28,30 +27,6 @@ public class U
 {
     public static final Random r = new Random();
 
-    //List<TrophyProperties> -> List<ResourceLocation>
-    public static List<TrophyProperties> getTpsFromRls(Registry<TrophyProperties> registry, List<ResourceLocation> resourceLocations)
-    {
-        List<TrophyProperties> tps = new ArrayList<>();
-
-        for (ResourceLocation rl : resourceLocations)
-        {
-            TrophyProperties trophyProperties = registry.get(rl);
-            if (trophyProperties != null) tps.add(trophyProperties);
-        }
-        return tps;
-    }
-
-    public static List<TrophyProperties> getTpsFromRls(RegistryAccess registryAccess, List<ResourceLocation> rls)
-    {
-        return getTpsFromRls(registryAccess.registryOrThrow(Starcatcher.TROPHY_REGISTRY), rls);
-    }
-
-    public static List<TrophyProperties> getTpsFromRls(Level level, List<ResourceLocation> rls)
-    {
-        return getTpsFromRls(level.registryAccess(), rls);
-    }
-
-
     //List<FishProperties> -> List<ResourceLocation>
     public static List<ResourceLocation> getRlsFromFps(Registry<FishProperties> registry, List<FishProperties> fishProperties)
     {
@@ -73,66 +48,6 @@ public class U
     public static List<ResourceLocation> getRlsFromFps(Level level, List<FishProperties> fps)
     {
         return getRlsFromFps(level.registryAccess(), fps);
-    }
-
-
-    //List<TrophyProperties> -> List<ResourceLocation>
-    public static List<ResourceLocation> getRlsFromTps(Registry<TrophyProperties> registry, List<TrophyProperties> trophyProperties)
-    {
-        List<ResourceLocation> rls = new ArrayList<>();
-
-        for (TrophyProperties tp : trophyProperties)
-        {
-            ResourceLocation resourceLocation = registry.getKey(tp);
-            if (resourceLocation != null) rls.add(resourceLocation);
-        }
-        return rls;
-    }
-
-    public static List<ResourceLocation> getRlsFromTps(RegistryAccess registryAccess, List<TrophyProperties> tps)
-    {
-        return getRlsFromTps(registryAccess.registryOrThrow(Starcatcher.TROPHY_REGISTRY), tps);
-    }
-
-    public static List<ResourceLocation> getRlsFromTps(Level level, List<TrophyProperties> tps)
-    {
-        return getRlsFromTps(level.registryAccess(), tps);
-    }
-
-
-    //ResourceLocation -> TrophyProperties
-    public static TrophyProperties getTpFromRl(Registry<TrophyProperties> registry, ResourceLocation resourceLocation)
-    {
-        TrophyProperties tp = registry.get(resourceLocation);
-        return tp == null ? TrophyProperties.builder().build() : tp;
-    }
-
-    public static TrophyProperties getTpFromRl(RegistryAccess registryAccess, ResourceLocation rl)
-    {
-        return getTpFromRl(registryAccess.registryOrThrow(Starcatcher.TROPHY_REGISTRY), rl);
-    }
-
-    public static TrophyProperties getTpFromRl(Level level, ResourceLocation rl)
-    {
-        return getTpFromRl(level.registryAccess(), rl);
-    }
-
-
-    //TrophyProperties -> ResourceLocation
-    public static ResourceLocation getRlFromTp(Registry<TrophyProperties> registry, TrophyProperties tp)
-    {
-        ResourceLocation rl = registry.getKey(tp);
-        return rl == null ? Starcatcher.rl("missingno_rl") : rl;
-    }
-
-    public static ResourceLocation getRlFromTp(RegistryAccess registryAccess, TrophyProperties tp)
-    {
-        return getRlFromTp(registryAccess.registryOrThrow(Starcatcher.TROPHY_REGISTRY), tp);
-    }
-
-    public static ResourceLocation getRlFromTp(Level level, TrophyProperties tp)
-    {
-        return getRlFromTp(level.registryAccess(), tp);
     }
 
 

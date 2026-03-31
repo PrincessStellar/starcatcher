@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:bull_shark",
     "fish_bucket": "tide:bull_shark_bucket",
     "item": "tide:bull_shark",

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.Entity;
@@ -83,7 +83,7 @@ public class DaytimeRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player)
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.daytime.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));

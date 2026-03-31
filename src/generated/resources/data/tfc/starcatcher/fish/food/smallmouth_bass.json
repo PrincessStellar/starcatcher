@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tfc:smallmouth_bass",
     "fish_bucket": "tfc:bucket/smallmouth_bass",
     "item": "tfc:food/smallmouth_bass",
