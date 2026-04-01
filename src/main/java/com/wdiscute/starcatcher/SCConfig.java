@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class Config
+public class SCConfig
 {
     private static final ModConfigSpec.Builder BUILDER_CLIENT = new ModConfigSpec.Builder();
 
@@ -49,6 +49,10 @@ public class Config
     public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
+
+    public static final ModConfigSpec.BooleanValue ENABLE_ROD_MENU = BUILDER_CLIENT
+            .translation("starcatcher.configuration.enable_rod_menu")
+            .define("enable_rod_menu", false);
 
     public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER_CLIENT
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")

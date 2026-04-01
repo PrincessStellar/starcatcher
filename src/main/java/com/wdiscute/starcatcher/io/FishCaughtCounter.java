@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.io;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.FTBTeamsCompat;
@@ -129,7 +129,7 @@ public record FishCaughtCounter(
     public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
     {
         //ftb teams compat to share fishes caught to team, does not share size and weight
-        if (ModList.get().isLoaded("ftbteams") && awardToTeam && Config.ENABLE_FTB_TEAM_SHARING.get())
+        if (ModList.get().isLoaded("ftbteams") && awardToTeam && SCConfig.ENABLE_FTB_TEAM_SHARING.get())
         {
             FTBTeamsCompat.awardToTeam(player, fpCaught);
             return;

@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
 import com.wdiscute.sellingbin.registry.ModDataMaps;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCCommands;
@@ -18,9 +18,7 @@ import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.FishProperties;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -42,11 +40,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
-import net.neoforged.neoforge.event.ItemStackedOnOtherEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.entity.item.ItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
@@ -171,7 +167,7 @@ public class SCEvents
                 FishingGuideAttachment.sync(sp);
             }
 
-            if (Config.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
+            if (SCConfig.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
             {
                 sp.addItem(new ItemStack(SCItems.GUIDE.get()));
                 fishingGuideAttachment.receivedGuide = true;
@@ -206,7 +202,7 @@ public class SCEvents
 
         if (event.getItemStack().is(Items.BONE_MEAL) && level.getBlockState(event.getPos()).getBlock() instanceof FarmBlock)
         {
-            if (!level.isClientSide && Config.ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS.getAsBoolean())
+            if (!level.isClientSide && SCConfig.ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS.getAsBoolean())
             {
                 ItemStack is;
                 float i = level.getRandom().nextFloat();

@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.io.SCDataComponents;
@@ -21,7 +21,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
     @Override
     public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
     {
-        if (U.r.nextDouble() > Config.FISH_PLAYER_MESSAGES_CHANCE.get())
+        if (U.r.nextDouble() > SCConfig.FISH_PLAYER_MESSAGES_CHANCE.get())
         {
             return;
         }

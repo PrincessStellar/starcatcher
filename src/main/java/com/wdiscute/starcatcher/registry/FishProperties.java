@@ -3,13 +3,12 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.guide.NewSettingsScreen;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
@@ -46,13 +45,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -1815,7 +1811,7 @@ public record FishProperties(
         ItemStack fish = new ItemStack(fp.catchInfo().fish());
 
         //store caught fish info data component
-        if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+        if (fp.hasGuideEntry() && SCConfig.SAVE_DATA_TO_ITEMS.get())
             SCDataComponents.set(fish, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
 
         //quality food compat
@@ -1981,7 +1977,7 @@ public record FishProperties(
     private static ItemStack getFishedItemStackFromFPForStarcatcherFishEntitySpecifically(FishProperties fp, int size, int weight, float percentile, boolean golden)
     {
         ItemStack is = new ItemStack(fp.catchInfo().fish());
-        if (fp.hasGuideEntry() && Config.SAVE_DATA_TO_ITEMS.get())
+        if (fp.hasGuideEntry() && SCConfig.SAVE_DATA_TO_ITEMS.get())
             SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
         return is;
     }

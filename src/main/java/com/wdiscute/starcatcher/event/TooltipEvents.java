@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.event;
 
-import com.wdiscute.libtooltips.Tooltips;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.SCDataComponents;
@@ -68,7 +67,7 @@ public class TooltipEvents
         //caught fish info
         if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
-            SettingsScreen.Units units = Config.UNIT.get();
+            SettingsScreen.Units units = SCConfig.UNIT.get();
             CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
             if (sw.golden())

@@ -103,8 +103,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected boolean isHoldingMouse = false;
 
     public float renderScale;
-    public int xOffset = Config.MINIGAME_X_OFFSET.getAsInt();
-    public int yOffset = Config.MINIGAME_X_OFFSET.getAsInt();
+    public int xOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
+    public int yOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
 
 
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();
@@ -119,8 +119,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         handToSwing = Minecraft.getInstance().player.getMainHandItem().is(SCTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
-        renderScale = Config.MINIGAME_RENDER_SCALE.get().floatValue();
-        hitDelay = Config.HIT_DELAY.get().floatValue();
+        renderScale = SCConfig.MINIGAME_RENDER_SCALE.get().floatValue();
+        hitDelay = SCConfig.HIT_DELAY.get().floatValue();
 
         this.difficulty = fp.dif();
         this.rarity = fp.rarity();
@@ -164,10 +164,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             tankTexture = NETHER;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
-        this.pointerBaseSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
-        this.penalty = (int) (difficulty.penalty() * Config.PENALTY_MULTIPLIER.get());
-        this.decay = (float) (difficulty.decay() * Config.DECAY_RATE_MULTIPLIER.get());
+        this.pointerSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerBaseSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.penalty = (int) (difficulty.penalty() * SCConfig.PENALTY_MULTIPLIER.get());
+        this.decay = (float) (difficulty.decay() * SCConfig.DECAY_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
         addModifier(new BaseMinigameModifier());
@@ -244,7 +244,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
 
-        final float partialTick = Config.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
+        final float partialTick = SCConfig.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
 
         PoseStack poseStack = guiGraphics.pose();
         partial = partialTick;
@@ -460,7 +460,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
         {
-            if (Config.ENABLE_VILLAGER_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
+            if (SCConfig.ENABLE_VILLAGER_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
                 Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
             return true;
@@ -521,7 +521,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            if(Config.ENABLE_MISS_SOUND.get())
+            if(SCConfig.ENABLE_MISS_SOUND.get())
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
             progress -= penalty;
         }
@@ -611,7 +611,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
             if (progressSmooth < 0)
             {
-                if (Config.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get())
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
                 this.onClose();
             }
@@ -621,7 +621,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
 
-                if (Config.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get())
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
 
                 PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));

@@ -27,10 +27,8 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -44,8 +42,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.checkerframework.checker.units.qual.C;
-import org.joml.Quaternionf;
 
 import java.awt.*;
 import java.time.Instant;
@@ -199,8 +195,8 @@ public class FishingGuideScreen extends Screen
         fishCaughtCounterMap = FishingGuideAttachment.getFishesCaught(player);
 
         for (FishProperties fp : FishProperties.getFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
-        entries = sortEntries(Config.SORT.get(), entries, player);
-        fishInArea = sortEntries(Config.SORT.get(), fishInArea, player);
+        entries = sortEntries(SCConfig.SORT.get(), entries, player);
+        fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
     }
 
     @Override
@@ -397,11 +393,11 @@ public class FishingGuideScreen extends Screen
         //sort
         if (x > 51 && x < 116 && y > 67 && y < 76)
         {
-            if (button == 0) Config.SORT.set(Config.SORT.get().next());
-            if (button == 1) Config.SORT.set(Config.SORT.get().previous());
-            Config.SORT.save();
-            entries = sortEntries(Config.SORT.get(), entries, player);
-            fishInArea = sortEntries(Config.SORT.get(), fishInArea, player);
+            if (button == 0) SCConfig.SORT.set(SCConfig.SORT.get().next());
+            if (button == 1) SCConfig.SORT.set(SCConfig.SORT.get().previous());
+            SCConfig.SORT.save();
+            entries = sortEntries(SCConfig.SORT.get(), entries, player);
+            fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
         }
 
         //previous arrow
@@ -882,7 +878,7 @@ public class FishingGuideScreen extends Screen
 
                     if (x > 51 && x < 116 && y > 67 && y < 76)
                     {
-                        guiGraphics.renderTooltip(this.font, Component.translatable(Config.SORT.get().getTranslationKey()), mouseX, mouseY);
+                        guiGraphics.renderTooltip(this.font, Component.translatable(SCConfig.SORT.get().getTranslationKey()), mouseX, mouseY);
                     }
 
                     //render bottom decoration if theres space
@@ -994,7 +990,7 @@ public class FishingGuideScreen extends Screen
         guiGraphics.setColor(1, 1, 1, 1);
 
         //render fish with missingno if not caught
-        if (caught != 0 || !Config.HIDE_ENTRIES_UNTIL_FOUND.get())
+        if (caught != 0 || !SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get())
             renderItem(is, xOffset, yOffset, 1);
         else
             renderItem(new ItemStack(SCItems.MISSINGNO.get()), xOffset, yOffset, 1);
@@ -1024,7 +1020,7 @@ public class FishingGuideScreen extends Screen
 
         List<Component> components = new ArrayList<>();
 
-        if (caught == 0 && Config.HIDE_ENTRIES_UNTIL_FOUND.get())
+        if (caught == 0 && SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get())
         {
             components.add(Component.translatable("gui.guide.not_caught_fish_name"));
             components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
@@ -1625,7 +1621,7 @@ public class FishingGuideScreen extends Screen
         //render fish tooltip
         if (mouseX > 6 && mouseX < 61 && mouseY > 51 && mouseY < 105)
         {
-            if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !Config.HIDE_ENTRIES_UNTIL_FOUND.get()))
+            if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get()))
                 guiGraphics.renderTooltip(font, fp.getDisplayName(), absoluteMouseX, absoluteMouseY);
             else if(fishToDisplay != ItemStack.EMPTY)
                 guiGraphics.renderTooltip(font, fishToDisplay, absoluteMouseX, absoluteMouseY);
@@ -1637,7 +1633,7 @@ public class FishingGuideScreen extends Screen
             List<Component> components = new ArrayList<>();
             float averageTicks = (int) ((fcc.averageTicks() / 20) * 100) / 100.0f;
 
-            SettingsScreen.Units unit = Config.UNIT.get();
+            SettingsScreen.Units unit = SCConfig.UNIT.get();
             String size = unit.getSizeAsString(fcc.size());
             String weight = unit.getWeightAsString(fcc.weight());
 

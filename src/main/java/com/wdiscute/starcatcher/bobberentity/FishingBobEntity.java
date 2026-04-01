@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.bobberentity;
 
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
@@ -113,9 +113,9 @@ public class FishingBobEntity extends Projectile
 
         survivesLava = SCDataComponents.getOrDefault(rod, SCDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
 
-        minTicksToFish = Config.BASE_MIN_TICKS_TO_FISH.getAsInt();
-        maxTicksToFish = Config.BASE_MAX_TICKS_TO_FISH.getAsInt();
-        chanceToFishEachTick = (float) Config.BASE_CHANCE_TO_FISH.getAsDouble();
+        minTicksToFish = SCConfig.BASE_MIN_TICKS_TO_FISH.getAsInt();
+        maxTicksToFish = SCConfig.BASE_MAX_TICKS_TO_FISH.getAsInt();
+        chanceToFishEachTick = (float) SCConfig.BASE_CHANCE_TO_FISH.getAsDouble();
 
         //modify base chances
         for (AbstractCatchModifier acm : modifiers)
@@ -205,8 +205,8 @@ public class FishingBobEntity extends Projectile
         fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
 
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
-        if ((fpToFish.skipMinigame() || !Config.ENABLE_MINIGAME.get())
-                || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(Config.ENABLE_MINIGAME.get())))
+        if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
+                || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
         {
             FishProperties.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
         }
@@ -434,7 +434,7 @@ public class FishingBobEntity extends Projectile
             boolean fish = U.r.nextFloat() < chanceToFishEachTick;
             if ((fish || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
             {
-                if (Config.SHOW_EXCLAMATION_MARK_PARTICLE.get())
+                if (SCConfig.SHOW_EXCLAMATION_MARK_PARTICLE.get())
                     ((ServerLevel) level()).sendParticles(
                             SCParticles.FISHING_NOTIFICATION.get(),
                             position().x, position().y + 1, position().z,

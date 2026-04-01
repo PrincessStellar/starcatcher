@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
@@ -73,7 +73,7 @@ public class SeasonRestriction extends AbstractFishRestriction
     @Override
     public boolean isEnabled()
     {
-        return Config.ENABLE_SEASONS.get() && (
+        return SCConfig.ENABLE_SEASONS.get() && (
                 ModList.get().isLoaded("sereneseasons") || ModList.get().isLoaded("eclipticseasons"));
     }
 
@@ -83,19 +83,19 @@ public class SeasonRestriction extends AbstractFishRestriction
         Seasons currentSeason = Seasons.ALL;
 
         //Serene Seasons check
-        if (ModList.get().isLoaded("sereneseasons") && Config.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("sereneseasons") && SCConfig.ENABLE_SEASONS.get())
         {
             currentSeason = SereneSeasonsCompat.getSeason(level);
         }
 
         //Ecliptic Seasons check
-        if (ModList.get().isLoaded("eclipticseasons") && Config.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("eclipticseasons") && SCConfig.ENABLE_SEASONS.get())
         {
             currentSeason = EclipticSeasonsCompat.getSeason(level);
         }
 
         //TerraFirmaCraft Seasons check
-        if (ModList.get().isLoaded("tfc") && Config.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("tfc") && SCConfig.ENABLE_SEASONS.get())
         {
             currentSeason = TerraFirmaCraftSeasonsCompat.getSeason(level);
         }

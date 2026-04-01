@@ -12,12 +12,14 @@ import com.wdiscute.starcatcher.blocks.display.DisplayBookModel;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxRenderer;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxScreen;
 import com.wdiscute.starcatcher.registry.items.BucketTooltipRenderer;
+import com.wdiscute.starcatcher.registry.items.RodSlotTooltipRenderer;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.particles.FishingBitingLavaParticles;
 import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.compat.curios.CuriosEvents;
+import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.registry.tackleskin.*;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
@@ -146,6 +148,7 @@ public class SCClientEvents
     public static void onRegisterTooltips(RegisterClientTooltipComponentFactoriesEvent event)
     {
         event.register(StarcaughtBucket.BucketTooltip.class, BucketTooltipRenderer::new);
+        event.register(StarcatcherFishingRodItem.RodSlotTooltip.class, RodSlotTooltipRenderer::new);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.guide;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
@@ -103,7 +103,7 @@ public class SettingsScreen extends Screen
     {
         super(Component.empty());
 
-        hitDelay = Config.HIT_DELAY.get().floatValue();
+        hitDelay = SCConfig.HIT_DELAY.get().floatValue();
 
         this.fp = fp;
         this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
@@ -113,7 +113,7 @@ public class SettingsScreen extends Screen
 
         posTreasure = Integer.MIN_VALUE;
 
-        unitSelected = Config.UNIT.get();
+        unitSelected = SCConfig.UNIT.get();
 
         hand = Minecraft.getInstance().player.getMainHandItem().is(SCItems.ROD) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
     }
@@ -397,16 +397,16 @@ public class SettingsScreen extends Screen
         if (x > 312 && x < 330 && y > 226 && y < 240)
         {
             unitSelected = unitSelected.next();
-            Config.UNIT.set(unitSelected);
-            Config.UNIT.save();
+            SCConfig.UNIT.set(unitSelected);
+            SCConfig.UNIT.save();
         }
 
         //hit delay next
         if (x > 193 && x < 205 && y > 226 && y < 240)
         {
             unitSelected = unitSelected.previous();
-            Config.UNIT.set(unitSelected);
-            Config.UNIT.save();
+            SCConfig.UNIT.set(unitSelected);
+            SCConfig.UNIT.save();
         }
 
         //markers
@@ -456,8 +456,8 @@ public class SettingsScreen extends Screen
     @Override
     public void onClose()
     {
-        Config.HIT_DELAY.set((double) hitDelay);
-        Config.HIT_DELAY.save();
+        SCConfig.HIT_DELAY.set((double) hitDelay);
+        SCConfig.HIT_DELAY.save();
 
         if(!ModList.get().isLoaded("distanthorizons"))
             Minecraft.getInstance().options.guiScale().set(previousGuiScale);

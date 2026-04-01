@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.minigame;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
@@ -75,8 +75,8 @@ public class ActiveSweetSpot
         this.hook = hook;
 
         this.isFlip = ss.isFlip();
-        this.vanishingRate = (float) (ss.vanishingRate() * Config.VANISHING_RATE_MULTIPLIER.get());
-        this.movingRate = (float) (ss.movingRate() * Config.MOVING_SPEED_MULTIPLIER.get());
+        this.vanishingRate = (float) (ss.vanishingRate() * SCConfig.VANISHING_RATE_MULTIPLIER.get());
+        this.movingRate = (float) (ss.movingRate() * SCConfig.MOVING_SPEED_MULTIPLIER.get());
 
         currentRotation = -1;
 

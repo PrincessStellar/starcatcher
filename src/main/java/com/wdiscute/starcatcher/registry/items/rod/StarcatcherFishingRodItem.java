@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.items.rod;
 
-import com.sun.jna.platform.win32.Variant;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
@@ -19,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -28,6 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class StarcatcherFishingRodItem extends Item implements MenuProvider
 {
@@ -51,7 +53,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
             return InteractionResultHolder.pass(is);
 
         FishingBobAttachment fishingBobAttachment = SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB.get());
-        if (player.isCrouching() && fishingBobAttachment.isEmpty())
+        if (player.isCrouching() && fishingBobAttachment.isEmpty() && SCConfig.ENABLE_ROD_MENU.get())
         {
             player.openMenu(this);
             return InteractionResultHolder.success(is);
@@ -130,5 +132,12 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
         else
             return new FishingRodMenu(i, inventory, player.getOffhandItem());
     }
+
+    @Override
+    public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
+        return Optional.of(new RodSlotTooltip(stack));
+    }
+
+    public record RodSlotTooltip(ItemStack rod) implements TooltipComponent {}
 }
 

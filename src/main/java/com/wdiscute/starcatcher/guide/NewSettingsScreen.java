@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.guide;
 
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
@@ -35,8 +35,8 @@ public class NewSettingsScreen extends FishingMinigameScreen {
     protected void init() {
         super.init();
 
-        hitDelay = (Config.HIT_DELAY.get().floatValue());
-        unitSelected = Config.UNIT.get();
+        hitDelay = (SCConfig.HIT_DELAY.get().floatValue());
+        unitSelected = SCConfig.UNIT.get();
         //Use widgets instead of doing hovering/clicking logic manually
         // addRenderableWidget(new GuiScaleWidget(width / 2 - 50, 0, 100, 50));
 
@@ -137,22 +137,22 @@ public class NewSettingsScreen extends FishingMinigameScreen {
     @Override
     public void onClose() {
         //round it to 2 decimal points
-        Config.HIT_DELAY.set(Math.round(hitDelay * 10) / 10d);
-        Config.HIT_DELAY.save();
+        SCConfig.HIT_DELAY.set(Math.round(hitDelay * 10) / 10d);
+        SCConfig.HIT_DELAY.save();
 
 
-        Config.MINIGAME_RENDER_SCALE.set((double) renderScale);
-        Config.MINIGAME_RENDER_SCALE.save();
+        SCConfig.MINIGAME_RENDER_SCALE.set((double) renderScale);
+        SCConfig.MINIGAME_RENDER_SCALE.save();
 
-        Config.MINIGAME_X_OFFSET.set(xOffset);
-        Config.MINIGAME_Y_OFFSET.set(yOffset);
-        Config.MINIGAME_X_OFFSET.save();
-        Config.MINIGAME_Y_OFFSET.save();
+        SCConfig.MINIGAME_X_OFFSET.set(xOffset);
+        SCConfig.MINIGAME_Y_OFFSET.set(yOffset);
+        SCConfig.MINIGAME_X_OFFSET.save();
+        SCConfig.MINIGAME_Y_OFFSET.save();
 
 
 
-        Config.UNIT.set(unitSelected);
-        Config.UNIT.save();
+        SCConfig.UNIT.set(unitSelected);
+        SCConfig.UNIT.save();
 
         modifiers.forEach(AbstractMinigameModifier::onRemove);
 

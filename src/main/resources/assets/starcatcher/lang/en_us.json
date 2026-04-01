@@ -112,6 +112,7 @@
   "starcatcher.configuration.base_max_ticks" : "Maximum Ticks To Fish",
   "starcatcher.configuration.base_chance" : "Base Chance To Fish Per Tick",
   "starcatcher.configuration.restrict_tackle_box_to_tag" : "Restrict Tackle Box To Tag",
+  "starcatcher.configuration.enable_rod_menu" : "Enable Rod Menu",
 
 
 
@@ -145,13 +146,6 @@
   "tooltip.starcatcher.rod.netherite" : "<sclegendary>Netherite Upgraded</sclegendary>",
 
   "item.starcatcher.starcatcher_rod": "Starcatcher's Rod",
-  "tooltip.starcatcher.starcatcher_rod.0": "A special fishing rod which allows",
-  "tooltip.starcatcher.starcatcher_rod.1": "for the use of bobbers, bait and hooks.",
-  "tooltip.starcatcher.starcatcher_rod.2": "Who knows what you might catch",
-  "tooltip.starcatcher.starcatcher_rod.3": "given the right conditions are met!",
-  "tooltip.starcatcher.starcatcher_rod.4": "",
-  "tooltip.starcatcher.starcatcher_rod.5": "Right Click whilst crouching to open",
-  "tooltip.starcatcher.starcatcher_rod.6": "bobber, bait, and hook selection",
 
   "item.starcatcher.naturalist_rod": "Naturalist Rod",
   "tooltip.starcatcher.naturalist_rod.0": "A lost rod found very rarely in forests.",
@@ -321,6 +315,7 @@
   "item.starcatcher.split_hook": "Split Hook",
   "item.starcatcher.stabilizing_hook": "Stabilizing Hook",
   "item.starcatcher.heavy_hook": "Heavy Hook",
+  "item.starcatcher.vanilla_hook": "Vanilla-flavoured Hook",
 
 
 

@@ -98,7 +98,7 @@ public class Starcatcher
     {
         if (newFish) Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
 
-        SettingsScreen.Units units = Config.UNIT.get();
+        SettingsScreen.Units units = SCConfig.UNIT.get();
 
         String size = units.getSizeAsString(sizeCM);
         String weight = units.getWeightAsString(weightCM);
@@ -135,8 +135,8 @@ public class Starcatcher
         SCCriterionTriggers.register(modEventBus);
         SCProcessors.register(modEventBus);
 
-        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
-        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC_SERVER);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
 
 //        SCItems.registerExtra();
     }
