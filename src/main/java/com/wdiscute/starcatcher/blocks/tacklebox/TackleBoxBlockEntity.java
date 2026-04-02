@@ -78,7 +78,9 @@ public class TackleBoxBlockEntity extends RandomizableContainerBlockEntity imple
             if (this.openCount == 1)
             {
                 this.level.gameEvent(player, GameEvent.CONTAINER_OPEN, this.worldPosition);
-                this.level.playSound(null, this.worldPosition, SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.2F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.2F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 0.2F, this.level.random.nextFloat() * 0.1F + 0.4F);
             }
         }
 
@@ -93,7 +95,9 @@ public class TackleBoxBlockEntity extends RandomizableContainerBlockEntity imple
             if (this.openCount <= 0)
             {
                 this.level.gameEvent(player, GameEvent.CONTAINER_CLOSE, this.worldPosition);
-                this.level.playSound(null, this.worldPosition, SoundEvents.SHULKER_BOX_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.BARREL_CLOSE, SoundSource.BLOCKS, 0.2F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 0.2F, this.level.random.nextFloat() * 0.1F + 0.4F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.SNOW_BREAK, SoundSource.BLOCKS, 1.3F, this.level.random.nextFloat() * 0.1F + 0.4F);
             }
         }
 
