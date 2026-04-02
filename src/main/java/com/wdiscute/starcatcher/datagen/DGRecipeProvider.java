@@ -5,6 +5,8 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -18,6 +20,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class DGRecipeProvider extends RecipeProvider
@@ -747,6 +750,32 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlocks("has_template_humble", has(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
                 .save(output, Starcatcher.rl("humble_rod")
                 );
+
+        //tackle box
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.TACKLE_BOX, 1)
+                .define('C', Items.COPPER_INGOT)
+                .define('H', Items.CHAIN)
+                .define('I', Items.IRON_INGOT)
+                .pattern("CCC")
+                .pattern("H H")
+                .pattern("III")
+                .unlockedBy("has_fish", has(ItemTags.FISHES))
+                .save(output);
+
+        //tackle boxes
+        for (int i = 0; i < dyes.size(); i++)
+        {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, tackle_boxes.get(i), 1)
+                    .define('C', Items.COPPER_INGOT)
+                    .define('H', Items.CHAIN)
+                    .define('D', dyes.get(i))
+                    .define('I', Items.IRON_INGOT)
+                    .pattern("CCC")
+                    .pattern("HDH")
+                    .pattern("III")
+                    .unlockedBy("has_fish", has(ItemTags.FISHES))
+                    .save(output);
+        }
     }
 
     protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group)
@@ -755,7 +784,10 @@ public class DGRecipeProvider extends RecipeProvider
         {
             Item item = dyes.get(i);
             Item item1 = dyeableItems.get(i);
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, item1).requires(item).requires(Ingredient.of(dyeableItems.stream().filter((p_288265_) -> !p_288265_.equals(item1)).map(ItemStack::new))).group(group).unlockedBy("has_needed_dye", has(item)).save(recipeOutput, "dye_" + getItemName(item1));
+            ShapelessRecipeBuilder.shapeless(
+                    RecipeCategory.BUILDING_BLOCKS, item1)
+                    .requires(item)
+                    .requires(Ingredient.of(dyeableItems.stream().filter((p_288265_) -> !p_288265_.equals(item1)).map(ItemStack::new))).group(group).unlockedBy("has_needed_dye", has(item)).save(recipeOutput, "dye_" + getItemName(item1));
         }
 
     }
@@ -796,5 +828,24 @@ public class DGRecipeProvider extends RecipeProvider
             SCBlocks.FISHERMAN_HAT_RED.asItem(),
             SCBlocks.FISHERMAN_HAT_YELLOW.asItem(),
             SCBlocks.FISHERMAN_HAT_WHITE.asItem()
+    );
+
+    List<Item> tackle_boxes = List.of(
+            SCBlocks.TACKLE_BOX_BLACK.asItem(),
+            SCBlocks.TACKLE_BOX_BLUE.asItem(),
+            SCBlocks.TACKLE_BOX_BROWN.asItem(),
+            SCBlocks.TACKLE_BOX_CYAN.asItem(),
+            SCBlocks.TACKLE_BOX_GRAY.asItem(),
+            SCBlocks.TACKLE_BOX_GREEN.asItem(),
+            SCBlocks.TACKLE_BOX_LIGHT_BLUE.asItem(),
+            SCBlocks.TACKLE_BOX_LIGHT_GRAY.asItem(),
+            SCBlocks.TACKLE_BOX_LIME.asItem(),
+            SCBlocks.TACKLE_BOX_MAGENTA.asItem(),
+            SCBlocks.TACKLE_BOX_ORANGE.asItem(),
+            SCBlocks.TACKLE_BOX_PINK.asItem(),
+            SCBlocks.TACKLE_BOX_PURPLE.asItem(),
+            SCBlocks.TACKLE_BOX_RED.asItem(),
+            SCBlocks.TACKLE_BOX_YELLOW.asItem(),
+            SCBlocks.TACKLE_BOX_WHITE.asItem()
     );
 }

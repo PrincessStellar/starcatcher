@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.FishProperties;
@@ -149,6 +150,27 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.RARE_FISHES)
                 .addTag(SCTags.EPIC_FISHES)
                 .addTag(SCTags.LEGENDARY_FISHES)
+        ;
+
+        //tackle boxes
+        tag(SCTags.TACKLE_BOXES)
+                .add(TACKLE_BOX.asItem())
+                .add(TACKLE_BOX_BLACK.asItem())
+                .add(TACKLE_BOX_BLUE.asItem())
+                .add(TACKLE_BOX_LIGHT_BLUE.asItem())
+                .add(TACKLE_BOX_ORANGE.asItem())
+                .add(TACKLE_BOX_YELLOW.asItem())
+                .add(TACKLE_BOX_RED.asItem())
+                .add(TACKLE_BOX_BROWN.asItem())
+                .add(TACKLE_BOX_CYAN.asItem())
+                .add(TACKLE_BOX_GREEN.asItem())
+                .add(TACKLE_BOX_LIME.asItem())
+                .add(TACKLE_BOX_GRAY.asItem())
+                .add(TACKLE_BOX_LIGHT_GRAY.asItem())
+                .add(TACKLE_BOX_PINK.asItem())
+                .add(TACKLE_BOX_MAGENTA.asItem())
+                .add(TACKLE_BOX_PURPLE.asItem())
+                .add(TACKLE_BOX_WHITE.asItem())
         ;
 
     }
