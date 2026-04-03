@@ -19,10 +19,7 @@ public class GetNameMixin
     {
         ItemStack stack = (ItemStack) (Object) this;
 
-        if(SCDataComponents.has(stack, SCDataComponents.BUCKETED_FISH))
-        {
-            stack = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH).stack();
-        }
+        stack = stack.copy();
 
         if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
@@ -38,7 +35,7 @@ public class GetNameMixin
             {
                 baseName = itemName;
             }
-            else baseName = stack.getItem().getName(stack);
+            else baseName = Component.translatable(stack.getDescriptionId());
 
             //get sw
             CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);

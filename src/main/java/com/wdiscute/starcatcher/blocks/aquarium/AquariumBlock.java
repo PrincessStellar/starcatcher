@@ -3,10 +3,13 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -17,6 +20,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
@@ -52,7 +56,6 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     public static final EnumProperty<Decoration> DECORATION = EnumProperty.create("decoration", Decoration.class);
     public static final EnumProperty<Ground> GROUND = EnumProperty.create("ground", Ground.class);
 
-
     public AquariumBlock()
     {
         super(Properties.of()
@@ -63,11 +66,13 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     }
 
     @Override
-    protected float getShadeBrightness(BlockState p_308911_, BlockGetter p_308952_, BlockPos p_308918_) {
+    protected float getShadeBrightness(BlockState p_308911_, BlockGetter p_308952_, BlockPos p_308918_)
+    {
         return 1.0F;
     }
 
-    protected VoxelShape getVisualShape(BlockState p_309057_, BlockGetter p_308936_, BlockPos p_308956_, CollisionContext p_309006_) {
+    protected VoxelShape getVisualShape(BlockState p_309057_, BlockGetter p_308936_, BlockPos p_308956_, CollisionContext p_309006_)
+    {
         return Shapes.empty();
     }
 
@@ -158,17 +163,15 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.getItem() instanceof BucketItem bucket)
+        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Items.BUCKET))
         {
             bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));
             return ItemInteractionResult.SUCCESS;
         }
 
-
-
         Interaction interaction = SCDataMaps.getOrDefault(stack, SCDataMaps.AQUARIUM_INTERACTION, Interaction.NOTHING);
-        if (interaction.executePlace(level, pos, state, stack))
+        if (interaction.executePlace(level, pos, state, stack, player))
         {
             if (interaction.sound != null) player.playSound(interaction.sound);
             return ItemInteractionResult.SUCCESS;
@@ -379,8 +382,34 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     {
         NOTHING("nothing", null, U::alwaysFalse),
 
-        PLACE_FISH("place_sand", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is) ->
+        PLACE_FISH("place_fish", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is, p) ->
         {
+            if (l.getBlockEntity(bp) instanceof AquariumBlockEntity abe)
+            {
+                if (!abe.getFish().isEmpty()) return false;
+                if (SCDataComponents.has(is, SCDataComponents.BUCKETED_FISH))
+                {
+                    abe.setFish(SCDataComponents.get(is, SCDataComponents.BUCKETED_FISH).stack());
+                    if (is.getItem() instanceof BucketItem)
+                    {
+                        ItemStack emptySuccessItem = BucketItem.getEmptySuccessItem(is, p);
+                        if (p.getMainHandItem().equals(is))
+                            p.setItemInHand(InteractionHand.MAIN_HAND, emptySuccessItem);
+                        else
+                            p.setItemInHand(InteractionHand.OFF_HAND, emptySuccessItem);
+                    }
+                }
+                else
+                    abe.setFish(is);
+                return true;
+            }
+
+            return false;
+        }),
+
+        PLACE_FISH_CREATIVE("place_fish_creative", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is, p) ->
+        {
+            if (!p.isCreative()) return false;
             if (l.getBlockEntity(bp) instanceof AquariumBlockEntity abe)
             {
                 abe.setFish(is);
@@ -388,14 +417,34 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
             }
 
             return false;
+
         }),
 
-        PLACE_SAND("place_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.SAND)),
-        PLACE_RED_SAND("place_red_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.RED_SAND)),
-        PLACE_STONE("place_stone", SoundEvents.STONE_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.STONE)),
-        PLACE_GRAVEL("place_gravel", SoundEvents.GRAVEL_PLACE, (l, bp, bs, is) -> placeGround(l, bp, bs, Ground.GRAVEL)),
+        RETRIEVE_FISH("remove_fish", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is, p) ->
+        {
+            if (l.getBlockEntity(bp) instanceof AquariumBlockEntity abe)
+            {
+                if (abe.getFish().isEmpty()) return false;
+                is.shrink(1);
 
-        PLACE_KELP("place_kelp", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is) ->
+                ItemStack bucketToReturn = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
+
+                SCDataComponents.set(bucketToReturn, SCDataComponents.BUCKETED_FISH, SingleStackContainer.from(abe.fish));
+                p.addItem(bucketToReturn);
+
+                abe.setFish(ItemStack.EMPTY);
+                return true;
+            }
+
+            return false;
+        }),
+
+        PLACE_SAND("place_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is, p) -> placeGround(l, bp, bs, Ground.SAND)),
+        PLACE_RED_SAND("place_red_sand", SoundEvents.SAND_PLACE, (l, bp, bs, is, p) -> placeGround(l, bp, bs, Ground.RED_SAND)),
+        PLACE_STONE("place_stone", SoundEvents.STONE_PLACE, (l, bp, bs, is, p) -> placeGround(l, bp, bs, Ground.STONE)),
+        PLACE_GRAVEL("place_gravel", SoundEvents.GRAVEL_PLACE, (l, bp, bs, is, p) -> placeGround(l, bp, bs, Ground.GRAVEL)),
+
+        PLACE_KELP("place_kelp", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is, p) ->
         {
             if (bs.getValue(DECORATION) == Decoration.KELP) return false;
             if (bs.getValue(DECORATION) == Decoration.KELP_TOP) return false;
@@ -413,28 +462,28 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
             return false;
         }),
 
-        PLACE_SEAGRASS("place_seagrass", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is) ->
+        PLACE_SEAGRASS("place_seagrass", SoundEvents.WET_GRASS_PLACE, (l, bp, bs, is, p) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.SEAGRASS));
             else return false;
         }),
 
-        PLACE_CLAM("place_clam", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is) ->
+        PLACE_CLAM("place_clam", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is, p) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CLAM));
             else return false;
         }),
 
-        PLACE_CONCH("place_conch", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is) ->
+        PLACE_CONCH("place_conch", SoundEvents.BONE_BLOCK_PLACE, (l, bp, bs, is, p) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CONCH));
             else return false;
         }),
 
-        BUILD_CASTLE("build_castle", SoundEvents.SAND_HIT, (l, bp, bs, is) ->
+        BUILD_CASTLE("build_castle", SoundEvents.SAND_HIT, (l, bp, bs, is, p) ->
         {
             if (!bs.getValue(GROUND).isEmpty())
             {
@@ -448,7 +497,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
             return false;
         }),
 
-        BUILD_CAVE("build_cave", SoundEvents.STONE_HIT, (l, bp, bs, is) ->
+        BUILD_CAVE("build_cave", SoundEvents.STONE_HIT, (l, bp, bs, is, p) ->
         {
             if (bs.getValue(GROUND) == Ground.STONE && bs.getValue(DECORATION) != Decoration.CAVE)
                 return l.setBlockAndUpdate(bp, bs.setValue(DECORATION, Decoration.CAVE));
@@ -458,11 +507,11 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
         final String name;
         final SoundEvent sound;
-        final Consumer<Level, BlockPos, BlockState, ItemStack, Boolean> place;
+        final Consumer<Level, BlockPos, BlockState, ItemStack, Player, Boolean> place;
 
         public static final Codec<Interaction> CODEC = StringRepresentable.fromEnum(Interaction::values);
 
-        Interaction(String name, SoundEvent sound, Consumer<Level, BlockPos, BlockState, ItemStack, Boolean> place)
+        Interaction(String name, SoundEvent sound, Consumer<Level, BlockPos, BlockState, ItemStack, Player, Boolean> place)
         {
             this.name = name;
             this.sound = sound;
@@ -481,14 +530,14 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
             return name;
         }
 
-        public boolean executePlace(Level level, BlockPos pos, BlockState state, ItemStack is)
+        public boolean executePlace(Level level, BlockPos pos, BlockState state, ItemStack is, Player player)
         {
-            return place.place(level, pos, state, is);
+            return place.place(level, pos, state, is, player);
         }
     }
 
-    public interface Consumer<P1, P2, P3, P4, R>
+    public interface Consumer<P1, P2, P3, P4, P5, R>
     {
-        R place(P1 p1, P2 p2, P3 p3, P4 p4);
+        R place(P1 p1, P2 p2, P3 p3, P4 p4, P5 p5);
     }
 }

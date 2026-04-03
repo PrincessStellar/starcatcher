@@ -25,7 +25,6 @@ public class RemoveFishSizeAndWeightWhenStacking
             SCDataComponents.remove(stack, SCDataComponents.CAUGHT_FISH_INFO);
             SCDataComponents.remove(thisItem, SCDataComponents.CAUGHT_FISH_INFO);
         }
-
     }
 
     @Inject(at = @At("HEAD"), method = "overrideStackedOnOther")

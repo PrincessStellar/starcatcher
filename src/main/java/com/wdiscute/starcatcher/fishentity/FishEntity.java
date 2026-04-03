@@ -107,7 +107,6 @@ public class FishEntity extends AbstractFish
     {
         setBodyArmorItem(is);
         shouldDropItem = true;
-        setCustomName(is.getDisplayName());
     }
 
     @Override

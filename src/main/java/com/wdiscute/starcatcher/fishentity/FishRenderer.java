@@ -70,6 +70,13 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         map.put(SCItems.HOLLOWBELLY_DARTER.get(), new HollowbellyDarter<>(modelSet.bakeLayer(HollowbellyDarter.LAYER_LOCATION)));
         map.put(SCItems.ICETOOTH_STURGEON.get(), new IcetoothSturgeon<>(modelSet.bakeLayer(IcetoothSturgeon.LAYER_LOCATION)));
         map.put(SCItems.MISTBACK_CHUB.get(), new MistbackChub<>(modelSet.bakeLayer(MistbackChub.LAYER_LOCATION)));
+        map.put(SCItems.BLUE_CRYSTAL_FIN.get(), new BlueCrystalFin<>(modelSet.bakeLayer(BlueCrystalFin.LAYER_LOCATION)));
+        map.put(SCItems.CARPENJOE.get(), new Carpenjoe<>(modelSet.bakeLayer(Carpenjoe.LAYER_LOCATION)));
+        map.put(SCItems.ELDERSCALE.get(), new Elderscale<>(modelSet.bakeLayer(Elderscale.LAYER_LOCATION)));
+        map.put(SCItems.GHOSTLY_PIKE.get(), new GhostlyPike<>(modelSet.bakeLayer(GhostlyPike.LAYER_LOCATION)));
+        map.put(SCItems.IRONJAW_HERRING.get(), new IronjarHerring<>(modelSet.bakeLayer(IronjarHerring.LAYER_LOCATION)));
+        map.put(SCItems.MIRAGE_CARP.get(), new MirageCarp<>(modelSet.bakeLayer(MirageCarp.LAYER_LOCATION)));
+        map.put(SCItems.PETALDRIFT_CARP.get(), new PetaldriftCarp<>(modelSet.bakeLayer(PetaldriftCarp.LAYER_LOCATION)));
     }
 
     @Override

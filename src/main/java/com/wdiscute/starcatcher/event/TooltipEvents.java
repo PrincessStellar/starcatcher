@@ -2,9 +2,9 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -67,7 +67,7 @@ public class TooltipEvents
         //caught fish info
         if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
-            SettingsScreen.Units units = SCConfig.UNIT.get();
+            FishProperties.SizeAndWeight.Units units = SCConfig.UNIT.get();
             CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
             if (sw.golden())

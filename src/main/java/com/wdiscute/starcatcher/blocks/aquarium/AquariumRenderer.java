@@ -3,13 +3,17 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -78,7 +82,17 @@ public class AquariumRenderer implements BlockEntityRenderer<AquariumBlockEntity
         //if (partialTick > 0.5f) scale *= 2;
 
         //offset from be
-        poseStack.translate(be.x, be.y, be.z);
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player != null)
+        {
+            if (!player.getMainHandItem().is(Items.BUCKET) && !player.getOffhandItem().is(Items.BUCKET))
+            {
+                poseStack.translate(be.x, be.y, be.z);
+
+            }
+        }
+        else
+            poseStack.translate(be.x, be.y, be.z);
 
         //block centering
         poseStack.translate(offsetCenter.x, offsetCenter.y, offsetCenter.z);

@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.sellingbin.processors.AbstractProcessor;
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
-import com.wdiscute.sellingbin.registry.ModDataMaps;
+import com.wdiscute.sellingbin.registry.SBDataMaps;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -34,31 +34,34 @@ public class DGSCDataMapsProvider extends DataMapProvider
     @Override
     protected void gather(HolderLookup.Provider provider)
     {
-        var decor = this.builder(SCDataMaps.AQUARIUM_INTERACTION);
-        var currencies = this.builder(ModDataMaps.SELLING_BIN_CURRENCIES);
-        var sellable = this.builder(ModDataMaps.SELLING_BIN_VALUE);
+        var aquarium = this.builder(SCDataMaps.AQUARIUM_INTERACTION);
+        var currencies = this.builder(SBDataMaps.SELLING_BIN_CURRENCIES);
+        var sellable = this.builder(SBDataMaps.SELLING_BIN_VALUE);
         var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         var catchModifiers = this.builder(SCDataMaps.CATCH_MODIFIERS);
         var minigameModifiers = this.builder(SCDataMaps.MINIGAME_MODIFIERS);
 
         //ground
-        decor.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
-        decor.add(Items.SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SAND, false);
-        decor.add(Items.RED_SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_RED_SAND, false);
-        decor.add(Items.STONE.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_STONE, false);
+        aquarium.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
+        aquarium.add(Items.SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SAND, false);
+        aquarium.add(Items.RED_SAND.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_RED_SAND, false);
+        aquarium.add(Items.STONE.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_STONE, false);
 
         //decorations
-        decor.add(ItemTags.SHOVELS, AquariumBlock.Interaction.BUILD_CASTLE, false);
-        decor.add(ItemTags.PICKAXES, AquariumBlock.Interaction.BUILD_CAVE, false);
-        decor.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
-        decor.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
-        decor.add(SCBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
-        decor.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
+        aquarium.add(ItemTags.SHOVELS, AquariumBlock.Interaction.BUILD_CASTLE, false);
+        aquarium.add(ItemTags.PICKAXES, AquariumBlock.Interaction.BUILD_CAVE, false);
+        aquarium.add(Items.KELP.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_KELP, false);
+        aquarium.add(Items.SEAGRASS.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_SEAGRASS, false);
+        aquarium.add(SCBlocks.CONCH.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CONCH, false);
+        aquarium.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
-        decor.add(SCTags.STARCAUGHT_FISHES, AquariumBlock.Interaction.PLACE_FISH, false);
+        aquarium.add(SCItems.STARCAUGHT_BUCKET, AquariumBlock.Interaction.PLACE_FISH, false);
+        aquarium.add(SCTags.BUCKETABLE_FISHES, AquariumBlock.Interaction.PLACE_FISH_CREATIVE, false);
+        aquarium.add(Items.BUCKET.builtInRegistryHolder(), AquariumBlock.Interaction.RETRIEVE_FISH, false);
 
         //compostable
         compostable.add(SCTags.WORMS, new Compostable(0.65F, false), false);
+        compostable.add(SCTags.BUCKETABLE_FISHES, new Compostable(0.9F, false), false);
 
         //selling sellable datagen
         //shouldn't be run as the JSONs are manually moved to a
@@ -76,27 +79,27 @@ public class DGSCDataMapsProvider extends DataMapProvider
                     ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
             );
 
-            sellable.add(SCTags.COMMON_FISHES, new ModDataMaps.ItemValue(25, List.of(
+            sellable.add(SCTags.COMMON_FISHES, new SBDataMaps.ItemValue(25, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.UNCOMMON_FISHES, new ModDataMaps.ItemValue(50, List.of(
+            sellable.add(SCTags.UNCOMMON_FISHES, new SBDataMaps.ItemValue(50, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.RARE_FISHES, new ModDataMaps.ItemValue(100, List.of(
+            sellable.add(SCTags.RARE_FISHES, new SBDataMaps.ItemValue(100, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.EPIC_FISHES, new ModDataMaps.ItemValue(150, List.of(
+            sellable.add(SCTags.EPIC_FISHES, new SBDataMaps.ItemValue(150, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.LEGENDARY_FISHES, new ModDataMaps.ItemValue(200, List.of(
+            sellable.add(SCTags.LEGENDARY_FISHES, new SBDataMaps.ItemValue(200, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);

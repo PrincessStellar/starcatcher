@@ -23,6 +23,11 @@ public record SingleStackContainer(@Deprecated ItemStack stackDoNotUse)
             SingleStackContainer::new
     );
 
+    public static SingleStackContainer from(ItemStack itemStack)
+    {
+        return new SingleStackContainer(itemStack.copy());
+    }
+
     public static final StreamCodec<RegistryFriendlyByteBuf, List<SingleStackContainer>> STREAM_CODEC_LIST = STREAM_CODEC.apply(ByteBufCodecs.list());
 
     public static List<SingleStackContainer> fromItemStackHandler(ItemStackHandler prizePool)

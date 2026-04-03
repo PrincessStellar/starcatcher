@@ -1,9 +1,9 @@
 package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.SCConfig;
-import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -23,7 +23,7 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
         //caught fish info
         if (SCDataComponents.has(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO))
         {
-            SettingsScreen.Units units = SCConfig.UNIT.get();
+            FishProperties.SizeAndWeight.Units units = SCConfig.UNIT.get();
             CaughtFishInfo sw = SCDataComponents.get(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO);
 
             if(sw.golden())
