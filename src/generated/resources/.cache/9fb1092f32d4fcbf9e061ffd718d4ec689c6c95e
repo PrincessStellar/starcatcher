@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-02T17:31:29.2721662	Recipes
+// 1.21.1	2026-04-04T04:03:36.452155	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -65,6 +65,7 @@ c34354e531517fca0bea54d28373b0ff12b092ea data/starcatcher/advancement/recipes/mi
 706341ea4b210b57e266b2af81615a77dcf63b06 data/starcatcher/advancement/recipes/misc/legendary_bait.json
 a8ef1d6677fb77d84fbe1a5a7956925d1a7ac3e9 data/starcatcher/advancement/recipes/misc/legendary_bait_from_enchanted_golden_apple.json
 371bcc8be9b0be441312533ea1c44a160b367875 data/starcatcher/advancement/recipes/misc/legendary_bait_from_legendary_fish.json
+71d5d01253a0db73ea6d13ee4c1455094376bd40 data/starcatcher/advancement/recipes/misc/letter.json
 bd557a1d044030c3eb121d52ca1933fed11b6940 data/starcatcher/advancement/recipes/misc/lush_bait.json
 26dbbb8735111cd1a47ef2775de14c04c61afbca data/starcatcher/advancement/recipes/misc/lush_glowberry_skin_smithing_template.json
 c56de8573bf89640db4aeb6d293a4d5c2216e65f data/starcatcher/advancement/recipes/misc/lust_bait_from_mossy_boot.json
@@ -161,6 +162,7 @@ f8ca50e1350e3f18a8ba4f6895474fe422219031 data/starcatcher/recipe/humble_rod.json
 c25045e9d66e14b03e204d4cdb98fbd3e4616f4e data/starcatcher/recipe/legendary_bait.json
 8b5039e3302b0a35d6eb1fb83e29e898a41870f2 data/starcatcher/recipe/legendary_bait_from_enchanted_golden_apple.json
 515639543f963b18c0b80adda2d185cafa687cdd data/starcatcher/recipe/legendary_bait_from_legendary_fish.json
+53e5349735a25aec0328423615667170ca44bb6b data/starcatcher/recipe/letter.json
 3ae9ad82c3cc3488ad7fc9701094657edf0ae13a data/starcatcher/recipe/lush_bait.json
 dc05bb1cb0faf921cb6634e83ca2adc318adf9cf data/starcatcher/recipe/lush_glowberry_skin_smithing_template.json
 8dc43671aabc5532690105ffb2bbf8043627fd87 data/starcatcher/recipe/lush_rod.json

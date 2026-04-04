@@ -6,9 +6,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Axis;
+import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.*;
+import com.wdiscute.starcatcher.compat.emi.StarcatcherEmiPlugin;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.io.network.FPsSeenPayload;
@@ -27,15 +30,18 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -73,12 +79,16 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation HELP_PAGE_BASICS = Starcatcher.rl("textures/gui/guide/help_basics.png");
     private static final ResourceLocation HELP_PAGE_SWEETSPOTS = Starcatcher.rl("textures/gui/guide/help_sweetspots.png");
     private static final ResourceLocation HELP_PAGE_TREASURE = Starcatcher.rl("textures/gui/guide/help_treasure.png");
-    private static final ResourceLocation HELP_PAGE_LAVA_FISHING = Starcatcher.rl("textures/gui/guide/help_lava_fishing.png");
+    private static final ResourceLocation HELP_PAGE_UPGRADES = Starcatcher.rl("textures/gui/guide/help_upgrades.png");
+    private static final ResourceLocation HELP_PAGE_TACKLE_BOX = Starcatcher.rl("textures/gui/guide/help_tackle_box.png");
     private static final ResourceLocation HELP_PAGE_HOOKS_BOBBERS_BAITS = Starcatcher.rl("textures/gui/guide/help_hooks_bobbers_baits.png");
-    private static final ResourceLocation HELP_PAGE_GADGETS_COSMETICS = Starcatcher.rl("textures/gui/guide/help_gadgets_cosmetics.png");
-    private static final ResourceLocation HELP_PAGE_TEMPLATES_EQUIPMENT = Starcatcher.rl("textures/gui/guide/help_templates_equipment.png");
-    private static final ResourceLocation HELP_PAGE_TROPHIES = Starcatcher.rl("textures/gui/guide/help_trophies.png");
+
+    private static final ResourceLocation HELP_PAGE_COSMETICS = Starcatcher.rl("textures/gui/guide/help_cosmetics.png");
     private static final ResourceLocation HELP_PAGE_TOURNAMENTS = Starcatcher.rl("textures/gui/guide/help_tournaments.png");
+    private static final ResourceLocation HELP_PAGE_MESSAGES = Starcatcher.rl("textures/gui/guide/help_messages.png");
+    private static final ResourceLocation HELP_PAGE_SELLING = Starcatcher.rl("textures/gui/guide/help_selling.png");
+    private static final ResourceLocation HELP_PAGE_AQUARIUM = Starcatcher.rl("textures/gui/guide/help_aquarium.png");
+
 
     private static final ResourceLocation ARROW_PREVIOUS = Starcatcher.rl("textures/gui/guide/arrow_previous.png");
     private static final ResourceLocation ARROW_PREVIOUS_PRESSED = Starcatcher.rl("textures/gui/guide/arrow_previous_pressed.png");
@@ -103,38 +113,42 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation ENTITY = Starcatcher.rl("textures/gui/guide/entity.png");
     private static final ResourceLocation ALWAYS_ENTITY = Starcatcher.rl("textures/gui/guide/always_entity.png");
 
-    private static final int MAX_HELP_PAGES = 8;
+    private static final int MAX_HELP_PAGES = 12;
 
 
-    private final List<ItemStack> hooksAndBobbers = new ArrayList<>();
+    private final List<ItemStack> tackleBoxes = new ArrayList<>();
     private final List<ItemStack> baits = new ArrayList<>();
-    private final List<ItemStack> gadgets = new ArrayList<>();
-    private final List<ItemStack> templates = new ArrayList<>();
+    private final List<ItemStack> hooksBobbers = new ArrayList<>();
     private final List<ItemStack> equipments = new ArrayList<>();
+    private final List<ItemStack> aquariumInteractions = new ArrayList<>();
+    private final List<ItemStack> templates = new ArrayList<>();
+    private final List<ItemStack> bottles;
 
-
-    private final ItemStack basicsIndexIcon;
-    private final ItemStack upgradeIndexIcon;
-    private final ItemStack addonsIndexIcon;
-    private final ItemStack cosmeticsIndexIcon;
-    private final ItemStack tournamentIndexIcon;
-    private final ItemStack trophiesIndexIcon;
-    private final ItemStack settingsIndexIcon;
-
+    private final ItemStack rodIcon;
+    private final ItemStack auroraIcon;
     private final ItemStack sweetspotsIcon;
     private final ItemStack treasureIcon;
+    private final ItemStack standIcon;
+    private final ItemStack fishermanHatIcon;
+    private final ItemStack settingsIcon;
+    private final ItemStack letterIcon;
+    private final ItemStack letterBottleIcon;
+    private final ItemStack messageBottleIcon;
+    private final ItemStack messageIcon;
+    private final ItemStack aquariumIcon;
+    private final ItemStack displayIcon;
+    private final ItemStack sellingBinIcon;
+    private final ItemStack trophyIcon;
     private final ItemStack cosmeticsIcon;
     private final ItemStack equipmentIcon;
-    private final ItemStack gadgetsIcon;
-
+    private final ItemStack tackleBoxIcon;
     private final ItemStack hookIcon;
     private final ItemStack baitIcon;
     private final ItemStack secretsIcon;
+    private final ItemStack upgradeIcon;
 
-    private final ItemStack templateIcon;
 
-
-    private List<Pair<ItemStack, String>> indexEntries;
+    private final List<Pair<ItemStack, String>> indexEntries;
 
     int uiX;
     int uiY;
@@ -390,16 +404,6 @@ public class FishingGuideScreen extends Screen
         //System.out.println("clicked on x :" + x);
         //System.out.println("clicked on x :" + y);
 
-        //sort
-        if (x > 51 && x < 116 && y > 67 && y < 76)
-        {
-            if (button == 0) SCConfig.SORT.set(SCConfig.SORT.get().next());
-            if (button == 1) SCConfig.SORT.set(SCConfig.SORT.get().previous());
-            SCConfig.SORT.save();
-            entries = sortEntries(SCConfig.SORT.get(), entries, player);
-            fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
-        }
-
         //previous arrow
         if (x > 49 && x < 69 && y > 203 && y < 217)
         {
@@ -433,6 +437,8 @@ public class FishingGuideScreen extends Screen
         super.tick();
         highlightLeftAlpha -= 0.025f;
         highlightRightAlpha -= 0.025f;
+
+        yRotExtra = (int) Mth.lerp(0.1f + Math.abs((float) yRotExtra / 60), yRotExtra, 0);
     }
 
     @Override
@@ -444,7 +450,9 @@ public class FishingGuideScreen extends Screen
         {
             case -1 ->
             {
+                RenderSystem.enableBlend();
                 renderImage(guiGraphics, BACKGROUND_COVER);
+                RenderSystem.disableBlend();
                 renderCover(guiGraphics, mouseX, mouseY);
             }
 
@@ -452,7 +460,7 @@ public class FishingGuideScreen extends Screen
             case -99 ->
             {
                 Minecraft.getInstance().setScreen(
-                        new NewSettingsScreen(
+                        new SettingsScreen(
                                 FishProperties.builder().withFish(SCItems.AURORA).build(),
                                 new ItemStack(SCItems.ROD.get()
                                 )
@@ -462,22 +470,28 @@ public class FishingGuideScreen extends Screen
             //render index
             case 0 ->
             {
+                RenderSystem.enableBlend();
                 if (page == 0) renderImage(guiGraphics, BACKGROUND_INDEX_FIRST);
                 else renderImage(guiGraphics, BACKGROUND_INDEX_SECOND);
+                RenderSystem.disableBlend();
                 renderIndex(guiGraphics, mouseX, mouseY);
                 renderCompass(guiGraphics);
             }
             //render help pages
             case 1 ->
             {
+                RenderSystem.enableBlend();
                 renderImage(guiGraphics, BACKGROUND_BASICS);
+                RenderSystem.disableBlend();
                 renderTheBasics(guiGraphics, mouseX, mouseY);
                 renderCompass(guiGraphics);
             }
             //render entries
             case 2 ->
             {
+                RenderSystem.enableBlend();
                 renderImage(guiGraphics, BACKGROUND_ENTRY);
+                RenderSystem.disableBlend();
                 renderEntry(guiGraphics, mouseX, mouseY, 52, page * 2);
                 renderEntry(guiGraphics, mouseX, mouseY, 212, page * 2 + 1);
                 renderCompass(guiGraphics);
@@ -485,7 +499,9 @@ public class FishingGuideScreen extends Screen
 
             case 3 ->
             {
+                RenderSystem.enableBlend();
                 renderImage(guiGraphics, BACKGROUND_LAST_PAGE);
+                RenderSystem.disableBlend();
                 renderCompass(guiGraphics);
             }
         }
@@ -521,15 +537,18 @@ public class FishingGuideScreen extends Screen
         clicked = false;
     }
 
+
+    int yRotExtra = U.r.nextInt(40) - 20;
+
     private void renderCompass(GuiGraphics guiGraphics)
     {
-        float yRot = Minecraft.getInstance().player.getYRot();
+        float yRot = Minecraft.getInstance().player.getYRot() + yRotExtra;
 
         PoseStack pose = guiGraphics.pose();
 
         pose.pushPose();
         pose.translate(uiX + 16 + 16.5, uiY + 16 + 34.5, 0);
-        pose.mulPose(Axis.ZP.rotationDegrees(-yRot -45 - 180));
+        pose.mulPose(Axis.ZP.rotationDegrees(-yRot - 45 - 180));
         pose.translate(-16, -16, 0);
         guiGraphics.blit(COMPASS, 0, 0, 0, 0, 32, 32, 32, 32);
         pose.popPose();
@@ -555,21 +574,28 @@ public class FishingGuideScreen extends Screen
 
     }
 
-    private void renderHelpText(GuiGraphics guiGraphics, String pageName)
+    private void renderHelpText(GuiGraphics guiGraphics, int page)
     {
         for (int i = 0; i < 40; i++)
         {
-            if (!I18n.exists("gui.guide.page." + pageName + ".left." + i)) break;
-            Component comp = Component.translatable("gui.guide.page." + pageName + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            if (!I18n.exists("gui.guide.page." + page + ".left." + i)) break;
+            Component comp = Component.translatable("gui.guide.page." + page + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 52, uiY + 10 * i + 13, 0xff000000, false);
         }
 
         for (int i = 0; i < 40; i++)
         {
-            if (!I18n.exists("gui.guide.page." + pageName + ".right." + i)) break;
-            Component comp = Component.translatable("gui.guide.page." + pageName + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            if (!I18n.exists("gui.guide.page." + page + ".right." + i)) break;
+            Component comp = Component.translatable("gui.guide.page." + page + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 213, uiY + 10 * i + 13, 0xff000000, false);
         }
+
+        if (I18n.exists("gui.guide.page." + page + ".left.title"))
+            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.page." + page + ".left.title"), uiX + 116, uiY + 45, 0x635040);
+
+        if (I18n.exists("gui.guide.page." + page + ".right.title"))
+            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.page." + page + ".right.title"), uiX + 270, uiY + 45, 0x635040);
+
     }
 
     private void renderTheBasics(GuiGraphics guiGraphics, int mouseX, int mouseY)
@@ -577,67 +603,114 @@ public class FishingGuideScreen extends Screen
 
         guiGraphics.drawString(this.font, page + "/" + MAX_HELP_PAGES, uiX + 213, uiY + 206, 0x9c897c, false);
 
+        renderHelpText(guiGraphics, page);
+
         switch (page)
         {
             //the basics
             case 0 ->
             {
-                renderHelpText(guiGraphics, "basics");
                 renderImage(guiGraphics, HELP_PAGE_BASICS);
-                renderItem(basicsIndexIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.basics"), uiX + 80, uiY + 45, 0x635040, false);
+                renderItemWithHoverAndEmi(guiGraphics, rodIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
             //sweetspots
             case 1 ->
             {
-                renderHelpText(guiGraphics, "sweetspots");
                 renderImage(guiGraphics, HELP_PAGE_SWEETSPOTS);
-                renderItem(sweetspotsIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.sweetspots"), uiX + 80, uiY + 45, 0x635040, false);
+                renderItemWithHoverAndEmi(guiGraphics, sweetspotsIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
             //treasures
             case 2 ->
             {
-                renderHelpText(guiGraphics, "treasure");
                 renderImage(guiGraphics, HELP_PAGE_TREASURE);
-                renderItem(treasureIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.treasures"), uiX + 80, uiY + 45, 0x635040, false);
+                renderItemWithHoverAndEmi(guiGraphics, treasureIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
             //upgrades
             case 3 ->
             {
-                renderHelpText(guiGraphics, "upgrades");
-                renderImage(guiGraphics, HELP_PAGE_LAVA_FISHING);
-                renderItem(upgradeIndexIcon, uiX + 166, uiY + 39, 1);
-                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.lava_fishing"), uiX + 80, uiY + 45, 0x635040, false);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.modifiers"), uiX + 230, uiY + 45, 0x635040, false);
+                renderImage(guiGraphics, HELP_PAGE_UPGRADES);
+                renderItemWithHoverAndEmi(guiGraphics, upgradeIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
-            //hooks bobbers and baits
+            //tackle boxes
             case 4 ->
             {
-                renderHelpText(guiGraphics, "hooks");
-                renderImage(guiGraphics, HELP_PAGE_HOOKS_BOBBERS_BAITS);
+                renderImage(guiGraphics, HELP_PAGE_TACKLE_BOX);
 
-                //hooks & bobbers title + top icon
-                renderItem(hookIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.hooks_and_bobbers"), uiX + 60, uiY + 45, 0x635040, false);
-
-                //baits title + top icon
-                renderItem(baitIcon, uiX + 321, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.baits"), uiX + 230, uiY + 45, 0x635040, false);
+                //tackle boxes icon
+                renderItemWithHoverAndEmi(guiGraphics, tackleBoxIcon, uiX + 166, uiY + 39, mouseX, mouseY);
 
                 //left page scroll arrows
-                guiGraphics.blit(ARROW_LEFT, uiX + 63, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
-                if (clicked && mouseX > uiX + 64 && mouseX < uiX + 74 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
                     leftPageScroll--;
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
                     leftPageScroll++;
+
+                //scrollable tackle boxes icons
+                for (int i = 0; i < 5; i++)
+                {
+                    int x = uiX + 72 + (i * 20);
+                    int y = uiY + 170;
+                    ItemStack stack = tackleBoxes.get(Math.abs((leftPageScroll + i) % tackleBoxes.size()));
+                    //render item
+                    renderItem(stack, x, y, 1);
+                    //render hover item tooltip
+                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
+                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
+
+                    //scrollable background fill
+                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
+                }
+            }
+
+            //hooks & bobbers & baits
+            case 5 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_HOOKS_BOBBERS_BAITS);
+
+                //hook icon
+                renderItemWithHoverAndEmi(guiGraphics, hookIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+
+                //left page scroll arrows
+                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
+                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll--;
+                if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll++;
+
+                //hooks and bobbers items
+                for (int i = 0; i < 5; i++)
+                {
+                    int x = uiX + 72 + (i * 20);
+                    int y = uiY + 170;
+                    ItemStack stack = hooksBobbers.get(Math.abs((leftPageScroll + i) % hooksBobbers.size()));
+                    //render item
+                    renderItem(stack, x, y, 1);
+                    //render hover item tooltip
+                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
+                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
+
+                    //scrollable background fill
+                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
+                }
+
+
+                //bait icon
+                renderItemWithHoverAndEmi(guiGraphics, baitIcon, uiX + 321, uiY + 39, mouseX, mouseY);
 
                 //right page scroll arrows
                 guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
@@ -647,178 +720,139 @@ public class FishingGuideScreen extends Screen
                 if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
                     rightPageScroll++;
 
-                //scrollable hooks & bobbers icons
-                for (int i = 0; i < 5; i++)
-                {
-                    int x = uiX + 77 + (i * 20);
-                    int y = uiY + 170;
-                    ItemStack stack = hooksAndBobbers.get(Math.abs((leftPageScroll + i) % hooksAndBobbers.size()));
-                    //render item
-                    renderItem(stack, x, y, 1);
-                    //render hover item tooltip
-                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
-                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
-                    //scrollable background fill
-                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
-                }
 
                 //scrollable baits icons
                 for (int i = 0; i < 5; i++)
                 {
                     int x = uiX + 238 + (i * 20);
                     int y = uiY + 170;
-                    ItemStack stack = baits.get(Math.abs((rightPageScroll + i) % hooksAndBobbers.size()));
+                    ItemStack stack = baits.get(Math.abs((rightPageScroll + i) % baits.size()));
                     //render item
                     renderItem(stack, x, y, 1);
                     //render hover item tooltip
                     if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
                         guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
                 }
 
             }
 
-            //gadgets & cosmetics
-            case 5 ->
-            {
-                renderHelpText(guiGraphics, "cosmetics");
-                renderImage(guiGraphics, HELP_PAGE_GADGETS_COSMETICS);
-                renderItem(gadgetsIcon, uiX + 166, uiY + 39, 1);
-                renderItem(cosmeticsIcon, uiX + 321, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.gadgets"), uiX + 80, uiY + 45, 0x635040, false);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.cosmetics"), uiX + 230, uiY + 45, 0x635040, false);
 
-                //dont ask me whats going on here ⏬
-
-                int s1 = 5;
-                int d1 = 23;
-                int h1 = 0;
-
-                //baits max column size
-                if (gadgets.size() > 15) s1 = 6;
-                if (gadgets.size() > 18) s1 = 7;
-                if (gadgets.size() > 18) d1 = 21;
-                if (gadgets.size() > 18) h1 = 6;
-
-                for (int i = 0; i < Math.min(gadgets.size(), 21); i++)
-                {
-                    int x = 70 - Math.min(s1, (gadgets.size() - i / s1 * s1)) * 23 / 2;
-                    int xrender = x + (i % s1) * d1;
-                    int y = i / s1 * 25;
-
-                    //offset to page
-                    xrender += uiX + 60 + h1;
-                    y += uiY + 130;
-
-                    //render item and background
-                    guiGraphics.fill(xrender - 10, y - 2, xrender + 10, y + 18, 0xffb4a697);
-                    renderItem(gadgets.get(i), xrender - 8, y, 1);
-
-                    //render when hover
-                    if (mouseX > xrender - 10 && mouseX < xrender + 10 && mouseY > y - 2 && mouseY < y + 18)
-                        guiGraphics.renderTooltip(this.font, gadgets.get(i), mouseX, mouseY);
-                }
-            }
-
-            //cosmetic templates
+            //cosmetics
             case 6 ->
             {
-                renderHelpText(guiGraphics, "templates");
-                renderImage(guiGraphics, HELP_PAGE_TEMPLATES_EQUIPMENT);
-
-                //templates title + top icon
-                renderItem(templateIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.templates"), uiX + 60, uiY + 45, 0x635040, false);
-
-                //equipment title + top icon
-                renderItem(equipmentIcon, uiX + 321, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.equipment"), uiX + 230, uiY + 45, 0x635040, false);
+                renderImage(guiGraphics, HELP_PAGE_COSMETICS);
+                renderItemWithHoverAndEmi(guiGraphics, cosmeticsIcon, uiX + 166, uiY + 39, mouseX, mouseY);
 
                 //left page scroll arrows
-                guiGraphics.blit(ARROW_LEFT, uiX + 63, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
-                if (clicked && mouseX > uiX + 64 && mouseX < uiX + 74 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
                     leftPageScroll--;
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
                     leftPageScroll++;
 
-                //right page scroll arrows
-                guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
-                guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
-                if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    rightPageScroll--;
-                if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    rightPageScroll++;
-
-                //scrollable templates icons
+                //hooks and bobbers items
                 for (int i = 0; i < 5; i++)
                 {
-                    int x = uiX + 77 + (i * 20);
+                    int x = uiX + 72 + (i * 20);
                     int y = uiY + 170;
-                    ItemStack stack = templates.get(Math.abs((leftPageScroll + i) % templates.size()));
+                    ItemStack stack = equipments.get(Math.abs((leftPageScroll + i) % equipments.size()));
                     //render item
                     renderItem(stack, x, y, 1);
                     //render hover item tooltip
                     if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
                         guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
-                    //scrollable background fill
-                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
-                }
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
 
-                //scrollable equipments icons
-                for (int i = 0; i < 5; i++)
-                {
-                    int x = uiX + 238 + (i * 20);
-                    int y = uiY + 170;
-                    ItemStack stack = equipments.get(Math.abs((rightPageScroll + i) % equipments.size()));
-                    //render item
-                    renderItem(stack, x, y, 1);
-                    //render hover item tooltip
-                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
-                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
                 }
             }
 
-
+            //tournaments
             case 7 ->
             {
-                //tournaments
-                renderHelpText(guiGraphics, "tournaments");
                 renderImage(guiGraphics, HELP_PAGE_TOURNAMENTS);
-                renderItem(tournamentIndexIcon, uiX + 166, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.tournaments"), uiX + 60, uiY + 45, 0x635040, false);
-
+                renderItemWithHoverAndEmi(guiGraphics, standIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
+            //message-in-a-bottle
             case 8 ->
             {
-                //trophies
-                renderHelpText(guiGraphics, "trophies");
-                renderImage(guiGraphics, HELP_PAGE_TROPHIES);
-                renderItem(trophiesIndexIcon, uiX + 166, uiY + 39, 1);
-                renderItem(secretsIcon, uiX + 321, uiY + 39, 1);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.trophies"), uiX + 60, uiY + 45, 0x635040, false);
-                //renderTrophies(guiGraphics, mouseX, mouseY);
-                guiGraphics.drawString(this.font, Component.translatable("gui.guide.secrets"), uiX + 230, uiY + 45, 0x635040, false);
-                //renderSecrets(guiGraphics, mouseX, mouseY);
+                renderImage(guiGraphics, HELP_PAGE_MESSAGES);
+                renderItemWithHoverAndEmi(guiGraphics, letterBottleIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    renderItemWithHoverAndEmi(guiGraphics, bottles.get(i), uiX + 240 + (i * 24), uiY + 140, mouseX, mouseY);
+                    guiGraphics.renderOutline(uiX + 238 + (i * 24), uiY + 138, 20, 20, 0xff9c897c);
+                }
             }
 
+            //selling bin
+            case 9 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_SELLING);
+                renderItemWithHoverAndEmi(guiGraphics, sellingBinIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+            }
+
+            //aquariums
+            case 10 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_AQUARIUM);
+                renderItemWithHoverAndEmi(guiGraphics, aquariumIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+
+                //left page scroll arrows
+                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
+                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll--;
+                if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll++;
+
+                //hooks and bobbers items
+                for (int i = 0; i < 5; i++)
+                {
+                    int x = uiX + 72 + (i * 20);
+                    int y = uiY + 170;
+                    ItemStack stack = aquariumInteractions.get(Math.abs((leftPageScroll + i) % aquariumInteractions.size()));
+                    //render item
+                    renderItem(stack, x, y, 1);
+                    //render hover item tooltip
+                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
+                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
+
+                    //scrollable background fill
+                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
+                }
+            }
         }
     }
 
     private void renderIndex(GuiGraphics guiGraphics, int mouseX, int mouseY)
     {
 
-//        if (player.level().getDayTime() % 5 == 0)
+//        if (Minecraft.getInstance().level.getDayTime() % 20 == 0)
 //        {
-//            System.out.println(player.level().getDayTime());
-//            fishInArea.add(FishProperties.DEFAULT);
+//            var f = new ArrayList<>(fishInArea);
+//            f.add(FishProperties.DEFAULT);
+//            fishInArea = f;
 //        }
 
-        //render top index
+        //render first line index
         int xx = uiX + 55;
         if (page == 0)
         {
@@ -831,24 +865,67 @@ public class FishingGuideScreen extends Screen
 
                 if (clicked && mouseX > xx + (i * 20) - 2 && mouseX < xx + (i * 20) + 17 && mouseY > uiY + 47 - 2 && mouseY < uiY + 47 + 17)
                 {
+                    clicked = false;
                     minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
                     menu = 1;
                     switch (i)
                     {
                         case 0 -> page = 0;
-                        case 1 -> page = 3;
-                        case 2 -> page = 4;
-                        case 3 -> page = 5;
-                        case 4 -> page = 7;
-                        case 5 -> page = 8;
+                        case 1 -> page = 1;
+                        case 2 -> page = 2;
+                        case 3 -> page = 3;
+                        case 4 -> page = 4;
+                        case 5 -> page = 5;
                     }
                     if (i == 6) menu = -99;
+                }
+            }
+
+            xx = uiX + 55;
+            //render second line index
+            for (int i = 7; i < 14; i++)
+            {
+                renderItem(indexEntries.get(i).getFirst(), xx + (i - 7) * 20, uiY + 47 + 20, 1);
+
+                if (mouseX > xx + ((i - 7) * 20) - 2 && mouseX < xx + ((i - 7) * 20) + 17 && mouseY > uiY + 47 + 20 - 2 && mouseY < uiY + 47 + 20 + 17)
+                {
+                    guiGraphics.renderTooltip(this.font, Component.translatable(indexEntries.get(i).getSecond()), mouseX, mouseY);
+                    if (clicked)
+                    {
+                        clicked = false;
+                        minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
+                        menu = 1;
+                        switch (i)
+                        {
+                            case 7 -> page = 6;
+                            case 8 -> page = 7;
+                            case 9 -> page = 8;
+                            case 10 -> page = 9;
+                            case 11 -> page = 10;
+                            case 12 -> page = 11;
+                            case 13 -> page = 12;
+                        }
+                    }
                 }
             }
         }
 
         //[sort] text
-        guiGraphics.drawString(this.font, Component.translatable("gui.guide.sort"), uiX + 52, uiY + 67, 0xe4e0d8, false);
+        if (page == 0)
+        {
+            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.sort"), uiX + 171, uiY + 88, 0x937d70);
+            if (mouseX > uiX + 145 && mouseX < uiX + 190 && mouseY > uiY + 86 && mouseY < uiY + 96)
+            {
+                guiGraphics.renderTooltip(this.font, Component.translatable(SCConfig.SORT.get().getTranslationKey()), mouseX, mouseY);
+                if (clicked)
+                {
+                    SCConfig.SORT.set(SCConfig.SORT.get().next());
+                    SCConfig.SORT.save();
+                    entries = sortEntries(SCConfig.SORT.get(), entries, player);
+                    fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
+                }
+            }
+        }
 
         //render fishes in area
         {
@@ -857,11 +934,11 @@ public class FishingGuideScreen extends Screen
                 //render fishes in area clickable squares and stuff
                 for (int i = 0; i < fishInArea.size(); i++)
                 {
-                    if (i >= 42) break;
+                    if (i >= 35) break;
                     FishProperties fp = fishInArea.get(i);
 
                     int xpos = uiX + 53 + (i % 7) * 20;
-                    int ypos = uiY + 47 + (i / 7 * 20) + 38;
+                    int ypos = uiY + 67 + (i / 7 * 20) + 38;
 
                     renderFishIndex(guiGraphics, xpos, ypos, mouseX, mouseY, fp, 0xffc6bdaf);
                 }
@@ -873,33 +950,22 @@ public class FishingGuideScreen extends Screen
 
                     int numberOfRows = (fishInArea.size() - 1) / 7 + 1;
 
-                    int x = mouseX - uiX;
-                    int y = mouseY - uiY;
-
-                    if (x > 51 && x < 116 && y > 67 && y < 76)
-                    {
-                        guiGraphics.renderTooltip(this.font, Component.translatable(SCConfig.SORT.get().getTranslationKey()), mouseX, mouseY);
-                    }
-
-                    //render bottom decoration if theres space
-                    if (numberOfRows < 4)
-                        renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_DECORATION);
-
-                    if (numberOfRows == 4 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
+                    //render bottom decoration if there's space
+                    if (numberOfRows < 3)
                         renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_DECORATION);
 
 
                     //render bottom left thingy, offset by the number of rows
-                    if (!fishInArea.isEmpty())
-                        renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_LEFT_DECORATION, 0, (Math.min(numberOfRows, 6) - 1) * 20);
+                    if (!fishInArea.isEmpty() && numberOfRows < 5)
+                        renderImage(guiGraphics, FISHES_IN_AREA_BOTTOM_LEFT_DECORATION, 0, (Math.min(numberOfRows, 6) - 1) * 20 + 20);
 
-                    //render fish skeleton unless theres no space for it
+                    //render fish skeleton unless there's no space for it
                     int xFishSkeletonOffset = 0;
                     if (fishInArea.size() % 7 > 4 || fishInArea.size() % 7 == 0) xFishSkeletonOffset = 20;
-                    if (numberOfRows < 6)
-                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset);
-                    if (numberOfRows == 6 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
-                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset);
+                    if (numberOfRows < 5)
+                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset + 20);
+                    if (numberOfRows == 5 && fishInArea.size() % 7 < 5 && fishInArea.size() % 7 != 0)
+                        renderImage(guiGraphics, FISHES_IN_AREA_FISH_DECORATION, 0, (numberOfRows - 1) * 20 + xFishSkeletonOffset + 20);
                 }
             }
 
@@ -1110,6 +1176,20 @@ public class FishingGuideScreen extends Screen
     private static void renderItem(ItemStack stack, int x, int y)
     {
         renderItem(stack, x, y, 3);
+    }
+
+
+    private void renderItemWithHoverAndEmi(GuiGraphics guiGraphics, ItemStack stack, int x, int y, int mouseX, int mouseY)
+    {
+        renderItem(stack, x, y, 1);
+
+        if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+        {
+            guiGraphics.renderTooltip(font, stack, mouseX, mouseY);
+            if (clicked)
+                displayRecipe(stack);
+        }
+
     }
 
     private static void renderItem(ItemStack stack, int x, int y, float scale)
@@ -1440,44 +1520,62 @@ public class FishingGuideScreen extends Screen
     {
         super(Component.empty());
 
-        //get all items in bobbers/hooks/baits tags
-        BuiltInRegistries.ITEM.getTag(SCTags.BOBBERS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(SCTags.HOOKS).ifPresent(o -> o.stream().forEach(i -> hooksAndBobbers.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(SCTags.BAITS).ifPresent(o -> o.stream().forEach(i -> baits.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(SCTags.GADGETS).ifPresent(o -> o.stream().forEach(i -> gadgets.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(SCTags.TEMPLATES).ifPresent(o -> o.stream().forEach(i -> templates.add(i.value().getDefaultInstance())));
-        BuiltInRegistries.ITEM.getTag(SCTags.EQUIPMENTS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
-
-        //index
-        basicsIndexIcon = new ItemStack(SCItems.ROD.get());
-        upgradeIndexIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
-        addonsIndexIcon = new ItemStack(SCItems.HOOK.get());
-        cosmeticsIndexIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
-        tournamentIndexIcon = new ItemStack(SCBlocks.STAND.get());
-        trophiesIndexIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
-        settingsIndexIcon = new ItemStack(SCItems.SETTINGS.get());
-        indexEntries = new ArrayList<>(List.of(
-                Pair.of(basicsIndexIcon, "gui.guide.index.basics"),
-                Pair.of(upgradeIndexIcon, "gui.guide.index.upgrades"),
-                Pair.of(addonsIndexIcon, "gui.guide.index.addons"),
-                Pair.of(cosmeticsIndexIcon, "gui.guide.index.cosmetics"),
-                Pair.of(tournamentIndexIcon, "gui.guide.index.tournament"),
-                Pair.of(trophiesIndexIcon, "gui.guide.index.trophies"),
-                Pair.of(settingsIndexIcon, "gui.guide.index.settings")
-        ));
-
-        //other items
+        rodIcon = new ItemStack(SCItems.ROD.get());
         sweetspotsIcon = new ItemStack(SCItems.AURORA.get());
         treasureIcon = new ItemStack(SCItems.WATERLOGGED_SATCHEL.get());
         equipmentIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_GREEN.get());
-        cosmeticsIcon = new ItemStack(SCItems.AZURE_CRYSTAL_ROD.get());
-        gadgetsIcon = new ItemStack(SCItems.FISH_RADAR.get());
-
-        hookIcon = new ItemStack(SCItems.HOOK.get());
+        cosmeticsIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
+        tackleBoxIcon = new ItemStack(SCBlocks.TACKLE_BOX.get());
         baitIcon = new ItemStack(SCItems.CHERRY_BAIT.get());
         secretsIcon = new ItemStack(SCItems.HOPEFUL_BOTTLE.get());
+        auroraIcon = new ItemStack(SCItems.AURORA.get());
+        upgradeIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+        hookIcon = new ItemStack(SCItems.HOOK.get());
+        standIcon = new ItemStack(SCBlocks.STAND.get());
+        fishermanHatIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
+        settingsIcon = new ItemStack(SCItems.SETTINGS.get());
+        letterIcon = new ItemStack(SCItems.LETTER.get());
+        letterBottleIcon = new ItemStack(SCItems.BOTTLED_LETTER.get());
+        messageBottleIcon = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
+        messageIcon = new ItemStack(SCItems.MESSAGE.get());
+        sellingBinIcon = new ItemStack(SBBlocks.SELLING_BIN.get());
+        aquariumIcon = new ItemStack(SCBlocks.AQUARIUM.get());
+        displayIcon = new ItemStack(SCBlocks.DISPLAY.get());
+        trophyIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
 
-        templateIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
+
+        //populate lists
+        BuiltInRegistries.ITEM.getTag(SCTags.TACKLE_BOXES).ifPresent(o -> o.stream().forEach(i -> tackleBoxes.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.HOOKS).ifPresent(o -> o.stream().forEach(i -> hooksBobbers.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.BOBBERS).ifPresent(o -> o.stream().forEach(i -> hooksBobbers.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.BAITS).ifPresent(o -> o.stream().forEach(i -> baits.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.TEMPLATES).ifPresent(o -> o.stream().forEach(i -> templates.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.EQUIPMENTS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
+        BuiltInRegistries.ITEM.getTag(SCTags.HATS).ifPresent(o -> o.stream().forEach(i -> equipments.add(i.value().getDefaultInstance())));
+
+        Optional<HolderSet.Named<Item>> interactions = BuiltInRegistries.ITEM.getTag(SCTags.AQUARIUM_INTERACTIONS);
+        interactions.ifPresent(h -> h.stream().forEach(o -> aquariumInteractions.add(new ItemStack(o.value()))));
+        if(aquariumInteractions.isEmpty()) aquariumInteractions.add(ItemStack.EMPTY);
+
+        indexEntries = new ArrayList<>(List.of(
+                Pair.of(rodIcon, "gui.guide.index.basics"),
+                Pair.of(auroraIcon, "gui.guide.index.sweetspots"),
+                Pair.of(treasureIcon, "gui.guide.index.treasures"),
+                Pair.of(upgradeIcon, "gui.guide.index.upgrades"),
+                Pair.of(tackleBoxIcon, "gui.guide.index.tackle_box"),
+                Pair.of(hookIcon, "gui.guide.index.hooks_bobbers_baits"),
+                Pair.of(settingsIcon, "gui.guide.index.settings"),
+
+                Pair.of(fishermanHatIcon, "gui.guide.index.cosmetics"),
+                Pair.of(standIcon, "gui.guide.index.tournaments"),
+                Pair.of(letterIcon, "gui.guide.index.messages"),
+                Pair.of(sellingBinIcon, "gui.guide.index.selling_bin"),
+                Pair.of(aquariumIcon, "gui.guide.index.aquarium"),
+                Pair.of(displayIcon, "gui.guide.index.display"),
+                Pair.of(trophyIcon, "gui.guide.index.trophies_and_secrets")
+        ));
+
+        bottles = List.of(letterIcon, letterBottleIcon, messageBottleIcon, messageIcon);
     }
 
 
@@ -1623,7 +1721,7 @@ public class FishingGuideScreen extends Screen
         {
             if (fp.catchInfo().alwaysSpawnEntity() && (fcc != null || !SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get()))
                 guiGraphics.renderTooltip(font, fp.getDisplayName(), absoluteMouseX, absoluteMouseY);
-            else if(fishToDisplay != ItemStack.EMPTY)
+            else if (fishToDisplay != ItemStack.EMPTY)
                 guiGraphics.renderTooltip(font, fishToDisplay, absoluteMouseX, absoluteMouseY);
         }
 
@@ -1633,7 +1731,7 @@ public class FishingGuideScreen extends Screen
             List<Component> components = new ArrayList<>();
             float averageTicks = (int) ((fcc.averageTicks() / 20) * 100) / 100.0f;
 
-            SettingsScreen.Units unit = SCConfig.UNIT.get();
+            Units unit = SCConfig.UNIT.get();
             String size = unit.getSizeAsString(fcc.size());
             String weight = unit.getWeightAsString(fcc.weight());
 
@@ -1674,7 +1772,7 @@ public class FishingGuideScreen extends Screen
             double d3 = Mth.lerp(d2, 0.0F, l);
             guiGraphics.enableScissor(minX, minY, maxX, maxY);
             int x = minX - (int) d3;
-            if(!hovering) x = minX;
+            if (!hovering) x = minX;
             guiGraphics.drawString(font, text, x, j, SCColors.GUIDE_TEXT_DARK, false);
             guiGraphics.disableScissor();
         }
@@ -1683,5 +1781,25 @@ public class FishingGuideScreen extends Screen
             int i1 = Mth.clamp(centerX, minX + i / 2, maxX - i / 2);
             guiGraphics.drawString(font, text.getVisualOrderText(), i1 - font.width(text.getVisualOrderText()) / 2, j, SCColors.GUIDE_TEXT_DARK, false);
         }
+    }
+
+    private void displayRecipe(ItemStack stack)
+    {
+        if (ModList.get().isLoaded("emi"))
+            StarcatcherEmiPlugin.displayRecipes(stack);
+
+        //if(ModList.get().isLoaded("jei"))
+        //StarcatcherJeiPlugin.displayRecipes(stack);
+    }
+
+    public void renderCenteredString(GuiGraphics guiGraphics, Font font, Component text, int x, int y, int color)
+    {
+        renderCenteredString(guiGraphics, font, text, x, y, color, false);
+    }
+
+    public void renderCenteredString(GuiGraphics guiGraphics, Font font, Component text, int x, int y, int color, boolean shadow)
+    {
+        FormattedCharSequence formattedcharsequence = text.getVisualOrderText();
+        guiGraphics.drawString(font, formattedcharsequence, x - font.width(formattedcharsequence) / 2, y, color, shadow);
     }
 }

@@ -69,7 +69,7 @@ dependencies {
     jarJar(implementation("maven.modrinth:libtooltips:5J15zxaI"))
 
     //selling bin
-    jarJar(implementation("curse.maven:project-1483881:7771665"))
+    jarJar(implementation("curse.maven:project-1483881:7858252"))
 
     //tiny multiblock lib
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:neo-1.21.1-${tiny_multiblock_lib_version}"))

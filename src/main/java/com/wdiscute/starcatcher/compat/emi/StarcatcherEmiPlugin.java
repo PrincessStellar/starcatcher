@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
@@ -20,6 +21,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class StarcatcherEmiPlugin implements EmiPlugin
             = new EmiRecipeCategory(
             Starcatcher.rl("fishing"),
             MY_WORKSTATION);
+
+    public static void displayRecipes(ItemStack is)
+    {
+        EmiApi.displayRecipes(EmiIngredient.of(Ingredient.of(is)));
+    }
 
     @Override
     public void register(EmiRegistry registry)
