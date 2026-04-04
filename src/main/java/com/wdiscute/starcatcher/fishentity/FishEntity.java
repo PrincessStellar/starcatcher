@@ -109,6 +109,11 @@ public class FishEntity extends AbstractFish
         shouldDropItem = true;
     }
 
+    public ItemStack getFish()
+    {
+        return getBodyArmorItem();
+    }
+
     @Override
     public ItemStack getBucketItemStack()
     {

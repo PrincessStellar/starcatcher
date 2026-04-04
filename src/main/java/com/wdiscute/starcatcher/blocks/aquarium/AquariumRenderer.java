@@ -3,6 +3,9 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -78,8 +81,11 @@ public class AquariumRenderer implements BlockEntityRenderer<AquariumBlockEntity
 
         Vec3 offsetCenter = new Vec3(0.5f, -0.35f, 0.5f);
 
-        float scale = 1f;
-        //if (partialTick > 0.5f) scale *= 2;
+        float scale = SCDataComponents.getOrDefault(
+                fish, SCDataComponents.CAUGHT_FISH_INFO,
+                new CaughtFishInfo(100, 100, 50, FishProperties.Rarity.COMMON, false)
+        ).getScale();
+
 
         //offset from be
         LocalPlayer player = Minecraft.getInstance().player;

@@ -1,7 +1,8 @@
 package com.wdiscute.starcatcher;
 
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
-import com.wdiscute.starcatcher.guide.SettingsScreen;
+import com.wdiscute.starcatcher.registry.FishProperties;
+import net.minecraft.client.resources.language.I18n;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class SCConfig
@@ -30,9 +31,9 @@ public class SCConfig
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
 
-    public static final ModConfigSpec.EnumValue<SettingsScreen.Units> UNIT = BUILDER_CLIENT
+    public static final ModConfigSpec.EnumValue<FishProperties.SizeAndWeight.Units> UNIT = BUILDER_CLIENT
             .translation("starcatcher.configuration.units")
-            .defineEnum("units", SettingsScreen.Units.METRIC);
+            .defineEnum("units", FishProperties.SizeAndWeight.Units.METRIC);
 
     public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER_CLIENT
             .translation("starcatcher.configuration.sort")
@@ -155,6 +156,16 @@ public class SCConfig
             .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
             .translation("starcatcher.configuration.restrict_tackle_box_to_tag")
             .define("restrict_tackle_box_to_tag", true);
+
+    public static final ModConfigSpec.DoubleValue FISH_MAX_SCALE = BUILDER_SERVER
+            .comment("Controls the maximum scale of the fish model based on the size and weight percentile")
+            .translation("starcatcher.configuration.fish_percentile_size_max_scale")
+            .defineInRange("fish_percentile_size_max_scale", 1.5d, 0, 100);
+
+    public static final ModConfigSpec.DoubleValue FISH_MIN_SCALE = BUILDER_SERVER
+            .comment("Controls the minimum scale of the fish model based on the size and weight percentile")
+            .translation("starcatcher.configuration.fish_percentile_size_min_scale")
+            .defineInRange("fish_percentile_size_min_scale", 0.5d, 0, 100);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
