@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.event;
 
-import com.wdiscute.sellingbin.event.ModEvents.DefaultPackSource;
-import com.wdiscute.sellingbin.registry.ModDataMaps;
+import com.wdiscute.sellingbin.event.SBvents;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.SCDataComponents;
@@ -74,14 +73,14 @@ public class SCEvents
     {
         ItemStack itemStack = event.getItemStack();
 
-        List<ResourceLocation> catchModifiers = ModDataMaps.getOrDefault(itemStack, SCDataMaps.CATCH_MODIFIERS, null);
+        List<ResourceLocation> catchModifiers = SCDataMaps.getOrDefault(itemStack, SCDataMaps.CATCH_MODIFIERS, null);
 
         if (catchModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.CATCH_MODIFIERS) == null)
         {
             SCDataComponents.set(itemStack, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
         }
 
-        List<ResourceLocation> minigameModifiers = ModDataMaps.getOrDefault(itemStack, SCDataMaps.MINIGAME_MODIFIERS, null);
+        List<ResourceLocation> minigameModifiers = SCDataMaps.getOrDefault(itemStack, SCDataMaps.MINIGAME_MODIFIERS, null);
 
         if (minigameModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.MINIGAME_MODIFIERS) == null)
         {
@@ -94,7 +93,7 @@ public class SCEvents
     @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event)
     {
-        PackSource packSource = new DefaultPackSource()
+        PackSource packSource = new SBvents.DefaultPackSource()
         {
             @Override
             public boolean shouldAddAutomatically()

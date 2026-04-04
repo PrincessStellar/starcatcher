@@ -4,13 +4,17 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.registry.SCRenderTypes;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -23,7 +27,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,26 +86,35 @@ public class FishRenderer extends EntityRenderer<FishEntity>
     }
 
     @Override
-    public void render(FishEntity fish, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
+    public void render(FishEntity fishEntity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
     {
+        ItemStack fish = fishEntity.getFish();
+
         poseStack.pushPose();
-        poseStack.translate(0.0F, 1.3F, 0.0F);
-        poseStack.scale(1.0F, -1.0F, -1.0F);
 
-        poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
+        Vec3 offsetCenter = new Vec3(0f, -0.75f, 0f);
 
-        if (!fish.isInWater())
-        {
-            float f = 4.3F * Mth.sin(1F * fish.tickCount + partialTicks);
-            poseStack.translate(1.1F, 1.4F, -0.1F);
-            poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(f));
-        }
+        float scale = SCDataComponents.getOrDefault(
+                fish, SCDataComponents.CAUGHT_FISH_INFO,
+                new CaughtFishInfo(100, 100, 50, FishProperties.Rarity.COMMON, false)
+        ).getScale();
 
-        if (!fish.getBodyArmorItem().isEmpty())
-        {
-            renderFishFromItem(itemRenderer, map, fish.getBodyArmorItem(), buffer, poseStack, packedLight, fish.level());
-        }
+        //todo needed?
+        //poseStack.translate(be.x, be.y, be.z);
+
+        //block centering
+        poseStack.translate(offsetCenter.x, offsetCenter.y, offsetCenter.z);
+
+        //scaling + pivot adjusting
+        poseStack.translate(0, 1, 0);
+        poseStack.scale(scale, -scale, scale);
+        poseStack.translate(0, -1, 0);
+
+        poseStack.mulPose(Axis.YN.rotationDegrees(entityYaw + 180));
+
+        // Render model here
+        if (!fish.isEmpty())
+            FishRenderer.renderFishFromItem(itemRenderer, FishRenderer.map, fish, buffer, poseStack, packedLight, fishEntity.level());
 
         poseStack.popPose();
     }
@@ -130,8 +145,10 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
     }
 
-    public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem) {
-        if (FishProperties.Rarity.isGolden(fishItem)){
+    public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem)
+    {
+        if (FishProperties.Rarity.isGolden(fishItem))
+        {
             return SCRenderTypes.RENDER_TYPE_GOLD.apply(texture);
         }
         return model.renderType(texture);

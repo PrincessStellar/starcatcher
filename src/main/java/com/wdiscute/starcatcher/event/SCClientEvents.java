@@ -135,6 +135,13 @@ public class SCClientEvents
         event.registerLayerDefinition(HollowbellyDarter.LAYER_LOCATION, HollowbellyDarter::createBodyLayer);
         event.registerLayerDefinition(IcetoothSturgeon.LAYER_LOCATION, IcetoothSturgeon::createBodyLayer);
         event.registerLayerDefinition(MistbackChub.LAYER_LOCATION, MistbackChub::createBodyLayer);
+        event.registerLayerDefinition(BlueCrystalFin.LAYER_LOCATION, BlueCrystalFin::createBodyLayer);
+        event.registerLayerDefinition(Carpenjoe.LAYER_LOCATION, Carpenjoe::createBodyLayer);
+        event.registerLayerDefinition(Elderscale.LAYER_LOCATION, Elderscale::createBodyLayer);
+        event.registerLayerDefinition(GhostlyPike.LAYER_LOCATION, GhostlyPike::createBodyLayer);
+        event.registerLayerDefinition(IronjarHerring.LAYER_LOCATION, IronjarHerring::createBodyLayer);
+        event.registerLayerDefinition(MirageCarp.LAYER_LOCATION, MirageCarp::createBodyLayer);
+        event.registerLayerDefinition(PetaldriftCarp.LAYER_LOCATION, PetaldriftCarp::createBodyLayer);
     }
 
     @SubscribeEvent
