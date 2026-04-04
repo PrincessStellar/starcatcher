@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
+import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -12,7 +13,6 @@ import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviou
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
-import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
@@ -98,7 +98,7 @@ public class Starcatcher
     {
         if (newFish) Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
 
-        SettingsScreen.Units units = SCConfig.UNIT.get();
+        Units units = SCConfig.UNIT.get();
 
         String size = units.getSizeAsString(sizeCM);
         String weight = units.getWeightAsString(weightCM);

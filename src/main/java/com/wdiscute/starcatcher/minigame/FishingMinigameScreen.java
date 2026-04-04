@@ -104,7 +104,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public float renderScale;
     public int xOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
-    public int yOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
+    public int yOffset = SCConfig.MINIGAME_Y_OFFSET.getAsInt();
 
 
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();

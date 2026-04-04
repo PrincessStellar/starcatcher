@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.FishProperties;
@@ -132,6 +133,21 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         //rods and tools/fishing_rod
         RODS_REGISTRY.getEntries().forEach(o -> tag(SCTags.RODS).add(o.get()));
         RODS_REGISTRY.getEntries().forEach(o -> tag(Tags.Items.TOOLS_FISHING_ROD).add(o.get()));
+
+        tag(SCTags.AQUARIUM_INTERACTIONS)
+                .add(Items.DIAMOND_PICKAXE)
+                .add(Items.DIAMOND_SHOVEL)
+                .add(Items.STONE)
+                .add(Items.GRAVEL)
+                .add(Items.SAND)
+                .add(Items.RED_SAND)
+                .add(Items.KELP)
+                .add(Items.SEAGRASS)
+                .add(Items.BUCKET)
+                .add(AURORA.get())
+                .add(CONCH.asItem())
+                .add(CLAM.asItem())
+        ;
 
         //hats
         HATS.getEntries().forEach(o -> tag(SCTags.HATS).add(((DeferredBlock<?>) o).asItem()));
