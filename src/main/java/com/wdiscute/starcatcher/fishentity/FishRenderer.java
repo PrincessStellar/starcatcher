@@ -96,6 +96,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         map.put(SCItems.VIVID_MOSS.get(), new VividMoss<>(modelSet.bakeLayer(VividMoss.LAYER_LOCATION)));
         map.put(SCItems.WILLISH.get(), new Willish<>(modelSet.bakeLayer(Willish.LAYER_LOCATION)));
         map.put(SCItems.YELLOWSTONE_FISH.get(), new YellowstoneFish<>(modelSet.bakeLayer(YellowstoneFish.LAYER_LOCATION)));
+        map.put(SCItems.VOIDBITER.get(), new Voidbiter<>(modelSet.bakeLayer(Voidbiter.LAYER_LOCATION)));
     }
 
     @Override

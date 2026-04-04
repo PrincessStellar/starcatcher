@@ -155,6 +155,7 @@ public class SCClientEvents
         event.registerLayerDefinition(VividMoss.LAYER_LOCATION, VividMoss::createBodyLayer);
         event.registerLayerDefinition(Willish.LAYER_LOCATION, Willish::createBodyLayer);
         event.registerLayerDefinition(YellowstoneFish.LAYER_LOCATION, YellowstoneFish::createBodyLayer);
+        event.registerLayerDefinition(Voidbiter.LAYER_LOCATION, Voidbiter::createBodyLayer);
     }
 
     @SubscribeEvent
