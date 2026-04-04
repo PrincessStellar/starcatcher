@@ -142,6 +142,19 @@ public class SCClientEvents
         event.registerLayerDefinition(IronjarHerring.LAYER_LOCATION, IronjarHerring::createBodyLayer);
         event.registerLayerDefinition(MirageCarp.LAYER_LOCATION, MirageCarp::createBodyLayer);
         event.registerLayerDefinition(PetaldriftCarp.LAYER_LOCATION, PetaldriftCarp::createBodyLayer);
+        event.registerLayerDefinition(BlueHerring.LAYER_LOCATION, BlueHerring::createBodyLayer);
+        event.registerLayerDefinition(LightningBass.LAYER_LOCATION, LightningBass::createBodyLayer);
+        event.registerLayerDefinition(LushPike.LAYER_LOCATION, LushPike::createBodyLayer);
+        event.registerLayerDefinition(MagmaFish.LAYER_LOCATION, MagmaFish::createBodyLayer);
+        event.registerLayerDefinition(Morganite.LAYER_LOCATION, Morganite::createBodyLayer);
+        event.registerLayerDefinition(PalePinfish.LAYER_LOCATION, PalePinfish::createBodyLayer);
+        event.registerLayerDefinition(Pinfish.LAYER_LOCATION, Pinfish::createBodyLayer);
+        event.registerLayerDefinition(Pyrotrout.LAYER_LOCATION, Pyrotrout::createBodyLayer);
+        event.registerLayerDefinition(Sculkfish.LAYER_LOCATION, Sculkfish::createBodyLayer);
+        event.registerLayerDefinition(SilverfinPike.LAYER_LOCATION, SilverfinPike::createBodyLayer);
+        event.registerLayerDefinition(VividMoss.LAYER_LOCATION, VividMoss::createBodyLayer);
+        event.registerLayerDefinition(Willish.LAYER_LOCATION, Willish::createBodyLayer);
+        event.registerLayerDefinition(YellowstoneFish.LAYER_LOCATION, YellowstoneFish::createBodyLayer);
     }
 
     @SubscribeEvent

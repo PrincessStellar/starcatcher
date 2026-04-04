@@ -83,6 +83,19 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         map.put(SCItems.IRONJAW_HERRING.get(), new IronjarHerring<>(modelSet.bakeLayer(IronjarHerring.LAYER_LOCATION)));
         map.put(SCItems.MIRAGE_CARP.get(), new MirageCarp<>(modelSet.bakeLayer(MirageCarp.LAYER_LOCATION)));
         map.put(SCItems.PETALDRIFT_CARP.get(), new PetaldriftCarp<>(modelSet.bakeLayer(PetaldriftCarp.LAYER_LOCATION)));
+        map.put(SCItems.BLUE_HERRING.get(), new BlueHerring<>(modelSet.bakeLayer(BlueHerring.LAYER_LOCATION)));
+        map.put(SCItems.LIGHTNING_BASS.get(), new LightningBass<>(modelSet.bakeLayer(LightningBass.LAYER_LOCATION)));
+        map.put(SCItems.LUSH_PIKE.get(), new LushPike<>(modelSet.bakeLayer(LushPike.LAYER_LOCATION)));
+        map.put(SCItems.MAGMA_FISH.get(), new MagmaFish<>(modelSet.bakeLayer(MagmaFish.LAYER_LOCATION)));
+        map.put(SCItems.MORGANITE.get(), new Morganite<>(modelSet.bakeLayer(Morganite.LAYER_LOCATION)));
+        map.put(SCItems.PALE_PINFISH.get(), new PalePinfish<>(modelSet.bakeLayer(PalePinfish.LAYER_LOCATION)));
+        map.put(SCItems.PINFISH.get(), new Pinfish<>(modelSet.bakeLayer(Pinfish.LAYER_LOCATION)));
+        map.put(SCItems.PYROTROUT.get(), new Pyrotrout<>(modelSet.bakeLayer(Pyrotrout.LAYER_LOCATION)));
+        map.put(SCItems.SCULKFISH.get(), new Sculkfish<>(modelSet.bakeLayer(Sculkfish.LAYER_LOCATION)));
+        map.put(SCItems.SILVERFIN_PIKE.get(), new SilverfinPike<>(modelSet.bakeLayer(SilverfinPike.LAYER_LOCATION)));
+        map.put(SCItems.VIVID_MOSS.get(), new VividMoss<>(modelSet.bakeLayer(VividMoss.LAYER_LOCATION)));
+        map.put(SCItems.WILLISH.get(), new Willish<>(modelSet.bakeLayer(Willish.LAYER_LOCATION)));
+        map.put(SCItems.YELLOWSTONE_FISH.get(), new YellowstoneFish<>(modelSet.bakeLayer(YellowstoneFish.LAYER_LOCATION)));
     }
 
     @Override
