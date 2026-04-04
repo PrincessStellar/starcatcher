@@ -776,6 +776,16 @@ public class DGRecipeProvider extends RecipeProvider
                     .unlockedBy("has_fish", has(ItemTags.FISHES))
                     .save(output);
         }
+
+        //letter
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LETTER, 1)
+                .requires(Items.PAPER)
+                .requires(Items.INK_SAC)
+                .requires(Items.FEATHER)
+                .unlockedBy("has_paper", has(Items.PAPER))
+                .save(output);
+
+
     }
 
     protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group)
