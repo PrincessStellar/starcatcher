@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.blocks.display;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -106,38 +107,6 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
     {
         return SCBlockEntities.DISPLAY.get().create(pos, state);
-    }
-
-    @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving)
-    {
-        if (!state.is(newState.getBlock()))
-        {
-            if (state.getValue(HAS_ITEM))
-            {
-                this.popItem(state, level, pos);
-            }
-
-            super.onRemove(state, level, pos, newState, isMoving);
-            if (state.getValue(POWERED))
-            {
-                level.updateNeighborsAt(pos.below(), this);
-            }
-        }
-    }
-
-    private void popItem(BlockState state, Level level, BlockPos pos)
-    {
-        if (level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
-        {
-            ItemStack itemstack = dbe.getItem().copy();
-            ItemEntity itementity = new ItemEntity(
-                    level, (double) pos.getX() + 0.5, pos.getY() + 1, (double) pos.getZ() + 0.5, itemstack
-            );
-            itementity.setDefaultPickUpDelay();
-            level.addFreshEntity(itementity);
-            dbe.clearContent();
-        }
     }
 
     @Override

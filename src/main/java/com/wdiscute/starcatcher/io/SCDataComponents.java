@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.io;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.registry.SignedGuide;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
@@ -30,10 +31,10 @@ public class SCDataComponents
             "bucketed_fish",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
-    //locked book system
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<FishingGuideAttachment>> STORED_BOOK = register(
-            "stored_book",
-            builder -> builder.persistent(FishingGuideAttachment.CODEC));
+    //signed book system
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<SignedGuide>> SIGNED_GUIDE = register(
+            "signed_guide",
+            builder -> builder.persistent(SignedGuide.CODEC));
 
     //rod menu
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BOBBER = register(

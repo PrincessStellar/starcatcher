@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.guide;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.blocks.display.DisplayBlock;
 import com.wdiscute.starcatcher.blocks.display.DisplayBlockEntity;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SignedGuide;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -37,16 +39,16 @@ public class FishingGuideItem extends Item
         Level level = context.getLevel();
         BlockPos clickedPos = context.getClickedPos();
         BlockState blockState = level.getBlockState(clickedPos);
-        if(blockState.is(Blocks.LECTERN))
+        if (blockState.is(Blocks.LECTERN))
         {
-            if(!blockState.getValue(LecternBlock.HAS_BOOK))
+            if (!blockState.getValue(LecternBlock.HAS_BOOK))
             {
                 level.setBlockAndUpdate(clickedPos, SCBlocks.DISPLAY.get().defaultBlockState()
                         .setValue(DisplayBlock.HAS_ITEM, true)
                         .setValue(BlockStateProperties.WATERLOGGED, false)
                 );
 
-                if(level.getBlockEntity(clickedPos) instanceof DisplayBlockEntity dbe)
+                if (level.getBlockEntity(clickedPos) instanceof DisplayBlockEntity dbe)
                 {
                     dbe.setItem(context.getItemInHand().consumeAndReturn(1, context.getPlayer()));
                 }
@@ -59,14 +61,27 @@ public class FishingGuideItem extends Item
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
-        if(level.isClientSide) openScreen();
+        if (level.isClientSide)
+        {
+            if (SCDataComponents.has(player.getItemInHand(usedHand), SCDataComponents.SIGNED_GUIDE))
+                openSignedGuide(SCDataComponents.get(player.getItemInHand(usedHand), SCDataComponents.SIGNED_GUIDE));
+            else
+                openPersonalGuide();
+        }
+
         level.playSound(null, player.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS);
         return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 
     @OnlyIn(Dist.CLIENT)
-    private void openScreen()
+    private void openPersonalGuide()
     {
         Minecraft.getInstance().setScreen(new FishingGuideScreen());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private void openSignedGuide(SignedGuide signedGuide)
+    {
+        Minecraft.getInstance().setScreen(new FishingSignedGuideScreen(signedGuide));
     }
 }

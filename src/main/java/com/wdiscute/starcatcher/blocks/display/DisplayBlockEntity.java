@@ -2,10 +2,12 @@ package com.wdiscute.starcatcher.blocks.display;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -127,6 +129,19 @@ public class DisplayBlockEntity extends BlockEntity
     }
 
     @Override
+    public void setRemoved()
+    {
+        ItemStack itemstack = getItem().copy();
+        ItemEntity itementity = new ItemEntity(
+                level, (double) getBlockPos().getX() + 0.5, getBlockPos().getY() + 1, (double) getBlockPos().getZ() + 0.5, itemstack
+        );
+        itementity.setDefaultPickUpDelay();
+        level.addFreshEntity(itementity);
+        clearContent();
+        super.setRemoved();
+    }
+
+    @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
         super.saveAdditional(tag, registries);
@@ -139,6 +154,8 @@ public class DisplayBlockEntity extends BlockEntity
     public void clearContent()
     {
         item = ItemStack.EMPTY;
-        level.setBlockAndUpdate(getBlockPos(), level.getBlockState(getBlockPos()).setValue(DisplayBlock.HAS_ITEM, false));
+        BlockState blockState = level.getBlockState(getBlockPos());
+        if (blockState.is(SCBlocks.DISPLAY))
+            level.setBlockAndUpdate(getBlockPos(), blockState.setValue(DisplayBlock.HAS_ITEM, false));
     }
 }
