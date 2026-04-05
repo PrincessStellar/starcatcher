@@ -5,6 +5,8 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import dev.emi.emi.api.EmiApi;
+import dev.emi.emi.api.recipe.EmiRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -12,18 +14,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public class IsolatedFPScreen extends Screen
+public class IsolatedEmiFPScreen extends Screen
 {
     private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/emi_entry.png");
 
     private final FishProperties fp;
     private int uiX;
     private int uiY;
+    private EmiRecipe emiRecipe;
 
-    protected IsolatedFPScreen(FishProperties fishProperties)
+
+    protected IsolatedEmiFPScreen(FishProperties fishProperties, EmiRecipe emiRecipe)
     {
         super(Component.empty());
         this.fp = fishProperties;
+        this.emiRecipe = emiRecipe;
     }
 
     @Override
@@ -45,6 +50,13 @@ public class IsolatedFPScreen extends Screen
         }
 
         return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public void onClose()
+    {
+        super.onClose();
+        EmiApi.displayRecipe(emiRecipe);
     }
 
     @Override

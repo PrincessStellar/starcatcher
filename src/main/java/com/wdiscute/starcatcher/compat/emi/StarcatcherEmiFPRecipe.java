@@ -111,7 +111,7 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
 
         widgets.addSlot(EmiIngredient.of(Ingredient.of(is)), 53, 2).recipeContext(this);
 
-        widgets.add(new StarcatcherShowInGuideEmiWidget(76, 1, fp));
+        widgets.add(new StarcatcherShowInGuideEmiWidget(76, 1, fp, this));
 
         if (fp.catchInfo().alwaysSpawnEntity())
         {

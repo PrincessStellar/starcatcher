@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.widget.Bounds;
 import dev.emi.emi.api.widget.Widget;
 import net.minecraft.client.Minecraft;
@@ -15,12 +16,14 @@ public class StarcatcherShowInGuideEmiWidget extends Widget
     private final FishProperties fp;
     private final int x;
     private final int y;
+    private final EmiRecipe emiRecipe;
 
-    public StarcatcherShowInGuideEmiWidget(int x, int y, FishProperties fp)
+    public StarcatcherShowInGuideEmiWidget(int x, int y, FishProperties fp, EmiRecipe emiRecipe)
     {
         this.fp = fp;
         this.x = x;
         this.y = y;
+        this.emiRecipe = emiRecipe;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class StarcatcherShowInGuideEmiWidget extends Widget
     {
         if(mouseX > x && mouseX < x + 19 && mouseY > y && mouseY < y + 19)
         {
-            Minecraft.getInstance().setScreen(new IsolatedFPScreen(fp));
+            Minecraft.getInstance().setScreen(new IsolatedEmiFPScreen(fp, emiRecipe));
             return true;
         }
         return super.mouseClicked(mouseX, mouseY, button);
