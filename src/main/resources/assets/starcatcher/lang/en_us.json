@@ -484,7 +484,7 @@
   "block.starcatcher.trophy_silver" : "Silver Trophy",
   "block.starcatcher.trophy_bronze" : "Bronze Trophy",
 
-  "block.starcatcher.display" : "Starcatcher's Guide Display",
+  "block.starcatcher.display" : "Starcatcher's Display",
   "tooltip.starcatcher.display.0" : "wip",
   "block.starcatcher.telescope" : "Telescope",
   "tooltip.starcatcher.telescope.0" : "wip",
@@ -1025,6 +1025,44 @@
   "gui.guide.page.10.right.6" : "of fish. I'm sure they will",
   "gui.guide.page.10.right.7" : "love their new home!",
   "gui.guide.page.10.right.8" : "  ",
+
+  "gui.guide.page.11.left.title" : "Book Display",
+  "gui.guide.page.11.left.0" : "",
+  "gui.guide.page.11.left.1" : "",
+  "gui.guide.page.11.left.2" : "",
+  "gui.guide.page.11.left.3" : "",
+  "gui.guide.page.11.left.4" : "",
+  "gui.guide.page.11.left.5" : "  If you ever want to",
+  "gui.guide.page.11.left.6" : "make your friends jealous",
+  "gui.guide.page.11.left.7" : "of your incredible angling",
+  "gui.guide.page.11.left.8" : "skills there's no better",
+  "gui.guide.page.11.left.9" : "way than to display your",
+  "gui.guide.page.11.left.10" : "collection using a Display!",
+  "gui.guide.page.11.left.11" : "",
+  "gui.guide.page.11.left.12" : "  Display blocks can",
+  "gui.guide.page.11.left.13" : "showcase this book as",
+  "gui.guide.page.11.left.14" : "well as starcaught fish!",
+
+
+  "gui.guide.page.11.right.title" : "Book Signing",
+  "gui.guide.page.11.right.0" : "",
+  "gui.guide.page.11.right.1" : "",
+  "gui.guide.page.11.right.2" : "",
+  "gui.guide.page.11.right.3" : "",
+  "gui.guide.page.11.right.4" : "",
+  "gui.guide.page.11.right.5" : "  When displaying your book",
+  "gui.guide.page.11.right.6" : "make sure to first sign it",
+  "gui.guide.page.11.right.7" : "to bound your collection",
+  "gui.guide.page.11.right.8" : "to the book! Otherwise",
+  "gui.guide.page.11.right.9" : "the book will show the",
+  "gui.guide.page.11.right.10" : "player their own collection",
+  "gui.guide.page.11.right.11" : "instead of yours.",
+  "gui.guide.page.11.right.12" : "",
+  "gui.guide.page.11.right.13" : "  Simply head to the start",
+  "gui.guide.page.11.right.14" : "of the book to sign in",
+  "gui.guide.page.11.right.15" : "and you'll be able to share",
+  "gui.guide.page.11.right.16" : "the book with your friends!",
+
 
 
 

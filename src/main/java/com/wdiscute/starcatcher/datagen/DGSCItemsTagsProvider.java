@@ -157,6 +157,11 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.HATS);
 
         tag(SCTags.PLACEABLE_IN_TACKLE_BOX)
+                .addTag(SCTags.BUCKETABLE_FISHES)
+                .add(GUIDE.get())
+        ;
+
+        tag(SCTags.PLACEABLE_IN_TACKLE_BOX)
                 .addTag(SCTags.BAITS)
                 .addTag(SCTags.HOOKS)
                 .addTag(SCTags.BOBBERS)

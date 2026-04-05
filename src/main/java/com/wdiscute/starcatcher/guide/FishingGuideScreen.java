@@ -59,12 +59,12 @@ import java.util.List;
 
 public class FishingGuideScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND_COVER = Starcatcher.rl("textures/gui/guide/background_cover.png");
-    private static final ResourceLocation BACKGROUND_LAST_PAGE = Starcatcher.rl("textures/gui/guide/background_last_page.png");
-    private static final ResourceLocation BACKGROUND_INDEX_FIRST = Starcatcher.rl("textures/gui/guide/background_index_first.png");
-    private static final ResourceLocation BACKGROUND_INDEX_SECOND = Starcatcher.rl("textures/gui/guide/background_index_second.png");
-    private static final ResourceLocation BACKGROUND_ENTRY = Starcatcher.rl("textures/gui/guide/background_entry.png");
-    private static final ResourceLocation BACKGROUND_BASICS = Starcatcher.rl("textures/gui/guide/background_basics.png");
+    private static final ResourceLocation BACKGROUND_COVER = Starcatcher.rl("textures/gui/guide/background/background_cover.png");
+    private static final ResourceLocation BACKGROUND_LAST_PAGE = Starcatcher.rl("textures/gui/guide/background/background_last_page.png");
+    private static final ResourceLocation BACKGROUND_INDEX_FIRST = Starcatcher.rl("textures/gui/guide/background/background_index_first.png");
+    private static final ResourceLocation BACKGROUND_INDEX_SECOND = Starcatcher.rl("textures/gui/guide/background/background_index_second.png");
+    private static final ResourceLocation BACKGROUND_ENTRY = Starcatcher.rl("textures/gui/guide/background/background_entry.png");
+    private static final ResourceLocation BACKGROUND_BASICS = Starcatcher.rl("textures/gui/guide/background/background_basics.png");
 
     private static final ResourceLocation COMPASS = Starcatcher.rl("textures/gui/guide/compass.png");
 
@@ -76,18 +76,21 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation FISHES_IN_AREA_BOTTOM_DECORATION = Starcatcher.rl("textures/gui/guide/fishes_in_area_bottom_decoration.png");
     private static final ResourceLocation FISHES_IN_AREA_FISH_DECORATION = Starcatcher.rl("textures/gui/guide/fishes_in_area_fish_decoration.png");
 
-    private static final ResourceLocation HELP_PAGE_BASICS = Starcatcher.rl("textures/gui/guide/help_basics.png");
-    private static final ResourceLocation HELP_PAGE_SWEETSPOTS = Starcatcher.rl("textures/gui/guide/help_sweetspots.png");
-    private static final ResourceLocation HELP_PAGE_TREASURE = Starcatcher.rl("textures/gui/guide/help_treasure.png");
-    private static final ResourceLocation HELP_PAGE_UPGRADES = Starcatcher.rl("textures/gui/guide/help_upgrades.png");
-    private static final ResourceLocation HELP_PAGE_TACKLE_BOX = Starcatcher.rl("textures/gui/guide/help_tackle_box.png");
-    private static final ResourceLocation HELP_PAGE_HOOKS_BOBBERS_BAITS = Starcatcher.rl("textures/gui/guide/help_hooks_bobbers_baits.png");
 
-    private static final ResourceLocation HELP_PAGE_COSMETICS = Starcatcher.rl("textures/gui/guide/help_cosmetics.png");
-    private static final ResourceLocation HELP_PAGE_TOURNAMENTS = Starcatcher.rl("textures/gui/guide/help_tournaments.png");
-    private static final ResourceLocation HELP_PAGE_MESSAGES = Starcatcher.rl("textures/gui/guide/help_messages.png");
-    private static final ResourceLocation HELP_PAGE_SELLING = Starcatcher.rl("textures/gui/guide/help_selling.png");
-    private static final ResourceLocation HELP_PAGE_AQUARIUM = Starcatcher.rl("textures/gui/guide/help_aquarium.png");
+    private static final ResourceLocation HELP_PAGE_BASICS = Starcatcher.rl("textures/gui/guide/help/help_basics.png");
+    private static final ResourceLocation HELP_PAGE_SWEETSPOTS = Starcatcher.rl("textures/gui/guide/help/help_sweetspots.png");
+    private static final ResourceLocation HELP_PAGE_TREASURE = Starcatcher.rl("textures/gui/guide/help/help_treasure.png");
+    private static final ResourceLocation HELP_PAGE_UPGRADES = Starcatcher.rl("textures/gui/guide/help/help_upgrades.png");
+    private static final ResourceLocation HELP_PAGE_TACKLE_BOX = Starcatcher.rl("textures/gui/guide/help/help_tackle_box.png");
+    private static final ResourceLocation HELP_PAGE_HOOKS_BOBBERS_BAITS = Starcatcher.rl("textures/gui/guide/help/help_hooks_bobbers_baits.png");
+
+    private static final ResourceLocation HELP_PAGE_COSMETICS = Starcatcher.rl("textures/gui/guide/help/help_cosmetics.png");
+    private static final ResourceLocation HELP_PAGE_TOURNAMENTS = Starcatcher.rl("textures/gui/guide/help/help_tournaments.png");
+    private static final ResourceLocation HELP_PAGE_MESSAGES = Starcatcher.rl("textures/gui/guide/help/help_messages.png");
+    private static final ResourceLocation HELP_PAGE_SELLING = Starcatcher.rl("textures/gui/guide/help/help_selling.png");
+    private static final ResourceLocation HELP_PAGE_AQUARIUM = Starcatcher.rl("textures/gui/guide/help/help_aquarium.png");
+    private static final ResourceLocation HELP_PAGE_DISPLAY = Starcatcher.rl("textures/gui/guide/help/help_display.png");
+    private static final ResourceLocation HELP_PAGE_TROPHIES = Starcatcher.rl("textures/gui/guide/help/help_trophies.png");
 
 
     private static final ResourceLocation ARROW_PREVIOUS = Starcatcher.rl("textures/gui/guide/arrow_previous.png");
@@ -125,26 +128,19 @@ public class FishingGuideScreen extends Screen
     private final List<ItemStack> bottles;
 
     private final ItemStack rodIcon;
-    private final ItemStack auroraIcon;
     private final ItemStack sweetspotsIcon;
     private final ItemStack treasureIcon;
     private final ItemStack standIcon;
-    private final ItemStack fishermanHatIcon;
-    private final ItemStack settingsIcon;
-    private final ItemStack letterIcon;
     private final ItemStack letterBottleIcon;
-    private final ItemStack messageBottleIcon;
-    private final ItemStack messageIcon;
     private final ItemStack aquariumIcon;
     private final ItemStack displayIcon;
+    private final ItemStack guideIcon;
     private final ItemStack sellingBinIcon;
     private final ItemStack trophyIcon;
     private final ItemStack cosmeticsIcon;
-    private final ItemStack equipmentIcon;
     private final ItemStack tackleBoxIcon;
     private final ItemStack hookIcon;
     private final ItemStack baitIcon;
-    private final ItemStack secretsIcon;
     private final ItemStack upgradeIcon;
 
 
@@ -179,6 +175,8 @@ public class FishingGuideScreen extends Screen
 
     List<ResourceLocation> fpsSeen = new ArrayList<>();
     List<FishProperties> entries = new ArrayList<>(999);
+    List<FishProperties> trophies = new ArrayList<>(999);
+    List<FishProperties> secrets = new ArrayList<>(999);
     List<FishProperties> fishInArea = new ArrayList<>();
     Map<ResourceLocation, FishCaughtCounter> fishCaughtCounterMap = new HashMap<>();
 
@@ -211,6 +209,9 @@ public class FishingGuideScreen extends Screen
         for (FishProperties fp : FishProperties.getFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
         entries = sortEntries(SCConfig.SORT.get(), entries, player);
         fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
+
+        trophies = entries.stream().filter(o -> o.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.TROPHY)).toList();
+        secrets = entries.stream().filter(o -> o.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.SECRET)).toList();
     }
 
     @Override
@@ -838,6 +839,23 @@ public class FishingGuideScreen extends Screen
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
                 }
+            }
+
+            //selling bin
+            case 11 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_DISPLAY);
+                renderItemWithHoverAndEmi(guiGraphics, displayIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+
+                renderItemWithHoverAndEmi(guiGraphics, guideIcon, uiX + 321, uiY + 39, mouseX, mouseY);
+            }
+
+
+            //selling bin
+            case 12 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_TROPHIES);
+                renderItemWithHoverAndEmi(guiGraphics, trophyIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
         }
     }
@@ -1523,24 +1541,23 @@ public class FishingGuideScreen extends Screen
         rodIcon = new ItemStack(SCItems.ROD.get());
         sweetspotsIcon = new ItemStack(SCItems.AURORA.get());
         treasureIcon = new ItemStack(SCItems.WATERLOGGED_SATCHEL.get());
-        equipmentIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_GREEN.get());
         cosmeticsIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
         tackleBoxIcon = new ItemStack(SCBlocks.TACKLE_BOX.get());
         baitIcon = new ItemStack(SCItems.CHERRY_BAIT.get());
-        secretsIcon = new ItemStack(SCItems.HOPEFUL_BOTTLE.get());
-        auroraIcon = new ItemStack(SCItems.AURORA.get());
+        var auroraIcon = new ItemStack(SCItems.AURORA.get());
         upgradeIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
         hookIcon = new ItemStack(SCItems.HOOK.get());
         standIcon = new ItemStack(SCBlocks.STAND.get());
-        fishermanHatIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
-        settingsIcon = new ItemStack(SCItems.SETTINGS.get());
-        letterIcon = new ItemStack(SCItems.LETTER.get());
+        var fishermanHatIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
+        var settingsIcon = new ItemStack(SCItems.SETTINGS.get());
+        var letterIcon = new ItemStack(SCItems.LETTER.get());
         letterBottleIcon = new ItemStack(SCItems.BOTTLED_LETTER.get());
-        messageBottleIcon = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
-        messageIcon = new ItemStack(SCItems.MESSAGE.get());
+        var messageBottleIcon = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
+        var messageIcon = new ItemStack(SCItems.MESSAGE.get());
         sellingBinIcon = new ItemStack(SBBlocks.SELLING_BIN.get());
         aquariumIcon = new ItemStack(SCBlocks.AQUARIUM.get());
         displayIcon = new ItemStack(SCBlocks.DISPLAY.get());
+        guideIcon = new ItemStack(SCItems.GUIDE.get());
         trophyIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
 
 
