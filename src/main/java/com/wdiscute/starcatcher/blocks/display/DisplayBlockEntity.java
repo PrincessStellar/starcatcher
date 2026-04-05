@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class DisplayBlockEntity extends BlockEntity
 {
-    ItemStack book = ItemStack.EMPTY;
+    private ItemStack item = ItemStack.EMPTY;
 
     public int time;
     public float flip;
@@ -27,50 +27,62 @@ public class DisplayBlockEntity extends BlockEntity
     public float oRot;
     public float tRot;
 
-    public static void bookAnimationTick(Level level, BlockPos pos, BlockState state, DisplayBlockEntity enchantingTable) {
+    public static void bookAnimationTick(Level level, BlockPos pos, BlockState state, DisplayBlockEntity enchantingTable)
+    {
         enchantingTable.oOpen = enchantingTable.open;
         enchantingTable.oRot = enchantingTable.rot;
-        Player player = level.getNearestPlayer((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, 3.0, false);
-        if (player != null) {
-            double d0 = player.getX() - ((double)pos.getX() + 0.5);
-            double d1 = player.getZ() - ((double)pos.getZ() + 0.5);
+        Player player = level.getNearestPlayer((double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5, 3.0, false);
+        if (player != null)
+        {
+            double d0 = player.getX() - ((double) pos.getX() + 0.5);
+            double d1 = player.getZ() - ((double) pos.getZ() + 0.5);
             enchantingTable.tRot = (float) Mth.atan2(d1, d0);
             enchantingTable.open += 0.1F;
-            if (enchantingTable.open < 0.5F || U.r.nextInt(40) == 0) {
+            if (enchantingTable.open < 0.5F || U.r.nextInt(40) == 0)
+            {
                 float f1 = enchantingTable.flipT;
 
-                do {
-                    enchantingTable.flipT = enchantingTable.flipT + (float)(U.r.nextInt(4) - U.r.nextInt(4));
+                do
+                {
+                    enchantingTable.flipT = enchantingTable.flipT + (float) (U.r.nextInt(4) - U.r.nextInt(4));
                 } while (f1 == enchantingTable.flipT);
             }
-        } else {
+        }
+        else
+        {
             //enchantingTable.tRot += 0.02F;
             enchantingTable.open -= 0.1F;
         }
 
-        while (enchantingTable.rot >= (float) Math.PI) {
+        while (enchantingTable.rot >= (float) Math.PI)
+        {
             enchantingTable.rot -= (float) (Math.PI * 2);
         }
 
-        while (enchantingTable.rot < (float) -Math.PI) {
+        while (enchantingTable.rot < (float) -Math.PI)
+        {
             enchantingTable.rot += (float) (Math.PI * 2);
         }
 
-        while (enchantingTable.tRot >= (float) Math.PI) {
+        while (enchantingTable.tRot >= (float) Math.PI)
+        {
             enchantingTable.tRot -= (float) (Math.PI * 2);
         }
 
-        while (enchantingTable.tRot < (float) -Math.PI) {
+        while (enchantingTable.tRot < (float) -Math.PI)
+        {
             enchantingTable.tRot += (float) (Math.PI * 2);
         }
 
         float f2 = enchantingTable.tRot - enchantingTable.rot;
 
-        while (f2 >= (float) Math.PI) {
+        while (f2 >= (float) Math.PI)
+        {
             f2 -= (float) (Math.PI * 2);
         }
 
-        while (f2 < (float) -Math.PI) {
+        while (f2 < (float) -Math.PI)
+        {
             f2 += (float) (Math.PI * 2);
         }
 
@@ -79,7 +91,6 @@ public class DisplayBlockEntity extends BlockEntity
         enchantingTable.time++;
         enchantingTable.oFlip = enchantingTable.flip;
         float f = (enchantingTable.flipT - enchantingTable.flip) * 0.4F;
-        float f3 = 0.2F;
         f = Mth.clamp(f, -0.2F, 0.2F);
         enchantingTable.flipA = enchantingTable.flipA + (f - enchantingTable.flipA) * 0.9F;
         enchantingTable.flip = enchantingTable.flip + enchantingTable.flipA;
@@ -90,14 +101,14 @@ public class DisplayBlockEntity extends BlockEntity
         super(SCBlockEntities.DISPLAY.get(), pos, blockState);
     }
 
-    public ItemStack getBook()
+    public ItemStack getItem()
     {
-        return this.book;
+        return this.item;
     }
 
-    public void setBook(ItemStack stack)
+    public void setItem(ItemStack stack)
     {
-        this.book = stack;
+        this.item = stack;
         this.setChanged();
     }
 
@@ -107,10 +118,11 @@ public class DisplayBlockEntity extends BlockEntity
         super.loadAdditional(tag, registries);
         if (tag.contains("Book", 10))
         {
-            this.book = ItemStack.parse(registries, tag.getCompound("Book")).orElse(ItemStack.EMPTY);
-        } else
+            this.item = ItemStack.parse(registries, tag.getCompound("Book")).orElse(ItemStack.EMPTY);
+        }
+        else
         {
-            this.book = ItemStack.EMPTY;
+            this.item = ItemStack.EMPTY;
         }
     }
 
@@ -118,9 +130,15 @@ public class DisplayBlockEntity extends BlockEntity
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
         super.saveAdditional(tag, registries);
-        if (!this.getBook().isEmpty())
+        if (!this.getItem().isEmpty())
         {
-            tag.put("Book", this.getBook().save(registries));
+            tag.put("Book", this.getItem().save(registries));
         }
+    }
+
+    public void clearContent()
+    {
+        item = ItemStack.EMPTY;
+        level.setBlockAndUpdate(getBlockPos(), level.getBlockState(getBlockPos()).setValue(DisplayBlock.HAS_ITEM, false));
     }
 }

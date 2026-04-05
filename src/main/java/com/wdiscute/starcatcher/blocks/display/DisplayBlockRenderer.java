@@ -3,28 +3,42 @@ package com.wdiscute.starcatcher.blocks.display;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.fishentity.FishRenderer;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEntity>
 {
     private final DisplayBookModel bookModel;
+    ItemRenderer itemRenderer;
 
     public DisplayBlockRenderer(BlockEntityRendererProvider.Context context)
     {
         this.bookModel = new DisplayBookModel(context.bakeLayer(DisplayBookModel.LAYER_LOCATION));
+        itemRenderer = context.getItemRenderer();
     }
 
     public void render(DisplayBlockEntity be, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
         BlockState blockstate = be.getBlockState();
-        if (blockstate.getValue(DisplayBlock.HAS_BOOK))
+        if (be.getItem().is(SCItems.GUIDE))
         {
             poseStack.pushPose();
 
@@ -35,10 +49,10 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
             poseStack.translate(0.5F, 0.95F + 0.2f * (Math.clamp(openPartial * 4, 0, 1)), 0.5F);
 
             //float up and down
-            poseStack.translate(0.0F, (0.1F + Mth.sin(ticks / 10 * 0.6F) * 0.03F) * openPartial , 0.0F);
+            poseStack.translate(0.0F, (0.1F + Mth.sin(ticks / 10 * 0.6F) * 0.03F) * openPartial, 0.0F);
 
             double rotation = be.rot + (be.rot - be.oRot) * partialTick;
-            if(Math.abs(be.rot - be.oRot) > 3)
+            if (Math.abs(be.rot - be.oRot) > 3)
                 rotation = be.rot;
 
             double x = Math.cos(rotation);
@@ -47,7 +61,6 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
 
             //move towards the player when open
             poseStack.translate(((x / 3) * openPartial) + ((-x / 5) * (1 - openPartial)), 0f, ((y / 3) * openPartial) + ((-y / 5) * (1 - openPartial)));
-
 
 
             float rotDiff = be.rot - be.oRot;
@@ -73,6 +86,37 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
             this.bookModel.render(poseStack, vertexconsumer, packedLight, packedOverlay, -1);
             poseStack.popPose();
         }
+
+
+        if (be.getItem().is(SCTags.BUCKETABLE_FISHES))
+        {
+            ItemStack fish = be.getItem();
+
+            poseStack.pushPose();
+
+            //block centering
+            Vec3 offsetCenter = new Vec3(0.5f, be.getLevel().getBlockState(be.getBlockPos().above()).isEmpty() ? 0.2f : 0.5f, 0.5f);
+            poseStack.translate(offsetCenter.x, offsetCenter.y, offsetCenter.z);
+
+            float scale = SCDataComponents.getOrDefault(
+                    fish, SCDataComponents.CAUGHT_FISH_INFO,
+                    new CaughtFishInfo(100, 100, 50, FishProperties.Rarity.COMMON, false)
+            ).getScale();
+
+            //scaling + pivot adjusting
+            poseStack.translate(0, 1, 0);
+            poseStack.scale(scale, -scale, scale);
+            poseStack.translate(0, -1, 0);
+
+            poseStack.rotateAround(Axis.YN.rotation((float) ((float) be.time / 100 + Math.PI / 2)), 0, 0, 0);
+
+            // Render model here
+
+            FishRenderer.renderFishFromItem(itemRenderer, FishRenderer.map, fish, buffer, poseStack, packedLight, be.getLevel());
+
+            poseStack.popPose();
+        }
+
     }
 
     @Override

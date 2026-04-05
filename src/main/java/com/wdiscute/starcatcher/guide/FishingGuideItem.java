@@ -42,13 +42,13 @@ public class FishingGuideItem extends Item
             if(!blockState.getValue(LecternBlock.HAS_BOOK))
             {
                 level.setBlockAndUpdate(clickedPos, SCBlocks.DISPLAY.get().defaultBlockState()
-                        .setValue(DisplayBlock.HAS_BOOK, true)
+                        .setValue(DisplayBlock.HAS_ITEM, true)
                         .setValue(BlockStateProperties.WATERLOGGED, false)
                 );
 
                 if(level.getBlockEntity(clickedPos) instanceof DisplayBlockEntity dbe)
                 {
-                    dbe.setBook(context.getItemInHand().consumeAndReturn(1, context.getPlayer()));
+                    dbe.setItem(context.getItemInHand().consumeAndReturn(1, context.getPlayer()));
                 }
                 return InteractionResult.SUCCESS;
             }

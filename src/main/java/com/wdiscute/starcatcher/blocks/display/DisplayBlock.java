@@ -1,8 +1,9 @@
 package com.wdiscute.starcatcher.blocks.display;
 
 import com.mojang.serialization.MapCodec;
-import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -35,13 +36,13 @@ import javax.annotation.Nullable;
 
 public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
-    public static final MapCodec<DisplayBlock> CODEC = simpleCodec(DisplayBlock::new);
+    private static final MapCodec<DisplayBlock> CODEC = simpleCodec(DisplayBlock::new);
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    public static final BooleanProperty HAS_BOOK = BlockStateProperties.HAS_BOOK;
-    public static final VoxelShape SHAPE_BASE = Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-    public static final VoxelShape SHAPE_POST = Block.box(4.0, 2.0, 4.0, 12.0, 14.0, 12.0);
-    public static final VoxelShape SHAPE_TOP_PLATE = Block.box(0.0, 10.0, 0.0, 16.0, 14.0, 16.0);
-    public static final VoxelShape SHAPE = Shapes.or(SHAPE_BASE, SHAPE_POST, SHAPE_TOP_PLATE);
+    public static final BooleanProperty HAS_ITEM = BooleanProperty.create("has_item");
+    private static final VoxelShape SHAPE_BASE = Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+    private static final VoxelShape SHAPE_POST = Block.box(4.0, 2.0, 4.0, 12.0, 14.0, 12.0);
+    private static final VoxelShape SHAPE_TOP_PLATE = Block.box(0.0, 10.0, 0.0, 16.0, 14.0, 16.0);
+    private static final VoxelShape SHAPE = Shapes.or(SHAPE_BASE, SHAPE_POST, SHAPE_TOP_PLATE);
 
     @Override
     public MapCodec<DisplayBlock> codec()
@@ -53,7 +54,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     {
         super(properties);
         this.registerDefaultState(
-                this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_BOOK, false)
+                this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_ITEM, false)
         );
     }
 
@@ -61,7 +62,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     {
         super(BlockBehaviour.Properties.of());
         this.registerDefaultState(
-                this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_BOOK, false)
+                this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_ITEM, false)
         );
     }
 
@@ -98,7 +99,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
-        builder.add(POWERED, HAS_BOOK, BlockStateProperties.WATERLOGGED);
+        builder.add(POWERED, HAS_ITEM, BlockStateProperties.WATERLOGGED);
     }
 
     @Override
@@ -112,9 +113,9 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     {
         if (!state.is(newState.getBlock()))
         {
-            if (state.getValue(HAS_BOOK))
+            if (state.getValue(HAS_ITEM))
             {
-                this.popBook(state, level, pos);
+                this.popItem(state, level, pos);
             }
 
             super.onRemove(state, level, pos, newState, isMoving);
@@ -125,17 +126,17 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         }
     }
 
-    private void popBook(BlockState state, Level level, BlockPos pos)
+    private void popItem(BlockState state, Level level, BlockPos pos)
     {
-        if (level.getBlockEntity(pos) instanceof LecternBlockEntity lecternblockentity)
+        if (level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
         {
-            ItemStack itemstack = lecternblockentity.getBook().copy();
+            ItemStack itemstack = dbe.getItem().copy();
             ItemEntity itementity = new ItemEntity(
                     level, (double) pos.getX() + 0.5, pos.getY() + 1, (double) pos.getZ() + 0.5, itemstack
             );
             itementity.setDefaultPickUpDelay();
             level.addFreshEntity(itementity);
-            lecternblockentity.clearContent();
+            dbe.clearContent();
         }
     }
 
@@ -166,7 +167,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos)
     {
-        if (blockState.getValue(HAS_BOOK))
+        if (blockState.getValue(HAS_ITEM))
         {
             BlockEntity blockentity = level.getBlockEntity(pos);
             if (blockentity instanceof LecternBlockEntity)
@@ -182,32 +183,27 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
         //if has book, open screen
-        if (state.getValue(HAS_BOOK) && !stack.isEmpty())
+        if (state.getValue(HAS_ITEM) && !player.isCrouching())
         {
-            //TODO SEND PACKET TO CLIENT TO OPEN SCREEN
+            //TODO open screen
+            return ItemInteractionResult.SUCCESS;
+        }
+
+        //remove item if crouching
+        if (state.getValue(HAS_ITEM) && player.isCrouching() && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
+        {
+            player.addItem(dbe.getItem().copy());
+            dbe.clearContent();
+            level.setBlockAndUpdate(pos, state.setValue(HAS_ITEM, false));
             return ItemInteractionResult.SUCCESS;
         }
 
         //place book
-        if (!state.getValue(HAS_BOOK) && stack.is(SCItems.GUIDE))
+        if (stack.is(SCTags.PLACEABLE_IN_DISPLAY) && !state.getValue(HAS_ITEM) && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
         {
-            if (!level.isClientSide && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
-            {
-                dbe.setBook(stack.consumeAndReturn(1, player));
-                level.playSound(null, pos, SoundEvents.BOOK_PUT, SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-
-            level.setBlockAndUpdate(pos, state.setValue(HAS_BOOK, true));
-            return ItemInteractionResult.SUCCESS;
-        }
-
-        //remove book
-        if (stack.isEmpty() && state.getValue(HAS_BOOK) && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
-        {
-            level.setBlockAndUpdate(pos, state.setValue(HAS_BOOK, false));
-            player.addItem(dbe.getBook());
-            dbe.setBook(ItemStack.EMPTY);
-            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.2F, ((level.random.nextFloat() - level.random.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+            dbe.setItem(stack.copy());
+            stack.shrink(1);
+            level.setBlockAndUpdate(pos, state.setValue(HAS_ITEM, true));
             return ItemInteractionResult.SUCCESS;
         }
 
@@ -219,7 +215,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     protected MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
-        return !state.getValue(HAS_BOOK) ? null : super.getMenuProvider(state, level, pos);
+        return !state.getValue(HAS_ITEM) ? null : super.getMenuProvider(state, level, pos);
     }
 
     @Override

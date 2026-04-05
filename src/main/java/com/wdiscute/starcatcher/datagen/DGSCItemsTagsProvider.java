@@ -156,7 +156,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE)
                 .addTag(SCTags.HATS);
 
-        tag(SCTags.PLACEABLE_IN_TACKLE_BOX)
+        tag(SCTags.PLACEABLE_IN_DISPLAY)
                 .addTag(SCTags.BUCKETABLE_FISHES)
                 .add(GUIDE.get())
         ;
