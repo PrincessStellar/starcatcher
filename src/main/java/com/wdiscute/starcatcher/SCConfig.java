@@ -51,10 +51,6 @@ public class SCConfig
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_ROD_MENU = BUILDER_CLIENT
-            .translation("starcatcher.configuration.enable_rod_menu")
-            .define("enable_rod_menu", false);
-
     public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER_CLIENT
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
             .comment("Vanilla should look better for most people")
@@ -156,6 +152,10 @@ public class SCConfig
             .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
             .translation("starcatcher.configuration.restrict_tackle_box_to_tag")
             .define("restrict_tackle_box_to_tag", true);
+
+    public static final ModConfigSpec.BooleanValue ENABLE_ROD_MENU = BUILDER_SERVER
+            .translation("starcatcher.configuration.enable_rod_menu")
+            .define("enable_rod_menu", false);
 
     public static final ModConfigSpec.DoubleValue FISH_MAX_SCALE = BUILDER_SERVER
             .comment("Controls the maximum scale of the fish model based on the size and weight percentile")

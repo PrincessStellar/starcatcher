@@ -139,8 +139,6 @@ public record FishProperties(
 
         ObjectArrayList<ItemStack> randomItems = table.getRandomItems(lootparams);
 
-        System.out.println(randomItems);
-
         return new FishProperties(
                 new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
                         catchInfo.overrideMinigameWith, catchInfo.treasure, randomItems.get(0), catchInfo.fishEntryType),
@@ -1961,7 +1959,7 @@ public record FishProperties(
                 if (fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
 
                 //award fish counter
-                FishCaughtCounter.awardFishCaughtCounter(fp, player, time, size, weight, percentile, perfectCatch, true, golden);
+                FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToFish, player, time, size, weight, percentile, perfectCatch, true, golden);
 
                 //add score to tournaments
                 TournamentHandler.addScore(player, fp, perfectCatch, size, weight, percentile);

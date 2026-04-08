@@ -160,12 +160,6 @@ public class SCEvents
             //guide
             FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(sp, SCDataAttachments.FISHING_GUIDE);
 
-            if (FishingGuideAttachment.hasLegacyData(sp))
-            {
-                fishingGuideAttachment.loadFromLegacy(sp);
-                FishingGuideAttachment.sync(sp);
-            }
-
             if (SCConfig.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
             {
                 sp.addItem(new ItemStack(SCItems.GUIDE.get()));
@@ -293,6 +287,12 @@ public class SCEvents
                 SetMessagePayload.TYPE,
                 SetMessagePayload.STREAM_CODEC,
                 SetMessagePayload::handle
+        );
+
+        registrar.playToServer(
+                SignGuidePayload.TYPE,
+                SignGuidePayload.STREAM_CODEC,
+                SignGuidePayload::handle
         );
     }
 }

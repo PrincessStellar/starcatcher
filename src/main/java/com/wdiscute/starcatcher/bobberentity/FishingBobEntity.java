@@ -24,6 +24,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -55,6 +56,7 @@ public class FishingBobEntity extends Projectile
     public final Player player;
     private FishHookState currentState;
     public FishProperties fpToFish;
+    public ResourceLocation rlToFish;
     public ItemStack rod = ItemStack.EMPTY;
     public final List<AbstractCatchModifier> modifiers;
 
@@ -189,6 +191,7 @@ public class FishingBobEntity extends Projectile
 
         //get random fish from available pool
         fpToFish = available.get(random.nextInt(available.size()));
+        rlToFish = level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKey(fpToFish);
 
         //trigger modifiers for which fish to get based on available
         List<FishProperties> immutableAvailable = List.copyOf(available);
@@ -200,9 +203,6 @@ public class FishingBobEntity extends Projectile
             this.kill();
             return;
         }
-
-        //load treasure itemstack
-        fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
 
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
@@ -216,6 +216,9 @@ public class FishingBobEntity extends Projectile
             FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
+
+        //load treasure itemstack
+        fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
     }
 
     private boolean shouldStopFishing(Player player)

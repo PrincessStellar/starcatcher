@@ -212,6 +212,9 @@
   "tooltip.starcatcher.starcatcher_guide.1": "of all the fishes you've caught, and",
   "tooltip.starcatcher.starcatcher_guide.2": "those you have yet to reel in!",
 
+  "tooltip.starcatcher.starcatcher_guide.signed": "This Book Belongs To: %s",
+  "tooltip.starcatcher.starcatcher_guide.signed_shift": "Signed By: %s",
+
   "item.starcatcher.starcatcher_twine": "Starcatcher's Twine",
   "tooltip.starcatcher.starcatcher_twine.0": "A delicate twine wrapped around a stick.",
   "tooltip.starcatcher.starcatcher_twine.1": "Vansire used these for string instruments once upon a time.",
@@ -525,7 +528,7 @@
 
   "gui.starcatcher.toast.fish_caught" : "New Fish Caught!",
 
-
+  "gui.guide.sign" : "Sign",
   "gui.guide.season" : "Season: ",
   "gui.guide.seasons" : "Seasons: ",
 

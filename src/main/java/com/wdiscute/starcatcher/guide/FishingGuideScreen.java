@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.compat.emi.StarcatcherEmiPlugin;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.io.network.SignGuidePayload;
 import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
@@ -23,6 +24,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -116,7 +118,7 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation ENTITY = Starcatcher.rl("textures/gui/guide/entity.png");
     private static final ResourceLocation ALWAYS_ENTITY = Starcatcher.rl("textures/gui/guide/always_entity.png");
 
-    private static final int MAX_HELP_PAGES = 12;
+    public static int MAX_HELP_PAGES = 12;
 
 
     private final List<ItemStack> tackleBoxes = new ArrayList<>();
@@ -180,18 +182,32 @@ public class FishingGuideScreen extends Screen
     List<FishProperties> fishInArea = new ArrayList<>();
     Map<ResourceLocation, FishCaughtCounter> fishCaughtCounterMap = new HashMap<>();
 
+    EditBox editBox;
+
     @Override
     protected void init()
     {
         super.init();
-
-        entries = new ArrayList<>();
 
         imageWidth = 420;
         imageHeight = 260;
 
         uiX = (width - imageWidth) / 2;
         uiY = (height - imageHeight) / 2;
+
+        //editbox for cover
+        this.editBox = new EditBox(this.font, uiX + 240, uiY + 102, 103, 12, Component.translatable("container.repair"));
+        this.editBox.setCanLoseFocus(false);
+        this.editBox.setTextColor(0xff937d70);
+        this.editBox.setBordered(false);
+        this.editBox.setMaxLength(20);
+        this.editBox.setTextShadow(false);
+        this.editBox.setCanLoseFocus(true);
+        this.editBox.setValue("");
+        this.addWidget(this.editBox);
+        this.editBox.setEditable(true);
+
+        entries = new ArrayList<>();
 
         level = Minecraft.getInstance().level;
         player = Minecraft.getInstance().player;
@@ -218,7 +234,7 @@ public class FishingGuideScreen extends Screen
     public boolean keyPressed(int keyCode, int scanCode, int modifiers)
     {
         InputConstants.Key key = InputConstants.getKey(keyCode, scanCode);
-        if (this.minecraft.options.keyInventory.isActiveAndMatches(key))
+        if (this.minecraft.options.keyInventory.isActiveAndMatches(key) && !editBox.canConsumeInput())
         {
             this.onClose();
             return true;
@@ -279,6 +295,7 @@ public class FishingGuideScreen extends Screen
                     {
                         menu = 1;
                         page = MAX_HELP_PAGES;
+                        if (MAX_HELP_PAGES == 0) menu = 0;
                         return true;
                     }
                     //entries -> previous entry
@@ -326,6 +343,7 @@ public class FishingGuideScreen extends Screen
                     //index -> first page of help
                     menu = 1;
                     page = 0;
+                    if (MAX_HELP_PAGES == 0) menu = 2;
                     return true;
                 }
                 case 1 ->
@@ -454,7 +472,8 @@ public class FishingGuideScreen extends Screen
                 RenderSystem.enableBlend();
                 renderImage(guiGraphics, BACKGROUND_COVER);
                 RenderSystem.disableBlend();
-                renderCover(guiGraphics, mouseX, mouseY);
+                renderCoverText(guiGraphics, mouseX, mouseY);
+                editBox.render(guiGraphics, mouseX, mouseY, 0);
             }
 
             //render settings screen
@@ -555,24 +574,28 @@ public class FishingGuideScreen extends Screen
         pose.popPose();
     }
 
-    private void renderCover(GuiGraphics guiGraphics, int mouseX, int mouseY)
+    public void renderCoverText(GuiGraphics guiGraphics, int mouseX, int mouseY)
     {
-        double x = mouseX - uiX;
-        double y = mouseY - uiY;
+        String s = I18n.get("gui.guide.sign");
 
-        if (x > 233 && x < 334 && y > 117 && y < 125)
+        int width1 = font.width(s) + 15;
+
+        //draw fitting rectangle
+        guiGraphics.fill(uiX + 285 - width1 / 2, uiY + 117, uiX + 285 + width1 / 2, uiY + 117 + 12, 0xffb4a697);
+        guiGraphics.renderOutline(uiX + 285 - width1 / 2, uiY + 117, width1, 12, 0xff937d70);
+        renderCenteredString(guiGraphics, font, Component.literal(s), uiX + 285, uiY + 119, 0x937d70);
+
+        //if hovering sign rectangle
+        if (mouseX > uiX + 285 - width1 / 2 && mouseX < uiX + 285 + width1 / 2 && mouseY > uiY + 117 && mouseY < uiY + 117 + 12)
         {
-            List<Component> list = new ArrayList<>();
-            list.add(Component.literal("[not implemented yet] This will lock the book with the current recorded entries so it "));
-            list.add(Component.literal("can be shared with others or displayed in a lectern!"));
-            guiGraphics.renderTooltip(this.font, list, Optional.empty(), mouseX, mouseY);
+            guiGraphics.renderOutline(uiX + 285 - width1 / 2, uiY + 117, width1, 12, 0xff000000);
+            if (clicked)
+            {
+                SignGuidePayload payload = new SignGuidePayload(editBox.getValue());
+                PacketDistributor.sendToServer(payload);
+                onClose();
+            }
         }
-
-        //if (clickedX > 233 && clickedX < 334 && clickedY > 117 && clickedY < 125)
-        {
-            //System.out.println("send packet");
-        }
-
     }
 
     private void renderHelpText(GuiGraphics guiGraphics, int page)
@@ -1023,8 +1046,7 @@ public class FishingGuideScreen extends Screen
 
     private void renderFishIndex(GuiGraphics guiGraphics, int xOffset, int yOffset, int mouseX, int mouseY, FishProperties fp, int backgroundFillColor)
     {
-        Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
-        FishCaughtCounter fishCaughtCounter = FishCaughtCounter.get(player, fp);
+        FishCaughtCounter fishCaughtCounter = fishCaughtCounterMap.get(U.getRlFromFp(level, fp));
         ItemStack is = new ItemStack(fp.catchInfo().fish());
 
         //calculate caught counter
@@ -1155,7 +1177,7 @@ public class FishingGuideScreen extends Screen
             fpsSeen.add(loc);
 
         //get fishCaughtCount
-        FishCaughtCounter fcc = FishCaughtCounter.get(player, fp);
+        FishCaughtCounter fcc = fishCaughtCounterMap.get(U.getRlFromFp(level, fp));
 
         ItemStack is = fcc == null ? ItemStack.EMPTY : new ItemStack(entries.get(entry).catchInfo().fish());
 
@@ -1318,7 +1340,7 @@ public class FishingGuideScreen extends Screen
         }
     }
 
-    public static List<FishProperties> sortEntries(Sort sort, List<FishProperties> entriesToSort, Player player)
+    public List<FishProperties> sortEntries(Sort sort, List<FishProperties> entriesToSort, Player player)
     {
         //rarity
         if (sort.equals(Sort.RARITY_DOWN) || sort.equals(Sort.RARITY_UP))
@@ -1421,7 +1443,7 @@ public class FishingGuideScreen extends Screen
 
 
             //add all fishes caught to start
-            Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
+            Map<ResourceLocation, FishCaughtCounter> fishesCaught = fishCaughtCounterMap;
 
             List<FishProperties> hasCaught = new ArrayList<>();
             List<FishProperties> hasNotCaught = new ArrayList<>();
@@ -1572,7 +1594,7 @@ public class FishingGuideScreen extends Screen
 
         Optional<HolderSet.Named<Item>> interactions = BuiltInRegistries.ITEM.getTag(SCTags.AQUARIUM_INTERACTIONS);
         interactions.ifPresent(h -> h.stream().forEach(o -> aquariumInteractions.add(new ItemStack(o.value()))));
-        if(aquariumInteractions.isEmpty()) aquariumInteractions.add(ItemStack.EMPTY);
+        if (aquariumInteractions.isEmpty()) aquariumInteractions.add(ItemStack.EMPTY);
 
         indexEntries = new ArrayList<>(List.of(
                 Pair.of(rodIcon, "gui.guide.index.basics"),
