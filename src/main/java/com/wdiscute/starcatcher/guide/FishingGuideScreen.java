@@ -310,7 +310,7 @@ public class FishingGuideScreen extends Screen
                     if (page == 0)
                     {
                         menu = 2;
-                        page = entries.size() / 2 - 1;
+                        page = entries.size() / 2;
                         return true;
                     }
                     return true;
@@ -473,7 +473,6 @@ public class FishingGuideScreen extends Screen
                 renderImage(guiGraphics, BACKGROUND_COVER);
                 RenderSystem.disableBlend();
                 renderCoverText(guiGraphics, mouseX, mouseY);
-                editBox.render(guiGraphics, mouseX, mouseY, 0);
             }
 
             //render settings screen
@@ -596,6 +595,8 @@ public class FishingGuideScreen extends Screen
                 onClose();
             }
         }
+
+        editBox.render(guiGraphics, mouseX, mouseY, 0);
     }
 
     private void renderHelpText(GuiGraphics guiGraphics, int page)
