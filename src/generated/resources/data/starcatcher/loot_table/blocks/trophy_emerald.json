@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "starcatcher:trophy_silver"
+          "name": "starcatcher:trophy_emerald"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "starcatcher:blocks/trophy_silver"
+  "random_sequence": "starcatcher:blocks/trophy_emerald"
 }

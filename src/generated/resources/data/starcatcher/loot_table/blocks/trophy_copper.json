@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "starcatcher:trophy_gold"
+          "name": "starcatcher:trophy_copper"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "starcatcher:blocks/trophy_gold"
+  "random_sequence": "starcatcher:blocks/trophy_copper"
 }

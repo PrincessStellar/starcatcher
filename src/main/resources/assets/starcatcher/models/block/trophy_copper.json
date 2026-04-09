@@ -4,7 +4,7 @@
 	"render_type": "cutout_mipped",
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "starcatcher:block/trophy_bronze",
+		"3": "starcatcher:block/trophy_copper",
 		"particle": "block/copper_block"
 	},
 	"elements": [
