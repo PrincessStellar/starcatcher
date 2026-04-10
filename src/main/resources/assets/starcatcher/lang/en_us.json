@@ -500,6 +500,7 @@
   "block.starcatcher.trophy_gold" : "Gold Trophy",
   "block.starcatcher.trophy_emerald" : "Emerald Trophy",
   "block.starcatcher.trophy_diamond" : "Diamond Trophy",
+  "block.starcatcher.trophy_of_the_older_angler" : "Trophy Of The Older Angler",
 
   "block.starcatcher.display" : "Starcatcher's Display",
   "tooltip.starcatcher.display.0" : "wip",
@@ -1186,7 +1187,6 @@
   "gui.guide.caught_limit" : "Caught Limit: ",
   "gui.guide.rarity_count.single" : "%s fishes",
   "gui.guide.rarity_count.all" : "All %s fishes",
-  "gui.guide.rarity_count.all_fishes": "All fishes",
 
   "gui.guide.hover" : "[hover]",
 

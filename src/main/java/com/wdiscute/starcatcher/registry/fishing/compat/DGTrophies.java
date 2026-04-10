@@ -19,12 +19,41 @@ public class DGTrophies
 {
     public static void bootstrap()
     {
+        register(fish(Items.BARRIER.asItem().builtInRegistryHolder())
+                .withMaxLimit(1)
+                .withDifficulty(FishProperties.Difficulty.TRASH)
+                .withHasGuideEntry(false)
+                .addRarityRestriction(
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.UNCOMMON, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.RARE, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.EPIC, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.LEGENDARY, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.GOLDEN, 5, RarityCountRestriction.RarityCount.CountType.TOTAL),
+
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.UNCOMMON, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.RARE, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.EPIC, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.LEGENDARY, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.GOLDEN, 5, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 5, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.UNCOMMON, 5, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.RARE, 5, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.EPIC, 5, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.LEGENDARY, 5, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.GOLDEN, 5, RarityCountRestriction.RarityCount.CountType.ALL)
+                        )
+                .trophy()
+        );
+
         register(fish(SCBlocks.TROPHY_COPPER.asItem().builtInRegistryHolder())
                 .withMaxLimit(1)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)
                 .addRarityRestriction(
-                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 25, RarityCountRestriction.RarityCount.CountType.UNIQUE)
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
                 )
                 .trophy()
         );
@@ -34,7 +63,7 @@ public class DGTrophies
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)
                 .addRarityRestriction(
-                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.RARE, 67, RarityCountRestriction.RarityCount.CountType.TOTAL)
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 35, RarityCountRestriction.RarityCount.CountType.UNIQUE)
                 )
                 .trophy()
         );
@@ -44,7 +73,9 @@ public class DGTrophies
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)
                 .addRarityRestriction(
-                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 100, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.LEGENDARY, 2, RarityCountRestriction.RarityCount.CountType.UNIQUE),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.GOLDEN, 2, RarityCountRestriction.RarityCount.CountType.UNIQUE)
                 )
                 .trophy()
         );
@@ -54,7 +85,8 @@ public class DGTrophies
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)
                 .addRarityRestriction(
-                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 200, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.LEGENDARY, 10, RarityCountRestriction.RarityCount.CountType.UNIQUE)
                 )
                 .trophy()
         );
@@ -64,7 +96,19 @@ public class DGTrophies
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)
                 .addRarityRestriction(
-                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 500, RarityCountRestriction.RarityCount.CountType.TOTAL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.COMMON, 0, RarityCountRestriction.RarityCount.CountType.ALL)
+                )
+                .trophy()
+        );
+
+        register(fish(SCBlocks.TROPHY_OF_THE_OLDER_ANGLER.asItem().builtInRegistryHolder())
+                .withMaxLimit(1)
+                .withDifficulty(FishProperties.Difficulty.TRASH)
+                .withHasGuideEntry(false)
+                .addRarityRestriction(
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.NONE, 0, RarityCountRestriction.RarityCount.CountType.ALL),
+                        new RarityCountRestriction.RarityCount(FishProperties.Rarity.GOLDEN, 0, RarityCountRestriction.RarityCount.CountType.ALL)
                 )
                 .trophy()
         );

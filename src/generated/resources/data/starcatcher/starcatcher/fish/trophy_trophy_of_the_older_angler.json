@@ -2,7 +2,7 @@
   "base_chance": 5,
   "catch_info": {
     "type": "trophy",
-    "item": "starcatcher:trophy_diamond"
+    "item": "starcatcher:trophy_of_the_older_angler"
   },
   "difficulty": {
     "decay": 0.0,
@@ -44,12 +44,11 @@
       "type": "starcatcher:rarity_count",
       "rarities": [
         {
-          "count": 500,
-          "count_type": "total"
+          "count_type": "all"
         },
         {
           "count_type": "all",
-          "rarity": "common"
+          "rarity": "golden"
         }
       ]
     }

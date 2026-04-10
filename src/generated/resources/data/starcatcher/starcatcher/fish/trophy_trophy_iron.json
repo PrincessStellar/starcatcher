@@ -44,9 +44,8 @@
       "type": "starcatcher:rarity_count",
       "rarities": [
         {
-          "count": 67,
-          "count_type": "total",
-          "rarity": "rare"
+          "count": 35,
+          "count_type": "unique"
         }
       ]
     }

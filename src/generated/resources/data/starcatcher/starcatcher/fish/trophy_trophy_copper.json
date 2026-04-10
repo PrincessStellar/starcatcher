@@ -45,7 +45,7 @@
       "rarities": [
         {
           "count": 25,
-          "count_type": "unique",
+          "count_type": "total",
           "rarity": "common"
         }
       ]

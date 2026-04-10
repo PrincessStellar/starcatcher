@@ -126,6 +126,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleBlockItem(TROPHY_GOLD.get());
         simpleBlockItem(TROPHY_EMERALD.get());
         simpleBlockItem(TROPHY_DIAMOND.get());
+        simpleBlockItem(TROPHY_OF_THE_OLDER_ANGLER.get());
 
         simpleItem(DeferredItem.createItem(Starcatcher.rl("clam")));
         simpleItem(DeferredItem.createItem(Starcatcher.rl("conch")));
