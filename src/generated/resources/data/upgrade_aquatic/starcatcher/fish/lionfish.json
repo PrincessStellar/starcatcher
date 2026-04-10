@@ -67,8 +67,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -77,9 +76,7 @@
       "biomes_blacklist_tags": [],
       "biomes_tags": [
         "upgrade_aquatic:biome/has_spawn/lionfish"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     }
   ],
   "size_and_weight": {

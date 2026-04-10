@@ -178,6 +178,7 @@ public class FishingGuideScreen extends Screen
     List<ResourceLocation> fpsSeen = new ArrayList<>();
     List<FishProperties> entries = new ArrayList<>(999);
     List<FishProperties> trophies = new ArrayList<>(999);
+    List<ItemStack> trophiesIS = new ArrayList<>(999);
     List<FishProperties> secrets = new ArrayList<>(999);
     List<FishProperties> fishInArea = new ArrayList<>();
     Map<ResourceLocation, FishCaughtCounter> fishCaughtCounterMap = new HashMap<>();
@@ -214,7 +215,7 @@ public class FishingGuideScreen extends Screen
 
         fishInArea = new ArrayList<>();
 
-        for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+        for (FishProperties fp : FishProperties.getAllFPs(level))
         {
             if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER) > 0)
                 fishInArea.add(fp);
@@ -222,12 +223,24 @@ public class FishingGuideScreen extends Screen
 
         fishCaughtCounterMap = FishingGuideAttachment.getFishesCaught(player);
 
-        for (FishProperties fp : FishProperties.getFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
+        for (FishProperties fp : FishProperties.getFishes(level)) if (fp.hasGuideEntry()) entries.add(fp);
         entries = sortEntries(SCConfig.SORT.get(), entries, player);
         fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
 
-        trophies = entries.stream().filter(o -> o.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.TROPHY)).toList();
-        secrets = entries.stream().filter(o -> o.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.SECRET)).toList();
+        trophies = FishProperties.getTrophies(level);
+        secrets = FishProperties.getSecrets(level);
+
+        trophiesIS = new ArrayList<>();
+        trophies.forEach(t ->
+        {
+            if (SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get() && fishCaughtCounterMap.containsKey(level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(t)))
+                trophiesIS.add(t.catchInfo().fish().value().getDefaultInstance());
+            else
+                trophiesIS.add(SCItems.MISSINGNO.asItem().getDefaultInstance());
+        });
+
+        if (trophies.isEmpty()) trophies = List.of(FishProperties.DEFAULT);
+        if (trophiesIS.isEmpty()) trophiesIS = List.of(Items.BARRIER.getDefaultInstance());
     }
 
     @Override
@@ -875,11 +888,46 @@ public class FishingGuideScreen extends Screen
             }
 
 
-            //selling bin
+            //trophies and secrets
             case 12 ->
             {
                 renderImage(guiGraphics, HELP_PAGE_TROPHIES);
                 renderItemWithHoverAndEmi(guiGraphics, trophyIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+
+                //left page scroll arrows
+                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
+                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll--;
+                if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    leftPageScroll++;
+
+                //trophies items
+                for (int i = 0; i < 5; i++)
+                {
+                    int x = uiX + 72 + (i * 20);
+                    int y = uiY + 170;
+                    ItemStack stack = trophiesIS.get(Math.abs((leftPageScroll + i) % trophiesIS.size()));
+                    FishProperties fp = trophies.get(Math.abs((leftPageScroll + i) % trophies.size()));
+                    //render item
+                    renderItem(stack, x, y, 1);
+                    //render hover item tooltip
+                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
+                        FishCaughtCounter fishCaughtCounter = fishCaughtCounterMap.get(U.getRlFromFp(level, fp));
+                        ArrayList<Component> components = new ArrayList<>(getCachedTooltipForHoverEntry(fp, fishCaughtCounter == null ? 0 : fishCaughtCounter.count()));
+                        if (fp != FishProperties.DEFAULT)
+                            guiGraphics.renderTooltip(this.font, components, Optional.empty(), mouseX, mouseY);
+
+                        //if clicked on a trophy, display FP
+                        if (clicked && fp != FishProperties.DEFAULT)
+                            Minecraft.getInstance().setScreen(new IsolatedFPScreen(fp, this));
+                    }
+
+                    //scrollable background fill
+                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
+                }
+
             }
         }
     }
@@ -1072,7 +1120,7 @@ public class FishingGuideScreen extends Screen
         //glow color
         int color = switch (fp.rarity())
         {
-            case TRASH -> FastColor.ARGB32.color(0, -1);
+            case TRASH, NONE -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.COMMON -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.UNCOMMON -> FastColor.ARGB32.color(255, 0x92f28d);
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(255, 0x78c8ff);
@@ -1103,8 +1151,9 @@ public class FishingGuideScreen extends Screen
             renderItem(new ItemStack(SCItems.MISSINGNO.get()), xOffset, yOffset, 1);
 
         //render fish notification icon
-        if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification())
-            guiGraphics.blit(STAR, xOffset + 10, yOffset + 7, 0, 0, 10, 10, 10, 10);
+        if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification() && !fpsSeen.contains(FishProperties.getKey(level, fp)))
+            guiGraphics.renderOutline(xOffset - 2, yOffset - 2, 20, 20, 0xffc58c44);
+            //guiGraphics.blit(STAR, xOffset + 10, yOffset + 7, 0, 0, 10, 10, 10, 10);
 
 
         //render tooltip
@@ -1127,10 +1176,12 @@ public class FishingGuideScreen extends Screen
 
         List<Component> components = new ArrayList<>();
 
+        boolean isFish = fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH);
         if (caught == 0 && SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get())
         {
             components.add(Component.translatable("gui.guide.not_caught_fish_name"));
-            components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
+            if (isFish)
+                components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
         }
         else
         {
@@ -1139,7 +1190,8 @@ public class FishingGuideScreen extends Screen
             else
                 components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
 
-            components.add(Component.translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+            if (isFish)
+                components.add(Component.translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         }
 
         //Aurora
@@ -1581,7 +1633,7 @@ public class FishingGuideScreen extends Screen
         aquariumIcon = new ItemStack(SCBlocks.AQUARIUM.get());
         displayIcon = new ItemStack(SCBlocks.DISPLAY.get());
         guideIcon = new ItemStack(SCItems.GUIDE.get());
-        trophyIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
+        trophyIcon = new ItemStack(SCBlocks.TROPHY_EMERALD.get());
 
 
         //populate lists
@@ -1692,7 +1744,7 @@ public class FishingGuideScreen extends Screen
 
         int color = switch (fp.rarity())
         {
-            case FishProperties.Rarity.TRASH, FishProperties.Rarity.COMMON -> FastColor.ARGB32.color(0, -1);
+            case FishProperties.Rarity.TRASH, FishProperties.Rarity.COMMON, FishProperties.Rarity.NONE -> FastColor.ARGB32.color(0, -1);
             case FishProperties.Rarity.UNCOMMON -> FastColor.ARGB32.color(200, 0x92f28d);
             case FishProperties.Rarity.RARE -> FastColor.ARGB32.color(200, 0x78c8ff);
             case FishProperties.Rarity.EPIC -> FastColor.ARGB32.color(200, 0xc060ff);

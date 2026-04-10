@@ -48,8 +48,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -59,9 +58,7 @@
       "biomes_tags": [
         "minecraft:is_jungle",
         "starcatcher:is_swamp"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",

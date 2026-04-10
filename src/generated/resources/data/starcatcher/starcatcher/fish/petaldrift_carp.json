@@ -40,8 +40,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -50,9 +49,7 @@
       "biomes_blacklist_tags": [],
       "biomes_tags": [
         "starcatcher:is_cherry_grove"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -64,12 +61,10 @@
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:cherry_bait": 50
-      },
-      "translation_override": ""
+      }
     },
     {
       "type": "starcatcher:weather_restriction",
-      "translation_override": "",
       "weather": "rain"
     }
   ],

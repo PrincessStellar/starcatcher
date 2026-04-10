@@ -42,8 +42,8 @@ public class BiomeRestriction extends AbstractFishRestriction
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_tags").forGetter(BiomeRestriction::getBiomesTags),
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_blacklist").forGetter(BiomeRestriction::getBiomesBlacklist),
                     ResourceLocation.CODEC.listOf().fieldOf("biomes_blacklist_tags").forGetter(BiomeRestriction::getBiomesBlacklistTags),
-                    Codec.STRING.fieldOf("hover_translation").forGetter(BiomeRestriction::getTranslationOverride),
-                    Codec.STRING.fieldOf("translation_override").forGetter(BiomeRestriction::getTranslationOverride)
+                    Codec.STRING.optionalFieldOf("hover_translation", "").forGetter(BiomeRestriction::getTranslationOverride),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(BiomeRestriction::getTranslationOverride)
             ).apply(instance, BiomeRestriction::new));
 
     public BiomeRestriction()

@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.fishing.compat.DGTrophies;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.world.item.ItemStack;

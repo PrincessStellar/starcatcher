@@ -30,14 +30,12 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": -40,
-      "min_y": -20,
-      "translation_override": ""
+      "min_y": -20
     }
   ],
   "size_and_weight": {

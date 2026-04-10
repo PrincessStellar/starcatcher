@@ -48,8 +48,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -58,15 +57,12 @@
       ],
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
-      "biomes_tags": [],
-      "hover_translation": "",
-      "translation_override": ""
+      "biomes_tags": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 40,
-      "min_y": -2147483648,
-      "translation_override": ""
+      "min_y": -2147483648
     }
   ],
   "size_and_weight": {

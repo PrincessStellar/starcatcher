@@ -67,8 +67,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -80,8 +79,7 @@
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:empty"
-      ],
-      "translation_override": ""
+      ]
     }
   ],
   "size_and_weight": {

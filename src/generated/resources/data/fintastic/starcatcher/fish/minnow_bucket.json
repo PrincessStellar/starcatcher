@@ -48,8 +48,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -66,9 +65,7 @@
         "minecraft:is_jungle",
         "starcatcher:is_swamp",
         "minecraft:is_river"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     }
   ],
   "size_and_weight": {

@@ -82,7 +82,7 @@ public record FishCaughtCounter(
     {
         //returns false if player has already caught the golden fish of that fp
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
-        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKeyOrNull(fp);
+        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fp);
         if(!fishesCaught.containsKey(loc)) return true;
         return !fishesCaught.get(loc).caughtGolden;
     }
@@ -93,12 +93,12 @@ public record FishCaughtCounter(
     }
 
     @Nonnull
-    public static FishCaughtCounter create(int ticks, int size, int weight, boolean perfectCatch, boolean golden)
+    public static FishCaughtCounter create(int ticks, int size, int weight, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, U.getTime(), golden, perfectCatch, true);
+        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, U.getTime(), golden, perfectCatch, hasGuideNotification);
     }
 
-    public FishCaughtCounter getUpdated(int ticks, int size, int weight, boolean perfectCatch, boolean goldenCatch)
+    public FishCaughtCounter getUpdated(int ticks, int size, int weight, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)
     {
         int fastestToSave = Math.min(this.fastestTicks, ticks);
         float averageToSave = (this.averageTicks * this.count + ticks) / (this.count + 1);
@@ -123,7 +123,7 @@ public record FishCaughtCounter(
                 this.firstCatch,
                 golden,
                 perfect,
-                true);
+                hasGuideNotification);
     }
 
     public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight,
@@ -143,16 +143,16 @@ public record FishCaughtCounter(
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
 
-        ResourceLocation loc = rl == null ? player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKeyOrNull(fpCaught) : rl;
+        ResourceLocation loc = rl == null ? player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fpCaught) : rl;
         if(loc != null)
         {
             FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
             boolean newFish = fishCaughtCounter == null;
 
             if (newFish)
-                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch, golden);
+                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
             else
-                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch, golden);
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
 
             fishesCaught.put(loc, fishCaughtCounter);
 

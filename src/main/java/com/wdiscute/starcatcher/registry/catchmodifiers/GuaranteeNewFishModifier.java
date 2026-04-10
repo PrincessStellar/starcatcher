@@ -34,7 +34,7 @@ public class GuaranteeNewFishModifier extends AbstractCatchModifier
         notCaughtFish.ifPresent(fish ->
         {
             instance.fpToFish = fish;
-            instance.rlToFish = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKey(fish);
+            instance.rlToFish = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
         });
     }
 }

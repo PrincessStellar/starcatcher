@@ -135,7 +135,7 @@
 
   "entity.starcatcher.fish" : "Starcaught Fish",
 
-  "gui.starcatcher.reel_no_fish" : "There are no fishes available for this area...",
+  "gui.starcatcher.reel_no_fish" : "There are no fishes here...",
 
 
   "tooltip.minecraft.fishing_rod.0": "A simple fishing rod used for catching",
@@ -483,9 +483,11 @@
   "tooltip.starcatcher.scalding_treasure.0" : "A treasure fished directly from the scalding",
   "tooltip.starcatcher.scalding_treasure.1" : "lands of The Nether. What's inside?",
 
+  "block.starcatcher.trophy_copper" : "Copper Trophy",
+  "block.starcatcher.trophy_iron" : "Iron Trophy",
   "block.starcatcher.trophy_gold" : "Gold Trophy",
-  "block.starcatcher.trophy_silver" : "Silver Trophy",
-  "block.starcatcher.trophy_bronze" : "Bronze Trophy",
+  "block.starcatcher.trophy_emerald" : "Emerald Trophy",
+  "block.starcatcher.trophy_diamond" : "Diamond Trophy",
 
   "block.starcatcher.display" : "Starcatcher's Display",
   "tooltip.starcatcher.display.0" : "wip",
@@ -1070,26 +1072,27 @@
 
 
 
-  "gui.guide.page.trophies.left.0" : "",
-  "gui.guide.page.trophies.left.1" : "",
-  "gui.guide.page.trophies.left.2" : "",
-  "gui.guide.page.trophies.left.3" : "",
-  "gui.guide.page.trophies.left.4" : "",
-  "gui.guide.page.trophies.left.5" : "  Trophies are a display",
-  "gui.guide.page.trophies.left.6" : "of one's skill in angling",
-  "gui.guide.page.trophies.left.7" : "and are sure to put",
-  "gui.guide.page.trophies.left.8" : "others to shame for their",
-  "gui.guide.page.trophies.left.9" : "lack of trophyfulness.",
+  "gui.guide.page.12.left.title" : "Trophies",
+  "gui.guide.page.12.left.0" : "",
+  "gui.guide.page.12.left.1" : "",
+  "gui.guide.page.12.left.2" : "",
+  "gui.guide.page.12.left.3" : "",
+  "gui.guide.page.12.left.4" : "",
+  "gui.guide.page.12.left.5" : "  Trophies are a display",
+  "gui.guide.page.12.left.6" : "of one's skill in angling",
+  "gui.guide.page.12.left.7" : "and are sure to put",
+  "gui.guide.page.12.left.8" : "others to shame for their",
+  "gui.guide.page.12.left.9" : "lack of trophyfulness.",
 
-  "gui.guide.page.trophies.right.0" : "",
-  "gui.guide.page.trophies.right.1" : "",
-  "gui.guide.page.trophies.right.2" : "",
-  "gui.guide.page.trophies.right.3" : "",
-  "gui.guide.page.trophies.right.4" : "",
-  "gui.guide.page.trophies.right.5" : "  Who knows what forgotten",
-  "gui.guide.page.trophies.right.6" : "stories you might find",
-  "gui.guide.page.trophies.right.7" : "encapsulated in bottles",
-  "gui.guide.page.trophies.right.8" : "adrift the waves.",
+  "gui.guide.page.12.right.0" : "",
+  "gui.guide.page.12.right.1" : "",
+  "gui.guide.page.12.right.2" : "",
+  "gui.guide.page.12.right.3" : "",
+  "gui.guide.page.12.right.4" : "",
+  "gui.guide.page.12.right.5" : "  Who knows what forgotten",
+  "gui.guide.page.12.right.6" : "stories you might find",
+  "gui.guide.page.12.right.7" : "encapsulated in bottles",
+  "gui.guide.page.12.right.8" : "adrift the waves.",
 
   "gui.guide.trophy.all.total" : "Total fishes: ",
   "gui.guide.trophy.all.unique" : "Unique fishes: ",
@@ -1126,6 +1129,7 @@
   "gui.guide.hover.weather.incorrect" : "❌ Weather",
   "gui.guide.hover.elevation.correct" : "✅ Elevation",
   "gui.guide.hover.elevation.incorrect" : "❌ Elevation",
+  "gui.guide.hover.caught_limit" : "Caught Limit: %s",
 
   "gui.guide.dimension" : "Dimension: ",
   "gui.guide.dimensions" : "Dimensions: ",
@@ -1158,6 +1162,11 @@
   "gui.guide.no_restriction" : "-------",
   "gui.guide.bait_required" : "The correct bait is required for this catch!",
   "gui.guide.bait_chance_added" : "Chance added by bait:",
+  "gui.guide.caught_limit" : "Caught Limit: ",
+  "gui.guide.rarity_count.single" : "%s fishes",
+  "gui.guide.rarity_count.all" : "All %s fishes",
+  "gui.guide.rarity_count.all_fishes": "All fishes",
+
   "gui.guide.hover" : "[hover]",
 
 

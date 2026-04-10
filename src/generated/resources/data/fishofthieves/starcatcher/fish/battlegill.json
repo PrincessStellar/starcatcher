@@ -51,8 +51,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -61,9 +60,7 @@
       "biomes_blacklist_tags": [],
       "biomes_tags": [
         "starcatcher:is_cold_ocean"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -89,8 +86,7 @@
         "fishofthieves:earthworms": 50,
         "fishofthieves:grubs": 50,
         "fishofthieves:leeches": 50
-      },
-      "translation_override": ""
+      }
     }
   ],
   "size_and_weight": {

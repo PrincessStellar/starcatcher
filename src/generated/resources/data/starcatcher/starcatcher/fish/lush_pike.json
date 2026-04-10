@@ -100,8 +100,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -110,9 +109,7 @@
       ],
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
-      "biomes_tags": [],
-      "hover_translation": "",
-      "translation_override": ""
+      "biomes_tags": []
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -124,15 +121,13 @@
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:lush_bait": 50
-      },
-      "translation_override": ""
+      }
     },
     {
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:legendary_bait": 50
-      },
-      "translation_override": ""
+      }
     }
   ],
   "size_and_weight": {

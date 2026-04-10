@@ -51,8 +51,7 @@
       "type": "starcatcher:bait",
       "baits": {
         "minecraft:wither_skeleton_skull": 200
-      },
-      "translation_override": ""
+      }
     }
   ],
   "size_and_weight": {

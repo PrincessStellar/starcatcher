@@ -52,8 +52,7 @@
       "dimensions": [
         "minecraft:the_end"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -64,9 +63,7 @@
       "biomes_blacklist_tags": [],
       "biomes_tags": [
         "minecraft:is_end"
-      ],
-      "hover_translation": "",
-      "translation_override": ""
+      ]
     }
   ],
   "size_and_weight": {

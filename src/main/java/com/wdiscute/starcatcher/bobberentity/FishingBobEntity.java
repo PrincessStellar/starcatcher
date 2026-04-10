@@ -24,7 +24,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -46,6 +45,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class FishingBobEntity extends Projectile
 {
@@ -160,38 +160,48 @@ public class FishingBobEntity extends Projectile
 
     public void reel()
     {
-        modifiers.forEach(AbstractCatchModifier::onReelStart);
-
         //server only
         List<FishProperties> available = new ArrayList<>();
 
-        //if no trophy is available, get chances of getting each fish
-        for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+        modifiers.forEach(AbstractCatchModifier::onReelStart);
+
+        //if any non-fish is available, select it
+        for (FishProperties fp : FishProperties.getNonFishes(level()))
         {
             int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
 
-            for (int i = 0; i < chance; i++)
+            if (chance > 0)
             {
-                available.add(fp);
+                fpToFish = fp;
+                rlToFish = FishProperties.getKey(level(), fp);
+                break;
             }
         }
 
-        //if no fish is available, reset player fishing data and award nothing
-        if (available.isEmpty())
+        //add available fish to list if no trophy/secret/extra was available
+        for (FishProperties fp : FishProperties.getFishes(level()))
+        {
+            int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
+            for (int i = 0; i < chance; i++) available.add(fp);
+        }
+
+
+        //trigger modifiers to modify available pool
+        for (AbstractCatchModifier acm : modifiers) available = acm.modifyAvailablePool(available);
+
+        //if no fish is available and no non-fish was selected, reset player fishing data and award nothing
+        if (available.isEmpty() && fpToFish == null)
         {
             player.displayClientMessage(Component.translatable("gui.starcatcher.reel_no_fish"), true);
             this.kill();
         }
 
-        //trigger modifiers for which fish to get based on available
-        for (AbstractCatchModifier acm : modifiers)
-        {
-            available = acm.modifyAvailablePool(available);
-        }
-
         //get random fish from available pool
-        fpToFish = available.get(random.nextInt(available.size()));
-        rlToFish = level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKey(fpToFish);
+        if (fpToFish == null)
+        {
+            fpToFish = available.get(random.nextInt(available.size()));
+            rlToFish = FishProperties.getKey(level(), fpToFish);
+        }
 
         //trigger modifiers for which fish to get based on available
         List<FishProperties> immutableAvailable = List.copyOf(available);

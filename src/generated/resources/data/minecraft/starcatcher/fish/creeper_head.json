@@ -59,15 +59,13 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:gunpowder_bait": 200
-      },
-      "translation_override": ""
+      }
     }
   ],
   "size_and_weight": {

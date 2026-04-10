@@ -40,8 +40,7 @@
       "dimensions": [
         "minecraft:overworld"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:biome",
@@ -76,7 +75,6 @@
     },
     {
       "type": "starcatcher:weather_restriction",
-      "translation_override": "",
       "weather": "thunder"
     }
   ],

@@ -51,8 +51,7 @@
       "dimensions": [
         "minecraft:the_end"
       ],
-      "dimensions_blacklist": [],
-      "translation_override": ""
+      "dimensions_blacklist": []
     },
     {
       "type": "starcatcher:season",
@@ -72,8 +71,7 @@
         "fishofthieves:earthworms": 50,
         "fishofthieves:grubs": 50,
         "fishofthieves:leeches": 50
-      },
-      "translation_override": ""
+      }
     }
   ],
   "size_and_weight": {
