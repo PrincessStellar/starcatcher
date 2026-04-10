@@ -1356,7 +1356,7 @@ public class FishingGuideScreen extends Screen
 
         ItemStack is = fcc == null && SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get() ? ItemStack.EMPTY : new ItemStack(entries.get(entry).catchInfo().fish());
         if(fcc != null && fcc.caughtGolden())
-            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(fcc.size(), fcc.weight(), 0, fp.rarity(), true));
+            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(fcc.size(), fcc.weight(), fcc.percentile(), fp.rarity(), true));
 
         renderFishEntryPage(guiGraphics, fp, is, fcc, uiX + xOffset, uiY, mouseX, mouseY);
 
@@ -1580,7 +1580,6 @@ public class FishingGuideScreen extends Screen
                     String namespace = fp.catchInfo().fish().unwrapKey().get().location().getNamespace();
                     if (namespace.equals(s)) entriesSorted.add(fp);
                 }
-
             }
 
             entriesToSort = sort.equals(Sort.MOD_UP) ? entriesSorted : entriesSorted.reversed();
@@ -1969,6 +1968,7 @@ public class FishingGuideScreen extends Screen
             components.add(Component.literal(""));
             components.add(Component.translatable("gui.guide.biggest").append(Component.literal(size).withStyle(ChatFormatting.BOLD)));
             components.add(Component.translatable("gui.guide.heaviest").append(Component.literal(weight).withStyle(ChatFormatting.BOLD)));
+            components.add(Component.translatable("gui.guide.percentile").append(Component.literal(fcc.percentile() + "%").withStyle(ChatFormatting.BOLD)));
 
             guiGraphics.renderTooltip(font, components, Optional.empty(), absoluteMouseX, absoluteMouseY);
         }
