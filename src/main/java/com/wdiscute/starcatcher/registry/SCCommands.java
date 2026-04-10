@@ -359,7 +359,7 @@ public class SCCommands
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
         {
             if (fp.calculateChance(player, player.level(), player.getMainHandItem(), AbstractFishRestriction.Context.COMMAND) > 0)
-                available.add(fp);
+                available.add(fp.loadTreasure(player));
         }
 
         if (!available.isEmpty())
@@ -382,7 +382,7 @@ public class SCCommands
 
         if (optional.isPresent())
         {
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(), player.getMainHandItem()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get().loadTreasure(player), player.getMainHandItem()));
             return 1;
         }
         else

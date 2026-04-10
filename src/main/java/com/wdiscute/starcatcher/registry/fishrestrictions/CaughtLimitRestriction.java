@@ -72,8 +72,10 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         if (entity instanceof FishingBobEntity fbe)
+        {
             if (getCaughtCounter(fp, fbe.player) >= limit) return -9999;
-            else if (getCaughtCounter(fp, entity) >= limit) return -9999;
+        }
+        else if (getCaughtCounter(fp, entity) >= limit) return -9999;
         return 0;
     }
 

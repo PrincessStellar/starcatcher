@@ -214,6 +214,9 @@ public class FishingBobEntity extends Projectile
             return;
         }
 
+        //load treasure itemstack
+        fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
+
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
                 || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
@@ -226,9 +229,6 @@ public class FishingBobEntity extends Projectile
             FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
-
-        //load treasure itemstack
-        fpToFish = fpToFish.loadTreasure(((ServerPlayer) player));
     }
 
     private boolean shouldStopFishing(Player player)

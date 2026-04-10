@@ -263,6 +263,8 @@
 
   "tooltip.modifier.starcatcher.bigger_green_sweet_spots.0": "Green sweet-spots will be slightly bigger",
 
+  "tooltip.modifier.starcatcher.add_leaves_spots.0": "Leaf sweetspots will appear at random",
+
   "tooltip.modifier.starcatcher.add_aqua_sweet_spot.0": "An extra aqua sweet-spot is added",
 
   "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot.0": "Three extra aqua sweet-spot are added",
@@ -278,6 +280,10 @@
   "tooltip.modifier.starcatcher.increase_lure_time.0": "Increases lure time",
 
 
+  "tooltip.modifier.starcatcher.faster_handle_speed.0": "Increases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slightly_faster_handle_speed.0": "Slightly increases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slightly_slower_handle_speed.0": "Slightly decreases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slower_handle_speed.0": "decreases the handle's rotation speed",
 
 
   "tooltip.modifier.starcatcher.vanilla_loot.0": "Restores vanilla fishing loot",
@@ -321,6 +327,10 @@
   "item.starcatcher.stabilizing_hook": "Stabilizing Hook",
   "item.starcatcher.heavy_hook": "Heavy Hook",
   "item.starcatcher.vanilla_hook": "Vanilla-flavoured Hook",
+  "item.starcatcher.copper_hook": "Copper Hook",
+  "item.starcatcher.exposed_copper_hook": "Exposed Copper Hook",
+  "item.starcatcher.weathered_copper_hook": "Weathered Copper Hook",
+  "item.starcatcher.oxidised_copper_hook": "Oxidised Copper Hook",
 
 
 
@@ -329,6 +339,7 @@
   "tooltip.starcatcher.bobber.1": "Hook's best friend.",
 
   "item.starcatcher.steady_bobber": "Steady Bobber",
+  "item.starcatcher.leaf_bobber": "Leafy Bobber",
   "item.starcatcher.clear_bobber": "Clear Bobber",
   "item.starcatcher.aqua_bobber": "Aqua Bobber",
   "item.starcatcher.vanilla_bobber": "Vanilla-flavoured Bobber",

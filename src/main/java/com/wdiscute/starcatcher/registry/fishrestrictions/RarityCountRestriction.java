@@ -285,12 +285,12 @@ public class RarityCountRestriction extends AbstractFishRestriction
             return Component.translatable("gui.guide.rarity_count.all_fishes");
 
         if (rc.countType.equals(RarityCount.CountType.ALL))
-            return Component.translatable("gui.guide.rarity_count.all", map.get(rc.rarity).getSecond() + " " + rc.rarity);
+            return Component.translatable("gui.guide.rarity_count.all", map.get(rc.rarity).getSecond() + " " + rc.rarity.getSerializedName());
 
         if (rc.rarity.equals(FishProperties.Rarity.NONE))
             return Component.translatable("gui.guide.rarity_count.single", map.get(rc.rarity).getFirst() + "/" + rc.count + " " + rc.countType);
 
-        return Component.translatable("gui.guide.rarity_count.single", map.get(rc.rarity).getFirst() + "/" + rc.count + " " + rc.countType + " " + rc.rarity);
+        return Component.translatable("gui.guide.rarity_count.single", map.get(rc.rarity).getFirst() + "/" + rc.count + " " + rc.countType + " " + rc.rarity.getSerializedName());
     }
 
     @Override

@@ -115,7 +115,7 @@ public class SCConfig
             .defineInRange("decay_multiplier", 1d, 0d, 100d);
 
     public static final ModConfigSpec.DoubleValue POINTER_SPEED_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the fish decay rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the pointer speed rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.pointer_speed_multiplier")
             .defineInRange("pointer_speed_multiplier", 1d, 0d, 100d);
 
@@ -125,7 +125,7 @@ public class SCConfig
             .define("hide_entries_until_found", true);
 
     public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
-            .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server")
+            .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server. Does not affect built-in Secrets")
             .translation("starcatcher.configuration.fish_player_messages_chance")
             .defineInRange("fish_player_messages_chance", 0.05d, 0d, 1d);
 

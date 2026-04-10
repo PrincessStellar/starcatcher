@@ -1343,6 +1343,7 @@ public record FishProperties(
         private static final ResourceLocation RL_TNT = Starcatcher.rl("textures/gui/minigame/spots/tnt.png");
         private static final ResourceLocation RL_STONE = Starcatcher.rl("textures/gui/minigame/spots/stone.png");
         private static final ResourceLocation RL_AQUA = Starcatcher.rl("textures/gui/minigame/spots/aqua.png");
+        private static final ResourceLocation RL_LEAF = Starcatcher.rl("textures/gui/minigame/spots/leaf.png");
 
         private static final ResourceLocation RL_NETHER_CRAB_CLAW = Starcatcher.rl("textures/gui/minigame/spots/nether_crab_claw.png");
         private static final ResourceLocation RL_NETHER_CRAB_LEG = Starcatcher.rl("textures/gui/minigame/spots/nether_crab_leg.png");
@@ -1512,6 +1513,14 @@ public record FishProperties(
                 22,
                 8,
                 0x387982
+        );
+
+        public static SweetSpot LEAF = new SweetSpot(
+                SCSweetSpotsBehaviour.LEAF,
+                RL_LEAF,
+                15,
+                15,
+                0x00ff00
         );
 
         public static SweetSpot AQUA_1 = new SweetSpot(
@@ -1787,7 +1796,8 @@ public record FishProperties(
         @Override
         public String toString()
         {
-            return key;
+            return super.toString();
+            //return key;
         }
 
         public Component wrapWithRarityMarkdown(String s)

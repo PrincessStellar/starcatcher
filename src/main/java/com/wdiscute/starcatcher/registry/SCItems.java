@@ -62,6 +62,10 @@ public interface SCItems
     DeferredItem<Item> SPLIT_HOOK = HOOKS_REGISTRY.register("split_hook", SingleStackBasicItem::new);
     DeferredItem<Item> HEAVY_HOOK = HOOKS_REGISTRY.register("heavy_hook", SingleStackBasicItem::new);
     DeferredItem<Item> VANILLA_HOOK = HOOKS_REGISTRY.register("vanilla_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> COPPER_HOOK = HOOKS_REGISTRY.register("copper_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> EXPOSED_COPPER_HOOK = HOOKS_REGISTRY.register("exposed_copper_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> WEATHERED_COPPER_HOOK = HOOKS_REGISTRY.register("weathered_copper_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> OXIDISED_COPPER_HOOK = HOOKS_REGISTRY.register("oxidised_copper_hook", SingleStackBasicItem::new);
 
     //bobbers
     DeferredItem<Item> BOBBER = BOBBERS_REGISTRY.register("bobber", SingleStackBasicItem::new);
@@ -69,6 +73,7 @@ public interface SCItems
     DeferredItem<Item> CLEAR_BOBBER = BOBBERS_REGISTRY.register("clear_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> AQUA_BOBBER = BOBBERS_REGISTRY.register("aqua_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> LEAF_BOBBER = BOBBERS_REGISTRY.register("leaf_bobber", SingleStackBasicItem::new);
 
     //baits
     DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);

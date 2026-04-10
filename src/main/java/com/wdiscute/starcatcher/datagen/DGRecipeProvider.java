@@ -270,6 +270,50 @@ public class DGRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
+        //copper hook
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.COPPER_HOOK)
+                .define('H', SCItems.HOOK)
+                .define('C', Items.COPPER_INGOT)
+                .define('B', Items.COPPER_BLOCK)
+                .pattern("B  ")
+                .pattern("CHC")
+                .pattern(" C ")
+                .unlockedBy("has_copper", has(Items.COPPER_INGOT))
+                .save(output);
+
+        //exposed copper hook
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.EXPOSED_COPPER_HOOK)
+                .define('H', SCItems.HOOK)
+                .define('C', Items.COPPER_INGOT)
+                .define('B', Items.EXPOSED_COPPER)
+                .pattern("B  ")
+                .pattern("CHC")
+                .pattern(" C ")
+                .unlockedBy("has_exposed_copper", has(Items.EXPOSED_COPPER))
+                .save(output);
+
+        //weathered copper hook
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.WEATHERED_COPPER_HOOK)
+                .define('H', SCItems.HOOK)
+                .define('C', Items.COPPER_INGOT)
+                .define('B', Items.WEATHERED_COPPER)
+                .pattern("B  ")
+                .pattern("CHC")
+                .pattern(" C ")
+                .unlockedBy("has_weathered_copper_block", has(Items.WEATHERED_COPPER))
+                .save(output);
+
+        //weathered copper hook
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.OXIDISED_COPPER_HOOK)
+                .define('H', SCItems.HOOK)
+                .define('C', Items.COPPER_INGOT)
+                .define('B', Items.OXIDIZED_COPPER)
+                .pattern("B  ")
+                .pattern("CHC")
+                .pattern(" C ")
+                .unlockedBy("has_oxidised_copper_block", has(Items.OXIDIZED_COPPER))
+                .save(output);
+
         //shiny hook
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.SHINY_HOOK)
                 .define('H', SCItems.HOOK)
