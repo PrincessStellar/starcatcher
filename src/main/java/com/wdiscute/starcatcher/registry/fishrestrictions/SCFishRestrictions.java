@@ -32,6 +32,7 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> ELEVATION_RESTRICTION =
             registerFishRestriction("elevation_restriction", ElevationRestriction::new);
 
+    //todo add fishes with this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> ELEVATION_BIAS =
             registerFishRestriction("elevation_bias", ElevationBias::new);
 
@@ -41,9 +42,11 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DAYTIME_RESTRICTION =
             registerFishRestriction("daytime_restriction", DaytimeRestriction::new);
 
+    //todo add fishes with this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DAYTIME_BIAS =
             registerFishRestriction("daytime_bias", DaytimeBias::new);
 
+    //todo add this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> MOON_PHASE =
             registerFishRestriction("moon_phase", EmptyRestriction::new);
 

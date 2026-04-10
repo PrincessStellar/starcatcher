@@ -110,6 +110,7 @@ public class FluidRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
+        if(fluids.size() == 1) return List.of();
         List<Component> hover = new ArrayList<>();
 
         fluids.forEach((rl) -> hover.add(Component.translatable("block." + rl.toLanguageKey())));

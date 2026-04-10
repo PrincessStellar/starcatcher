@@ -94,6 +94,6 @@ public class ChancePercentageRestriction extends AbstractFishRestriction
     {
         if(!translationOverride.isEmpty()) return Component.translatable(translationOverride);
 
-        return Component.translatable("gui.guide.chance", chance);
+        return Component.translatable("gui.guide.chance", ((int) (chance * 100)) + "%");
     }
 }
