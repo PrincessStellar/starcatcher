@@ -95,27 +95,32 @@ public class SCConfig
             .define("enable_seasons", true);
 
     public static final ModConfigSpec.DoubleValue VANISHING_RATE_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the vanishing rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the vanishing rate, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.vanishing_rate_multiplier")
             .defineInRange("vanishing_rate_multiplier", 1d, 0d, 100d);
 
     public static final ModConfigSpec.DoubleValue MOVING_SPEED_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the moving sweet-spots speed multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the moving sweet-spots speed, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.moving_speed_multiplier")
             .defineInRange("moving_speed_multiplier", 1d, 0d, 100d);
 
     public static final ModConfigSpec.DoubleValue PENALTY_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the penalty for missing rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the penalty for missing rate, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.penalty_multiplier")
             .defineInRange("penalty_multiplier", 1d, 0d, 100d);
 
     public static final ModConfigSpec.DoubleValue DECAY_RATE_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the fish decay rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the fish decay rate, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.decay_multiplier")
             .defineInRange("decay_multiplier", 1d, 0d, 100d);
 
+    public static final ModConfigSpec.DoubleValue HP_RATE_MULTIPLIER = BUILDER_SERVER
+            .comment("Adjusts the fish's HP, useful if you want to adjust the fishes' difficulty globally.")
+            .translation("starcatcher.configuration.hp_multiplier")
+            .defineInRange("hp_multiplier", 1d, 0d, 100d);
+
     public static final ModConfigSpec.DoubleValue POINTER_SPEED_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the pointer speed rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
+            .comment("Adjusts the pointer speed rate, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.pointer_speed_multiplier")
             .defineInRange("pointer_speed_multiplier", 1d, 0d, 100d);
 

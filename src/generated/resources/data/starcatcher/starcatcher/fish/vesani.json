@@ -5,42 +5,12 @@
     "item": "starcatcher:vesani"
   },
   "difficulty": {
-    "decay": 0.0,
+    "decay": 1.0,
+    "hp": 100,
     "missPenalty": 20,
     "modifiers": [],
-    "speed": 9,
-    "sweetspots": [
-      {
-        "color_as_int": 3701122,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 8,
-        "sweet_spot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
-        "vanishing_rate": 0.1
-      },
-      {
-        "color_as_int": 3701122,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 8,
-        "sweet_spot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
-        "vanishing_rate": 0.1
-      },
-      {
-        "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 20,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.1
-      }
-    ]
+    "speed": 10,
+    "sweetspots": []
   },
   "has_guide_entry": true,
   "rarity": "legendary",

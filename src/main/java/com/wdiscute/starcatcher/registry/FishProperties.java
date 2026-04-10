@@ -18,7 +18,6 @@ import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Holder;
@@ -50,8 +49,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -983,6 +980,7 @@ public record FishProperties(
 
     //region dif
     public record Difficulty(
+            int hp,
             int speed,
             int penalty,
             float decay,
@@ -990,10 +988,14 @@ public record FishProperties(
             List<SweetSpot> sweetSpots
     )
     {
+        public Difficulty(int hp, int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
+        {
+            this(hp, speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
+        }
 
         public Difficulty(int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
         {
-            this(speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
+            this(100, speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
         }
 
         public Difficulty addModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> newModifier)
@@ -1001,42 +1003,42 @@ public record FishProperties(
             List<Supplier<Supplier<AbstractMinigameModifier>>> list = new ArrayList<>();
             list.addAll(newModifier);
             list.addAll(this.modifiers);
-            return new Difficulty(this.speed, this.penalty, this.decay, list, this.sweetSpots);
+            return new Difficulty(this.hp, this.speed, this.penalty, this.decay, list, this.sweetSpots);
         }
 
         public Difficulty vanishing(float vanishingRate)
         {
             List<SweetSpot> sss = new ArrayList<>();
             sweetSpots.forEach(s -> sss.add(s.vanishing(vanishingRate)));
-            return new Difficulty(speed, penalty, decay, modifiers, sss);
+            return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
         }
 
         public Difficulty vanishing()
         {
             List<SweetSpot> sss = new ArrayList<>();
             sweetSpots.forEach(s -> sss.add(s.vanishing(0.1f)));
-            return new Difficulty(speed, penalty, decay, modifiers, sss);
+            return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
         }
 
         public Difficulty moving(float movingRate)
         {
             List<SweetSpot> sss = new ArrayList<>();
             sweetSpots.forEach(s -> sss.add(s.moving(movingRate)));
-            return new Difficulty(speed, penalty, decay, modifiers, sss);
+            return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
         }
 
         public Difficulty moving()
         {
             List<SweetSpot> sss = new ArrayList<>();
             sweetSpots.forEach(s -> sss.add(s.moving(1)));
-            return new Difficulty(speed, penalty, decay, modifiers, sss);
+            return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
         }
 
         public Difficulty flip()
         {
             List<SweetSpot> sss = new ArrayList<>();
             sweetSpots.forEach(s -> sss.add(s.flip()));
-            return new Difficulty(speed, penalty, decay, modifiers, sss);
+            return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
         }
 
 
@@ -1093,15 +1095,17 @@ public record FishProperties(
         public static Difficulty FOUR_BIG_MOVING = FOUR_BIG.moving();
 
         public static Difficulty HEAVY_EIGHT_AQUA = new Difficulty(
+                1000,
                 12, 20, 0,
                 List.of(),
-                SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1
+                SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
         );
 
         public static Difficulty HEAVY_EIGHT_AQUA_MOVING = new Difficulty(
+                1000,
                 12, 20, 0,
                 List.of(),
-                SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1
+                SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
         ).moving();
 
         public static Difficulty TWO_AQUA_ONE_THIN = new Difficulty(
@@ -1217,9 +1221,24 @@ public record FishProperties(
         );
 
         public static Difficulty NON_STOP_ACTION_AQUA = new Difficulty(
-                14, 2, 0.2f,
+                300,
+                14, 20, 2f,
                 List.of(),
-                SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1, SweetSpot.AQUA_1
+                SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
+        );
+
+        public static Difficulty AURORA = new Difficulty(
+                300,
+                14, 5, 1f,
+                List.of(),
+                SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
+        );
+
+        public static Difficulty STONEFISH = new Difficulty(
+                3000,
+                14, 30, 0f,
+                List.of(),
+                SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
         );
 
         public static Difficulty WITHER = new Difficulty(
@@ -1234,6 +1253,7 @@ public record FishProperties(
                 SweetSpot.CREEPER, SweetSpot.CREEPER
         );
 
+        public static Difficulty NO_SWEET_SPOTS = new Difficulty(10, 20, 1, List.of());
 
         public static Difficulty DEEPSLATE_CRAB = new Difficulty(
                 14, 10, 1,
@@ -1269,14 +1289,15 @@ public record FishProperties(
                 SweetSpot.AQUA, SweetSpot.THIN, SweetSpot.THIN);
 
         public static Difficulty JOEL = new Difficulty(
+                200,
                 14, 5, 1,
                 List.of(),
-                SweetSpot.AQUA_1, SweetSpot.AQUA_1
+                SweetSpot.AQUA, SweetSpot.AQUA
         );
 
         public static Difficulty CERBERAY = new Difficulty(
                 16, 10, 1.5f,
-                List.of(new SpawnSweetSpotsModifier(-1, 4, 0.50f, SweetSpot.TNT, true).toDoubleSup(), SCMinigameModifiers.NIKDO53_MODIFIER),
+                List.of(SCMinigameModifiers.NIKDO53_MODIFIER),
                 SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
         );
 
@@ -1285,6 +1306,7 @@ public record FishProperties(
 
         public static final Codec<Difficulty> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
+                        Codec.INT.fieldOf("hp").forGetter(Difficulty::hp),
                         Codec.INT.fieldOf("speed").forGetter(Difficulty::speed),
                         Codec.INT.fieldOf("missPenalty").forGetter(Difficulty::penalty),
                         Codec.FLOAT.fieldOf("decay").forGetter(Difficulty::decay),
@@ -1294,6 +1316,7 @@ public record FishProperties(
 
 
         public static final StreamCodec<FriendlyByteBuf, Difficulty> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.INT, Difficulty::hp,
                 ByteBufCodecs.INT, Difficulty::speed,
                 ByteBufCodecs.INT, Difficulty::penalty,
                 ByteBufCodecs.FLOAT, Difficulty::decay,
@@ -1503,7 +1526,7 @@ public record FishProperties(
                 SCSweetSpotsBehaviour.NORMAL,
                 RL_STONE,
                 33,
-                1,
+                10,
                 0x494949
         );
 
@@ -1511,7 +1534,7 @@ public record FishProperties(
                 SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA,
                 22,
-                8,
+                10,
                 0x387982
         );
 
@@ -1521,21 +1544,6 @@ public record FishProperties(
                 15,
                 15,
                 0x00ff00
-        );
-
-        public static SweetSpot AQUA_1 = new SweetSpot(
-                SCSweetSpotsBehaviour.AQUA,
-                RL_AQUA, 22, 1, 0x387982
-        );
-
-        public static SweetSpot AQUA_5 = new SweetSpot(
-                SCSweetSpotsBehaviour.AQUA,
-                RL_AQUA, 22, 1, 0x387982
-        );
-
-        public static SweetSpot AQUA_10 = new SweetSpot(
-                SCSweetSpotsBehaviour.AQUA,
-                RL_AQUA, 22, 10, 0x387982
         );
 
         public static SweetSpot DEEPSLATE_CRAB_CLAW = new SweetSpot(

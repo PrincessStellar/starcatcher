@@ -104,6 +104,7 @@
   "starcatcher.configuration.moving_speed_multiplier" : "Global Moving Speed Multiplier",
   "starcatcher.configuration.penalty_multiplier" : "Global Penalty Multiplier",
   "starcatcher.configuration.decay_multiplier" : "Global Decay Multiplier",
+  "starcatcher.configuration.hp_multiplier" : "Global HP Multiplier",
   "starcatcher.configuration.pointer_speed_multiplier" : "Global Pointer Speed Multiplier",
   "starcatcher.configuration.hide_entries_until_found" : "Hide Guide Entries Until Found",
   "starcatcher.configuration.fish_player_messages_chance" : "Player Messages Chance To Fish",

@@ -5,6 +5,7 @@
   },
   "difficulty": {
     "decay": 0.0,
+    "hp": 100,
     "missPenalty": 0,
     "modifiers": [
       {
