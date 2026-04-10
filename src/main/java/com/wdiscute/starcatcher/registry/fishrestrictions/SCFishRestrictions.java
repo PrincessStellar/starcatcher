@@ -56,6 +56,9 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> RARITY_COUNT_RESTRICTION =
             registerFishRestriction("rarity_count", RarityCountRestriction::new);
 
+    DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> CHANCE_RESTRICTION =
+            registerFishRestriction("percentage_chance", ChancePercentageRestriction::new);
+
     class Extra
     {
         public static DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> TFC_HUMIDITY = null;

@@ -339,6 +339,12 @@ public record FishProperties(
             return this;
         }
 
+        public Builder withPercentageChance(float restriction)
+        {
+            this.restrictions.add(new ChancePercentageRestriction(0.05f));
+            return this;
+        }
+
         public Builder withDifficulty(Difficulty newDif)
         {
             List<Supplier<Supplier<AbstractMinigameModifier>>> old = List.copyOf(this.dif.modifiers);

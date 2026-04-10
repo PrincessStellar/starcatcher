@@ -226,7 +226,7 @@ public class FishingGuideScreen extends Screen
 
         fishCaughtCounterMap = FishingGuideAttachment.getFishesCaught(player);
 
-        for (FishProperties fp : FishProperties.getFishes(level)) if (fp.hasGuideEntry()) entries.add(fp);
+        for (FishProperties fp : FishProperties.getAllFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
         entries = sortEntries(SCConfig.SORT.get(), entries, player);
         fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
 

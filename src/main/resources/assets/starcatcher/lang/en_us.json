@@ -1188,6 +1188,7 @@
   "gui.guide.caught_limit" : "Caught Limit: ",
   "gui.guide.rarity_count.single" : "%s fishes",
   "gui.guide.rarity_count.all" : "All %s fishes",
+  "gui.guide.chance" : "%s chance",
 
   "gui.guide.hover" : "[hover]",
 

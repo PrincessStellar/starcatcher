@@ -1,7 +1,7 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "type": "secret",
+    "type": "extra",
     "item": "starcatcher:amethyst_hook"
   },
   "difficulty": {
@@ -52,6 +52,16 @@
     {
       "type": "starcatcher:caught_limit",
       "limit": 1
+    },
+    {
+      "type": "starcatcher:rarity_count",
+      "rarities": [
+        {
+          "count": 1,
+          "count_type": "total",
+          "rarity": "epic"
+        }
+      ]
     }
   ],
   "size_and_weight": {

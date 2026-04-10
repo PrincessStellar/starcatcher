@@ -56,6 +56,26 @@
     {
       "type": "starcatcher:caught_limit",
       "limit": 1
+    },
+    {
+      "type": "starcatcher:rarity_count",
+      "rarities": [
+        {
+          "count": 1,
+          "count_type": "total",
+          "rarity": "golden"
+        }
+      ]
+    },
+    {
+      "type": "starcatcher:rarity_count",
+      "rarities": [
+        {
+          "count": 5,
+          "count_type": "total",
+          "rarity": "legendary"
+        }
+      ]
     }
   ],
   "size_and_weight": {

@@ -161,6 +161,8 @@ public class FishingBobEntity extends Projectile
     public void reel()
     {
         //server only
+        //todo rework this to use a map of <FishProperties, int> for chance calculation without populating a huge list lol
+        //todo probably doesnt matter performance wise though since its the same fp reference
         List<FishProperties> available = new ArrayList<>();
 
         modifiers.forEach(AbstractCatchModifier::onReelStart);
