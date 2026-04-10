@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
     "D": {
       "item": "minecraft:diamond"
-    },
-    "G": {
-      "item": "minecraft:glass"
     },
     "H": {
       "item": "starcatcher:hook"
@@ -14,11 +14,11 @@
   },
   "pattern": [
     "D  ",
-    "GHG",
-    " G "
+    "AHA",
+    " A "
   ],
   "result": {
     "count": 1,
-    "id": "starcatcher:crystal_hook"
+    "id": "starcatcher:amethyst_hook"
   }
 }

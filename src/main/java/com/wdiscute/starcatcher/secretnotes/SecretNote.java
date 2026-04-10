@@ -45,7 +45,7 @@ public class SecretNote extends Item
     public enum Note implements StringRepresentable
     {
         SAMPLE_NOTE("sample_note", "message_overworld"),
-        CRYSTAL_HOOK("crystal_hook", "message_overworld"),
+        AMETHYST_HOOK("amethyst_hook", "message_overworld"),
         ARNWULF_1("lava_proof_bottle_1", "message_overworld"),
         ARNWULF_2("lava_proof_bottle_2", "message_overworld"),
         HOPEFUL_NOTE("hopeful_note", "message_overworld"),

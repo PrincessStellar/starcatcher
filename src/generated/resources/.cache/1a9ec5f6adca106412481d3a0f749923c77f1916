@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-10T10:36:37.5112329	FishingProperties
+// 1.21.1	2026-04-10T10:46:11.0450991	FishingProperties
 d906f7c35e4bad70f029d9721253c319610c746f data/alexscaves/starcatcher/fish/lanternfish.json
 22429242b921538f1922252a4710b2f25c89381a data/alexscaves/starcatcher/fish/radgill.json
 6a422b39f42820ae64755a233f566be285632a2d data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -242,8 +242,8 @@ ec3ddfbff523f1aa9b89f495de3df1c93cddb259 data/starcatcher/starcatcher/fish/pink_
 086e9a657dd2ccc809abd2def987c6ef19f049d8 data/starcatcher/starcatcher/fish/scorchfish.json
 c0bc632755f18c32367de4bc5fce66b18aae4306 data/starcatcher/starcatcher/fish/sculkfish.json
 aa29d1b868e9b9727a38eae89319b8142f9cf300 data/starcatcher/starcatcher/fish/sea_bass.json
+63b1e641e56fedee0c8e0ac05bcfdc28f7fd2535 data/starcatcher/starcatcher/fish/secret_amethyst_hook.json
 232f7e30b09c7f4091c13f61ffb23127f5ba4ba6 data/starcatcher/starcatcher/fish/secret_burning_bottle.json
-ffbf86273000689c31d518bee8ed92a247272d27 data/starcatcher/starcatcher/fish/secret_crystal_hook.json
 dbe85d2af92eb5d4bc60c179667dab77c13cd5b0 data/starcatcher/starcatcher/fish/secret_drifting_waterlogged_bottle.json
 520105ef9bfac891ec8d41656e19be704ba92cbd data/starcatcher/starcatcher/fish/secret_hopeful_bottle.json
 d9e0abac9e21f6b0a913ced601b25a641920d95d data/starcatcher/starcatcher/fish/secret_hopeless_bottle.json

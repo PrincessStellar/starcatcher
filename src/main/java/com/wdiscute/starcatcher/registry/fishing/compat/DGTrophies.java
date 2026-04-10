@@ -128,7 +128,7 @@ public class DGTrophies
                 .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), "200"))
         );
 
-        register(overworldDeepslateFish(SCItems.CRYSTAL_HOOK)
+        register(overworldDeepslateFish(SCItems.AMETHYST_HOOK)
                 .withMaxLimit(1)
                 .withDifficulty(FishProperties.Difficulty.TRASH)
                 .withHasGuideEntry(false)

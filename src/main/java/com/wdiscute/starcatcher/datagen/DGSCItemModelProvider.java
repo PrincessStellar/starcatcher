@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
@@ -78,7 +77,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
 
         //hooks
         simpleItem(HOOK);
-        simpleItem(CRYSTAL_HOOK);
+        simpleItem(AMETHYST_HOOK);
         simpleItem(SHINY_HOOK);
         simpleItem(GOLD_HOOK);
         simpleItem(MOSSY_HOOK);

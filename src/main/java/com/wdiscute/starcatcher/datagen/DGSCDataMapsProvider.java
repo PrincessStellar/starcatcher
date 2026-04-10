@@ -123,7 +123,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         minigameModifiers.add(SCItems.LEAF_BOBBER, List.of(SCMinigameModifiers.ADD_LEAF_MODIFIER.getId()), false);
 
         //catch modifiers
-        catchModifiers.add(SCItems.CRYSTAL_HOOK, List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
+        catchModifiers.add(SCItems.AMETHYST_HOOK, List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
         catchModifiers.add(SCItems.GOLD_HOOK, List.of(SCCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE.getFirst()), false);
         catchModifiers.add(SCItems.STONE_HOOK, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.SPLIT_HOOK, List.of(SCCatchModifiers.EXTRA_ITEM.getFirst()), false);
