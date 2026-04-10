@@ -11,9 +11,6 @@ public class SCConfig
 
     public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER_CLIENT
             .push("minigame_window")
-            .comment("ALL THESE SETTINGS CAN ALSO BE ACCESSED")
-            .comment("THROUGH THE IN-GAME SETTING TAB INSIDE")
-            .comment("THE STARCATCHER'S GUIDE")
             .translation("starcatcher.configuration.minigame_scale")
             .defineInRange("minigame_scale", 1.5, 0.1, 6);
 
@@ -25,11 +22,15 @@ public class SCConfig
             .translation("starcatcher.configuration.y_offset")
             .defineInRange("minigame_y_offset", 0, -10000, 10000);
 
-
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .pop()
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
+
+    public static final ModConfigSpec.BooleanValue REMOVE_NOTIFICATION_ON_HOVER = BUILDER_CLIENT
+            .translation("starcatcher.configuration.remove_notif_on_hover")
+            .comment("If enabled the new fish notifications will be removed when hovering on the index, instead of only when visiting the specific fish entry")
+            .define("remove_notif_on_hover", true);
 
     public static final ModConfigSpec.EnumValue<FishProperties.SizeAndWeight.Units> UNIT = BUILDER_CLIENT
             .translation("starcatcher.configuration.units")

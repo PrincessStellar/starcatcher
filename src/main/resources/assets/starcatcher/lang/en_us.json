@@ -86,13 +86,13 @@
 
   "starcatcher.configuration.minigame_scale" : "Minigame Scale",
   "starcatcher.configuration.hit_delay" : "Minigame Hit Delay",
-  "starcatcher.configuration.units" : "Minigame Units",
+  "starcatcher.configuration.units" : "Measurement Units",
   "starcatcher.configuration.sort" : "Guide Sort order",
   "starcatcher.configuration.enable_villager_sound" : "Minigame Villager Sound",
   "starcatcher.configuration.enable_hit_sound" : "Minigame Hit Sound",
   "starcatcher.configuration.enable_miss_sound" : "Minigame Miss Sound",
   "starcatcher.configuration.vanilla_partial_ticks" : "Vanilla Partial Ticks",
-
+  "starcatcher.configuration.remove_notif_on_hover" : "Remove New Fish Notif on Hover",
 
   "starcatcher.configuration.give_guide" : "Give Guide",
   "starcatcher.configuration.show_exclamation_mark_particle" : "Show [!] particle on bite",
@@ -1083,7 +1083,12 @@
   "gui.guide.page.12.left.7" : "and are sure to put",
   "gui.guide.page.12.left.8" : "others to shame for their",
   "gui.guide.page.12.left.9" : "lack of trophyfulness.",
+  "gui.guide.page.12.left.10" : "",
+  "gui.guide.page.12.left.11" : "  Trophies will instantly",
+  "gui.guide.page.12.left.12" : "bite your hook once all",
+  "gui.guide.page.12.left.13" : "the conditions are met.",
 
+  "gui.guide.page.12.right.title" : "Secrets",
   "gui.guide.page.12.right.0" : "",
   "gui.guide.page.12.right.1" : "",
   "gui.guide.page.12.right.2" : "",
@@ -1093,6 +1098,10 @@
   "gui.guide.page.12.right.6" : "stories you might find",
   "gui.guide.page.12.right.7" : "encapsulated in bottles",
   "gui.guide.page.12.right.8" : "adrift the waves.",
+  "gui.guide.page.12.right.9" : "",
+  "gui.guide.page.12.right.10" : "  Keep an eye out for",
+  "gui.guide.page.12.right.11" : "hints of treasures left",
+  "gui.guide.page.12.right.12" : "behind by other anglers!",
 
   "gui.guide.trophy.all.total" : "Total fishes: ",
   "gui.guide.trophy.all.unique" : "Unique fishes: ",

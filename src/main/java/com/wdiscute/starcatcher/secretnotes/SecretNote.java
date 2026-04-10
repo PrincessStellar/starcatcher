@@ -39,7 +39,7 @@ public class SecretNote extends Item
     @OnlyIn(Dist.CLIENT)
     private void openNoteScreen(Note note)
     {
-        Minecraft.getInstance().setScreen(new SecretNoteScreen(note));
+        Minecraft.getInstance().setScreen(new SecretNoteScreen(note, null));
     }
 
     public enum Note implements StringRepresentable
