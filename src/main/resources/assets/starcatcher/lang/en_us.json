@@ -1190,6 +1190,7 @@
   "gui.guide.bait_required" : "The correct bait is required for this catch!",
   "gui.guide.bait_chance_added" : "Chance added by bait:",
   "gui.guide.caught_limit" : "Caught Limit: ",
+  "gui.guide.rarity_count.caught" : "Caught: ",
   "gui.guide.rarity_count.single" : "%s fishes",
   "gui.guide.rarity_count.all" : "All %s fishes",
   "gui.guide.chance" : "%s chance",

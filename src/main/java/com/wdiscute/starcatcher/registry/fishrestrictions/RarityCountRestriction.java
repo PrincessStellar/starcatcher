@@ -9,7 +9,6 @@ import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.registry.FishProperties;
-import net.dries007.tfc.common.entities.ai.prey.PestAi;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -142,7 +141,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE).fishesCaught;
         var registry = FishProperties.getRegistry(level);
-        List<FishProperties> allFishes = FishProperties.getAllFPs(level);
+        List<FishProperties> allFishes = FishProperties.getFishes(level);
         Map<FishProperties.Rarity, Pair<Integer, Integer>> map = new HashMap<>();
 
         //populate default map with all rarities and [0, 0]
@@ -263,7 +262,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
         }
         else
         {
-            return Component.translatable("gui.guide.hover").withStyle(Style.EMPTY.withColor(color));
+            return Component.translatable("gui.guide.rarity_count.caught").append(Component.translatable("gui.guide.hover").withStyle(Style.EMPTY.withColor(color)));
         }
     }
 

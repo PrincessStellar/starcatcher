@@ -41,7 +41,7 @@ public class StarcatcherShowInGuideEmiWidget extends Widget
     @Override
     public Bounds getBounds()
     {
-        return new Bounds(0, 0, 100, 20);
+        return new Bounds(0, 0, 200, 20);
     }
 
     @Override

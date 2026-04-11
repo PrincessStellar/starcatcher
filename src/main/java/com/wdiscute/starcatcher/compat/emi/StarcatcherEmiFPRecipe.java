@@ -1,10 +1,9 @@
 package com.wdiscute.starcatcher.compat.emi;
 
-import com.wdiscute.sellingbin.emi.HoverTextWidget;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -19,7 +18,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -29,19 +27,24 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
 {
 
     private final ResourceLocation id;
-    private final List<EmiStack> output;
+    private final EmiIngredient output;
     private final EmiIngredient rod = EmiIngredient.of(Ingredient.of(SCItems.ROD));
     private final ItemStack is;
+    private final EmiIngredient treasure;
     private final FishProperties fp;
 
     List<Component> restrictions = new ArrayList<>();
 
     public StarcatcherEmiFPRecipe(ResourceLocation id, FishProperties fp)
     {
-        this.output = List.of(EmiStack.of(fp.catchInfo().fish().value()));
         this.id = id;
         this.is = new ItemStack(fp.catchInfo().fish());
+        this.treasure = EmiIngredient.of(Ingredient.of(fp.catchInfo().treasureIs()));
         this.fp = fp;
+        this.output = EmiIngredient.of(List.of(
+                EmiIngredient.of(Ingredient.of(fp.catchInfo().fish().value())),
+                treasure
+        ));
 
         //Aurora
         restrictions.add(fp.getDisplayName());
@@ -86,13 +89,13 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
     @Override
     public List<EmiStack> getOutputs()
     {
-        return output;
+        return output.getEmiStacks();
     }
 
     @Override
     public int getDisplayWidth()
     {
-        return 107;
+        return 98 + (treasure.isEmpty() ? 0 : 20) + (!fp.catchInfo().alwaysSpawnEntity() ? 0 : 8);
     }
 
     @Override
@@ -111,15 +114,18 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
 
         widgets.addSlot(EmiIngredient.of(Ingredient.of(is)), 53, 2).recipeContext(this);
 
-        widgets.add(new StarcatcherShowInGuideEmiWidget(76, 1, fp, this));
+        if (!fp.skipMinigame() && !treasure.isEmpty())
+            widgets.addSlot(treasure, 73, 2).recipeContext(this);
+
+        widgets.add(new StarcatcherShowInGuideEmiWidget(73 + (treasure.isEmpty() ? 0 : 20), 1, fp, this));
 
         if (fp.catchInfo().alwaysSpawnEntity())
         {
             List<Component> components = List.of(Component.translatable("emi.starcatcher.entity_entry", fp.getDisplayName()));
 
-            widgets.addText(Component.literal("[!]").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)), 97, 13, 0x000000, false);
+            widgets.addText(Component.literal("[!]").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)), 95 + (treasure.isEmpty() ? 0 : 20), 13, 0x000000, false);
             widgets.addTooltip(components.stream().map(Component::getVisualOrderText).map(ClientTooltipComponent::create).toList(),
-                    97, 13, 9,9);
+                    95 + (treasure.isEmpty() ? 0 : 20), 13, 9, 9);
         }
 
     }
