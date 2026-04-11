@@ -60,7 +60,7 @@ public class DataGenerators
                 List.of(new LootTableProvider.SubProviderEntry(DGSCBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
         //recipes
-        gen.addProvider(event.includeServer(), new DGRecipeProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer(), new DGSCRecipeProvider(output, lookupProvider));
 
         //data maps
         gen.addProvider(event.includeServer(), new DGSCDataMapsProvider(output, lookupProvider));

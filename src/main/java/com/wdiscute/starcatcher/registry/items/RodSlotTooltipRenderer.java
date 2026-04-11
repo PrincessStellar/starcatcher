@@ -34,10 +34,7 @@ public class RodSlotTooltipRenderer implements ClientTooltipComponent
     ItemStack bait;
     ItemStack hook;
 
-    List<Component> components;
-
     int width;
-
 
     public StarcatcherFishingRodItem.RodSlotTooltip tooltip;
 
@@ -48,47 +45,12 @@ public class RodSlotTooltipRenderer implements ClientTooltipComponent
         bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
         bait = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         hook = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
-
-        components = new ArrayList<>();
-
-        if(!Screen.hasShiftDown()) return;
-
-        List<ResourceLocation> modifiers = new ArrayList<>();
-
-        SCDataComponents.getSlotsInRod(rod).forEach(o -> modifiers.addAll(SCCatchModifiers.getCatchModifiersRLs(o)));
-        SCDataComponents.getSlotsInRod(rod).forEach(o -> modifiers.addAll(SCMinigameModifiers.getMinigameModifiersRLs(o)));
-
-        int maxWidth = 0;
-
-        if (!modifiers.isEmpty())
-        {
-            //components.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
-
-            for (ResourceLocation rl : modifiers)
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    if (I18n.exists("tooltip.modifier." + rl.toLanguageKey() + "." + i))
-                    {
-                        MutableComponent start = i == 0 ? Component.literal("- ") : Component.literal("");
-                        MutableComponent comp = start.append(Component.translatable("tooltip.modifier." + rl.toLanguageKey() + "." + i));
-                        components.add(comp.withStyle(ChatFormatting.DARK_GRAY));
-                        maxWidth = Math.max(Minecraft.getInstance().font.width(comp), maxWidth);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-        }
-        width = maxWidth;
     }
 
     @Override
     public int getHeight()
     {
-        return 21 + components.size() * 10;
+        return 21;
     }
 
     @Override
@@ -118,11 +80,5 @@ public class RodSlotTooltipRenderer implements ClientTooltipComponent
             guiGraphics.blit(HOOK, x + 18 + 18 + 2, y + 1, 0, 0, 16, 16, 16, 16);
         else
             guiGraphics.renderItem(hook, x + 18 + 18 + 2, y + 1);
-
-
-        for (int i = 0; i < components.size(); i++)
-        {
-            guiGraphics.drawString(Minecraft.getInstance().font, components.get(i), x, y + 20 + (i * 10), 5592405);
-        }
     }
 }

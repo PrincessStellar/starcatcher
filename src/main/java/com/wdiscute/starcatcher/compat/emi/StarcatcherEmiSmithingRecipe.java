@@ -3,7 +3,9 @@ package com.wdiscute.starcatcher.compat.emi;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
+import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipe;
 import com.wdiscute.starcatcher.registry.SCItems;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -26,36 +28,30 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
 {
     protected final EmiIngredient template;
     protected final EmiIngredient input;
-    protected final EmiStack netheriteIngot = EmiStack.of(Items.NETHERITE_INGOT);
-    protected final boolean isNetheriteUpgrade;
+    protected final EmiIngredient base;
+    protected final EmiIngredient addition;
     protected final EmiStack output;
 
     public StarcatcherEmiSmithingRecipe(NetheriteUpgradeSmithingRecipe recipe)
     {
-        this.template = EmiIngredient.of(recipe.template);
-        this.input = EmiIngredient.of(recipe.base);
+        this.template = EmiIngredient.of(recipe.template());
+        this.input = EmiIngredient.of(recipe.base());
+        this.base = EmiIngredient.of(recipe.base());
+        this.addition = EmiIngredient.of(recipe.addition());
 
-        ItemStack stack = Arrays.stream(recipe.base.getItems()).findFirst().get().copy();
-
+        ItemStack stack = recipe.base().getItems()[0].copy();
         SCDataComponents.set(stack, SCDataComponents.NETHERITE_UPGRADE, true);
-        isNetheriteUpgrade = true;
 
         this.output = EmiStack.of(stack);
     }
 
-    public StarcatcherEmiSmithingRecipe(Item item)
+    public StarcatcherEmiSmithingRecipe(FishingRodSkinSmithingRecipe recipe)
     {
-        this.template = EmiIngredient.of(Ingredient.of(item));
-        this.input = EmiIngredient.of(Ingredient.of(SCTags.RODS));
-
-        ItemStack is = SCItems.ROD.get().getDefaultInstance();
-
-        ResourceLocation wadd = SCDataComponents.get(item.getDefaultInstance(), SCDataComponents.TACKLE_SKIN);
-
-        SCDataComponents.set(is, SCDataComponents.TACKLE_SKIN, wadd);
-        isNetheriteUpgrade = false;
-
-        this.output = EmiStack.of(is);
+        this.template = EmiIngredient.of(recipe.template);
+        this.input = EmiIngredient.of(recipe.base);
+        this.base = EmiIngredient.of(recipe.base);
+        this.addition = EmiIngredient.of(recipe.addition);
+        this.output = EmiStack.of(recipe.result.copy());
     }
 
     @Override
@@ -100,7 +96,7 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
         widgets.addTexture(EmiTexture.EMPTY_ARROW, 62, 1);
         widgets.addSlot(template, 0, 0);
         widgets.addSlot(input, 18, 0);
-        if (isNetheriteUpgrade) widgets.addSlot(netheriteIngot, 36, 0);
+        widgets.addSlot(addition, 36, 0);
         widgets.addSlot(output, 94, 0).recipeContext(this);
     }
 }

@@ -18,21 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
+public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient base, Ingredient addition) implements SmithingRecipe
 {
-
-    public final Ingredient template;
-    public final Ingredient base;
-    public final Ingredient addition;
-
-    public NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient base, Ingredient addition)
-    {
-        this.template = template;
-        this.base = base;
-        this.addition = addition;
-    }
-
-
     public boolean matches(SmithingRecipeInput input, Level level)
     {
         return this.template.test(input.template())
@@ -43,16 +30,18 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
 
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
     {
-        ItemStack newRod = input.base().copy();
+        ItemStack resultRod = input.base().copy();
 
-        //assemble netherite upgraded rod
-        List<ResourceLocation> catchModifiers = SCDataComponents.getOrDefault(newRod, SCDataComponents.CATCH_MODIFIERS, new ArrayList<>());
+        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(base.getItems()[0], SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataComponents.getOrDefault(template.getItems()[0], SCDataComponents.MINIGAME_MODIFIERS, List.of()));
 
-        catchModifiers.add(SCCatchModifiers.SURVIVES_LAVA.getFirst());
+        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(base.getItems()[0], SCDataComponents.CATCH_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataComponents.getOrDefault(template.getItems()[0], SCDataComponents.CATCH_MODIFIERS, List.of()));
 
-        SCDataComponents.set(newRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
-        SCDataComponents.set(newRod, SCDataComponents.NETHERITE_UPGRADE, true);
-        return newRod;
+        SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.NETHERITE_UPGRADE, true);
+        return resultRod;
     }
 
     @Override
@@ -108,7 +97,7 @@ public class NetheriteUpgradeSmithingRecipe implements SmithingRecipe
         ).apply(instance, NetheriteUpgradeSmithingRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, NetheriteUpgradeSmithingRecipe> STREAM_CODEC = StreamCodec.of(
-                NetheriteUpgradeSmithingRecipe.Serializer::toNetwork, NetheriteUpgradeSmithingRecipe.Serializer::fromNetwork
+                Serializer::toNetwork, Serializer::fromNetwork
         );
 
         @Override

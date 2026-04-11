@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -130,9 +131,17 @@ public interface SCCatchModifiers
 
     static List<ResourceLocation> getCatchModifiersRLs(ItemStack itemStack)
     {
-        List<ResourceLocation> resourceLocations = SCDataComponents.get(itemStack, SCDataComponents.CATCH_MODIFIERS);
-        if (resourceLocations == null) return List.of();
-        return resourceLocations;
+        List<ResourceLocation> rls = SCDataComponents.getOrDefault(itemStack, SCDataComponents.MINIGAME_MODIFIERS, new ArrayList<>());
+
+        var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
+        var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        var bobber = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
+
+        rls.addAll(SCDataComponents.getOrDefault(hook, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        rls.addAll(SCDataComponents.getOrDefault(bait, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        rls.addAll(SCDataComponents.getOrDefault(bobber, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+
+        return rls;
     }
 }
 

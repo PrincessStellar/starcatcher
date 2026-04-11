@@ -8,10 +8,13 @@ import com.wdiscute.starcatcher.registry.SCRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class FishingRodSkinSmithingRecipe implements SmithingRecipe
@@ -30,18 +33,25 @@ public class FishingRodSkinSmithingRecipe implements SmithingRecipe
         this.result = result;
     }
 
-
     public boolean matches(SmithingRecipeInput input, Level level)
     {
-        return this.template.test(input.template())
-                && this.base.test(input.base())
-                && this.addition.test(input.addition())
-                && !input.base().is(result.getItem());
+        return this.template.test(input.template()) && this.base.test(input.base()) && this.addition.test(input.addition());
     }
 
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
     {
-        return input.base().transmuteCopy(result.getItem());
+        ItemStack resultRod = input.base().transmuteCopy(this.result.getItem(), this.result.getCount());
+        resultRod.applyComponents(this.result.getComponentsPatch());
+
+        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+
+        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+
+        SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        return resultRod;
     }
 
     @Override
@@ -65,9 +75,7 @@ public class FishingRodSkinSmithingRecipe implements SmithingRecipe
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
-        ItemStack itemstack = new ItemStack(SCItems.ROD.get());
-        SCDataComponents.set(itemstack, SCDataComponents.NETHERITE_UPGRADE, true);
-        return itemstack;
+        return result;
     }
 
     @Override

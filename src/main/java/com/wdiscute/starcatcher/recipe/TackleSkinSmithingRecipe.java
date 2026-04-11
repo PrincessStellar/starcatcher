@@ -15,28 +15,15 @@ import net.minecraft.world.level.Level;
 
 import java.util.stream.Stream;
 
-public class TackleSkinSmithingRecipe implements SmithingRecipe
+public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ingredient addition) implements SmithingRecipe
 {
-
-    public final Ingredient template;
-    public final Ingredient base;
-    public final Ingredient addition;
-
-    public TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ingredient addition)
-    {
-        this.template = template;
-        this.base = base;
-        this.addition = addition;
-    }
-
-
     public boolean matches(SmithingRecipeInput input, Level level)
     {
         ResourceLocation rodSkin = SCDataComponents.get(input.base(), SCDataComponents.TACKLE_SKIN);
         ResourceLocation templateSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
 
-        if(rodSkin == null) return false;
-        if(templateSkin == null) return false;
+        if (rodSkin == null) return false;
+        if (templateSkin == null) return false;
         if (rodSkin.equals(templateSkin)) return false;
 
         return this.template.test(input.template())
@@ -104,7 +91,7 @@ public class TackleSkinSmithingRecipe implements SmithingRecipe
         ).apply(instance, TackleSkinSmithingRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, TackleSkinSmithingRecipe> STREAM_CODEC = StreamCodec.of(
-                TackleSkinSmithingRecipe.Serializer::toNetwork, TackleSkinSmithingRecipe.Serializer::fromNetwork
+                Serializer::toNetwork, Serializer::fromNetwork
         );
 
         @Override

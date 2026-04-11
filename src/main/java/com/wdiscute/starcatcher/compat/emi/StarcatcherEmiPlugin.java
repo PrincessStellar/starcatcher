@@ -2,6 +2,8 @@ package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipe;
+import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
@@ -19,7 +21,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.*;
 
 import java.util.List;
 
@@ -64,12 +66,36 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 ),
                 SellingBin.rl("/pearls")));
 
+        registry.addRecipe(new EmiInfoRecipe(List.of(
+                EmiIngredient.of(Ingredient.of(SCTags.HOOKS)),
+                EmiIngredient.of(Ingredient.of(SCTags.BOBBERS)),
+                EmiIngredient.of(Ingredient.of(SCTags.BAITS))),
+                List.of(
+                        Component.translatable("emi.info.starcatcher.attachments.0"),
+                        Component.translatable("emi.info.starcatcher.attachments.1")
+                ),
+                SellingBin.rl("/attachments")));
+
         Registry<FishProperties> fps = FishProperties.getRegistry(Minecraft.getInstance().level);
 
         for (FishProperties fp : fps)
             registry.addRecipe(new StarcatcherEmiFPRecipe(fps.getKey(fp), fp));
 
-        //todo add netherrite recipe
-        //todo add template recipes
+
+        //add all starcatcher:netherite_upgraded
+        List<RecipeHolder<SmithingRecipe>> smithingRecipes = registry.getRecipeManager().getAllRecipesFor(RecipeType.SMITHING);
+        smithingRecipes.stream()
+                .filter(o -> o.value() instanceof NetheriteUpgradeSmithingRecipe)
+                .forEach(o -> registry.addRecipe(
+                        new StarcatcherEmiSmithingRecipe(((NetheriteUpgradeSmithingRecipe) o.value()))));
+
+        //add all starcatcher:netherite_upgraded
+        smithingRecipes.stream()
+                .filter(o -> o.value() instanceof FishingRodSkinSmithingRecipe)
+                .forEach(o -> registry.addRecipe(
+                        new StarcatcherEmiSmithingRecipe(((FishingRodSkinSmithingRecipe) o.value()))));
+
+
+
     }
 }

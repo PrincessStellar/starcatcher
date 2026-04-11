@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing_transform",
+  "type": "starcatcher:fishing_rod_skin",
   "addition": {
     "item": "minecraft:slime_ball"
   },

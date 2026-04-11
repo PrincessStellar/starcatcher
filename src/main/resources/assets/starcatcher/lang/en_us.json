@@ -22,6 +22,9 @@
   "emi.info.starcatcher.pearls.0" : "Clams placed on sand will slowly create pearls.",
   "emi.info.starcatcher.pearls.1" : "Once the clam has opened up you may click on it to harvest a pearl.",
 
+  "emi.info.starcatcher.attachments.0" : "Hooks, Bobbers & Baits may be attached to your rod using a Tackle Box.",
+  "emi.info.starcatcher.attachments.1" : "They provide several different 'modifiers' which will aid you in different ways, from decreasing lure time, to difficulty reducing buffs.",
+
   "tag.starcatcher.is_beach" : "Beaches",
   "tag.starcatcher.is_birch_forest" : "Birch Forests",
   "tag.starcatcher.is_cherry_grove" : "Cherry Groves",
@@ -137,6 +140,7 @@
   "entity.starcatcher.fish" : "Starcaught Fish",
 
   "gui.starcatcher.reel_no_fish" : "There are no fishes here...",
+  "gui.starcatcher.no_hook_or_bobber" : "A fishing rod won't work without a hook and a bobber...",
 
 
   "tooltip.minecraft.fishing_rod.0": "A simple fishing rod used for catching",
@@ -284,7 +288,7 @@
   "tooltip.modifier.starcatcher.faster_handle_speed.0": "Increases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slightly_faster_handle_speed.0": "Slightly increases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slightly_slower_handle_speed.0": "Slightly decreases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slower_handle_speed.0": "decreases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slower_handle_speed.0": "Decreases the handle's rotation speed",
 
 
   "tooltip.modifier.starcatcher.vanilla_loot.0": "Restores vanilla fishing loot",

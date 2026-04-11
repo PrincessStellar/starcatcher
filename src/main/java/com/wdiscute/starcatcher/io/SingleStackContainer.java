@@ -58,4 +58,9 @@ public record SingleStackContainer(@Deprecated ItemStack stackDoNotUse)
     public static SingleStackContainer empty(){return new SingleStackContainer(ItemStack.EMPTY.copy());}
 
     public static final List<SingleStackContainer> EMPTY_LIST = List.of();
+
+    public boolean isEmpty()
+    {
+        return stack().isEmpty();
+    }
 }

@@ -52,6 +52,13 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
         if (!is.is(SCTags.RODS))
             return InteractionResultHolder.pass(is);
 
+        if(SCDataComponents.getOrDefault(is, SCDataComponents.HOOK, SingleStackContainer.empty()).stack().isEmpty()
+                || SCDataComponents.getOrDefault(is, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack().isEmpty())
+        {
+            player.displayClientMessage(Component.translatable("gui.starcatcher.no_hook_or_bobber") , true);
+            return InteractionResultHolder.fail(is);
+        }
+
         FishingBobAttachment fishingBobAttachment = SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB.get());
         if (player.isCrouching() && fishingBobAttachment.isEmpty() && SCConfig.ENABLE_ROD_MENU.get())
         {
