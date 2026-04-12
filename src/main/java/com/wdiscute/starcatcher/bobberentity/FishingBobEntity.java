@@ -229,11 +229,11 @@ public class FishingBobEntity extends Projectile
         else
         {
             //send fishing minigame payload to client with FP
-            FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             for (AbstractCatchModifier modifier : modifiers)
             {
                 fpToFish = modifier.overrideFpToClient(fpToFish);
             }
+            FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
     }
