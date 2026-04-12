@@ -1,10 +1,11 @@
 package com.wdiscute.starcatcher.datagen;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipeBuilder;
-import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipeBuilder;
+import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipeBuilder;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -441,6 +442,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_pearl", has(SCItems.PEARL_SMITHING_TEMPLATE))
                 .save(output);
 
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.PEARL_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(SCItems.PEARL),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.PEARL_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("pearl_tackle")
+                );
+
+        //kimbe
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KIMBE_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.KIMBE_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -451,6 +463,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_kimbe", has(SCItems.KIMBE_SMITHING_TEMPLATE))
                 .save(output);
 
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.KIMBE_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(SCItems.WILLISH),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.KIMBE_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("kimbe_tackle")
+                );
+
+        //colorful
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.COLORFUL_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.COLORFUL_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -461,6 +484,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_colorful", has(SCItems.COLORFUL_SMITHING_TEMPLATE))
                 .save(output);
 
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.COLORFUL_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Tags.Items.DYES),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.COLORFUL_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("colorful_tackle")
+                );
+
+        //clear
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLEAR_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.CLEAR_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -471,6 +505,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_clean", has(SCItems.CLEAR_SMITHING_TEMPLATE))
                 .save(output);
 
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.CLEAR_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.GLASS),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.CLEAR_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("clear_tackle")
+                );
+
+        //frog
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FROG_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.FROG_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -481,6 +526,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_template_frog", has(SCItems.FROG_SMITHING_TEMPLATE))
                 .save(output);
 
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.FROG_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.TADPOLE_BUCKET),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.FROG_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("frog_tackle")
+                );
+
+        //king
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.KING_SMITHING_TEMPLATE, 2)
                 .define('T', SCItems.KING_SMITHING_TEMPLATE)
                 .define('D', Items.DIAMOND)
@@ -490,6 +546,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .pattern("DDD")
                 .unlockedBy("has_template_king", has(SCItems.KING_SMITHING_TEMPLATE))
                 .save(output);
+
+        TackleSkinSmithingRecipeBuilder.smithing(
+                        Ingredient.of(SCItems.KING_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.GOLD_INGOT),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_template_humble", has(SCItems.KING_SMITHING_TEMPLATE))
+                .save(output, Starcatcher.rl("king_tackle")
+                );
+
 
         //rod skins
         //naturalist
@@ -846,6 +913,9 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .requires(Items.FEATHER)
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output);
+
+
+
 
 
     }

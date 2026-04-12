@@ -13,19 +13,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ingredient addition) implements SmithingRecipe
 {
     public boolean matches(SmithingRecipeInput input, Level level)
     {
-        ResourceLocation rodSkin = SCDataComponents.get(input.base(), SCDataComponents.TACKLE_SKIN);
-        ResourceLocation templateSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
-
-        if (rodSkin == null) return false;
-        if (templateSkin == null) return false;
-        if (rodSkin.equals(templateSkin)) return false;
-
         return this.template.test(input.template())
                 && this.base.test(input.base())
                 && this.addition.test(input.addition());
@@ -33,9 +28,23 @@ public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ing
 
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
     {
-        ItemStack newRod = input.base().copy();
-        SCDataComponents.set(newRod, SCDataComponents.TACKLE_SKIN, SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN));
-        return newRod;
+        ItemStack resultRod = input.base().copy();
+
+        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+
+        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+
+        ResourceLocation tackleSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
+
+        if (tackleSkin != null)
+            SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
+
+        SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.NETHERITE_UPGRADE, true);
+        return resultRod;
     }
 
     @Override
@@ -60,7 +69,6 @@ public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ing
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
         ItemStack itemstack = new ItemStack(SCItems.ROD.get());
-        SCDataComponents.set(itemstack, SCDataComponents.NETHERITE_UPGRADE, true);
         return itemstack;
     }
 

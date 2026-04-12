@@ -220,7 +220,7 @@ public class FishingGuideScreen extends Screen
 
         for (FishProperties fp : FishProperties.getAllFPs(level))
         {
-            if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER) > 0)
+            if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_IN_AREA) > 0)
                 fishInArea.add(fp);
         }
 

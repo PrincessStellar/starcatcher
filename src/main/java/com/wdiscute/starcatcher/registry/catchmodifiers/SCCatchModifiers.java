@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.mojang.datafixers.util.Pair;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -131,15 +131,15 @@ public interface SCCatchModifiers
 
     static List<ResourceLocation> getCatchModifiersRLs(ItemStack itemStack)
     {
-        List<ResourceLocation> rls = SCDataComponents.getOrDefault(itemStack, SCDataComponents.MINIGAME_MODIFIERS, new ArrayList<>());
+        List<ResourceLocation> rls = new ArrayList<>(SCDataComponents.getOrDefault(itemStack, SCDataComponents.CATCH_MODIFIERS, List.of()));
 
         var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
         var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         var bobber = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
 
-        rls.addAll(SCDataComponents.getOrDefault(hook, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        rls.addAll(SCDataComponents.getOrDefault(bait, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        rls.addAll(SCDataComponents.getOrDefault(bobber, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        rls.addAll(SCDataComponents.getOrDefault(hook, SCDataComponents.CATCH_MODIFIERS, List.of()));
+        rls.addAll(SCDataComponents.getOrDefault(bait, SCDataComponents.CATCH_MODIFIERS, List.of()));
+        rls.addAll(SCDataComponents.getOrDefault(bobber, SCDataComponents.CATCH_MODIFIERS, List.of()));
 
         return rls;
     }

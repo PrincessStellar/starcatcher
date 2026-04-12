@@ -85,7 +85,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public float hitDelay;
 
     public float progress = 20;
-    public int progressSmooth = 20;
+    public float progressSmooth = 20;
 
     public boolean perfectCatch = true;
     public int consecutiveHits = 0;
@@ -258,7 +258,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.scale(renderScale, renderScale, 1);
 
-        poseStack.translate( -width >> 1, -height >> 1, 0);
+        poseStack.translate(-width >> 1, -height >> 1, 0);
 
         //render modifiers background
         modifiers.forEach(modifier -> modifier.renderBackground(guiGraphics, partialTick, width, height));
@@ -301,18 +301,21 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //fishing rod
         guiGraphics.blit(TEXTURE, width / 2 - 32 - 70, height / 2 - 24 - 57, 64, 48, 192, 0, 64, 48, 256, 256);
 
-        int yoffset = progressSmooth == 0 ? 0 : (int) ((float) progressSmooth / (float) hp * 77);
+        float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
 
         //fishing line
         guiGraphics.blit(
                 TEXTURE, width / 2 - 6 - 102, height / 2 - 56 - 18,
-                16, 112 - yoffset,
-                176, (float) yoffset,
-                16, 112 - yoffset,
+                16, (int) (112 - yoffset),
+                176F, yoffset,
+                16, (int) (112 - yoffset),
                 256, 256);
 
         //item being fished
-        guiGraphics.renderItem(itemBeingFished, width / 2 - 8 - 100, height / 2 - 8 + 35 - yoffset);
+        poseStack.pushPose();
+        poseStack.translate(0, -yoffset, 0);
+        guiGraphics.renderItem(itemBeingFished, width / 2 - 8 - 100, height / 2 - 8 + 35);
+        poseStack.popPose();
 
         //render sweet spots foreground
         activeSweetSpots.forEach(sweetspot -> sweetspot.behaviour.renderForeground(guiGraphics, partialTick, width, height));
@@ -375,7 +378,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void renderKimbeMarker(GuiGraphics guiGraphics)
     {
-        if(modifiers.stream().anyMatch(AbstractMinigameModifier::skipRenderingKimbeMarker)) return;
+        if (modifiers.stream().anyMatch(AbstractMinigameModifier::skipRenderingKimbeMarker)) return;
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -464,7 +467,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
         {
-            if (SCConfig.ENABLE_VILLAGER_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
+            if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                    && !tackleSkin.skipMissSound()
+            )
                 Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
             return true;
@@ -525,7 +531,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            if(SCConfig.ENABLE_MISS_SOUND.get())
+            if (SCConfig.ENABLE_MISS_SOUND.get())
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
             progress -= penalty;
         }
@@ -600,8 +606,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         tickCount++;
 
-        progressSmooth += (int) Math.signum(progress - progressSmooth);
-        progressSmooth += (int) Math.signum(progress - progressSmooth);
+        progressSmooth += ((progress - progressSmooth) / 6);
 
         treasureProgressSmooth += (int) Math.signum(treasureProgress - treasureProgressSmooth);
 
@@ -615,7 +620,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
             if (progressSmooth < 0)
             {
-                if (SCConfig.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                        && !tackleSkin.skipMissSound()
+                )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
                 this.onClose();
             }
@@ -625,7 +633,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
 
-                if (SCConfig.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                        && !tackleSkin.skipSuccessSound()
+                )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
 
                 PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));

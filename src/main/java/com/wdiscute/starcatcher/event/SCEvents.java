@@ -87,6 +87,13 @@ public class SCEvents
             SCDataComponents.set(itemStack, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
         }
 
+        ResourceLocation tackleSkin = SCDataMaps.getOrDefault(itemStack, SCDataMaps.TACKLE_SKIN, null);
+
+        if (tackleSkin != null && SCDataComponents.get(itemStack, SCDataComponents.TACKLE_SKIN) == null)
+        {
+            SCDataComponents.set(itemStack, SCDataComponents.TACKLE_SKIN, tackleSkin);
+        }
+
     }
 
 

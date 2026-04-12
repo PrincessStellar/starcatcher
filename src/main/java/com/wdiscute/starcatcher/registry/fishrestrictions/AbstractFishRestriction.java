@@ -92,6 +92,11 @@ public abstract class AbstractFishRestriction
         GUIDE_FISHES_HOVER,
         FISH_ENTITY,
         EMI,
-        OTHER
+        OTHER;
+
+        public boolean isGuide()
+        {
+            return this == GUIDE_ENTRY || this == GUIDE_FISHES_HOVER || this == GUIDE_FISHES_IN_AREA;
+        }
     }
 }

@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -36,10 +36,6 @@ public interface SCMinigameModifiers
     //end fishes
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> TELEPORT =
             registerMinigameModifier("teleport", TeleportModifier::new);
-
-    //base modifier
-    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> LOW_CHANCE_TREASURE_SPAWN =
-            registerMinigameModifier("low_chance_treasure_spawn", LowChanceTreasureSpawnModifier::new);
 
     //shiny hook
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> SPAWN_TREASURE_ON_THREE_HITS =
@@ -99,8 +95,14 @@ public interface SCMinigameModifiers
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> SLOWER_POINTER_SPEED =
             registerMinigameModifier("slower_handle_speed", () -> new ModifyBasePointerSpeedModifier(0.5f));
 
-    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> ADD_LEAF_MODIFIER =
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> ADD_LEAVES =
             registerMinigameModifier("add_leaves_spots", () -> new AddLeavesSweetspotsModifier(0.025f));
+
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> BOUNCE_BACK =
+            registerMinigameModifier("bounce_back", BounceBackModifier::new);
+
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> NEVER_LOSE =
+            registerMinigameModifier("never_lose", NeverLoseModifier::new);
 
     static DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> registerMinigameModifier(String name, Supplier<AbstractMinigameModifier> sup)
     {
@@ -123,12 +125,10 @@ public interface SCMinigameModifiers
         if (main.is(SCTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(main));
-            SCDataComponents.getSlotsInRod(main).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
         else if (player.getOffhandItem().is(SCTags.RODS))
         {
             rls.addAll(getMinigameModifiersRLs(off));
-            SCDataComponents.getSlotsInRod(off).forEach(o -> rls.addAll(getMinigameModifiersRLs(o)));
         }
 
         //armor
@@ -155,7 +155,7 @@ public interface SCMinigameModifiers
 
     static List<ResourceLocation> getMinigameModifiersRLs(ItemStack itemStack)
     {
-        List<ResourceLocation> rls = SCDataComponents.getOrDefault(itemStack, SCDataComponents.MINIGAME_MODIFIERS, new ArrayList<>());
+        List<ResourceLocation> rls = new ArrayList<>(SCDataComponents.getOrDefault(itemStack, SCDataComponents.MINIGAME_MODIFIERS, new ArrayList<>()));
 
         var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
         var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();

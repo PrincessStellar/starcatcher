@@ -100,7 +100,7 @@ public class WeatherRestriction extends AbstractFishRestriction
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         //fishes in area for guidebook ignores this restriction
-        if (context.equals(Context.GUIDE_FISHES_IN_AREA) || weather.isCorrect.test(level))
+        if (context.equals(Context.GUIDE_FISHES_IN_AREA))
             return 0;
         else
             return -9999;

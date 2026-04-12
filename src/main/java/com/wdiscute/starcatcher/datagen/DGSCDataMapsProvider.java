@@ -40,6 +40,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         var catchModifiers = this.builder(SCDataMaps.CATCH_MODIFIERS);
         var minigameModifiers = this.builder(SCDataMaps.MINIGAME_MODIFIERS);
+        var tackleSkin = this.builder(SCDataMaps.TACKLE_SKIN);
 
         //ground
         aquarium.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -66,7 +67,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //selling sellable datagen
         //shouldn't be run as the JSONs are manually moved to a
         //built-in datapack instead of hard coded into the mod's resources
-        if(false)
+        if (false)
         {
             //selling sellable currencies
             currencies.add(Items.EMERALD.builtInRegistryHolder(), 100, false);
@@ -120,7 +121,9 @@ public class DGSCDataMapsProvider extends DataMapProvider
         minigameModifiers.add(SCItems.EXPOSED_COPPER_HOOK, List.of(SCMinigameModifiers.SLIGHTLY_FASTER_POINTER_SPEED.getId()), false);
         minigameModifiers.add(SCItems.WEATHERED_COPPER_HOOK, List.of(SCMinigameModifiers.SLIGHTLY_SLOWER_POINTER_SPEED.getId()), false);
         minigameModifiers.add(SCItems.OXIDISED_COPPER_HOOK, List.of(SCMinigameModifiers.SLOWER_POINTER_SPEED.getId()), false);
-        minigameModifiers.add(SCItems.LEAF_BOBBER, List.of(SCMinigameModifiers.ADD_LEAF_MODIFIER.getId()), false);
+        minigameModifiers.add(SCItems.LEAF_BOBBER, List.of(SCMinigameModifiers.ADD_LEAVES.getId()), false);
+        minigameModifiers.add(SCItems.SLIMEY_BOBBER, List.of(SCMinigameModifiers.BOUNCE_BACK.getId()), false);
+        minigameModifiers.add(SCItems.DEV_WORM, List.of(SCMinigameModifiers.NEVER_LOSE.getId()), false);
 
         //catch modifiers
         catchModifiers.add(SCItems.AMETHYST_HOOK, List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
@@ -129,6 +132,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         catchModifiers.add(SCItems.SPLIT_HOOK, List.of(SCCatchModifiers.EXTRA_ITEM.getFirst()), false);
         catchModifiers.add(SCItems.VANILLA_BOBBER, List.of(SCCatchModifiers.VANILLA_LOOT.getFirst()), false);
         catchModifiers.add(SCItems.VANILLA_HOOK, List.of(SCCatchModifiers.SKIP_MINIGAME_IF_VANILLA_LOOT.getFirst()), false);
+        catchModifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
 
         catchModifiers.add(SCItems.WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.FISH_ENTITY.getFirst()), false);
@@ -143,6 +147,18 @@ public class DGSCDataMapsProvider extends DataMapProvider
         catchModifiers.add(SCItems.LEGENDARY_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.METEOROLOGICAL_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.IGNORE_DAYTIME_AND_WEATHER_RESTRICTIONS.getFirst()), false);
 
+        catchModifiers.add(SCItems.DEV_WORM, List.of(
+                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
+                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
+                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
+                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
+                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst()), false);
+
+        //tackle skins
+
+
 
     }
+
+
 }

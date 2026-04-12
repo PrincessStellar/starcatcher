@@ -47,6 +47,18 @@ public class KingTackleSkin extends AbstractTackleSkin
     }
 
     @Override
+    public boolean skipMissSound()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean skipSuccessSound()
+    {
+        return true;
+    }
+
+    @Override
     public void onMissed(Player player)
     {
         super.onMissed(player);

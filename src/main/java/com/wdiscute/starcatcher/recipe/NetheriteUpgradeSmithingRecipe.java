@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -32,11 +31,11 @@ public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient bas
     {
         ItemStack resultRod = input.base().copy();
 
-        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(base.getItems()[0], SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        catchModifiers.addAll(SCDataComponents.getOrDefault(template.getItems()[0], SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
 
-        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(base.getItems()[0], SCDataComponents.CATCH_MODIFIERS, List.of()));
-        minigameModifiers.addAll(SCDataComponents.getOrDefault(template.getItems()[0], SCDataComponents.CATCH_MODIFIERS, List.of()));
+        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
 
         SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
         SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);

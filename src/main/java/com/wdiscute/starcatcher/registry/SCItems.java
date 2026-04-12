@@ -69,6 +69,7 @@ public interface SCItems
     DeferredItem<Item> AQUA_BOBBER = BOBBERS_REGISTRY.register("aqua_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> LEAF_BOBBER = BOBBERS_REGISTRY.register("leaf_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> SLIMEY_BOBBER = BOBBERS_REGISTRY.register("slimey_bobber", SingleStackBasicItem::new);
 
     //baits
     DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);

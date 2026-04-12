@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.SCDataComponents;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -48,6 +47,11 @@ public class FishingRodSkinSmithingRecipe implements SmithingRecipe
 
         List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
         minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+
+        ResourceLocation tackleSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
+
+        if (tackleSkin != null)
+            SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
 
         SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
         SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);

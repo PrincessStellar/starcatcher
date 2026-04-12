@@ -9,6 +9,9 @@
     "starcatcher:copper_hook": [
       "starcatcher:faster_handle_speed"
     ],
+    "starcatcher:dev_worm": [
+      "starcatcher:never_lose"
+    ],
     "starcatcher:exposed_copper_hook": [
       "starcatcher:slightly_faster_handle_speed"
     ],
@@ -26,6 +29,9 @@
     ],
     "starcatcher:shiny_hook": [
       "starcatcher:spawn_treasure_on_three_hits"
+    ],
+    "starcatcher:slimey_bobber": [
+      "starcatcher:bounce_back"
     ],
     "starcatcher:steady_bobber": [
       "starcatcher:bigger_green_sweet_spots"

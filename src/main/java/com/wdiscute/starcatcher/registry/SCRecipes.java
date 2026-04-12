@@ -15,13 +15,13 @@ public class SCRecipes
             DeferredRegister.create(Registries.RECIPE_SERIALIZER, Starcatcher.MOD_ID);
 
     public static final  Supplier<RecipeSerializer<NetheriteUpgradeSmithingRecipe>> FISHING_ROD_SMITHING =
-            REGISTRY.register("netherite_upgraded", NetheriteUpgradeSmithingRecipe.Serializer::new);
+            REGISTRY.register("smithing_netherite_upgraded", NetheriteUpgradeSmithingRecipe.Serializer::new);
 
     public static final  Supplier<RecipeSerializer<TackleSkinSmithingRecipe>> TACKLE_SKIN_SMITHING =
-            REGISTRY.register("tackle_skin", TackleSkinSmithingRecipe.Serializer::new);
+            REGISTRY.register("smithing_tackle_skin", TackleSkinSmithingRecipe.Serializer::new);
 
     public static final  Supplier<RecipeSerializer<FishingRodSkinSmithingRecipe>> FISHING_ROD_SKIN_SMITHING =
-            REGISTRY.register("fishing_rod_skin", FishingRodSkinSmithingRecipe.Serializer::new);
+            REGISTRY.register("smithing_rod_skin", FishingRodSkinSmithingRecipe.Serializer::new);
 
     public static final  Supplier<RecipeSerializer<BottledLetterRecipe>> BOTTLED_LETTER =
             REGISTRY.register("bottled_letter", BottledLetterRecipe.Serializer::new);

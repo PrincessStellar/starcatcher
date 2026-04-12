@@ -230,93 +230,86 @@
 
   "tooltip.starcatcher.modifiers": "Fishing Modifiers:",
 
-  "tooltip.modifier.starcatcher.survives_lava.0": "Allows for lava-fishing",
+  "tooltip.modifier.starcatcher.never_lose": "[dev] never lose the minigame",
 
-  "tooltip.modifier.starcatcher.add_creeper.0": "An ill-tempered friend might show up",
+  "tooltip.modifier.starcatcher.bounce_back": "Prevents the fish from swimming away once by bouncing it back up",
 
-  "tooltip.modifier.starcatcher.guarantee_golden.0": "A golden fish will be caught if possible",
-  "tooltip.modifier.starcatcher.add_5_golden_chance.0": "Slightly increases the chances of catching a golden fish",
-  "tooltip.modifier.starcatcher.add_50_golden_chance.0": "Tremendously increases the chances of catching a golden fish",
-  "tooltip.modifier.starcatcher.cancel_golden.0": "You can no longer catch golden fishes",
+  "tooltip.modifier.starcatcher.survives_lava": "Allows for lava-fishing",
 
-  "tooltip.modifier.starcatcher.hide_catch.0": "You can no longer see your catch whilst fishing",
+  "tooltip.modifier.starcatcher.add_creeper": "An ill-tempered friend might show up",
 
-  "tooltip.modifier.starcatcher.freeze_on_miss.0": "Missing a sweet-spot will cause your",
-  "tooltip.modifier.starcatcher.freeze_on_miss.1": "reel to freeze up for a short period",
+  "tooltip.modifier.starcatcher.guarantee_golden": "A golden fish will be caught if possible",
+  "tooltip.modifier.starcatcher.add_5_golden_chance": "Slightly increases the chances of catching a golden fish",
+  "tooltip.modifier.starcatcher.add_50_golden_chance": "Tremendously increases the chances of catching a golden fish",
+  "tooltip.modifier.starcatcher.cancel_golden": "You can no longer catch golden fishes",
 
-  "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots.0": "Every so often a frozen sweet-spot",
-  "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots.1": "might show up which freezes your reel when hit",
+  "tooltip.modifier.starcatcher.hide_catch": "You can no longer see your catch whilst fishing",
 
-  "tooltip.modifier.starcatcher.low_chance_treasure_spawn.0": "There is a low chance a treasure chest",
-  "tooltip.modifier.starcatcher.low_chance_treasure_spawn.1": "might appear when hitting a sweet-spot",
+  "tooltip.modifier.starcatcher.freeze_on_miss": "Missing a sweet-spot will cause your handle to freeze up for a short period",
 
-  "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots.0": "Explosive sweet-spots might show up",
+  "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots": "Every so often a frozen sweet-spot might show up",
 
-  "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits.0": "Successfully hitting 3 sweet-spots in a row will summon a treasure chest",
+  "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots": "Explosive sweet-spots might show up",
 
-  "tooltip.modifier.starcatcher.slower_moving_sweet_spots.0": "Slows down moving sweet-spots",
+  "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits": "Successfully hitting 3 sweet-spots in a row will summon a treasure chest",
 
-  "tooltip.modifier.starcatcher.stop_decay_on_hit.0": "Prevents your catch from swimming away",
-  "tooltip.modifier.starcatcher.stop_decay_on_hit.1": "for a short period after hitting a sweet-spot",
+  "tooltip.modifier.starcatcher.slower_moving_sweet_spots": "Slows down moving sweet-spots",
 
-  "tooltip.modifier.starcatcher.harder_with_treasure_on_perfect.0": "The catch will be harder than usual,",
-  "tooltip.modifier.starcatcher.harder_with_treasure_on_perfect.1": "but a perfect catch awards a treasure",
+  "tooltip.modifier.starcatcher.stop_decay_on_hit": "Prevents the fish from swimming away for a short period after a hit",
 
-  "tooltip.modifier.starcatcher.no_flip.0": "Sweet-spots will no longer flip when hit",
+  "tooltip.modifier.starcatcher.harder_with_treasure_on_perfect": "The catch will be harder than usual, but a perfect catch awards a treasure",
 
-  "tooltip.modifier.starcatcher.slower_vanishing.0": "Vanishing sweet-spots will take longer to vanish",
+  "tooltip.modifier.starcatcher.no_flip": "Sweet-spots will no longer flip when hit",
 
-  "tooltip.modifier.starcatcher.bigger_green_sweet_spots.0": "Green sweet-spots will be slightly bigger",
+  "tooltip.modifier.starcatcher.slower_vanishing": "Vanishing sweet-spots will take longer to vanish",
 
-  "tooltip.modifier.starcatcher.add_leaves_spots.0": "Leaf sweetspots will appear at random",
+  "tooltip.modifier.starcatcher.bigger_green_sweet_spots": "Green sweet-spots will be slightly bigger",
 
-  "tooltip.modifier.starcatcher.add_aqua_sweet_spot.0": "An extra aqua sweet-spot is added",
+  "tooltip.modifier.starcatcher.add_leaves_spots": "Leaf sweetspots will appear at random",
 
-  "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot.0": "Three extra aqua sweet-spot are added",
+  "tooltip.modifier.starcatcher.add_aqua_sweet_spot": "An extra aqua sweet-spot is added",
 
-  "tooltip.modifier.starcatcher.flip_every_hit.0": "Flip every time you hit a sweet-spot",
+  "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot": "Three extra aqua sweet-spot are added",
 
-
+  "tooltip.modifier.starcatcher.flip_every_hit": "Flip every time you hit a sweet-spot",
 
   "tooltip.modifier.starcatcher.ignore_daytime_and_weather_restrictions.0": "Ignores fish daytime & weather restrictions",
 
-  "tooltip.modifier.starcatcher.decrease_lure_time.0": "Decreases lure time",
-  "tooltip.modifier.starcatcher.big_decrease_lure_time.0": "Decreases lure time greatly",
-  "tooltip.modifier.starcatcher.increase_lure_time.0": "Increases lure time",
+  "tooltip.modifier.starcatcher.decrease_lure_time": "Decreases lure time",
+  "tooltip.modifier.starcatcher.big_decrease_lure_time": "Decreases lure time greatly",
+  "tooltip.modifier.starcatcher.increase_lure_time": "Increases lure time",
+
+  "tooltip.modifier.starcatcher.faster_handle_speed": "Increases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slightly_faster_handle_speed": "Slightly increases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slightly_slower_handle_speed": "Slightly decreases the handle's rotation speed",
+  "tooltip.modifier.starcatcher.slower_handle_speed": "Decreases the handle's rotation speed",
+
+  "tooltip.modifier.starcatcher.vanilla_loot": "Restores vanilla fishing loot",
+
+  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_loot": "Skips minigame when used alongside the vanilla-flavoured bobber",
+
+  "tooltip.modifier.starcatcher.extra_exp_based_on_performance": "Extra exp is awarded based on your performance",
+
+  "tooltip.modifier.starcatcher.fish_entity": "If available, will catch the live fish instead",
+
+  "tooltip.modifier.starcatcher.guarantee_new_fish_always": "If available, an undiscovered fish will bite",
+  "tooltip.modifier.starcatcher.guarantee_new_fish_half": "An undiscovered fish is more likely to bite",
+
+  "tooltip.modifier.starcatcher.extra_item": "An extra fish will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_two_item": "Two extra fish will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_three_item": "Three extra fish will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_five_item": "Five extra fish will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_ten_item": "A bunch of extra fish will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_thirty_two_item": "A whole school will come alongside your catch",
 
 
-  "tooltip.modifier.starcatcher.faster_handle_speed.0": "Increases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slightly_faster_handle_speed.0": "Slightly increases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slightly_slower_handle_speed.0": "Slightly decreases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slower_handle_speed.0": "Decreases the handle's rotation speed",
-
-
-  "tooltip.modifier.starcatcher.vanilla_loot.0": "Restores vanilla fishing loot",
-
-  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_loot.0": "Skips minigame when used alongside the vanilla-flavoured bobber",
-
-  "tooltip.modifier.starcatcher.extra_exp_based_on_performance.0": "Extra exp is awarded based on your performance",
-
-  "tooltip.modifier.starcatcher.fish_entity.0": "If available, will catch the live fish instead",
-
-  "tooltip.modifier.starcatcher.guarantee_new_fish_always.0": "If available, an undiscovered fish will bite",
-  "tooltip.modifier.starcatcher.guarantee_new_fish_half.0": "An undiscovered fish is more likely to bite",
-
-  "tooltip.modifier.starcatcher.extra_item.0": "An extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_two_item.0": "Two extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_three_item.0": "Three extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_five_item.0": "Five extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_ten_item.0": "A bunch of extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_thirty_two_item.0": "A whole school will come alongside your catch",
-
-
-  "tooltip.tackle.starcatcher.kimbe.0": "Kimbe",
-  "tooltip.tackle.starcatcher.clear.0": "Clear",
-  "tooltip.tackle.starcatcher.colorful.0": "Colorful",
-  "tooltip.tackle.starcatcher.pearl.0": "Pearl",
-  "tooltip.tackle.starcatcher.base.0": "Simple",
-  "tooltip.tackle.starcatcher.frog.0": "Frog",
-  "tooltip.tackle.starcatcher.king.0": "King",
+  "tooltip.tackle.starcatcher.kimbe": "Kimbe",
+  "tooltip.tackle.starcatcher.clear": "Clear",
+  "tooltip.tackle.starcatcher.colorful": "Colorful",
+  "tooltip.tackle.starcatcher.pearl": "Pearl",
+  "tooltip.tackle.starcatcher.base": "Simple",
+  "tooltip.tackle.starcatcher.frog": "Frog",
+  "tooltip.tackle.starcatcher.king": "King",
 
 
   "item.starcatcher.hook": "Iron Hook",

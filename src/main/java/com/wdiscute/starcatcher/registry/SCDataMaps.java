@@ -23,6 +23,10 @@ public class SCDataMaps
             Starcatcher.rl("minigame_modifiers"), Registries.ITEM, ResourceLocation.CODEC.listOf()
     ).synced(ResourceLocation.CODEC.listOf(), true).build();
 
+    public static final DataMapType<Item, ResourceLocation> TACKLE_SKIN = DataMapType.builder(
+            Starcatcher.rl("tackle_skin"), Registries.ITEM, ResourceLocation.CODEC
+    ).synced(ResourceLocation.CODEC, true).build();
+
     public static <T> T getOrDefault(ItemStack stack, DataMapType<Item, T> dataMap, T d)
     {
         T data = stack.getItemHolder().getData(dataMap);

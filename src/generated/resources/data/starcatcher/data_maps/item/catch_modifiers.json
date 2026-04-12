@@ -1,5 +1,8 @@
 {
   "values": {
+    "minecraft:netherite_upgrade_smithing_template": [
+      "starcatcher:survives_lava"
+    ],
     "starcatcher:almighty_worm": [
       "starcatcher:decrease_lure_time",
       "starcatcher:fish_entity"
@@ -9,6 +12,13 @@
     ],
     "starcatcher:cherry_bait": [
       "starcatcher:decrease_lure_time"
+    ],
+    "starcatcher:dev_worm": [
+      "starcatcher:big_decrease_lure_time",
+      "starcatcher:big_decrease_lure_time",
+      "starcatcher:big_decrease_lure_time",
+      "starcatcher:big_decrease_lure_time",
+      "starcatcher:big_decrease_lure_time"
     ],
     "starcatcher:dripstone_bait": [
       "starcatcher:decrease_lure_time"

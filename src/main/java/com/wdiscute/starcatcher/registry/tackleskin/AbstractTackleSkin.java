@@ -56,4 +56,14 @@ public abstract class AbstractTackleSkin
     {
 
     }
+
+    public boolean skipMissSound()
+    {
+        return false;
+    }
+
+    public boolean skipSuccessSound()
+    {
+        return false;
+    }
 }

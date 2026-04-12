@@ -1,18 +1,21 @@
 package com.wdiscute.starcatcher.event;
 
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -20,7 +23,6 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class TooltipEvents
@@ -66,39 +68,45 @@ public class TooltipEvents
         if (SCDataComponents.has(stack, SCDataComponents.TACKLE_SKIN))
         {
             ResourceLocation rl = SCDataComponents.getOrDefault(stack, SCDataComponents.TACKLE_SKIN, Starcatcher.rl("missingno"));
-            comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY)
-                    .append(Component.translatable("tooltip.tackle." + rl.toLanguageKey())));
+            comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
+            comp.add(Component.literal(" -").append(Component.translatable("tooltip.tackle." + rl.toLanguageKey()))
+                    .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
         }
 
         //modifiers
-        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS) || SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
+        List<ResourceLocation> minigameModifiersRLs = SCMinigameModifiers.getMinigameModifiersRLs(stack);
+        List<ResourceLocation> catchModifiersRLs = SCCatchModifiers.getCatchModifiersRLs(stack);
+        if (!minigameModifiersRLs.isEmpty() || !catchModifiersRLs.isEmpty() && !stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
         {
-            List<ResourceLocation> modifiers = new ArrayList<>();
+            List<Component> modComp = new ArrayList<>();
 
-            if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
-                modifiers.addAll(Objects.requireNonNull(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS)));
-            if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
-                modifiers.addAll(Objects.requireNonNull(SCDataComponents.get(stack, SCDataComponents.MINIGAME_MODIFIERS)));
-
-            if (!modifiers.isEmpty())
+            //add minigame modifiers
+            Player entity = event.getEntity();
+            if (entity != null)
             {
-                comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
-
-                for (ResourceLocation rl : modifiers)
+                minigameModifiersRLs.forEach(o ->
                 {
-                    for (int i = 0; i < 100; i++)
+                    if (entity.level().registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(o) != null)
                     {
-                        if (I18n.exists("tooltip.modifier." + rl.toLanguageKey() + "." + i))
-                        {
-                            MutableComponent start = i == 0 ? Component.literal("- ") : Component.literal("");
-                            comp.add(start.append(Component.translatable("tooltip.modifier." + rl.toLanguageKey() + "." + i)).withStyle(ChatFormatting.DARK_GRAY));
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        modComp.add(Component.literal(" -").append(Component.translatable("tooltip.modifier." + o.toLanguageKey()))
+                                .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
                     }
-                }
+                });
+
+                //add catch modifiers
+                catchModifiersRLs.forEach(o ->
+                {
+                    if (entity.level().registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(o) != null)
+                    {
+                        modComp.add(Component.literal(" -").append(Component.translatable("tooltip.modifier." + o.toLanguageKey()))
+                                .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
+                    }
+                });
+
+                if (!modComp.isEmpty())
+                    comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
+
+                comp.addAll(modComp);
             }
         }
 
