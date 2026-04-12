@@ -41,9 +41,6 @@ public class BounceBackModifier extends AbstractMinigameModifier
     {
         super.tick();
 
-        System.out.println("------");
-        System.out.println(bounceBackTime);
-        System.out.println(instance.progressSmooth);
         if (bounced)
             bounceBackTime--;
 

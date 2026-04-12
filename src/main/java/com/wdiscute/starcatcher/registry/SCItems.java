@@ -90,12 +90,12 @@ public interface SCItems
 
 
     //tackle templates
-    DeferredItem<Item> PEARL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("pearl_smithing_template", () -> new TackleSkinItem(SCTackleSkins.PEARL_TACKLE_SKIN));
-    DeferredItem<Item> KIMBE_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("kimbe_smithing_template", () -> new TackleSkinItem(SCTackleSkins.KIMBE_TACKLE_SKIN));
-    DeferredItem<Item> COLORFUL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("colorful_smithing_template", () -> new TackleSkinItem(SCTackleSkins.COLORFUL_TACKLE_SKIN));
-    DeferredItem<Item> CLEAR_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("clear_smithing_template", () -> new TackleSkinItem(SCTackleSkins.CLEAR_TACKLE_SKIN));
-    DeferredItem<Item> FROG_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("frog_smithing_template", () -> new TackleSkinItem(SCTackleSkins.FROG_TACKLE_SKIN));
-    DeferredItem<Item> KING_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("king_smithing_template", () -> new TackleSkinItem(SCTackleSkins.KING_TACKLE_SKIN));
+    DeferredItem<Item> PEARL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("pearl_smithing_template", BasicItem::new);
+    DeferredItem<Item> KIMBE_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("kimbe_smithing_template",  BasicItem::new);
+    DeferredItem<Item> COLORFUL_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("colorful_smithing_template",  BasicItem::new);
+    DeferredItem<Item> CLEAR_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("clear_smithing_template",  BasicItem::new);
+    DeferredItem<Item> FROG_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("frog_smithing_template",  BasicItem::new);
+    DeferredItem<Item> KING_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("king_smithing_template",  BasicItem::new);
 
     //skin templates
     DeferredItem<Item> NATURALIST_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("naturalist_skin_smithing_template", BasicItem::new);

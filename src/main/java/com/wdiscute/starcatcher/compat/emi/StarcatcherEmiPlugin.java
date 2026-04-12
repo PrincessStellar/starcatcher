@@ -79,7 +79,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 SellingBin.rl("/attachments")));
 
         //fine bones info
-        registry.addRecipe(new EmiInfoRecipe(List.of(EmiIngredient.of(Ingredient.of(SCTags.HOOKS))),
+        registry.addRecipe(new EmiInfoRecipe(List.of(EmiIngredient.of(Ingredient.of(SCItems.FISH_BONES))),
                 List.of(
                         Component.translatable("emi.info.starcatcher.fish_bones.0")
                 ),

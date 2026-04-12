@@ -139,7 +139,6 @@ public class DisplayBlockEntity extends BlockEntity
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
         super.loadAdditional(tag, registries);
-        if(level.isClientSide) System.out.println("RAN ON CLIENT!!!");
         if (tag.contains("Book"))
         {
             this.item = ItemStack.parse(registries, tag.getCompound("Book")).orElse(ItemStack.EMPTY);

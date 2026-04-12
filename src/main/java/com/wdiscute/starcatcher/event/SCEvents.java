@@ -242,6 +242,7 @@ public class SCEvents
         event.register(SCDataMaps.AQUARIUM_INTERACTION);
         event.register(SCDataMaps.CATCH_MODIFIERS);
         event.register(SCDataMaps.MINIGAME_MODIFIERS);
+        event.register(SCDataMaps.TACKLE_SKIN);
     }
 
     @SubscribeEvent

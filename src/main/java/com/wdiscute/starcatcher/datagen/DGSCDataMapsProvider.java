@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -158,7 +159,12 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst()), false);
 
         //tackle skins
-
+        tackleSkin.add(SCItems.PEARL_SMITHING_TEMPLATE, SCTackleSkins.PEARL_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.KING_SMITHING_TEMPLATE, SCTackleSkins.KING_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.COLORFUL_SMITHING_TEMPLATE, SCTackleSkins.COLORFUL_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.CLEAR_SMITHING_TEMPLATE, SCTackleSkins.CLEAR_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.FROG_SMITHING_TEMPLATE, SCTackleSkins.FROG_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN, false);
 
 
     }
