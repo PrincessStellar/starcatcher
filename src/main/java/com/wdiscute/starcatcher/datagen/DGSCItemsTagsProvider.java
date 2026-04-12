@@ -115,6 +115,16 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         //templates tag
         TEMPLATES_REGISTRY.getEntries().forEach(o -> tag(SCTags.TEMPLATES).add(o.get()));
 
+        //tackle skins
+        tag(SCTags.TACKLE_SKINS)
+                .add(PEARL_SMITHING_TEMPLATE.get())
+                .add(KING_SMITHING_TEMPLATE.get())
+                .add(COLORFUL_SMITHING_TEMPLATE.get())
+                .add(CLEAR_SMITHING_TEMPLATE.get())
+                .add(FROG_SMITHING_TEMPLATE.get())
+                .add(PEARL_SMITHING_TEMPLATE.get())
+        ;
+
         //Equipment tag
         RODS_REGISTRY.getEntries().forEach(o -> tag(SCTags.EQUIPMENTS).add(o.get()));
         //ModItems.HATS_REGISTRY.getEntries().stream().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));

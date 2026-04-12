@@ -110,9 +110,9 @@ public class SCEvents
         };
 
         event.addPackFinders(
-                Starcatcher.rl("built_in_datapacks/selling_bin_emeralds"),
+                Starcatcher.rl("built_in_datapacks/selling_bin_starcatcher_emeralds"),
                 PackType.SERVER_DATA,
-                Component.literal("Selling Bin - Emeralds"),
+                Component.literal("Starcatcher - Emeralds"),
                 packSource,
                 false,
                 Pack.Position.TOP

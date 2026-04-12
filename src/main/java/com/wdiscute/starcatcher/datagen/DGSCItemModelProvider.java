@@ -121,7 +121,8 @@ public class DGSCItemModelProvider extends ItemModelProvider
         //rods
         //custom model
 
-
+        simpleItem(DeferredItem.createItem(Starcatcher.rl("clam")));
+        simpleItem(DeferredItem.createItem(Starcatcher.rl("conch")));
 
         //trophies block item
         simpleBlockItem(TROPHY_COPPER.get());
@@ -131,8 +132,9 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleBlockItem(TROPHY_DIAMOND.get());
         simpleBlockItem(TROPHY_OF_THE_OLDER_ANGLER.get());
 
-        simpleItem(DeferredItem.createItem(Starcatcher.rl("clam")));
-        simpleItem(DeferredItem.createItem(Starcatcher.rl("conch")));
+        //aquarium
+        simpleBlockItem(AQUARIUM.get());
+
 
         //hats model, just parents to block
         simpleBlockItem(FISHERMAN_HAT_WHITE.get());

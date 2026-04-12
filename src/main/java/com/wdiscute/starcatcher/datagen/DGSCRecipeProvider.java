@@ -410,6 +410,25 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
+        //display
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.DISPLAY)
+                .define('P', ItemTags.PLANKS)
+                .define('B', ItemTags.WOODEN_SLABS)
+                .pattern("   ")
+                .pattern("BBB")
+                .pattern(" P ")
+                .unlockedBy("has_fish", has(SCTags.STARCAUGHT_FISHES))
+                .save(output);
+
+        //aquarium
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.AQUARIUM)
+                .define('G', Tags.Items.GLASS_PANES)
+                .pattern("GGG")
+                .pattern("G G")
+                .pattern("GGG")
+                .unlockedBy("has_glass", has(Items.GLASS))
+                .save(output);
+
         //twine
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.STARCATCHER_TWINE)
                 .define('S', Items.STICK)
