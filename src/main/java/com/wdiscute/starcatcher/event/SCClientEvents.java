@@ -98,6 +98,7 @@ public class SCClientEvents
         event.registerLayerDefinition(new BaseTackleSkin().getLayerLocation(), BaseTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new PearlTackleSkin().getLayerLocation(), PearlTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new KimbeTackleSkin().getLayerLocation(), KimbeTackleSkin::createBodyLayer);
+        event.registerLayerDefinition(new KingTackleSkin().getLayerLocation(), KingTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new FrogTackleSkin().getLayerLocation(), FrogTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ColorfulTackleSkin().getLayerLocation(), ColorfulTackleSkin::createBodyLayer);
         event.registerLayerDefinition(new ClearTackleSkin().getLayerLocation(), ClearTackleSkin::createBodyLayer);

@@ -513,8 +513,8 @@ public class FishingGuideScreen extends Screen
         double x = mouseX - uiX;
         double y = mouseY - uiY;
 
-        System.out.println("clicked on x :" + x);
-        System.out.println("clicked on y :" + y);
+        //System.out.println("clicked on x :" + x);
+        //System.out.println("clicked on y :" + y);
 
         //shake compass
         if (x > 17 && x < 46 && y > 37 && y < 63)

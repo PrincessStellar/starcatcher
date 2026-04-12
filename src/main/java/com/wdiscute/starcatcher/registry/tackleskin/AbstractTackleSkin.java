@@ -27,7 +27,7 @@ public abstract class AbstractTackleSkin
         if (renderType == null)
         {
             this.model = new FishingBobModel<>(context.bakeLayer(getLayerLocation()));
-            this.renderType = RenderType.entityCutout(getTexture());
+            this.renderType = RenderType.entityCutoutNoCull(getTexture());
         }
         this.model.renderToBuffer(poseStack, buffer.getBuffer(renderType), packedLight, OverlayTexture.NO_OVERLAY, -1);
     }
