@@ -119,7 +119,7 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation ENTITY = Starcatcher.rl("textures/gui/guide/entity.png");
     private static final ResourceLocation ALWAYS_ENTITY = Starcatcher.rl("textures/gui/guide/always_entity.png");
 
-    public static int MAX_HELP_PAGES = 12;
+    public static final int MAX_HELP_PAGES = 12;
 
 
     private final List<ItemStack> tackleBoxes = new ArrayList<>();
@@ -144,6 +144,7 @@ public class FishingGuideScreen extends Screen
     private final ItemStack tackleBoxIcon;
     private final ItemStack hookIcon;
     private final ItemStack baitIcon;
+    private final ItemStack tackleIcon;
     private final ItemStack upgradeIcon;
 
 
@@ -173,6 +174,8 @@ public class FishingGuideScreen extends Screen
 
     int menu = 0;
     int page = 0;
+
+    public boolean isSigned = false;
 
     ClientLevel level;
     LocalPlayer player;
@@ -342,12 +345,19 @@ public class FishingGuideScreen extends Screen
                 case 2 ->
                 {
                     minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
+                    //entries -> index page (if signed)
+                    if (isSigned)
+                    {
+                        page = lastIndexPage;
+                        menu = 0;
+                        return true;
+                    }
                     //entries -> last page of help
                     if (page == 0)
                     {
                         menu = 1;
                         page = MAX_HELP_PAGES;
-                        if (MAX_HELP_PAGES == 0) menu = 0;
+                        if (isSigned) menu = 0;
                         return true;
                     }
                     //entries -> previous entry
@@ -395,7 +405,7 @@ public class FishingGuideScreen extends Screen
                     //index -> first page of help
                     menu = 1;
                     page = 0;
-                    if (MAX_HELP_PAGES == 0) menu = 2;
+                    if (isSigned) menu = 2;
                     return true;
                 }
                 case 1 ->
@@ -503,8 +513,17 @@ public class FishingGuideScreen extends Screen
         double x = mouseX - uiX;
         double y = mouseY - uiY;
 
-        //System.out.println("clicked on x :" + x);
-        //System.out.println("clicked on x :" + y);
+        System.out.println("clicked on x :" + x);
+        System.out.println("clicked on y :" + y);
+
+        //shake compass
+        if (x > 17 && x < 46 && y > 37 && y < 63)
+        {
+            player.playSound(SoundEvents.NOTE_BLOCK_CHIME.value(), 0.1f, 1.2f);
+            player.playSound(SoundEvents.GLASS_STEP, 0.4f, 1.2f);
+            compassRotationOffset += U.r.nextInt(40) - 20;
+        }
+
 
         //previous arrow
         if (x > 49 && x < 69 && y > 203 && y < 217)
@@ -541,7 +560,7 @@ public class FishingGuideScreen extends Screen
         highlightRightAlpha -= 0.025f;
         arrowPressedFromScrollDecay--;
 
-        yRotExtra = (int) Mth.lerp(0.1f + Math.abs((float) yRotExtra / 60), yRotExtra, 0);
+        compassRotationOffset = (int) Mth.lerp(0.1f + Math.abs((float) compassRotationOffset / 60), compassRotationOffset, 0);
     }
 
     @Override
@@ -650,11 +669,11 @@ public class FishingGuideScreen extends Screen
     }
 
 
-    int yRotExtra = U.r.nextInt(40) - 20;
+    int compassRotationOffset = U.r.nextInt(40) - 20;
 
     private void renderCompass(GuiGraphics guiGraphics)
     {
-        float yRot = Minecraft.getInstance().player.getYRot() + yRotExtra;
+        float yRot = Minecraft.getInstance().player.getYRot() + compassRotationOffset;
 
         PoseStack pose = guiGraphics.pose();
 
@@ -719,7 +738,7 @@ public class FishingGuideScreen extends Screen
 
     private void renderTheBasics(GuiGraphics guiGraphics, int mouseX, int mouseY)
     {
-
+        //shitty workaround for signed guides
         guiGraphics.drawString(this.font, page + "/" + MAX_HELP_PAGES, uiX + 213, uiY + 206, 0x9c897c, false);
 
         renderHelpText(guiGraphics, page);
@@ -895,6 +914,40 @@ public class FishingGuideScreen extends Screen
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
                 }
+
+
+                //tackle icon
+                renderItemWithHoverAndEmi(guiGraphics, tackleIcon, uiX + 321, uiY + 39, mouseX, mouseY);
+
+                //right page scroll arrows
+                guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
+                if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    rightPageScroll--;
+                if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                    rightPageScroll++;
+
+
+                //scrollable tackles icons
+                for (int i = 0; i < 5; i++)
+                {
+                    int x = uiX + 238 + (i * 20);
+                    int y = uiY + 170;
+                    ItemStack stack = templates.get(Math.abs((rightPageScroll + i) % templates.size()));
+                    //render item
+                    renderItem(stack, x, y, 1);
+                    //render hover item tooltip
+                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
+                    {
+                        guiGraphics.renderTooltip(this.font, stack, mouseX, mouseY);
+                        if (clicked)
+                            displayRecipe(stack);
+                    }
+                    //scrollable background fill
+                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
+                }
+
+
             }
 
             //tournaments
@@ -1355,7 +1408,7 @@ public class FishingGuideScreen extends Screen
         FishCaughtCounter fcc = fishCaughtCounterMap.get(U.getRlFromFp(level, fp));
 
         ItemStack is = fcc == null && SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get() ? ItemStack.EMPTY : new ItemStack(entries.get(entry).catchInfo().fish());
-        if(fcc != null && fcc.caughtGolden())
+        if (fcc != null && fcc.caughtGolden())
             SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(fcc.size(), fcc.weight(), fcc.percentile(), fp.rarity(), true));
 
         renderFishEntryPage(guiGraphics, fp, is, fcc, uiX + xOffset, uiY, mouseX, mouseY);
@@ -1742,6 +1795,7 @@ public class FishingGuideScreen extends Screen
         cosmeticsIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
         tackleBoxIcon = new ItemStack(SCBlocks.TACKLE_BOX.get());
         baitIcon = new ItemStack(SCItems.CHERRY_BAIT.get());
+        tackleIcon = new ItemStack(SCItems.PEARL_SMITHING_TEMPLATE.get());
         var auroraIcon = new ItemStack(SCItems.AURORA.get());
         upgradeIcon = new ItemStack(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
         hookIcon = new ItemStack(SCItems.HOOK.get());

@@ -19,7 +19,7 @@ public class FishingSignedGuideScreen extends FishingGuideScreen
     {
         super();
         this.signedGuide = signedGuide;
-        MAX_HELP_PAGES = 0;
+        isSigned = true;
     }
 
     @Override
