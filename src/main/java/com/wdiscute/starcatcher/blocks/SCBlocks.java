@@ -90,17 +90,14 @@ public interface SCBlocks
         return toReturn;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerHat(String name, Supplier<T> block, ResourceLocation... modifiers)
+    private static <T extends Block> DeferredBlock<T> registerHat(String name, Supplier<T> block)
     {
         DeferredBlock<T> toReturn = HATS.register(name, block);
-        if (modifiers.length == 0)
             SCItems.ITEMS.register(name, () -> new HatItem(toReturn.get()));
-        else
-            SCItems.ITEMS.register(name, () -> new HatItem(toReturn.get(), modifiers));
         return toReturn;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerTackleBox(String name, Supplier<T> block, ResourceLocation... modifiers)
+    private static <T extends Block> DeferredBlock<T> registerTackleBox(String name, Supplier<T> block)
     {
         DeferredBlock<T> toReturn = TACKLE_BOXES.register(name, block);
         SCItems.ITEMS.register(name, () -> new BlockItem(toReturn.get(), new Item.Properties().stacksTo(1)));

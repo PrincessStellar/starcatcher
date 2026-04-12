@@ -7,13 +7,16 @@ import net.minecraft.world.level.block.Block;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-public class CurioHatItem extends HatItem implements ICurioItem {
-    public CurioHatItem(Block block, ResourceLocation... modifiers) {
-        super(block, modifiers);
+public class CurioHatItem extends HatItem implements ICurioItem
+{
+    public CurioHatItem(Block block)
+    {
+        super(block);
     }
 
     @Override
-    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack)
+    {
         return slotContext.identifier().equals("head");
     }
 }

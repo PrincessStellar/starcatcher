@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipeBuilder;
+import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipeBuilder;
 import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipeBuilder;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.HolderLookup;
@@ -470,6 +471,16 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
+        //netherite
+        NetheriteUpgradeSmithingRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(SCTags.RODS),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.TOOLS
+                )
+                .unlocks("has_netherite", has(Items.NETHERITE_INGOT))
+                .save(output, Starcatcher.rl("netherite_upgrade")
+                );
 
         //templates
         //tackle skins

@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-12T10:37:19.0520307	Recipes
+// 1.21.1	2026-04-12T20:19:19.4774604	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -134,6 +134,7 @@ bee7f18ba9e3c9f605021d44cae1181203280de1 data/starcatcher/advancement/recipes/to
 c8b981480229b90bb29e186db217de4131ebcb0d data/starcatcher/advancement/recipes/tools/lush_rod.json
 2ed40d783bed725b30ad1c4620de709d6d5cda7a data/starcatcher/advancement/recipes/tools/magmaforged_rod.json
 3fa62325d208dae5e63cf8d9fdaf22b35e808667 data/starcatcher/advancement/recipes/tools/naturalist_rod.json
+3826e1df61f91a5550661a4ed71694c253cacddc data/starcatcher/advancement/recipes/tools/netherite_upgrade.json
 455b74b52e307ac209b58bd64aac98847d6bb4a0 data/starcatcher/advancement/recipes/tools/obsidian_rod.json
 0de8d56e74fa936cb33f8533955d87de4af587ab data/starcatcher/advancement/recipes/tools/pearl_tackle.json
 c9f2a59dfa373e46ab76b2e35e96b1fd1f24191e data/starcatcher/advancement/recipes/tools/rod_from_vanilla.json
@@ -205,6 +206,7 @@ d34786da526b3f60ca376bf21699e7767a109a6f data/starcatcher/recipe/mossy_hook.json
 9a514d75731fbef0b0d41b7b1df13767f9dccb64 data/starcatcher/recipe/murkwater_bait_from_mangrove_roots.json
 8689b467c881e26d9c13e72f2fd8a10f5aef23ea data/starcatcher/recipe/naturalist_rod.json
 b24d634d4e312abc8a37cd631b7a6af0db615a22 data/starcatcher/recipe/naturalist_skin_smithing_template.json
+af339599fb3211310931f21c5a7b654153523993 data/starcatcher/recipe/netherite_upgrade.json
 f08f1e8a1e9a69333266a6556cc6b18d8d8e6e3a data/starcatcher/recipe/obsidian_rod.json
 8eeb0d2b32d827a08c4740a16b5c31d44a033aaa data/starcatcher/recipe/obsidian_skin_smithing_template.json
 c1d6ee6cd6184e638ac9272d02206988b843e278 data/starcatcher/recipe/oxidised_copper_hook.json

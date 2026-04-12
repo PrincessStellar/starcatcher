@@ -21,10 +21,11 @@ public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient bas
 {
     public boolean matches(SmithingRecipeInput input, Level level)
     {
-        return this.template.test(input.template())
+        boolean b = this.template.test(input.template())
                 && this.base.test(input.base())
                 && this.addition.test(input.addition())
                 && !SCDataComponents.getOrDefault(input.base(), SCDataComponents.NETHERITE_UPGRADE, false);
+        return b;
     }
 
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries)
@@ -36,6 +37,11 @@ public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient bas
 
         List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
         minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+
+        ResourceLocation tackleSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
+
+        if (tackleSkin != null)
+            SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
 
         SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
         SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);

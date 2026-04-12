@@ -14,19 +14,10 @@ import java.util.List;
 public class HatItem extends BlockItem implements Equipable
 {
 
-    public HatItem(Block block, ResourceLocation... modifiers)
-    {
-        super(block, new Properties()
-                .stacksTo(1)
-                .component(SCDataComponents.CATCH_MODIFIERS, List.of(modifiers))
-        );
-    }
-
     public HatItem(Block block)
     {
         super(block, new Properties()
                 .stacksTo(1)
-                .component(SCDataComponents.CATCH_MODIFIERS, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()))
         );
     }
 
