@@ -79,6 +79,18 @@
   "tag.starcatcher.epic_fishes" : "Epic Fishes",
   "tag.starcatcher.legendary_fishes" : "Legendary Fishes",
 
+  "tag.starcatcher.aquarium_guide_display" : "Aquarium Interactions For The Guide",
+  "tag.starcatcher.placeable_in_display" : "Placeable In The Display Block",
+  "tag.starcatcher.placeable_in_tackle_box" : "Placeable In Tackle Box",
+  "tag.starcatcher.tackle_boxes" : "Tackle Boxes",
+  "tag.starcatcher.tackle_skins" : "Tackle Skins",
+  "tag.starcatcher.trash" : "Trash",
+  "tag.starcatcher.worms" : "Worms",
+
+
+
+
+
   "sounds.starcatcher.king_cry" : "Crying noises",
   "sounds.starcatcher.king_grr" : "Angry noises",
   "sounds.starcatcher.king_heheha" : "HEHEHEHA noises",

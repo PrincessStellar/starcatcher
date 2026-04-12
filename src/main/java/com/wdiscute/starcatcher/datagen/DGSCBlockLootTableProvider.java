@@ -27,6 +27,8 @@ public class DGSCBlockLootTableProvider extends BlockLootSubProvider
 
         dropSelf(AQUARIUM.get());
 
+        dropSelf(DISPLAY.get());
+
         dropSelf(TROPHY_COPPER.get());
         dropSelf(TROPHY_IRON.get());
         dropSelf(TROPHY_EMERALD.get());
@@ -47,6 +49,7 @@ public class DGSCBlockLootTableProvider extends BlockLootSubProvider
         list.add(TROPHY_EMERALD.get());
 
         list.add(AQUARIUM.get());
+        list.add(DISPLAY.get());
 
         list.add(CLAM.get());
         list.add(CONCH.get());

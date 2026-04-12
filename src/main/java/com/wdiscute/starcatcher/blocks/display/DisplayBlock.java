@@ -48,7 +48,6 @@ import java.util.List;
 
 public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
-    private static final MapCodec<DisplayBlock> CODEC = simpleCodec(DisplayBlock::new);
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty HAS_ITEM = BooleanProperty.create("has_item");
     private static final VoxelShape SHAPE_BASE = Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
@@ -59,20 +58,12 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     @Override
     public MapCodec<DisplayBlock> codec()
     {
-        return CODEC;
-    }
-
-    public DisplayBlock(BlockBehaviour.Properties properties)
-    {
-        super(properties);
-        this.registerDefaultState(
-                this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_ITEM, false)
-        );
+        return null;
     }
 
     public DisplayBlock()
     {
-        super(BlockBehaviour.Properties.of());
+        super(BlockBehaviour.Properties.of().destroyTime(2));
         this.registerDefaultState(
                 this.stateDefinition.any().setValue(POWERED, false).setValue(HAS_ITEM, false)
         );
@@ -150,9 +141,9 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         if (blockState.getValue(HAS_ITEM))
         {
             BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof LecternBlockEntity)
+            if (blockentity instanceof DisplayBlockEntity dbe)
             {
-                return ((LecternBlockEntity) blockentity).getRedstoneSignal();
+                return dbe.getRedstoneSignal();
             }
         }
 
@@ -163,7 +154,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston)
     {
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
-        if(level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
+        if (level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
         {
             dbe.setChanged();
         }
@@ -177,11 +168,20 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         {
             if (level.isClientSide && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
             {
-                SignedGuide signed = SCDataComponents.get(dbe.getItem(), SCDataComponents.SIGNED_GUIDE);
-                if (signed != null)
-                    openSignedGuide(signed);
+                if(dbe.getItem().is(SCItems.GUIDE))
+                {
+                    SignedGuide signed = SCDataComponents.get(dbe.getItem(), SCDataComponents.SIGNED_GUIDE);
+                    if (signed != null)
+                        openSignedGuide(signed);
+                    else
+                        openPersonalGuide();
+                }
                 else
-                    openPersonalGuide();
+                {
+                    dbe.fishRotating = !dbe.fishRotating;
+                }
+
+
             }
             return ItemInteractionResult.SUCCESS;
         }
@@ -189,7 +189,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         //remove item if crouching
         if (state.getValue(HAS_ITEM) && player.isCrouching() && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
         {
-            if(level.isClientSide) return ItemInteractionResult.SUCCESS;
+            if (level.isClientSide) return ItemInteractionResult.SUCCESS;
             player.addItem(dbe.getItem().copy());
             dbe.clearContent();
             dbe.sync();
@@ -200,7 +200,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         //place book
         if (stack.is(SCTags.PLACEABLE_IN_DISPLAY) && !state.getValue(HAS_ITEM) && level.getBlockEntity(pos) instanceof DisplayBlockEntity dbe)
         {
-            if(level.isClientSide) return ItemInteractionResult.SUCCESS;
+            if (level.isClientSide) return ItemInteractionResult.SUCCESS;
             dbe.setItem(stack.copy());
             stack.shrink(1);
             level.setBlock(pos, state.setValue(HAS_ITEM, true), 0);
@@ -211,20 +211,36 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    @Override
-    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
-    {
-        BlockEntity blockentity = params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
 
-        if (blockentity instanceof DisplayBlockEntity displayBlockEntity)
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving)
+    {
+        if (!state.is(newState.getBlock()))
         {
-            params = params.withDynamicDrop(ResourceLocation.withDefaultNamespace("contents"), (itemstack) ->
+            if (state.getValue(HAS_ITEM))
             {
-                itemstack.accept(displayBlockEntity.getItem());
-            });
+                this.popItem(state, level, pos);
+            }
+
+            super.onRemove(state, level, pos, newState, isMoving);
+            if (state.getValue(POWERED))
+            {
+                level.updateNeighborsAt(pos.below(), this);
+            }
+        }
+    }
+
+    private void popItem(BlockState state, Level level, BlockPos pos)
+    {
+        if (level.getBlockEntity(pos) instanceof DisplayBlockEntity displayBlockEntity)
+        {
+            ItemStack itemstack = displayBlockEntity.getItem().copy();
+            ItemEntity itementity = new ItemEntity(level, (double) pos.getX() + (double) 0.5F, (pos.getY() + 1), (double) pos.getZ() + (double) 0.5F, itemstack);
+            itementity.setDefaultPickUpDelay();
+            level.addFreshEntity(itementity);
+            displayBlockEntity.clearContent();
         }
 
-        return super.getDrops(state, params);
     }
 
     @OnlyIn(Dist.CLIENT)

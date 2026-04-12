@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.blocks.display;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.wdiscute.starcatcher.SCColors;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
@@ -10,6 +12,7 @@ import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.registry.SCItems;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -37,7 +40,6 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
 
     public void render(DisplayBlockEntity be, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
     {
-        BlockState blockstate = be.getBlockState();
         if (be.getItem().is(SCItems.GUIDE))
         {
             poseStack.pushPose();
@@ -108,7 +110,10 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
             poseStack.scale(scale, -scale, scale);
             poseStack.translate(0, -1, 0);
 
-            poseStack.rotateAround(Axis.YN.rotation((float) ((float) be.time / 100 + Math.PI / 2)), 0, 0, 0);
+            poseStack.translate(0, (-scale / 10) * (SCConfig.FISH_MAX_SCALE.getAsDouble() / 15), 0);
+
+            if (be.fishRotating)
+                poseStack.rotateAround(Axis.YN.rotation((float) ((float) Util.getMillis() / 10000 + Math.PI / 2)), 0, 0, 0);
 
             // Render model here
 

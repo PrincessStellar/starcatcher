@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.blocks.display;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +13,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -33,6 +34,8 @@ public class DisplayBlockEntity extends BlockEntity
     public float rot;
     public float oRot;
     public float tRot;
+
+    public boolean fishRotating;
 
     public static void bookAnimationTick(Level level, BlockPos pos, BlockState state, DisplayBlockEntity enchantingTable)
     {
@@ -119,11 +122,31 @@ public class DisplayBlockEntity extends BlockEntity
         this.setChanged();
     }
 
-
     @Override
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket()
     {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public int getRedstoneSignal()
+    {
+        if(item.isEmpty()) return 0;
+
+        if(item.is(SCItems.GUIDE))
+        {
+            if(SCDataComponents.has(item, SCDataComponents.SIGNED_GUIDE)) return 5;
+            return 15;
+        }
+
+        if(SCDataComponents.has(item, SCDataComponents.CAUGHT_FISH_INFO))
+        {
+            double percentile = SCDataComponents.get(item, SCDataComponents.CAUGHT_FISH_INFO).percentile();
+            percentile = Math.clamp(percentile, 0, 100);
+            double scaledValue = (percentile / 100.0) * 14 + 1;
+            return (16 - (int) scaledValue);
+        }
+
+        return 15;
     }
 
     @Override
@@ -156,7 +179,8 @@ public class DisplayBlockEntity extends BlockEntity
         if (!this.getItem().isEmpty())
         {
             tag.put("Book", this.getItem().save(registries));
-        }else
+        }
+        else
         {
             //need to put a tag otherwise its not sent to client since the tag is empty
             tag.putBoolean("empty", true);
