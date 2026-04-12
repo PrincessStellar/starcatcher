@@ -61,6 +61,8 @@ public interface SCItems
     DeferredItem<Item> EXPOSED_COPPER_HOOK = HOOKS_REGISTRY.register("exposed_copper_hook", SingleStackBasicItem::new);
     DeferredItem<Item> WEATHERED_COPPER_HOOK = HOOKS_REGISTRY.register("weathered_copper_hook", SingleStackBasicItem::new);
     DeferredItem<Item> OXIDISED_COPPER_HOOK = HOOKS_REGISTRY.register("oxidised_copper_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> ECHOING_HOOK = HOOKS_REGISTRY.register("echoing_hook", SingleStackBasicItem::new);
+    DeferredItem<Item> FROZEN_HOOK = HOOKS_REGISTRY.register("frozen_hook", SingleStackBasicItem::new);
 
     //bobbers
     DeferredItem<Item> BOBBER = BOBBERS_REGISTRY.register("bobber", SingleStackBasicItem::new);

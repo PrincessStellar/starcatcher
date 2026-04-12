@@ -89,6 +89,8 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(EXPOSED_COPPER_HOOK);
         simpleItem(WEATHERED_COPPER_HOOK);
         simpleItem(OXIDISED_COPPER_HOOK);
+        simpleItem(FROZEN_HOOK);
+        simpleItem(ECHOING_HOOK);
 
         //bobbers
         simpleItem(BOBBER);
@@ -97,6 +99,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(AQUA_BOBBER);
         simpleItem(VANILLA_BOBBER);
         simpleItem(LEAF_BOBBER);
+        simpleItem(SLIMEY_BOBBER);
 
         //baits
         simpleItem(WORM);

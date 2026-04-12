@@ -23,8 +23,11 @@
     "starcatcher:dripstone_bait": [
       "starcatcher:decrease_lure_time"
     ],
+    "starcatcher:echoing_hook": [
+      "starcatcher:guarantee_new_fish_always"
+    ],
     "starcatcher:gold_hook": [
-      "starcatcher:extra_exp_based_on_performance"
+      "starcatcher:add_5_golden_chance"
     ],
     "starcatcher:gunpowder_bait": [
       "starcatcher:decrease_lure_time"
@@ -47,7 +50,10 @@
     ],
     "starcatcher:seeking_worm": [
       "starcatcher:decrease_lure_time",
-      "starcatcher:guarantee_new_fish_always"
+      "starcatcher:guarantee_new_fish_half"
+    ],
+    "starcatcher:shiny_hook": [
+      "starcatcher:hide_catch"
     ],
     "starcatcher:split_hook": [
       "starcatcher:extra_item"

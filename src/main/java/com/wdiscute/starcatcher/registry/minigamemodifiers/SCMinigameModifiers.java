@@ -104,6 +104,9 @@ public interface SCMinigameModifiers
     DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> NEVER_LOSE =
             registerMinigameModifier("never_lose", NeverLoseModifier::new);
 
+    DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> PREVENT_FROZEN =
+            registerMinigameModifier("prevent_frozen", PreventFrozenModifier::new);
+
     static DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> registerMinigameModifier(String name, Supplier<AbstractMinigameModifier> sup)
     {
         return REGISTRY.register(name, () -> sup);

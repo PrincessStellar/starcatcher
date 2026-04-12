@@ -13,6 +13,8 @@
     "starcatcher:exposed_copper_hook",
     "starcatcher:weathered_copper_hook",
     "starcatcher:oxidised_copper_hook",
+    "starcatcher:echoing_hook",
+    "starcatcher:frozen_hook",
     {
       "id": "tide:void_fishing_hook",
       "required": false

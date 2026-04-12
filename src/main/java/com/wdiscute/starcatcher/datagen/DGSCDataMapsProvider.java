@@ -110,6 +110,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
 
         //minigame modifiers
+        minigameModifiers.add(SCItems.FROZEN_HOOK, List.of(SCMinigameModifiers.PREVENT_FROZEN.getId()), false);
         minigameModifiers.add(SCItems.SHINY_HOOK, List.of(SCMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS.getId()), false);
         minigameModifiers.add(SCItems.MOSSY_HOOK, List.of(SCMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT.getId()), false);
         minigameModifiers.add(SCItems.STONE_HOOK, List.of(SCMinigameModifiers.STOP_DECAY_ON_HIT.getId()), false);
@@ -126,8 +127,10 @@ public class DGSCDataMapsProvider extends DataMapProvider
         minigameModifiers.add(SCItems.DEV_WORM, List.of(SCMinigameModifiers.NEVER_LOSE.getId()), false);
 
         //catch modifiers
+        catchModifiers.add(SCItems.SHINY_HOOK, List.of(SCCatchModifiers.HIDE_CATCH.getFirst()), false);
+        catchModifiers.add(SCItems.ECHOING_HOOK, List.of(SCCatchModifiers.GUARANTEE_NEW_FISH_ALWAYS.getFirst()), false);
         catchModifiers.add(SCItems.AMETHYST_HOOK, List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
-        catchModifiers.add(SCItems.GOLD_HOOK, List.of(SCCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE.getFirst()), false);
+        catchModifiers.add(SCItems.GOLD_HOOK, List.of(SCCatchModifiers.ADD_5_GOLDEN_CHANCE.getFirst()), false);
         catchModifiers.add(SCItems.STONE_HOOK, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.SPLIT_HOOK, List.of(SCCatchModifiers.EXTRA_ITEM.getFirst()), false);
         catchModifiers.add(SCItems.VANILLA_BOBBER, List.of(SCCatchModifiers.VANILLA_LOOT.getFirst()), false);
@@ -136,7 +139,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         catchModifiers.add(SCItems.WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.FISH_ENTITY.getFirst()), false);
-        catchModifiers.add(SCItems.SEEKING_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.GUARANTEE_NEW_FISH_ALWAYS.getFirst()), false);
+        catchModifiers.add(SCItems.SEEKING_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.GUARANTEE_NEW_FISH_HALF.getFirst()), false);
 
         catchModifiers.add(SCItems.GUNPOWDER_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.CHERRY_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);

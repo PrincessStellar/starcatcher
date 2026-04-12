@@ -25,6 +25,9 @@
   "emi.info.starcatcher.attachments.0" : "Hooks, Bobbers & Baits may be attached to your rod using a Tackle Box.",
   "emi.info.starcatcher.attachments.1" : "They provide several different 'modifiers' which will aid you in different ways, from decreasing lure time, to difficulty reducing buffs.",
 
+  "emi.info.starcatcher.fish_bones.0" : "Fish Bones are obtained after eating Starcaught Fish.",
+
+
   "tag.starcatcher.is_beach" : "Beaches",
   "tag.starcatcher.is_birch_forest" : "Birch Forests",
   "tag.starcatcher.is_cherry_grove" : "Cherry Groves",
@@ -230,6 +233,8 @@
 
   "tooltip.starcatcher.modifiers": "Fishing Modifiers:",
 
+  "tooltip.modifier.starcatcher.prevent_frozen": "Prevents your handle from freezing up",
+
   "tooltip.modifier.starcatcher.never_lose": "[dev] never lose the minigame",
 
   "tooltip.modifier.starcatcher.bounce_back": "Prevents the fish from swimming away once by bouncing it back up",
@@ -329,6 +334,8 @@
   "item.starcatcher.exposed_copper_hook": "Exposed Copper Hook",
   "item.starcatcher.weathered_copper_hook": "Weathered Copper Hook",
   "item.starcatcher.oxidised_copper_hook": "Oxidised Copper Hook",
+  "item.starcatcher.echoing_hook": "Echoing Hook",
+  "item.starcatcher.frozen_hook": "Frozen Hook",
 
 
 
@@ -341,6 +348,7 @@
   "item.starcatcher.clear_bobber": "Clear Bobber",
   "item.starcatcher.aqua_bobber": "Aqua Bobber",
   "item.starcatcher.vanilla_bobber": "Vanilla-flavoured Bobber",
+  "item.starcatcher.slimey_bobber": "Slimey Bobber",
 
 
 
@@ -916,10 +924,17 @@
   "gui.guide.page.6.right.0" : "",
   "gui.guide.page.6.right.1" : "",
   "gui.guide.page.6.right.2" : "",
-  "gui.guide.page.6.right.3" : "",
   "gui.guide.page.6.right.4" : "",
-  "gui.guide.page.6.right.5" : "  tackle skins?",
-  "gui.guide.page.6.right.6" : "",
+  "gui.guide.page.6.right.5" : "",
+  "gui.guide.page.6.right.6" : "  Tired of your boring",
+  "gui.guide.page.6.right.7" : "looking tackle? If you're",
+  "gui.guide.page.6.right.8" : "lucky you might just come across",
+  "gui.guide.page.6.right.9" : "a Tackle Skin Smithing Template!",
+  "gui.guide.page.6.right.10" : "",
+  "gui.guide.page.6.right.11" : "  Much like other templates,",
+  "gui.guide.page.6.right.12" : "simply combine it in a ",
+  "gui.guide.page.6.right.13" : "smithing table and enjoy",
+  "gui.guide.page.6.right.14" : "your new tackle look.",
 
 
   "gui.guide.page.7.left.title" : "Tournaments",

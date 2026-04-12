@@ -43,6 +43,9 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
     public void onAdd(FishingMinigameScreen instance)
     {
         super.onAdd(instance);
+        //cancel if any modifiers with the CancelFrozenEffect interface are active
+        if(instance.getModifiers().stream().anyMatch(o -> o instanceof CancelFrozenEffect))
+            removed = true;
         onMiss();
     }
 

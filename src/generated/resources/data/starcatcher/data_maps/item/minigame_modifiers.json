@@ -15,6 +15,9 @@
     "starcatcher:exposed_copper_hook": [
       "starcatcher:slightly_faster_handle_speed"
     ],
+    "starcatcher:frozen_hook": [
+      "starcatcher:prevent_frozen"
+    ],
     "starcatcher:heavy_hook": [
       "starcatcher:slower_moving_sweet_spots"
     ],

@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-10T20:18:04.2509427	FishingProperties
+// 1.21.1	2026-04-12T02:23:36.0651182	FishingProperties
 d906f7c35e4bad70f029d9721253c319610c746f data/alexscaves/starcatcher/fish/lanternfish.json
 22429242b921538f1922252a4710b2f25c89381a data/alexscaves/starcatcher/fish/radgill.json
 6a422b39f42820ae64755a233f566be285632a2d data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -152,7 +152,7 @@ f2228da387c69dcbf6871b30be14693476cb5b5a data/spawn/starcatcher/fish/tuna_egg_bu
 01685c5e124b354ae490e45ef6b8dfbf5b5fb3b2 data/starcatcher/starcatcher/fish/agave_bream.json
 56713ed1080e386534a1da24f3af7945e8f1f83d data/starcatcher/starcatcher/fish/amethystback.json
 163ced55a5281ceaee9c1e873ac4903eab8bda2a data/starcatcher/starcatcher/fish/aquamarine_pike.json
-4711207f3185c084c17950775c8fe7c1f0b3b295 data/starcatcher/starcatcher/fish/aurora.json
+498a50142d16443cbf0e2f635679a5a18cf51f51 data/starcatcher/starcatcher/fish/aurora.json
 09462e53e9c1ed1fd599325634a0fe47eb518fac data/starcatcher/starcatcher/fish/azure_crystalback_minnow.json
 853fa9acfb58d8a4ac8d3001975eeba9f6a99bfa data/starcatcher/starcatcher/fish/bigeye_tuna.json
 21877afa8214082c72d4ab89378ebc871dd40fcb data/starcatcher/starcatcher/fish/black_eel.json

@@ -1756,7 +1756,7 @@ public class FishingGuideScreen extends Screen
         aquariumIcon = new ItemStack(SCBlocks.AQUARIUM.get());
         displayIcon = new ItemStack(SCBlocks.DISPLAY.get());
         guideIcon = new ItemStack(SCItems.GUIDE.get());
-        trophyIcon = new ItemStack(SCBlocks.TROPHY_EMERALD.get());
+        trophyIcon = new ItemStack(SCBlocks.TROPHY_GOLD.get());
 
 
         //populate lists

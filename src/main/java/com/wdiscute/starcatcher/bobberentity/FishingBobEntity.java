@@ -1,19 +1,20 @@
 package com.wdiscute.starcatcher.bobberentity;
 
 import com.wdiscute.starcatcher.SCConfig;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.*;
+import com.wdiscute.starcatcher.io.SCDataAttachments;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
+import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCParticles;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.registry.SCEntities;
-import com.wdiscute.starcatcher.registry.SCParticles;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
-import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -45,7 +46,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class FishingBobEntity extends Projectile
 {
@@ -229,6 +229,10 @@ public class FishingBobEntity extends Projectile
         {
             //send fishing minigame payload to client with FP
             FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
+            for (AbstractCatchModifier modifier : modifiers)
+            {
+                fpToFish = modifier.overrideFpToClient(fpToFish);
+            }
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
     }

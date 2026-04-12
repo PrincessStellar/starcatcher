@@ -29,6 +29,16 @@ repositories
         url = "https://maven.terraformersmc.com/"
     }
 
+    //jei
+    maven {
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+
+    //jei
+    maven {
+        url = "https://modmaven.dev"
+    }
+
     //favouriteless
     maven {
         url = "https://maven.favouriteless.net/releases"
@@ -76,7 +86,11 @@ dependencies {
 
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+    //runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+
+    //JEI
+    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
     //curios
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"

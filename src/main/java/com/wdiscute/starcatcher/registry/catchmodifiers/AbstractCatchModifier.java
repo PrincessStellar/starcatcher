@@ -120,7 +120,7 @@ public abstract class AbstractCatchModifier
 
     public FishProperties overrideFpToClient(FishProperties fishProperties)
     {
-        return null;
+        return fishProperties;
     }
 
     public void modifyBaseItemStack(ItemStack is)

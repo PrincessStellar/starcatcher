@@ -67,6 +67,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 ),
                 SellingBin.rl("/pearls")));
 
+        //hooks, baits, bobbers
         registry.addRecipe(new EmiInfoRecipe(List.of(
                 EmiIngredient.of(Ingredient.of(SCTags.HOOKS)),
                 EmiIngredient.of(Ingredient.of(SCTags.BOBBERS)),
@@ -76,6 +77,15 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                         Component.translatable("emi.info.starcatcher.attachments.1")
                 ),
                 SellingBin.rl("/attachments")));
+
+        //fine bones info
+        registry.addRecipe(new EmiInfoRecipe(List.of(EmiIngredient.of(Ingredient.of(SCTags.HOOKS))),
+                List.of(
+                        Component.translatable("emi.info.starcatcher.fish_bones.0")
+                ),
+                SellingBin.rl("/fish_bones")));
+
+
 
         Registry<FishProperties> fps = FishProperties.getRegistry(Minecraft.getInstance().level);
 
