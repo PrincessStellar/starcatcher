@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -51,9 +52,17 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         poseStack.mulPose(Axis.YP.rotationDegrees(entityYaw));
 
         //render tackle based on tackle skin, defaults to BaseTackleSkin
+        //data attachment returns starcatcher:base if there's no attachment
         ResourceLocation tackleRl = SCDataAttachments.get(fishingBobEntity, SCDataAttachments.TACKLE_SKIN);
-        Optional<Supplier<AbstractTackleSkin>> optional = fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(tackleRl);
-        optional.ifPresent(supplier -> supplier.get().renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight));
+        Supplier<AbstractTackleSkin> tackle = fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).get(tackleRl);
+
+        //still need to check for null to prevent addon mods that add to the registry from crashing... i guess... 🙄
+        if (tackle == null)
+            fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).get(SCTackleSkins.BASE_TACKLE_SKIN).get().
+                    renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        else
+            tackle.get().renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+
         poseStack.popPose();
 
 

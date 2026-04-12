@@ -15,7 +15,7 @@ public class KingTackleSkin extends AbstractTackleSkin
     @Override
     public ModelLayerLocation getLayerLocation()
     {
-        return new ModelLayerLocation(Starcatcher.rl("base"), "main");
+        return new ModelLayerLocation(Starcatcher.rl("king"), "main");
     }
 
     @Override

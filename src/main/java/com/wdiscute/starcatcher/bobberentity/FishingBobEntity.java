@@ -17,6 +17,7 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestrictio
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -310,7 +311,7 @@ public class FishingBobEntity extends Projectile
             if (player != null) SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB);
         }
 
-        BlockPos blockpos = this.blockPosition();
+        BlockPos blockpos = new BlockPos(new Vec3i((int) position().x, (int) (position().y + 0.175f), (int) position().z));
         FluidState fluid = this.level().getFluidState(blockpos);
         FluidState fluidBellow = this.level().getFluidState(blockpos.below());
 
@@ -345,6 +346,7 @@ public class FishingBobEntity extends Projectile
         if (this.currentState == FishHookState.BITING)
         {
             timeBiting++;
+            setDeltaMovement(Vec3.ZERO);
             for (int i = 0; i < 5; i++)
             {
                 if (level().getFluidState(blockpos).is(Fluids.LAVA))
@@ -388,6 +390,9 @@ public class FishingBobEntity extends Projectile
         {
             if (!level().isClientSide) currentState = FishHookState.FLYING;
         }
+
+        if(this.currentState == FishHookState.FISHING)
+            setDeltaMovement(Vec3.ZERO);
 
         //TODO check for water level instead of just blockstate to make the entity sit better in water
         if (this.currentState == FishHookState.BOBBING || this.currentState == FishHookState.FISHING)
