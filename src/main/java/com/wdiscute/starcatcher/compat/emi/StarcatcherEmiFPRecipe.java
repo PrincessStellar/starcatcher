@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.compat.emi;
 
+import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.FishProperties;
@@ -26,6 +27,8 @@ import java.util.List;
 public class StarcatcherEmiFPRecipe implements EmiRecipe
 {
 
+    public static final EmiTexture EMPTY_ARROW = new EmiTexture(Starcatcher.rl("textures/gui/emi/arrow.png"),
+            0, 0, 16, 16, 16, 16, 16, 16);
     private final ResourceLocation id;
     private final EmiIngredient output;
     private final EmiIngredient rod = EmiIngredient.of(Ingredient.of(SCItems.ROD));
@@ -95,7 +98,7 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
     @Override
     public int getDisplayWidth()
     {
-        return 98 + (treasure.isEmpty() ? 0 : 20) + (!fp.catchInfo().alwaysSpawnEntity() ? 0 : 8);
+        return 90 + (treasure.isEmpty() ? 0 : 20) + (!fp.catchInfo().alwaysSpawnEntity() ? 0 : 8);
     }
 
     @Override
@@ -110,22 +113,22 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
     {
         widgets.addSlot(rod, 5, 2);
 
-        widgets.addTexture(EmiTexture.EMPTY_ARROW, 25, 2).tooltipText(restrictions);
+        widgets.addTexture(EMPTY_ARROW, 25, 2).tooltipText(restrictions);
 
-        widgets.addSlot(EmiIngredient.of(Ingredient.of(is)), 53, 2).recipeContext(this);
+        widgets.addSlot(EmiIngredient.of(Ingredient.of(is)), 44, 2).recipeContext(this);
 
         if (!fp.skipMinigame() && !treasure.isEmpty())
-            widgets.addSlot(treasure, 73, 2).recipeContext(this);
+            widgets.addSlot(treasure, 64, 2).recipeContext(this);
 
-        widgets.add(new StarcatcherShowInGuideEmiWidget(73 + (treasure.isEmpty() ? 0 : 20), 1, fp, this));
+        widgets.add(new StarcatcherShowInGuideEmiWidget(64 + (treasure.isEmpty() ? 0 : 20), 1, fp, this));
 
         if (fp.catchInfo().alwaysSpawnEntity())
         {
             List<Component> components = List.of(Component.translatable("emi.starcatcher.entity_entry", fp.getDisplayName()));
 
-            widgets.addText(Component.literal("[!]").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)), 95 + (treasure.isEmpty() ? 0 : 20), 13, 0x000000, false);
+            widgets.addText(Component.literal("[!]").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)), 86 + (treasure.isEmpty() ? 0 : 20), 13, 0x000000, false);
             widgets.addTooltip(components.stream().map(Component::getVisualOrderText).map(ClientTooltipComponent::create).toList(),
-                    95 + (treasure.isEmpty() ? 0 : 20), 13, 9, 9);
+                    86 + (treasure.isEmpty() ? 0 : 20), 13, 9, 9);
         }
 
     }

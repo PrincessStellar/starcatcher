@@ -36,7 +36,7 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
                 Recipe.TYPE,
                 Component.translatable("emi.category.starcatcher.fishing"),
                 guiHelper.createDrawableItemLike(SCItems.ROD),
-                98 + 20,
+                98 + 16,
                 20
         );
         rodIs = SCItems.ROD.get().getDefaultInstance();
@@ -84,13 +84,13 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
     {
         Font font = Minecraft.getInstance().font;
         guiGraphics.blit(StarcatcherJeiPlugin.SLOT_BACKGROUND, 4, 1, 18, 18, 0, 0, 18, 18, 18, 18);
-        guiGraphics.blit(StarcatcherJeiPlugin.ARROW, 25, 2, 16, 16, 192, 16, 16, 16, 256, 256);
+        guiGraphics.blit(StarcatcherJeiPlugin.ARROW, 25, 2, 16, 16, 0, 0, 16, 16, 16, 16);
         guiGraphics.blit(SellingBinJeiPlugin.SLOT_BACKGROUND, 43, 1, 18, 18, 0, 0, 18, 18, 18, 18);
 
         if (!recipe.fp.catchInfo().treasureIs().isEmpty())
             guiGraphics.blit(SellingBinJeiPlugin.SLOT_BACKGROUND, 63, 1, 18, 18, 0, 0, 18, 18, 18, 18);
 
-        bookIcon(guiGraphics, 90, 0, (int) mouseX, (int) mouseY);
+        bookIcon(guiGraphics, 83, 0, (int) mouseX, (int) mouseY);
 
         //restrictions on arrow hover
         if (mouseX > 25 && mouseX < 25 + 16 && mouseY > 0 && mouseY < 16)
@@ -102,9 +102,9 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
         if (recipe.fp.catchInfo().alwaysSpawnEntity())
         {
             guiGraphics.drawString(font, Component.literal("[!]").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)),
-                    110, 13, 0x000000, false);
+                    105, 12, 0x000000, false);
 
-            if (mouseX > 110 && mouseX < 110 + 9 && mouseY > 13 && mouseY < 13 + 9)
+            if (mouseX > 105 && mouseX < 105 + 9 && mouseY > 12 && mouseY < 12 + 9)
             {
                 guiGraphics.renderTooltip(font, Component.translatable("emi.starcatcher.entity_entry", recipe.fp.getDisplayName()), ((int) mouseX), ((int) mouseY));
             }
