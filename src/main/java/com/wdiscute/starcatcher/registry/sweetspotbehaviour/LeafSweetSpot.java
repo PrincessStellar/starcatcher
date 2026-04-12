@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 
 public class LeafSweetSpot extends NormalSweetSpotBehaviour
 {
+
     @Override
     public void onAdd(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
@@ -13,11 +14,16 @@ public class LeafSweetSpot extends NormalSweetSpotBehaviour
     }
 
     @Override
+    public void onHit()
+    {
+        super.onHit();
+        ass.removed = true;
+    }
+
+    @Override
     public void tick()
     {
         super.tick();
         if(ticksActive > 20) ass.vanishingRate = 0.18f;
-        if(ass.shouldSudokuOnVanish && ass.alpha <= 0)
-            instance.addParticles(ass.pos, 10, ass.particleColor);
     }
 }
