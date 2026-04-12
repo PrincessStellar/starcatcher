@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -39,10 +40,15 @@ public record SignedGuide(UUID owner, Map<ResourceLocation, FishCaughtCounter> f
         if (book == null) return false;
         if (SCDataComponents.has(book, SCDataComponents.SIGNED_GUIDE)) return false;
 
+        Map<ResourceLocation, FishCaughtCounter> map = SCDataAttachments.get(player, SCDataAttachments.FISHING_GUIDE).fishesCaught;
+
+        Map<ResourceLocation, FishCaughtCounter> mapToSave = new HashMap<>();
+        map.forEach((rl, fcc) -> mapToSave.put(rl, fcc.removeNotification()));
+
         SCDataComponents.set(book, SCDataComponents.SIGNED_GUIDE,
                 new SignedGuide(
                         player.getUUID(),
-                        SCDataAttachments.get(player, SCDataAttachments.FISHING_GUIDE).fishesCaught,
+                        mapToSave,
                         signature,
                         Date.from(Instant.now()).getTime()
                 ));

@@ -72,18 +72,18 @@ public class BiomeRestriction extends AbstractFishRestriction
         this.biomesTags = biomesTags;
         this.biomesBlacklist = biomesBlacklist;
         this.biomesBlacklistTags = biomesBlacklistTags;
-        this.translationOverride = translationOverride;
         this.hover = "";
+        this.translationOverride = translationOverride;
     }
 
-    public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String translationOverride, String hover)
+    public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String hover, String translationOverride)
     {
         this.biomes = biomes;
         this.biomesTags = biomesTags;
         this.biomesBlacklist = biomesBlacklist;
         this.biomesBlacklistTags = biomesBlacklistTags;
-        this.translationOverride = translationOverride;
         this.hover = hover;
+        this.translationOverride = translationOverride;
     }
 
     @Override
@@ -147,11 +147,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
         MutableComponent comp;
 
-        Holder<Biome> currentBiome = level.getBiome(player.blockPosition());
-        ResourceLocation currentBiomeRL = currentBiome.getKey().location();
-
         List<ResourceLocation> biomesList = FishProperties.getBiomesAsListFromTags(biomes, biomesTags, level);
-        List<ResourceLocation> biomesBlacklistList = FishProperties.getBiomesBlacklistAsList(biomesBlacklist, biomesBlacklistTags, level);
 
         //Biomes: ------
         if (biomesList.isEmpty())
@@ -238,7 +234,8 @@ public class BiomeRestriction extends AbstractFishRestriction
     public static final BiomeRestriction COLD_AND_LUKEWARM_OCEAN = new BiomeRestriction(List.of(), List.of(SCTags.IS_LUKEWARM_OCEAN, SCTags.IS_COLD_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction WARM_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction DEEP_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_DEEP_OCEAN), List.of(), List.of(), "");
-    public static final BiomeRestriction LAKES = new BiomeRestriction(List.of(), List.of(), List.of(), List.of(SCTags.IS_OCEAN, SCTags.IS_RIVER, SCTags.IS_MUSHROOM_FIELDS), "gui.guide.lakes", "gui.guide.lakes.hover");
+    public static final BiomeRestriction LAKES = new BiomeRestriction(List.of(), List.of(), List.of(), List.of(SCTags.IS_OCEAN, SCTags.IS_RIVER, SCTags.IS_MUSHROOM_FIELDS),
+            "gui.guide.lakes", "gui.guide.lakes.hover");
     public static final BiomeRestriction WARM_LAKES = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_LAKE), List.of(), List.of(), "");
     public static final BiomeRestriction COLD_RIVERS = new BiomeRestriction(List.of(), List.of(SCTags.IS_COLD_RIVER), List.of(), List.of(), "");
     public static final BiomeRestriction COLD_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_COLD_OCEAN), List.of(), List.of(), "");
