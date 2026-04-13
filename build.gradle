@@ -79,18 +79,18 @@ dependencies {
     jarJar(implementation("maven.modrinth:libtooltips:5J15zxaI"))
 
     //selling bin
-    jarJar(implementation("curse.maven:project-1483881:7858252"))
+    jarJar(implementation("maven.modrinth:wds-selling-bin:nrGOzmNu"))
 
     //tiny multiblock lib
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:neo-1.21.1-${tiny_multiblock_lib_version}"))
 
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    //runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
     //JEI
     compileOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    //runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
     //curios
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"

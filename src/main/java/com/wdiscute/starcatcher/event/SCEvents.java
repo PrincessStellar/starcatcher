@@ -1,9 +1,8 @@
 package com.wdiscute.starcatcher.event;
 
-import com.wdiscute.sellingbin.event.SBvents;
+import com.wdiscute.sellingbin.event.SBevents;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
@@ -101,7 +100,7 @@ public class SCEvents
     @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event)
     {
-        PackSource packSource = new SBvents.DefaultPackSource()
+        PackSource packSource = new SBevents.DefaultPackSource()
         {
             @Override
             public boolean shouldAddAutomatically()
@@ -244,6 +243,7 @@ public class SCEvents
         event.register(SCDataMaps.CATCH_MODIFIERS);
         event.register(SCDataMaps.MINIGAME_MODIFIERS);
         event.register(SCDataMaps.TACKLE_SKIN);
+        event.register(SCDataMaps.TREASURE);
     }
 
     @SubscribeEvent
