@@ -7,8 +7,7 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "aquaculture:leech",
-    "treasure_loot_table": "aquaculture:lockbox"
+    "item": "aquaculture:leech"
   },
   "difficulty": {
     "decay": 1.0,

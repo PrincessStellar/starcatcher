@@ -26,7 +26,6 @@ public class DGSCBlocksTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        tag(TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("carryon:block_blacklist"))).add(SCBlocks.STAND.get());
 
     }
 }
