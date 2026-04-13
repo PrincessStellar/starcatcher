@@ -34,7 +34,7 @@
     ]
   },
   "has_guide_entry": false,
-  "rarity": "common",
+  "rarity": "uncommon",
   "restrictions": [
     {
       "type": "starcatcher:caught_limit",
