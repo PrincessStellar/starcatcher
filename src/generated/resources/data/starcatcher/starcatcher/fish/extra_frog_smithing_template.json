@@ -2,17 +2,13 @@
   "base_chance": 5,
   "catch_info": {
     "type": "extra",
-    "item": "starcatcher:boner_skin_smithing_template"
+    "item": "starcatcher:frog_smithing_template"
   },
   "difficulty": {
     "decay": 0.0,
     "hp": 100,
     "missPenalty": 0,
-    "modifiers": [
-      {
-        "type": "starcatcher:burn_on_miss"
-      }
-    ],
+    "modifiers": [],
     "speed": 10,
     "sweetspots": [
       {
@@ -43,7 +39,7 @@
     {
       "type": "starcatcher:dimension",
       "dimensions": [
-        "minecraft:the_nether"
+        "minecraft:overworld"
       ],
       "dimensions_blacklist": []
     },
@@ -53,14 +49,20 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": [
-        "starcatcher:is_soul_sand_valley"
+        "starcatcher:is_swamp"
       ]
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:lava"
-      ]
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:murkwater_bait": 50
+      }
     },
     {
       "type": "starcatcher:caught_limit",

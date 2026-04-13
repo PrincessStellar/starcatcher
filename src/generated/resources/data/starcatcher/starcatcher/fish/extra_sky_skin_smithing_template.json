@@ -2,17 +2,13 @@
   "base_chance": 5,
   "catch_info": {
     "type": "extra",
-    "item": "starcatcher:boner_skin_smithing_template"
+    "item": "starcatcher:sky_skin_smithing_template"
   },
   "difficulty": {
     "decay": 0.0,
     "hp": 100,
     "missPenalty": 0,
-    "modifiers": [
-      {
-        "type": "starcatcher:burn_on_miss"
-      }
-    ],
+    "modifiers": [],
     "speed": 10,
     "sweetspots": [
       {
@@ -43,24 +39,22 @@
     {
       "type": "starcatcher:dimension",
       "dimensions": [
-        "minecraft:the_nether"
+        "minecraft:overworld"
       ],
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_soul_sand_valley"
-      ]
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:lava"
-      ]
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 100,
+      "translation_override": "gui.guide.elevation.skies"
     },
     {
       "type": "starcatcher:caught_limit",
