@@ -16,11 +16,11 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class DGBiomeModifierProvider extends DatapackBuiltinEntriesProvider
+public class DGSCBiomeModifierProvider extends DatapackBuiltinEntriesProvider
 {
-    public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, DGBiomeModifierProvider::bootstrap);
+    public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, DGSCBiomeModifierProvider::bootstrap);
 
-    public DGBiomeModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
+    public DGSCBiomeModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
     {
         super(output, registries, REGISTRY, Set.of(Starcatcher.MOD_ID));
     }

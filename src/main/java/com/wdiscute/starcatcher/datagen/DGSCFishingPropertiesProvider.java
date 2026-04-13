@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public class DGFishingPropertiesProvider extends DatapackBuiltinEntriesProvider
+public class DGSCFishingPropertiesProvider extends DatapackBuiltinEntriesProvider
 {
 
     static
@@ -23,9 +23,9 @@ public class DGFishingPropertiesProvider extends DatapackBuiltinEntriesProvider
 
     public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(Starcatcher.FISH_REGISTRY_KEY, FishingPropertiesRegistry::bootstrap);
 
-    public DGFishingPropertiesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
+    public DGSCFishingPropertiesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
     {
-        super(output, registries, REGISTRY, DGFishingPropertiesProvider::addConditions, Set.of(
+        super(output, registries, REGISTRY, DGSCFishingPropertiesProvider::addConditions, Set.of(
                 Starcatcher.MOD_ID,
                 "minecraft",
                 "tide",
