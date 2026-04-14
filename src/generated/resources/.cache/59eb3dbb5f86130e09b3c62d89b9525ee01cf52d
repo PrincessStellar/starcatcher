@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-12T12:51:43.4942459	Loot Tables
+// 1.21.1	2026-04-14T14:03:56.0700341	Loot Tables
 5208d301b75e0729a3653bae953cc2be3345fd65 data/starcatcher/loot_table/blocks/aquarium.json
 2c4789223fa4670a7635c9f364e2cf08e97e862b data/starcatcher/loot_table/blocks/clam.json
 065f2ab8b8f87cd0a766b7a10524d9b7176a1680 data/starcatcher/loot_table/blocks/conch.json
@@ -37,5 +37,7 @@ d228d18f71a91496625fa82a9505d7673dcb6c94 data/starcatcher/loot_table/blocks/tack
 91c5a8d9823c1bdd11a3b2d12de9c55d10c2cf21 data/starcatcher/loot_table/blocks/tackle_box_white.json
 cc1dd70cb3f351fb91935aaa089b360e62f692bf data/starcatcher/loot_table/blocks/tackle_box_yellow.json
 3c864cc29fd54701e40768dbd6693d672b942151 data/starcatcher/loot_table/blocks/trophy_copper.json
+f00061f5832346331f9c0c694afd3d9fe339a873 data/starcatcher/loot_table/blocks/trophy_diamond.json
 79e0d2dfb706a22f93aa12ead633a6915266cd6e data/starcatcher/loot_table/blocks/trophy_emerald.json
+fa8e8046b2e6d3a3d9d32eb0bef069e7f1bf0296 data/starcatcher/loot_table/blocks/trophy_gold.json
 8ef42a6e536c1e772ed03ccdacbf6eeac7367bd5 data/starcatcher/loot_table/blocks/trophy_iron.json
