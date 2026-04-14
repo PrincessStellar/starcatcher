@@ -1,11 +1,14 @@
 package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModEntities;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCEntities;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -30,10 +33,9 @@ public class StarcaughtBucket extends BucketItem
 
     public StarcaughtBucket(Fluid fluid)
     {
-        super(
-                fluid, new Item.Properties().stacksTo(16));
+        super(fluid, new Item.Properties().stacksTo(16));
 
-        entity = ModEntities.FISH.get();
+        entity = SCEntities.FISH.get();
     }
 
     @Override
@@ -49,14 +51,15 @@ public class StarcaughtBucket extends BucketItem
     private void spawn(ServerLevel serverLevel, ItemStack bucketedMobStack, BlockPos pos)
     {
         FishEntity fishEntity = this.entity.spawn(serverLevel, bucketedMobStack, null, pos, MobSpawnType.BUCKET, true, false);
-        if(ModDataComponents.has(bucketedMobStack, ModDataComponents.BUCKETED_FISH))
+        if (SCDataComponents.has(bucketedMobStack, SCDataComponents.BUCKETED_FISH))
             fishEntity.setFish(getFish(bucketedMobStack));
         else
-            fishEntity.setFish(ModItems.AURORA.toStack());
+            fishEntity.setFish(SCItems.AURORA.toStack());
     }
 
-    private static ItemStack getFish(ItemStack bucket) {
-        return ModDataComponents.getOrDefault(bucket,ModDataComponents.BUCKETED_FISH, new SingleStackContainer(ItemStack.EMPTY)).stack();
+    private static ItemStack getFish(ItemStack bucket)
+    {
+        return SCDataComponents.getOrDefault(bucket, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(ItemStack.EMPTY)).stack();
     }
 
     @Override
@@ -74,22 +77,44 @@ public class StarcaughtBucket extends BucketItem
     @Override
     public Component getName(ItemStack stack)
     {
-        SingleStackContainer ssc = ModDataComponents.get(stack, ModDataComponents.BUCKETED_FISH);
+        SingleStackContainer ssc = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH);
 
         if (ssc == null)
             return super.getName(stack);
         else
         {
-            return Component.translatable("tooltip.starcatcher.starcaught_bucket.before")
-                    .append(ssc.stack().getItem().getName(stack))
-                    .append(Component.translatable("tooltip.starcatcher.starcaught_bucket.after"));
+            Component baseName;
+            Component customName = ssc.stack().get(DataComponents.CUSTOM_NAME);
+            Component itemName = ssc.stack().get(DataComponents.ITEM_NAME);
+
+            if (customName != null)
+            {
+                baseName = customName;
+            }
+            else if (itemName != null)
+            {
+                baseName = itemName;
+            }
+            else baseName = Component.translatable(ssc.stack().getDescriptionId());
+
+            CaughtFishInfo sw = SCDataComponents.get(ssc.stack(), SCDataComponents.CAUGHT_FISH_INFO);
+            if (sw != null)
+            {
+                FishProperties.Rarity rarity = sw.golden() ? FishProperties.Rarity.GOLDEN : sw.rarity();
+                return Component.translatable("tooltip.starcatcher.starcaught_bucket.name", rarity.wrapWithRarityMarkdown(baseName.getString()));
+            }
+            else
+                return Component.translatable("tooltip.starcatcher.starcaught_bucket.name", baseName.getString());
         }
     }
 
     @Override
-    public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
+    public Optional<TooltipComponent> getTooltipImage(ItemStack stack)
+    {
         return Optional.of(new BucketTooltip(getFish(stack)));
     }
 
-    public record BucketTooltip(ItemStack fish) implements TooltipComponent {}
+    public record BucketTooltip(ItemStack fish) implements TooltipComponent
+    {
+    }
 }

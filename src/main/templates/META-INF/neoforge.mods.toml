@@ -11,7 +11,7 @@ modId="starcatcher"
 version="${mod_version}"
 displayName="${mod_name}"
 displayURL="http://curseforge.com/minecraft/mc-mods/starcatcher"
-logoFile="starcatcher 256x256.png" #optional
+logoFile = "icon.png"
 mod_authors="${mod_authors}" #optional
 description='''A fishing mod with lots of fishes to collect!
 
@@ -20,10 +20,13 @@ wdiscute - Main Developer
 Kapitenft, DuckXYZ, Nikdo53, Quarris & more - Coding support and fixing my mess
 Nikdo53 - Fishing minigame art & miscellaneous texture tweeks
 ScribbleDemon - Guide book, Fish radar and "Fish Caught!" notification art
-DayTheMagpie - Trophy Models, Tournament UI & models, Secret Notes art & various other UI art
-Spring - 3D Fish models and some fishes sprite tweaks
+DayTheMagpie - Trophy Models, Tournament UI & models, Secret Notes art, Fisherman's Hats, Selling Bin UI, Bobbers Models, & various other Items and UI art
+Spring - 3D Fish models and some item sprite tweaks
+Redeix - Selling Bin model, Tackle Box model and animations, Farmer's delight food sprites, and several item textures
+Identidade470 - Conches & Clams textures and models
 Burning Sulphur - Aiding in adding compatibility with mods
-Axtro - Help with Farmer's Delight Addon
+Axtro - Help with Farmer's Delight Addon, and Curios support.
+HappyMeek - Miscellaneous Bobbers & Hooks Sprites
 
 Thank you to all the translators who contribuited their time to make the mod accessible to everyone! If you'd like to translate reach out to me on discord!
 
@@ -44,10 +47,16 @@ versionRange="${neo_version_range}" #mandatory
 ordering="AFTER"
 side="BOTH"
 
-# Here's another dependency
 [[dependencies.starcatcher]]
 modId="minecraft"
 type="required"
 versionRange="${minecraft_version_range}"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.starcatcher]]
+modId="libtooltips"
+type="required"
+versionRange="[1.6, 1.9)"
+ordering="AFTER"
+side="CLIENT"

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -18,14 +18,14 @@ public class NoteContainer extends Item
     {
         super(new Properties().stacksTo(1));
         this.note = noteName;
-        this.turnsInto = ModItems.BROKEN_BOTTLE.get();
+        this.turnsInto = SCItems.BROKEN_BOTTLE.get();
     }
 
     public NoteContainer(Properties p, SecretNote.Note noteName)
     {
         super(p);
         this.note = noteName;
-        this.turnsInto = ModItems.BROKEN_BOTTLE.get();
+        this.turnsInto = SCItems.BROKEN_BOTTLE.get();
     }
 
     public NoteContainer(Properties p, Item turnsInto, SecretNote.Note noteName)
@@ -39,13 +39,13 @@ public class NoteContainer extends Item
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
         //give note
-        ItemStack is = new ItemStack(ModItems.SECRET_NOTE.get());
-        ModDataComponents.set(is, ModDataComponents.SECRET_NOTE, note);
+        ItemStack is = new ItemStack(SCItems.SECRET_NOTE.get());
+        SCDataComponents.set(is, SCDataComponents.SECRET_NOTE, note);
         player.addItem(is);
 
         //replace with broken bottle
         player.setItemInHand(usedHand, new ItemStack(turnsInto));
 
-        return super.use(level, player, usedHand);
+        return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 }

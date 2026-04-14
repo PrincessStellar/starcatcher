@@ -2,13 +2,13 @@ package com.wdiscute.starcatcher.io;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.Config;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.FTBTeamsCompat;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishCaughtPayload;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -27,6 +27,7 @@ public record FishCaughtCounter(
         float averageTicks,
         int size,
         int weight,
+        float percentile,
         long firstCatch,
         boolean caughtGolden,
         boolean perfectCatch,
@@ -41,6 +42,7 @@ public record FishCaughtCounter(
                     Codec.FLOAT.optionalFieldOf("average_ticks", 0.0f).forGetter(FishCaughtCounter::averageTicks),
                     Codec.INT.optionalFieldOf("best_size", 0).forGetter(FishCaughtCounter::size),
                     Codec.INT.optionalFieldOf("best_weight", 0).forGetter(FishCaughtCounter::weight),
+                    Codec.FLOAT.optionalFieldOf("best_percentile", 0f).forGetter(FishCaughtCounter::percentile),
                     Codec.LONG.optionalFieldOf("first_catch", 0L).forGetter(FishCaughtCounter::firstCatch),
                     Codec.BOOL.optionalFieldOf("caught_golden", false).forGetter(FishCaughtCounter::caughtGolden),
                     Codec.BOOL.optionalFieldOf("perfect_catch", false).forGetter(FishCaughtCounter::perfectCatch),
@@ -55,6 +57,7 @@ public record FishCaughtCounter(
             ByteBufCodecs.FLOAT, FishCaughtCounter::averageTicks,
             ByteBufCodecs.INT, FishCaughtCounter::size,
             ByteBufCodecs.INT, FishCaughtCounter::weight,
+            ByteBufCodecs.FLOAT, FishCaughtCounter::percentile,
             ByteBufCodecs.VAR_LONG, FishCaughtCounter::firstCatch,
             ByteBufCodecs.BOOL, FishCaughtCounter::caughtGolden,
             ByteBufCodecs.BOOL, FishCaughtCounter::perfectCatch,
@@ -75,26 +78,36 @@ public record FishCaughtCounter(
 
     public static FishCaughtCounter createHacked()
     {
-        return new FishCaughtCounter(999999, 0, 0, 0, 0, 0, false, false, true);
+        return new FishCaughtCounter(999999, 0, 0, 0, 0, 0, 0, false, false, true);
+    }
+
+    public static boolean canCatchGolden(FishProperties fp, ServerPlayer player)
+    {
+        //returns false if player has already caught the golden fish of that fp
+        Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
+        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fp);
+        if (!fishesCaught.containsKey(loc)) return true;
+        return !fishesCaught.get(loc).caughtGolden;
     }
 
     public FishCaughtCounter removeNotification()
     {
-        return new FishCaughtCounter(this.count, this.fastestTicks, this.averageTicks, this.size, this.weight, this.firstCatch, this.caughtGolden, perfectCatch, false);
+        return new FishCaughtCounter(this.count, this.fastestTicks, this.averageTicks, this.size, this.weight, this.percentile, this.firstCatch, this.caughtGolden, perfectCatch, false);
     }
 
     @Nonnull
-    public static FishCaughtCounter create(int ticks, int size, int weight, boolean perfectCatch)
+    public static FishCaughtCounter create(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, U.getTime(), false, perfectCatch, true);
+        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, U.getTime(), golden, perfectCatch, hasGuideNotification);
     }
 
-    public FishCaughtCounter getUpdated(int ticks, int size, int weight, boolean perfectCatch)
+    public FishCaughtCounter getUpdated(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)
     {
         int fastestToSave = Math.min(this.fastestTicks, ticks);
         float averageToSave = (this.averageTicks * this.count + ticks) / (this.count + 1);
         int countToSave = this.count;
         boolean perfect = perfectCatch || this.perfectCatch;
+        boolean golden = goldenCatch || this.caughtGolden;
 
         //if cheated in, fixes trackers
         if (this.fastestTicks == 0) fastestToSave = ticks;
@@ -103,6 +116,7 @@ public record FishCaughtCounter(
 
         int sizeToSave = Math.max(size, this.size);
         int weightToSave = Math.max(weight, this.weight);
+        float percentileToSave = Math.min(percentile, this.percentile);
 
         return new FishCaughtCounter(
                 countToSave + 1,
@@ -110,39 +124,51 @@ public record FishCaughtCounter(
                 averageToSave,
                 sizeToSave,
                 weightToSave,
+                percentileToSave,
                 this.firstCatch,
-                this.caughtGolden,
+                golden,
                 perfect,
-                true);
+                hasGuideNotification);
     }
 
-    public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam)
+    public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight,
+                                              float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
+    {
+        awardFishCaughtCounter(fpCaught, null, player, ticks, size, weight, percentile, perfectCatch, awardToTeam, golden);
+    }
+
+    public static void awardFishCaughtCounter(FishProperties fpCaught, ResourceLocation rl, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
     {
         //ftb teams compat to share fishes caught to team, does not share size and weight
-        if (ModList.get().isLoaded("ftbteams") && awardToTeam && Config.ENABLE_FTB_TEAM_SHARING.get())
+        if (ModList.get().isLoaded("ftbteams") && awardToTeam && SCConfig.ENABLE_FTB_TEAM_SHARING.get())
         {
             FTBTeamsCompat.awardToTeam(player, fpCaught);
             return;
         }
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
-        ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY).getKey(fpCaught);
-        FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
 
-        boolean newFish = fishCaughtCounter == null;
+        ResourceLocation loc = rl == null ? player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fpCaught) : rl;
+        if (loc != null)
+        {
+            FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
+            boolean newFish = fishCaughtCounter == null;
 
-        if (newFish)
-            fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, perfectCatch);
-        else
-            fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, perfectCatch);
+            if (newFish)
+                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
+            else
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
 
-        fishesCaught.put(loc, fishCaughtCounter);
+            fishesCaught.put(loc, fishCaughtCounter);
 
-        //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
-        if (!fpCaught.catchInfo().alwaysSpawnEntity())
-            PacketDistributor.sendToPlayer(((ServerPlayer) player), new FishCaughtPayload(fpCaught, newFish, size, weight, percentile));
+            //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
+            if (!fpCaught.catchInfo().alwaysSpawnEntity() && fpCaught.hasGuideEntry())
+                PacketDistributor.sendToPlayer(((ServerPlayer) player), new FishCaughtPayload(fpCaught, newFish, size, weight, percentile));
 
-        FishingGuideAttachment.setFishesCaught(player, fishesCaught);
+            FishingGuideAttachment.setFishesCaught(player, fishesCaught);
+        }
+
+
     }
 
 }

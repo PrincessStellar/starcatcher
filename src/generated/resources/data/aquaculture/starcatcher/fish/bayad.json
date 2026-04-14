@@ -5,22 +5,15 @@
       "modid": "aquaculture"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:bayad",
     "fish_bucket": "aquaculture:bayad_bucket",
-    "item": "aquaculture:bayad",
-    "treasure": "aquaculture:lockbox"
+    "item": "aquaculture:bayad"
   },
-  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,
@@ -49,33 +42,58 @@
   },
   "has_guide_entry": true,
   "rarity": "uncommon",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_warm_lake"
+      ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_summer": 0,
+        "late_autumn": 0,
+        "late_summer": 0,
+        "mid_autumn": 0,
+        "mid_summer": 0
+      },
+      "translation_override": "gui.guide.seasons.summer_autumn"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 12700,
+          "second": 23000
+        }
+      ],
+      "translation_override": "gui.guide.night"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 170.0,
     "average_weight_grams": 150000.0,
     "deviation_size_cm": 30.0,
-    "deviation_weight_grams": 20000.0
+    "deviation_weight_grams": 20000.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_warm_lake"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "summer",
-      "autumn"
-    ]
-  }
+  "skips_minigame": false
 }

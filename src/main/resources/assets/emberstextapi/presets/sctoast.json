@@ -1,0 +1,7 @@
+{
+  "format_version": 1,
+  "effects": [
+    { "type": "obfuscate", "params": { "mode": "reveal", "speed" : "300"} },
+    { "type": "shadow", "params": { "a": 0 } }
+  ]
+}

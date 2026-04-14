@@ -5,22 +5,15 @@
       "modid": "tide"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:cave_crawler",
     "fish_bucket": "tide:cave_crawler_bucket",
-    "item": "tide:cave_crawler",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:cave_crawler"
   },
-  "daytime": "all",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,
@@ -49,30 +42,27 @@
   },
   "has_guide_entry": true,
   "rarity": "common",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 50,
+      "min_y": -2147483648,
+      "translation_override": "gui.guide.elevation.underground"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 50.0,
     "average_weight_grams": 1000.0,
     "deviation_size_cm": 15.0,
-    "deviation_weight_grams": 200.0
+    "deviation_weight_grams": 200.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": -2147483648,
-    "below_y": 50,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "all"
-    ]
-  }
+  "skips_minigame": false
 }

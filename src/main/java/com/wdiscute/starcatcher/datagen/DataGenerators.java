@@ -1,17 +1,22 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
@@ -21,40 +26,59 @@ public class DataGenerators
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event)
     {
-        DataGenerator gen = event.getGenerator();
-
-        //fish properties
-        CompletableFuture<HolderLookup.Provider> registries = event.getLookupProvider();
-        PackOutput output = gen.getPackOutput();
-        gen.addProvider(
-                event.includeServer(),
-                new DGFishingPropertiesProvider(output, registries)
+        event.createDatapackRegistryObjects(
+                new RegistrySetBuilder()
+                        .add(Starcatcher.FISH_REGISTRY_KEY, FishingPropertiesRegistry::bootstrap)
         );
 
-        gen.addProvider(event.includeServer(), new DGBiomeModifierProvider(output, registries));
+        DataGenerator gen = event.getGenerator();
 
-        gen.addProvider(event.includeServer(), new DGTrophyPropertiesProvider(output, registries));
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        PackOutput output = gen.getPackOutput();
+
+        //fish properties
+        gen.addProvider(
+                event.includeServer(),
+                new DGSCFishingPropertiesProvider(output, lookupProvider)
+        );
+
+        gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));
 
         //fish models
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        gen.addProvider(event.includeServer(), new DGModItemModelProvider(output, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGSCItemModelProvider(output, existingFileHelper));
 
         //block tags
-        BlockTagsProvider btp = new DGModBlocksTagProvider(output, registries, existingFileHelper);
+        BlockTagsProvider btp = new DGSCBlocksTagsProvider(output, lookupProvider, existingFileHelper);
         gen.addProvider(event.includeServer(), btp);
 
         //item tags
-        ItemTagsProvider itp = new DGModItemsTagProvider(output, registries, btp.contentsGetter(), existingFileHelper);
+        ItemTagsProvider itp = new DGSCItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
 
+        //fp tags
+        //todo figure this out
+        gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
+
         //advancements
-        gen.addProvider(event.includeServer(), new DGModAdvancementProvider(output, registries, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));
+
+        //advancements
+        gen.addProvider(event.includeServer(), new DGSCLootModifiers(output, lookupProvider));
+
 
         //biome tags
-        gen.addProvider(event.includeServer(), new DGBiomeTagsProvider(output, registries, existingFileHelper));
+        gen.addProvider(event.includeServer(), new DGSCBiomeTagsProvider(output, lookupProvider, existingFileHelper));
 
+        //loot table
+        gen.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
+                List.of(new LootTableProvider.SubProviderEntry(DGSCBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
+        //recipes
+        gen.addProvider(event.includeServer(), new DGSCRecipeProvider(output, lookupProvider));
 
+        //data maps
+        gen.addProvider(event.includeServer(), new DGSCDataMapsProvider(output, lookupProvider));
 
     }
 }

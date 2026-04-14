@@ -1,9 +1,14 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
+import com.wdiscute.starcatcher.registry.FishProperties;
+
+import java.util.List;
 
 public class DGAlexsCavesFishes extends FishingPropertiesRegistry
 {
@@ -18,14 +23,21 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
         //`--' `--' `--'  `----' '--'  '--'      `----'       `-----'  `--`--'    `--'     `----' `----'
         //
 
+        final BiomeRestriction TOXIC_CAVES = new BiomeRestriction(List.of(U.rl("alexscaves", "toxic_caves")), List.of(), List.of(), List.of(), "");
+        final BiomeRestriction CANDY_CAVITY = new BiomeRestriction(List.of(U.rl("alexscaves", "candy_cavity")), List.of(), List.of(), List.of(), "");
+        final BiomeRestriction ABYSSAL_CHASM = new BiomeRestriction(List.of(U.rl("alexscaves", "abyssal_chasm")), List.of(), List.of(), List.of(), "");
+        final BiomeRestriction PRIMORDIAL_CAVES = new BiomeRestriction(List.of(U.rl("alexscaves", "primordial_caves")), List.of(), List.of(), List.of(), "");
+
+
         register(fish(U.holderItem("alexscaves", "radgill"))
                 .withBucketedFish(U.holderItem("alexscaves", "radgill_bucket"))
                 .withEntityToSpawn(U.holderEntity("alexscaves", "radgill"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "acid"))
-                        .withBiomes(U.rl("alexscaves", "toxic_caves")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        TOXIC_CAVES,
+                        FluidRestriction.ACID)
         );
 
         register(fish(U.holderItem("alexscaves", "sweetish_fish_blue"))
@@ -33,9 +45,11 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "purple_soda"))
-                        .withBiomes(U.rl("alexscaves", "candy_cavity")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        CANDY_CAVITY,
+                        FluidRestriction.PURPLE_SODA
+                )
         );
 
         register(fish(U.holderItem("alexscaves", "sweetish_fish_green"))
@@ -43,9 +57,11 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "purple_soda"))
-                        .withBiomes(U.rl("alexscaves", "candy_cavity")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        CANDY_CAVITY,
+                        FluidRestriction.PURPLE_SODA
+                )
         );
 
         register(fish(U.holderItem("alexscaves", "sweetish_fish_pink"))
@@ -53,9 +69,11 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 70000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "purple_soda"))
-                        .withBiomes(U.rl("alexscaves", "candy_cavity")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        CANDY_CAVITY,
+                        FluidRestriction.PURPLE_SODA
+                )
         );
 
         register(fish(U.holderItem("alexscaves", "sweetish_fish_red"))
@@ -63,9 +81,11 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "purple_soda"))
-                        .withBiomes(U.rl("alexscaves", "candy_cavity")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        CANDY_CAVITY,
+                        FluidRestriction.PURPLE_SODA
+                )
         );
 
         register(fish(U.holderItem("alexscaves", "sweetish_fish_yellow"))
@@ -73,9 +93,11 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withFluids(U.rl("alexscaves", "purple_soda"))
-                        .withBiomes(U.rl("alexscaves", "candy_cavity")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        CANDY_CAVITY,
+                        FluidRestriction.PURPLE_SODA
+                )
         );
 
 
@@ -84,8 +106,10 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "lanternfish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 15000, 10000))
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomes(U.rl("alexscaves", "abyssal_chasm")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        ABYSSAL_CHASM
+                )
         );
 
         register(fish(U.holderItem("alexscaves", "tripodfish"))
@@ -93,8 +117,10 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "tripodfish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1000, 5000))
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomes(U.rl("alexscaves", "abyssal_chasm")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        ABYSSAL_CHASM
+                )
         );
 
 
@@ -103,11 +129,13 @@ public class DGAlexsCavesFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("alexscaves", "trilocaris"))
                 .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 1000, 5000))
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomes(U.rl("alexscaves", "primordial_caves")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        PRIMORDIAL_CAVES
+                )
                 .withAlwaysSpawnEntity(true)
                 .withEntityToSpawn(U.holderEntity("alexscaves", "trilocaris"))
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
         );
     }
 }

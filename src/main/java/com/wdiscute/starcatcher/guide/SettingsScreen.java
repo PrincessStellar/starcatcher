@@ -1,603 +1,281 @@
 package com.wdiscute.starcatcher.guide;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.minigame.HitFakeParticle;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.io.ModDataComponents;
-import net.minecraft.client.Minecraft;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.FishProperties;
+import net.minecraft.client.OptionInstance;
+import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.language.I18n;
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.client.gui.components.events.GuiEventListener;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.fml.ModList;
-import org.joml.Vector2d;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Supplier;
 
-public class SettingsScreen extends Screen
-{
-    private static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/minigame/minigame.png");
-    private static final ResourceLocation TANK = Starcatcher.rl("textures/gui/minigame/surface.png");
-    private static final ResourceLocation SETTINGS = Starcatcher.rl("textures/gui/minigame/settings.png");
-    private static final ResourceLocation GUI_SCALE = Starcatcher.rl("textures/gui/minigame/gui_scale.png");
+public class SettingsScreen extends FishingMinigameScreen {
+    public static final ResourceLocation SETTINGS = Starcatcher.rl("textures/gui/minigame/settings.png");
+    public static final ResourceLocation GUI_SCALE = Starcatcher.rl("textures/gui/minigame/gui_scale.png");
 
-    private static final int SIZE_1 = 5;
-    private static final int SIZE_2 = 7;
-    private static final int SIZE_3 = 12;
-    private static final int SIZE_4 = 17;
-    private static final Logger log = LoggerFactory.getLogger(SettingsScreen.class);
+    FishProperties.SizeAndWeight.Units unitSelected;
 
-    final FishProperties fp;
-    final ItemStack itemBeingFished;
-    final ItemStack bobber;
-    final ItemStack bait;
-    final ItemStack hook;
-
-    float hitDelay;
-
-    float speed;
-    int reward;
-    int rewardThin;
-    int treasureReward;
-    int penalty;
-    int decay;
-    boolean hasTreasure;
-    boolean changeRotation;
-
-    boolean moveMarkers = false;
-
-    int gracePeriod = 80;
-
-    final InteractionHand hand;
-
-    int pointerPos = 0;
-    float lastHitMarkerPos = 0;
-    float lastLastHitMarkerPos = 0;
-    float lastLastLastHitMarkerPos = 0;
-
-    int pos1;
-    int pos2;
-    int posThin1;
-    int posThin2;
-    int posTreasure;
-
-    int currentRotation = 1;
-
-    float partial;
-
-    int completion = 20;
-    int completionSmooth = 20;
-
-    boolean perfectCatch = true;
-    int consecutiveHits = 0;
-
-    boolean treasureActive;
-    int treasureProgress = Integer.MIN_VALUE;
-    int treasureProgressSmooth = Integer.MIN_VALUE;
-
-    int difficultyBobberOffset = 0;
-    int bigForgiving = SIZE_3;
-    int thinForgiving = SIZE_1;
-    int treasureForgiving = SIZE_2;
-
-    int previousGuiScale;
-    Units unitSelected;
-
-    int tickCount = 0;
-    List<HitFakeParticle> hitParticles = new ArrayList<>();
-
-    boolean isHoldingSpace = false;
-
-    public SettingsScreen(FishProperties fp, ItemStack rod)
-    {
-        super(Component.empty());
-
-        hitDelay = Config.HIT_DELAY.get().floatValue();
-
-        this.fp = fp;
-        this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
-        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack().copy();
-        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy();
-        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack().copy();
-
-        posTreasure = Integer.MIN_VALUE;
-
-        unitSelected = Config.UNIT.get();
-
-        hand = Minecraft.getInstance().player.getMainHandItem().is(ModItems.ROD) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-    }
-
-    private int getRandomFreePosition()
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            int posBeingChecked = U.r.nextInt(360);
-
-            if ((Math.abs(pos1 - posBeingChecked) < 50 || Math.abs(pos1 - posBeingChecked) > 310) && pos1 != Integer.MIN_VALUE)
-                continue;
-            if ((Math.abs(pos2 - posBeingChecked) < 50 || Math.abs(pos2 - posBeingChecked) > 310) && pos2 != Integer.MIN_VALUE)
-                continue;
-            if ((Math.abs(posThin1 - posBeingChecked) < 50 || Math.abs(posThin1 - posBeingChecked) > 310) && posThin1 != Integer.MIN_VALUE)
-                continue;
-            if ((Math.abs(posThin2 - posBeingChecked) < 50 || Math.abs(posThin2 - posBeingChecked) > 310) && posThin2 != Integer.MIN_VALUE)
-                continue;
-            if ((Math.abs(posTreasure - posBeingChecked) < 50 || Math.abs(posTreasure - posBeingChecked) > 310) && posTreasure != Integer.MIN_VALUE)
-                continue;
-
-            return posBeingChecked;
-        }
-
-        return 0;
+    public SettingsScreen(FishProperties fp, ItemStack rod) {
+        super(fp, rod);
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick)
-    {
-        super.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
+    protected void init() {
+        super.init();
 
-        partial = partialTick;
-        PoseStack poseStack = guiGraphics.pose();
-
-        int imageWidth = 512;
-        int imageHeight = 256;
-
-        int uiX = (width - imageWidth) / 2;
-        int uiY = (height - imageHeight) / 2;
-
-        double x = mouseX - uiX;
-        double y = mouseY - uiY;
-
-        //settings
-        guiGraphics.blit(
-                SETTINGS, width / 2 - 100, height / 2 - 128,
-                256, 256, 0, 0, 256, 256, 256, 256);
-
-        //GUI SCALE
-        guiGraphics.blit(
-                GUI_SCALE, width / 2 - 50, 0,
-                100, 50, 0, 0, 100, 50, 100, 50);
+        hitDelay = (SCConfig.HIT_DELAY.get().floatValue());
+        unitSelected = SCConfig.UNIT.get();
+        //Use widgets instead of doing hovering/clicking logic manually
+        // addRenderableWidget(new GuiScaleWidget(width / 2 - 50, 0, 100, 50));
 
 
-        //move markers
-        guiGraphics.drawString(this.font, "Move Markers", width / 2 + 72, height / 2 - 24, 0x000000, false);
-        if (moveMarkers) guiGraphics.fill(
-                width / 2 + 62,
-                height / 2 - 22,
+        //new gui scale
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> renderScale, // the value to render
+                () -> renderScale -= 0.1f, // left button action
+                () -> renderScale += 0.1f, // right button action
+                0.2f, //lower limit
+                5.9f, //upper limit
+                Component.literal("Scale"),
+                width / 2 + 100, height / 2 - 90, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
-                width / 2 + 67,
-                height / 2 - 17,
-
-                0xffff00ff
-        );
-
-        //change rotation
-        guiGraphics.drawString(this.font, "Flip Rotation", width / 2 + 72, height / 2 - 3, 0x000000, false);
-        if (changeRotation) guiGraphics.fill(
-                width / 2 + 62,
-                height / 2 - 2,
-
-                width / 2 + 67,
-                height / 2 + 3,
-
-                0xffff00ff
-        );
-
-        //hover
-        if (x > 350 && x < 373 && y > 39 && y < 66)
-        {
-            List<Component> comp = new ArrayList<>();
-
-            comp.add(Component.literal("This screen serves to help those"));
-            comp.add(Component.literal("who might be playing on high input setups"));
-            comp.add(Component.literal(""));
-            comp.add(Component.literal("Use the Hit Delay to adjust the number of ticks"));
-            comp.add(Component.literal("the minigame will calculate back in time for your input"));
-            comp.add(Component.literal(""));
-            comp.add(Component.literal("For most people, a delay of 0 works fine."));
-            comp.add(Component.literal("Play around and see what feels natural to you"));
-
-            guiGraphics.renderTooltip(this.font, comp, Optional.empty(), mouseX, mouseY);
-        }
-
-        //speed
-        guiGraphics.drawString(this.font, "Speed: " + speed, width / 2 + 78, height / 2 + 63, 0x000000, false);
 
         //hit delay
-        guiGraphics.drawString(this.font, "Hit Delay: " + hitDelay, width / 2 + 73, height / 2 - 53, 0x000000, false);
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> hitDelay, // the value to render
+                () -> hitDelay -= 0.2f, // left button action
+                () -> hitDelay += 0.2f, // right button action
+                -5f,  //lower limit
+                5f, //upper limit
+                Component.literal("Hit Delay"),
+                width / 2 + 100, height / 2 - 40, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
-        //markers
-        guiGraphics.drawString(this.font, "Markers:", width / 2 + 63, height / 2 + 13, 0x000000, false);
+        //Speed
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> pointerSpeed, // the value to render
+                () -> pointerSpeed -= 0.1f, // left button action
+                () -> pointerSpeed += 0.1f, // right button action
+                null,
+                null,
+                Component.literal("Speed"),
+                width / 2 + 100, height / 2 + 10, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
-        if (pos1 != Integer.MIN_VALUE)
-            guiGraphics.fill(
-                    width / 2 + 64,
-                    height / 2 + 27,
+        //x offset
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> xOffset, // the value to render
+                () -> xOffset--, // left button action
+                () -> xOffset++, // right button action
+                null,
+                null,
+                Component.literal("X Offset"),
+                width / 2 + 100, height / 2 + 30, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
-                    width / 2 + 69,
-                    height / 2 + 32,
+        //y offset
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> yOffset, // the value to render
+                () -> yOffset++, // left button action
+                () -> yOffset--, // right button action
+                null,
+                null,
+                Component.literal("Y Offset"),
+                width / 2 + 100, height / 2 + 50, 91, 19, 160, 69, 256, 256, SETTINGS, 13));
 
-                    0xffff00ff
-            );
-
-        if (pos2 != Integer.MIN_VALUE)
-            guiGraphics.fill(
-                    width / 2 + 83,
-                    height / 2 + 27,
-
-                    width / 2 + 88,
-                    height / 2 + 32,
-
-                    0xffff00ff
-            );
-
-        if (posThin1 != Integer.MIN_VALUE)
-            guiGraphics.fill(
-                    width / 2 + 102,
-                    height / 2 + 27,
-
-                    width / 2 + 107,
-                    height / 2 + 32,
-
-                    0xffff00ff
-            );
-
-        if (posThin2 != Integer.MIN_VALUE)
-            guiGraphics.fill(
-                    width / 2 + 121,
-                    height / 2 + 27,
-
-                    width / 2 + 126,
-                    height / 2 + 32,
-
-                    0xffff00ff
-            );
-
-        if (posTreasure != Integer.MIN_VALUE)
-            guiGraphics.fill(
-                    width / 2 + 140,
-                    height / 2 + 27,
-
-                    width / 2 + 145,
-                    height / 2 + 32,
-
-                    0xffff00ff
-            );
-
-
-        //Steady Bobber
-        guiGraphics.drawString(this.font, "Steady Bobber", width / 2 + 72, height / 2 + 43, 0x000000, false);
-        if (thinForgiving != SIZE_1) guiGraphics.fill(
-                width / 2 + 62,
-                height / 2 + 44,
-
-                width / 2 + 67,
-                height / 2 + 49,
-
-                0xffff00ff
-        );
 
         //Units
-        guiGraphics.drawString(this.font, Component.translatable(unitSelected.translationKey), width / 2 - 50, height / 2 + 102, 0x000000, false);
+        addRenderableWidget(new LeftRightButtonWidget<>(
+                () -> unitSelected, // the value to render
+                () -> unitSelected = unitSelected.previous(), // left button action
+                () -> unitSelected = unitSelected.next(), // right button action
+                null,
+                null,
+                Component.literal("Units"),
+                width / 2, height / 2 + 80, 136, 25, 34, 222, 256, 256, SETTINGS, 16));
 
-        hitParticles.forEach(p -> p.render(guiGraphics, width, height));
+    }
+
+    public Options getOptions() {
+        return getMinecraft().options;
+    }
+
+    private @NotNull OptionInstance<Integer> guiScale() {
+        return getOptions().guiScale();
     }
 
     @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button)
-    {
-        super.mouseClicked(mouseX, mouseY, button);
-
-        int imageWidth = 512;
-        int imageHeight = 256;
-
-        int uiX = (width - imageWidth) / 2;
-        int uiY = (height - imageHeight) / 2;
-
-        double x = mouseX - uiX;
-        double y = mouseY - uiY;
-
-        //gui less
-        if (x > 226 && x < 240 && mouseY > 20 && mouseY < 50)
-        {
-            if(ModList.get().isLoaded("distanthorizons"))
-            {
-                Minecraft.getInstance().player.displayClientMessage(Component.literal("GUI Scale is not supported while Distant Horizons is installed. It causes a massive frame drop upon starting and ending the minigame."), false);
-                return false;
-            }
-
-            int current = Minecraft.getInstance().options.guiScale().get();
-            if (current > 1)
-                Minecraft.getInstance().options.guiScale().set(current - 1);
-        }
-
-        //gui more
-        if (x > 267 && x < 280 && mouseY > 20 && mouseY < 50)
-        {
-            if(ModList.get().isLoaded("distanthorizons"))
-            {
-                Minecraft.getInstance().player.displayClientMessage(Component.literal("GUI Scale is not supported while Distant Horizons is installed. It causes a massive frame drop upon starting and ending the minigame."), false);
-                return false;
-            }
-            int current = Minecraft.getInstance().options.guiScale().get();
-            Minecraft.getInstance().options.guiScale().set(current + 1);
-        }
-
-        //move markers
-        if (x > 316 && x < 328 && y > 105 && y < 112)
-        {
-            moveMarkers = !moveMarkers;
-        }
-
-        //change rotation
-        if (x > 316 && x < 328 && y > 172 && y < 180)
-        {
-            //no steady > steady
-            if (thinForgiving == SIZE_1)
-            {
-                thinForgiving = SIZE_2;
-                bigForgiving = SIZE_4;
-                difficultyBobberOffset = 16;
-            }
-            else
-            //steady > no steady
-            {
-                thinForgiving = SIZE_1;
-                bigForgiving = SIZE_3;
-                difficultyBobberOffset = 0;
-            }
-        }
-
-        //change rotation
-        if (x > 316 && x < 328 && y > 125 && y < 145)
-        {
-            changeRotation = !changeRotation;
-        }
-
-        //speed
-        if (x > 316 && x < 330 && y > 185 && y < 225)
-        {
-            speed--;
-            if (speed < 0) speed = 0;
-        }
-
-        //speed
-        if (x > 395 && x < 410 && y > 185 && y < 225)
-        {
-            speed++;
-        }
-
-        //hit delay
-        if (x > 316 && x < 325 && y > 70 && y < 100)
-        {
-            hitDelay = (float) ((int) (hitDelay * 10)) / 10;
-            hitDelay -= 0.2f;
-            hitDelay = (float) ((int) (hitDelay * 10)) / 10;
-        }
-
-        //hit delay
-        if (x > 396 && x < 410 && y > 70 && y < 100)
-        {
-            hitDelay = (float) ((int) (hitDelay * 10)) / 10;
-            hitDelay += 0.2f;
-            hitDelay = (float) ((int) (hitDelay * 10)) / 10;
-        }
-
-        //hit delay next
-        if (x > 312 && x < 330 && y > 226 && y < 240)
-        {
-            unitSelected = unitSelected.next();
-            Config.UNIT.set(unitSelected);
-            Config.UNIT.save();
-        }
-
-        //hit delay next
-        if (x > 193 && x < 205 && y > 226 && y < 240)
-        {
-            unitSelected = unitSelected.previous();
-            Config.UNIT.set(unitSelected);
-            Config.UNIT.save();
-        }
-
-        //markers
-        if (x > 319 && x < 330 && y > 153 && y < 166)
-        {
-            if (pos1 == Integer.MIN_VALUE)
-                pos1 = getRandomFreePosition();
-            else
-                pos1 = Integer.MIN_VALUE;
-        }
-
-        if (x > 338 && x < 349 && y > 153 && y < 166)
-        {
-            if (pos2 == Integer.MIN_VALUE)
-                pos2 = getRandomFreePosition();
-            else
-                pos2 = Integer.MIN_VALUE;
-        }
-
-        if (x > 357 && x < 368 && y > 153 && y < 166)
-        {
-            if (posThin1 == Integer.MIN_VALUE)
-                posThin1 = getRandomFreePosition();
-            else
-                posThin1 = Integer.MIN_VALUE;
-        }
-
-        if (x > 376 && x < 387 && y > 153 && y < 166)
-        {
-            if (posThin2 == Integer.MIN_VALUE)
-                posThin2 = getRandomFreePosition();
-            else
-                posThin2 = Integer.MIN_VALUE;
-        }
-
-        if (x > 395 && x < 406 && y > 153 && y < 166)
-        {
-            if (posTreasure == Integer.MIN_VALUE)
-                posTreasure = getRandomFreePosition();
-            else
-                posTreasure = Integer.MIN_VALUE;
-        }
-
-        return false;
+    public boolean isSettingsScreen() {
+        return true;
     }
 
     @Override
-    public void onClose()
-    {
-        Config.HIT_DELAY.set((double) hitDelay);
-        Config.HIT_DELAY.save();
+    public void inputPressed() {
+        if (!(isHoldingMouse && children().stream().anyMatch(GuiEventListener::isFocused)))
+            super.inputPressed();
 
-        if(!ModList.get().isLoaded("distanthorizons"))
-            Minecraft.getInstance().options.guiScale().set(previousGuiScale);
+        if (progress > 100) progress = 100;
+        if (progress < 0 ) progress = 0;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (progress > 100) progress = 100;
+        if (progress < 0 ) progress = 0;
+    }
+
+    @Override
+    public void onClose() {
+        //round it to 2 decimal points
+        SCConfig.HIT_DELAY.set(Math.round(hitDelay * 10) / 10d);
+        SCConfig.HIT_DELAY.save();
+
+
+        SCConfig.MINIGAME_RENDER_SCALE.set((double) renderScale);
+        SCConfig.MINIGAME_RENDER_SCALE.save();
+
+        SCConfig.MINIGAME_X_OFFSET.set(xOffset);
+        SCConfig.MINIGAME_Y_OFFSET.set(yOffset);
+        SCConfig.MINIGAME_X_OFFSET.save();
+        SCConfig.MINIGAME_Y_OFFSET.save();
+
+
+        SCConfig.UNIT.set(unitSelected);
+        SCConfig.UNIT.save();
+
+        modifiers.forEach(AbstractMinigameModifier::onRemove);
 
         this.minecraft.popGuiLayer();
     }
 
-    private void addParticles(int posInDegrees, int count)
-    {
-        addParticles(posInDegrees, count, false);
+    public class LeftRightButtonWidget<T extends Comparable<T>> extends AbstractWidget {
+        int uOffset, vOffset, textureWidth, textureHeight, buttonWidth;
+        ResourceLocation texture;
+        Supplier<T> value;
+        @Nullable T rightLimit, leftLimit;
+        Runnable rightAction, leftAction;
+        Component name;
+
+        // This is automatically centered
+        public LeftRightButtonWidget(Supplier<T> value, Runnable leftAction, Runnable rightAction, @Nullable T leftLimit, @Nullable T rightLimit, MutableComponent name,
+                                     int x, int y, int width, int height, int uOffset, int vOffset, int textureWidth, int textureHeight, ResourceLocation texture, int buttonWidth) {
+
+            super(x - (width >> 1), y - (height >> 1), width, height, Component.empty());
+
+            this.uOffset = uOffset;
+            this.vOffset = vOffset;
+            this.texture = texture;
+            this.textureWidth = textureWidth;
+            this.textureHeight = textureHeight;
+            this.buttonWidth = buttonWidth;
+
+            this.rightAction = rightAction;
+            this.leftAction = leftAction;
+            this.rightLimit = rightLimit;
+            this.leftLimit = leftLimit;
+
+            this.value = value;
+            this.name = name;
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            Object o = value.get();
+            if (o instanceof Float number){
+               number = Math.round(number * 10) / 10f;
+               o = number;
+            }
+
+            MutableComponent component = Component.empty().append(name).append(": ").append(String.valueOf(o));
+            guiGraphics.drawCenteredString(getMinecraft().font, component, getX() + (getWidth() / 2), getY() + (getHeight() / 4), 0x000000);
+
+            guiGraphics.blit(
+                    texture, getX(), getY(),
+                    getWidth(), getHeight(), uOffset, vOffset, getWidth(), getHeight(), textureWidth, textureHeight);
+
+        }
+
+
+        @Override
+        public boolean mouseClicked(double mouseX, double mouseY, int button) {
+            //confirm the mouse is on the element
+            if (!(mouseX > getX() && mouseX < getRight() && mouseY > getY() && mouseY < getBottom()))
+                return super.mouseClicked(mouseX, mouseY, button);
+
+            //left button
+            if (mouseX < getX() + buttonWidth){
+                if (leftLimit != null && value.get().compareTo(leftLimit) <= 0) return false;
+
+                leftAction.run();
+            }
+
+
+            //right button
+            if (mouseX > getRight() - buttonWidth){
+                if (rightLimit != null && value.get().compareTo(rightLimit) >= 0) return false;
+
+                rightAction.run();
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {}
     }
 
-    private void addParticles(int posInDegrees, int count, boolean treasure)
-    {
-        int xPos = (int) (30 * Math.cos(Math.toRadians(posInDegrees - 90)));
-        int yPos = (int) (30 * Math.sin(Math.toRadians(posInDegrees - 90)));
 
-        for (int i = 0; i < count; i++)
-        {
-            if (treasure)
-            {
-                //red particles if treasure sweet spot was hit
-                hitParticles.add(new HitFakeParticle(
-                        xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-                        0.7f + U.r.nextFloat() / 3, 0.5f, 0.5f, 1
-                ));
+    public class GuiScaleWidget extends AbstractWidget {
+        public GuiScaleWidget(int x, int y, int width, int height) {
+            super(x, y, width, height, Component.empty());
+
+            if (hasDistantHorizons()) {
+                setTooltip(Tooltip.create(Component.literal("GUI Scale is not supported while Distant Horizons is installed. It causes a massive frame drop upon starting and ending the minigame.")));
+            } else {
+                setTooltip(Tooltip.create(Component.literal("Change the GUI Scale of the minigame.")));
             }
-            else
-            {
-                hitParticles.add(new HitFakeParticle(xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1)));
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            //GUI SCALE
+            guiGraphics.blit(
+                    GUI_SCALE, getX(), getY(),
+                    getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), getWidth(), getHeight());
+
+        }
+
+        @Override
+        public boolean mouseClicked(double mouseX, double mouseY, int button) {
+            //confirm the mouse is on the element
+            if (!(mouseX > getX() && mouseX < getRight() && mouseY > getY() && mouseY < getBottom()))
+                return super.mouseClicked(mouseX, mouseY, button);
+
+            int current = guiScale().get();
+
+            // if it's on the right half
+            if (mouseX < getX() + getWidth() / 2f) {
+                if (current > 1)
+                    guiScale().set(current - 1);
+
+            } else {
+                guiScale().set(current + 1);
             }
-
-        }
-    }
-
-    public enum Units
-    {
-        METRIC("gui.guide.units.metric", 1f, 1f),
-        IMPERIAL("gui.guide.units.imperial", 0.3937f, 0.0352739619495804f),
-        CHEESEBURGER("gui.guide.units.cheeseburger", 0.09f, 0.0087f),
-        FOOTBALL("gui.guide.units.football", 0.04545f, 0.00233f),
-        DEVELOPER_HEIGHT("gui.guide.units.developer", 0.00592f, 0.0000140845f),
-        BANANA("gui.guide.units.banana", 0.05f, 0.00833f),
-        DUCK("gui.guide.units.duck", 0.02f, 0.0006667f),
-        SPACE_WHALE("gui.guide.units.space_whale", 1f, 1f),
-        SCIENTIFIC("gui.guide.units.scientific", 1f, 1f),
-        ;
-
-        private static final Units[] vals = values();
-        private final String translationKey;
-        private final float multiplierSize;
-        private final float multiplierWeight;
-
-        Units(String translationKey, float multiplierSize, float multiplierWeight)
-        {
-            this.translationKey = translationKey;
-            this.multiplierSize = multiplierSize;
-            this.multiplierWeight = multiplierWeight;
+            return true;
         }
 
-        public String getTranslationKey()
-        {
-            return this.translationKey;
-        }
-
-        public float getMultiplierSize()
-        {
-            return this.multiplierSize;
-        }
-
-        public float getMultiplierWeight()
-        {
-            return this.multiplierWeight;
-        }
-
-        public Units next()
-        {
-            return vals[(this.ordinal() + 1) % vals.length];
-        }
-
-        public Units previous()
-        {
-            if (this.ordinal() == 0) return vals[vals.length - 1];
-            return vals[(this.ordinal() - 1) % vals.length];
-        }
-
-        public String getSizeAsString(int sizeInCm)
-        {
-            //space whale is always infinite
-            if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";
-            if (this.equals(Units.SCIENTIFIC)) return "0 AU";
-
-            float size = sizeInCm * this.getMultiplierSize();
-            String sizeString = ((float) (int) (size * 100)) / 100 + " " + I18n.get(this.getTranslationKey() + ".size");
-
-            if (this.equals(Units.METRIC))
-            {
-                sizeString = ((int) size) + "cm";
-                if (size > 100) sizeString = (float) ((int) (size / 100 * 100)) / 100 + "m";
-            }
-
-            if (this.equals(Units.IMPERIAL))
-            {
-                sizeString = ((int) size) + "''";
-                if (size > 12) sizeString = ((int) (size / 12)) + "'" + ((int) (size % 12)) + "''";
-            }
-
-            return sizeString;
-        }
-
-        public String getWeightAsString(int weightInGrams)
-        {
-            //space whale is always infinite
-            if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";
-            if (this.equals(Units.SCIENTIFIC)) return "0 R136a1's";
-
-            float weight = weightInGrams * this.getMultiplierWeight();
-            String weightString = ((float) (int) (weight * 100)) / 100 + " " + I18n.get(this.getTranslationKey() + ".weight");
-
-            if (this.equals(Units.METRIC))
-            {
-                if (weight <= 1000) weightString = ((int) weight) + "g";
-                if (weight > 1000) weightString = (float) ((int) (weight / 1000 * 100)) / 100 + "kg";
-            }
-
-            if (this.equals(Units.IMPERIAL))
-            {
-                weightString = ((int) weight) + "oz";
-                if (weight > 12) weightString = ((int) (weight / 16)) + " lb " + ((int) (weight % 16)) + " oz";
-            }
-
-            return weightString;
-        }
-
-    }
-
-    @Override
-    public boolean isPauseScreen()
-    {
-        return false;
+        @Override
+        protected void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {}
     }
 
 }

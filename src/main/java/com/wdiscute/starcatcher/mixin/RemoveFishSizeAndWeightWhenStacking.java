@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.mixin;
 
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -22,12 +22,9 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(stack.is(thisItem.getItem()))
         {
-            ModDataComponents.remove(stack, ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(stack, ModDataComponents.FISH_PROPERTIES);
-            ModDataComponents.remove(thisItem, ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(thisItem, ModDataComponents.FISH_PROPERTIES);
+            SCDataComponents.remove(stack, SCDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(thisItem, SCDataComponents.CAUGHT_FISH_INFO);
         }
-
     }
 
     @Inject(at = @At("HEAD"), method = "overrideStackedOnOther")
@@ -38,10 +35,8 @@ public class RemoveFishSizeAndWeightWhenStacking
 
         if(itemBeingClickedOn.is(itemInHand.getItem()))
         {
-            ModDataComponents.remove(itemInHand,  ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(itemInHand, ModDataComponents.FISH_PROPERTIES);
-            ModDataComponents.remove(itemBeingClickedOn,ModDataComponents.SIZE_AND_WEIGHT);
-            ModDataComponents.remove(itemBeingClickedOn, ModDataComponents.FISH_PROPERTIES);
+            SCDataComponents.remove(itemInHand,  SCDataComponents.CAUGHT_FISH_INFO);
+            SCDataComponents.remove(itemBeingClickedOn, SCDataComponents.CAUGHT_FISH_INFO);
         }
     }
 

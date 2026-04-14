@@ -1,9 +1,9 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public class DGSpawnFishes extends FishingPropertiesRegistry
 {
@@ -22,9 +22,9 @@ public class DGSpawnFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("spawn", "angler_fish_bucket"))
                 .withEntityToSpawn(U.holderEntity("spawn", "angler_fish"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DEEP_OCEAN)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DEEP_OCEAN)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withDaytime(FishProperties.Daytime.MIDNIGHT)
+                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withDifficulty(FishProperties.Difficulty.FOUR_AQUA)
                 .withBaseChance(20)
         );
@@ -34,7 +34,7 @@ public class DGSpawnFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("spawn", "tuna"))
                 .withAlwaysSpawnEntity()
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
         );
@@ -44,9 +44,9 @@ public class DGSpawnFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("spawn", "sunfish"))
                 .withAlwaysSpawnEntity()
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_OCEAN)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_OCEAN)
                 .withRarity(FishProperties.Rarity.EPIC)
-                .withDaytime(FishProperties.Daytime.NOON)
+                .withDaytimeRestriction(DaytimeRestriction.NOON)
                 .withBaseChance(20)
                 .withDifficulty(FishProperties.Difficulty.TWO_THIN.vanishing())
         );
@@ -54,7 +54,7 @@ public class DGSpawnFishes extends FishingPropertiesRegistry
         register(fish(U.holderItem("spawn", "captured_octopus"))
                 .withEntityToSpawn(U.holderEntity("spawn", "octopus"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
                 .withBaseChance(1)
                 .withRarity(FishProperties.Rarity.RARE)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING_MOVING)
@@ -64,7 +64,7 @@ public class DGSpawnFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("spawn", "herring_bucket"))
                 .withEntityToSpawn(U.holderEntity("spawn", "herring"))
                 .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS)
                 .withRarity(FishProperties.Rarity.COMMON)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
         );

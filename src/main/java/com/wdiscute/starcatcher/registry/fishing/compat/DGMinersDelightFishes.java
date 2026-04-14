@@ -1,9 +1,8 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
-import com.wdiscute.starcatcher.StarcatcherTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 
 public class DGMinersDelightFishes extends FishingPropertiesRegistry
 {
@@ -22,9 +21,7 @@ public class DGMinersDelightFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 20, 1300, 700))
                 .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_MOVING)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE
-                        .withBiomesTags(StarcatcherTags.IS_OCEAN, StarcatcherTags.IS_RIVER)
-                )
+                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_OCEAN)
         );
 
         register(overworldUndergroundFish(U.holderItem("miners_delight", "glow_squid"))

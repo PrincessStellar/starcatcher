@@ -5,24 +5,21 @@
       "modid": "tide"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "tide:inferno_guppy",
     "fish_bucket": "tide:inferno_guppy_bucket",
-    "item": "tide:inferno_guppy",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tide:inferno_guppy"
   },
-  "daytime": "all",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 10,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:burn_on_miss"
+      }
+    ],
     "speed": 11,
     "sweetspots": [
       {
@@ -49,30 +46,27 @@
   },
   "has_guide_entry": true,
   "rarity": "rare",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:the_nether"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:lava"
+      ]
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 60.0,
     "average_weight_grams": 7000.0,
     "deviation_size_cm": 20.0,
-    "deviation_weight_grams": 2000.0
+    "deviation_weight_grams": 2000.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": -2147483648,
-    "below_y": 2147483647,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [],
-    "dimensions": [
-      "minecraft:the_nether"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:lava"
-    ],
-    "seasons": [
-      "all"
-    ]
-  }
+  "skips_minigame": false
 }

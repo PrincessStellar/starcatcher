@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.tournament;
 
-import com.wdiscute.starcatcher.registry.ModMenuTypes;
-import com.wdiscute.starcatcher.registry.blocks.ModBlocks;
-import com.wdiscute.starcatcher.registry.blocks.StandBlockEntity;
+import com.wdiscute.starcatcher.registry.SCMenuTypes;
+import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.blocks.stand.StandBlockEntity;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,7 +26,7 @@ public class StandMenu extends AbstractContainerMenu
 
     public StandMenu(int containerId, Inventory inv, BlockEntity blockEntity)
     {
-        super(ModMenuTypes.STAND_MENU.get(), containerId);
+        super(SCMenuTypes.STAND_MENU.get(), containerId);
         sbe = ((StandBlockEntity) blockEntity);
         level = inv.player.level();
 
@@ -231,6 +231,6 @@ public class StandMenu extends AbstractContainerMenu
     {
         return stillValid(
                 ContainerLevelAccess.create(level, sbe.getBlockPos()),
-                player, ModBlocks.STAND.get());
+                player, SCBlocks.STAND.get());
     }
 }

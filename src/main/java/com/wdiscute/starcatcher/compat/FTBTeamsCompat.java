@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import dev.ftb.mods.ftbteams.api.Team;
 import dev.ftb.mods.ftbteams.data.TeamManagerImpl;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +16,7 @@ public class FTBTeamsCompat
 {
     private static final Logger log = LoggerFactory.getLogger(FTBTeamsCompat.class);
 
-    public static void awardToTeam(Player player, com.wdiscute.starcatcher.storage.FishProperties fp)
+    public static void awardToTeam(Player player, FishProperties fp)
     {
         TeamManagerImpl teamManager = TeamManagerImpl.INSTANCE;
         Optional<Team> teamByID = teamManager.getTeamForPlayerID(player.getUUID());
@@ -29,7 +30,7 @@ public class FTBTeamsCompat
                 Player playerByUUID = player.getServer().getPlayerList().getPlayer(uuid);
                 if (playerByUUID != null)
                 {
-                    FishCaughtCounter.awardFishCaughtCounter(fp, playerByUUID, 0, 0, 0, 0, false, false);
+                    FishCaughtCounter.awardFishCaughtCounter(fp, playerByUUID, 0, 0, 0, 0, false, false, false);
                 }
             }
         }

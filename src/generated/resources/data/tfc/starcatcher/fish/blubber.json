@@ -5,27 +5,15 @@
       "modid": "tfc"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 5,
-    "correct_baits": [
-      "tfc:food/bluegill",
-      "tfc:food/cod",
-      "tfc:food/salmon",
-      "tfc:food/tropical_fish"
-    ]
-  },
   "base_chance": 0,
   "catch_info": {
     "always_spawn_entity": true,
     "entity": "tfc:dolphin",
-    "fish_bucket": "starcatcher:missingno",
-    "item": "tfc:blubber",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "tfc:blubber"
   },
-  "daytime": "all",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,
@@ -54,32 +42,45 @@
   },
   "has_guide_entry": false,
   "rarity": "uncommon",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_ocean"
+      ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "tfc:food/bluegill": 50,
+        "tfc:food/cod": 50,
+        "tfc:food/salmon": 50,
+        "tfc:food/tropical_fish": 50
+      }
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 15.0,
     "average_weight_grams": 200.0,
     "deviation_size_cm": 5.0,
-    "deviation_weight_grams": 20.0
+    "deviation_weight_grams": 20.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": true,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_ocean"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "all"
-    ]
-  }
+  "skips_minigame": true
 }

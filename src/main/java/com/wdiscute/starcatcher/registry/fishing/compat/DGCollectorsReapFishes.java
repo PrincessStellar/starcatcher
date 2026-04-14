@@ -1,10 +1,14 @@
 package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.ModItems;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
-import com.wdiscute.starcatcher.storage.FishProperties;
-import com.wdiscute.starcatcher.storage.FishProperties.WorldRestrictions.Seasons;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.SeasonRestriction;
+import com.wdiscute.starcatcher.registry.FishProperties;
+
+import java.util.List;
 
 public class DGCollectorsReapFishes extends FishingPropertiesRegistry
 {
@@ -22,10 +26,13 @@ public class DGCollectorsReapFishes extends FishingPropertiesRegistry
                 .withBucketedFish(U.holderItem("collectorsreap", "platinum_bass_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "platinum_bass"))
                 .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1600, 1100))
-                .withSeasons(Seasons.MID_AUTUMN, Seasons.LATE_AUTUMN, Seasons.WINTER)
+                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/platinum_bass")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/platinum_bass")),
+                                List.of(), List.of(), "")
+                )
         );
 
 
@@ -35,16 +42,22 @@ public class DGCollectorsReapFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(28, 8, 260, 60))
                 .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
                 .withRarity(FishProperties.Rarity.RARE)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/tiger_prawn")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/tiger_prawn")),
+                                List.of(), List.of(), "")
+                )
         );
 
         register(fish(U.holderItem("collectorsreap", "clam"))  //no mini game
                 .withBucketedFish(U.holderItem("collectorsreap", "clam_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "clam"))
                 .withSkipMinigame(true)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/clam")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/clam")),
+                                List.of(), List.of(), "")
+                )
         );
 
         register(fish(U.holderItem("collectorsreap", "urchin"))  //no mini game
@@ -52,8 +65,11 @@ public class DGCollectorsReapFishes extends FishingPropertiesRegistry
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "urchin"))
                 .withHasGuideEntry(false)
                 .withSkipMinigame(true)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/urchin")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/urchin")),
+                                List.of(), List.of(), "")
+                )
         );
 
 
@@ -63,10 +79,13 @@ public class DGCollectorsReapFishes extends FishingPropertiesRegistry
                 .withSizeAndWeight(FishProperties.sizeWeight(28, 8, 260, 60))
                 .withDifficulty(FishProperties.Difficulty.NETHER_CRAB)
                 .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withWorldRestrictions(FishProperties.WorldRestrictions.OVERWORLD
-                        .withBiomesTags(U.rl("collectorsreap", "biome/has_spawn/chieftain_crab")))
+                .addRestrictions(
+                        DimensionRestriction.OVERWORLD,
+                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/chieftain_crab")),
+                                List.of(), List.of(), "")
+                )
                 .withAlwaysSpawnEntity(true)
-                .withItemToOverrideWith(ModItems.UNKNOWN_FISH)
+                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
         );
     }
 }

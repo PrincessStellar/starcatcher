@@ -5,19 +5,18 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
-import com.wdiscute.starcatcher.Config;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
-import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.*;
+import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.BaseModifier;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.registry.ModKeymappings;
-import com.wdiscute.starcatcher.registry.custom.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.custom.tackleskin.BaseTackleSkin;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.BaseMinigameModifier;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.SCKeymappings;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -34,14 +33,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 import org.joml.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -66,6 +63,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public final InteractionHand handToSwing;
 
+    public int hp;
     public int penalty;
     public float decay;
 
@@ -81,13 +79,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public float pointerBaseSpeed;
 
     public int tickCount = 0;
-    public int pointerPos = 0;
+    public float pointerPos = 0;
     public int currentRotation = 1;
     public float partial;
     public float hitDelay;
 
     public float progress = 20;
-    public int progressSmooth = 20;
+    public float progressSmooth = 20;
 
     public boolean perfectCatch = true;
     public int consecutiveHits = 0;
@@ -106,46 +104,51 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected boolean isHoldingMouse = false;
 
     public float renderScale;
+    public int xOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
+    public int yOffset = SCConfig.MINIGAME_Y_OFFSET.getAsInt();
+
 
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();
     protected final List<ActiveSweetSpot> spotsToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
+    protected final List<AbstractMinigameModifier> modifiersToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
     public FishingMinigameScreen(FishProperties fp, ItemStack rod)
     {
         super(Component.empty());
 
-        handToSwing = Minecraft.getInstance().player.getMainHandItem().is(StarcatcherTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+        handToSwing = Minecraft.getInstance().player.getMainHandItem().is(SCTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
-        renderScale = Config.MINIGAME_RENDER_SCALE.get().floatValue();
-        hitDelay = Config.HIT_DELAY.get().floatValue();
+        renderScale = SCConfig.MINIGAME_RENDER_SCALE.get().floatValue();
+        hitDelay = SCConfig.HIT_DELAY.get().floatValue();
 
         this.difficulty = fp.dif();
         this.rarity = fp.rarity();
 
         //if override is not missingno (default) then use the override item set
-        if (!fp.catchInfo().overrideMinigameWith().is(ModItems.MISSINGNO.getKey()))
+        if (!fp.catchInfo().overrideMinigameWith().is(SCItems.MISSINGNO.getKey()))
             this.itemBeingFished = new ItemStack(fp.catchInfo().overrideMinigameWith());
         else
             this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
 
-        this.bobber = ModDataComponents.get(rod, ModDataComponents.BOBBER).stack().copy();
-        this.bait = ModDataComponents.get(rod, ModDataComponents.BAIT).stack().copy();
-        this.hook = ModDataComponents.get(rod, ModDataComponents.HOOK).stack().copy();
+        this.bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
+        this.bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        this.hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
 
-        this.treasureIS = new ItemStack(fp.catchInfo().treasure());
+        this.treasureIS = fp.catchInfo().treasureIs();
 
-        if (ModDataComponents.has(rod, ModDataComponents.TACKLE_SKIN))
+        if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
         {
-            ResourceLocation rl = ModDataComponents.get(rod, ModDataComponents.TACKLE_SKIN);
+            ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
 
             Optional<Supplier<AbstractTackleSkin>> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
             if (optional.isPresent())
                 this.tackleSkin = optional.get().get();
             else
                 this.tackleSkin = new BaseTackleSkin();
-        } else
+        }
+        else
         {
             this.tackleSkin = new BaseTackleSkin();
         }
@@ -162,32 +165,23 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             tankTexture = NETHER;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
-        this.pointerBaseSpeed = (float) (difficulty.speed() * Config.POINTER_SPEED_MULTIPLIER.get());
-        this.penalty = (int) (difficulty.penalty() * Config.PENALTY_MULTIPLIER.get());
-        this.decay = (float) (difficulty.decay() * Config.DECAY_RATE_MULTIPLIER.get());
+        this.pointerSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerBaseSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.penalty = (int) (difficulty.penalty() * SCConfig.PENALTY_MULTIPLIER.get());
+        this.decay = (float) (difficulty.decay() * SCConfig.DECAY_RATE_MULTIPLIER.get());
+        this.hp = (int) (difficulty.hp() * SCConfig.HP_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
-        addModifier(new BaseModifier());
+        addModifier(new BaseMinigameModifier());
 
         //add every modifier from fp json which is registered
-        for (ResourceLocation rl : fp.dif().modifiers())
+        for (Supplier<Supplier<AbstractMinigameModifier>> mod : fp.dif().modifiers())
         {
-            Optional<Supplier<AbstractMinigameModifier>> newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
-            newModifier.ifPresent(mod -> addModifier(mod.get()));
+            addModifier(mod.get().get());
         }
 
-        //cycle through all the items to check for modifiers
-        //todo improve this to check things dynamically, look into baubles compat & armor slots (not inventory otherwise people could offhand modifiers)
-        List<ItemStack> allItems = List.of(bobber, rod, bait, hook);
-        for (ItemStack is : allItems)
-            if (ModDataComponents.has(is, ModDataComponents.MINIGAME_MODIFIERS))
-                for (ResourceLocation rl : Objects.requireNonNull(ModDataComponents.get(is, ModDataComponents.MINIGAME_MODIFIERS)))
-                {
-                    Optional<Supplier<AbstractMinigameModifier>> newModifier = level.registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).getOptional(rl);
-                    newModifier.ifPresent(mod -> addModifier(mod.get()));
-                }
-
+        //add modifiers in armor/curios/rod
+        modifiersToAdd.addAll(SCMinigameModifiers.getMinigameModifiers(player));
 
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
@@ -195,7 +189,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
             addSweetSpot(newSweetSpot);
         }
-
     }
 
     public List<ActiveSweetSpot> getActiveSweetSpots()
@@ -205,29 +198,20 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void addModifier(AbstractMinigameModifier mod)
     {
-        mod.onAdd(this);
-        if (!mod.removed) this.modifiers.add(mod);
+        if (!mod.removed) this.modifiersToAdd.add(mod);
     }
 
     public void addUniqueModifier(AbstractMinigameModifier mod)
     {
-        //only adds if theres not a modifier of the same class already present
+        //only adds if there's not a modifier of the same class already present
         if (modifiers.stream().noneMatch(m -> m.getClass() == mod.getClass()))
         {
-            mod.onAdd(this);
-            if (!mod.removed) this.modifiers.add(mod);
+            if (!mod.removed) this.modifiersToAdd.add(mod);
         }
     }
 
     public void addSweetSpot(ActiveSweetSpot ass)
     {
-        ass.behaviour.onAdd(this, ass);
-
-        for (AbstractMinigameModifier modifier : modifiers)
-        {
-            ass = modifier.onSpotAdded(ass);
-        }
-
         if (!ass.removed) this.spotsToAdd.add(ass);
     }
 
@@ -262,14 +246,18 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
 
-        final float partialTick = Config.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
+        final float partialTick = SCConfig.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
 
         PoseStack poseStack = guiGraphics.pose();
         partial = partialTick;
 
         poseStack.pushPose();
         poseStack.translate(width >> 1, height >> 1, 0);
+
+        poseStack.translate(xOffset, yOffset, 0);
+
         poseStack.scale(renderScale, renderScale, 1);
+
         poseStack.translate(-width >> 1, -height >> 1, 0);
 
         //render modifiers background
@@ -279,6 +267,15 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         //render tank background
         guiGraphics.blit(tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97);
+
+        /*
+        //test for the vignette shader
+        ShaderUtils.blitWithShader(
+                ModRenderTypes::getRendertypeGuiFadeShader,
+                () -> ShaderUtils.setUpFadeShader(width, height, new Vec2(0, 0), new Vec2(0.01f, 0.02f), new Vec2(0.2f, 0.2f), new Vec2(0.5f, 0.7f), true),
+                guiGraphics,
+                tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97
+        );*/
 
         //render wheel background
         guiGraphics.blit(TEXTURE, width / 2 - 32, height / 2 - 32, 64, 64, 0, 192, 64, 64, 256, 256);
@@ -304,16 +301,21 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //fishing rod
         guiGraphics.blit(TEXTURE, width / 2 - 32 - 70, height / 2 - 24 - 57, 64, 48, 192, 0, 64, 48, 256, 256);
 
+        float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
+
         //fishing line
         guiGraphics.blit(
                 TEXTURE, width / 2 - 6 - 102, height / 2 - 56 - 18,
-                16, 112 - progressSmooth,
-                176, progressSmooth,
-                16, 112 - progressSmooth,
+                16, (int) (112 - yoffset),
+                176F, yoffset,
+                16, (int) (112 - yoffset),
                 256, 256);
 
         //item being fished
-        guiGraphics.renderItem(itemBeingFished, width / 2 - 8 - 100, height / 2 - 8 + 35 - progressSmooth);
+        poseStack.pushPose();
+        poseStack.translate(0, -yoffset, 0);
+        guiGraphics.renderItem(itemBeingFished, width / 2 - 8 - 100, height / 2 - 8 + 35);
+        poseStack.popPose();
 
         //render sweet spots foreground
         activeSweetSpots.forEach(sweetspot -> sweetspot.behaviour.renderForeground(guiGraphics, partialTick, width, height));
@@ -363,25 +365,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //render treasure on top of bar
         guiGraphics.renderItem(treasureIS, width / 2 - 163, ((int) ((float) height / 2 - (64f * treasureProgressSmooth) / 100) + 15));
 
-        //todo consider if i want tackle skins to change particle color like this
-//        int color = Tooltips.hueToRGBInt(Tooltips.hue);
-//        if (tackleSkin.is(ModItems.PEARL_BOBBER_SMITHING_TEMPLATE))
-//            RenderSystem.setShaderColor(
-//                    (float) FastColor.ARGB32.red(color) / 255,
-//                    (float) FastColor.ARGB32.green(color) / 255,
-//                    (float) FastColor.ARGB32.blue(color) / 255,
-//                    1);
-//
-//        if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            color = ModDataComponents.get(tackleSkin, ModDataComponents.BOBBER_COLOR).getColorAsInt();
-//
-//        if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            RenderSystem.setShaderColor(
-//                    (float) FastColor.ARGB32.red(color) / 255,
-//                    (float) FastColor.ARGB32.green(color) / 255,
-//                    (float) FastColor.ARGB32.blue(color) / 255,
-//                    1);
-
         //outline when treasure complete
         if (treasureProgress > 99)
             guiGraphics.blit(
@@ -395,6 +378,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void renderKimbeMarker(GuiGraphics guiGraphics)
     {
+        if (modifiers.stream().anyMatch(AbstractMinigameModifier::skipRenderingKimbeMarker)) return;
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -449,7 +433,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public boolean keyReleased(int keyCode, int scanCode, int keyModifiers)
     {
-        if (keyCode == ModKeymappings.MINIGAME_HIT.getKey().getValue())
+        if (keyCode == SCKeymappings.MINIGAME_HIT.getKey().getValue())
         {
             isHoldingKey = false;
             holdingTicks = 0;
@@ -483,14 +467,17 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey))
         {
-            if (Config.ENABLE_VILLAGER_SOUND.get())
+            if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                    && !tackleSkin.skipMissSound()
+            )
                 Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
             return true;
         }
 
         //hit input
-        if (ModKeymappings.MINIGAME_HIT.isActiveAndMatches(mouseKey))
+        if (SCKeymappings.MINIGAME_HIT.isActiveAndMatches(mouseKey))
         {
             if (!isHoldingKey) inputPressed();
 
@@ -544,7 +531,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            if (Config.ENABLE_MISS_SOUND.get())
+            if (SCConfig.ENABLE_MISS_SOUND.get())
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
             progress -= penalty;
         }
@@ -586,9 +573,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             return s.removed;
         });
 
-        activeSweetSpots.addAll(spotsToAdd);
-        spotsToAdd.clear();
-
         //remove modifiers marked for removal
         modifiers.removeIf(m ->
         {
@@ -596,8 +580,21 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             return m.removed;
         });
 
+        //add queued modifiers
+        modifiers.addAll(modifiersToAdd);
+        modifiersToAdd.forEach(o -> o.onAdd(this));
+        modifiersToAdd.clear();
+
+        //add queued sweetspots
+        activeSweetSpots.addAll(spotsToAdd);
+        //trigger onAdd of SweetSpotBehaviour
+        spotsToAdd.forEach(o -> o.behaviour.onAdd(this, o));
+        //trigger onSpotAdded of modifiers
+        spotsToAdd.forEach(s -> modifiers.forEach(m -> m.onSpotAdded(s)));
+        spotsToAdd.clear();
+
         //move pointer
-        pointerPos += (int) (pointerSpeed * currentRotation);
+        pointerPos += pointerSpeed * currentRotation;
 
         //decrease kimbe markers alpha
         kimbeMarkerAlpha -= 0.1f;
@@ -609,8 +606,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         tickCount++;
 
-        progressSmooth += (int) Math.signum(progress - progressSmooth);
-        progressSmooth += (int) Math.signum(progress - progressSmooth);
+        progressSmooth += ((progress - progressSmooth) / 6);
 
         treasureProgressSmooth += (int) Math.signum(treasureProgress - treasureProgressSmooth);
 
@@ -624,17 +620,23 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
             if (progressSmooth < 0)
             {
-                if (Config.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                        && !tackleSkin.skipMissSound()
+                )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
                 this.onClose();
             }
 
-            if (progressSmooth > 75)
+            if (progressSmooth > hp)
             {
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
 
-                if (Config.ENABLE_VILLAGER_SOUND.get())
+                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
+                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                        && !tackleSkin.skipSuccessSound()
+                )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
 
                 PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
@@ -661,33 +663,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         for (int i = 0; i < count; i++)
         {
-            //todo tackle skin particle stuff? do i want this? who knows
-
-//            if (tackleSkin.is(ModItems.PEARL_BOBBER_SMITHING_TEMPLATE))
-//            {
-//                hitParticles.add(new HitFakeParticle(
-//                        xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-//                        U.r.nextFloat(),
-//                        U.r.nextFloat(),
-//                        U.r.nextFloat(),
-//                        1
-//                ));
-//                continue;
-//            }
-
-//            if (tackleSkin.is(ModItems.COLORFUL_BOBBER_SMITHING_TEMPLATE))
-//            {
-//                ColorfulSmithingTemplate.BobberColor bobberColor = ModDataComponents.get(tackleSkin, ModDataComponents.BOBBER_COLOR);
-//                hitParticles.add(new HitFakeParticle(
-//                        xPos, yPos, new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-//                        bobberColor.r(),
-//                        bobberColor.g(),
-//                        bobberColor.b(),
-//                        1
-//                ));
-//                continue;
-//            }
-
             hitParticles.add(
                     new HitFakeParticle(
                             xPos,
@@ -742,6 +717,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             pos += 360;
         }
         return pos;
+    }
+
+    public List<AbstractMinigameModifier> getModifiers()
+    {
+        return modifiers;
     }
 
     @Override

@@ -2,11 +2,15 @@ package com.wdiscute.starcatcher.registry.fishing.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
+import com.wdiscute.starcatcher.registry.FishProperties;
+
+import java.util.Map;
 
 public class DGTerraFirmaCraftFishes extends FishingPropertiesRegistry
 {
-    public static void bootstrap() {
+    public static void bootstrap()
+    {
 
         //
         //   ,--.
@@ -91,24 +95,17 @@ public class DGTerraFirmaCraftFishes extends FishingPropertiesRegistry
                 .withBaseChance(0)
                 .withAlwaysSpawnEntity(true)
                 .withSkipMinigame(true)
-                .withBaitRestrictions(FishProperties.BaitRestrictions.DEFAULT
-                        .withCorrectBaitChanceAdded(5)
-                        .withCorrectBait(
-                                U.rl("tfc", "food/bluegill"),
-                                U.rl("tfc", "food/cod"),
-                                U.rl("tfc", "food/salmon"),
-                                U.rl("tfc", "food/tropical_fish")
-                        )
-                )
+                .addRestrictions(new BaitRestriction(Map.of(
+                        U.rl("tfc", "food/bluegill"), 50,
+                        U.rl("tfc", "food/cod"), 50,
+                        U.rl("tfc", "food/salmon"), 50,
+                        U.rl("tfc", "food/tropical_fish"), 50
+                        ), ""))
                 .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 200, 20))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM)
                 .withHasGuideEntry(false)
         );
-
-
-
-
 
 
         //trash
@@ -142,7 +139,6 @@ public class DGTerraFirmaCraftFishes extends FishingPropertiesRegistry
                 .withSkipMinigame(true)
                 .withHasGuideEntry(false)
         );
-
 
 
     }

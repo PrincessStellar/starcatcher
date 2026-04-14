@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;

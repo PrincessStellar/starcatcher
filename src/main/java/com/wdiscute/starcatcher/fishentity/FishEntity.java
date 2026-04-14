@@ -1,12 +1,13 @@
 package com.wdiscute.starcatcher.fishentity;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.StarcatcherTags;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.ModDataComponents;
+import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.ModItems;
-import com.wdiscute.starcatcher.storage.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -78,9 +79,9 @@ public class FishEntity extends AbstractFish
             shouldDropItem = false;
             List<FishProperties> available = new ArrayList<>();
 
-            for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
+            for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
             {
-                if (FishProperties.getChance(fp, this, ModItems.ROD.toStack()) > 0 && fp.catchInfo().fish().is(StarcatcherTags.BUCKETABLE_FISHES))
+                if (fp.calculateChance(this, level(), SCItems.ROD.toStack(), AbstractFishRestriction.Context.FISH_ENTITY) > 0 && fp.catchInfo().fish().is(SCTags.BUCKETABLE_FISHES))
                     available.add(fp);
             }
 
@@ -106,21 +107,26 @@ public class FishEntity extends AbstractFish
     {
         setBodyArmorItem(is);
         shouldDropItem = true;
-        setCustomName(is.getDisplayName());
+    }
+
+    public ItemStack getFish()
+    {
+        return getBodyArmorItem();
     }
 
     @Override
     public ItemStack getBucketItemStack()
     {
-        ItemStack is = new ItemStack(ModItems.STARCAUGHT_BUCKET.get());
-        ModDataComponents.set(is, ModDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
+        ItemStack is = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
+        SCDataComponents.set(is, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
         return is;
     }
 
     public static boolean validSpawnPlacement(EntityType<FishEntity> entity, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource)
     {
-        for (FishProperties fp : serverLevelAccessor.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY))
-            if (FishProperties.getChance(fp, serverLevelAccessor.getLevel(), blockPos, ItemStack.EMPTY) > 0)
+        //todo fix this shit
+        for (FishProperties fp : serverLevelAccessor.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
+            if (fp.calculateChance(entity.create(serverLevelAccessor.getLevel()), serverLevelAccessor.getLevel(), ItemStack.EMPTY, AbstractFishRestriction.Context.FISH_ENTITY) > 0)
                 return true;
 
         return false;

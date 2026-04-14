@@ -1,22 +1,18 @@
 {
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
-    "entity": "starcatcher:fish",
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:crystalback_trout",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:crystalback_trout"
   },
-  "daytime": "all",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 20,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:freeze_on_miss"
+      }
+    ],
     "speed": 10,
     "sweetspots": [
       {
@@ -43,11 +39,48 @@
   },
   "has_guide_entry": true,
   "rarity": "common",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_cold_lake"
+      ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_winter": 0,
+        "late_autumn": 0,
+        "late_winter": 0,
+        "mid_autumn": 0,
+        "mid_winter": 0
+      },
+      "translation_override": "gui.guide.seasons.autumn_winter"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 35.0,
     "average_weight_grams": 1600.0,
     "deviation_size_cm": 8.0,
-    "deviation_weight_grams": 1200.0
+    "deviation_weight_grams": 1200.0,
+    "golden_chance": 0.02
   },
   "skips_minigame": false,
   "star": {
@@ -58,27 +91,5 @@
     "name": "mizar",
     "x": 2363,
     "y": 770
-  },
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_cold_lake"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "autumn",
-      "winter"
-    ]
   }
 }

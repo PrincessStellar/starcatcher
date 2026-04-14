@@ -5,24 +5,15 @@
       "modid": "aquaculture"
     }
   ],
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 15,
-    "correct_baits": [
-      "starcatcher:legendary_bait"
-    ]
-  },
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": false,
     "entity": "aquaculture:piranha",
     "fish_bucket": "aquaculture:piranha_bucket",
-    "item": "aquaculture:piranha",
-    "treasure": "aquaculture:treasure_chest"
+    "item": "aquaculture:piranha"
   },
-  "daytime": "noon",
   "difficulty": {
     "decay": 0.0,
+    "hp": 100,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 9,
@@ -71,34 +62,67 @@
   },
   "has_guide_entry": true,
   "rarity": "legendary",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "minecraft:is_jungle"
+      ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_spring": 0,
+        "early_summer": 0,
+        "late_autumn": 0,
+        "late_spring": 0,
+        "late_summer": 0,
+        "mid_autumn": 0,
+        "mid_spring": 0,
+        "mid_summer": 0
+      },
+      "translation_override": "gui.guide.seasons.not_winter"
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:legendary_bait": 50
+      }
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 3500,
+          "second": 8500
+        }
+      ],
+      "translation_override": "gui.guide.noon"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 30.0,
     "average_weight_grams": 500.0,
     "deviation_size_cm": 10.0,
-    "deviation_weight_grams": 300.0
+    "deviation_weight_grams": 300.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 2147483647,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "minecraft:is_jungle"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "spring",
-      "summer",
-      "autumn"
-    ]
-  }
+  "skips_minigame": false
 }

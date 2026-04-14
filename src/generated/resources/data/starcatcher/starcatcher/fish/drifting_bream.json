@@ -1,20 +1,12 @@
 {
-  "bait_restrictions": {
-    "consumes_bait": true,
-    "correct_bait_chance_added": 0,
-    "correct_baits": []
-  },
   "base_chance": 8,
   "catch_info": {
-    "always_spawn_entity": false,
-    "entity": "starcatcher:fish",
     "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:drifting_bream",
-    "treasure": "starcatcher:waterlogged_satchel"
+    "item": "starcatcher:drifting_bream"
   },
-  "daytime": "night",
   "difficulty": {
     "decay": 1.0,
+    "hp": 100,
     "missPenalty": 5,
     "modifiers": [],
     "speed": 9,
@@ -43,33 +35,58 @@
   },
   "has_guide_entry": true,
   "rarity": "common",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ],
+      "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [],
+      "biomes_tags": [
+        "starcatcher:is_river"
+      ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_autumn": 0,
+        "early_summer": 0,
+        "late_autumn": 0,
+        "late_summer": 0,
+        "mid_autumn": 0,
+        "mid_summer": 0
+      },
+      "translation_override": "gui.guide.seasons.summer_autumn"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 12700,
+          "second": 23000
+        }
+      ],
+      "translation_override": "gui.guide.night"
+    }
+  ],
   "size_and_weight": {
     "average_size_cm": 36.0,
     "average_weight_grams": 2000.0,
     "deviation_size_cm": 12.0,
-    "deviation_weight_grams": 1000.0
+    "deviation_weight_grams": 1000.0,
+    "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "weather": "all",
-  "world_restrictions": {
-    "above_y": 50,
-    "below_y": 100,
-    "biomes": [],
-    "biomes_blacklist": [],
-    "biomes_blacklist_tags": [],
-    "biomes_tags": [
-      "starcatcher:is_river"
-    ],
-    "dimensions": [
-      "minecraft:overworld"
-    ],
-    "dimensions_blacklist": [],
-    "fluids": [
-      "minecraft:water"
-    ],
-    "seasons": [
-      "summer",
-      "autumn"
-    ]
-  }
+  "skips_minigame": false
 }
