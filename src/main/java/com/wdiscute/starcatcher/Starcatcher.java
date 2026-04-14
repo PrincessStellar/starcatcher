@@ -136,6 +136,7 @@ public class Starcatcher
         SCTackleSkins.register(modEventBus);
         SCCriterionTriggers.register(modEventBus);
         SCProcessors.register(modEventBus);
+        SCLootModifiers.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
