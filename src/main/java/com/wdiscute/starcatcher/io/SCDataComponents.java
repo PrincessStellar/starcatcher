@@ -4,6 +4,8 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SignedGuide;
+import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
@@ -80,18 +82,12 @@ public class SCDataComponents
         stack.set(component, data);
     }
 
-    public static List<ItemStack> getSlotsInRod(ItemStack itemStack)
-    {
-        List<ItemStack> list = new ArrayList<>();
-        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack());
-        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack());
-        list.add(SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack());
-        return list;
-    }
-
     @Nullable
     public static <T> T get(ItemStack stack, Supplier<DataComponentType<T>> component)
     {
+        if(component.equals(CATCH_MODIFIERS.get()));
+        if(component.equals(MINIGAME_MODIFIERS.get()));
+        if(component.equals(TACKLE_SKIN.get()));
         return stack.get(component);
     }
 

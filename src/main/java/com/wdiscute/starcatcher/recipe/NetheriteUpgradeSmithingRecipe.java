@@ -3,8 +3,10 @@ package com.wdiscute.starcatcher.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
+import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -24,7 +26,7 @@ public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient bas
         boolean b = this.template.test(input.template())
                 && this.base.test(input.base())
                 && this.addition.test(input.addition())
-                && !SCDataComponents.getOrDefault(input.base(), SCDataComponents.NETHERITE_UPGRADE, false);
+                && SCDataComponents.getOrDefault(input.base(), SCDataComponents.NETHERITE_UPGRADE, false);
         return b;
     }
 
@@ -32,15 +34,16 @@ public record NetheriteUpgradeSmithingRecipe(Ingredient template, Ingredient bas
     {
         ItemStack resultRod = input.base().copy();
 
-        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        List<ResourceLocation> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        catchModifiers.addAll(SCDataMaps.getOrDefault(input.template(), SCDataMaps.CATCH_MODIFIERS, List.of()));
 
-        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
-        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
+        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
+        minigameModifiers.addAll(SCDataMaps.getOrDefault(input.template(), SCDataMaps.MINIGAME_MODIFIERS, List.of()));
 
-        ResourceLocation tackleSkin = SCDataComponents.get(input.template(), SCDataComponents.TACKLE_SKIN);
-
-        if (tackleSkin != null)
+        ResourceLocation tackleSkin = SCTackleSkins.getTackleSkin(input.template());
+        if (!tackleSkin.equals(SCTackleSkins.BASE_TACKLE_SKIN))
             SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
 
         SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);

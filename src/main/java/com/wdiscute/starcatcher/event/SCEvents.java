@@ -37,9 +37,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -53,8 +51,6 @@ import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
-import java.util.List;
-
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class SCEvents
 {
@@ -67,35 +63,6 @@ public class SCEvents
                 FishEntity::validSpawnPlacement,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
-
-    @SubscribeEvent
-    public static void modifyItemAttribute(ItemAttributeModifierEvent event)
-    {
-        ItemStack itemStack = event.getItemStack();
-
-        List<ResourceLocation> catchModifiers = SCDataMaps.getOrDefault(itemStack, SCDataMaps.CATCH_MODIFIERS, null);
-
-        if (catchModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.CATCH_MODIFIERS) == null)
-        {
-            SCDataComponents.set(itemStack, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
-        }
-
-        List<ResourceLocation> minigameModifiers = SCDataMaps.getOrDefault(itemStack, SCDataMaps.MINIGAME_MODIFIERS, null);
-
-        if (minigameModifiers != null && SCDataComponents.get(itemStack, SCDataComponents.MINIGAME_MODIFIERS) == null)
-        {
-            SCDataComponents.set(itemStack, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
-        }
-
-        ResourceLocation tackleSkin = SCDataMaps.getOrDefault(itemStack, SCDataMaps.TACKLE_SKIN, null);
-
-        if (tackleSkin != null && SCDataComponents.get(itemStack, SCDataComponents.TACKLE_SKIN) == null)
-        {
-            SCDataComponents.set(itemStack, SCDataComponents.TACKLE_SKIN, tackleSkin);
-        }
-
-    }
-
 
     @SubscribeEvent
     public static void addPackFinders(AddPackFindersEvent event)
