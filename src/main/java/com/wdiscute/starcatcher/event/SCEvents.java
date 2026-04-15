@@ -1,8 +1,12 @@
 package com.wdiscute.starcatcher.event;
 
+import com.wdiscute.sellingbin.bin.SellingBinBlockEntity;
 import com.wdiscute.sellingbin.event.SBevents;
+import com.wdiscute.sellingbin.registry.SBBlockEntities;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
@@ -33,10 +37,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -45,6 +52,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
@@ -92,6 +100,29 @@ public class SCEvents
                 packSource,
                 false,
                 Pack.Position.TOP
+        );
+    }
+
+    @SubscribeEvent
+    public static void addCapabilities(RegisterCapabilitiesEvent event)
+    {
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, SCBlockEntities.TACKLE_BOX.get(),
+                (container, side) ->
+                {
+                    if (container instanceof TackleBoxBlockEntity be)
+                    {
+                        return new SidedInvWrapper(container, side)
+                        {
+                            @Override
+                            public void setStackInSlot(int slot, ItemStack stack)
+                            {
+                                super.setStackInSlot(slot, stack);
+                                be.updateFishSlot();
+                            }
+                        };
+                    }
+                    return null;
+                }
         );
     }
 
