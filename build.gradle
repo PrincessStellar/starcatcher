@@ -157,6 +157,8 @@ dependencies {
     //compileOnly "maven.modrinth:architectury-api:ZxYGwlk0"
     //runtimeOnly "maven.modrinth:architectury-api:ZxYGwlk0"
 
+    //pipez
+    runtimeOnly "maven.modrinth:pipez:z20ZR1YE"
 }
 
 publishing {
