@@ -2060,8 +2060,7 @@ public class FishingGuideScreen extends Screen
     {
         if (ModList.get().isLoaded("emi"))
             StarcatcherEmiPlugin.displayRecipes(stack);
-
-        if (ModList.get().isLoaded("jei"))
+        else if (ModList.get().isLoaded("jei"))
             StarcatcherJeiPlugin.displayRecipes(stack);
     }
 
