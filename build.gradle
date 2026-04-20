@@ -56,6 +56,12 @@ repositories
         maven { url = 'https://maven.tysontheember.dev' }
     }
 
+    //sable-companion
+    maven {
+        name = "RyanHCode Maven"
+        url = "https://maven.ryanhcode.dev/releases"
+    }
+
     repositories {
         exclusiveContent {
             forRepository {
@@ -155,6 +161,12 @@ dependencies {
 
     //pipez
     //runtimeOnly "maven.modrinth:pipez:z20ZR1YE"
+
+    //sable (Sable's compat)
+    compileOnly files(".compatmods/sable-neoforge-1.21.1-1.0.6.jar")
+    api "dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:1.4.2"
+  //  runtimeOnly files(".compatmods/sable-neoforge-1.21.1-1.0.6.jar")
+
 }
 
 publishing {
