@@ -56,7 +56,7 @@ public class SCConfig
             .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
             .comment("Vanilla should look better for most people")
             .translation("starcatcher.configuration.vanilla_partial_ticks")
-            .define("vanilla_partial_ticks", true);
+            .define("vanilla_partial_ticks", false);
 
 
     static final ModConfigSpec SPEC = BUILDER_CLIENT.build();

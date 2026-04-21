@@ -84,7 +84,7 @@ dependencies {
     jarJar(implementation("maven.modrinth:wds-selling-bin:nrGOzmNu"))
 
     //tiny multiblock lib
-    jarJar(implementation("maven.modrinth:tiny-multiblock-lib:neo-1.21.1-${tiny_multiblock_lib_version}"))
+    jarJar(implementation("maven.modrinth:tiny-multiblock-lib:gbRIPDRZ"))
 
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
