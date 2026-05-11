@@ -26,17 +26,8 @@ public class DGSCItemModelProvider extends ItemModelProvider
         for (DeferredHolder<Item, ? extends Item> item : BUCKETABLE_FISHES_REGISTRY.getEntries())
             simpleItem((DeferredItem<? extends Item>) item);
 
-        //non bucket fishes
-        simpleItem(BLACK_EEL);
-        simpleItem(GEODE_EEL);
-        simpleItem(OBSIDIAN_EEL);
-        simpleItem(MOLTEN_SHRIMP);
-        simpleItem(OBSIDIAN_CRAB);
-        simpleItem(SCORCHED_BLOODSUCKER);
-        simpleItem(MOLTEN_DEEPSLATE_CRAB);
-        simpleItem(LAVA_CRAB);
-        simpleItem(CINDER_SQUID);
-        simpleItem(CHORUS_CRAB);
+        for (DeferredHolder<Item, ? extends Item> item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
+            simpleItem((DeferredItem<? extends Item>) item);
 
         //trash
         simpleItem(BOOT);

@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
 import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
@@ -21,7 +20,6 @@ import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -141,7 +139,8 @@ public class Starcatcher
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
 
-//        SCItems.registerExtra();
+        //register mod-specific fishes
+        SCItems.registerExtraItems();
     }
 
     @Mod(value = Starcatcher.MOD_ID, dist = Dist.CLIENT)

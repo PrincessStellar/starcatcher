@@ -46,6 +46,13 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             tag(SCTags.STARCAUGHT_FISHES).add(item.get());
         }
 
+        for (var item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
+        {
+            tag(ItemTags.FISHES).add(item.get());
+            tag(ItemTags.CAT_FOOD).add(item.get());
+            tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
+        }
+
         //todo figure out what to do with crabs/eels tags?
 
         //rarity tags
