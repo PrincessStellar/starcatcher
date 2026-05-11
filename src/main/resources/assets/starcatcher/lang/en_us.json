@@ -1919,5 +1919,49 @@
   "tooltip.starcatcher.voidbiter.0" : "A <sclegendary>legendary</sclegendary> fish found in outer islands of The End.",
   "tooltip.starcatcher.voidbiter.1" : "So few anglers have seen it that it's only rumored to exist.",
   "tooltip.starcatcher.voidbiter.2" : "It's said only <scuncommon>Older Anglers</scuncommon> have successfully",
-  "tooltip.starcatcher.voidbiter.3" : "caught it before."
+  "tooltip.starcatcher.voidbiter.3" : "caught it before.",
+
+  "item.starcatcher.coggill" : "Coggill",
+  "tooltip.starcatcher.coggill.0" : "A mechanical construct resembling the Embergill,",
+  "tooltip.starcatcher.coggill.1" : "made to survive high temperature fluids.",
+  "tooltip.starcatcher.coggill.2" : "It's use is unknown.",
+
+  "item.starcatcher.mechanical_brass_snail" : "Mechanical Brass Snail",
+  "tooltip.starcatcher.mechanical_brass_snail.0" : "A machine made to clean oil off of beaches.",
+  "tooltip.starcatcher.mechanical_brass_snail.1" : "This one seems to have been upgraded to brass, making it more efficient.",
+
+  "item.starcatcher.mechanical_snail" : "Mechanical Snail",
+  "tooltip.starcatcher.mechanical_snail.0" : "A machine made to clean oil off of beaches.",
+  "tooltip.starcatcher.mechanical_snail.1" : "It slowly moves back and forth cleaning up polution,",
+  "tooltip.starcatcher.mechanical_snail.2" : "left behind by whoever made it.",
+
+
+  "item.starcatcher.phillipsfish" : "Phillipsfish",
+  "tooltip.starcatcher.phillipsfish.0" : "This machine drifts around the ocean and plugs itself wherever it can fit in.",
+
+  "item.starcatcher.valve" : "Valve",
+  "tooltip.starcatcher.valve.0" : "A loose valve attached to a pipe.",
+  "tooltip.starcatcher.valve.1" : "Somewhere, someone is wondering where it went.",
+
+  "item.starcatcher.pipehead" : "Pipehead",
+  "tooltip.starcatcher.pipehead.0" : "This type of machine, sometimes called a pipesucker,",
+  "tooltip.starcatcher.pipehead.1" : "is often used to connect different mechanisms underwater.",
+  "tooltip.starcatcher.pipehead.2" : "It would appear this one got loose and started drifting the oceans.",
+
+  "item.starcatcher.cogtopus" : "Cogtopus",
+  "tooltip.starcatcher.cogtopus.0" : "A very intelligent machine made to mimic the behaviour of octopus.",
+  "tooltip.starcatcher.cogtopus.1" : "Each of its brains (cogs) controls a different arm, making it able to maneuver anywhere it pleases.",
+
+  "item.starcatcher.eel_dynamo" : "Eel Dynamo",
+  "tooltip.starcatcher.eel_dynamo.0" : "A oily slippery eel ran by gears.",
+
+  "item.starcatcher.drive_pike" : "Drive Pike",
+  "tooltip.starcatcher.drive_pike.0" : "An aggressive machine made to control the fish population around rivers",
+
+  "item.starcatcher.brassgill" : "Brassgill",
+  "tooltip.starcatcher.brassgill.0" : "A dusty construct made of brass gears and cogs often used in arid areas to move air around.",
+
+  "item.starcatcher.meka_agave_bream" : "Meka Agave Bream",
+  "tooltip.starcatcher.meka_agave_bream.0" : "The mechanical version of an Agave Bream made for controlling bream population.",
+  "tooltip.starcatcher.meka_agave_bream.1" : "If it's unable to find a suitable Agave Bream in time it will hibernate until next mating season."
 }
