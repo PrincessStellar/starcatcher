@@ -138,9 +138,6 @@ public class Starcatcher
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
 
-        //add items to Fancy Tab Sections
-        SCCreativeModeTabs.addItems();
-
         //register mod-specific fishes
         SCItems.registerExtraItems();
     }

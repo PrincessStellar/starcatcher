@@ -33,6 +33,7 @@ public class SCCreativeModeTabs
     public static void register(IEventBus eventBus)
     {
         CREATIVE_MODE_TABS.register(eventBus);
+        addItems();
     }
 
     public static final LetterItem.Message MESSAGE = new LetterItem.Message(
@@ -57,7 +58,7 @@ public class SCCreativeModeTabs
 
     public static void addItems()
     {
-        //
+        //Must Have
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),
                 new SectionColored(
                         Starcatcher.rl("must_have"),
@@ -166,6 +167,7 @@ public class SCCreativeModeTabs
                 )
         );
 
+        //Fish
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),
                 new SectionColored(
                         Starcatcher.rl("fish"),
@@ -180,6 +182,7 @@ public class SCCreativeModeTabs
                 )
         );
 
+        //Miscellaneous
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),
                 new SectionColored(
                         Starcatcher.rl("miscellaneous"),
@@ -211,59 +214,7 @@ public class SCCreativeModeTabs
                     .title(Component.translatable("creativetab.starcatcher.starcatcher"))
                     .displayItems((itemDisplayParameters, output) ->
                     {
-
-//                        output.accept(SCItems.ROD);
-//
-//                        //adds items
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.ITEMS.getEntries())
-//                        {
-//                            if (item.equals(SCItems.ROD)) continue;
-//
-//                            if (item.equals(SCItems.BOTTLED_LETTER))
-//                            {
-//                                ItemStack is = new ItemStack(SCItems.BOTTLED_LETTER.get());
-//
-//                                SCDataComponents.set(is, SCDataComponents.MESSAGE, MESSAGE);
-//                                output.accept(is);
-//                                continue;
-//                            }
-//
-//                            if (item.equals(SCItems.MESSAGE_IN_A_BOTTLE))
-//                            {
-//                                ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
-//
-//                                SCDataComponents.set(is, SCDataComponents.MESSAGE, MESSAGE);
-//                                output.accept(is);
-//                                continue;
-//                            }
-//
-//                            if (item.equals(SCItems.MESSAGE)) continue;
-//
-//                            output.accept(item.get());
-//                        }
-//
-//
-//                        //adds bobbers
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.BOBBERS_REGISTRY.getEntries())
-//                            output.accept(item.get());
-//
-//                        //adds hooks
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.HOOKS_REGISTRY.getEntries())
-//                            output.accept(item.get());
-//
-//                        //adds templates
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.TEMPLATES_REGISTRY.getEntries())
-//                            output.accept(item.get());
-//
-//                        //adds rods besides default
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.RODS_REGISTRY.getEntries())
-//                            if (!item.equals(SCItems.ROD))
-//                                output.accept(item.get());
-//
-//                        //adds fish
-//                        for (DeferredHolder<Item, ? extends Item> item : SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries())
-//                            output.accept(item.get());
-
+                        //empty as it's added through Fancy Tab Sections instead
                     })
                     .build()
     );
