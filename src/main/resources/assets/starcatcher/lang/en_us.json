@@ -9,6 +9,13 @@
   "key.starcatcher.expand_tournament": "Toggle Tournament Overlay",
 
   "creativetab.starcatcher.starcatcher": "Starcatcher",
+  "creativetab.starcatcher.starcatcher.fish": "Fish",
+  "creativetab.starcatcher.starcatcher.hooks_bobbers": "Hooks, Bobbers & Baits",
+  "creativetab.starcatcher.starcatcher.cosmetics": "Cosmetics",
+  "creativetab.starcatcher.starcatcher.must_have": "Must Have",
+  "creativetab.starcatcher.starcatcher.trophies": "Trophies & Secrets",
+  "creativetab.starcatcher.starcatcher.miscellaneous": "Miscellaneous",
+  "creativetab.starcatcher.starcatcher.tackle_boxes": "Tackle Boxes",
 
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",

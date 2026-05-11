@@ -26,6 +26,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         for (DeferredHolder<Item, ? extends Item> item : BUCKETABLE_FISHES_REGISTRY.getEntries())
             simpleItem((DeferredItem<? extends Item>) item);
 
+        //non bucket fishes
         for (DeferredHolder<Item, ? extends Item> item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
             simpleItem((DeferredItem<? extends Item>) item);
 

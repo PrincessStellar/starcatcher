@@ -48,8 +48,6 @@
     "starcatcher:ghostly_pike",
     "starcatcher:sculkfish",
     "starcatcher:charfish",
-    "starcatcher:missingno",
-    "starcatcher:unknown_fish",
     "starcatcher:sage_catfish",
     "starcatcher:mossy_boot",
     "starcatcher:pale_carp",
@@ -103,6 +101,17 @@
     "starcatcher:lava_crab_claw",
     "starcatcher:chorus_crab",
     "starcatcher:end_glow",
-    "starcatcher:voidbiter"
+    "starcatcher:voidbiter",
+    "starcatcher:coggill",
+    "starcatcher:mechanical_brass_snail",
+    "starcatcher:mechanical_snail",
+    "starcatcher:phillipsfish",
+    "starcatcher:valve",
+    "starcatcher:pipehead",
+    "starcatcher:cogtopus",
+    "starcatcher:eel_dynamo",
+    "starcatcher:drive_pike",
+    "starcatcher:brassgill",
+    "starcatcher:meka_agave_bream"
   ]
 }

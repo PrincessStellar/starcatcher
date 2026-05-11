@@ -23,7 +23,17 @@ public interface SCItems
         //this works!
         if (ModList.get().isLoaded("create"))
         {
-            //registerNonBucketFish("create_fish");
+            registerNonBucketFish("coggill");
+            registerNonBucketFish("mechanical_brass_snail");
+            registerNonBucketFish("mechanical_snail");
+            registerNonBucketFish("phillipsfish");
+            registerNonBucketFish("valve");
+            registerNonBucketFish("pipehead");
+            registerNonBucketFish("cogtopus");
+            registerNonBucketFish("eel_dynamo");
+            registerNonBucketFish("drive_pike");
+            registerNonBucketFish("brassgill");
+            registerNonBucketFish("meka_agave_bream");
         }
     }
 
@@ -36,8 +46,8 @@ public interface SCItems
     DeferredRegister.Items BOBBERS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
 
 
-    DeferredItem<Item> MISSINGNO = registerNonBucketFish("missingno");
-    DeferredItem<Item> UNKNOWN_FISH = registerNonBucketFish("unknown_fish");
+    DeferredItem<Item> MISSINGNO = ITEMS.register("missingno", BasicItem::new);
+    DeferredItem<Item> UNKNOWN_FISH = ITEMS.register("unknown_fish", BasicItem::new);
 
     DeferredItem<Item> GUIDE = ITEMS.register("starcatcher_guide", FishingGuideItem::new);
 

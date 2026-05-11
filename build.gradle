@@ -86,6 +86,10 @@ dependencies {
     //tiny multiblock lib
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:gbRIPDRZ"))
 
+    //fancy tab sections
+    jarJar(implementation("maven.modrinth:fancytabsections:2.0-NEOFORGE-1.21.1"))
+
+
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     //runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
