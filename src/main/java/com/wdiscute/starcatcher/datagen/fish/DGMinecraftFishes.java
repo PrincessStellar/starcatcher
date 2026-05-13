@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.registry.fishing;
+package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.Map;
 
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 
 public class DGMinecraftFishes

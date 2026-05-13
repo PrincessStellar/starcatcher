@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "starcatcher:trophy_iron",
+      "required": false
+    },
+    {
       "id": "starcatcher:morganite",
       "required": false
     },
@@ -46,6 +50,10 @@
     },
     {
       "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
+      "id": "starcatcher:black_eel",
       "required": false
     },
     {

@@ -69,6 +69,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
       "id": "tide:mooneye",
       "required": false
     },

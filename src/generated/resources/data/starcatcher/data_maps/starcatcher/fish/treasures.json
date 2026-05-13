@@ -1800,6 +1800,10 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:pipehead": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:pyrotrout": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"

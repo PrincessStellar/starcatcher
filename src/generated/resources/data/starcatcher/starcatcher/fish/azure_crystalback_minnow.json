@@ -1,7 +1,12 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "starcatcher"
+    }
+  ],
   "base_chance": 25,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
     "item": "starcatcher:azure_crystalback_minnow"
   },
   "difficulty": {

@@ -1,13 +1,14 @@
-package com.wdiscute.starcatcher.registry.fishing.compat;
+package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.registry.FishProperties;
 
 import java.util.Map;
 
-public class DGTerraFirmaCraftFishes extends FishingPropertiesRegistry
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
+
+public class DGTerraFirmaCraftFishes
 {
     public static void bootstrap()
     {
@@ -100,7 +101,7 @@ public class DGTerraFirmaCraftFishes extends FishingPropertiesRegistry
                         U.rl("tfc", "food/cod"), 50,
                         U.rl("tfc", "food/salmon"), 50,
                         U.rl("tfc", "food/tropical_fish"), 50
-                        ), ""))
+                ), ""))
                 .withSizeAndWeight(FishProperties.sizeWeight(15, 5, 200, 20))
                 .withRarity(FishProperties.Rarity.UNCOMMON)
                 .withDifficulty(FishProperties.Difficulty.MEDIUM)

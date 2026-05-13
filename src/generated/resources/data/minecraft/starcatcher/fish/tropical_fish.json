@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minecraft"
+    }
+  ],
   "base_chance": 5,
   "catch_info": {
     "entity": "minecraft:tropical_fish",

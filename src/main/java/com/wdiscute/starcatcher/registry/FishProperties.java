@@ -55,6 +55,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -104,7 +105,7 @@ public record FishProperties(
     @Override
     public @NotNull String toString()
     {
-            return "[FishProperties] " + getDisplayName();
+        return "[FishProperties] " + getDisplayName();
     }
 
     public Component getDisplayName()
@@ -118,13 +119,13 @@ public record FishProperties(
     //returns a new instance of FishProperties with the treasure itemstack set
     public FishProperties loadTreasure(ServerPlayer player)
     {
-        if(!catchInfo.treasureIs.isEmpty()) return this;
+        if (!catchInfo.treasureIs.isEmpty()) return this;
 
         Registry<FishProperties> fishProperties = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY);
 
         Treasure.TreasureInstance data = fishProperties.wrapAsHolder(this).getData(SCDataMaps.TREASURE);
 
-        if(data == null) return this;
+        if (data == null) return this;
 
         return new FishProperties(
                 new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
@@ -2030,10 +2031,20 @@ public record FishProperties(
 
                 List<ItemStack> items = new ArrayList<>();
 
+                ResourceLocation location = fp.catchInfo.entityToSpawn.getKey().location();
+
+                boolean canSpawnEntity;
+                if (location.getNamespace().equals("starcatcher"))
+                    //if entity is from starcatcher, can only spawn if it's a bucketable fish
+                    canSpawnEntity = SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(DeferredHolder::getDelegate).toList().contains(fp.catchInfo.fish);
+                else
+                    //if entity is not from starcatcher, then it can spawn
+                    canSpawnEntity = true;
+
                 //if should spawn entity
-                if (fp.catchInfo().alwaysSpawnEntity() ||
+                if ((fp.catchInfo().alwaysSpawnEntity() ||
                         ModList.get().isLoaded("fishingreal") ||
-                        fbe.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity))
+                        fbe.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity)) && canSpawnEntity)
                 {
                     Vec3 objPos = player.position().subtract(fbe.position());
 

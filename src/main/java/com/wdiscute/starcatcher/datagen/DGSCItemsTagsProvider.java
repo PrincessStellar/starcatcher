@@ -2,9 +2,8 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
+import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -51,10 +50,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
         }
 
-        //todo figure out what to do with crabs/eels tags?
-
         //rarity tags
-        FishingPropertiesRegistry.PROPERTIES.forEach(p ->
+        DGSCFishProperties.PROPERTIES.forEach(p ->
         {
             //return if not a fish or alwaysSpawnEntity
             FishProperties fp = p.getSecond();

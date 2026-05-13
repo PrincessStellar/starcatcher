@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "starcatcher"
+    }
+  ],
   "base_chance": 4,
   "catch_info": {
     "fish_bucket": "starcatcher:starcaught_bucket",

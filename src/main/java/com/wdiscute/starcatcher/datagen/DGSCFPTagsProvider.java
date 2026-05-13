@@ -2,8 +2,8 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.registry.FishProperties;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
@@ -23,9 +23,7 @@ public class DGSCFPTagsProvider extends TagsProvider<FishProperties>
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-
-
-        FishingPropertiesRegistry.PROPERTIES.forEach(o ->
+        DGSCFishProperties.PROPERTIES.forEach(o ->
         {
             FishProperties fp = o.getSecond();
             ResourceLocation location = o.getFirst().location();

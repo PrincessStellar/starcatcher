@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.List;
 
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.fish;
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.fish;
 
 public class AddCreeperModifier extends AbstractCatchModifier
 {

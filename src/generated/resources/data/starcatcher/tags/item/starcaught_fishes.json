@@ -1,6 +1,106 @@
 {
   "values": [
     {
+      "id": "starcatcher:trophy_copper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_iron",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_gold",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_emerald",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_diamond",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_of_the_older_angler",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drifting_waterlogged_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:scalding_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:burning_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:hopeful_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:hopeless_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:true_blue_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:withered_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:amethyst_hook",
+      "required": false
+    },
+    {
+      "id": "starcatcher:frog_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:naturalist_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:magmaforged_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:slimed_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bamboo_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boner_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sky_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lush_glowberry_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:humble_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sharktooth_skin_smithing_template",
+      "required": false
+    },
+    {
       "id": "starcatcher:obidontiee",
       "required": false
     },
@@ -30,6 +130,10 @@
     },
     {
       "id": "starcatcher:lightning_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boot",
       "required": false
     },
     {
@@ -94,6 +198,10 @@
     },
     {
       "id": "starcatcher:sage_catfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mossy_boot",
       "required": false
     },
     {
@@ -177,6 +285,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:dried_seaweed",
+      "required": false
+    },
+    {
       "id": "starcatcher:frostgill_chub",
       "required": false
     },
@@ -225,6 +337,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:conch",
+      "required": false
+    },
+    {
+      "id": "starcatcher:clam",
+      "required": false
+    },
+    {
       "id": "starcatcher:shroomfish",
       "required": false
     },
@@ -237,7 +357,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:geode_eel",
+      "required": false
+    },
+    {
       "id": "starcatcher:whiteveil",
+      "required": false
+    },
+    {
+      "id": "starcatcher:black_eel",
       "required": false
     },
     {
@@ -317,7 +445,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:obsidian_eel",
+      "required": false
+    },
+    {
       "id": "starcatcher:molten_shrimp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_crab",
       "required": false
     },
     {
@@ -325,7 +461,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:molten_deepslate_crab",
+      "required": false
+    },
+    {
       "id": "starcatcher:embergill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lava_crab",
       "required": false
     },
     {
@@ -357,7 +501,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:lava_crab_claw",
+      "required": false
+    },
+    {
       "id": "starcatcher:charfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:chorus_crab",
       "required": false
     },
     {
@@ -366,6 +518,10 @@
     },
     {
       "id": "starcatcher:voidbiter",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
       "required": false
     }
   ]

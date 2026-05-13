@@ -1,31 +1,36 @@
-package com.wdiscute.starcatcher.registry.fishing;
+package com.wdiscute.starcatcher.datagen.fish;
 
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.datagen.fish.compat.*;
+import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
-import com.wdiscute.starcatcher.registry.fishing.compat.*;
-import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
-public class FishingPropertiesRegistry
+public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 {
-
-    public static void register()
+    static
     {
+        COMPAT_KEYS = new HashMap<>();
+        PROPERTIES = new ArrayList<>();
+
+        //register all entries before anything else
         DGTrophies.bootstrap();
         DGMinecraftFishes.bootstrap();
         DGStarcatcherFishes.bootstrap();
@@ -48,6 +53,93 @@ public class FishingPropertiesRegistry
         DGSpawnFishes.bootstrap();
         DGFintasticFishes.bootstrap();
     }
+
+    public static final List<Pair<ResourceKey<FishProperties>, FishProperties>> PROPERTIES;
+    public static final Map<ResourceKey<FishProperties>, String> COMPAT_KEYS;
+    public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap);
+
+    public DGSCFishProperties(PackOutput output, CompletableFuture<HolderLookup.Provider> registries)
+    {
+        super(output, registries, REGISTRY, (consumer) ->
+                        COMPAT_KEYS.forEach((k, v) ->
+                        {
+                            //fix for hybrid aquatic as their modid is hybrid_aquatic but items use hybrid-aquatic
+                            if (k.location().getNamespace().equals("hybrid-aquatic"))
+                                consumer.accept(k, new ModLoadedCondition("hybrid_aquatic"));
+                            else
+                                consumer.accept(k, new ModLoadedCondition(v));
+                        }),
+                Set.of(
+                        Starcatcher.MOD_ID,
+                        "minecraft",
+                        "tide",
+                        "aquaculture",
+                        "fishofthieves",
+                        "netherdepthsupgrade",
+                        "sullysmod",
+                        "upgrade_aquatic",
+                        "environmental",
+                        "collectorsreap",
+                        "miners_delight",
+                        "alexscaves",
+                        "crittersandcompanions",
+                        "aquamirae",
+                        "hybrid_aquatic",
+                        "hybrid-aquatic",
+                        "tfc",
+                        "betterend",
+                        "unusualfishmod",
+                        "spawn",
+                        "fintastic"
+                        //That's a lot of compatibilities
+                ));
+    }
+
+    static ResourceKey<FishProperties> createKey(FishProperties fp)
+    {
+        if (fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
+            return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(fp.catchInfo().fish().getRegisteredName()));
+
+        return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(
+                fp.catchInfo().fish().getKey().location().getNamespace() + ":" +
+                        fp.catchInfo().fishEntryType().name().toLowerCase(Locale.ROOT) + "_" +
+                        fp.catchInfo().fish().getKey().location().getPath()
+        ));
+    }
+
+    public static void register(FishProperties.Builder builder)
+    {
+        register(builder, "");
+    }
+
+    public static void register(FishProperties.Builder builder, String modLoadedRestriction)
+    {
+        FishProperties fp = builder.build();
+
+        //if bucketable fish, add bucket and entity
+        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(DeferredHolder::getDelegate).toList().contains(fp.catchInfo().fish()))
+        {
+            builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
+            builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
+            fp = builder.build();
+        }
+
+        //add to list
+        if (fp.catchInfo().fish().getRegisteredName().contains("starcatcher"))
+            DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
+
+        ResourceKey<FishProperties> key = createKey(fp);
+
+        COMPAT_KEYS.put(key, modLoadedRestriction.isEmpty() ? fp.catchInfo().fish().getRegisteredName().split(":")[0] : modLoadedRestriction);
+        PROPERTIES.add(Pair.of(key, fp));
+    }
+
+    public static void bootstrap(BootstrapContext<FishProperties> context)
+    {
+        PROPERTIES.forEach(p -> context.register(p.getFirst(), p.getSecond()));
+    }
+
+
 
     //region builders
     public static FishProperties.Builder fish(Holder<Item> fish)
@@ -328,62 +420,11 @@ public class FishingPropertiesRegistry
 
     //endregion
 
-    public static final List<Pair<ResourceKey<FishProperties>, FishProperties>> PROPERTIES = new ArrayList<>();
-    private static final List<ResourceKey<FishProperties>> COMPAT_KEYS = new ArrayList<>();
 
-    static ResourceKey<FishProperties> createKey(FishProperties fp)
+
+    @Override
+    public String getName()
     {
-        if (fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
-            return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(fp.catchInfo().fish().getRegisteredName()));
-
-        return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(
-                fp.catchInfo().fish().getKey().location().getNamespace() + ":" +
-                        fp.catchInfo().fishEntryType().name().toLowerCase(Locale.ROOT) + "_" +
-                        fp.catchInfo().fish().getKey().location().getPath()
-                ));
-    }
-
-    public static void registerStarcatcherBucketAndEntity(FishProperties.Builder builder)
-    {
-        builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
-        builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-        DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
-        register(builder);
-    }
-
-    public static void registerStarcatcherOnlyEntity(FishProperties.Builder builder)
-    {
-        builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-        register(builder);
-    }
-
-
-    public static void register(FishProperties.Builder builder)
-    {
-        FishProperties properties = builder.build();
-        ResourceKey<FishProperties> key = FishingPropertiesRegistry.createKey(properties);
-        PROPERTIES.add(Pair.of(key, properties));
-        String namespace = key.location().getNamespace();
-        if (!namespace.equals("minecraft") && !namespace.equals("starcatcher"))
-            COMPAT_KEYS.add(key);
-    }
-
-    public static void registerConditions(BiConsumer<ResourceKey<?>, ICondition> consumer)
-    {
-        for (ResourceKey<FishProperties> compatKey : COMPAT_KEYS)
-        {
-            //fix for hybrid aquatic as their modid is hybrid_aquatic but items use hybrid-aquatic
-            if (compatKey.location().getNamespace().equals("hybrid-aquatic"))
-            {
-                consumer.accept(compatKey, new ModLoadedCondition("hybrid_aquatic"));
-                continue;
-            }
-            consumer.accept(compatKey, new ModLoadedCondition(compatKey.location().getNamespace()));
-        }
-    }
-
-    public static void bootstrap(BootstrapContext<FishProperties> context)
-    {
-        PROPERTIES.forEach(p -> context.register(p.getFirst(), p.getSecond()));
+        return "FishingProperties";
     }
 }

@@ -1,8 +1,7 @@
-package com.wdiscute.starcatcher.registry.fishing.compat;
+package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.ElevationRestriction;
@@ -12,7 +11,9 @@ import net.minecraft.world.level.biome.Biomes;
 
 import java.util.List;
 
-public class DGFintasticFishes extends FishingPropertiesRegistry
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
+
+public class DGFintasticFishes
 {
     public static void bootstrap()
     {

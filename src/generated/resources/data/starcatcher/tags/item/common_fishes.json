@@ -1,6 +1,86 @@
 {
   "values": [
     {
+      "id": "starcatcher:trophy_copper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drifting_waterlogged_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:scalding_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:burning_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:hopeful_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:hopeless_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:true_blue_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:withered_bottle",
+      "required": false
+    },
+    {
+      "id": "starcatcher:amethyst_hook",
+      "required": false
+    },
+    {
+      "id": "starcatcher:frog_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:naturalist_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:magmaforged_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:slimed_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bamboo_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boner_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sky_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lush_glowberry_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:humble_skin_smithing_template",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sharktooth_skin_smithing_template",
+      "required": false
+    },
+    {
       "id": "starcatcher:obidontiee",
       "required": false
     },

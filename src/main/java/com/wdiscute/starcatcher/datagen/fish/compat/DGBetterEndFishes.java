@@ -1,10 +1,11 @@
-package com.wdiscute.starcatcher.registry.fishing.compat;
+package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.FishProperties;
 
-public class DGBetterEndFishes extends FishingPropertiesRegistry
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
+
+public class DGBetterEndFishes
 {
     public static void bootstrap()
     {

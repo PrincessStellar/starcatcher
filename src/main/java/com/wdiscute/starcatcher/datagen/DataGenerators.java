@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
+import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
@@ -28,7 +28,7 @@ public class DataGenerators
     {
         event.createDatapackRegistryObjects(
                 new RegistrySetBuilder()
-                        .add(Starcatcher.FISH_REGISTRY_KEY, FishingPropertiesRegistry::bootstrap)
+                        .add(Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
         );
 
         DataGenerator gen = event.getGenerator();
@@ -39,7 +39,7 @@ public class DataGenerators
         //fish properties
         gen.addProvider(
                 event.includeServer(),
-                new DGSCFishingPropertiesProvider(output, lookupProvider)
+                new DGSCFishProperties(output, lookupProvider)
         );
 
         gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));

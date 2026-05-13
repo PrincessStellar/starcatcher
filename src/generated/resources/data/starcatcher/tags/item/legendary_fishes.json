@@ -1,6 +1,14 @@
 {
   "values": [
     {
+      "id": "starcatcher:trophy_diamond",
+      "required": false
+    },
+    {
+      "id": "starcatcher:trophy_of_the_older_angler",
+      "required": false
+    },
+    {
       "id": "starcatcher:aurora",
       "required": false
     },
@@ -34,6 +42,10 @@
     },
     {
       "id": "starcatcher:ward",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_eel",
       "required": false
     },
     {

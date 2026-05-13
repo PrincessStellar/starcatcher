@@ -5,6 +5,7 @@ import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.SBDataMaps;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -12,7 +13,6 @@ import com.wdiscute.starcatcher.blocks.SCBlocks;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.Treasure;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
@@ -146,8 +146,8 @@ public class DGSCDataMapsProvider extends DataMapProvider
         catchModifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
 
         catchModifiers.add(SCItems.WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.FISH_ENTITY.getFirst()), false);
-        catchModifiers.add(SCItems.SEEKING_WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.GUARANTEE_NEW_FISH_HALF.getFirst()), false);
+        catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst(), SCCatchModifiers.FISH_ENTITY.getFirst()), false);
+        catchModifiers.add(SCItems.SEEKING_WORM, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst(), SCCatchModifiers.GUARANTEE_NEW_FISH_HALF.getFirst()), false);
 
         catchModifiers.add(SCItems.GUNPOWDER_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
         catchModifiers.add(SCItems.CHERRY_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
@@ -236,16 +236,15 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
         //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
 
-        FishingPropertiesRegistry.PROPERTIES.forEach(o ->
+        DGSCFishProperties.PROPERTIES.forEach(o ->
         {
             String namespace = o.getFirst().location().getNamespace();
 
             //This keeps it from spamming the log
-            if (namespace.equals(Starcatcher.MOD_ID) || namespace.equals(ResourceLocation.DEFAULT_NAMESPACE)) {
+            if (namespace.equals(Starcatcher.MOD_ID) || namespace.equals(ResourceLocation.DEFAULT_NAMESPACE))
                 treasures.add(o.getFirst(), Treasure.VANILLA_FISHING_LOOT_TABLE, false);
-            } else {
+            else
                 treasures.add(o.getFirst(), Treasure.VANILLA_FISHING_LOOT_TABLE, false, new ModLoadedCondition(namespace));
-            }
         });
 
         treasures.add(Starcatcher.rl("azure_crystalback_minnow"), Treasure.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE, false);

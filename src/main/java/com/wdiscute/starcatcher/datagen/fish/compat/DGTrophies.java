@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.registry.fishing.compat;
+package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.Map;
 
-import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry.*;
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGTrophies
 {

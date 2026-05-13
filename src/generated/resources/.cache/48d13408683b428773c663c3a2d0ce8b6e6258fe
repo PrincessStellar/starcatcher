@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-13T14:40:16.6325731	Tags for minecraft:item mod id starcatcher
+// 1.21.1	2026-05-13T15:51:06.6112554	Tags for minecraft:item mod id starcatcher
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/c/tags/item/foods/raw_fish.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/c/tags/item/tools/fishing_rod.json
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/minecraft/tags/item/cat_food.json
@@ -9,29 +9,29 @@ e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/minecraft/tags/item/fishes.json
 d0f36c4038bba27ed5dbd07b337f94bbe336421c data/starcatcher/tags/item/bobbers.json
 40934962db9edf79457ea4ca8cedc01c4f6a91f8 data/starcatcher/tags/item/bucketable_fishes.json
 8821048ed975b170b2aa459a0b635cf077c38df2 data/starcatcher/tags/item/common_entries.json
-721165b6e198a005d4b96c362ba5314d0f982a6f data/starcatcher/tags/item/common_fishes.json
+a710f28e3c5f53500f5a264f20303d446769c693 data/starcatcher/tags/item/common_fishes.json
 4a259073dfe88e905271731b3bbbb83b5364ecb6 data/starcatcher/tags/item/crabs.json
 a3ae3084e07aaa3db9e4ac31b025dc10055578aa data/starcatcher/tags/item/eels.json
-d57b38fe186a70b57a83167e14832d5c5e5b648e data/starcatcher/tags/item/epic_entries.json
-a53f5905c03ad75e3c22b3a586a79feea462bce6 data/starcatcher/tags/item/epic_fishes.json
+40e40d003d672331575c0f7bfb9fcc27861eca29 data/starcatcher/tags/item/epic_entries.json
+85c3ea6e56f7cce52649b806f692e627365171ce data/starcatcher/tags/item/epic_fishes.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/starcatcher/tags/item/equipments.json
 de6377a3a15fcc745a25e8d8e40184200ee10c90 data/starcatcher/tags/item/gadgets.json
 834e2f963f8e58a4755ff26aebd7bc4ce94530de data/starcatcher/tags/item/hats.json
 3d48d52f640b00fe2c94648e4352834dc775775e data/starcatcher/tags/item/hooks.json
 0ef0bd89eebc91dcfcce4010ca7173e4f202fed8 data/starcatcher/tags/item/legendary_entries.json
-04cd851086181500c85fadbd845ad583fa6d13dc data/starcatcher/tags/item/legendary_fishes.json
+d55cc6c96caafe2ab6756281d3890cbf3b7c0aa2 data/starcatcher/tags/item/legendary_fishes.json
 4d3ea7106ba0c65788160a2dff5d344147143b6f data/starcatcher/tags/item/placeable_in_display.json
 4b75c766d2d6a0800554e31e744b0970037c40fd data/starcatcher/tags/item/placeable_in_tackle_box.json
 46917e7306850aedf22c53f9664894363b91fed9 data/starcatcher/tags/item/placeable_in_tackle_box_fish_slot.json
 16760499bfb63b5c35e4a2c182915cc08397a003 data/starcatcher/tags/item/rare_entries.json
-69f2deaec81e6961729c50430f78fd7271b033d0 data/starcatcher/tags/item/rare_fishes.json
+fe7ffca7377fcd506989d2dd832d01da5b6d748c data/starcatcher/tags/item/rare_fishes.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/starcatcher/tags/item/rods.json
 7358094e60aedb34dfcdaba525c1f14005068952 data/starcatcher/tags/item/shrimps.json
-b44f8d42eeedb2a5129eb878248ce383d9798a77 data/starcatcher/tags/item/starcaught_fishes.json
+81e30d0b4f1a144b33eca9e471fb6816cab987e7 data/starcatcher/tags/item/starcaught_fishes.json
 87b73d3fb6c755d8b5be7ba13a6abb0bdd402639 data/starcatcher/tags/item/tackle_boxes.json
 ad81f33c7ca60124679240657d41deb9acd10775 data/starcatcher/tags/item/tackle_skins.json
 004f74787b6b49717cfeff892de351a5c60fcd6a data/starcatcher/tags/item/templates.json
 b2fabcf619a09d79efc71f1c43df023974ee327d data/starcatcher/tags/item/trash.json
 7637007015d2cd73cf97c1b2e4b088dd4e828513 data/starcatcher/tags/item/uncommon_entries.json
-80126d1da12f19fb7190ae20a45bb36cf8387f86 data/starcatcher/tags/item/uncommon_fishes.json
+b5178e2c552fd679d4258720af1b3e2baf0736e9 data/starcatcher/tags/item/uncommon_fishes.json
 69139883578e6eb497451206144345de53149fa7 data/starcatcher/tags/item/worms.json

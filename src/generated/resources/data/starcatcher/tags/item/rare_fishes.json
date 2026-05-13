@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "starcatcher:trophy_gold",
+      "required": false
+    },
+    {
       "id": "starcatcher:thunder_bass",
       "required": false
     },

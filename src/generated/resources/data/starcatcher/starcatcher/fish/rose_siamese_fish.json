@@ -1,7 +1,12 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "starcatcher"
+    }
+  ],
   "base_chance": 8,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
     "item": "starcatcher:rose_siamese_fish"
   },
   "difficulty": {

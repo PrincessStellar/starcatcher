@@ -2,44 +2,54 @@
   "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
+      "modid": "create"
     }
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:scorchfish"
+    "item": "starcatcher:pipehead"
   },
   "difficulty": {
     "decay": 1.0,
     "hp": 100,
-    "missPenalty": 5,
+    "missPenalty": 10,
     "modifiers": [],
-    "speed": 9,
+    "speed": 14,
     "sweetspots": [
       {
-        "color_as_int": 65280,
+        "color_as_int": 3701122,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "reward": 10,
+        "sweet_spot_type": "starcatcher:aqua",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.0
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": 65280,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 20,
+        "sweet_spot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "epic",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -54,7 +64,7 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": [
-        "starcatcher:is_warm_lake"
+        "starcatcher:is_river"
       ]
     },
     {
@@ -64,38 +74,18 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
-      "type": "starcatcher:season",
-      "season_extra_chance": {
-        "early_autumn": 0,
-        "early_spring": 0,
-        "early_summer": 0,
-        "late_autumn": 0,
-        "late_spring": 0,
-        "late_summer": 0,
-        "mid_autumn": 0,
-        "mid_spring": 0,
-        "mid_summer": 0
-      },
-      "translation_override": "gui.guide.seasons.not_winter"
-    },
-    {
-      "type": "starcatcher:weather_restriction",
-      "weather": "clear"
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:legendary_bait": 50
+      }
     }
   ],
   "size_and_weight": {
-    "average_size_cm": 60.0,
-    "average_weight_grams": 6000.0,
-    "deviation_size_cm": 20.0,
-    "deviation_weight_grams": 4000.0,
+    "average_size_cm": 50.0,
+    "average_weight_grams": 2000.0,
+    "deviation_size_cm": 15.0,
+    "deviation_weight_grams": 200.0,
     "golden_chance": 0.02
   },
-  "skips_minigame": false,
-  "star": {
-    "connections": [],
-    "debug_color": -7146903,
-    "name": "dubhe",
-    "x": 2418,
-    "y": 970
-  }
+  "skips_minigame": false
 }

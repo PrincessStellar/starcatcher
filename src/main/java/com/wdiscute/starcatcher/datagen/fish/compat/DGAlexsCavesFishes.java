@@ -1,16 +1,17 @@
-package com.wdiscute.starcatcher.registry.fishing.compat;
+package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 import com.wdiscute.starcatcher.registry.FishProperties;
 
+import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
+
 import java.util.List;
 
-public class DGAlexsCavesFishes extends FishingPropertiesRegistry
+public class DGAlexsCavesFishes
 {
     public static void bootstrap()
     {
