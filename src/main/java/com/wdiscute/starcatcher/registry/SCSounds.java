@@ -9,15 +9,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class SCSounds
+public interface SCSounds
 {
-    public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
+    DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Starcatcher.MOD_ID);
 
 
-    public static final Supplier<SoundEvent> KING_HEHEHA = registerSoundEvent("king_heheha");
-    public static final Supplier<SoundEvent> KING_CRY = registerSoundEvent("king_cry");
-    public static final Supplier<SoundEvent> KING_GRR = registerSoundEvent("king_grr");
+    Supplier<SoundEvent> KING_HEHEHA = registerSoundEvent("king_heheha");
+    Supplier<SoundEvent> KING_CRY = registerSoundEvent("king_cry");
+    Supplier<SoundEvent> KING_GRR = registerSoundEvent("king_grr");
 
 
 
@@ -26,7 +26,7 @@ public class SCSounds
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
 
-    public static void register(IEventBus eventBus) {
+    static void register(IEventBus eventBus) {
         SOUND_EVENTS.register(eventBus);
     }
 

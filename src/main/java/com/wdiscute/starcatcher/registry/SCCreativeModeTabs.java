@@ -25,18 +25,18 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 
-public class SCCreativeModeTabs
+public interface SCCreativeModeTabs
 {
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+    DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Starcatcher.MOD_ID);
 
-    public static void register(IEventBus eventBus)
+    static void register(IEventBus eventBus)
     {
         CREATIVE_MODE_TABS.register(eventBus);
         addItems();
     }
 
-    public static final LetterItem.Message MESSAGE = new LetterItem.Message(
+    LetterItem.Message MESSAGE = new LetterItem.Message(
             UUID.randomUUID(),
             "<sclegendary>-dev (wd)</sclegendary>",
             Level.OVERWORLD.location(),
@@ -56,7 +56,7 @@ public class SCCreativeModeTabs
             true
     );
 
-    public static void addItems()
+    static void addItems()
     {
         //Must Have
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),
@@ -209,7 +209,7 @@ public class SCCreativeModeTabs
         );
     }
 
-    public static final Supplier<CreativeModeTab> STARCATCHER = CREATIVE_MODE_TABS.register(
+    Supplier<CreativeModeTab> STARCATCHER = CREATIVE_MODE_TABS.register(
             "starcatcher", () -> CreativeModeTab.builder().icon(() -> new ItemStack(SCItems.ROD.get()))
                     .title(Component.translatable("creativetab.starcatcher.starcatcher"))
                     .displayItems((itemDisplayParameters, output) ->

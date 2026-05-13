@@ -36,30 +36,30 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class SCCommands
+public interface SCCommands
 {
-    private static final DynamicCommandExceptionType ERROR_ROD = new DynamicCommandExceptionType(
+    DynamicCommandExceptionType ERROR_ROD = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.rod_not_found", o)
     );
 
-    private static final DynamicCommandExceptionType NOTHING_THERE = new DynamicCommandExceptionType(
+    DynamicCommandExceptionType NOTHING_THERE = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.nothing_there")
     );
 
-    private static final DynamicCommandExceptionType ERROR_EMPTY = new DynamicCommandExceptionType(
+    DynamicCommandExceptionType ERROR_EMPTY = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.item_empty", o)
     );
 
-    private static final DynamicCommandExceptionType ERROR_FISH_ENTRY_INVALID = new DynamicCommandExceptionType(
+    DynamicCommandExceptionType ERROR_FISH_ENTRY_INVALID = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.fish_entry_not_found", o)
     );
 
-    private static final DynamicCommandExceptionType ERROR_MODIFIER_INVALID = new DynamicCommandExceptionType(
+    DynamicCommandExceptionType ERROR_MODIFIER_INVALID = new DynamicCommandExceptionType(
             o -> Component.translatableEscape("commands.starcatcher.modifier_not_found", o)
     );
 
 
-    public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context)
+    static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context)
     {
         dispatcher.register(Commands.literal("starcatcher")
                 .requires(sourceStack -> sourceStack.hasPermission(2))
