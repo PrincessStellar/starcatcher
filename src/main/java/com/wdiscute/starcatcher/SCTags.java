@@ -81,6 +81,4 @@ public class SCTags
     public static final TagKey<FishProperties> RARE_ENTRIES_FP = TagKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl("rare_entries"));
     public static final TagKey<FishProperties> EPIC_ENTRIES_FP = TagKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl("epic_entries"));
     public static final TagKey<FishProperties> LEGENDARY_ENTRIES_FP = TagKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl("legendary_entries"));
-
-
 }
