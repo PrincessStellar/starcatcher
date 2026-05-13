@@ -71,7 +71,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public float kimbeMarkerAlpha = 0;
     public int kimbeMarkerColor = 0x00ff00;
 
-    public int gracePeriod = 80;
+    public int gracePeriod = Integer.MAX_VALUE;
     //todo do this smiley face :)
     public boolean minigameStarted;
 
