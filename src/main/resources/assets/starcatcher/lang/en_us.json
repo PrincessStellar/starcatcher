@@ -17,6 +17,9 @@
   "creativetab.starcatcher.starcatcher.miscellaneous": "Miscellaneous",
   "creativetab.starcatcher.starcatcher.tackle_boxes": "Tackle Boxes",
 
+  "stat.starcatcher.starcaught_treasures": "Starcaught Treasures",
+  "stat.starcatcher.starcaught_fish": "Starcaught Fish",
+
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",
 
