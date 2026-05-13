@@ -36,7 +36,7 @@ public class DisplayBlockEntity extends BlockEntity
     public float oRot;
     public float tRot;
 
-    public boolean fishRotating;
+    public boolean fishRotating = true;
     public static void bookAnimationTick(Level level, BlockPos pos, BlockState state, DisplayBlockEntity enchantingTable)
     {
         enchantingTable.oOpen = enchantingTable.open;
@@ -182,6 +182,9 @@ public class DisplayBlockEntity extends BlockEntity
         {
             this.item = ItemStack.EMPTY;
         }
+
+        if(tag.contains("rotating"))
+            fishRotating = tag.getBoolean("rotating");
     }
 
     @Override
@@ -197,6 +200,8 @@ public class DisplayBlockEntity extends BlockEntity
             //need to put a tag otherwise its not sent to client since the tag is empty
             tag.putBoolean("empty", true);
         }
+
+        tag.putBoolean("rotating", fishRotating);
     }
 
     public void clearContent()
