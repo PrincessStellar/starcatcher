@@ -19,6 +19,7 @@
 
   "stat.starcatcher.starcaught_treasures": "Starcaught Treasures",
   "stat.starcatcher.starcaught_fish": "Starcaught Fish",
+  "stat.starcatcher.starcaught_fish_missed": "Starcaught Fish Missed",
 
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",

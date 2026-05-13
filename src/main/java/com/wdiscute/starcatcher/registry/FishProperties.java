@@ -2119,6 +2119,9 @@ public record FishProperties(
             }
             else
             {
+                //award stat of fish missed
+                player.awardStat(SCStats.STARCAUGHT_FISH_MISSED.get());
+
                 //if fish minigame failed/canceled
                 fbe.modifiers.forEach(AbstractCatchModifier::onFailedMinigame);
 

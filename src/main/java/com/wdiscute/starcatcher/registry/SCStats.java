@@ -14,6 +14,7 @@ public interface SCStats
 
     DeferredHolder<ResourceLocation, ResourceLocation> STARCAUGHT_TREASURES = register("starcaught_treasures");
     DeferredHolder<ResourceLocation, ResourceLocation> STARCAUGHT_FISH = register("starcaught_fish");
+    DeferredHolder<ResourceLocation, ResourceLocation> STARCAUGHT_FISH_MISSED = register("starcaught_fish_missed");
 
     private static DeferredHolder<ResourceLocation, ResourceLocation> register(String key)
     {
