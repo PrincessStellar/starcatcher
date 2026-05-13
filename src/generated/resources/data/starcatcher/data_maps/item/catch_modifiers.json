@@ -7,7 +7,7 @@
       "starcatcher:survives_lava"
     ],
     "starcatcher:almighty_worm": [
-      "starcatcher:decrease_lure_time",
+      "starcatcher:increase_lure_time",
       "starcatcher:fish_entity"
     ],
     "starcatcher:amethyst_hook": [
@@ -76,7 +76,7 @@
       "starcatcher:decrease_lure_time"
     ],
     "starcatcher:seeking_worm": [
-      "starcatcher:decrease_lure_time",
+      "starcatcher:increase_lure_time",
       "starcatcher:guarantee_new_fish_half"
     ],
     "starcatcher:shiny_hook": [

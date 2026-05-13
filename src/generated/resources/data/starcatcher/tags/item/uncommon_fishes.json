@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "starcatcher:trophy_iron",
-      "required": false
-    },
-    {
       "id": "starcatcher:morganite",
       "required": false
     },
@@ -53,10 +49,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:black_eel",
-      "required": false
-    },
-    {
       "id": "starcatcher:yellowstone_fish",
       "required": false
     },
@@ -69,31 +61,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
       "id": "starcatcher:sculkfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowing_dark",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pyrotrout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:magma_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:willish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:end_glow",
       "required": false
     }
   ]

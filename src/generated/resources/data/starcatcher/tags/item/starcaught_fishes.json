@@ -1,106 +1,6 @@
 {
   "values": [
     {
-      "id": "starcatcher:trophy_copper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:trophy_iron",
-      "required": false
-    },
-    {
-      "id": "starcatcher:trophy_gold",
-      "required": false
-    },
-    {
-      "id": "starcatcher:trophy_emerald",
-      "required": false
-    },
-    {
-      "id": "starcatcher:trophy_diamond",
-      "required": false
-    },
-    {
-      "id": "starcatcher:trophy_of_the_older_angler",
-      "required": false
-    },
-    {
-      "id": "starcatcher:drifting_waterlogged_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scalding_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:burning_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:hopeful_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:hopeless_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:true_blue_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:withered_bottle",
-      "required": false
-    },
-    {
-      "id": "starcatcher:amethyst_hook",
-      "required": false
-    },
-    {
-      "id": "starcatcher:frog_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:naturalist_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:magmaforged_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:slimed_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bamboo_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:boner_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sky_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lush_glowberry_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:humble_skin_smithing_template",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sharktooth_skin_smithing_template",
-      "required": false
-    },
-    {
       "id": "starcatcher:obidontiee",
       "required": false
     },
@@ -133,19 +33,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:boot",
-      "required": false
-    },
-    {
-      "id": "starcatcher:frostjaw_trout",
-      "required": false
-    },
-    {
       "id": "starcatcher:crystalback_trout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:aurora",
       "required": false
     },
     {
@@ -153,15 +41,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:sandtail",
-      "required": false
-    },
-    {
       "id": "starcatcher:mirage_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scorchfish",
       "required": false
     },
     {
@@ -177,14 +57,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:peakdweller",
-      "required": false
-    },
-    {
-      "id": "starcatcher:rockgill",
-      "required": false
-    },
-    {
       "id": "starcatcher:sun_seeking_carp",
       "required": false
     },
@@ -197,14 +69,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:sage_catfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:mossy_boot",
-      "required": false
-    },
-    {
       "id": "starcatcher:pale_pinfish",
       "required": false
     },
@@ -213,31 +77,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:pale_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:vesani",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blossomfish",
-      "required": false
-    },
-    {
       "id": "starcatcher:petaldrift_carp",
       "required": false
     },
     {
       "id": "starcatcher:pink_koi",
-      "required": false
-    },
-    {
-      "id": "starcatcher:rose_siamese_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_sturgeon",
       "required": false
     },
     {
@@ -273,19 +117,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:bluegigi",
-      "required": false
-    },
-    {
       "id": "starcatcher:silverfin_pike",
       "required": false
     },
     {
       "id": "starcatcher:carpenjoe",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dried_seaweed",
       "required": false
     },
     {
@@ -297,15 +133,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:azure_crystalback_minnow",
-      "required": false
-    },
-    {
       "id": "starcatcher:blue_crystal_fin",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sea_bass",
       "required": false
     },
     {
@@ -325,10 +153,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:joel",
-      "required": false
-    },
-    {
       "id": "starcatcher:redscaled_tuna",
       "required": false
     },
@@ -337,51 +161,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:conch",
-      "required": false
-    },
-    {
-      "id": "starcatcher:clam",
-      "required": false
-    },
-    {
-      "id": "starcatcher:shroomfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sporefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:gold_fan",
-      "required": false
-    },
-    {
-      "id": "starcatcher:geode_eel",
-      "required": false
-    },
-    {
       "id": "starcatcher:whiteveil",
-      "required": false
-    },
-    {
-      "id": "starcatcher:black_eel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:stonefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
-      "id": "starcatcher:fossilized_angelfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dripfin",
       "required": false
     },
     {
@@ -405,123 +185,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:deepslatefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:aquamarine_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bright_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dark_amethyst_snapper",
-      "required": false
-    },
-    {
       "id": "starcatcher:sculkfish",
       "required": false
     },
     {
-      "id": "starcatcher:ward",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowing_dark",
-      "required": false
-    },
-    {
-      "id": "starcatcher:suneater",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pyrotrout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_eel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_shrimp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scorched_bloodsucker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_deepslate_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:embergill",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:magma_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowstone_seeker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cinder_squid",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cerberay",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scalding_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowstone_pufferfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:willish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab_claw",
-      "required": false
-    },
-    {
       "id": "starcatcher:charfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:chorus_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:end_glow",
-      "required": false
-    },
-    {
-      "id": "starcatcher:voidbiter",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pipehead",
       "required": false
     }
   ]

@@ -1,19 +1,7 @@
 {
   "values": [
     {
-      "id": "starcatcher:trophy_emerald",
-      "required": false
-    },
-    {
       "id": "starcatcher:twilight_koi",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sage_catfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:rose_siamese_fish",
       "required": false
     },
     {
@@ -25,51 +13,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:geode_eel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
       "id": "starcatcher:the_quarrish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bright_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dark_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scorched_bloodsucker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_deepslate_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:chorus_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:voidbiter",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pipehead",
       "required": false
     }
   ]

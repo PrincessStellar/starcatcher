@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "starcatcher:trophy_gold",
-      "required": false
-    },
-    {
       "id": "starcatcher:thunder_bass",
       "required": false
     },
@@ -34,30 +30,6 @@
     },
     {
       "id": "starcatcher:blue_herring",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sporefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:fossilized_angelfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:suneater",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_shrimp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cinder_squid",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowstone_pufferfish",
       "required": false
     },
     {

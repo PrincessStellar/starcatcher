@@ -117,16 +117,15 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         FishProperties fp = builder.build();
 
         //if bucketable fish, add bucket and entity
-        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(DeferredHolder::getDelegate).toList().contains(fp.catchInfo().fish()))
+        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(DeferredHolder::getDelegate).toList().contains(fp.catchInfo().fish())
+        && fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
         {
             builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
             builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
+            if (fp.catchInfo().fish().getRegisteredName().contains("starcatcher"))
+                DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
             fp = builder.build();
         }
-
-        //add to list
-        if (fp.catchInfo().fish().getRegisteredName().contains("starcatcher"))
-            DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
 
         ResourceKey<FishProperties> key = createKey(fp);
 
