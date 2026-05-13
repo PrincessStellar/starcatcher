@@ -42,7 +42,6 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             tag(ItemTags.CAT_FOOD).add(item.get());
             tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
             tag(SCTags.BUCKETABLE_FISHES).add(item.get());
-            tag(SCTags.STARCAUGHT_FISHES).add(item.get());
         }
 
         for (var item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
@@ -75,6 +74,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
 
         for (FishProperties fp : DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL)
         {
+            tag(SCTags.STARCAUGHT_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+
             switch (fp.rarity())
             {
                 case COMMON ->

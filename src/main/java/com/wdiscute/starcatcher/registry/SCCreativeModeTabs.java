@@ -204,6 +204,7 @@ public interface SCCreativeModeTabs
                                 .add(SCItems.UNKNOWN_FISH)
                                 .add(SCItems.WATERLOGGED_SATCHEL)
                                 .add(SCItems.STARCAUGHT_BUCKET)
+                                .add(SCItems.STARCAUGHT_FISH)
                                 .add(SCItems.COOKED_STARCAUGHT_FISH)
                 )
         );

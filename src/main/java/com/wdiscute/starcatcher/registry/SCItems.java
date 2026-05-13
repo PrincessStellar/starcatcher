@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.secretnotes.*;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -328,6 +329,7 @@ public interface SCItems
     //bucket
     DeferredItem<Item> STARCAUGHT_BUCKET = ITEMS.register("starcaught_bucket", () -> new StarcaughtBucket(Fluids.WATER));
 
+    DeferredItem<Item> STARCAUGHT_FISH = ITEMS.register("starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH)));
     DeferredItem<Item> COOKED_STARCAUGHT_FISH = ITEMS.register("cooked_starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_COOKED_FISH)));
 
 

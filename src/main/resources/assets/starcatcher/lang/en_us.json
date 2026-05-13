@@ -1433,7 +1433,15 @@
   "item.starcatcher.withered_bottle" : "Withered Bottle",
   "tooltip.starcatcher.withered_bottle.0" : "An ominous dark bottle.",
 
-  "item.starcatcher.cooked_starcaught_fish" : "Cooked Fish",
+  "item.starcatcher.starcaught_fish" : "Starcaught Fish",
+  "tooltip.starcatcher.starcaught_fish.0" : "A starcaught fish, stripped from its uniqueness to fit with the rest of the stack.",
+  "tooltip.starcatcher.starcaught_fish.1" : "A shame it had to end this way really.",
+
+  "item.starcatcher.cooked_starcaught_fish" : "Cooked Starcaught Fish",
+  "tooltip.starcatcher.cooked_starcaught_fish.0" : "A starcaught fish, but cooked.",
+  "tooltip.starcatcher.cooked_starcaught_fish.1" : "Nothing is unique about what remains of this once beautiful fish.",
+
+
   "item.starcatcher.starcaught_bucket" : "Starcaught Bucket",
   "tooltip.starcatcher.starcaught_bucket.name" : "Bucket of %s",
   "tooltip.starcatcher.starcaught_bucket.creative.0" : "[CREATIVE MODE] This bucket will always spawn an Aurora. To get the corresponding [Bucket of X] you must catch it through normal means using a bucket as a bait.",
