@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-13T12:55:11.2171846	Tags for minecraft:item mod id starcatcher
+// 1.21.1	2026-05-13T13:03:39.2705183	Tags for minecraft:item mod id starcatcher
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/c/tags/item/foods/raw_fish.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/c/tags/item/tools/fishing_rod.json
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/minecraft/tags/item/cat_food.json
@@ -10,6 +10,8 @@ d0f36c4038bba27ed5dbd07b337f94bbe336421c data/starcatcher/tags/item/bobbers.json
 40934962db9edf79457ea4ca8cedc01c4f6a91f8 data/starcatcher/tags/item/bucketable_fishes.json
 8821048ed975b170b2aa459a0b635cf077c38df2 data/starcatcher/tags/item/common_entries.json
 721165b6e198a005d4b96c362ba5314d0f982a6f data/starcatcher/tags/item/common_fishes.json
+4a259073dfe88e905271731b3bbbb83b5364ecb6 data/starcatcher/tags/item/crabs.json
+a3ae3084e07aaa3db9e4ac31b025dc10055578aa data/starcatcher/tags/item/eels.json
 d57b38fe186a70b57a83167e14832d5c5e5b648e data/starcatcher/tags/item/epic_entries.json
 a53f5905c03ad75e3c22b3a586a79feea462bce6 data/starcatcher/tags/item/epic_fishes.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/starcatcher/tags/item/equipments.json
@@ -24,6 +26,7 @@ de6377a3a15fcc745a25e8d8e40184200ee10c90 data/starcatcher/tags/item/gadgets.json
 16760499bfb63b5c35e4a2c182915cc08397a003 data/starcatcher/tags/item/rare_entries.json
 69f2deaec81e6961729c50430f78fd7271b033d0 data/starcatcher/tags/item/rare_fishes.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/starcatcher/tags/item/rods.json
+7358094e60aedb34dfcdaba525c1f14005068952 data/starcatcher/tags/item/shrimps.json
 40934962db9edf79457ea4ca8cedc01c4f6a91f8 data/starcatcher/tags/item/starcaught_fishes.json
 87b73d3fb6c755d8b5be7ba13a6abb0bdd402639 data/starcatcher/tags/item/tackle_boxes.json
 ad81f33c7ca60124679240657d41deb9acd10775 data/starcatcher/tags/item/tackle_skins.json

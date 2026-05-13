@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.FishProperties;
@@ -86,6 +87,23 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                         tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
             }
         }
+
+        //crabs
+        tag(SCTags.CRABS)
+                .add(CHORUS_CRAB.get())
+                .add(LAVA_CRAB.get())
+                .add(MOLTEN_DEEPSLATE_CRAB.get())
+                .add(OBSIDIAN_CRAB.get());
+
+        //eels
+        tag(SCTags.EELS)
+                .add(BLACK_EEL.get())
+                .add(GEODE_EEL.get())
+                .add(OBSIDIAN_EEL.get());
+
+        //shrimps
+        tag(SCTags.SHRIMPS)
+                .add(MOLTEN_SHRIMP.get());
 
         //worms
         tag(SCTags.WORMS)
