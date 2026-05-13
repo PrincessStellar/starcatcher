@@ -89,27 +89,27 @@ public class DGSCDataMapsProvider extends DataMapProvider
                     ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
             );
 
-            sellable.add(SCTags.COMMON_FISHES, new SBDataMaps.ItemValue(25, List.of(
+            sellable.add(SCTags.COMMON_ENTRIES, new SBDataMaps.ItemValue(25, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.UNCOMMON_FISHES, new SBDataMaps.ItemValue(50, List.of(
+            sellable.add(SCTags.UNCOMMON_ENTRIES, new SBDataMaps.ItemValue(50, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.RARE_FISHES, new SBDataMaps.ItemValue(100, List.of(
+            sellable.add(SCTags.RARE_ENTRIES, new SBDataMaps.ItemValue(100, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.EPIC_FISHES, new SBDataMaps.ItemValue(150, List.of(
+            sellable.add(SCTags.EPIC_ENTRIES, new SBDataMaps.ItemValue(150, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.LEGENDARY_FISHES, new SBDataMaps.ItemValue(200, List.of(
+            sellable.add(SCTags.LEGENDARY_ENTRIES, new SBDataMaps.ItemValue(200, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);

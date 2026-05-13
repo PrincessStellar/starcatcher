@@ -59,6 +59,12 @@ public class SCTags
 
     public static final TagKey<Item> TRASH = ItemTags.create(Starcatcher.rl("trash"));
 
+    public static final TagKey<Item> COMMON_ENTRIES = ItemTags.create(Starcatcher.rl("common_entries"));
+    public static final TagKey<Item> UNCOMMON_ENTRIES = ItemTags.create(Starcatcher.rl("uncommon_entries"));
+    public static final TagKey<Item> RARE_ENTRIES = ItemTags.create(Starcatcher.rl("rare_entries"));
+    public static final TagKey<Item> EPIC_ENTRIES = ItemTags.create(Starcatcher.rl("epic_entries"));
+    public static final TagKey<Item> LEGENDARY_ENTRIES = ItemTags.create(Starcatcher.rl("legendary_entries"));
+
     public static final TagKey<Item> COMMON_FISHES = ItemTags.create(Starcatcher.rl("common_fishes"));
     public static final TagKey<Item> UNCOMMON_FISHES = ItemTags.create(Starcatcher.rl("uncommon_fishes"));
     public static final TagKey<Item> RARE_FISHES = ItemTags.create(Starcatcher.rl("rare_fishes"));

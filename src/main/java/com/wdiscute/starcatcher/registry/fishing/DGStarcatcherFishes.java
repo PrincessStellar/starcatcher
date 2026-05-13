@@ -3,10 +3,8 @@ package com.wdiscute.starcatcher.registry.fishing;
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.blocks.SCBlocks;
-import com.wdiscute.starcatcher.registry.fishing.compat.DGTrophies;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.FishProperties;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,7 @@ import static com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistr
 
 public class DGStarcatcherFishes
 {
-    public static final List<FishProperties> STARCATCHER_FISHES = new ArrayList<>();
+    public static final List<FishProperties> BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL = new ArrayList<>();
     public static void bootstrap()
     {
         registerStarcatcherBucketAndEntity(overworldLakeFish(SCItems.OBIDONTIEE)

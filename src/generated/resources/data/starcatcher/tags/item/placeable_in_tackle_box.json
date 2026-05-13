@@ -4,10 +4,10 @@
     "#starcatcher:hooks",
     "#starcatcher:bobbers",
     "#minecraft:fishes",
-    "#starcatcher:common_fishes",
-    "#starcatcher:uncommon_fishes",
-    "#starcatcher:rare_fishes",
-    "#starcatcher:epic_fishes",
-    "#starcatcher:legendary_fishes"
+    "#starcatcher:common_entries",
+    "#starcatcher:uncommon_entries",
+    "#starcatcher:rare_entries",
+    "#starcatcher:epic_entries",
+    "#starcatcher:legendary_entries"
   ]
 }

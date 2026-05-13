@@ -347,7 +347,7 @@ public class FishingPropertiesRegistry
     {
         builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
         builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-        DGStarcatcherFishes.STARCATCHER_FISHES.add(builder.build());
+        DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
         register(builder);
     }
 

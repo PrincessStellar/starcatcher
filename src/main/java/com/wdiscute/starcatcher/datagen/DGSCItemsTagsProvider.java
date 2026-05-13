@@ -2,8 +2,6 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishing.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.fishing.FishingPropertiesRegistry;
 import com.wdiscute.starcatcher.registry.FishProperties;
@@ -66,23 +64,26 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             switch (p.getSecond().rarity())
             {
                 case TRASH -> tag(SCTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
-                case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case RARE -> tag(SCTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case COMMON -> tag(SCTags.COMMON_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
+                case UNCOMMON -> tag(SCTags.UNCOMMON_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
+                case RARE -> tag(SCTags.RARE_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
+                case EPIC -> tag(SCTags.EPIC_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
+                case LEGENDARY -> tag(SCTags.LEGENDARY_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
             }
         });
 
-        for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHES)
+        for (FishProperties fp : DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL)
         {
             switch (fp.rarity())
             {
-                case COMMON -> tag(SCTags.COMMON_FISHES).add(fp.catchInfo().fish().value());
-                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).add(fp.catchInfo().fish().value());
-                case RARE -> tag(SCTags.RARE_FISHES).add(fp.catchInfo().fish().value());
-                case EPIC -> tag(SCTags.EPIC_FISHES).add(fp.catchInfo().fish().value());
-                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).add(fp.catchInfo().fish().value());
+                case COMMON ->
+                        tag(SCTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case UNCOMMON ->
+                        tag(SCTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case RARE -> tag(SCTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case LEGENDARY ->
+                        tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
             }
         }
 
@@ -182,11 +183,11 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.HOOKS)
                 .addTag(SCTags.BOBBERS)
                 .addTag(ItemTags.FISHES)
-                .addTag(SCTags.COMMON_FISHES)
-                .addTag(SCTags.UNCOMMON_FISHES)
-                .addTag(SCTags.RARE_FISHES)
-                .addTag(SCTags.EPIC_FISHES)
-                .addTag(SCTags.LEGENDARY_FISHES)
+                .addTag(SCTags.COMMON_ENTRIES)
+                .addTag(SCTags.UNCOMMON_ENTRIES)
+                .addTag(SCTags.RARE_ENTRIES)
+                .addTag(SCTags.EPIC_ENTRIES)
+                .addTag(SCTags.LEGENDARY_ENTRIES)
         ;
 
         tag(SCTags.PLACEABLE_IN_TACKLE_BOX_FISH_SLOT)
