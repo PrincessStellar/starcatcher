@@ -36,7 +36,7 @@ public record CBActiveTournamentUpdatePayload(List<GameProfile> listSignups, Tou
             GameProfileCache profileCache = player.level().getServer().getProfileCache();
             if (profileCache != null)
             {
-                Optional<GameProfile> gameProfile = profileCache.get(entry.playerUUID);
+                Optional<GameProfile> gameProfile = profileCache.get(entry.uuid);
                 gameProfile.ifPresent(list::add);
             }
         }

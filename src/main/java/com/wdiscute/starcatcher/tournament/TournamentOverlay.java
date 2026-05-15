@@ -80,7 +80,7 @@ public class TournamentOverlay implements LayeredDraw.Layer
             guiGraphics.drawString(this.font, playerPlace.getFirst(), 48, 70, -1, false);
             guiGraphics.drawString(this.font, playerPlace.getSecond() + "", 160, 70, -1, false);
 
-            guiGraphics.drawString(this.font, getDisplayTimeLeft(tournament.lastsUntilEpoch - System.currentTimeMillis()), 21, 35, -1, false);
+            guiGraphics.drawString(this.font, getDisplayTimeLeft(tournament.startTimeEpoch - System.currentTimeMillis()), 21, 35, -1, false);
             switch (playerRank)
             {
                 case 1:
@@ -109,7 +109,7 @@ public class TournamentOverlay implements LayeredDraw.Layer
             guiGraphics.drawString(this.font, playerPlace.getFirst(), 48, 141, -1, false);
             guiGraphics.drawString(this.font, playerPlace.getSecond() + "", 154, 141, -1, false);
 
-            guiGraphics.drawString(this.font, getDisplayTimeLeft(tournament.lastsUntilEpoch - System.currentTimeMillis()), 12, 31, -1, false);
+            guiGraphics.drawString(this.font, getDisplayTimeLeft(tournament.startTimeEpoch - System.currentTimeMillis()), 12, 31, -1, false);
 
             //render fish icon for first/second/third place
             if (playerRank != 0)
@@ -174,13 +174,13 @@ public class TournamentOverlay implements LayeredDraw.Layer
 
         if (t.status.equals(Tournament.Status.ACTIVE))
         {
-            for (TournamentPlayerScore tps : t.playerScores)
+            for (Tournament.PlayerScore tps : t.playerScores)
             {
                 if (tps.score > thirdPlace.getSecond())
                 {
                     thirdPlace = Pair.of(
-                            Component.literal(gameProfilesCache.get(tps.playerUUID)),
-                            tps.score
+                            Component.literal(gameProfilesCache.get(tps.uuid)),
+                            ((int) tps.score)
                     );
                 }
 
@@ -188,8 +188,8 @@ public class TournamentOverlay implements LayeredDraw.Layer
                 {
                     thirdPlace = secondPlace;
                     secondPlace = Pair.of(
-                            Component.literal(gameProfilesCache.get(tps.playerUUID)),
-                            tps.score
+                            Component.literal(gameProfilesCache.get(tps.uuid)),
+                            ((int) tps.score)
                     );
                 }
 
@@ -197,8 +197,8 @@ public class TournamentOverlay implements LayeredDraw.Layer
                 {
                     secondPlace = firstPlace;
                     firstPlace = Pair.of(
-                            Component.literal(gameProfilesCache.get(tps.playerUUID)),
-                            tps.score
+                            Component.literal(gameProfilesCache.get(tps.uuid)),
+                            ((int) tps.score)
                     );
                 }
 
@@ -206,10 +206,10 @@ public class TournamentOverlay implements LayeredDraw.Layer
             }
 
             //set player place name & score
-            Optional<TournamentPlayerScore> optional = t.playerScores.stream().filter(p -> p.playerUUID.equals(Minecraft.getInstance().player.getUUID())).findFirst();
+            Optional<Tournament.PlayerScore> optional = t.playerScores.stream().filter(p -> p.uuid.equals(Minecraft.getInstance().player.getUUID())).findFirst();
             optional.ifPresent(playerScore -> playerPlace = Pair.of(
                     Minecraft.getInstance().player.getName(),
-                    playerScore.score));
+                    ((int) playerScore.score)));
 
             //set playerRank
             if (firstPlace.getFirst().equals(playerPlace.getFirst())) playerRank = 1;

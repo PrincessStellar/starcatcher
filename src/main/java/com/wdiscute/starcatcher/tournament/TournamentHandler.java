@@ -11,8 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -22,19 +21,12 @@ public class TournamentHandler
 {
     private static final List<Tournament> finishedTournaments = new ArrayList<>();
     private static final List<Tournament> activeTournaments = new ArrayList<>();
-    private static final Logger log = LoggerFactory.getLogger(TournamentHandler.class);
 
-    public static Tournament getTournamentOrNull(UUID uuid)
+    public static Tournament getActiveTournamentOrNull(UUID uuid)
     {
         for (Tournament t : activeTournaments)
-        {
             if (t.tournamentUUID.equals(uuid)) return t;
-        }
 
-        for (Tournament t : finishedTournaments)
-        {
-            if (t.tournamentUUID.equals(uuid)) return t;
-        }
         return null;
     }
 
@@ -54,12 +46,12 @@ public class TournamentHandler
     {
         activeTournaments.add(tournament);
         tournament.status = Tournament.Status.ACTIVE;
-        tournament.lastsUntilEpoch = System.currentTimeMillis() + tournament.settings.durationInTicks / 20 * 1000;
+        tournament.startTimeEpoch = System.currentTimeMillis();
 
         Level level = playerWhoStartedTheTournament.level();
-        for (TournamentPlayerScore playerScore : tournament.playerScores)
+        for (Tournament.PlayerScore playerScore : tournament.playerScores)
         {
-            ServerPlayer player = level.getServer().getPlayerList().getPlayer(playerScore.playerUUID);
+            ServerPlayer player = level.getServer().getPlayerList().getPlayer(playerScore.uuid);
             sendActiveTournamentUpdateToClient(player, tournament);
 
             if (player != null)
@@ -74,41 +66,42 @@ public class TournamentHandler
     {
         for (var entry : tournament.playerScores)
         {
-            ServerPlayer player = level.getServer().getPlayerList().getPlayer(entry.playerUUID);
+            ServerPlayer player = level.getServer().getPlayerList().getPlayer(entry.uuid);
             sendActiveTournamentUpdateToClient(player, tournament);
             clearTournamentToClient(player);
         }
 
         activeTournaments.remove(tournament);
-        finishedTournaments.add(tournament);
-        tournament.status = Tournament.Status.CANCELLED;
     }
 
-    public static void addScore(Player playerToAwardScoreTo, FishProperties fp, boolean perfectCatch, int size, int weight, float percentile)
+    public static void addScore(Player player, FishProperties fp, boolean perfectCatch, float percentile)
     {
-        if (playerToAwardScoreTo.level().isClientSide) return;
         for (Tournament t : activeTournaments)
         {
-            t.playerScores.forEach(p ->
-                    {
-                        if (p.playerUUID.equals(playerToAwardScoreTo.getUUID()))
-                        {
-                            //simple scoring
-                            if (t.settings.scoring.equals(TournamentSettings.Scoring.SIMPLE))
-                            {
-                                p.addScore(1);
-                            }
+            List<Tournament.PlayerScore> list = t.playerScores.stream().filter(o -> o.uuid.equals(player.getUUID())).toList();
 
-                            Level level = playerToAwardScoreTo.level();
-                            for (var entry : t.playerScores)
-                            {
-                                ServerPlayer sp = level.getServer().getPlayerList().getPlayer(entry.playerUUID);
-                                sendActiveTournamentUpdateToClient(sp, t);
-                            }
-                        }
-                    }
-            );
+            if (list.isEmpty()) continue;
+
+            Tournament.PlayerScore first = list.getFirst();
+
+            float baseScore = switch (fp.rarity())
+            {
+                case TRASH -> t.scoreSettings.trashScore;
+                case COMMON -> t.scoreSettings.commonScore;
+                case UNCOMMON -> t.scoreSettings.uncommonScore;
+                case RARE -> t.scoreSettings.rareScore;
+                case EPIC -> t.scoreSettings.epicScore;
+                case LEGENDARY -> t.scoreSettings.legendaryScore;
+                default -> 0;
+            };
+
+            float extraAwardPercentile = baseScore * ((100 - percentile) / 100) * t.scoreSettings.perfectCatchMultiplier;
+            float extraAwardPerfectCatch = 0;
+            if (perfectCatch)
+                extraAwardPercentile = baseScore * t.scoreSettings.perfectCatchMultiplier;
+            first.score += baseScore + extraAwardPercentile + extraAwardPerfectCatch;
         }
+
     }
 
     public static void tick(ServerTickEvent.Post event)
@@ -120,19 +113,19 @@ public class TournamentHandler
         List<Tournament> finished = new ArrayList<>();
         for (Tournament t : activeTournaments)
         {
-            if (System.currentTimeMillis() >= t.lastsUntilEpoch)
+            if (System.currentTimeMillis() >= t.startTimeEpoch)
             {
                 finished.add(t);
                 t.status = Tournament.Status.FINISHED;
                 UUID winner = null;
                 int bestScore = 0;
 
-                for (TournamentPlayerScore playerscore : t.playerScores)
+                for (Tournament.PlayerScore playerscore : t.playerScores)
                 {
                     if (playerscore.score > bestScore)
                     {
-                        bestScore = playerscore.score;
-                        winner = playerscore.playerUUID;
+                        bestScore = ((int) playerscore.score);
+                        winner = playerscore.uuid;
                     }
                 }
 
@@ -143,7 +136,7 @@ public class TournamentHandler
 
                 for (var playerScore : t.playerScores)
                 {
-                    ServerPlayer player = server.getPlayerList().getPlayer(playerScore.playerUUID);
+                    ServerPlayer player = server.getPlayerList().getPlayer(playerScore.uuid);
                     if (player != null)
                     {
                         TournamentHandler.clearTournamentToClient(player);
@@ -173,7 +166,6 @@ public class TournamentHandler
 
         finishedTournaments.clear();
         finishedTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.FINISHED)).toList());
-        finishedTournaments.addAll(tournaments.stream().filter(t -> t.status.equals(Tournament.Status.CANCELLED)).toList());
     }
 
     public static Tournament getTournamentForPlayer(Player player)
@@ -181,7 +173,7 @@ public class TournamentHandler
         AtomicReference<Tournament> tToReturn = new AtomicReference<>();
         activeTournaments.forEach(t ->
         {
-            Stream<TournamentPlayerScore> tournamentPlayerScoreStream = t.playerScores.stream().filter(p -> p.playerUUID.equals(player.getUUID()));
+            Stream<Tournament.PlayerScore> tournamentPlayerScoreStream = t.playerScores.stream().filter(playerScore -> playerScore.uuid.equals(player.getUUID()));
             if (tournamentPlayerScoreStream.findFirst().isPresent()) tToReturn.set(t);
         });
 

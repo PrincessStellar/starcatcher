@@ -2023,7 +2023,7 @@ public record FishProperties(
                 FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToFish, player, time, size, weight, percentile, perfectCatch, true, golden);
 
                 //add score to tournaments
-                TournamentHandler.addScore(player, fp, perfectCatch, size, weight, percentile);
+                TournamentHandler.addScore(player, fp, perfectCatch, percentile);
 
                 //award exp
                 int exp = fp.rarity().getXp();
