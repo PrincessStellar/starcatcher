@@ -1,17 +1,18 @@
 package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
+import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
 import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -30,10 +31,15 @@ public class TournamentHandler
         return null;
     }
 
+    public static List<Tournament> getFinishedTournaments()
+    {
+        return finishedTournaments;
+    }
+
     public static void sendActiveTournamentUpdateToClient(ServerPlayer sp, Tournament tournament)
     {
         if (sp == null || tournament == null) return;
-        PacketDistributor.sendToPlayer(sp, CBActiveTournamentUpdatePayload.helper(sp, tournament));
+        PacketDistributor.sendToPlayer(sp, new CBActiveTournamentUpdatePayload(tournament));
     }
 
     public static void clearTournamentToClient(ServerPlayer sp)
@@ -56,7 +62,7 @@ public class TournamentHandler
 
             if (player != null)
             {
-                player.sendSystemMessage(Component.literal(tournament.name).append(Component.translatable("gui.starcatcher.tournament.started")));
+                player.sendSystemMessage(Component.translatable("gui.starcatcher.tournament.started", tournament.name));
                 player.sendSystemMessage(Component.translatable("gui.starcatcher.tournament.press_tab").withColor(CommonColors.LIGHT_GRAY));
             }
         }
@@ -71,11 +77,26 @@ public class TournamentHandler
             clearTournamentToClient(player);
         }
 
+        tournament.status = Tournament.Status.FINISHED;
         activeTournaments.remove(tournament);
+        finishedTournaments.add(tournament);
+
+        //update finished tournaments to client
+        if (level instanceof ServerLevel serverLevel)
+        {
+            for (ServerPlayer player : serverLevel.getServer().getPlayerList().getPlayers())
+            {
+                PacketDistributor.sendToPlayer(player, new CBFinishedTournamentsListPayload(TournamentHandler.getFinishedTournaments()));
+            }
+        }
     }
 
     public static void addScore(Player player, FishProperties fp, boolean perfectCatch, float percentile)
     {
+        //only score fishes
+        if (!fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH)) return;
+
+
         for (Tournament t : activeTournaments)
         {
             List<Tournament.PlayerScore> list = t.playerScores.stream().filter(o -> o.uuid.equals(player.getUUID())).toList();
@@ -95,13 +116,38 @@ public class TournamentHandler
                 default -> 0;
             };
 
-            float extraAwardPercentile = baseScore * ((100 - percentile) / 100) * t.scoreSettings.perfectCatchMultiplier;
+            float extraAwardPercentile = baseScore * ((100 - percentile) / 100) * t.scoreSettings.percentileMultiplier;
             float extraAwardPerfectCatch = 0;
             if (perfectCatch)
                 extraAwardPercentile = baseScore * t.scoreSettings.perfectCatchMultiplier;
-            first.score += baseScore + extraAwardPercentile + extraAwardPerfectCatch;
-        }
 
+            first.score += baseScore + extraAwardPercentile + extraAwardPerfectCatch;
+
+            List<Tournament.PlayerScore> mutableList = new ArrayList<>(){{
+                this.addAll(t.playerScores);
+            }};
+
+            mutableList.sort((o, o2) -> Float.compare(o2.score, o.score));
+
+            t.playerScores = mutableList;
+
+            //send blockstate update to every opened stand
+            for (ServerPlayer sp : player.getServer().getPlayerList().getPlayers())
+            {
+                if (sp.containerMenu instanceof StandMenu sm)
+                {
+                    if (sm.sbe != null) sm.sbe.sync();
+                }
+            }
+
+            //update to logged in players
+            for (Tournament.PlayerScore playerScore : t.playerScores)
+            {
+                Player playerByUUID = player.level().getPlayerByUUID(playerScore.uuid);
+                if (playerByUUID != null)
+                    PacketDistributor.sendToPlayer((ServerPlayer) playerByUUID, new CBActiveTournamentUpdatePayload(t));
+            }
+        }
     }
 
     public static void tick(ServerTickEvent.Post event)
@@ -113,34 +159,45 @@ public class TournamentHandler
         List<Tournament> finished = new ArrayList<>();
         for (Tournament t : activeTournaments)
         {
-            if (System.currentTimeMillis() >= t.startTimeEpoch)
+            //if tournament time has past
+            if (System.currentTimeMillis() >= t.startTimeEpoch + t.durationInTicks * 50)
             {
                 finished.add(t);
                 t.status = Tournament.Status.FINISHED;
-                UUID winner = null;
+                Tournament.PlayerScore nobody = new Tournament.PlayerScore(UUID.randomUUID(), "Nobody :( ", 0);
+                Tournament.PlayerScore winner = nobody;
                 int bestScore = 0;
 
+                //find highest score player
                 for (Tournament.PlayerScore playerscore : t.playerScores)
                 {
                     if (playerscore.score > bestScore)
                     {
-                        bestScore = ((int) playerscore.score);
-                        winner = playerscore.uuid;
+                        winner = playerscore;
                     }
                 }
 
-                String winnerString = "???";
+                //send blockstate update to every opened stand
+                for (ServerPlayer player : server.getPlayerList().getPlayers())
+                {
+                    if (player.containerMenu instanceof StandMenu sm)
+                    {
+                        if (sm.sbe != null) sm.sbe.sync();
+                    }
+                }
 
-                if (winner != null)
-                    winnerString = server.getProfileCache().get(winner).get().getName();
-
+                //send message and packet to every player playing
                 for (var playerScore : t.playerScores)
                 {
                     ServerPlayer player = server.getPlayerList().getPlayer(playerScore.uuid);
                     if (player != null)
                     {
                         TournamentHandler.clearTournamentToClient(player);
-                        player.sendSystemMessage(Component.literal(t.name + " has ended! The winner is " + winnerString + "!"));
+                        if (winner == nobody)
+                            player.sendSystemMessage(Component.translatable("gui.starcatcher.tournament.ended.no_winner", t.name));
+                        else
+                            player.sendSystemMessage(Component.translatable("gui.starcatcher.tournament.ended",
+                                    t.name, winner.name, String.format("%.1f", winner.score)));
                     }
                 }
 
@@ -149,6 +206,12 @@ public class TournamentHandler
 
         finishedTournaments.addAll(finished);
         activeTournaments.removeAll(finished);
+
+        //update finished tournaments to client
+        for (ServerPlayer player : server.getPlayerList().getPlayers())
+        {
+            PacketDistributor.sendToPlayer(player, new CBFinishedTournamentsListPayload(TournamentHandler.getFinishedTournaments()));
+        }
     }
 
     public static List<Tournament> getAll()

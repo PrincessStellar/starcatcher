@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
 import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
 import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
@@ -53,6 +54,7 @@ import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
@@ -161,6 +163,9 @@ public class SCEvents
                 TournamentHandler.sendActiveTournamentUpdateToClient(sp, tournament);
             else
                 TournamentHandler.clearTournamentToClient(sp);
+
+            //send list of finished tournaments to client
+            PacketDistributor.sendToPlayer(sp, new CBFinishedTournamentsListPayload(TournamentHandler.getFinishedTournaments()));
 
             //guide
             FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(sp, SCDataAttachments.FISHING_GUIDE);
@@ -300,6 +305,12 @@ public class SCEvents
                 SignGuidePayload.TYPE,
                 SignGuidePayload.STREAM_CODEC,
                 SignGuidePayload::handle
+        );
+
+        registrar.playToClient(
+                CBFinishedTournamentsListPayload.TYPE,
+                CBFinishedTournamentsListPayload.STREAM_CODEC,
+                CBFinishedTournamentsListPayload::handle
         );
     }
 }

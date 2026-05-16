@@ -83,7 +83,7 @@ public class Tournament
                 Status.PREPARING,
                 owner.getUUID(),
                 owner.getName().getString(),
-                new ArrayList<>(),
+                new ArrayList<>(){{add(new PlayerScore(owner.getUUID(), owner.getName().getString(), 0));}},
                 TournamentScoreSettings.empty(),
                 0L,
                 36000L
@@ -103,6 +103,11 @@ public class Tournament
                 0L,
                 36000L
         );
+    }
+
+    public boolean isPlayerSignedUp(Player player)
+    {
+        return playerScores.stream().anyMatch(o -> o.uuid.equals(player.getUUID()));
     }
 
     public enum Status implements StringRepresentable

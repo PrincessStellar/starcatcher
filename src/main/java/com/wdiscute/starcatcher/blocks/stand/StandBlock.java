@@ -5,7 +5,6 @@ import com.wdiscute.starcatcher.tournament.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -94,6 +93,13 @@ public class StandBlock extends AbstractMultiBlock implements IPreviewableMultib
         {
             //initial tournament setup, makes new one if empty
             sbe.makeOrGetTournament(player);
+
+            if(sbe.tournament.status.equals(Tournament.Status.FINISHED))
+            {
+                sbe.tournament = null;
+                sbe.setUuid(UUID.randomUUID());
+                sbe.makeOrGetTournament(player);
+            }
 
             if (sbe.tournament.owner == null)
             {

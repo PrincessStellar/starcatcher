@@ -45,6 +45,15 @@ public class StandMenu extends AbstractContainerMenu
         //_/¯(ツ)_/¯
 
         Tournament currentTournament = sbe.makeOrGetTournament(player);
+
+        //add random player
+//        System.out.println("size: " + currentTournament.playerScores.size());
+//        currentTournament.playerScores = new ArrayList<>(currentTournament.playerScores)
+//        {{
+//            add(new Tournament.PlayerScore(UUID.randomUUID(), "player" + currentTournament.playerScores.size(), 0));
+//        }};
+
+
         if (currentTournament.status == Tournament.Status.PREPARING && currentTournament.owner.equals(player.getUUID()))
         {
             //duration -
@@ -133,45 +142,49 @@ public class StandMenu extends AbstractContainerMenu
             if (id == 271)
                 currentTournament.scoreSettings.perfectCatchMultiplier = Math.clamp(currentTournament.scoreSettings.perfectCatchMultiplier - 0.1f, 0, 9.9f);
 
+            //gold button owner + preparing status
+            if (id == 67)
+                if (currentTournament.status.equals(Tournament.Status.PREPARING))
+                    TournamentHandler.startTournament(player, currentTournament);
+
+
+            sbe.sync();
+            return true;
+        }
+
+        //gold button owner and active
+        if (currentTournament.status.equals(Tournament.Status.ACTIVE) && id == 67 && currentTournament.owner.equals(player.getUUID()))
+        {
+            TournamentHandler.cancelTournament(player.level(), currentTournament);
+            sbe.setUuid(UUID.randomUUID());
+            sbe.tournament = null;
+            sbe.makeOrGetTournament(player);
             sbe.sync();
             return true;
         }
 
 
-        //gold button
-        if (id == 67)
+        //gold button non owner
+        if (id == 67 && currentTournament.status.equals(Tournament.Status.PREPARING))
         {
-            //owner
-            if (currentTournament.owner.equals(player.getUUID()))
+            //if player is not already signed up in another tournament
+            if (TournamentHandler.getTournamentForPlayer(player) == null)
             {
-                if (currentTournament.status.equals(Tournament.Status.PREPARING))
-                    TournamentHandler.startTournament(player, currentTournament);
+                List<Tournament.PlayerScore> list = currentTournament.playerScores.stream().filter(o -> o.uuid.equals(player.getUUID())).toList();
 
-                if (currentTournament.status.equals(Tournament.Status.ACTIVE))
-                    TournamentHandler.cancelTournament(player.level(), currentTournament);
-            }
-            //not owner
-            else
-            {
-                //if player is not already signed up in another tournament
-                if (TournamentHandler.getTournamentForPlayer(player) == null)
+                //if player is not registered, add it
+                if (list.isEmpty())
                 {
-                    List<Tournament.PlayerScore> list = currentTournament.playerScores.stream().filter(o -> o.uuid.equals(player.getUUID())).toList();
-
-                    //if player is not registered, add it
-                    if (list.isEmpty())
-                    {
-                        ArrayList<Tournament.PlayerScore> playerScores = new ArrayList<>(currentTournament.playerScores);
-                        playerScores.add(new Tournament.PlayerScore(player.getUUID(), player.getName().getString(), 0));
-                        currentTournament.playerScores = playerScores;
-                    }
-                    //else remove it
-                    else
-                    {
-                        ArrayList<Tournament.PlayerScore> playerScores = new ArrayList<>(currentTournament.playerScores);
-                        playerScores.remove(list.getFirst());
-                        currentTournament.playerScores = playerScores;
-                    }
+                    currentTournament.playerScores = new ArrayList<>(currentTournament.playerScores)
+                    {{
+                        add(new Tournament.PlayerScore(player.getUUID(), player.getName().getString(), 0));
+                    }};
+                }
+                //else remove it
+                else
+                {
+                    currentTournament.playerScores = currentTournament.playerScores.stream()
+                            .filter(o -> !o.equals(list.getFirst())).toList();
                 }
             }
 

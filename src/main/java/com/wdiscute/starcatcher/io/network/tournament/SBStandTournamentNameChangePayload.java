@@ -47,6 +47,7 @@ public record SBStandTournamentNameChangePayload(UUID uuid, String name) impleme
            if(context.player().containerMenu instanceof StandMenu sm)
            {
                sm.sbe.tournament.name = name;
+               sm.sbe.sync();
            }
        });
     }

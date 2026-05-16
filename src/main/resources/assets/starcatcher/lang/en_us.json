@@ -1213,12 +1213,18 @@
   "gui.starcatcher.tournament.organizer" : "Organizer",
   "gui.starcatcher.tournament.status" : "Status",
   "gui.starcatcher.tournament.duration" : "Duration",
+  "gui.starcatcher.tournament.start_date" : "Start Date",
   "gui.starcatcher.tournament.previous_tournaments" : "Previous Tournaments",
   "gui.starcatcher.tournament.signed_up" : "Players Signed Up",
 
+  "gui.starcatcher.tournament.button.unsign" : "Withdraw",
   "gui.starcatcher.tournament.button.sign_up" : "Sign Up",
-  "gui.starcatcher.tournament.button.start" : "Start Tourney",
-  "gui.starcatcher.tournament.button.cancel" : "Cancel Tourney",
+  "gui.starcatcher.tournament.button.back" : "Back to Current Tournament",
+  "gui.starcatcher.tournament.button.start" : "Start",
+  "gui.starcatcher.tournament.button.cancel" : "Cancel",
+
+  "gui.starcatcher.tournament.ended" : "%s has ended! The winner is %s with a score of %s!",
+  "gui.starcatcher.tournament.ended.no_winner" : "%s has ended! Nobody caught a single fish :(",
 
   "gui.starcatcher.tournament.scoring" : "Scoring Rules",
 

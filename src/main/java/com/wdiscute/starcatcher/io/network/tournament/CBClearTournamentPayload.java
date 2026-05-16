@@ -24,7 +24,6 @@ public record CBClearTournamentPayload(String text) implements CustomPacketPaylo
         return TYPE;
     }
 
-
     public void handle(IPayloadContext context)
     {
         TournamentOverlay.clear();
