@@ -299,50 +299,52 @@ public class StandScreen extends AbstractContainerScreen<StandMenu>
         //if not owner
         else
         {
-            //render button
-            if (currentTournament.status.equals(Tournament.Status.PREPARING))
+            if(!viewingPastTournament)
             {
-                if (mouseDown)
-                    renderImage(guiGraphics, BUTTON_PRESSED, 80, 193, 83, 15);
+                //render button
+                if (currentTournament.status.equals(Tournament.Status.PREPARING))
+                {
+                    if (mouseDown)
+                        renderImage(guiGraphics, BUTTON_PRESSED, 80, 193, 83, 15);
+                    else
+                        renderImage(guiGraphics, BUTTON, 80, 193, 83, 15);
+                }
                 else
-                    renderImage(guiGraphics, BUTTON, 80, 193, 83, 15);
-            }
-            else
-                renderImage(guiGraphics, BUTTON_DISABLED, 80, 193, 83, 15);
+                    renderImage(guiGraphics, BUTTON_DISABLED, 80, 193, 83, 15);
 
-            //if is signed up
-            if (currentTournament.isPlayerSignedUp(Minecraft.getInstance().player))
-            {
-                //if hovering button
-                if (x > 79 && x < 163 && y > 192 && y < 208 && currentTournament.status.equals(Tournament.Status.PREPARING))
+                //if is signed up
+                if (currentTournament.isPlayerSignedUp(Minecraft.getInstance().player))
                 {
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 121, uiY + 197, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 119, uiY + 197, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 120, uiY + 196, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 120, uiY + 198, SCColors.WHITE);
-                    guiGraphics.renderOutline(uiX + 79, uiY + 192, 85, 17, SCColors.WHITE);
-                }
+                    //if hovering button
+                    if (x > 79 && x < 163 && y > 192 && y < 208 && currentTournament.status.equals(Tournament.Status.PREPARING))
+                    {
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 121, uiY + 197, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 119, uiY + 197, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 120, uiY + 196, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"), uiX + 120, uiY + 198, SCColors.WHITE);
+                        guiGraphics.renderOutline(uiX + 79, uiY + 192, 85, 17, SCColors.WHITE);
+                    }
 
-                renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"),
-                        uiX + 120, uiY + 197, SCColors.GUIDE_TEXT_DARK);
-            }
-            //if not signed up
-            else
-            {
-                //if hovering button
-                if (x > 79 && x < 163 && y > 192 && y < 208 && currentTournament.status.equals(Tournament.Status.PREPARING))
+                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.unsign"),
+                            uiX + 120, uiY + 197, SCColors.GUIDE_TEXT_DARK);
+                }
+                //if not signed up
+                else
                 {
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 121, uiY + 197, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 119, uiY + 197, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 120, uiY + 196, SCColors.WHITE);
-                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 120, uiY + 198, SCColors.WHITE);
-                    guiGraphics.renderOutline(uiX + 79, uiY + 192, 85, 17, SCColors.WHITE);
+                    //if hovering button
+                    if (x > 79 && x < 163 && y > 192 && y < 208 && currentTournament.status.equals(Tournament.Status.PREPARING))
+                    {
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 121, uiY + 197, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 119, uiY + 197, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 120, uiY + 196, SCColors.WHITE);
+                        renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"), uiX + 120, uiY + 198, SCColors.WHITE);
+                        guiGraphics.renderOutline(uiX + 79, uiY + 192, 85, 17, SCColors.WHITE);
+                    }
+
+                    renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"),
+                            uiX + 120, uiY + 197, SCColors.GUIDE_TEXT_DARK);
                 }
-
-                renderCenteredString(guiGraphics, this.font, Component.translatable("gui.starcatcher.tournament.button.sign_up"),
-                        uiX + 120, uiY + 197, SCColors.GUIDE_TEXT_DARK);
             }
-
         }
 
         //player list
