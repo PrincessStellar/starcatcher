@@ -51,6 +51,7 @@ public interface SCItems
 
     DeferredItem<Item> MISSINGNO = ITEMS.register("missingno", BasicItem::new);
     DeferredItem<Item> UNKNOWN_FISH = ITEMS.register("unknown_fish", BasicItem::new);
+    DeferredItem<Item> TREASURE = ITEMS.register("treasure", BasicItem::new);
 
     DeferredItem<Item> GUIDE = ITEMS.register("starcatcher_guide", FishingGuideItem::new);
 

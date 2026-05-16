@@ -129,7 +129,7 @@ public record FishProperties(
 
         return new FishProperties(
                 new CatchInfo(catchInfo.fish, catchInfo.bucketedFish, catchInfo.entityToSpawn, catchInfo.alwaysSpawnEntity,
-                        catchInfo.overrideMinigameWith, data.unpack(player), catchInfo.fishEntryType),
+                        catchInfo.overrideMinigameWith, data.unpack(player), catchInfo.overrideTreasureWith, catchInfo.fishEntryType),
                 star,
                 baseChance,
                 sizeWeight,
@@ -177,6 +177,11 @@ public record FishProperties(
     public FishProperties withHideCatch()
     {
         return new FishProperties(this.catchInfo.withItemToOverrideWith(SCItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry);
+    }
+
+    public FishProperties withHideTreasure()
+    {
+        return new FishProperties(this.catchInfo.withTreasureToOverrideWith(SCItems.TREASURE), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry);
     }
 
     public static Builder builder()
@@ -401,6 +406,7 @@ public record FishProperties(
             boolean alwaysSpawnEntity,
             Holder<Item> overrideMinigameWith,
             ItemStack treasureIs,
+            Holder<Item> overrideTreasureWith,
             FishEntryType fishEntryType
     )
     {
@@ -434,6 +440,7 @@ public record FishProperties(
                         Codec.BOOL.optionalFieldOf("always_spawn_entity", false).forGetter(CatchInfo::alwaysSpawnEntity),
                         BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_minigame_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideMinigameWith),
                         ItemStack.OPTIONAL_CODEC.optionalFieldOf("treasure_item", ItemStack.EMPTY).forGetter(CatchInfo::treasureIs),
+                        BuiltInRegistries.ITEM.holderByNameCodec().optionalFieldOf("override_treasure_item", SCItems.MISSINGNO).forGetter(CatchInfo::overrideTreasureWith),
                         FishEntryType.CODEC.optionalFieldOf("type", FishEntryType.FISH).forGetter(CatchInfo::fishEntryType)
                 ).apply(instance, CatchInfo::new));
 
@@ -444,6 +451,7 @@ public record FishProperties(
                 ByteBufCodecs.BOOL, CatchInfo::alwaysSpawnEntity,
                 ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::overrideMinigameWith,
                 ItemStack.OPTIONAL_STREAM_CODEC, CatchInfo::treasureIs,
+                ByteBufCodecs.holderRegistry(Registries.ITEM), CatchInfo::overrideTreasureWith,
                 FishEntryType.STREAM_CODEC, CatchInfo::fishEntryType,
                 CatchInfo::new
         );
@@ -455,6 +463,7 @@ public record FishProperties(
                 false,
                 SCItems.MISSINGNO,
                 ItemStack.EMPTY,
+                SCItems.MISSINGNO,
                 FishEntryType.FISH
         );
 
@@ -465,12 +474,18 @@ public record FishProperties(
                 false,
                 SCItems.UNKNOWN_FISH,
                 ItemStack.EMPTY,
+                SCItems.MISSINGNO,
                 FishEntryType.FISH
         );
 
         public CatchInfo withItemToOverrideWith(Holder<Item> itemToOverrideWith)
         {
-            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasureIs, this.fishEntryType);
+            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, this.treasureIs, this.overrideTreasureWith, this.fishEntryType);
+        }
+
+        public CatchInfo withTreasureToOverrideWith(Holder<Item> treasureToOverrideWith)
+        {
+            return new CatchInfo(this.fish, this.bucketedFish, this.entityToSpawn, alwaysSpawnEntity, this.overrideMinigameWith, this.treasureIs, treasureToOverrideWith, this.fishEntryType);
         }
 
         public static class Builder
@@ -481,6 +496,7 @@ public record FishProperties(
             private boolean alwaysSpawnEntity = false;
             private Holder<Item> itemToOverrideWith = SCItems.MISSINGNO;
             private ResourceLocation treasure = U.rl("gameplay/fishing/treasure");
+            private Holder<Item> treasureToOverrideWith = SCItems.MISSINGNO;
             private ItemStack treasureIs = ItemStack.EMPTY;
             private FishEntryType fishEntryType = FishEntryType.FISH;
 
@@ -532,6 +548,12 @@ public record FishProperties(
                 return this;
             }
 
+            public Builder withTreasureMinigameWith(Holder<Item> itemToOverrideWith)
+            {
+                this.treasureToOverrideWith = itemToOverrideWith;
+                return this;
+            }
+
             public Builder withFishEntryType(FishEntryType fishEntryType)
             {
                 this.fishEntryType = fishEntryType;
@@ -552,7 +574,7 @@ public record FishProperties(
 
             public CatchInfo build()
             {
-                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasureIs, fishEntryType);
+                return new CatchInfo(fish, bucketedFish, entityToSpawn, alwaysSpawnEntity, itemToOverrideWith, treasureIs, treasureToOverrideWith, fishEntryType);
             }
         }
     }

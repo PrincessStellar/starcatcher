@@ -179,6 +179,11 @@ public class SCConfig
             .translation("starcatcher.configuration.max_tackle_box_fish_storage")
             .defineInRange("max_tackle_box_fish_storage", 900, 0, 999);
 
+    public static final ModConfigSpec.BooleanValue HIDE_TREASURES = BUILDER_SERVER
+            .comment("Hides the treasure item during minigame")
+            .translation("starcatcher.configuration.hide_treasures")
+            .define("hide_treasures", false);
+
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

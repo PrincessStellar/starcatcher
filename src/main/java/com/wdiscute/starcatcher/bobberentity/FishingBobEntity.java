@@ -238,6 +238,10 @@ public class FishingBobEntity extends Projectile
             {
                 fpToFish = modifier.overrideFpToClient(fpToFish);
             }
+
+            if(SCConfig.HIDE_TREASURES.get())
+                fpToFish = fpToFish.withHideTreasure();
+
             FishingStartedPayload payload = new FishingStartedPayload(fpToFish, rod);
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);
         }
