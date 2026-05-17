@@ -45,11 +45,7 @@ import java.util.function.Supplier;
 
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
-    public static final ResourceLocation TEXTURE = Starcatcher.rl("textures/gui/minigame/minigame.png");
-    private static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
-    private static final ResourceLocation CAVE = Starcatcher.rl("textures/gui/minigame/cave.png");
-    private static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
-    public ResourceLocation tankTexture = SURFACE;
+    public ResourceLocation texture;
 
     public FishProperties.Difficulty difficulty;
     public FishProperties.Rarity rarity;
@@ -248,7 +244,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
 
-        final float partialTick = SCConfig.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
+        final float partialTick = PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
 
         PoseStack poseStack = guiGraphics.pose();
         partial = partialTick;

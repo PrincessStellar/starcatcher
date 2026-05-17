@@ -22,6 +22,18 @@ public class SCConfig
             .translation("starcatcher.configuration.y_offset")
             .defineInRange("minigame_y_offset", 0, -10000, 10000);
 
+    public static final ModConfigSpec.IntValue TOURNAMENT_X_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tournament_x_offset")
+            .defineInRange("tournament_x_offset", 0, -10000, 10000);
+
+    public static final ModConfigSpec.IntValue TOURNAMENT_Y_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tournament_y_offset")
+            .defineInRange("tournament_y_offset", 0, -10000, 10000);
+
+    public static final ModConfigSpec.IntValue TOURNAMENT_SCALE = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tournament_scale")
+            .defineInRange("tournament_y_offset", 0, -10000, 10000);
+
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .pop()
             .translation("starcatcher.configuration.hit_delay")
@@ -51,12 +63,6 @@ public class SCConfig
     public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
-
-    public static final ModConfigSpec.BooleanValue VANILLA_PARTIAL_TICK = BUILDER_CLIENT
-            .comment("Whether to use the vanilla partial ticks for minigame smoothing or a custom implementation from 1.20")
-            .comment("Vanilla should look better for most people")
-            .translation("starcatcher.configuration.vanilla_partial_ticks")
-            .define("vanilla_partial_ticks", false);
 
 
     static final ModConfigSpec SPEC = BUILDER_CLIENT.build();
