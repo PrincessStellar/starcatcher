@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.blocks.display;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.blocks.SCBlockEntities;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.compat.SableCompat;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;

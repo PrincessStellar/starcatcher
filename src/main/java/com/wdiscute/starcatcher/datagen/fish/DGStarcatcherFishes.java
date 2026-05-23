@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.datagen.fish;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.Constellations;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.FishProperties;
 

@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.blocks.display;
 
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.FishingSignedGuideScreen;
 import com.wdiscute.starcatcher.io.SCDataComponents;

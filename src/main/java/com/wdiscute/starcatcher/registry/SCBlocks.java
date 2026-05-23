@@ -1,6 +1,6 @@
-package com.wdiscute.starcatcher.blocks;
+package com.wdiscute.starcatcher.registry;
 
-import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.blocks.*;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.blocks.Telescope.TelescopeBlock;

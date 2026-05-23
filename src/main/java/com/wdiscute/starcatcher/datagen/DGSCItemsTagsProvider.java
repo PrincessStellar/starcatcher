@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.wdiscute.starcatcher.registry.SCItems.*;
-import static com.wdiscute.starcatcher.blocks.SCBlocks.*;
+import static com.wdiscute.starcatcher.registry.SCBlocks.*;
 
 public class DGSCItemsTagsProvider extends ItemTagsProvider
 {

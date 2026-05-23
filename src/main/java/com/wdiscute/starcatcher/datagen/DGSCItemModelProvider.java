@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.wdiscute.starcatcher.registry.SCItems.*;
-import static com.wdiscute.starcatcher.blocks.SCBlocks.*;
+import static com.wdiscute.starcatcher.registry.SCBlocks.*;
 
 public class DGSCItemModelProvider extends ItemModelProvider
 {

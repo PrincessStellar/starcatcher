@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.wdiscute.starcatcher.blocks.SCBlocks.*;
+import static com.wdiscute.starcatcher.registry.SCBlocks.*;
 
 public class DGSCBlockLootTableProvider extends BlockLootSubProvider
 {

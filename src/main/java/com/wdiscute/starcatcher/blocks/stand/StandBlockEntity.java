@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.blocks.stand;
 
 import com.wdiscute.starcatcher.io.NBTCodecHelper;
-import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.tournament.StandMenu;
 import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;

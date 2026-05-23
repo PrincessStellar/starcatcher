@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.registry.SCMenuTypes;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.stand.StandBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

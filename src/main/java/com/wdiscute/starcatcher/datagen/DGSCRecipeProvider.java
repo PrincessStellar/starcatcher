@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.blocks.SCBlocks;
+import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipeBuilder;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipeBuilder;
 import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipeBuilder;

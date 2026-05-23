@@ -57,15 +57,13 @@ public class DataGenerators
         gen.addProvider(event.includeServer(), itp);
 
         //fp tags
-        //todo figure this out
         gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
 
         //advancements
         gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));
 
-        //advancements
+        //loot modifiers
         gen.addProvider(event.includeServer(), new DGSCLootModifiers(output, lookupProvider));
-
 
         //biome tags
         gen.addProvider(event.includeServer(), new DGSCBiomeTagsProvider(output, lookupProvider, existingFileHelper));

@@ -1,13 +1,10 @@
 package com.wdiscute.starcatcher.event;
 
-import com.wdiscute.sellingbin.bin.SellingBinBlockEntity;
 import com.wdiscute.sellingbin.event.SBevents;
-import com.wdiscute.sellingbin.registry.SBBlockEntities;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
-import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
 import com.wdiscute.starcatcher.registry.SCCommands;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
@@ -25,7 +22,6 @@ import com.wdiscute.starcatcher.registry.FishProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
@@ -38,7 +34,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.FarmBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -234,13 +229,13 @@ public class SCEvents
     }
 
     @SubscribeEvent
-    public static void registerAttributed(EntityAttributeCreationEvent event)
+    public static void registerDataMaps(EntityAttributeCreationEvent event)
     {
         event.put(SCEntities.FISH.get(), FishEntity.createAttributes().build());
     }
 
     @SubscribeEvent
-    public static void registerAttributed(RegisterDataMapTypesEvent event)
+    public static void registerDataMaps(RegisterDataMapTypesEvent event)
     {
         event.register(SCDataMaps.AQUARIUM_INTERACTION);
         event.register(SCDataMaps.CATCH_MODIFIERS);

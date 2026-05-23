@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.blocks.SCBlockEntities;
+import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.core.BlockPos;

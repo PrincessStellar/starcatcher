@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.blocks;
+package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlockEntity;
