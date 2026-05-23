@@ -78,7 +78,7 @@ repositories
 
 dependencies {
     //libtooltips
-    jarJar(implementation("maven.modrinth:libtooltips:5J15zxaI"))
+    jarJar(implementation("maven.modrinth:libtooltips:1.7-NEOFORGE-1.21.1"))
 
     //selling bin
     jarJar(implementation("maven.modrinth:wds-selling-bin:nrGOzmNu"))
