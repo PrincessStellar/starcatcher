@@ -29,7 +29,7 @@ public class FTBTeamsCompat
             for (UUID uuid : members)
             {
                 Player playerByUUID = player.getServer().getPlayerList().getPlayer(uuid);
-                if (playerByUUID != null && playerByUUID.getUUID().equals(player.getUUID()))
+                if (playerByUUID != null && !playerByUUID.getUUID().equals(player.getUUID()))
                 {
                     FishCaughtCounter.awardFishCaughtCounter(fp, rl, playerByUUID,
                             ticks, size, weight, 100, false, false, false);
