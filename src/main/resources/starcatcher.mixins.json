@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "GetNameMixin",
-    "LecternReturnMixin",
-    "RemoveFishSizeAndWeightWhenStacking"
+    "LecternReturnMixin"
   ],
   "injectors": {
     "defaultRequire": 1
