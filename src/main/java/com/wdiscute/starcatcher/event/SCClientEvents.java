@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bobberentity.FishingBobRenderer;
+import com.wdiscute.starcatcher.bobberentity.tackles.*;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
@@ -95,13 +96,13 @@ public class SCClientEvents
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
         //tackle skins
-        event.registerLayerDefinition(new BaseTackleSkin().getLayerLocation(), BaseTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new PearlTackleSkin().getLayerLocation(), PearlTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new KimbeTackleSkin().getLayerLocation(), KimbeTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new KingTackleSkin().getLayerLocation(), KingTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new FrogTackleSkin().getLayerLocation(), FrogTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new ColorfulTackleSkin().getLayerLocation(), ColorfulTackleSkin::createBodyLayer);
-        event.registerLayerDefinition(new ClearTackleSkin().getLayerLocation(), ClearTackleSkin::createBodyLayer);
+        event.registerLayerDefinition(BaseModel.LAYER_LOCATION, BaseModel::createBodyLayer);
+        event.registerLayerDefinition(ClearModel.LAYER_LOCATION, ClearModel::createBodyLayer);
+        event.registerLayerDefinition(ColorfulModel.LAYER_LOCATION, ColorfulModel::createBodyLayer);
+        event.registerLayerDefinition(FrogModel.LAYER_LOCATION, FrogModel::createBodyLayer);
+        event.registerLayerDefinition(KimbeModel.LAYER_LOCATION, KimbeModel::createBodyLayer);
+        event.registerLayerDefinition(KingModel.LAYER_LOCATION, KingModel::createBodyLayer);
+        event.registerLayerDefinition(PearlModel.LAYER_LOCATION, PearlModel::createBodyLayer);
 
         //tackle box
         event.registerLayerDefinition(TackleBoxRenderer.LAYER_LOCATION, TackleBoxRenderer::createBodyLayer);
