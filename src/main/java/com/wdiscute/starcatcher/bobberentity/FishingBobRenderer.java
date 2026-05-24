@@ -5,14 +5,18 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.bobberentity.tackles.*;
+import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.SCDataAttachments;
-import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
@@ -20,8 +24,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Float.NaN;
 
@@ -29,16 +33,32 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
 {
     final EntityRendererProvider.Context context;
 
+    public static final Map<ResourceLocation, EntityModel<FishEntity>> BOB_MODELS = new HashMap<>();
+
+    public static void createMap(EntityModelSet modelSet)
+    {
+        if (!BOB_MODELS.isEmpty()) return;
+
+        BOB_MODELS.put(Starcatcher.rl("base"), new BaseModel<>(modelSet.bakeLayer(BaseModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("clear"), new ClearModel<>(modelSet.bakeLayer(ClearModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("colorful"), new ColorfulModel<>(modelSet.bakeLayer(ColorfulModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("frog"), new FrogModel<>(modelSet.bakeLayer(FrogModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("kimbe"), new KimbeModel<>(modelSet.bakeLayer(KimbeModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("king"), new KingModel<>(modelSet.bakeLayer(KingModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("pearl"), new PearlModel<>(modelSet.bakeLayer(PearlModel.LAYER_LOCATION)));
+    }
+
     public FishingBobRenderer(EntityRendererProvider.Context context)
     {
         super(context);
         this.context = context;
+        createMap(context.getModelSet());
     }
 
     @Override
     public ResourceLocation getTextureLocation(FishingBobEntity fishingBobEntity)
     {
-        return Starcatcher.rl("textures/entity/fishing/bob.png");
+        return Starcatcher.rl("textures/entity/fishing/base.png");
     }
 
     @Override
@@ -54,15 +74,11 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         //render tackle based on tackle skin, defaults to BaseTackleSkin
         //data attachment returns starcatcher:base if there's no attachment
         ResourceLocation tackleRl = SCDataAttachments.get(fishingBobEntity, SCDataAttachments.TACKLE_SKIN);
-        Supplier<AbstractTackleSkin> tackle = fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).get(tackleRl);
 
-        //still need to check for null to prevent addon mods that add to the registry from crashing... i guess... 🙄
-        if (tackle == null)
-            fishingBobEntity.level().registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).get(SCTackleSkins.BASE_TACKLE_SKIN).get().
-                    renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        else
-            tackle.get().renderTackle(context, fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-
+        EntityModel<FishEntity> model = BOB_MODELS.getOrDefault(tackleRl, BOB_MODELS.get(Starcatcher.rl("base")));
+        VertexConsumer vertexconsumer = buffer.getBuffer(model.renderType(U.rl(tackleRl.getNamespace(),
+                "textures/entity/tackle/" + tackleRl.getPath() + ".png")));
+        model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
 
 
@@ -92,12 +108,9 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
             super.render(fishingBobEntity, entityYaw, partialTicks, poseStack, buffer, packedLight);
 
         }
-
-
     }
 
-    private static void stringVertex(int color, float x, float y, float z, VertexConsumer consumer, PoseStack.Pose pose, float stringFraction, float nextStringFraction
-    )
+    private static void stringVertex(int color, float x, float y, float z, VertexConsumer consumer, PoseStack.Pose pose, float stringFraction, float nextStringFraction)
     {
         if (color == 0xffff9999) color = -16777216;
 
@@ -152,6 +165,4 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
             return player.getEyePosition(partialTick).add(-d1 * d2 - d0 * d3, (double) f2 - 0.45 * (double) f1, -d0 * d2 + d1 * d3);
         }
     }
-
-
 }

@@ -137,15 +137,9 @@ public record FishCaughtCounter(
         awardFishCaughtCounter(fpCaught, null, player, ticks, size, weight, percentile, perfectCatch, awardToTeam, golden);
     }
 
-    public static void awardFishCaughtCounter(FishProperties fpCaught, ResourceLocation rl, Player player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
+    public static void awardFishCaughtCounter(FishProperties fpCaught, ResourceLocation rl, Player player,
+                                              int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
     {
-        //ftb teams compat to share fishes caught to team, does not share size and weight
-        if (ModList.get().isLoaded("ftbteams") && awardToTeam && SCConfig.ENABLE_FTB_TEAM_SHARING.get())
-        {
-            FTBTeamsCompat.awardToTeam(player, fpCaught);
-            return;
-        }
-
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
 
         ResourceLocation loc = rl == null ? player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fpCaught) : rl;
@@ -153,6 +147,10 @@ public record FishCaughtCounter(
         {
             FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
             boolean newFish = fishCaughtCounter == null;
+
+            //ftb teams compat to share fishes caught to team, does not share size and weight
+            if (ModList.get().isLoaded("ftbteams") && awardToTeam && SCConfig.ENABLE_FTB_TEAM_SHARING.get())
+                FTBTeamsCompat.awardToTeam(player, fpCaught, rl, ticks, size, weight);
 
             if (newFish)
                 fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
