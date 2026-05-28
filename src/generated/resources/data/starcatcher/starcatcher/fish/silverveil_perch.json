@@ -97,5 +97,6 @@
     "name": "yildun",
     "x": 2693,
     "y": 860
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

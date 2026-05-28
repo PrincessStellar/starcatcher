@@ -95,5 +95,6 @@
     "name": "shedar",
     "x": 3034,
     "y": 959
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

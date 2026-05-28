@@ -107,5 +107,6 @@
     "name": "navi",
     "x": 2991,
     "y": 972
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

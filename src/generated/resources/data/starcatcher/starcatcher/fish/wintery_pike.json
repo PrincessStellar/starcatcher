@@ -97,5 +97,6 @@
     "name": "megrez",
     "x": 2360,
     "y": 876
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

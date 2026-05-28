@@ -110,5 +110,6 @@
     "name": "alioth",
     "x": 2358,
     "y": 821
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

@@ -91,5 +91,6 @@
     "name": "gamma_tauri",
     "x": 3016,
     "y": 1579
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

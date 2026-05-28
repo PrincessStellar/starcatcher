@@ -71,9 +71,14 @@ public record FishProperties(
         List<AbstractFishRestriction> restrictions,
         Difficulty dif,
         boolean skipMinigame,
-        boolean hasGuideEntry
+        boolean hasGuideEntry,
+        ResourceLocation textures
 )
 {
+    public static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
+    public static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
+    public static final ResourceLocation END = Starcatcher.rl("textures/gui/minigame/end.png");
+
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     CatchInfo.CODEC.fieldOf("catch_info").forGetter(FishProperties::catchInfo),
@@ -84,7 +89,8 @@ public record FishProperties(
                     AbstractFishRestriction.ABSTRACT_PROCESSOR_CODEC.listOf().fieldOf("restrictions").forGetter(FishProperties::restrictions),
                     Difficulty.CODEC.fieldOf("difficulty").forGetter(FishProperties::dif),
                     Codec.BOOL.fieldOf("skips_minigame").forGetter(FishProperties::skipMinigame),
-                    Codec.BOOL.fieldOf("has_guide_entry").forGetter(FishProperties::hasGuideEntry)
+                    Codec.BOOL.fieldOf("has_guide_entry").forGetter(FishProperties::hasGuideEntry),
+                    ResourceLocation.CODEC.fieldOf("textures").forGetter(FishProperties::textures)
 
             ).apply(instance, FishProperties::new)
     );
@@ -99,6 +105,7 @@ public record FishProperties(
             Difficulty.STREAM_CODEC, FishProperties::dif,
             ByteBufCodecs.BOOL, FishProperties::skipMinigame,
             ByteBufCodecs.BOOL, FishProperties::hasGuideEntry,
+            ResourceLocation.STREAM_CODEC, FishProperties::textures,
             FishProperties::new
     );
 
@@ -137,7 +144,8 @@ public record FishProperties(
                 restrictions,
                 dif,
                 skipMinigame,
-                hasGuideEntry
+                hasGuideEntry,
+                textures
         );
     }
 
@@ -159,7 +167,8 @@ public record FishProperties(
             new ArrayList<>(),
             Difficulty.EASY,
             false,
-            true
+            true,
+            SURFACE
     );
 
     public static final FishProperties VANILLA_FISH = new FishProperties(
@@ -171,17 +180,18 @@ public record FishProperties(
             new ArrayList<>(),
             Difficulty.EASY,
             false,
-            false
+            false,
+            SURFACE
     );
 
     public FishProperties withHideCatch()
     {
-        return new FishProperties(this.catchInfo.withItemToOverrideWith(SCItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry);
+        return new FishProperties(this.catchInfo.withItemToOverrideWith(SCItems.UNKNOWN_FISH), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry, this.textures);
     }
 
     public FishProperties withHideTreasure()
     {
-        return new FishProperties(this.catchInfo.withTreasureToOverrideWith(SCItems.TREASURE), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry);
+        return new FishProperties(this.catchInfo.withTreasureToOverrideWith(SCItems.TREASURE), this.star, this.baseChance, this.sizeWeight, this.rarity, this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry, this.textures);
     }
 
     public static Builder builder()
@@ -201,6 +211,7 @@ public record FishProperties(
         private Difficulty dif = Difficulty.EASY;
         private boolean skipMinigame = false;
         private boolean hasGuideEntry = true;
+        private ResourceLocation textures = SURFACE;
 
         public Builder withCatchInfo(CatchInfo.Builder builder)
         {
@@ -382,6 +393,12 @@ public record FishProperties(
             return this;
         }
 
+        public Builder withTexture(ResourceLocation texture)
+        {
+            this.textures = texture;
+            return this;
+        }
+
         public FishProperties build()
         {
             return new FishProperties(
@@ -393,7 +410,8 @@ public record FishProperties(
                     restrictions,
                     dif,
                     skipMinigame,
-                    hasGuideEntry
+                    hasGuideEntry,
+                    textures
             );
         }
     }

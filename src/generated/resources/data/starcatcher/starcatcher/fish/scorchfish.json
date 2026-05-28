@@ -97,5 +97,6 @@
     "name": "dubhe",
     "x": 2418,
     "y": 970
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

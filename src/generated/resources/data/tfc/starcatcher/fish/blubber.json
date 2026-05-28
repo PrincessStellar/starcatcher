@@ -82,5 +82,6 @@
     "deviation_weight_grams": 20.0,
     "golden_chance": 0.02
   },
-  "skips_minigame": true
+  "skips_minigame": true,
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

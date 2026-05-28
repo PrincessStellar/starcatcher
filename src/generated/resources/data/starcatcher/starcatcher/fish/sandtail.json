@@ -102,5 +102,6 @@
     "name": "phecda",
     "x": 2330,
     "y": 912
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

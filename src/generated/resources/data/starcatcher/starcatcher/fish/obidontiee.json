@@ -85,5 +85,6 @@
     "name": "epsilon_umi",
     "x": 2669,
     "y": 815
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

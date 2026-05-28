@@ -101,5 +101,6 @@
     "name": "polaris",
     "x": 2706,
     "y": 907
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

@@ -99,5 +99,6 @@
     "name": "tau_tari",
     "x": 2929,
     "y": 1529
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

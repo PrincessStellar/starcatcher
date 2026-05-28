@@ -110,5 +110,6 @@
     "name": "zeta_tauri",
     "x": 2772,
     "y": 1586
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

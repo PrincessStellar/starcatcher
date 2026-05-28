@@ -88,5 +88,6 @@
     "name": "ain",
     "x": 2977,
     "y": 1553
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

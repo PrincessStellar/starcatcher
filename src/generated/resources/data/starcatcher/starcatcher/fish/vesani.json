@@ -75,5 +75,6 @@
     "name": "omicron_tauri",
     "x": 3209,
     "y": 1529
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

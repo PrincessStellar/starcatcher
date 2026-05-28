@@ -104,5 +104,6 @@
     "name": "alkaid",
     "x": 2334,
     "y": 713
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

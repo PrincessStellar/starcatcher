@@ -127,7 +127,7 @@ public class TeleportModifier extends AbstractTimedModifier
         RenderSystem.enableBlend();
 
         guiGraphics.blit(
-                FishingMinigameScreen.TEXTURE, width / 2 - 32, height / 2 - 32 - 16,
+                instance.texture, width / 2 - 32, height / 2 - 32 - 16,
                 64, 64, 128, 128, 64, 64, 256, 256);
 
         RenderSystem.setShaderColor(1, 1, 1, 1);

@@ -95,5 +95,6 @@
     "name": "ruchbah",
     "x": 2980,
     "y": 1007
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

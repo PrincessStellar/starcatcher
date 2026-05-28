@@ -4,10 +4,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -85,13 +87,15 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
         instance.pointerSpeed = instance.pointerBaseSpeed;
     }
 
+    public static final ResourceLocation FROZEN = Starcatcher.rl("textures/gui/minigame/modifiers/freeze_center.png");
+
     @Override
     public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderForeground(guiGraphics, partialTick, width, height);
         RenderSystem.setShaderColor(1, 1, 1, 1 - (instance.pointerSpeed - instance.pointerBaseSpeed / 2) / (instance.pointerBaseSpeed - instance.pointerBaseSpeed / 2));
         RenderSystem.enableBlend();
-        guiGraphics.blit(FishingMinigameScreen.TEXTURE, width / 2 - 16, height / 2 - 16, 32, 32, 0, 0, 32, 32, 256, 256);
+        guiGraphics.blit(FROZEN, width / 2 - 16, height / 2 - 16, 32, 32, 0, 0, 32, 32, 256, 256);
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.enableBlend();
     }

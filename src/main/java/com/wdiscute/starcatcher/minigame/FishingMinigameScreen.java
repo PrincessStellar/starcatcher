@@ -115,6 +115,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         handToSwing = Minecraft.getInstance().player.getMainHandItem().is(SCTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
+        texture = fp.textures();
+
         renderScale = SCConfig.MINIGAME_RENDER_SCALE.get().floatValue();
         hitDelay = SCConfig.HIT_DELAY.get().floatValue();
 
@@ -156,11 +158,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         ClientLevel level = Minecraft.getInstance().level;
         ResourceKey<Level> dim = level.dimension();
         Player player = Minecraft.getInstance().player;
-        if (player.getY() < 50 && dim.equals(Level.OVERWORLD))
-            tankTexture = CAVE;
-
-        if (dim.equals(Level.NETHER))
-            tankTexture = NETHER;
 
         //base - a lot of these are now hitZone-based
         this.pointerSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
@@ -264,7 +261,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (treasureActive) renderTreasure(guiGraphics);
 
         //render tank background
-        guiGraphics.blit(tankTexture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97);
+        guiGraphics.blit(texture, width / 2 - 42 - 100, height / 2 - 48, 85, 97, 0, 0, 85, 97, 85, 97);
 
         /*
         //test for the vignette shader
@@ -276,16 +273,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         );*/
 
         //render wheel background
-        guiGraphics.blit(TEXTURE, width / 2 - 32, height / 2 - 32, 64, 64, 0, 192, 64, 64, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 32, height / 2 - 32, 64, 64, 0, 192, 64, 64, 256, 256);
 
         //render spacebar
-        guiGraphics.blit(TEXTURE, width / 2 - 16, height / 2 + 40, 32, 16, isHoldingKey ? 48 : 0, 112, 32, 16, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 16, height / 2 + 40, 32, 16, isHoldingKey ? 48 : 0, 112, 32, 16, 256, 256);
 
         //render all sweet spots
         activeSweetSpots.forEach(ass -> renderSweetSpot(ass, guiGraphics, partialTick, poseStack));
 
         //render wheel second layer
-        guiGraphics.blit(TEXTURE, width / 2 - 32, height / 2 - 32, 64, 64, 64, 192, 64, 64, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 32, height / 2 - 32, 64, 64, 64, 192, 64, 64, 256, 256);
 
         //render pointer
         renderPointer(guiGraphics, poseStack, partialTick);
@@ -294,16 +291,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         renderKimbeMarker(guiGraphics);
 
         //silver thing on top
-        guiGraphics.blit(TEXTURE, width / 2 - 16, height / 2 - 16, 32, 32, 208, 208, 32, 32, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 16, height / 2 - 16, 32, 32, 208, 208, 32, 32, 256, 256);
 
         //fishing rod
-        guiGraphics.blit(TEXTURE, width / 2 - 32 - 70, height / 2 - 24 - 57, 64, 48, 192, 0, 64, 48, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 32 - 70, height / 2 - 24 - 57, 64, 48, 192, 0, 64, 48, 256, 256);
 
         float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
 
         //fishing line
         guiGraphics.blit(
-                TEXTURE, width / 2 - 6 - 102, height / 2 - 56 - 18,
+                texture, width / 2 - 6 - 102, height / 2 - 56 - 18,
                 16, (int) (112 - yoffset),
                 176F, yoffset,
                 16, (int) (112 - yoffset),
@@ -351,14 +348,14 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         //treasure bar
         guiGraphics.blit(
-                TEXTURE, width / 2 - 158, height / 2 - 42 + (int) (64 - (64f * treasureProgressSmooth) / 100),
+                texture, width / 2 - 158, height / 2 - 42 + (int) (64 - (64f * treasureProgressSmooth) / 100),
                 5, 64 * treasureProgressSmooth / 100,
                 141, 6 + 64 - (float) (64 * treasureProgressSmooth) / 100,
                 5, 64 * treasureProgressSmooth / 100,
                 256, 256);
 
         //treasure chest
-        guiGraphics.blit(TEXTURE, width / 2 - 16 - 155, height / 2 - 48, 32, 96, 96, 0, 32, 96, 256, 256);
+        guiGraphics.blit(texture, width / 2 - 16 - 155, height / 2 - 48, 32, 96, 96, 0, 32, 96, 256, 256);
 
         //render treasure on top of bar
         guiGraphics.renderItem(treasureIS, width / 2 - 163, ((int) ((float) height / 2 - (64f * treasureProgressSmooth) / 100) + 15));
@@ -366,7 +363,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //outline when treasure complete
         if (treasureProgress > 99)
             guiGraphics.blit(
-                    TEXTURE, width / 2 - 16 - 155, height / 2 - 48,
+                    texture, width / 2 - 16 - 155, height / 2 - 48,
                     32, 96, 64, 0, 32, 96, 256, 256);
 
         //todo related to above
@@ -395,7 +392,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         RenderSystem.enableBlend();
 
         guiGraphics.blit(
-                TEXTURE, width / 2 - 32, height / 2 - 32 - 16,
+                texture, width / 2 - 32, height / 2 - 32 - 16,
                 64, 64, 128, 128, 64, 64, 256, 256);
 
         RenderSystem.setShaderColor(1, 1, 1, 1);
@@ -419,7 +416,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         boolean isDisabled = modifiers.stream().anyMatch(AbstractMinigameModifier::disablePointerRendering);
         if (!isDisabled)
-            renderPoseCentered(guiGraphics, TEXTURE, 64, 64, 128, 192, 256);
+            renderPoseCentered(guiGraphics, texture, 64, 64, 128, 192, 256);
 
         poseStack.translate(0, 16, 0);
 

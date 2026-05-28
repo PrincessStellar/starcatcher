@@ -101,5 +101,6 @@
     "name": "lambda_tauri",
     "x": 3090,
     "y": 1575
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

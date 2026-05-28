@@ -82,5 +82,6 @@
     "name": "segin",
     "x": 2936,
     "y": 1030
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

@@ -100,5 +100,6 @@
     "name": "Caph",
     "x": 3009,
     "y": 910
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

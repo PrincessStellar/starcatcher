@@ -144,10 +144,12 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
         PoseStack poseStack = guiGraphics.pose();
 
         //render A
-        guiGraphics.blit(FishingMinigameScreen.TEXTURE, width / 2 - 40, height / 2 + 40, 32, 16, isHoldingLeft ? 32 : 0, 128, 32, 16, 256, 256);
+        guiGraphics.blit(instance.texture, width / 2 - 40, height / 2 + 40, 32, 16,
+                112, isHoldingLeft ? 32 : 48, 32, 16, 256, 256);
 
         //render D
-        guiGraphics.blit(FishingMinigameScreen.TEXTURE, width / 2 + 8, height / 2 + 40, 32, 16, isHoldingRight ? 32 : 0, 144, 32, 16, 256, 256);
+        guiGraphics.blit(instance.texture, width / 2 + 8, height / 2 + 40, 32, 16,
+                112, isHoldingLeft ? 32 : 48, 32, 16, 256, 256);
 
 
         poseStack.pushPose();

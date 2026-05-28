@@ -97,5 +97,6 @@
     "name": "mizar",
     "x": 2363,
     "y": 770
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

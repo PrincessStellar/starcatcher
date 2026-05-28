@@ -99,5 +99,6 @@
     "name": "pherkad",
     "x": 2577,
     "y": 754
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

@@ -98,5 +98,6 @@
     "name": "zeta_umi",
     "x": 2625,
     "y": 793
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

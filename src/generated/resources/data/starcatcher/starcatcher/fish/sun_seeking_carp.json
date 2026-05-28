@@ -106,5 +106,6 @@
     "name": "elnath",
     "x": 2796,
     "y": 1512
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

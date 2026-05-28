@@ -102,5 +102,6 @@
     "name": "aldebaran",
     "x": 2965,
     "y": 1590
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

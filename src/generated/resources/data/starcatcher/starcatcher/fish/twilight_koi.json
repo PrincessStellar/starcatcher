@@ -99,5 +99,6 @@
     "name": "eta_umi",
     "x": 2634,
     "y": 765
-  }
+  },
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }
