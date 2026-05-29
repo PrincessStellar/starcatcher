@@ -13,18 +13,22 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DGSCBlocksTagsProvider extends BlockTagsProvider {
+public class DGSCBlocksTagsProvider extends BlockTagsProvider
+{
 
     public DGSCBlocksTagsProvider(PackOutput output,
                                   CompletableFuture<HolderLookup.Provider> lookupProvider,
-                                  @Nullable ExistingFileHelper existingFileHelper) {
+                                  @Nullable ExistingFileHelper existingFileHelper)
+    {
         super(output, lookupProvider, Starcatcher.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.Provider provider)
+    {
         IntrinsicTagAppender<Block> mineablePickaxe = tag(BlockTags.MINEABLE_WITH_PICKAXE);
-        for (DeferredHolder<Block, ? extends Block> entry : SCBlocks.TACKLE_BOXES.getEntries()) {
+        for (DeferredHolder<Block, ? extends Block> entry : SCBlocks.TACKLE_BOXES.getEntries())
+        {
             mineablePickaxe.add(entry.value());
         }
 

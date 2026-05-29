@@ -19,11 +19,14 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public interface SCItems {
+public interface SCItems
+{
 
-    static void registerExtraItems() {
+    static void registerExtraItems()
+    {
         //this works!
-        if (ModList.get().isLoaded("create")) {
+        if (ModList.get().isLoaded("create"))
+        {
             registerNonBucketFish("coggill");
             registerNonBucketFish("mechanical_brass_snail");
             registerNonBucketFish("mechanical_snail");
@@ -351,7 +354,8 @@ public interface SCItems {
             return NON_BUCKETABLE_FISH_REGISTRY.register(name, BasicItem::new);
     }
 
-    static void register(IEventBus modEventBus) {
+    static void register(IEventBus modEventBus)
+    {
         ITEMS.register(modEventBus);
         NON_BUCKETABLE_FISH_REGISTRY.register(modEventBus);
         BUCKETABLE_FISHES_REGISTRY.register(modEventBus);

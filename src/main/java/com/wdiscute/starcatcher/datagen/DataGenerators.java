@@ -20,10 +20,12 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
-public class DataGenerators {
+public class DataGenerators
+{
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
+    public static void gatherData(GatherDataEvent event)
+    {
         event.createDatapackRegistryObjects(
                 new RegistrySetBuilder()
                         .add(Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
