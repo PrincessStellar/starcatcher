@@ -31,7 +31,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
@@ -161,8 +160,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         Player player = Minecraft.getInstance().player;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
-        this.pointerBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
         this.penalty = (int) (difficulty.penalty() * player.getAttributeValue(SCAttributes.PENALTY_MULTIPLIER) * SCConfig.PENALTY_MULTIPLIER.get());
         this.decay = (float) (difficulty.decay() * player.getAttributeValue(SCAttributes.BASE_DECAY_MULTIPLIER) * SCConfig.DECAY_RATE_MULTIPLIER.get());
         this.hp = (int) (difficulty.hp() * player.getAttributeValue(SCAttributes.REQUIRED_SCORE_MULTIPLIER) * SCConfig.HP_RATE_MULTIPLIER.get());
@@ -182,7 +181,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
         {
-            var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
+            var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook, player.getAttributeValue(SCAttributes.VANISHING_RATE_MULTIPLIER));
             addSweetSpot(newSweetSpot);
         }
     }

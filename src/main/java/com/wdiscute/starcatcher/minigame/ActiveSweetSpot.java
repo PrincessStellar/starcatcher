@@ -46,13 +46,13 @@ public class ActiveSweetSpot
     // For use with modifiers, map an id with some data
     public Map<Integer, Object> extraData = new HashMap<>();
 
-    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss, ItemStack bobber, ItemStack bait, ItemStack hook)
+    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss, ItemStack bobber, ItemStack bait, ItemStack hook, double vanishingRateMul)
     {
         //get sweet spot type from rl
         Optional<Supplier<? extends AbstractSweetSpotBehaviour>> behaviour = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.SWEET_SPOT_BEHAVIOUR).getOptional(ss.sweetSpotType());
 
         //if sweet spot type is registered then continue, otherwise set as removed
-        if(behaviour.isPresent())
+        if (behaviour.isPresent())
             this.behaviour = behaviour.get().get();
         else
         {
@@ -75,7 +75,7 @@ public class ActiveSweetSpot
         this.hook = hook;
 
         this.isFlip = ss.isFlip();
-        this.vanishingRate = (float) (ss.vanishingRate() * SCConfig.VANISHING_RATE_MULTIPLIER.get());
+        this.vanishingRate = (float) (ss.vanishingRate() * vanishingRateMul * SCConfig.VANISHING_RATE_MULTIPLIER.get());
         this.movingRate = (float) (ss.movingRate() * SCConfig.MOVING_SPEED_MULTIPLIER.get());
 
         currentRotation = -1;
@@ -83,12 +83,13 @@ public class ActiveSweetSpot
         this.alpha = 1;
     }
 
-    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss)
+    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss, double vanishingRateMul)
     {
-        this(instance, ss, instance.bobber, instance.bait, instance.hook);
+        this(instance, ss, instance.bobber, instance.bait, instance.hook, vanishingRateMul);
     }
 
-    public boolean isHoveredOver(){
+    public boolean isHoveredOver()
+    {
         return FishingMinigameScreen.doDegreesOverlapWithLeeway(instance.getPointerPosPrecise(), this.pos, thickness);
     }
 
