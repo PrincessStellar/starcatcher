@@ -2,7 +2,10 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
-import com.wdiscute.starcatcher.registry.items.*;
+import com.wdiscute.starcatcher.registry.items.FishItem;
+import com.wdiscute.starcatcher.registry.items.SCFoodProperties;
+import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
+import com.wdiscute.starcatcher.registry.items.WaterloggedSatchel;
 import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
@@ -16,14 +19,11 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public interface SCItems
-{
+public interface SCItems {
 
-    static void registerExtraItems()
-    {
+    static void registerExtraItems() {
         //this works!
-        if (ModList.get().isLoaded("create"))
-        {
+        if (ModList.get().isLoaded("create")) {
             registerNonBucketFish("coggill");
             registerNonBucketFish("mechanical_brass_snail");
             registerNonBucketFish("mechanical_snail");
@@ -38,8 +38,6 @@ public interface SCItems
         }
     }
 
-
-
     DeferredRegister.Items ITEMS = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items NON_BUCKETABLE_FISH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items BUCKETABLE_FISHES_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
@@ -47,7 +45,6 @@ public interface SCItems
     DeferredRegister.Items RODS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items HOOKS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items BOBBERS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
-
 
     DeferredItem<Item> MISSINGNO = ITEMS.register("missingno", BasicItem::new);
     DeferredItem<Item> UNKNOWN_FISH = ITEMS.register("unknown_fish", BasicItem::new);
@@ -354,8 +351,7 @@ public interface SCItems
             return NON_BUCKETABLE_FISH_REGISTRY.register(name, BasicItem::new);
     }
 
-    static void register(IEventBus modEventBus)
-    {
+    static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
         NON_BUCKETABLE_FISH_REGISTRY.register(modEventBus);
         BUCKETABLE_FISHES_REGISTRY.register(modEventBus);
