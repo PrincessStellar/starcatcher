@@ -181,7 +181,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //add every sweet spot from fp json which is registered
         for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
         {
-            var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook, player.getAttributeValue(SCAttributes.VANISHING_RATE_MULTIPLIER));
+            var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
             addSweetSpot(newSweetSpot);
         }
     }
