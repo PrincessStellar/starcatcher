@@ -9,6 +9,7 @@ import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
+import com.wdiscute.starcatcher.registry.SCAttributes;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
@@ -160,11 +161,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         Player player = Minecraft.getInstance().player;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
-        this.pointerBaseSpeed = (float) (difficulty.speed() * SCConfig.POINTER_SPEED_MULTIPLIER.get());
-        this.penalty = (int) (difficulty.penalty() * SCConfig.PENALTY_MULTIPLIER.get());
-        this.decay = (float) (difficulty.decay() * SCConfig.DECAY_RATE_MULTIPLIER.get());
-        this.hp = (int) (difficulty.hp() * SCConfig.HP_RATE_MULTIPLIER.get());
+        this.pointerSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.pointerBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.penalty = (int) (difficulty.penalty() * player.getAttributeValue(SCAttributes.PENALTY_MULTIPLIER) * SCConfig.PENALTY_MULTIPLIER.get());
+        this.decay = (float) (difficulty.decay() * player.getAttributeValue(SCAttributes.BASE_DECAY_MULTIPLIER) * SCConfig.DECAY_RATE_MULTIPLIER.get());
+        this.hp = (int) (difficulty.hp() * player.getAttributeValue(SCAttributes.REQUIRED_SCORE_MULTIPLIER) * SCConfig.HP_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
         addModifier(new BaseMinigameModifier());
