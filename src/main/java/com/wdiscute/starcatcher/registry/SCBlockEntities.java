@@ -2,7 +2,6 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlockEntity;
-import com.wdiscute.starcatcher.blocks.Telescope.TelescopeBlockEntity;
 import com.wdiscute.starcatcher.blocks.display.DisplayBlockEntity;
 import com.wdiscute.starcatcher.blocks.stand.StandBlockEntity;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
@@ -22,11 +21,6 @@ public class SCBlockEntities
             () -> BlockEntityType.Builder.of(StandBlockEntity::new,
                             SCBlocks.STAND.get()
                     ).build(null));
-
-    public static final Supplier<BlockEntityType<TelescopeBlockEntity>> TELESCOPE = BLOCK_ENTITIES.register("telescope",
-            () -> BlockEntityType.Builder.of(TelescopeBlockEntity::new,
-                    SCBlocks.TELESCOPE.get()
-            ).build(null));
 
     public static final Supplier<BlockEntityType<DisplayBlockEntity>> DISPLAY = BLOCK_ENTITIES.register("display",
             () -> BlockEntityType.Builder.of(DisplayBlockEntity::new,

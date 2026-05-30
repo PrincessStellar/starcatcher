@@ -521,8 +521,6 @@
 
   "block.starcatcher.display": "Mostruário do Starcatcher",
   "tooltip.starcatcher.display.0": "wip",
-  "block.starcatcher.telescope": "Telescópio",
-  "tooltip.starcatcher.telescope.0": "wip",
 
   "item.starcatcher.award_all_fishes": "Conceder todos os peixes",
   "item.starcatcher.award_one_fish": "Conceder um peixe",

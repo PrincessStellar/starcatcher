@@ -543,8 +543,6 @@
 
   "block.starcatcher.display" : "Starcatcher's Display",
   "tooltip.starcatcher.display.0" : "wip",
-  "block.starcatcher.telescope" : "Telescope",
-  "tooltip.starcatcher.telescope.0" : "wip",
 
   "item.starcatcher.award_all_fishes" : "Award All Fishes",
   "item.starcatcher.award_one_fish" : "Award One Fish",

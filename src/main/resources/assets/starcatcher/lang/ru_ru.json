@@ -531,8 +531,6 @@
 
   "block.starcatcher.display" : "Дисплей Ловца Звёзд",
   "tooltip.starcatcher.display.0" : "[В разработке]",
-  "block.starcatcher.telescope" : "Телескоп",
-  "tooltip.starcatcher.telescope.0" : "[В разработке]",
 
   "item.starcatcher.award_all_fishes" : "Выдать всю рыбу",
   "item.starcatcher.award_one_fish" : "Выдать одну рыбу",

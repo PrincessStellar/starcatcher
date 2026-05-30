@@ -531,8 +531,6 @@
 
     "block.starcatcher.display": "스타캐처의 전시대",
     "tooltip.starcatcher.display.0": "개발중",
-    "block.starcatcher.telescope": "망원경",
-    "tooltip.starcatcher.telescope.0": "개발중",
 
     "item.starcatcher.award_all_fishes": "모든 물고기 수여",
     "item.starcatcher.award_one_fish": "물고기 하나 수여",

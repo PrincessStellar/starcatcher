@@ -36,7 +36,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGStarcatcherFishes.bootstrap();
         DGTideFishes.bootstrap();
         DGAquacultureFishes.bootstrap();
-        DGFishOfThievesFishes.bootstrap();
+         DGFishOfThievesFishes.bootstrap();
         DGNetherDepthsUpgradeFishes.bootstrap();
         DGSullysModFishes.bootstrap();
         DGUpgradeAquaticFishes.bootstrap();
