@@ -1,1 +1,3 @@
-// 1.21.1	2026-04-13T15:05:02.8068391	Tags for minecraft:block mod id starcatcher
+// 1.21.1	2026-05-30T13:28:00.1755859	Tags for minecraft:block mod id starcatcher
+a575c7790db96d31827ddceb41a381951a024f1e data/minecraft/tags/block/mineable/axe.json
+80a71f3999f684b1adfd97c03ea3f47817c42027 data/minecraft/tags/block/mineable/pickaxe.json

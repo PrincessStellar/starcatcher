@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -231,6 +232,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(TACKLE_BOX_PURPLE.asItem())
                 .add(TACKLE_BOX_WHITE.asItem())
         ;
+
+        tag(ItemTags.BOOKSHELF_BOOKS)
+                .add(GUIDE.get());
 
     }
 

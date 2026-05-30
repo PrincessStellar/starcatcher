@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import net.minecraft.core.HolderLookup;
@@ -26,14 +27,16 @@ public class DGSCBlocksTagsProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        IntrinsicTagAppender<Block> mineablePickaxe = tag(BlockTags.MINEABLE_WITH_PICKAXE);
         for (DeferredHolder<Block, ? extends Block> entry : SCBlocks.TACKLE_BOXES.getEntries())
-        {
-            mineablePickaxe.add(entry.value());
-        }
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(entry.value());
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(SCBlocks.AQUARIUM.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(SCBlocks.STAND.value())
-                .add(SCBlocks.DISPLAY.value());
+                .add(SCBlocks.DISPLAY.value())
+                .add(SBBlocks.SELLING_BIN.value())
+        ;
     }
 }
