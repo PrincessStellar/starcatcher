@@ -8,7 +8,10 @@
   "base_chance": 5,
   "catch_info": {
     "type": "trophy",
-    "item": "starcatcher:trophy_copper"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:trophy_copper"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -42,6 +45,12 @@
   "has_guide_entry": false,
   "rarity": "common",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:caught_limit",
       "limit": 1

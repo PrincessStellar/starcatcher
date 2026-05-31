@@ -2,8 +2,9 @@ package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
@@ -52,7 +53,7 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
 
         if(U.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
         {
-            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.TREASURE));
+            instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.TREASURE));
         }
 
         return super.onHit(ass);

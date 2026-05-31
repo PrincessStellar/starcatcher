@@ -3,9 +3,10 @@ package com.wdiscute.starcatcher.registry.minigamemodifiers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
@@ -44,7 +45,7 @@ public class AquaBobberModifier extends AbstractTimedModifier
 
         for (int i = 0; i < numberOfSweetSpotsToAdd; i++)
         {
-            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.AQUA));
+            instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.AQUA));
         }
     }
 }

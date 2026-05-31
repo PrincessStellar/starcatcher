@@ -7,7 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:glowing_dark"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:glowing_dark"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -31,6 +34,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

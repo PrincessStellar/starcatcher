@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher;
 
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
-import com.wdiscute.starcatcher.registry.FishProperties;
-import net.minecraft.client.resources.language.I18n;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class SCConfig
@@ -44,9 +44,9 @@ public class SCConfig
             .comment("If enabled the new fish notifications will be removed when hovering on the index, instead of only when visiting the specific fish entry")
             .define("remove_notif_on_hover", true);
 
-    public static final ModConfigSpec.EnumValue<FishProperties.SizeAndWeight.Units> UNIT = BUILDER_CLIENT
+    public static final ModConfigSpec.EnumValue<SizeAndWeight.Units> UNIT = BUILDER_CLIENT
             .translation("starcatcher.configuration.units")
-            .defineEnum("units", FishProperties.SizeAndWeight.Units.METRIC);
+            .defineEnum("units", SizeAndWeight.Units.METRIC);
 
     public static final ModConfigSpec.EnumValue<FishingGuideScreen.Sort> SORT = BUILDER_CLIENT
             .translation("starcatcher.configuration.sort")
@@ -190,6 +190,10 @@ public class SCConfig
             .translation("starcatcher.configuration.hide_treasures")
             .define("hide_treasures", false);
 
+    public static final ModConfigSpec.BooleanValue HIDE_CATCHES = BUILDER_SERVER
+            .comment("Hides the catch during minigame")
+            .translation("starcatcher.configuration.hide_catches")
+            .define("hide_catches", false);
 
     //todo add base modifiers config
 //    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER

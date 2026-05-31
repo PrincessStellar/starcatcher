@@ -8,7 +8,7 @@ import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.compat.EclipticSeasonsCompat;
 import com.wdiscute.starcatcher.compat.SereneSeasonsCompat;
 import com.wdiscute.starcatcher.compat.TerraFirmaCraftSeasonsCompat;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.StringRepresentable;

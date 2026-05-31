@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.fishrestrictions;
 
 import com.mojang.serialization.MapCodec;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;

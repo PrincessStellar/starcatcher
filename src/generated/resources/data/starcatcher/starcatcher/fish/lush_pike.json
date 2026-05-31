@@ -7,8 +7,10 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:lush_pike"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:lush_pike"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -103,6 +105,12 @@
   "rarity": "legendary",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -127,13 +135,8 @@
     {
       "type": "starcatcher:bait",
       "baits": {
+        "starcatcher:legendary_bait": 50,
         "starcatcher:lush_bait": 50
-      }
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
       }
     }
   ],

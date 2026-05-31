@@ -5,7 +5,7 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.FishingSignedGuideScreen;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SignedGuide;
 import net.minecraft.client.Minecraft;

@@ -7,7 +7,10 @@
   ],
   "base_chance": 8,
   "catch_info": {
-    "item": "starcatcher:obsidian_eel"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:obsidian_eel"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -45,6 +48,12 @@
   "has_guide_entry": true,
   "rarity": "legendary",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

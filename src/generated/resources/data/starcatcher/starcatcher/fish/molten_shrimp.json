@@ -7,7 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:molten_shrimp"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:molten_shrimp"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -45,6 +48,12 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import io.netty.buffer.ByteBuf;

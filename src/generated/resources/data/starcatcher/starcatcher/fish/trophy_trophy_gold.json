@@ -8,7 +8,10 @@
   "base_chance": 5,
   "catch_info": {
     "type": "trophy",
-    "item": "starcatcher:trophy_gold"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:trophy_gold"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -40,8 +43,14 @@
     ]
   },
   "has_guide_entry": false,
-  "rarity": "rare",
+  "rarity": "epic",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:caught_limit",
       "limit": 1
@@ -50,18 +59,13 @@
       "type": "starcatcher:rarity_count",
       "rarities": [
         {
-          "count": 100,
+          "count": 200,
           "count_type": "total"
         },
         {
-          "count": 2,
+          "count": 10,
           "count_type": "unique",
           "rarity": "legendary"
-        },
-        {
-          "count": 2,
-          "count_type": "unique",
-          "rarity": "golden"
         }
       ]
     }

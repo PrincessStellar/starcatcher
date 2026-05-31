@@ -48,6 +48,12 @@
   "rarity": "legendary",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:the_nether"
@@ -59,12 +65,6 @@
       "fluids": [
         "minecraft:lava"
       ]
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
     }
   ],
   "size_and_weight": {

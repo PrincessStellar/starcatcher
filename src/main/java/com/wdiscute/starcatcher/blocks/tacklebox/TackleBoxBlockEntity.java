@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

@@ -1,27 +1,14 @@
 package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class RodSlotTooltipRenderer implements ClientTooltipComponent
 {

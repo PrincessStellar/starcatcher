@@ -7,8 +7,10 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:thunder_bass"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:thunder_bass"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -93,12 +101,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [],
-    "debug_color": -890519,
-    "name": "pherkad",
-    "x": 2577,
-    "y": 754
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

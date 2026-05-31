@@ -7,8 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:frostgill_chub"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:frostgill_chub"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -46,6 +48,12 @@
   "has_guide_entry": true,
   "rarity": "common",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

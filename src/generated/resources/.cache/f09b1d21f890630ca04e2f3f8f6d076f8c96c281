@@ -1,7 +1,7 @@
-// 1.21.1	2026-05-13T15:51:06.6092558	Tags for starcatcher:fish mod id starcatcher
-e1f8863b18773c2cd96c45dd0879e8d4d375d9fb data/starcatcher/tags/starcatcher/fish/common_entries.json
-e7d638c4f3800e531c0ee05c997ec1d88b9c4939 data/starcatcher/tags/starcatcher/fish/epic_entries.json
-f98e294f39f03914549c2d075e9122f90c6a4118 data/starcatcher/tags/starcatcher/fish/legendary_entries.json
-2dd96f63deb4df794ca039b824063f4bcc8116a2 data/starcatcher/tags/starcatcher/fish/rare_entries.json
-b2fabcf619a09d79efc71f1c43df023974ee327d data/starcatcher/tags/starcatcher/fish/trash_entries.json
-cb73b09ca1f49177fd87be6121781b56240553bc data/starcatcher/tags/starcatcher/fish/uncommon_entries.json
+// 1.21.1	2026-05-31T15:39:56.360933	Tags for starcatcher:fish mod id starcatcher
+87e5bb413b1680001ca6e5aac4344a28e2ca671f data/starcatcher/tags/starcatcher/fish/common_entries.json
+a4d036f1aa798d8652c12b41ac1e4c9e85e17624 data/starcatcher/tags/starcatcher/fish/epic_entries.json
+01ba94d283d98903f09121c0bfffa4e265de5056 data/starcatcher/tags/starcatcher/fish/legendary_entries.json
+7aae51ac20e43ea665d551606b01cd0810068653 data/starcatcher/tags/starcatcher/fish/rare_entries.json
+c162f36fe022ab89c6d829c7c4edf237ad43d1e4 data/starcatcher/tags/starcatcher/fish/trash_entries.json
+d82dd7d5152402770876c7c99c090ee4270f22fe data/starcatcher/tags/starcatcher/fish/uncommon_entries.json

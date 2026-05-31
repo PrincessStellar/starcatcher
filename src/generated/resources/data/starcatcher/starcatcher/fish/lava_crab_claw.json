@@ -7,7 +7,10 @@
   ],
   "base_chance": 1,
   "catch_info": {
-    "item": "starcatcher:lava_crab_claw"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:lava_crab_claw"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -45,6 +48,12 @@
   "has_guide_entry": false,
   "rarity": "trash",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

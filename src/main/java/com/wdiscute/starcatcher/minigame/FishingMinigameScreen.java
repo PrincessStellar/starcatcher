@@ -6,7 +6,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.SCAttributes;
@@ -17,7 +19,7 @@ import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModif
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -25,7 +27,6 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -33,7 +34,6 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -49,8 +49,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
     public ResourceLocation texture;
 
-    public FishProperties.Difficulty difficulty;
-    public FishProperties.Rarity rarity;
+    public Difficulty difficulty;
+    public Rarity rarity;
 
     public final ItemStack itemBeingFished;
     public final ItemStack bobber;
@@ -111,7 +111,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
     protected final List<AbstractMinigameModifier> modifiersToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
-    public FishingMinigameScreen(FishProperties fp, ItemStack rod)
+    public FishingMinigameScreen(FishProperties fp, ItemStack treasure, ItemStack rod)
     {
         super(Component.empty());
 
@@ -125,20 +125,19 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         this.difficulty = fp.dif();
         this.rarity = fp.rarity();
 
-        //if override is not missingno (default) then use the override item set
-        if (!fp.catchInfo().overrideMinigameWith().is(SCItems.MISSINGNO.getKey()))
-            this.itemBeingFished = new ItemStack(fp.catchInfo().overrideMinigameWith());
+        //set treasure being fished
+        this.treasureIS = treasure;
+
+        //set item being fished
+        if (fp.catchInfo().overrideMinigameWith().isEmpty())
+            this.itemBeingFished = fp.catchInfo().fish().toStack();
         else
-            this.itemBeingFished = new ItemStack(fp.catchInfo().fish());
+            this.itemBeingFished = fp.catchInfo().overrideMinigameWith().toStack();
 
         this.bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
         this.bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         this.hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
 
-        if (fp.catchInfo().overrideTreasureWith().is(SCItems.MISSINGNO.getKey()))
-            this.treasureIS = fp.catchInfo().treasureIs();
-        else
-            this.treasureIS = fp.catchInfo().overrideTreasureWith().getDelegate().value().getDefaultInstance();
 
         if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
         {
@@ -178,8 +177,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //add modifiers in armor/curios/rod
         modifiersToAdd.addAll(SCMinigameModifiers.getMinigameModifiers(player));
 
-        //add every sweet spot from fp json which is registered
-        for (FishProperties.SweetSpot ss : fp.dif().sweetSpots())
+        //add every sweet spot from fp Json which is registered
+        for (Difficulty.SweetSpot ss : fp.dif().sweetSpots())
         {
             var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
             addSweetSpot(newSweetSpot);

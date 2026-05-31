@@ -1,17 +1,14 @@
 package com.wdiscute.starcatcher.compat.emi;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.IsolatedFPScreen;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -50,7 +47,7 @@ public class IsolatedEmiFPScreen extends IsolatedFPScreen
         FishingGuideScreen.renderFishEntryPage(
                 guiGraphics,
                 fp,
-                new ItemStack(fp.catchInfo().fish().value()),
+                fp.catchInfo().fish().toStack(),
                 FishCaughtCounter.get(Minecraft.getInstance().player, fp),
                 uiX + 31,
                 uiY - 25,

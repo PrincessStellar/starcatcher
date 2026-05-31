@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.io.MessagesSavedData;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.particles.ItemParticleOption;

@@ -1,8 +1,10 @@
 package com.wdiscute.starcatcher.tournament;
 
+import com.wdiscute.starcatcher.fish.CatchInfo;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
 import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
@@ -94,7 +96,7 @@ public class TournamentHandler
     public static void addScore(Player player, FishProperties fp, boolean perfectCatch, float percentile)
     {
         //only score fishes
-        if (!fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH)) return;
+        if (!fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH)) return;
 
 
         for (Tournament t : activeTournaments)

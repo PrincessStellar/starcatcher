@@ -7,7 +7,10 @@
   ],
   "base_chance": 8,
   "catch_info": {
-    "item": "starcatcher:sage_catfish"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:sage_catfish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -31,6 +34,12 @@
   "has_guide_entry": true,
   "rarity": "epic",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -93,15 +102,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "zeta_tauri",
-      "gamma_tauri"
-    ],
-    "debug_color": -9606670,
-    "name": "aldebaran",
-    "x": 2965,
-    "y": 1590
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

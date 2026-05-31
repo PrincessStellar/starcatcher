@@ -7,7 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:shroomfish"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:shroomfish"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -101,6 +104,12 @@
   "has_guide_entry": true,
   "rarity": "legendary",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

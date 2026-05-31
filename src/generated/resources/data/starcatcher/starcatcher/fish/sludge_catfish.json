@@ -7,8 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:sludge_catfish"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:sludge_catfish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -91,14 +99,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "ain"
-    ],
-    "debug_color": -9606670,
-    "name": "tau_tari",
-    "x": 2929,
-    "y": 1529
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

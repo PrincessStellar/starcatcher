@@ -1,8 +1,10 @@
 package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.serialization.MapCodec;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
@@ -25,15 +27,15 @@ public class MossyHookModifier extends AbstractMinigameModifier
     public void tick()
     {
         super.tick();
-        if(tickCount == 1 && instance.rarity != FishProperties.Rarity.LEGENDARY && instance.rarity != FishProperties.Rarity.EPIC)
+        if(tickCount == 1 && instance.rarity != Rarity.LEGENDARY && instance.rarity != Rarity.EPIC)
         {
             instance.removeAllSweetSpots();
             instance.pointerBaseSpeed = 12;
             instance.pointerSpeed = 12;
             instance.penalty = 25;
 
-            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.THIN_STEADY_MOSSY));
-            instance.addSweetSpot(new ActiveSweetSpot(instance, FishProperties.SweetSpot.AQUA));
+            instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.THIN_STEADY_MOSSY));
+            instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.AQUA));
         }
     }
 
@@ -41,7 +43,7 @@ public class MossyHookModifier extends AbstractMinigameModifier
     @Override
     public boolean forceAwardTreasure()
     {
-        return instance.perfectCatch && instance.rarity != FishProperties.Rarity.LEGENDARY && instance.rarity != FishProperties.Rarity.EPIC;
+        return instance.perfectCatch && instance.rarity != Rarity.LEGENDARY && instance.rarity != Rarity.EPIC;
     }
 }
 

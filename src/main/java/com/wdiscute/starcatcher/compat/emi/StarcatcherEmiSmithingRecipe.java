@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipe;

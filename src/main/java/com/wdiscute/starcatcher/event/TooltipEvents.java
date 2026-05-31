@@ -3,9 +3,10 @@ package com.wdiscute.starcatcher.event;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.SCDataComponents;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
@@ -121,7 +122,7 @@ public class TooltipEvents
         //caught fish info
         if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
-            FishProperties.SizeAndWeight.Units units = SCConfig.UNIT.get();
+            SizeAndWeight.Units units = SCConfig.UNIT.get();
             CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
             if (sw.golden())

@@ -4,7 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.secretnotes.BottledLetterEntity;
 import com.wdiscute.starcatcher.secretnotes.BrokenBottleEntity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +13,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public interface SCEntities

@@ -4,9 +4,9 @@ import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCAttributes;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
-import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +18,7 @@ public class ActiveSweetSpot
 {
     //from ss
     public final AbstractSweetSpotBehaviour behaviour;
-    public final FishProperties.SweetSpot baseSS;
+    public final Difficulty.SweetSpot baseSS;
     public int thickness;
     public ResourceLocation texture;
     public int reward;
@@ -47,7 +47,7 @@ public class ActiveSweetSpot
     // For use with modifiers, map an id with some data
     public Map<Integer, Object> extraData = new HashMap<>();
 
-    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss, ItemStack bobber, ItemStack bait, ItemStack hook)
+    public ActiveSweetSpot(FishingMinigameScreen instance, Difficulty.SweetSpot ss, ItemStack bobber, ItemStack bait, ItemStack hook)
     {
         //get sweet spot type from rl
         Optional<Supplier<? extends AbstractSweetSpotBehaviour>> behaviour = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.SWEET_SPOT_BEHAVIOUR).getOptional(ss.sweetSpotType());
@@ -84,7 +84,7 @@ public class ActiveSweetSpot
         this.alpha = 1;
     }
 
-    public ActiveSweetSpot(FishingMinigameScreen instance, FishProperties.SweetSpot ss)
+    public ActiveSweetSpot(FishingMinigameScreen instance, Difficulty.SweetSpot ss)
     {
         this(instance, ss, instance.bobber, instance.bait, instance.hook);
     }

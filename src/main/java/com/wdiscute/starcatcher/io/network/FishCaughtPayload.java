@@ -1,8 +1,7 @@
 package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.FishProperties;
-import io.netty.buffer.ByteBuf;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;

@@ -9,12 +9,13 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.SCDataComponents;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -92,14 +93,14 @@ public interface SCCommands
                         .then(Commands.argument("size_in_cm", IntegerArgumentType.integer())
                                 .then(Commands.argument("weight_in_grams", IntegerArgumentType.integer())
                                         .then(Commands.argument("percentile", IntegerArgumentType.integer(0, 100))
-                                                .then(Commands.argument("rarity", EnumArgument.enumArgument(FishProperties.Rarity.class))
+                                                .then(Commands.argument("rarity", EnumArgument.enumArgument(Rarity.class))
                                                         .executes(c ->
                                                                 setDataOnStack(
                                                                         c.getSource().getPlayerOrException(),
                                                                         IntegerArgumentType.getInteger(c, "size_in_cm"),
                                                                         IntegerArgumentType.getInteger(c, "weight_in_grams"),
                                                                         IntegerArgumentType.getInteger(c, "percentile"),
-                                                                        FishProperties.Rarity.valueOf(c.getArgument("rarity", FishProperties.Rarity.class).toString())
+                                                                        Rarity.valueOf(c.getArgument("rarity", Rarity.class).toString())
                                                                 )
                                                         )
                                                 )
@@ -410,13 +411,13 @@ public interface SCCommands
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
         {
             if (fp.calculateChance(player, player.level(), player.getMainHandItem(), AbstractFishRestriction.Context.COMMAND) > 0)
-                available.add(fp.loadTreasure(player));
+                available.add(fp);
         }
 
         if (!available.isEmpty())
         {
             FishProperties fpToFish = available.get(U.r.nextInt(available.size()));
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, player.getMainHandItem()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, ItemStack.EMPTY, player.getMainHandItem()));
         }
         else
         {
@@ -433,7 +434,7 @@ public interface SCCommands
 
         if (optional.isPresent())
         {
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get().loadTreasure(player), player.getMainHandItem()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(),  ItemStack.EMPTY, player.getMainHandItem()));
             return 1;
         }
         else
@@ -442,7 +443,7 @@ public interface SCCommands
         }
     }
 
-    private static int setDataOnStack(ServerPlayer player, int size, int weight, int percentile, FishProperties.Rarity rarity) throws CommandSyntaxException
+    private static int setDataOnStack(ServerPlayer player, int size, int weight, int percentile, Rarity rarity) throws CommandSyntaxException
     {
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
@@ -456,7 +457,7 @@ public interface SCCommands
         else
             stack = mainHand;
 
-        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(FishProperties.Rarity.GOLDEN)));
+        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(Rarity.GOLDEN)));
 
         return 1;
     }

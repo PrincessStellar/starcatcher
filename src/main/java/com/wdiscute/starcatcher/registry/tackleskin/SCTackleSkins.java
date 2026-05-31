@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.tackleskin;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

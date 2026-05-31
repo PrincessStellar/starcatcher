@@ -7,8 +7,10 @@
   ],
   "base_chance": 8,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:morganite"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:morganite"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -93,14 +101,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "yildun"
-    ],
-    "debug_color": -890519,
-    "name": "polaris",
-    "x": 2706,
-    "y": 907
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

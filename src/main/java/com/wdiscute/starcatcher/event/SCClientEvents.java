@@ -1,11 +1,11 @@
 package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.bobberentity.FishingBobRenderer;
-import com.wdiscute.starcatcher.bobberentity.tackles.*;
+import com.wdiscute.starcatcher.bobentity.FishingBobRenderer;
+import com.wdiscute.starcatcher.bobentity.tackles.*;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
-import com.wdiscute.starcatcher.fishspotter.FishRadarLayer;
+import com.wdiscute.starcatcher.locators.FishRadarLayer;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.blocks.display.DisplayBlockRenderer;
@@ -21,7 +21,6 @@ import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.compat.curios.CuriosEvents;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
-import com.wdiscute.starcatcher.registry.tackleskin.*;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;

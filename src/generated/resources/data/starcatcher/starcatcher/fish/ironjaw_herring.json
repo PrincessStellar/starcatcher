@@ -7,8 +7,10 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:ironjaw_herring"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:ironjaw_herring"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -102,6 +104,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

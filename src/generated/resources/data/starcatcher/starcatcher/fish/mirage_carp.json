@@ -7,8 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:mirage_carp"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:mirage_carp"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -87,14 +95,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "dubhe"
-    ],
-    "debug_color": -7146903,
-    "name": "merak",
-    "x": 2371,
-    "y": 987
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

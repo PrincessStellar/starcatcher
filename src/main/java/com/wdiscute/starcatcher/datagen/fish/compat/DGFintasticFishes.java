@@ -2,10 +2,10 @@ package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.ElevationRestriction;
-import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 
@@ -27,8 +27,8 @@ public class DGFintasticFishes
         //
 
 
-        register(fish(U.holderItem("fintastic", "minnow_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "minnow_bucket"))
+        register(fish(new MaybeStack("fintastic", "minnow_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "minnow_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "minnow"))
                 .withAlwaysSpawnEntity()
                 .addRestrictions(
@@ -46,48 +46,48 @@ public class DGFintasticFishes
                                 ""
                         )
                 )
-                .withRarity(FishProperties.Rarity.COMMON)
-                .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
+                .withRarity(Rarity.COMMON)
+                .withDifficulty(Difficulty.EASY_MOVING)
         );
 
-        register(fish(U.holderItem("fintastic", "featherback_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "featherback_bucket"))
+        register(fish(new MaybeStack("fintastic", "featherback_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "featherback_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "featherback"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
+                .addRestriction(WorldRestrictions.OVERWORLD_SWAMPS)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.HARD_MOVING)
         );
 
-        register(fish(U.holderItem("fintastic", "guppy_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "guppy_bucket"))
+        register(fish(new MaybeStack("fintastic", "guppy_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "guppy_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "guppy"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.EASY)
+                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.EASY)
         );
 
-        register(fish(U.holderItem("fintastic", "arapaima_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "arapaima_bucket"))
+        register(fish(new MaybeStack("fintastic", "arapaima_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "arapaima_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "arapaima"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLE)
-                .withDifficulty(FishProperties.Difficulty.HARD)
-                .withRarity(FishProperties.Rarity.RARE)
+                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE)
+                .withDifficulty(Difficulty.HARD)
+                .withRarity(Rarity.RARE)
         );
 
-        register(fish(U.holderItem("fintastic", "pleco_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "pleco_bucket"))
+        register(fish(new MaybeStack("fintastic", "pleco_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "pleco_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "pleco"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.EASY_FAST_FISH)
+                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLES_AND_SWAMPS)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.EASY_FAST_FISH)
         );
 
-        register(fish(U.holderItem("fintastic", "moony_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "moony_bucket"))
+        register(fish(new MaybeStack("fintastic", "moony_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "moony_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "moony"))
                 .withAlwaysSpawnEntity()
                 .addRestrictions(
@@ -107,43 +107,43 @@ public class DGFintasticFishes
                                 ""
                         )
                 )
-                .withRarity(FishProperties.Rarity.EPIC)
-                .withDifficulty(FishProperties.Difficulty.SINGLE_AQUA)
+                .withRarity(Rarity.EPIC)
+                .withDifficulty(Difficulty.SINGLE_AQUA)
         );
 
-        register(fish(U.holderItem("fintastic", "coelacanth_spawn_egg"))
+        register(fish(new MaybeStack("fintastic", "coelacanth_spawn_egg"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "coelacanth"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withRarity(FishProperties.Rarity.RARE)
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING_MOVING)
+                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
+                .withRarity(Rarity.RARE)
+                .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
         );
 
-        register(fish(U.holderItem("fintastic", "gourami_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "gourami_bucket"))
+        register(fish(new MaybeStack("fintastic", "gourami_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "gourami_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "gourami"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
+                .addRestriction(WorldRestrictions.OVERWORLD_SWAMPS)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.MEDIUM_MOVING)
         );
 
-        register(fish(U.holderItem("fintastic", "daphnia_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "daphnia_bucket"))
+        register(fish(new MaybeStack("fintastic", "daphnia_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "daphnia_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "daphnia"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER)
-                .withRarity(FishProperties.Rarity.COMMON)
-                .withDifficulty(FishProperties.Difficulty.HARD)
+                .addRestriction(WorldRestrictions.OVERWORLD_RIVER)
+                .withRarity(Rarity.COMMON)
+                .withDifficulty(Difficulty.HARD)
         );
 
-        register(fish(U.holderItem("fintastic", "artemia_bucket"))
-                .withBucketedFish(U.holderItem("fintastic", "artemia_bucket"))
+        register(fish(new MaybeStack("fintastic", "artemia_bucket"))
+                .withBucketedFish(new MaybeStack("fintastic", "artemia_bucket"))
                 .withEntityToSpawn(U.holderEntity("fintastic", "artemia"))
                 .withAlwaysSpawnEntity()
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_LAKE)
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_MOVING)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
+                .addRestriction(WorldRestrictions.OVERWORLD_WARM_LAKE)
+                .withDifficulty(Difficulty.MEDIUM_MOVING)
+                .withRarity(Rarity.UNCOMMON)
         );
     }
 }

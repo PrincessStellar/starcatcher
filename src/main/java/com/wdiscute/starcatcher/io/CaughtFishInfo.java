@@ -3,13 +3,13 @@ package com.wdiscute.starcatcher.io;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCConfig;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.Rarity;
 
 public record CaughtFishInfo(
         int sizeInCentimeters,
         int weightInGrams,
         float percentile,
-        FishProperties.Rarity rarity,
+        Rarity rarity,
         boolean golden
 )
 {
@@ -19,7 +19,7 @@ public record CaughtFishInfo(
                     Codec.INT.fieldOf("size").forGetter(CaughtFishInfo::sizeInCentimeters),
                     Codec.INT.fieldOf("weight").forGetter(CaughtFishInfo::weightInGrams),
                     Codec.FLOAT.optionalFieldOf("percentile", 0f).forGetter(CaughtFishInfo::percentile),
-                    FishProperties.Rarity.CODEC.optionalFieldOf("rarity", FishProperties.Rarity.COMMON).forGetter(CaughtFishInfo::rarity),
+                    Rarity.CODEC.optionalFieldOf("rarity", Rarity.COMMON).forGetter(CaughtFishInfo::rarity),
                     Codec.BOOL.optionalFieldOf("golden", false).forGetter(CaughtFishInfo::golden)
             ).apply(instance, CaughtFishInfo::new));
 

@@ -5,7 +5,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.WorldRestrictions;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -147,7 +148,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
         MutableComponent comp;
 
-        List<ResourceLocation> biomesList = FishProperties.getBiomesAsListFromTags(biomes, biomesTags, level);
+        List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
 
         //Biomes: ------
         if (biomesList.isEmpty())
@@ -168,7 +169,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         List<Component> hover = new ArrayList<>();
-        List<ResourceLocation> biomesList = FishProperties.getBiomesAsListFromTags(biomes, biomesTags, level);
+        List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
 
         if(!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
 
@@ -198,7 +199,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         List<Component> blacklist = new ArrayList<>();
-        List<ResourceLocation> biomesBlacklistList = FishProperties.getBiomesBlacklistAsList(biomesBlacklist, biomesBlacklistTags, level);
+        List<ResourceLocation> biomesBlacklistList = WorldRestrictions.getBiomesBlacklistAsList(biomesBlacklist, biomesBlacklistTags, level);
 
         if (!biomesBlacklistTags.isEmpty())
         {

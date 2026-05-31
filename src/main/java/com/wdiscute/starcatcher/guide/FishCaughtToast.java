@@ -1,7 +1,8 @@
 package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.Rarity;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
@@ -15,11 +16,11 @@ public class FishCaughtToast implements Toast
     private final Component title;
     private final String description;
     private final ItemStack is;
-    private FishProperties.Rarity rarity;
+    private Rarity rarity;
 
     public FishCaughtToast(FishProperties fp)
     {
-        this.is = new ItemStack(fp.catchInfo().fish());
+        this.is = fp.catchInfo().fish().toStack();
         this.title = Component.translatable("gui.starcatcher.toast.fish_caught");
         this.description = is.getHoverName().getString();
         this.rarity = fp.rarity();

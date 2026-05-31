@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 1,
+  "base_chance": 0,
   "catch_info": {
     "item": "aquaculture:goldfish"
   },
@@ -42,6 +42,12 @@
   "rarity": "common",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -71,6 +77,10 @@
         "mid_summer": 0
       },
       "translation_override": "gui.guide.seasons.summer"
+    },
+    {
+      "type": "starcatcher:percentage_chance",
+      "chance": 0.05
     }
   ],
   "size_and_weight": {

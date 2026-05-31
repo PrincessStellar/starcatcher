@@ -2,11 +2,10 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
-import com.wdiscute.starcatcher.registry.FishProperties;
-import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -51,41 +50,29 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
         }
 
-        //rarity tags
-        DGSCFishProperties.PROPERTIES.forEach(p ->
+        //rarity tags for starcatcher fish only
+        for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHABLE)
         {
-            //return if not a fish or alwaysSpawnEntity
-            FishProperties fp = p.getSecond();
-            if (!fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH)) return;
-            if (fp.catchInfo().alwaysSpawnEntity()) return;
-
-            switch (p.getSecond().rarity())
-            {
-                case TRASH -> tag(SCTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
-                case COMMON -> tag(SCTags.COMMON_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
-                case UNCOMMON -> tag(SCTags.UNCOMMON_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
-                case RARE -> tag(SCTags.RARE_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
-                case EPIC -> tag(SCTags.EPIC_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
-                case LEGENDARY -> tag(SCTags.LEGENDARY_ENTRIES).addOptional(fp.catchInfo().fish().getKey().location());
-            }
-        });
-
-        for (FishProperties fp : DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL)
-        {
-            tag(SCTags.STARCAUGHT_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+            ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
+            tag(SCTags.STARCAUGHT_FISHES).addOptional(key);
 
             switch (fp.rarity())
             {
-                case COMMON ->
-                        tag(SCTags.COMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case UNCOMMON ->
-                        tag(SCTags.UNCOMMON_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case RARE -> tag(SCTags.RARE_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
-                case LEGENDARY ->
-                        tag(SCTags.LEGENDARY_FISHES).addOptional(fp.catchInfo().fish().getKey().location());
+                case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(key);
+                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).addOptional(key);
+                case RARE -> tag(SCTags.RARE_FISHES).addOptional(key);
+                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(key);
+                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(key);
             }
         }
+
+        //fishable for tackle box
+        for (FishProperties fp : DGStarcatcherFishes.FISHABLE)
+        {
+            ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
+            tag(SCTags.FISHABLE).addOptional(key);
+        }
+
 
         //crabs
         tag(SCTags.CRABS)
@@ -125,7 +112,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(LEGENDARY_BAIT.get())
                 .add(METEOROLOGICAL_BAIT.get())
                 .add(Items.WITHER_SKELETON_SKULL)
-                .add(Items.BUCKET)
+                .addTag(Tags.Items.BUCKETS)
 
                 .addOptional(rl("fishofthieves", "earthworms"))
                 .addOptional(rl("fishofthieves", "grubs"))
@@ -177,7 +164,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(Items.RED_SAND)
                 .add(Items.KELP)
                 .add(Items.SEAGRASS)
-                .add(Items.BUCKET)
+                .addTag(Tags.Items.BUCKETS)
                 .add(AURORA.get())
                 .add(CONCH.asItem())
                 .add(CLAM.asItem())
@@ -200,11 +187,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.HOOKS)
                 .addTag(SCTags.BOBBERS)
                 .addTag(ItemTags.FISHES)
-                .addTag(SCTags.COMMON_ENTRIES)
-                .addTag(SCTags.UNCOMMON_ENTRIES)
-                .addTag(SCTags.RARE_ENTRIES)
-                .addTag(SCTags.EPIC_ENTRIES)
-                .addTag(SCTags.LEGENDARY_ENTRIES)
+                .addTag(ItemTags.FISHES)
         ;
 
         tag(SCTags.PLACEABLE_IN_TACKLE_BOX_FISH_SLOT)

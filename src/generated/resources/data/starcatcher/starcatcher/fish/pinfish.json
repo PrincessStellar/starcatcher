@@ -7,8 +7,10 @@
   ],
   "base_chance": 8,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:pinfish"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:pinfish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -83,14 +91,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "lambda_tauri"
-    ],
-    "debug_color": -9606670,
-    "name": "gamma_tauri",
-    "x": 3016,
-    "y": 1579
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

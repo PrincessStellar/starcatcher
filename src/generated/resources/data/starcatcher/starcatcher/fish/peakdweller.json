@@ -7,7 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:peakdweller"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:peakdweller"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -41,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "common",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -87,14 +96,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "segin"
-    ],
-    "debug_color": -9833760,
-    "name": "ruchbah",
-    "x": 2980,
-    "y": 1007
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

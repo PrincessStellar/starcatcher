@@ -4,7 +4,7 @@ import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCBlocks;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCItems;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

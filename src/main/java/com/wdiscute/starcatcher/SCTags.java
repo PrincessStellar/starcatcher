@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher;
 
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -56,18 +56,11 @@ public class SCTags
 
     public static final TagKey<Item> BUCKETABLE_FISHES = ItemTags.create(Starcatcher.rl("bucketable_fishes"));
     public static final TagKey<Item> STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("starcaught_fishes"));
+    public static final TagKey<Item> FISHABLE = ItemTags.create(Starcatcher.rl("fishable"));
 
     public static final TagKey<Item> CRABS = ItemTags.create(Starcatcher.rl("crabs"));
     public static final TagKey<Item> EELS = ItemTags.create(Starcatcher.rl("eels"));
     public static final TagKey<Item> SHRIMPS = ItemTags.create(Starcatcher.rl("shrimps"));
-
-    public static final TagKey<Item> TRASH = ItemTags.create(Starcatcher.rl("trash"));
-
-    public static final TagKey<Item> COMMON_ENTRIES = ItemTags.create(Starcatcher.rl("common_entries"));
-    public static final TagKey<Item> UNCOMMON_ENTRIES = ItemTags.create(Starcatcher.rl("uncommon_entries"));
-    public static final TagKey<Item> RARE_ENTRIES = ItemTags.create(Starcatcher.rl("rare_entries"));
-    public static final TagKey<Item> EPIC_ENTRIES = ItemTags.create(Starcatcher.rl("epic_entries"));
-    public static final TagKey<Item> LEGENDARY_ENTRIES = ItemTags.create(Starcatcher.rl("legendary_entries"));
 
     public static final TagKey<Item> COMMON_FISHES = ItemTags.create(Starcatcher.rl("common_fishes"));
     public static final TagKey<Item> UNCOMMON_FISHES = ItemTags.create(Starcatcher.rl("uncommon_fishes"));

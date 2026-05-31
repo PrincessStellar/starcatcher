@@ -11,7 +11,10 @@
     "entity": "collectorsreap:chieftain_crab",
     "fish_bucket": "collectorsreap:chieftain_crab_bucket",
     "item": "collectorsreap:chieftain_crab",
-    "override_minigame_item": "starcatcher:unknown_fish"
+    "override_minigame_item": {
+      "count": 1,
+      "id": "starcatcher:unknown_fish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -105,6 +108,12 @@
   "has_guide_entry": true,
   "rarity": "uncommon",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

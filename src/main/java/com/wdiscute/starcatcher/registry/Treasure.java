@@ -89,10 +89,7 @@ public class Treasure
             {
                 return ItemStack.EMPTY;
             }
-
         }
-
-
     }
 
     public static class ItemStackListTreasureInstance extends TreasureInstance

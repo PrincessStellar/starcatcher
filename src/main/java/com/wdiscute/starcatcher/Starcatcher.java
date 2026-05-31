@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
-import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -13,12 +13,11 @@ import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviou
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
-import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
@@ -98,14 +97,14 @@ public class Starcatcher
     {
         if (newFish) Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
 
-        Units units = SCConfig.UNIT.get();
+        SizeAndWeight.Units units = SCConfig.UNIT.get();
 
         String size = units.getSizeAsString(sizeCM);
         String weight = units.getWeightAsString(weightCM);
 
         Minecraft.getInstance().player.displayClientMessage(
                 Component.literal("")
-                        .append(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()))
+                        .append(Component.translatable(fp.catchInfo().fish().toStack().getDescriptionId()))
                         .append(Component.literal(" - " + size + " - " + weight))
                 , true);
 
@@ -131,7 +130,6 @@ public class Starcatcher
         SCMinigameModifiers.register(modEventBus);
         SCCatchModifiers.register(modEventBus);
         SCTackleSkins.register(modEventBus);
-        SCCriterionTriggers.register(modEventBus);
         SCProcessors.register(modEventBus);
         SCLootModifiers.register(modEventBus);
         SCStats.register(modEventBus);

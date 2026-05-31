@@ -48,6 +48,12 @@
   "rarity": "epic",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:the_end"
@@ -65,14 +71,6 @@
         "mid_spring": 0
       },
       "translation_override": "gui.guide.seasons.spring_winter"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "fishofthieves:earthworms": 50,
-        "fishofthieves:grubs": 50,
-        "fishofthieves:leeches": 50
-      }
     }
   ],
   "size_and_weight": {

@@ -2,9 +2,9 @@ package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
-import com.wdiscute.starcatcher.io.SCDataAttachments;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.registry.SCDataAttachments;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;

@@ -7,7 +7,10 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "item": "starcatcher:dark_amethyst_snapper"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:dark_amethyst_snapper"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -101,6 +104,12 @@
   "has_guide_entry": true,
   "rarity": "epic",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

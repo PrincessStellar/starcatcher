@@ -7,7 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "starcatcher:scorched_bloodsucker"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:scorched_bloodsucker"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -45,6 +48,12 @@
   "has_guide_entry": true,
   "rarity": "epic",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

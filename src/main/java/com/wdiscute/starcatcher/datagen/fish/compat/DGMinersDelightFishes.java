@@ -1,7 +1,10 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.fish.WorldRestrictions;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
@@ -17,19 +20,19 @@ public class DGMinersDelightFishes
         //`--'   `--' `--' `--''--'  `----' `--'         `----'      `-------'   `----' `--' `--' .`-  /  `--' `--'   `--'
         //                                                                                        `---'
 
-        register(overworldSurfaceFish(U.holderItem("miners_delight", "squid"))
+        register(overworldSurfaceFish(new MaybeStack("miners_delight", "squid"))
                 .withEntityToSpawn(U.holderEntity("minecraft", "squid"))
-                .withSizeAndWeight(FishProperties.sizeWeight(40, 20, 1300, 700))
-                .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_MOVING)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_OCEAN)
+                .withSizeAndWeight(40, 20, 1300, 700)
+                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING)
+                .withRarity(Rarity.UNCOMMON)
+                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
         );
 
-        register(overworldUndergroundFish(U.holderItem("miners_delight", "glow_squid"))
+        register(overworldUndergroundFish(new MaybeStack("miners_delight", "glow_squid"))
                 .withEntityToSpawn(U.holderEntity("minecraft", "glow_squid"))
-                .withSizeAndWeight(FishProperties.sizeWeight(40, 20, 1300, 700))
-                .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_MOVING)
-                .withRarity(FishProperties.Rarity.COMMON)
+                .withSizeAndWeight(40, 20, 1300, 700)
+                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING)
+                .withRarity(Rarity.COMMON)
         );
     }
 }

@@ -44,6 +44,12 @@
   "rarity": "uncommon",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -64,14 +70,6 @@
       "max_y": 100,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "fishofthieves:earthworms": 50,
-        "fishofthieves:grubs": 50,
-        "fishofthieves:leeches": 50
-      }
     }
   ],
   "size_and_weight": {

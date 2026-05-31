@@ -27,8 +27,8 @@ public class DataGenerators
     public static void gatherData(GatherDataEvent event)
     {
         event.createDatapackRegistryObjects(
-                new RegistrySetBuilder()
-                        .add(Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
+                new RegistrySetBuilder().add(
+                        Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
         );
 
         DataGenerator gen = event.getGenerator();

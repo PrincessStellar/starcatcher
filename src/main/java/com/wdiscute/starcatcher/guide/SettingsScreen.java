@@ -2,35 +2,24 @@ package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.FishProperties;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.components.events.GuiEventListener;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Supplier;
 
 public class SettingsScreen extends FishingMinigameScreen
 {
     public static final ResourceLocation SETTINGS = Starcatcher.rl("textures/gui/minigame/settings.png");
     public static final ResourceLocation GUI_SCALE = Starcatcher.rl("textures/gui/minigame/gui_scale.png");
 
-    FishProperties.SizeAndWeight.Units unitSelected;
+    SizeAndWeight.Units unitSelected;
 
     public SettingsScreen(FishProperties fp, ItemStack rod)
     {
-        super(fp, rod);
+        super(fp, ItemStack.EMPTY, rod);
     }
 
     @Override

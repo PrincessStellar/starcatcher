@@ -8,8 +8,14 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "minecraft:salmon",
-    "fish_bucket": "minecraft:salmon_bucket",
-    "item": "minecraft:salmon"
+    "fish_bucket": {
+      "count": 1,
+      "id": "minecraft:salmon_bucket"
+    },
+    "item": {
+      "count": 1,
+      "id": "minecraft:salmon"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -43,6 +49,12 @@
   "has_guide_entry": true,
   "rarity": "common",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

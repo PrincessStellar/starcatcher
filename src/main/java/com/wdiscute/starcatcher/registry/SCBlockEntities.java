@@ -12,27 +12,27 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class SCBlockEntities
+public interface SCBlockEntities
 {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+    DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Starcatcher.MOD_ID);
 
-    public static final Supplier<BlockEntityType<StandBlockEntity>> STAND = BLOCK_ENTITIES.register("stand",
+    Supplier<BlockEntityType<StandBlockEntity>> STAND = BLOCK_ENTITIES.register("stand",
             () -> BlockEntityType.Builder.of(StandBlockEntity::new,
                             SCBlocks.STAND.get()
                     ).build(null));
 
-    public static final Supplier<BlockEntityType<DisplayBlockEntity>> DISPLAY = BLOCK_ENTITIES.register("display",
+    Supplier<BlockEntityType<DisplayBlockEntity>> DISPLAY = BLOCK_ENTITIES.register("display",
             () -> BlockEntityType.Builder.of(DisplayBlockEntity::new,
                     SCBlocks.DISPLAY.get()
             ).build(null));
 
-    public static final Supplier<BlockEntityType<AquariumBlockEntity>> AQUARIUM = BLOCK_ENTITIES.register("aquarium",
+    Supplier<BlockEntityType<AquariumBlockEntity>> AQUARIUM = BLOCK_ENTITIES.register("aquarium",
             () -> BlockEntityType.Builder.of(AquariumBlockEntity::new,
                     SCBlocks.AQUARIUM.get()
             ).build(null));
 
-    public static final Supplier<BlockEntityType<TackleBoxBlockEntity>> TACKLE_BOX = BLOCK_ENTITIES.register("tackle_box",
+    Supplier<BlockEntityType<TackleBoxBlockEntity>> TACKLE_BOX = BLOCK_ENTITIES.register("tackle_box",
             () -> BlockEntityType.Builder.of(TackleBoxBlockEntity::new,
                     SCBlocks.TACKLE_BOX.get(),
                     SCBlocks.TACKLE_BOX_WHITE.get(),
@@ -54,7 +54,7 @@ public class SCBlockEntities
             ).build(null));
 
 
-    public static void register(IEventBus eventBus) {
+    static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
 }

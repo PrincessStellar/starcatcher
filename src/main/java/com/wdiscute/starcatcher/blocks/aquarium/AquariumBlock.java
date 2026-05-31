@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
@@ -45,6 +45,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.*;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -208,7 +209,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Items.BUCKET))
+        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Tags.Items.BUCKETS))
         {
             bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));

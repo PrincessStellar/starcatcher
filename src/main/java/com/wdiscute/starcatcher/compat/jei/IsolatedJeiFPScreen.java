@@ -45,7 +45,7 @@ public class IsolatedJeiFPScreen extends IsolatedFPScreen
         FishingGuideScreen.renderFishEntryPage(
                 guiGraphics,
                 fp,
-                new ItemStack(fp.catchInfo().fish().value()),
+                fp.catchInfo().fish().toStack(),
                 FishCaughtCounter.get(Minecraft.getInstance().player, fp),
                 uiX + 31,
                 uiY - 25,

@@ -1,11 +1,14 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SeasonRestriction;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 
 import java.util.List;
 
@@ -23,12 +26,12 @@ public class DGCollectorsReapFishes
         // `-----'  `---'  `--' `--'  `----'  `---'   `--'    `---'  `--'         `----'      `--' '--'  `----'  `--`--' |  |-'
         //                                                                                                               `--'
 
-        register(fish(U.holderItem("collectorsreap", "platinum_bass"))
-                .withBucketedFish(U.holderItem("collectorsreap", "platinum_bass_bucket"))
+        register(fish(new MaybeStack("collectorsreap", "platinum_bass"))
+                .withBucketedFish(new MaybeStack("collectorsreap", "platinum_bass_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "platinum_bass"))
-                .withSizeAndWeight(FishProperties.sizeWeight(40, 12, 1600, 1100))
+                .withSizeAndWeight(40, 12, 1600, 1100)
                 .withSeasons(SeasonRestriction.AROUND_WINTER)
-                .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
+                .withDifficulty(Difficulty.EASY_MOVING)
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/platinum_bass")),
@@ -37,12 +40,12 @@ public class DGCollectorsReapFishes
         );
 
 
-        register(fish(U.holderItem("collectorsreap", "tiger_prawn"))
-                .withBucketedFish(U.holderItem("collectorsreap", "tiger_prawn_bucket"))
+        register(fish(new MaybeStack("collectorsreap", "tiger_prawn"))
+                .withBucketedFish(new MaybeStack("collectorsreap", "tiger_prawn_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "tiger_prawn"))
-                .withSizeAndWeight(FishProperties.sizeWeight(28, 8, 260, 60))
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
-                .withRarity(FishProperties.Rarity.RARE)
+                .withSizeAndWeight(28, 8, 260, 60)
+                .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                .withRarity(Rarity.RARE)
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/tiger_prawn")),
@@ -50,10 +53,10 @@ public class DGCollectorsReapFishes
                 )
         );
 
-        register(fish(U.holderItem("collectorsreap", "clam"))  //no mini game
-                .withBucketedFish(U.holderItem("collectorsreap", "clam_bucket"))
+        register(fish(new MaybeStack("collectorsreap", "clam"))  //no mini game
+                .withBucketedFish(new MaybeStack("collectorsreap", "clam_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "clam"))
-                .withSkipMinigame(true)
+                .withSkipsMinigame()
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/clam")),
@@ -61,11 +64,11 @@ public class DGCollectorsReapFishes
                 )
         );
 
-        register(fish(U.holderItem("collectorsreap", "urchin"))  //no mini game
-                .withBucketedFish(U.holderItem("collectorsreap", "urchin_bucket"))
+        register(fish(new MaybeStack("collectorsreap", "urchin"))  //no mini game
+                .withBucketedFish(new MaybeStack("collectorsreap", "urchin_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "urchin"))
                 .withHasGuideEntry(false)
-                .withSkipMinigame(true)
+                .withSkipsMinigame()
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/urchin")),
@@ -74,19 +77,19 @@ public class DGCollectorsReapFishes
         );
 
 
-        register(fish(U.holderItem("collectorsreap", "chieftain_crab"))
-                .withBucketedFish(U.holderItem("collectorsreap", "chieftain_crab_bucket"))
+        register(fish(new MaybeStack("collectorsreap", "chieftain_crab"))
+                .withBucketedFish(new MaybeStack("collectorsreap", "chieftain_crab_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "chieftain_crab"))
-                .withSizeAndWeight(FishProperties.sizeWeight(28, 8, 260, 60))
-                .withDifficulty(FishProperties.Difficulty.NETHER_CRAB)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
+                .withSizeAndWeight(28, 8, 260, 60)
+                .withDifficulty(Difficulty.NETHER_CRAB)
+                .withRarity(Rarity.UNCOMMON)
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/chieftain_crab")),
                                 List.of(), List.of(), "")
                 )
-                .withAlwaysSpawnEntity(true)
-                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
+                .withAlwaysSpawnEntity()
+                .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
         );
     }
 }

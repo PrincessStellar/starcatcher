@@ -3,11 +3,11 @@ package com.wdiscute.starcatcher.fishentity;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -81,7 +81,7 @@ public class FishEntity extends AbstractFish
 
             for (FishProperties fp : level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
             {
-                if (fp.calculateChance(this, level(), SCItems.ROD.toStack(), AbstractFishRestriction.Context.FISH_ENTITY) > 0 && fp.catchInfo().fish().is(SCTags.BUCKETABLE_FISHES))
+                if (fp.calculateChance(this, level(), SCItems.ROD.toStack(), AbstractFishRestriction.Context.FISH_ENTITY) > 0 && fp.catchInfo().fish().toStack().is(SCTags.BUCKETABLE_FISHES))
                     available.add(fp);
             }
 
@@ -90,7 +90,7 @@ public class FishEntity extends AbstractFish
             else
             {
                 FishProperties fp = available.get(U.r.nextInt(available.size()));
-                ItemStack is = new ItemStack(fp.catchInfo().fish());
+                ItemStack is = fp.catchInfo().fish().toStack();
                 setBodyArmorItem(is);
             }
         }

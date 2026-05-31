@@ -1,21 +1,20 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
-import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.datagen.fish.compat.*;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.*;
+import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -28,33 +27,38 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     static
     {
         COMPAT_KEYS = new HashMap<>();
-        PROPERTIES = new ArrayList<>();
+        PROPERTIES = new HashMap<>();
 
-        //register all entries before anything else
+        //register all entries of built-in compat mods
+
+        //vanilla & starcatcher
         DGTrophies.bootstrap();
         DGMinecraftFishes.bootstrap();
         DGStarcatcherFishes.bootstrap();
+
+        //compat
         DGTideFishes.bootstrap();
         DGAquacultureFishes.bootstrap();
-         DGFishOfThievesFishes.bootstrap();
+        DGFishOfThievesFishes.bootstrap();
         DGNetherDepthsUpgradeFishes.bootstrap();
-        DGSullysModFishes.bootstrap();
-        DGUpgradeAquaticFishes.bootstrap();
         DGEnvironmentalFishes.bootstrap();
-        DGBetterEndFishes.bootstrap();
-        DGCollectorsReapFishes.bootstrap();
         DGMinersDelightFishes.bootstrap();
-        DGAlexsCavesFishes.bootstrap();
         DGCrittersAndCompanionsFishes.bootstrap();
         DGHybridAquaticFishes.bootstrap();
-        DGAquamiraeFishes.bootstrap();
-        DGTerraFirmaCraftFishes.bootstrap();
-        DGUnusualFishFishes.bootstrap();
         DGSpawnFishes.bootstrap();
+
+        //compat 1.20.1 only
+        DGUnusualFishFishes.bootstrap();
+        DGAlexsCavesFishes.bootstrap();
+        DGCollectorsReapFishes.bootstrap();
         DGFintasticFishes.bootstrap();
+        DGSullysModFishes.bootstrap();
+        DGTerraFirmaCraftFishes.bootstrap();
+        DGBetterEndFishes.bootstrap();
+        DGUpgradeAquaticFishes.bootstrap();
     }
 
-    public static final List<Pair<ResourceKey<FishProperties>, FishProperties>> PROPERTIES;
+    public static final Map<ResourceKey<FishProperties>, FishProperties> PROPERTIES;
     public static final Map<ResourceKey<FishProperties>, String> COMPAT_KEYS;
     public static final RegistrySetBuilder REGISTRY = new RegistrySetBuilder().add(Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap);
 
@@ -91,334 +95,363 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
                         "unusualfishmod",
                         "spawn",
                         "fintastic"
-                        //That's a lot of compatibilities
+                        //That's a lot of compatibilities 67
                 ));
     }
 
     static ResourceKey<FishProperties> createKey(FishProperties fp)
     {
-        if (fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
-            return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(fp.catchInfo().fish().getRegisteredName()));
+        ResourceLocation key;
+
+        //if alwaysSpawnEntity, use entity rl instead of item
+        if (fp.catchInfo().alwaysSpawnEntity())
+            key = ResourceLocation.parse(fp.catchInfo().entityToSpawn().getRegisteredName());
+        else
+        {
+            if (fp.catchInfo().fish().isEmpty())
+                key = fp.catchInfo().fish().rl();
+            else
+                key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toStack().getItem());
+        }
+
+        if (fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+        {
+            return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, key);
+        }
 
         return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, ResourceLocation.parse(
-                fp.catchInfo().fish().getKey().location().getNamespace() + ":" +
+                key.getNamespace() + ":" +
                         fp.catchInfo().fishEntryType().name().toLowerCase(Locale.ROOT) + "_" +
-                        fp.catchInfo().fish().getKey().location().getPath()
+                        key.getPath()
         ));
     }
 
-    public static void register(FishProperties.Builder builder)
+    public static void register(FishProperties builder)
     {
-        register(builder, "");
+        register(builder, "", true);
     }
 
-    public static void register(FishProperties.Builder builder, String modLoadedRestriction)
+    public static void registerSpecial(FishProperties builder)
     {
-        FishProperties fp = builder.build();
+        register(builder, "", false);
+    }
+
+    public static void register(FishProperties fp, String modLoadedRestriction, boolean runSpecialStuff)
+    {
+        String modIdOfFish = fp.catchInfo().fish().rl().getNamespace();
+
+        ItemStack fish = fp.catchInfo().fish().toStack();
 
         //if bucketable fish, add bucket and entity
-        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(DeferredHolder::getDelegate).toList().contains(fp.catchInfo().fish())
-        && fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
+        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getDelegate().value()).toList()
+                .stream().anyMatch(fish::is)
+                && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !runSpecialStuff)
         {
-            builder.withBucketedFish(SCItems.STARCAUGHT_BUCKET);
-            builder.withEntityToSpawn(U.holderEntity("starcatcher", "fish"));
-            if (fp.catchInfo().fish().getRegisteredName().contains("starcatcher"))
-                DGStarcatcherFishes.BUCKETABLE_FISHES_EVEN_WITHOUT_MODEL.add(builder.build());
-            fp = builder.build();
+            fp = fp.withCatchInfo(fp.catchInfo().withBucket(new MaybeStack(SCItems.STARCAUGHT_BUCKET)));
+            fp = fp.withCatchInfo(fp.catchInfo().withEntityToSpawn(SCEntities.FISH));
+
+            //if item is from starcatcher, add to list of bucketable fishes, for rarity tagging
+            if (modIdOfFish.equals("starcatcher"))
+                DGStarcatcherFishes.STARCATCHER_FISHABLE.add(fp);
+            DGStarcatcherFishes.FISHABLE.add(fp);
+        }
+
+        if(!runSpecialStuff)
+        {
+            if(fp.rarity().equals(Rarity.LEGENDARY))
+                fp = fp.addBait(BaitRestriction.LEGENDARY_BAIT);
         }
 
         ResourceKey<FishProperties> key = createKey(fp);
 
-        COMPAT_KEYS.put(key, modLoadedRestriction.isEmpty() ? fp.catchInfo().fish().getRegisteredName().split(":")[0] : modLoadedRestriction);
-        PROPERTIES.add(Pair.of(key, fp));
+        COMPAT_KEYS.put(key, modLoadedRestriction.isEmpty() ? modIdOfFish : modLoadedRestriction);
+        PROPERTIES.put(key, fp);
     }
 
     public static void bootstrap(BootstrapContext<FishProperties> context)
     {
-        PROPERTIES.forEach(p -> context.register(p.getFirst(), p.getSecond()));
+        PROPERTIES.forEach(context::register);
     }
-
 
 
     //region builders
-    public static FishProperties.Builder fish(Holder<Item> fish)
+    public static FishProperties fish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish);
+        return FishProperties.empty().withFish(fish);
     }
 
-    public static FishProperties.Builder overworldFish(Holder<Item> fish)
+    public static FishProperties overworldFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD);
     }
 
-    public static FishProperties.Builder endFish(Holder<Item> fish)
+    public static FishProperties endFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.END)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.END)
                 .addModifier(SCMinigameModifiers.TELEPORT);
     }
 
-    public static FishProperties.Builder endOuterIslandsFish(Holder<Item> fish)
+    public static FishProperties endOuterIslandsFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.END_OUTER_ISLANDS)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.END_OUTER_ISLANDS)
                 .addModifier(SCMinigameModifiers.TELEPORT);
     }
 
-    public static FishProperties.Builder netherLavaFish(Holder<Item> fish)
+    public static FishProperties netherLavaFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_LAVA)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder netherLavaCrimsonForestFish(Holder<Item> fish)
+    public static FishProperties netherLavaCrimsonForestFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder netherLavaWarpedForestFish(Holder<Item> fish)
+    public static FishProperties netherLavaWarpedForestFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder netherLavaSoulSandValleyFish(Holder<Item> fish)
+    public static FishProperties netherLavaSoulSandValleyFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder netherLavaBasaltDeltasFish(Holder<Item> fish)
+    public static FishProperties netherLavaBasaltDeltasFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder overworldLushCavesFish(Holder<Item> fish)
+    public static FishProperties overworldLushCavesFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LUSH_CAVES)
-                .addRestrictions(BaitRestriction.LUSH_BAIT);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_LUSH_CAVES)
+                .addBait(BaitRestriction.LUSH_BAIT);
     }
 
-    public static FishProperties.Builder overworldDeepDarkFish(Holder<Item> fish)
+    public static FishProperties overworldDeepDarkFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DEEP_DARK)
-                .addRestrictions(BaitRestriction.SCULK_BAIT);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_DEEP_DARK)
+                .addBait(BaitRestriction.SCULK_BAIT);
     }
 
-    public static FishProperties.Builder overworldSurfaceFish(Holder<Item> fish)
+    public static FishProperties overworldSurfaceFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SURFACE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_SURFACE);
     }
 
-    public static FishProperties.Builder overworldSurfaceLava(Holder<Item> fish)
+    public static FishProperties overworldSurfaceLava(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_SURFACE)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_LAVA_SURFACE)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder overworldCavesFish(Holder<Item> fish)
+    public static FishProperties overworldCavesFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_STONE_CAVES);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_STONE_CAVES);
     }
 
-    public static FishProperties.Builder overworldDripstoneCavesFish(Holder<Item> fish)
+    public static FishProperties overworldDripstoneCavesFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DRIPSTONE_CAVES)
-                .addRestrictions(BaitRestriction.DRIPSTONE_BAIT);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_DRIPSTONE_CAVES)
+                .addBait(BaitRestriction.DRIPSTONE_BAIT);
     }
 
-    public static FishProperties.Builder overworldUndergroundFish(Holder<Item> fish)
+    public static FishProperties overworldUndergroundFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_UNDERGROUND);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_UNDERGROUND);
     }
 
-    public static FishProperties.Builder overworldUndergroundLava(Holder<Item> fish)
+    public static FishProperties overworldUndergroundLava(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_UNDERGROUND)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_LAVA_UNDERGROUND)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder overworldMountainFish(Holder<Item> fish)
+    public static FishProperties overworldMountainFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_MOUNTAIN);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_MOUNTAIN);
     }
 
-    public static FishProperties.Builder overworldDeepslateFish(Holder<Item> fish)
+    public static FishProperties overworldDeepslateFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DEEPSLATE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_DEEPSLATE);
     }
 
-    public static FishProperties.Builder overworldDeepslateLava(Holder<Item> fish)
+    public static FishProperties overworldDeepslateLava(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAVA_DEEPSLATE)
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_LAVA_DEEPSLATE)
                 .addModifier(SCMinigameModifiers.BURN_ON_MISS);
     }
 
-    public static FishProperties.Builder overworldColdLakeFish(Holder<Item> fish)
+    public static FishProperties overworldColdLakeFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_LAKE)
-                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_COLD_LAKE)
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
     }
 
-    public static FishProperties.Builder overworldWarmLakeFish(Holder<Item> fish)
+    public static FishProperties overworldWarmLakeFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_LAKE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_WARM_LAKE);
     }
 
-    public static FishProperties.Builder overworldWarmMountainFish(Holder<Item> fish)
+    public static FishProperties overworldWarmMountainFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_LAKE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_WARM_LAKE);
     }
 
-    public static FishProperties.Builder overworldColdMountainFish(Holder<Item> fish)
+    public static FishProperties overworldColdMountainFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
-                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
     }
 
-    public static FishProperties.Builder overworldColdOceanFish(Holder<Item> fish)
+    public static FishProperties overworldColdOceanFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_OCEAN);
+        return FishProperties.empty().withFish(fish)
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
+                .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN);
     }
 
-    public static FishProperties.Builder overworldColdRiverFish(Holder<Item> fish)
+    public static FishProperties overworldColdRiverFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .withDifficulty(FishProperties.Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_RIVER);
+        return FishProperties.empty().withFish(fish)
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
+                .addRestriction(WorldRestrictions.OVERWORLD_COLD_RIVER);
     }
 
-    public static FishProperties.Builder overworldLakeFish(Holder<Item> fish)
+    public static FishProperties overworldLakeFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_LAKE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_LAKE);
     }
 
-    public static FishProperties.Builder overworldOceanFish(Holder<Item> fish)
+    public static FishProperties overworldOceanFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_ALL_OCEANS);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_ALL_OCEANS);
     }
 
-    public static FishProperties.Builder overworldWarmOceanFish(Holder<Item> fish)
+    public static FishProperties overworldWarmOceanFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_WARM_OCEAN);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN);
     }
 
-    public static FishProperties.Builder overworldDeepOceanFish(Holder<Item> fish)
+    public static FishProperties overworldDeepOceanFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DEEP_OCEAN);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_DEEP_OCEAN);
     }
 
-    public static FishProperties.Builder overworldRiverFish(Holder<Item> fish)
+    public static FishProperties overworldRiverFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_RIVER);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_RIVER);
     }
 
-    public static FishProperties.Builder overworldBeachFish(Holder<Item> fish)
+    public static FishProperties overworldBeachFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_BEACH);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_BEACH);
     }
 
-    public static FishProperties.Builder overworldMushroomFieldsFish(Holder<Item> fish)
+    public static FishProperties overworldMushroomFieldsFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_MUSHROOM_FIELDS);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_MUSHROOM_FIELDS);
     }
 
-    public static FishProperties.Builder overworldBambooJungleFish(Holder<Item> fish)
+    public static FishProperties overworldBambooJungleFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_BAMBOO_JUNGLE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_BAMBOO_JUNGLE);
     }
 
-    public static FishProperties.Builder overworldJungleFish(Holder<Item> fish)
+    public static FishProperties overworldJungleFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_JUNGLE);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE);
     }
 
-    public static FishProperties.Builder overworldTaigaFish(Holder<Item> fish)
+    public static FishProperties overworldTaigaFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_TAIGA);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_TAIGA);
     }
 
-    public static FishProperties.Builder overworldCherryGroveFish(Holder<Item> fish)
+    public static FishProperties overworldCherryGroveFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_CHERRY_GROVE)
-                .addRestrictions(BaitRestriction.CHERRY_BAIT);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_CHERRY_GROVE)
+                .addBait(BaitRestriction.CHERRY_BAIT);
     }
 
-    public static FishProperties.Builder overworldSwampFish(Holder<Item> fish)
+    public static FishProperties overworldSwampFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_SWAMPS)
-                .addRestrictions(BaitRestriction.MURKWATER_BAIT);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_SWAMPS)
+                .addBait(BaitRestriction.MURKWATER_BAIT);
     }
 
-    public static FishProperties.Builder overworldDarkForestFish(Holder<Item> fish)
+    public static FishProperties overworldDarkForestFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_DARK_FOREST);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_DARK_FOREST);
     }
 
-    public static FishProperties.Builder overworldForestFish(Holder<Item> fish)
+    public static FishProperties overworldForestFish(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_FOREST);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_FOREST);
     }
 
-    public static FishProperties.Builder overworldVoidFishing(Holder<Item> fish)
+    public static FishProperties overworldVoidFishing(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_VOID);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_VOID);
     }
 
-    public static FishProperties.Builder netherVoidFishing(Holder<Item> fish)
+    public static FishProperties netherVoidFishing(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.NETHER_VOID);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.NETHER_VOID);
     }
 
-    public static FishProperties.Builder endVoidFishing(Holder<Item> fish)
+    public static FishProperties endVoidFishing(MaybeStack fish)
     {
-        return FishProperties.builder().withFish(fish)
-                .addRestrictions(FishProperties.WorldRestrictions.END_VOID);
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.END_VOID);
     }
 
     //endregion
-
 
 
     @Override

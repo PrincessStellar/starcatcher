@@ -6,7 +6,7 @@ import com.wdiscute.sellingbin.registry.SBDataMaps;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
@@ -24,6 +24,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
@@ -67,7 +68,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         aquarium.add(SCItems.STARCAUGHT_BUCKET, AquariumBlock.Interaction.PLACE_FISH, false);
         aquarium.add(SCTags.BUCKETABLE_FISHES, AquariumBlock.Interaction.PLACE_FISH_CREATIVE, false);
-        aquarium.add(Items.BUCKET.builtInRegistryHolder(), AquariumBlock.Interaction.RETRIEVE_FISH, false);
+        aquarium.add(Tags.Items.BUCKETS, AquariumBlock.Interaction.RETRIEVE_FISH, false);
 
         //compostable
         compostable.add(SCTags.WORMS, new Compostable(0.65F, false), false);
@@ -89,27 +90,27 @@ public class DGSCDataMapsProvider extends DataMapProvider
                     ResourceLocation.fromNamespaceAndPath("quality_food", "iron"), 1.25f
             );
 
-            sellable.add(SCTags.COMMON_ENTRIES, new SBDataMaps.ItemValue(25, List.of(
+            sellable.add(SCTags.COMMON_FISHES, new SBDataMaps.ItemValue(25, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.UNCOMMON_ENTRIES, new SBDataMaps.ItemValue(50, List.of(
+            sellable.add(SCTags.UNCOMMON_FISHES, new SBDataMaps.ItemValue(50, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.RARE_ENTRIES, new SBDataMaps.ItemValue(100, List.of(
+            sellable.add(SCTags.RARE_FISHES, new SBDataMaps.ItemValue(100, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.EPIC_ENTRIES, new SBDataMaps.ItemValue(150, List.of(
+            sellable.add(SCTags.EPIC_FISHES, new SBDataMaps.ItemValue(150, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
 
-            sellable.add(SCTags.LEGENDARY_ENTRIES, new SBDataMaps.ItemValue(200, List.of(
+            sellable.add(SCTags.LEGENDARY_FISHES, new SBDataMaps.ItemValue(200, List.of(
                     new FishProcessor(2, 10f),
                     new QualityFoodsProcessor(qualities)
             )), false);
@@ -236,15 +237,15 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
         //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
 
-        DGSCFishProperties.PROPERTIES.forEach(o ->
+        DGSCFishProperties.PROPERTIES.forEach((k, v) ->
         {
-            String namespace = o.getFirst().location().getNamespace();
+            String namespace = k.location().getNamespace();
 
             //This keeps it from spamming the log
             if (namespace.equals(Starcatcher.MOD_ID) || namespace.equals(ResourceLocation.DEFAULT_NAMESPACE))
-                treasures.add(o.getFirst(), Treasure.VANILLA_FISHING_LOOT_TABLE, false);
+                treasures.add(k, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
             else
-                treasures.add(o.getFirst(), Treasure.VANILLA_FISHING_LOOT_TABLE, false, new ModLoadedCondition(namespace));
+                treasures.add(k, Treasure.VANILLA_FISHING_LOOT_TABLE, false, new ModLoadedCondition(namespace));
         });
 
         treasures.add(Starcatcher.rl("azure_crystalback_minnow"), Treasure.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE, false);

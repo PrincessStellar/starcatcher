@@ -3,8 +3,6 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.SCDataAttachments;
-import com.wdiscute.starcatcher.io.SCDataComponents;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;

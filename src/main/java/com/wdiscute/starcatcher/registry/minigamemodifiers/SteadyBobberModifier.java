@@ -1,8 +1,9 @@
 package com.wdiscute.starcatcher.registry.minigamemodifiers;
 
 import com.mojang.serialization.MapCodec;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
@@ -26,16 +27,16 @@ public class SteadyBobberModifier extends AbstractMinigameModifier
     public ActiveSweetSpot onSpotAdded(ActiveSweetSpot ass)
     {
         super.onSpotAdded(ass);
-        if(ass.baseSS.texturePath().equals(FishProperties.SweetSpot.NORMAL.texturePath()))
+        if(ass.baseSS.texturePath().equals(Difficulty.SweetSpot.NORMAL.texturePath()))
         {
-            ass.texture = FishProperties.SweetSpot.NORMAL_STEADY.texturePath();
-            ass.thickness = FishProperties.SweetSpot.NORMAL_STEADY.size();
+            ass.texture = Difficulty.SweetSpot.NORMAL_STEADY.texturePath();
+            ass.thickness = Difficulty.SweetSpot.NORMAL_STEADY.size();
         }
 
-        if(ass.baseSS.texturePath().equals(FishProperties.SweetSpot.THIN.texturePath()))
+        if(ass.baseSS.texturePath().equals(Difficulty.SweetSpot.THIN.texturePath()))
         {
-            ass.texture = FishProperties.SweetSpot.THIN_STEADY.texturePath();
-            ass.thickness = FishProperties.SweetSpot.THIN_STEADY.size();
+            ass.texture = Difficulty.SweetSpot.THIN_STEADY.texturePath();
+            ass.thickness = Difficulty.SweetSpot.THIN_STEADY.size();
         }
         return ass;
     }

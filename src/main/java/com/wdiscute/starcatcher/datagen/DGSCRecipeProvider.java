@@ -164,7 +164,7 @@ public class DGSCRecipeProvider extends RecipeProvider
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LEGENDARY_BAIT, 16)
                 .requires(Items.BONE_MEAL)
-                .requires(SCTags.LEGENDARY_ENTRIES)
+                .requires(SCTags.LEGENDARY_FISHES)
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("legendary_bait_from_legendary_fish"));
 
@@ -177,7 +177,7 @@ public class DGSCRecipeProvider extends RecipeProvider
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.METEOROLOGICAL_BAIT, 8)
                 .requires(Items.BONE_MEAL)
-                .requires(SCTags.EPIC_ENTRIES)
+                .requires(SCTags.EPIC_FISHES)
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("meteorological_bait_from_epic_fishes"));
 

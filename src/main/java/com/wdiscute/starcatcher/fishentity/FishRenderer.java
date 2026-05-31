@@ -4,17 +4,16 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.registry.SCRenderTypes;
-import com.wdiscute.starcatcher.registry.FishProperties;
-import net.minecraft.client.Minecraft;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -23,11 +22,9 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -118,7 +115,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
         float scale = SCDataComponents.getOrDefault(
                 fish, SCDataComponents.CAUGHT_FISH_INFO,
-                new CaughtFishInfo(100, 100, 50, FishProperties.Rarity.COMMON, false)
+                new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
         ).getScale();
 
         //todo needed?
@@ -169,7 +166,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
     public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem)
     {
-        if (FishProperties.Rarity.isGolden(fishItem))
+        if (Rarity.isGolden(fishItem))
         {
             return SCRenderTypes.RENDER_TYPE_GOLD.apply(texture);
         }

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Random;
@@ -14,7 +14,7 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier{
     private final Random r = new Random();
     public int cooldown = 2;
     public float chance = 0.10f;
-    public FishProperties.SweetSpot sweetSpot;
+    public Difficulty.SweetSpot sweetSpot;
     public boolean sudokuVanish = true;
 
     public static final MapCodec<SpawnSweetSpotsModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
@@ -22,18 +22,18 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier{
                     Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.INT.fieldOf("cooldown").forGetter(mod -> mod.cooldown),
                     Codec.FLOAT.fieldOf("chance").forGetter(mod -> mod.chance),
-                    FishProperties.SweetSpot.CODEC.fieldOf("sweet_spot").forGetter(mod -> mod.sweetSpot),
+                    Difficulty.SweetSpot.CODEC.fieldOf("sweet_spot").forGetter(mod -> mod.sweetSpot),
                     Codec.BOOL.fieldOf("sudoku_vanish").forGetter(mod -> mod.sudokuVanish)
             ).apply(instance, SpawnSweetSpotsModifier::new));
 
-    public SpawnSweetSpotsModifier(int length, int cooldown, float chance, FishProperties.SweetSpot sweetSpot, boolean sudokuVanish) {
+    public SpawnSweetSpotsModifier(int length, int cooldown, float chance, Difficulty.SweetSpot sweetSpot, boolean sudokuVanish) {
         super(length);
         this.cooldown = cooldown;
         this.chance = chance;
         this.sweetSpot = sweetSpot;
     }
 
-    public SpawnSweetSpotsModifier(FishProperties.SweetSpot sweetSpot) {
+    public SpawnSweetSpotsModifier(Difficulty.SweetSpot sweetSpot) {
         super();
         this.sweetSpot = sweetSpot;
     }
@@ -59,9 +59,9 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier{
         }
     }
 
-    public static FishProperties.SweetSpot legacyFreeze(){
-        FishProperties.SweetSpot original = FishProperties.SweetSpot.FREEZE;
-        return new FishProperties.SweetSpot(original.sweetSpotType(), original.texturePath(), original.size(), original.reward(), original.isFlip(), 0.02f, original.movingRate(), original.particleColor());
+    public static Difficulty.SweetSpot legacyFreeze(){
+        Difficulty.SweetSpot original = Difficulty.SweetSpot.FREEZE;
+        return new Difficulty.SweetSpot(original.sweetSpotType(), original.texturePath(), original.size(), original.reward(), original.isFlip(), 0.02f, original.movingRate(), original.particleColor());
     }
 
 }

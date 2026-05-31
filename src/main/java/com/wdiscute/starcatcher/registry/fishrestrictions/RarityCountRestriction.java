@@ -5,10 +5,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.SCDataAttachments;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.registry.SCDataAttachments;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -37,14 +38,14 @@ public class RarityCountRestriction extends AbstractFishRestriction
             ).apply(instance, RarityCountRestriction::new));
 
 
-    public record RarityCount(FishProperties.Rarity rarity, int count, CountType countType)
+    public record RarityCount(Rarity rarity, int count, CountType countType)
     {
 
         public static final Codec<RarityCount> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
                         //golden here is used for "all rarities" as no fish is ever stored with gold rarity.
                         //I don't wanna hear anything from kapiten about this
-                        FishProperties.Rarity.CODEC.optionalFieldOf("rarity", FishProperties.Rarity.NONE).forGetter(RarityCount::rarity),
+                        Rarity.CODEC.optionalFieldOf("rarity", Rarity.NONE).forGetter(RarityCount::rarity),
                         Codec.INT.optionalFieldOf("count", 0).forGetter(RarityCount::count),
                         CountType.CODEC.fieldOf("count_type").forGetter(RarityCount::countType)
                 ).apply(instance, RarityCount::new));
@@ -135,17 +136,17 @@ public class RarityCountRestriction extends AbstractFishRestriction
         return 0;
     }
 
-    static Map<FishProperties.Rarity, Pair<Integer, Integer>> getFishesCaughtCountMap(RarityCount.CountType type, Entity entity)
+    static Map<Rarity, Pair<Integer, Integer>> getFishesCaughtCountMap(RarityCount.CountType type, Entity entity)
     {
         Level level = entity.level();
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE).fishesCaught;
         var registry = FishProperties.getRegistry(level);
         List<FishProperties> allFishes = FishProperties.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
-        Map<FishProperties.Rarity, Pair<Integer, Integer>> map = new HashMap<>();
+        Map<Rarity, Pair<Integer, Integer>> map = new HashMap<>();
 
         //populate default map with all rarities and [0, 0]
-        Arrays.stream(FishProperties.Rarity.values()).forEach(o -> map.put(o, new Pair<>(0, 0)));
+        Arrays.stream(Rarity.values()).forEach(o -> map.put(o, new Pair<>(0, 0)));
 
         for (FishProperties fp : allFishes)
         {
@@ -165,8 +166,8 @@ public class RarityCountRestriction extends AbstractFishRestriction
                 playerCount = 0;
             }
 
-            map.put(FishProperties.Rarity.NONE, Pair.of(map.get(FishProperties.Rarity.NONE).getFirst() + playerCount, map.get(FishProperties.Rarity.NONE).getSecond() + 1));
-            map.put(FishProperties.Rarity.GOLDEN, Pair.of(map.get(FishProperties.Rarity.GOLDEN).getFirst() + (golden ? 1 : 0), map.get(FishProperties.Rarity.GOLDEN).getSecond() + 1));
+            map.put(Rarity.NONE, Pair.of(map.get(Rarity.NONE).getFirst() + playerCount, map.get(Rarity.NONE).getSecond() + 1));
+            map.put(Rarity.GOLDEN, Pair.of(map.get(Rarity.GOLDEN).getFirst() + (golden ? 1 : 0), map.get(Rarity.GOLDEN).getSecond() + 1));
 
             map.compute(fp.rarity(), (k, currentRarityPlayerCount) ->
                     Pair.of(currentRarityPlayerCount.getFirst() + playerCount, currentRarityPlayerCount.getSecond() + 1));
@@ -184,7 +185,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
             Registry<FishProperties> registry = FishProperties.getRegistry(level);
             List<FishProperties> fps = FishProperties.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
 
-            if (rarityCount.rarity.equals(FishProperties.Rarity.NONE))
+            if (rarityCount.rarity.equals(Rarity.NONE))
             {
                 //is every fp in fishes caught?
                 return fps.stream().allMatch(fp -> fishesCaught.containsKey(registry.getKey(fp)));
@@ -192,7 +193,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
             else
             {
                 //all golden check
-                if (rarityCount.rarity == FishProperties.Rarity.GOLDEN)
+                if (rarityCount.rarity == Rarity.GOLDEN)
                 {
                     boolean obtainedEveryFish = fps.stream().allMatch(fp -> fishesCaught.containsKey(registry.getKey(fp)));
 
@@ -212,10 +213,10 @@ public class RarityCountRestriction extends AbstractFishRestriction
         else
         {
 
-            Map<FishProperties.Rarity, Pair<Integer, Integer>> raritiesCaught = getFishesCaughtCountMap(rarityCount.countType, entity);
+            Map<Rarity, Pair<Integer, Integer>> raritiesCaught = getFishesCaughtCountMap(rarityCount.countType, entity);
 
             //if rarity not selected
-            if (rarityCount.rarity.equals(FishProperties.Rarity.NONE))
+            if (rarityCount.rarity.equals(Rarity.NONE))
             {
                 AtomicInteger totalCount = new AtomicInteger();
                 raritiesCaught.forEach((r, i) -> totalCount.addAndGet(i.getFirst()));
@@ -270,13 +271,13 @@ public class RarityCountRestriction extends AbstractFishRestriction
     {
         var map = getFishesCaughtCountMap(rc.countType, entity);
 
-        if (rc.countType.equals(RarityCount.CountType.ALL) && rc.rarity.equals(FishProperties.Rarity.NONE))
+        if (rc.countType.equals(RarityCount.CountType.ALL) && rc.rarity.equals(Rarity.NONE))
             return Component.translatable("gui.guide.rarity_count.all", map.get(rc.rarity).getFirst() + "/" + map.get(rc.rarity).getSecond());
 
         if (rc.countType.equals(RarityCount.CountType.ALL))
             return Component.translatable("gui.guide.rarity_count.all", map.get(rc.rarity).getFirst() + "/" + map.get(rc.rarity).getSecond() + " " + rc.rarity.getSerializedName());
 
-        if (rc.rarity.equals(FishProperties.Rarity.NONE))
+        if (rc.rarity.equals(Rarity.NONE))
             return Component.translatable("gui.guide.rarity_count.single", map.get(rc.rarity).getFirst() + "/" + rc.count + " " + rc.countType);
 
         return Component.translatable("gui.guide.rarity_count.single", map.get(rc.rarity).getFirst() + "/" + rc.count + " " + rc.countType + " " + rc.rarity.getSerializedName());

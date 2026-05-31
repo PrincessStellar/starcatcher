@@ -7,8 +7,10 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:pale_pinfish"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:pale_pinfish"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -52,6 +54,12 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -104,12 +112,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [],
-    "debug_color": -9606670,
-    "name": "zeta_tauri",
-    "x": 2772,
-    "y": 1586
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

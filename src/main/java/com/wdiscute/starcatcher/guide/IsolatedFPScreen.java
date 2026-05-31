@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.guide;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -73,7 +73,7 @@ public class IsolatedFPScreen extends Screen
         FishingGuideScreen.renderFishEntryPage(
                 guiGraphics,
                 fp,
-                new ItemStack(fp.catchInfo().fish().value()),
+                fp.catchInfo().fish().toStack(),
                 FishCaughtCounter.get(Minecraft.getInstance().player, fp),
                 uiX + 31,
                 uiY - 25,

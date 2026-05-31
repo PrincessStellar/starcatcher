@@ -7,7 +7,10 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "item": "starcatcher:ward"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:ward"
+    }
   },
   "difficulty": {
     "decay": 0.0,
@@ -102,6 +105,12 @@
   "rarity": "legendary",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -126,13 +135,8 @@
     {
       "type": "starcatcher:bait",
       "baits": {
+        "starcatcher:legendary_bait": 50,
         "starcatcher:sculk_bait": 50
-      }
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
       }
     }
   ],

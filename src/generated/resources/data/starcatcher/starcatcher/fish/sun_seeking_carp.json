@@ -7,8 +7,10 @@
   ],
   "base_chance": 15,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:sun_seeking_carp"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:sun_seeking_carp"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -98,14 +106,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "tau_tari"
-    ],
-    "debug_color": -9606670,
-    "name": "elnath",
-    "x": 2796,
-    "y": 1512
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

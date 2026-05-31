@@ -19,6 +19,11 @@ group = mod_group_id
 
 repositories
 {
+    //modrinth
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
+
     //emi
     maven {
         name = "TerraformersMC"
@@ -44,11 +49,6 @@ repositories
     maven {
         name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
-    }
-
-    //modrinth
-    maven {
-        url = "https://api.modrinth.com/maven"
     }
 
     //tyson the ember
@@ -107,6 +107,50 @@ dependencies {
 
     compileOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
     runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
+
+
+
+    //datagen compat
+
+    //aquaculture
+    //compileOnly "maven.modrinth:aquaculture:2.7.21"
+    //runtimeOnly "maven.modrinth:aquaculture:2.7.21"
+
+    //critters-and-companions
+    //compileOnly "maven.modrinth:critters-and-companions:1.21.1-2.3.4"
+    //runtimeOnly "maven.modrinth:critters-and-companions:1.21.1-2.3.4"
+
+    //environmental
+    //compileOnly "maven.modrinth:environmental:5.0.1"
+    //runtimeOnly "maven.modrinth:environmental:5.0.1"
+    //runtimeOnly "maven.modrinth:blueprint:8.1.0"
+
+    //fish-of-thieves
+    //compileOnly "maven.modrinth:fish-of-thieves:21.1.1.2-neoforge"
+    //runtimeOnly "maven.modrinth:fish-of-thieves:21.1.1.2-neoforge"
+
+    //hybrid aquatic
+    //compileOnly "maven.modrinth:hybrid-aquatic:1.5.5-neoforge"
+    //runtimeOnly "maven.modrinth:hybrid-aquatic:1.5.5-neoforge"
+
+    //miner's delight
+    //compileOnly "maven.modrinth:miners-delight:1.4.5"
+    //runtimeOnly "maven.modrinth:miners-delight:1.4.5"
+    //runtimeOnly "maven.modrinth:lodestonelib:1.8.2"
+    //runtimeOnly "maven.modrinth:farmers-delight:1.21.1-1.3.2"
+
+    //nether-depths-upgrade
+    //compileOnly "maven.modrinth:nether-depths-upgrade:3.1.8"
+    //runtimeOnly "maven.modrinth:nether-depths-upgrade:3.1.8"
+
+    //spawn-mod
+    //compileOnly "maven.modrinth:spawn-mod:4.0.4"
+    //runtimeOnly "maven.modrinth:spawn-mod:4.0.4"
+
+    //tide
+    //compileOnly "maven.modrinth:tide:2.0.3"
+    //runtimeOnly "maven.modrinth:tide:2.0.3"
+    //runtimeOnly "maven.modrinth:cloth-config:15.0.140+neoforge"
 
 
     //Serene Seasons
@@ -175,7 +219,7 @@ dependencies {
     //sable (Sable's compat)
     compileOnly files(".compatmods/sable-neoforge-1.21.1-1.0.6.jar")
     api "dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:1.4.2"
-  //  runtimeOnly files(".compatmods/sable-neoforge-1.21.1-1.0.6.jar")
+    //runtimeOnly files(".compatmods/sable-neoforge-1.21.1-1.0.6.jar")
 
 }
 

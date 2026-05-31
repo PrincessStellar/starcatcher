@@ -6,9 +6,10 @@ import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.FTBTeamsCompat;
+import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishCaughtPayload;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -153,9 +154,9 @@ public record FishCaughtCounter(
                 FTBTeamsCompat.awardToTeam(player, fpCaught, rl, ticks, size, weight);
 
             if (newFish)
-                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
+                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH));
             else
-                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH));
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH));
 
             fishesCaught.put(loc, fishCaughtCounter);
 

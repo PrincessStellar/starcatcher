@@ -1,7 +1,8 @@
 package com.wdiscute.starcatcher.mixin;
 
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCRenderTypes;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +17,7 @@ public class RenderTypeHelperMixin {
 
     @Inject(method = "getFallbackItemRenderType", at = @At("HEAD"), cancellable = true)
     private static void getFallbackItemRenderType(ItemStack stack, BakedModel model, boolean cull, CallbackInfoReturnable<RenderType> cir) {
-        if (FishProperties.Rarity.isGolden(stack)) {
+        if (Rarity.isGolden(stack)) {
             cir.setReturnValue(SCRenderTypes.RENDER_TYPE_GOLD_ITEM);
         }
     }

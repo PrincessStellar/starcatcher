@@ -1,9 +1,8 @@
 package com.wdiscute.starcatcher.compat.emi;
 
-import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.Treasure;
@@ -44,25 +43,19 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
     public StarcatcherEmiFPRecipe(ResourceLocation id, FishProperties fp)
     {
         this.id = id;
-        this.is = new ItemStack(fp.catchInfo().fish());
+        this.is = fp.catchInfo().fish().toStack();
 
         Holder<FishProperties> holder = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).wrapAsHolder(fp);
         Treasure.TreasureInstance data = holder.getData(SCDataMaps.TREASURE);
-        if(fp.catchInfo().treasureIs().isEmpty())
-        {
-            if (data == null)
-                this.treasure = EmiIngredient.of(Ingredient.of(ItemStack.EMPTY));
-            else
-                this.treasure = EmiIngredient.of(Ingredient.of(data.unpack(Minecraft.getInstance().player)));
-        }
+
+        if (data == null || data.isLootTable())
+            this.treasure = EmiIngredient.of(Ingredient.of(ItemStack.EMPTY));
         else
-        {
-            this.treasure = EmiIngredient.of(Ingredient.of(fp.catchInfo().treasureIs()));
-        }
+            this.treasure = EmiIngredient.of(Ingredient.of(data.unpack(Minecraft.getInstance().player)));
 
         this.fp = fp;
         this.output = EmiIngredient.of(List.of(
-                EmiIngredient.of(Ingredient.of(fp.catchInfo().fish().value())),
+                EmiIngredient.of(Ingredient.of(fp.catchInfo().fish().toStack())),
                 treasure
         ));
 

@@ -3,7 +3,9 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.CatchInfo;
+import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.Rarity;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
@@ -23,18 +25,18 @@ public class DGSCFPTagsProvider extends TagsProvider<FishProperties>
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        DGSCFishProperties.PROPERTIES.forEach(o ->
+        DGSCFishProperties.PROPERTIES.forEach((k, v) ->
         {
-            FishProperties fp = o.getSecond();
-            ResourceLocation location = o.getFirst().location();
-            if(fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH))
+            FishProperties fp = v;
+            ResourceLocation location = k.location();
+            if(fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             {
-                if(fp.rarity().equals(FishProperties.Rarity.TRASH)) tag(SCTags.TRASH_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(FishProperties.Rarity.COMMON)) tag(SCTags.COMMON_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(FishProperties.Rarity.UNCOMMON)) tag(SCTags.UNCOMMON_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(FishProperties.Rarity.RARE)) tag(SCTags.RARE_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(FishProperties.Rarity.EPIC)) tag(SCTags.EPIC_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(FishProperties.Rarity.LEGENDARY)) tag(SCTags.LEGENDARY_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.TRASH)) tag(SCTags.TRASH_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.COMMON)) tag(SCTags.COMMON_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.UNCOMMON)) tag(SCTags.UNCOMMON_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.RARE)) tag(SCTags.RARE_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.EPIC)) tag(SCTags.EPIC_ENTRIES_FP).addOptional(location);
+                if(fp.rarity().equals(Rarity.LEGENDARY)) tag(SCTags.LEGENDARY_ENTRIES_FP).addOptional(location);
             }
         });
 

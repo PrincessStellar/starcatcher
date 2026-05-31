@@ -7,7 +7,10 @@
   ],
   "base_chance": 2,
   "catch_info": {
-    "item": "starcatcher:aurora"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:aurora"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -66,6 +69,12 @@
   "rarity": "legendary",
   "restrictions": [
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -102,14 +111,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "megrez"
-    ],
-    "debug_color": -7146903,
-    "name": "alioth",
-    "x": 2358,
-    "y": 821
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

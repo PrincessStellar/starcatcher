@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.secretnotes;
 
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;

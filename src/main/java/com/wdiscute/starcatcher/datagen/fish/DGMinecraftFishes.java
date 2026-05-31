@@ -2,10 +2,13 @@ package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
-import com.wdiscute.starcatcher.registry.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 
 import java.util.Map;
@@ -19,68 +22,68 @@ public class DGMinecraftFishes
     {
 
         //ocean
-        register(overworldOceanFish(U.holderItem("minecraft", "cod"))
-                .withBucketedFish(U.holderItem("minecraft", "cod_bucket"))
-                .withEntityToSpawn(U.holderEntity("minecraft", "cod"))
-                .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 12000, 7000))
+        register(overworldOceanFish(new MaybeStack(Items.COD))
+                .withBucketedFish(new MaybeStack(Items.COD_BUCKET))
+                .withEntityToSpawn(EntityType.COD.builtInRegistryHolder())
+                .withDifficulty(Difficulty.EASY_MOVING)
+                .withSizeAndWeight(80, 40, 12000, 7000)
         );
 
-        register(overworldOceanFish(U.holderItem("minecraft", "pufferfish"))
-                .withBucketedFish(U.holderItem("minecraft", "pufferfish_bucket"))
-                .withEntityToSpawn(U.holderEntity("minecraft", "pufferfish"))
-                .withSizeAndWeight(FishProperties.sizeWeight(70, 20, 10000, 3000))
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
-                .withRarity(FishProperties.Rarity.UNCOMMON)
+        register(overworldOceanFish(new MaybeStack(Items.PUFFERFISH))
+                .withBucketedFish(new MaybeStack(Items.PUFFERFISH_BUCKET))
+                .withEntityToSpawn(EntityType.PUFFERFISH.builtInRegistryHolder())
+                .withSizeAndWeight(70, 20, 10000, 3000)
+                .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                .withRarity(Rarity.UNCOMMON)
         );
 
 
         //warm ocean
-        register(overworldWarmOceanFish(U.holderItem("minecraft", "tropical_fish"))
-                .withBucketedFish(U.holderItem("minecraft", "tropical_fish_bucket"))
-                .withEntityToSpawn(U.holderEntity("minecraft", "tropical_fish"))
-                .withSizeAndWeight(FishProperties.sizeWeight(70, 20, 10000, 3000))
-                .withDifficulty(FishProperties.Difficulty.MEDIUM_VANISHING)
-                .withRarity(FishProperties.Rarity.RARE)
-                .withDifficulty(FishProperties.Difficulty.FOUR_AQUA)
+        register(overworldWarmOceanFish(new MaybeStack(Items.TROPICAL_FISH))
+                .withBucketedFish(new MaybeStack(Items.TROPICAL_FISH_BUCKET))
+                .withEntityToSpawn(EntityType.TROPICAL_FISH.builtInRegistryHolder())
+                .withSizeAndWeight(70, 20, 10000, 3000)
+                .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                .withRarity(Rarity.RARE)
+                .withDifficulty(Difficulty.FOUR_AQUA)
         );
 
         //river
-        register(overworldRiverFish(U.holderItem("minecraft", "salmon"))
-                .withBucketedFish(U.holderItem("minecraft", "salmon_bucket"))
-                .withEntityToSpawn(U.holderEntity("minecraft", "salmon"))
-                .withSizeAndWeight(FishProperties.sizeWeight(80, 40, 10000, 8000))
+        register(overworldRiverFish(new MaybeStack(Items.SALMON))
+                .withBucketedFish(new MaybeStack(Items.SALMON_BUCKET))
+                .withEntityToSpawn(EntityType.SALMON.builtInRegistryHolder())
+                .withSizeAndWeight(80, 40, 10000, 8000)
         );
 
         //mobs
-        register(fish(BuiltInRegistries.ITEM.wrapAsHolder(Items.NETHER_STAR))
-                .withAlwaysSpawnEntity(true)
-                .withEntityToSpawn(U.holderEntity("minecraft", "wither"))
+        registerSpecial(fish(new MaybeStack(Items.NETHER_STAR))
+                .withAlwaysSpawnEntity()
+                .withEntityToSpawn(EntityType.WITHER.builtInRegistryHolder())
                 .withBaseChance(0)
-                .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), ""))
-                .withDifficulty(FishProperties.Difficulty.WITHER)
-                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
-                .withRarity(FishProperties.Rarity.LEGENDARY)
+                .addBait(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), ""))
+                .withDifficulty(Difficulty.WITHER)
+                .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
+                .withRarity(Rarity.LEGENDARY)
         );
 
-        register(fish(BuiltInRegistries.ITEM.wrapAsHolder(Items.CREEPER_HEAD))
-                .withAlwaysSpawnEntity(true)
-                .withEntityToSpawn(U.holderEntity("minecraft", "creeper"))
+        registerSpecial(fish(new MaybeStack(Items.CREEPER_HEAD))
+                .withAlwaysSpawnEntity()
+                .withEntityToSpawn(EntityType.CREEPER.builtInRegistryHolder())
                 .withBaseChance(0)
                 .addRestrictions(DimensionRestriction.OVERWORLD)
                 .addRestrictions(new BaitRestriction(Map.of(Starcatcher.rl("gunpowder_bait"), 200), ""))
-                .withDifficulty(FishProperties.Difficulty.CREEPER)
-                .withItemToOverrideWith(SCItems.UNKNOWN_FISH)
-                .withRarity(FishProperties.Rarity.EPIC)
+                .withDifficulty(Difficulty.CREEPER)
+                .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
+                .withRarity(Rarity.EPIC)
         );
 
-        register(overworldSurfaceFish(U.holderItem("minecraft", "rotten_flesh"))
-                .withEntityToSpawn(U.holderEntity("minecraft", "drowned"))
+        registerSpecial(overworldSurfaceFish(new MaybeStack(Items.ROTTEN_FLESH))
+                .withEntityToSpawn(EntityType.DROWNED.builtInRegistryHolder())
                 .withBaseChance(1)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withWeather(WeatherRestriction.RAIN)
                 .withHasGuideEntry(false)
                 .withAlwaysSpawnEntity()
-                .withSkipMinigame(true));
+                .withSkipsMinigame());
     }
 }

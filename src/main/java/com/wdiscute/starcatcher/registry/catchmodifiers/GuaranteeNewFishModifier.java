@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.catchmodifiers;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class GuaranteeNewFishModifier extends AbstractCatchModifier
         notCaughtFish.ifPresent(fish ->
         {
             instance.fpToFish = fish;
-            instance.rlToFish = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
+            instance.rlToAwardUponFishingComplete = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
         });
     }
 }

@@ -1,10 +1,11 @@
 package com.wdiscute.starcatcher.registry.items;
 
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.BlockPos;
@@ -100,7 +101,7 @@ public class StarcaughtBucket extends BucketItem
             CaughtFishInfo sw = SCDataComponents.get(ssc.stack(), SCDataComponents.CAUGHT_FISH_INFO);
             if (sw != null)
             {
-                FishProperties.Rarity rarity = sw.golden() ? FishProperties.Rarity.GOLDEN : sw.rarity();
+                Rarity rarity = sw.golden() ? Rarity.GOLDEN : sw.rarity();
                 return Component.translatable("tooltip.starcatcher.starcaught_bucket.name", rarity.wrapWithRarityMarkdown(baseName.getString()));
             }
             else

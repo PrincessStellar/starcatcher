@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;

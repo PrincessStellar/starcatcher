@@ -8,8 +8,14 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "minecraft:tropical_fish",
-    "fish_bucket": "minecraft:tropical_fish_bucket",
-    "item": "minecraft:tropical_fish"
+    "fish_bucket": {
+      "count": 1,
+      "id": "minecraft:tropical_fish_bucket"
+    },
+    "item": {
+      "count": 1,
+      "id": "minecraft:tropical_fish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -63,6 +69,12 @@
   "has_guide_entry": true,
   "rarity": "rare",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [

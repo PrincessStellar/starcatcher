@@ -1,9 +1,9 @@
 {
   "values": {
+    "#c:buckets": "remove_fish",
     "#minecraft:pickaxes": "build_cave",
     "#minecraft:shovels": "build_castle",
     "#starcatcher:bucketable_fishes": "place_fish_creative",
-    "minecraft:bucket": "remove_fish",
     "minecraft:gravel": "place_gravel",
     "minecraft:kelp": "place_kelp",
     "minecraft:red_sand": "place_red_sand",

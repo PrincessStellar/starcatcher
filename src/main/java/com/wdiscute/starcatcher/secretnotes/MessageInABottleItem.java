@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.secretnotes;
 
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;

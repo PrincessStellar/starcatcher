@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher;
 
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -10,9 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +73,7 @@ public class U
     public static FishProperties getFpFromRl(Registry<FishProperties> registry, ResourceLocation resourceLocation)
     {
         FishProperties fp = registry.get(resourceLocation);
-        return fp == null ? FishProperties.builder().build() : fp;
+        return fp == null ? FishProperties.empty() : fp;
     }
 
     public static FishProperties getFpFromRl(RegistryAccess registryAccess, ResourceLocation rl)
@@ -171,21 +169,6 @@ public class U
     public static ResourceLocation rl(String path)
     {
         return ResourceLocation.fromNamespaceAndPath("minecraft", path);
-    }
-
-    public static Holder<Item> holderItem(String ns, String path)
-    {
-        return Holder.Reference.createStandAlone(BuiltInRegistries.ITEM.holderOwner(), ResourceKey.create(Registries.ITEM, rl(ns, path)));
-    }
-
-    public static Holder<Item> holderItem(DeferredItem<Item> item)
-    {
-        return Holder.direct(item.get());
-    }
-
-    public static Holder<Item> holderItem(Item item)
-    {
-        return Holder.direct(item);
     }
 
     public static Holder<EntityType<?>> holderEntity(EntityType<?> entityType)

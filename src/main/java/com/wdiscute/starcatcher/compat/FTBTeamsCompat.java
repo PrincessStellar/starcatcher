@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import dev.ftb.mods.ftbteams.api.Team;
 import dev.ftb.mods.ftbteams.data.TeamManagerImpl;
 import net.minecraft.resources.ResourceLocation;

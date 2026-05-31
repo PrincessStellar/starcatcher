@@ -1,9 +1,12 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 
 import java.util.List;
 
@@ -21,22 +24,22 @@ public class DGSullysModFishes
         //`-----'   `----'  `--' `--' .-'  /         `----'      `--'   `--'  `---'   `---'
         //                            `---'
 
-        register(fish(U.holderItem("sullysmod", "piranha"))
-                .withBucketedFish(U.holderItem("sullysmod", "piranha_bucket"))
+        register(fish(new MaybeStack("sullysmod", "piranha"))
+                .withBucketedFish(new MaybeStack("sullysmod", "piranha_bucket"))
                 .withEntityToSpawn(U.holderEntity("sullysmod", "piranha"))
-                .withSizeAndWeight(FishProperties.sizeWeight(30, 10, 500, 300))
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.HARD_MOVING)
+                .withSizeAndWeight(30, 10, 500, 300)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.HARD_MOVING)
                 .addRestrictions(DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("sullysmod", "biome/piranha_spawn_in")), List.of(), List.of(), ""))
         );
 
-        register(fish(U.holderItem("sullysmod", "lanternfish"))
-                .withBucketedFish(U.holderItem("sullysmod", "lanternfish_bucket"))
+        register(fish(new MaybeStack("sullysmod", "lanternfish"))
+                .withBucketedFish(new MaybeStack("sullysmod", "lanternfish_bucket"))
                 .withEntityToSpawn(U.holderEntity("sullysmod", "lanternfish"))
-                .withSizeAndWeight(FishProperties.sizeWeight(100, 50, 15000, 10000))
-                .withRarity(FishProperties.Rarity.UNCOMMON)
-                .withDifficulty(FishProperties.Difficulty.HARD)
+                .withSizeAndWeight(100, 50, 15000, 10000)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.HARD)
                 .addRestrictions(DimensionRestriction.OVERWORLD,
                         new BiomeRestriction(List.of(), List.of(U.rl("sullysmod", "biome/lanternfish_spawn_in")), List.of(), List.of(), ""))
         );

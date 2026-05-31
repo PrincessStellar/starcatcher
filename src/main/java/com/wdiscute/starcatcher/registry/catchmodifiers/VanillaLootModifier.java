@@ -1,10 +1,10 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -13,7 +13,6 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,19 +22,14 @@ public class VanillaLootModifier extends AbstractCatchModifier
     @Override
     public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
     {
-        this.instance.fpToFish = FishProperties.VANILLA_FISH;
-        this.instance.rlToFish = Starcatcher.rl("missingno");
-    }
-
-    @Override
-    public boolean shouldCancelBeforeSkipsMinigameCheck()
-    {
-        return false;
+        this.instance.fpToFish = FishProperties.empty().withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH));
+        this.instance.rlToAwardUponFishingComplete = Starcatcher.rl("missingno");
     }
 
     @Override
     public void modifyBaseItemStack(ItemStack is)
     {
+        //removes the base item fished
         is.shrink(100);
     }
 

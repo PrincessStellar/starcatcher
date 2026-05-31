@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.sellingbin.jei.SellingBinJeiPlugin;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.Treasure;
@@ -53,13 +53,9 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
         ;
 
         builder.addOutputSlot(44, 2)
-                .addItemStack(recipe.fp.catchInfo().fish().value().getDefaultInstance())
+                .addItemStack(recipe.fp.catchInfo().fish().toStack())
         ;
 
-        if (!recipe.fp.catchInfo().treasureIs().isEmpty())
-            builder.addOutputSlot(64, 2)
-                    .addItemStack(recipe.fp.catchInfo().treasureIs())
-                    ;
     }
 
     public void bookIcon(GuiGraphics draw, int x, int y, int mouseX, int mouseY)
@@ -132,17 +128,12 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
 
             Holder<FishProperties> holder = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).wrapAsHolder(fp);
             Treasure.TreasureInstance data = holder.getData(SCDataMaps.TREASURE);
-            if(fp.catchInfo().treasureIs().isEmpty())
-            {
-                if (data == null)
-                    tre = ItemStack.EMPTY;
-                else
-                    tre = data.unpack(Minecraft.getInstance().player);
-            }
+
+
+            if (data == null)
+                tre = ItemStack.EMPTY;
             else
-            {
-                tre = fp.catchInfo().treasureIs();
-            }
+                tre = data.unpack(Minecraft.getInstance().player);
 
             //aurora
             restrictions.add(fp.getDisplayName());

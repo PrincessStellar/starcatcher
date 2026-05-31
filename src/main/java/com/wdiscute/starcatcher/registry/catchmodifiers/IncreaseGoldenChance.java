@@ -13,7 +13,6 @@ public class IncreaseGoldenChance extends AbstractCatchModifier
         this.increase = increase;
     }
 
-
     @Override
     public boolean shouldBeGolden()
     {

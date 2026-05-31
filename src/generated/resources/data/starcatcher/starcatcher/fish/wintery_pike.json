@@ -7,8 +7,10 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:wintery_pike"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:wintery_pike"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -46,6 +48,12 @@
   "has_guide_entry": true,
   "rarity": "common",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -88,15 +96,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "phecda",
-      "dubhe"
-    ],
-    "debug_color": -7146903,
-    "name": "megrez",
-    "x": 2360,
-    "y": 876
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

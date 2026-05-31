@@ -1,14 +1,12 @@
 package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.bobberentity.FishingBobEntity;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import it.hurts.sskirillss.relics.api.relics.IRelicItem;
 import it.hurts.sskirillss.relics.api.relics.data.AbilityData;
 import it.hurts.sskirillss.relics.api.relics.data.RelicData;
-import it.hurts.sskirillss.relics.api.relics.data.RelicMetricData;
-import it.hurts.sskirillss.relics.api.relics.data.RelicStatisticData;
 import it.hurts.sskirillss.relics.utils.EntityUtils;
 import it.hurts.sskirillss.relics.utils.MathUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -67,8 +65,8 @@ public class ReliquifiedArtifactsCompat
         for (int i = 0; i < bonusCount; i++)
         {
             float percentile = U.r.nextFloat(100);
-            int size = FishProperties.SizeAndWeight.getRandomSize(fbe.fpToFish, percentile);
-            int weight = FishProperties.SizeAndWeight.getRandomWeight(fbe.fpToFish, percentile);
+            int size = SizeAndWeight.getRandomSize(fbe.fpToFish, percentile);
+            int weight = SizeAndWeight.getRandomWeight(fbe.fpToFish, percentile);
             ItemStack is = FishProperties.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, size, weight, percentile, false, player, false);
             items.add(is);
         }

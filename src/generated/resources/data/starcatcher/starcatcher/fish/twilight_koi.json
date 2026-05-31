@@ -7,8 +7,10 @@
   ],
   "base_chance": 25,
   "catch_info": {
-    "fish_bucket": "starcatcher:starcaught_bucket",
-    "item": "starcatcher:twilight_koi"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:twilight_koi"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -42,6 +44,12 @@
   "has_guide_entry": true,
   "rarity": "epic",
   "restrictions": [
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
     {
       "type": "starcatcher:dimension",
       "dimensions": [
@@ -91,14 +99,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "star": {
-    "connections": [
-      "pherkad"
-    ],
-    "debug_color": -890519,
-    "name": "eta_umi",
-    "x": 2634,
-    "y": 765
-  },
   "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

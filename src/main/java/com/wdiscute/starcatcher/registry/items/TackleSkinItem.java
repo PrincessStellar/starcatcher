@@ -1,6 +1,6 @@
 package com.wdiscute.starcatcher.registry.items;
 
-import com.wdiscute.starcatcher.io.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
