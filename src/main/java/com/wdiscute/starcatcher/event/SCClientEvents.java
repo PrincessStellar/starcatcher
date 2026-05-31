@@ -23,16 +23,27 @@ import com.wdiscute.starcatcher.compat.curios.CuriosEvents;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.registry.tackleskin.*;
 import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
+import com.wdiscute.starcatcher.shaders.BakedModelRemapper;
+import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.KeyboardHandler;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class SCClientEvents
@@ -44,6 +55,15 @@ public class SCClientEvents
         {
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
         }
+    }
+
+    @SubscribeEvent
+    public static void onAssetReload(RegisterClientReloadListenersEvent event)
+    {
+        event.registerReloadListener((ResourceManagerReloadListener) resourceManager -> {
+            GoldRenderer.INSTANCE.close();
+            BakedModelRemapper.REMAPPED_MODELS.clear();
+        });
     }
 
     @SubscribeEvent

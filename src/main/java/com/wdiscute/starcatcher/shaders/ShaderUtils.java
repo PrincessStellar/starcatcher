@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher;
+package com.wdiscute.starcatcher.shaders;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;

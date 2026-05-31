@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.registry.SCRenderTypes;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -153,7 +154,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         {
             Item item = itemStack.getItem();
             EntityModel<FishEntity> model = map.get(item);
-            VertexConsumer vertexconsumer = buffer.getBuffer(getGoldRendertype(Starcatcher.rl("textures/entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath() + ".png"), model, itemStack));
+            VertexConsumer vertexconsumer = buffer.getBuffer(getGoldRendertype(Starcatcher.rl("entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath()), model, itemStack));
             model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         }
         else
@@ -169,10 +170,8 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
     public static RenderType getGoldRendertype(ResourceLocation texture, EntityModel<FishEntity> model, ItemStack fishItem)
     {
-        if (FishProperties.Rarity.isGolden(fishItem))
-        {
-            return SCRenderTypes.RENDER_TYPE_GOLD.apply(texture);
-        }
-        return model.renderType(texture);
+        return FishProperties.Rarity.isGolden(fishItem)
+                ? GoldRenderer.INSTANCE.getOrCreateEntity(texture, model::renderType).renderType
+                : model.renderType(GoldRenderer.getTextureLoc(texture));
     }
 }
