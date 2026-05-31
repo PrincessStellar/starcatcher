@@ -27,7 +27,6 @@ public class SCRenderTypes extends RenderType {
     static ShaderInstance rendertypeGuiFadeShader;
     static ShaderInstance goldItemShader;
 
-
     public static ShaderInstance getRendertypeGuiFadeShader() {
         return rendertypeGuiFadeShader;
     }
