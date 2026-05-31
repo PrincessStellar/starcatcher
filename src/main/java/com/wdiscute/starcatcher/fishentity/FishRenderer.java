@@ -12,6 +12,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.registry.SCRenderTypes;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
