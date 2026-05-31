@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.teamtea.eclipticseasons.data.start;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.BlockPos;
@@ -97,6 +98,8 @@ public class FluidRestriction extends AbstractFishRestriction
     public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
     {
         if (!translationOverride.isEmpty()) return Component.translatable(translationOverride);
+
+        if(fluids.size() == 1 && fluids.getFirst().equals(ResourceLocation.withDefaultNamespace("water"))) return Component.empty();
 
         MutableComponent start = Component.translatable("gui.guide.fluid");
 
