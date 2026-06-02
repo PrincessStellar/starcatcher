@@ -55,10 +55,10 @@ public class Starcatcher
     public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEET_SPOT_BEHAVIOUR =
             ResourceKey.createRegistryKey(Starcatcher.rl("sweet_spot_behaviour"));
 
-    public static final ResourceKey<Registry<Supplier<AbstractCatchModifier>>> CATCH_MODIFIERS =
+    public static final ResourceKey<Registry<AbstractCatchModifier>> CATCH_MODIFIERS =
             ResourceKey.createRegistryKey(Starcatcher.rl("catch_modifiers"));
 
-    public static final ResourceKey<Registry<Supplier<AbstractTackleSkin>>> TACKLE_SKIN =
+    public static final ResourceKey<Registry<AbstractTackleSkin>> TACKLE_SKIN =
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
 
     //registry
@@ -77,12 +77,12 @@ public class Starcatcher
             .defaultKey(Starcatcher.rl("normal"))
             .create();
 
-    public static final Registry<Supplier<AbstractCatchModifier>> CATCH_MODIFIERS_REGISTRY = new RegistryBuilder<>(CATCH_MODIFIERS)
+    public static final Registry<AbstractCatchModifier> CATCH_MODIFIERS_REGISTRY = new RegistryBuilder<>(CATCH_MODIFIERS)
             .sync(true)
             .defaultKey(Starcatcher.rl("decrease_lure_time"))
             .create();
 
-    public static final Registry<Supplier<AbstractTackleSkin>> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
+    public static final Registry<AbstractTackleSkin> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
             .sync(true)
             .defaultKey(Starcatcher.rl("pearl"))
             .create();

@@ -3,16 +3,17 @@ package com.wdiscute.starcatcher.registry.catchmodifiers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class SurvivesLavaModifier extends AbstractCatchModifier
+public class RemoveBaseFishedItemModifier extends AbstractCatchModifier
 {
-    public static final MapCodec<SurvivesLavaModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<RemoveBaseFishedItemModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
-            ).apply(instance, SurvivesLavaModifier::new));
+            ).apply(instance, RemoveBaseFishedItemModifier::new));
 
-    public SurvivesLavaModifier(String translationOverride)
+    public RemoveBaseFishedItemModifier(String translationOverride)
     {
         super(translationOverride);
     }
@@ -20,7 +21,7 @@ public class SurvivesLavaModifier extends AbstractCatchModifier
     @Override
     public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
     {
-        return SCCatchModifiers.SURVIVES_LAVA;
+        return SCCatchModifiers.REMOVE_BASE_FISHED_ITEM;
     }
 
     @Override
@@ -30,8 +31,8 @@ public class SurvivesLavaModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean survivesLava()
+    public void modifyBaseItemStack(ItemStack is)
     {
-        return true;
+        is.shrink(999);
     }
 }

@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,9 +18,9 @@ public interface SCDataMaps
             Starcatcher.rl("aquarium_interaction"), Registries.ITEM, AquariumBlock.Interaction.CODEC)
             .synced(AquariumBlock.Interaction.CODEC, true).build();
 
-    DataMapType<Item, List<ResourceLocation>> CATCH_MODIFIERS = DataMapType.builder(
-            Starcatcher.rl("catch_modifiers"), Registries.ITEM, ResourceLocation.CODEC.listOf()
-    ).synced(ResourceLocation.CODEC.listOf(), true).build();
+    DataMapType<Item, List<AbstractCatchModifier>> CATCH_MODIFIERS = DataMapType.builder(
+            Starcatcher.rl("catch_modifiers"), Registries.ITEM, AbstractCatchModifier.CODEC.listOf()
+    ).synced(AbstractCatchModifier.CODEC.listOf(), true).build();
 
     DataMapType<Item, List<ResourceLocation>> MINIGAME_MODIFIERS = DataMapType.builder(
             Starcatcher.rl("minigame_modifiers"), Registries.ITEM, ResourceLocation.CODEC.listOf()

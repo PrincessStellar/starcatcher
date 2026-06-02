@@ -92,21 +92,21 @@ dependencies {
 
     //EMI
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    //runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
     //JEI
     compileOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    //runtimeOnly "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
 
     //ftb teams
     compileOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
-    runtimeOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
+    //runtimeOnly files(".compatmods/ftb-teams-neoforge-2101.1.7.jar")
 
     compileOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
-    runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
+    //runtimeOnly files(".compatmods/ftb-library-neoforge-2101.1.28.jar")
 
     compileOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
-    runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
+    //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
 
 
 

@@ -5,14 +5,14 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class SurvivesLavaModifier extends AbstractCatchModifier
+public class TriggersSkipMinigameModifier extends AbstractCatchModifier implements SkipMinigameIfTriggerFoundModifier.SkipsMinigame
 {
-    public static final MapCodec<SurvivesLavaModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<TriggersSkipMinigameModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
-            ).apply(instance, SurvivesLavaModifier::new));
+            ).apply(instance, TriggersSkipMinigameModifier::new));
 
-    public SurvivesLavaModifier(String translationOverride)
+    public TriggersSkipMinigameModifier(String translationOverride)
     {
         super(translationOverride);
     }
@@ -20,18 +20,12 @@ public class SurvivesLavaModifier extends AbstractCatchModifier
     @Override
     public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
     {
-        return SCCatchModifiers.SURVIVES_LAVA;
+        return SCCatchModifiers.TRIGGER_SKIP_MINIGAME;
     }
 
     @Override
     public MapCodec<? extends AbstractCatchModifier> codec()
     {
         return CODEC;
-    }
-
-    @Override
-    public boolean survivesLava()
-    {
-        return true;
     }
 }

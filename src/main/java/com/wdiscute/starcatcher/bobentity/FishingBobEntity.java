@@ -84,20 +84,26 @@ public class FishingBobEntity extends Projectile
     {
         super(entityType, level);
         this.player = level.isClientSide() ? PlayerGetter.getPlayer() : null;
-        if (player != null) {
+        if (player != null)
+        {
             this.modifiers = SCCatchModifiers.getCatchModifiers(player);
             modifiers.forEach(acm -> acm.onAdd(this));
-        } else {
+        }
+        else
+        {
             this.modifiers = new ArrayList<>();
         }
     }
 
     // This is how you replace the OnlyIn annotation
-    public static class PlayerGetter{
-        public static Player getPlayer(){
+    public static class PlayerGetter
+    {
+        public static Player getPlayer()
+        {
             return Minecraft.getInstance().player;
         }
     }
+
     //server
     public FishingBobEntity(Level level, Player player, ItemStack rod)
     {
@@ -236,7 +242,7 @@ public class FishingBobEntity extends Projectile
                 treasure = modifier.modifyTreasure(treasure, fpToFish, player, this);
 
             //should hide catch from config or modifiers
-            boolean shouldHideCatch = SCConfig.HIDE_TREASURES.get() || modifiers.stream().anyMatch(o -> o.shouldHideCatch());
+            boolean shouldHideCatch = SCConfig.HIDE_TREASURES.get() || modifiers.stream().anyMatch(AbstractCatchModifier::shouldHideCatch);
 
             //create payload
             FishingStartedPayload payload = new FishingStartedPayload(
@@ -389,7 +395,7 @@ public class FishingBobEntity extends Projectile
                 if (!bait.is(Tags.Items.BUCKETS))
                 {
                     bait.shrink(1);
-                    if(bait.getCount() < 5)
+                    if (bait.getCount() < 5)
                     {
                         player.displayClientMessage(Component.translatable("gui.starcatcher.bait_running_low"), true);
                     }
@@ -410,7 +416,7 @@ public class FishingBobEntity extends Projectile
             if (!level().isClientSide) currentState = FishHookState.FLYING;
         }
 
-        if(this.currentState == FishHookState.FISHING)
+        if (this.currentState == FishHookState.FISHING)
             setDeltaMovement(Vec3.ZERO);
 
         //TODO check for water level instead of just blockstate to make the entity sit better in water

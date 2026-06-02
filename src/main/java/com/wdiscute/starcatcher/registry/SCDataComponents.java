@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
+import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
@@ -30,10 +31,12 @@ public interface SCDataComponents
             "bucketed_fish",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
+    
     //signed book system
     DeferredHolder<DataComponentType<?>, DataComponentType<SignedGuide>> SIGNED_GUIDE = register(
             "signed_guide",
             builder -> builder.persistent(SignedGuide.CODEC));
+
 
     //rod menu
     DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BOBBER = register(
@@ -45,6 +48,7 @@ public interface SCDataComponents
 
     DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> HOOK = register(
             "hook", builder -> builder.persistent(SingleStackContainer.CODEC));
+
 
     //storing data on itemstack
     DeferredHolder<DataComponentType<?>, DataComponentType<SecretNote.Note>> SECRET_NOTE = register(
@@ -62,9 +66,9 @@ public interface SCDataComponents
             "minigame_modifiers",
             builder -> builder.persistent(ResourceLocation.CODEC.listOf()));
 
-    DeferredHolder<DataComponentType<?>, DataComponentType<List<ResourceLocation>>> CATCH_MODIFIERS = register(
+    DeferredHolder<DataComponentType<?>, DataComponentType<List<AbstractCatchModifier>>> CATCH_MODIFIERS = register(
             "catch_modifiers",
-            builder -> builder.persistent(ResourceLocation.CODEC.listOf()));
+            builder -> builder.persistent(AbstractCatchModifier.CODEC.listOf()));
 
     DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>> TACKLE_SKIN = register(
             "tackle_skin",
@@ -74,6 +78,7 @@ public interface SCDataComponents
             "netherite_upgraded",
             builder -> builder.persistent(Codec.BOOL));
 
+    //tackle box
     DeferredHolder<DataComponentType<?>, DataComponentType<List<ItemStack>>> TACKLE_BOX_FISHES = register(
             "tackle_box_fishes",
             builder -> builder.persistent(ItemStack.OPTIONAL_CODEC.listOf()));

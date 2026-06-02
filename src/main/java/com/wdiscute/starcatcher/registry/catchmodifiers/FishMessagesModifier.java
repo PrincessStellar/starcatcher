@@ -18,6 +18,11 @@ public class FishMessagesModifier extends AbstractCatchModifier
 {
     private boolean messageFished = false;
 
+    public FishMessagesModifier()
+    {
+        super();
+    }
+
     @Override
     public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
     {

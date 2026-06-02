@@ -7,12 +7,14 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.registry.Treasure;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.catchmodifiers.*;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
@@ -135,53 +137,135 @@ public class DGSCDataMapsProvider extends DataMapProvider
         minigameModifiers.add(SCItems.LEAF_BOBBER, List.of(SCMinigameModifiers.ADD_LEAVES.getId()), false);
         minigameModifiers.add(SCItems.SLIMEY_BOBBER, List.of(SCMinigameModifiers.BOUNCE_BACK.getId()), false);
         minigameModifiers.add(SCItems.DEV_WORM, List.of(SCMinigameModifiers.NEVER_LOSE.getId()), false);
+
         //catch modifiers
-        catchModifiers.add(SCItems.SHINY_HOOK, List.of(SCCatchModifiers.HIDE_CATCH.getFirst()), false);
-        catchModifiers.add(SCItems.ECHOING_HOOK, List.of(SCCatchModifiers.GUARANTEE_NEW_FISH_ALWAYS.getFirst()), false);
-        catchModifiers.add(SCItems.AMETHYST_HOOK, List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
-        catchModifiers.add(SCItems.GOLD_HOOK, List.of(SCCatchModifiers.ADD_5_GOLDEN_CHANCE.getFirst()), false);
-        catchModifiers.add(SCItems.STONE_HOOK, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.SPLIT_HOOK, List.of(SCCatchModifiers.EXTRA_ITEM.getFirst()), false);
-        catchModifiers.add(SCItems.VANILLA_BOBBER, List.of(SCCatchModifiers.VANILLA_LOOT.getFirst()), false);
-        catchModifiers.add(SCItems.VANILLA_HOOK, List.of(SCCatchModifiers.SKIP_MINIGAME_IF_VANILLA_LOOT.getFirst()), false);
-        catchModifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(SCCatchModifiers.SURVIVES_LAVA.getFirst()), false);
+        catchModifiers.add(SCItems.SHINY_HOOK, List.of(
+                new HideCatchModifier(1, "")
+        ), false);
 
-        catchModifiers.add(SCItems.WORM, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst(), SCCatchModifiers.FISH_ENTITY.getFirst()), false);
-        catchModifiers.add(SCItems.SEEKING_WORM, List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst(), SCCatchModifiers.GUARANTEE_NEW_FISH_HALF.getFirst()), false);
+        catchModifiers.add(SCItems.ECHOING_HOOK, List.of(
+                new NewCatchIncreaseModifier(5, "")
+        ), false);
 
-        catchModifiers.add(SCItems.GUNPOWDER_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.CHERRY_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.LUSH_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.SCULK_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.DRIPSTONE_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.MURKWATER_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.LEGENDARY_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
-        catchModifiers.add(SCItems.METEOROLOGICAL_BAIT, List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst(), SCCatchModifiers.IGNORE_DAYTIME_AND_WEATHER_RESTRICTIONS.getFirst()), false);
+        catchModifiers.add(SCItems.AMETHYST_HOOK, List.of(
+                new SurvivesLavaModifier("")
+        ), false);
+
+        catchModifiers.add(SCItems.GOLD_HOOK, List.of(
+                new IncreaseGoldenChanceModifier(0.05f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.STONE_HOOK, List.of(
+                new AdjustLureTimeModifier(0.05f, 0.05f, 0.05f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.SPLIT_HOOK, List.of(
+                new ExtraBaseCatchModifier(1, "")
+        ), false);
+
+        catchModifiers.add(SCItems.VANILLA_BOBBER, List.of(
+                new AddLootTableToFishedItemsModifier(ResourceLocation.withDefaultNamespace("gameplay/fishing"), ""),
+                new RemoveBaseFishedItemModifier(""),
+                new ModifyAwardFishRlModifier(Starcatcher.rl("missingno"), ""),
+                new OverrideFishPropertiesModifier(FishProperties.empty().withFish(new MaybeStack(SCItems.UNKNOWN_FISH)), "hide"),
+                new TriggersSkipMinigameModifier("")
+        ), false);
+
+        catchModifiers.add(SCItems.VANILLA_HOOK, List.of(
+                new SkipMinigameIfTriggerFoundModifier("")
+        ), false);
+
+        catchModifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(
+                new SurvivesLavaModifier("")
+        ), false);
+
+
+        //worms
+        catchModifiers.add(SCItems.WORM, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.ALMIGHTY_WORM, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, ""),
+                new ForceFishEntityModifier(1, "")
+        ), false);
+
+        catchModifiers.add(SCItems.SEEKING_WORM, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, ""),
+                new NewCatchIncreaseModifier(2, "")
+        ), false);
 
         catchModifiers.add(SCItems.DEV_WORM, List.of(
-                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
-                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
-                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
-                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst(),
-                SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst()), false);
+                new AdjustLureTimeModifier(6f, 6f, 6f, "")
+        ), false);
+
+        //baits
+        catchModifiers.add(SCItems.GUNPOWDER_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.CHERRY_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.LUSH_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.SCULK_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.DRIPSTONE_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.MURKWATER_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.LEGENDARY_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")
+        ), false);
+
+        catchModifiers.add(SCItems.METEOROLOGICAL_BAIT, List.of(
+                new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, ""),
+                new IgnoreDaytimeRestrictionsModifier(1f, ""),
+                new IgnoreWeatherRestrictionsModifier(1f, "")
+        ), false);
+
 
         //angler's hat (artifacts / reliquified artifacts compat)
-        catchModifiers.add(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("artifacts", "anglers_hat")), List.of(SCCatchModifiers.ANGLERS_HAT.getFirst()), false);
+        catchModifiers.add(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("artifacts", "anglers_hat")),
+                List.of(
+                        new AnglersHatModifier("")
+                ), false);
+
 
 
         //hats
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_BLACK.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.EXTRA_ITEM.getFirst(), SCCatchModifiers.HIDE_CATCH.getFirst()), false);
+                List.of(
+                        new ExtraBaseCatchModifier(2, ""),
+                        new HideCatchModifier(1, "")
+                ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_GREEN.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()), false);
+                List.of(
+                        new ExtraExpBasedOnPerformanceModifier("")
+                ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_LIME.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.ADD_CREEPER.getFirst(), SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst()), false);
+                List.of(
+                        new AddToAvailablePoolModifier(""),
+                        SCCatchModifiers.ADD_CREEPER.getFirst(),
+                        SCCatchModifiers.BIG_DECREASES_LURE_TIME.getFirst()
+                ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_YELLOW.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE.getFirst()), false);
+                List.of(
+                        SCCatchModifiers.EXTRA_EXP_BASED_ON_PERFORMANCE.getFirst()
+                ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_RED.asItem().builtInRegistryHolder(),
                 List.of(
@@ -193,7 +277,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 List.of(
                         SCMinigameModifiers.FLIP_EVERY_HIT.getId()
                 ), false);
-
 
         minigameModifiers.add(SCBlocks.FISHERMAN_HAT_PINK.asItem().builtInRegistryHolder(),
                 List.of(
@@ -212,13 +295,20 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_BLUE.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.DECREASES_LURE_TIME.getFirst()), false);
+                List.of(
+                        SCCatchModifiers.ADJUST_LURE_TIME.getFirst()
+                ), false);
 
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem().builtInRegistryHolder(),
-                List.of(SCCatchModifiers.INCREASE_LURE_TIME.getFirst()), false);
+                List.of(
+                        SCCatchModifiers.INCREASE_LURE_TIME.getFirst()
+                ), false);
 
         minigameModifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem().builtInRegistryHolder(),
-                List.of(SCMinigameModifiers.ADD_AQUA_SWEET_SPOT.getId(), SCMinigameModifiers.FREEZE_ON_MISS.getId()), false);
+                List.of(
+                        SCMinigameModifiers.ADD_AQUA_SWEET_SPOT.getId(),
+                        SCMinigameModifiers.FREEZE_ON_MISS.getId()
+                ), false);
 
 
         //tackle skins

@@ -71,11 +71,14 @@ public class TooltipEvents
         ResourceLocation rl = SCTackleSkins.getTackleSkin(stack);
         if (!rl.equals(SCTackleSkins.BASE_TACKLE_SKIN))
         {
-            comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
             String s = I18n.get("tooltip.tackle." + rl.toLanguageKey());
             if (!s.isEmpty())
+            {
+                comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
                 comp.add(Component.literal(" -").append(Component.literal(s))
                         .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
+            }
+
         }
 
         //modifiers
