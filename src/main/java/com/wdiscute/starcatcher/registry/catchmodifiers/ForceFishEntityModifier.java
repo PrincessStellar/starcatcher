@@ -36,6 +36,6 @@ public class ForceFishEntityModifier extends AbstractCatchModifier
     @Override
     public boolean forceSpawnEntity()
     {
-        return true;
+        return instance.level().getRandom().nextFloat() < chance;
     }
 }

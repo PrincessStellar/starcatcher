@@ -39,18 +39,18 @@ public abstract class AbstractCatchModifier
         this.translationOverride = translationOverride;
     }
 
-    public List<Component> getNonOverriddenDescription()
+    public List<Component> getNonOverriddenDescription(boolean shift)
     {
         return List.of(Component.translatable("tooltip.modifier." + getRegistryHolder().getId().toLanguageKey()));
     }
 
-    public final List<Component> getDescription()
+    public final List<Component> getDescription(boolean shift)
     {
         if(translationOverride.equals("hide")) return List.of();
 
         if(translationOverride.isEmpty())
         {
-            return getNonOverriddenDescription();
+            return getNonOverriddenDescription(shift);
         }
 
         return List.of(Component.translatable(translationOverride));
@@ -165,7 +165,7 @@ public abstract class AbstractCatchModifier
         return false;
     }
 
-    public boolean shouldBeGolden()
+    public boolean shouldBeGolden(int time, boolean treasure, boolean perfect, int hits)
     {
         return false;
     }

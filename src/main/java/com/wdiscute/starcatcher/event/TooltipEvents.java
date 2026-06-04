@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
@@ -83,7 +84,7 @@ public class TooltipEvents
 
         //modifiers
         List<ResourceLocation> minigameModifiersRLs = SCMinigameModifiers.getMinigameModifiersRLs(stack);
-        List<ResourceLocation> catchModifiersRLs = SCCatchModifiers.getCatchModifiersRLs(stack);
+        List<AbstractCatchModifier> catchModifiersRLs = SCCatchModifiers.getCatchModifiersRLs(stack);
         if (!minigameModifiersRLs.isEmpty() || !catchModifiersRLs.isEmpty() && !stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
         {
             List<Component> modComp = new ArrayList<>();
@@ -94,10 +95,10 @@ public class TooltipEvents
             {
                 minigameModifiersRLs.forEach(o ->
                 {
-                    if (entity.level().registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(o) != null)
+                    if (entity.level().registryAccess().registryOrThrow(Starcatcher.MINIGAME_MODIFIERS).get(o) != null)
                     {
                         String s = I18n.get("tooltip.modifier." + o.toLanguageKey());
-                        if (!s.isEmpty())
+                        if (!s.isEmpty() && !s.equals("hide"))
                             modComp.add(Component.literal(" -").append(Component.literal(s))
                                     .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
                     }
@@ -105,15 +106,14 @@ public class TooltipEvents
 
                 //add catch modifiers
                 catchModifiersRLs.forEach(o ->
-                {
-                    if (entity.level().registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(o) != null)
-                    {
-                        String s = I18n.get("tooltip.modifier." + o.toLanguageKey());
-                        if (!s.isEmpty())
-                            modComp.add(Component.literal(" -").append(Component.literal(s))
-                                    .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
-                    }
-                });
+                        o.getDescription(hasShiftDown).forEach(
+                                c ->
+                                {
+                                    if (!c.getString().equals("hide") && !c.getString().isEmpty())
+                                        modComp.add(Component.literal(" -").append(c)
+                                                .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
+                                })
+                );
 
                 if (!modComp.isEmpty())
                     comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));

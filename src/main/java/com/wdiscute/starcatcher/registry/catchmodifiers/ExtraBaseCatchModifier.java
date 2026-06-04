@@ -36,10 +36,4 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
     {
         return CODEC;
     }
-
-    @Override
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
-    {
-        return items;
-    }
 }

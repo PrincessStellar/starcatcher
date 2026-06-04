@@ -392,8 +392,7 @@ public record FishProperties(
         return fish;
     }
 
-    public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure,
-                                                  boolean perfectCatch, int hits)
+    public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
     {
         ServerLevel level = ((ServerLevel) player.level());
 
@@ -431,7 +430,7 @@ public record FishProperties(
                 //golden if got lucky & hasn't caught golden yet
                 boolean golden = U.r.nextFloat() < fp.sizeWeight().goldenChance() && FishCaughtCounter.canCatchGolden(fp, player);
                 //golden if previous, or any modifier overrides it to be golden
-                golden = golden || fbe.modifiers.stream().anyMatch(AbstractCatchModifier::shouldBeGolden);
+                golden = golden || fbe.modifiers.stream().anyMatch(o -> o.shouldBeGolden(time, completedTreasure, perfectCatch, hits));
 
                 if (fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
 

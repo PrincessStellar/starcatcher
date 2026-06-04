@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.catchmodifiers;
 
+import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
@@ -11,6 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
@@ -20,7 +22,19 @@ public class FishMessagesModifier extends AbstractCatchModifier
 
     public FishMessagesModifier()
     {
-        super();
+        super("");
+    }
+
+    @Override
+    public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
+    {
+        return SCCatchModifiers.EMPTY;
+    }
+
+    @Override
+    public MapCodec<? extends AbstractCatchModifier> codec()
+    {
+        return EmptyCatchModifier.CODEC;
     }
 
     @Override

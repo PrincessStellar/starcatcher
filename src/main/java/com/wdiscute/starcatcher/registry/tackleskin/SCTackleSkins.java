@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public interface SCTackleSkins
 {
-    DeferredRegister<Supplier<AbstractTackleSkin>> REGISTRY =
+    DeferredRegister<AbstractTackleSkin> REGISTRY =
             DeferredRegister.create(Starcatcher.TACKLE_SKIN_REGISTRY, Starcatcher.MOD_ID);
 
     //base
@@ -50,7 +50,7 @@ public interface SCTackleSkins
 
     static ResourceLocation registerCatchModifier(String name, Supplier<AbstractTackleSkin> sup)
     {
-        REGISTRY.register(name, () -> sup);
+        REGISTRY.register(name, sup);
         return Starcatcher.rl(name);
     }
 
@@ -65,8 +65,8 @@ public interface SCTackleSkins
         {
             ResourceLocation rl = SCDataComponents.get(itemInHand, SCDataComponents.TACKLE_SKIN);
 
-            Optional<Supplier<AbstractTackleSkin>> optional = level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
-            if (optional.isPresent()) return optional.get().get();
+            Optional<AbstractTackleSkin> optional = level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
+            if (optional.isPresent()) return optional.get();
         }
         return new BaseTackleSkin();
     }

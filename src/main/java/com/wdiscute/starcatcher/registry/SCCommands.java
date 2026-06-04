@@ -374,26 +374,29 @@ public interface SCCommands
         return 1;
     }
 
-    private static int addCatchModifier(ServerPlayer player, ResourceKey<Supplier<AbstractCatchModifier>> modifier) throws CommandSyntaxException
+    private static int addCatchModifier(ServerPlayer player, ResourceKey<AbstractCatchModifier> modifier) throws CommandSyntaxException
     {
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
 
         if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
         {
-            List<ResourceLocation> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS));
-            mods.add(modifier.location());
+            List<AbstractCatchModifier> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS));
+
+            mods.add(player.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(modifier));
+
             SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, mods);
         }
         else
         {
-            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, List.of(modifier.location()));
+            AbstractCatchModifier abs = player.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(modifier);
+            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, List.of(abs));
         }
 
         return 1;
     }
 
-    private static int addTackleSkin(ServerPlayer player, ResourceKey<Supplier<AbstractTackleSkin>> tackleSkin) throws CommandSyntaxException
+    private static int addTackleSkin(ServerPlayer player, ResourceKey<AbstractTackleSkin> tackleSkin) throws CommandSyntaxException
     {
         ItemStack stack = player.getMainHandItem();
         if (!stack.is(SCTags.RODS)) throw ERROR_ROD.create(null);

@@ -51,12 +51,6 @@ public class AddLootTableToFishedItemsModifier extends AbstractCatchModifier
     }
 
     @Override
-    public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
-    {
-        this.instance.fpToFish = FishProperties.empty().withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH));
-    }
-
-    @Override
     public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         Level level = instance.level();
@@ -64,8 +58,8 @@ public class AddLootTableToFishedItemsModifier extends AbstractCatchModifier
         LootParams lootparams = new LootParams.Builder((ServerLevel) level)
                 .withParameter(LootContextParams.ORIGIN, instance.position())
                 .withParameter(LootContextParams.TOOL, instance.rod)
-                .withParameter(LootContextParams.THIS_ENTITY, instance)
-                .withParameter(LootContextParams.ATTACKING_ENTITY, instance.getOwner())
+                .withParameter(LootContextParams.THIS_ENTITY, player)
+                .withParameter(LootContextParams.ATTACKING_ENTITY, player)
                 .withLuck(player.getLuck())
                 .create(LootContextParamSets.FISHING);
 

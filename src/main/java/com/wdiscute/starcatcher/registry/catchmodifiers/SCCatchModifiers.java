@@ -9,7 +9,6 @@ import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
-import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -48,8 +47,8 @@ public interface SCCatchModifiers
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> MODIFY_AWARD_FISH = register("modify_award_fish",
             new ModifyAwardFishRlModifier(Starcatcher.rl("missingno"), ""));
 
-    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> OVERRIDE_MINIGAME_FISH = register("override_minigame_fish",
-            new OverrideFishPropertiesModifier(FishProperties.empty().withFish(new MaybeStack(SCItems.UNKNOWN_FISH)), ""));
+    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> OVERRIDE_FISH_CAUGHT = register("override_fish_caught",
+            new OverrideFishPropertiesModifier(FishProperties.empty().withFish(new MaybeStack(Starcatcher.rl("unknown_fish"))), ""));
 
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> TRIGGER_SKIP_MINIGAME = register("trigger_skip_minigame",
             new TriggersSkipMinigameModifier(""));
@@ -67,7 +66,7 @@ public interface SCCatchModifiers
 
     //almighty worm
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> FORCE_FISH_ENTITY =
-            register("force_fish_entity", new ForceFishEntityModifier(""));
+            register("force_fish_entity", new ForceFishEntityModifier(1,""));
 
 
     //split hook
@@ -99,9 +98,8 @@ public interface SCCatchModifiers
 
 
     //golden
-    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> INCREASE_GOLDEN_CHANCE =
-            register("increase_golden_chance", new IncreaseGoldenChanceModifier(1f, ""));
-
+    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> EXTRA_GOLDEN_CHANCE =
+            register("extra_golden_chance", new ExtraGoldenRiskModifier(1f, false, ""));
 
     //hide catch
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> HIDE_CATCH =
@@ -111,6 +109,10 @@ public interface SCCatchModifiers
     //angler's hat (artifacts / reliquified artifacts compat)
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> ANGLERS_HAT =
             register("anglers_hat", new AnglersHatModifier(""));
+
+    //lime hat
+    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> ADD_TO_AVAILABLE_POOL = register("add_to_available_pool",
+            new AddToAvailablePoolModifier(FishProperties.empty(), Starcatcher.rl("missingno"), 0, ""));
 
 
     static DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> register(String name, AbstractCatchModifier sup)

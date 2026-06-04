@@ -6,6 +6,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdjustLureTimeModifier extends AbstractCatchModifier
@@ -18,7 +20,7 @@ public class AdjustLureTimeModifier extends AbstractCatchModifier
             instance.group(
                     Codec.FLOAT.fieldOf("min_ticks_multiplier").forGetter(o -> o.minTicks),
                     Codec.FLOAT.fieldOf("max_ticks_multiplier").forGetter(o -> o.maxTicks),
-                    Codec.FLOAT.fieldOf("change_every_tick_multiplier").forGetter(o -> o.randomness),
+                    Codec.FLOAT.fieldOf("chance_every_tick_multiplier").forGetter(o -> o.randomness),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, AdjustLureTimeModifier::new));
 
@@ -31,9 +33,35 @@ public class AdjustLureTimeModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<Component> getNonOverriddenDescription()
+    public List<Component> getNonOverriddenDescription(boolean shift)
     {
-        return List.of();
+        if(shift)
+        {
+            List<Component> list = new ArrayList<>();
+
+            var format = new DecimalFormat("#.##");
+
+            list.add(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.shift.min_ticks", format.format(minTicks * 100)));
+            list.add(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.shift.max_ticks", format.format(maxTicks * 100)));
+            list.add(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.shift.random", format.format(randomness * 100)));
+
+            return list;
+        }
+        else
+        {
+            float total = (minTicks + maxTicks) / 2;
+
+            if(total > 2f)
+                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.big_increase"));
+
+            if(total > 1f)
+                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.increase"));
+
+            if(total < 0.75f)
+                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.big_decrease"));
+
+            return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.decrease"));
+        }
     }
 
     @Override

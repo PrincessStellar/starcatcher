@@ -275,10 +275,12 @@
 
   "tooltip.modifier.starcatcher.add_creeper": "An ill-tempered friend might show up",
 
-  "tooltip.modifier.starcatcher.guarantee_golden": "A golden fish will be caught if possible",
-  "tooltip.modifier.starcatcher.add_5_golden_chance": "Slightly increases the chances of catching a golden fish",
-  "tooltip.modifier.starcatcher.add_50_golden_chance": "Tremendously increases the chances of catching a golden fish",
-  "tooltip.modifier.starcatcher.cancel_golden": "You can no longer catch golden fishes",
+  "tooltip.modifier.starcatcher.extra_golden_chance.perfect": "Perfect catches are more likely to become golden",
+  "tooltip.modifier.starcatcher.extra_golden_chance.perfect.shift": "Perfect catches are %s%% more likely to become golden",
+  "tooltip.modifier.starcatcher.extra_golden_chance.base": "A golden fish is more likely to bite",
+  "tooltip.modifier.starcatcher.extra_golden_chance.base.shift": "A golden fish is %s%% more likely to bite",
+
+
 
   "tooltip.modifier.starcatcher.anglers_hat": "",
 
@@ -312,20 +314,38 @@
 
   "tooltip.modifier.starcatcher.flip_every_hit": "Flip every time you hit a sweet-spot",
 
-  "tooltip.modifier.starcatcher.ignore_daytime_and_weather_restrictions": "Ignores fish daytime & weather restrictions",
 
-  "tooltip.modifier.starcatcher.decrease_lure_time": "Decreases lure time",
-  "tooltip.modifier.starcatcher.big_decrease_lure_time": "Decreases lure time greatly",
-  "tooltip.modifier.starcatcher.increase_lure_time": "Increases lure time",
+
+
+
+
+  "tooltip.modifier.starcatcher.adjust_lure_time.big_decrease": "Tremendously decreases lure time",
+  "tooltip.modifier.starcatcher.adjust_lure_time.decrease": "Decreases lure time",
+  "tooltip.modifier.starcatcher.adjust_lure_time.increase": "Increases lure time",
+  "tooltip.modifier.starcatcher.adjust_lure_time.big_increase": "Tremendously increases lure time",
+
+  "tooltip.modifier.starcatcher.adjust_lure_time.shift.min_ticks": "Adjusts minimum ticks to fish by %s%%",
+  "tooltip.modifier.starcatcher.adjust_lure_time.shift.max_ticks": "Adjusts maximum ticks to fish by %s%%",
+  "tooltip.modifier.starcatcher.adjust_lure_time.shift.random": "Adjusts the chance of biting every tick by %s%%",
+
+
+  "tooltip.modifier.starcatcher.vanilla_bobber": "Restores vanilla fishing loot",
+
+  "tooltip.modifier.starcatcher.ignore_daytime_restrictions": "Ignores fishing daytime restrictions",
+  "tooltip.modifier.starcatcher.ignore_daytime_restrictions.maybe": "Fishing daytime restrictions will sometimes be bypassed",
+  "tooltip.modifier.starcatcher.ignore_daytime_restrictions.shift": "%s%% chance of ignoring fishing daytime restrictions",
+
+  "tooltip.modifier.starcatcher.ignore_weather_restrictions": "Ignores fishing weather restrictions",
+  "tooltip.modifier.starcatcher.ignore_weather_restrictions.maybe": "Fishing weather restrictions will sometimes be bypassed",
+  "tooltip.modifier.starcatcher.ignore_weather_restrictions.shift": "%s%% chance of ignoring fishing weather restrictions",
+
+
+
 
   "tooltip.modifier.starcatcher.faster_handle_speed": "Increases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slightly_faster_handle_speed": "Slightly increases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slightly_slower_handle_speed": "Slightly decreases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slower_handle_speed": "Decreases the handle's rotation speed",
-
-  "tooltip.modifier.starcatcher.vanilla_loot": "Restores vanilla fishing loot",
-
-  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_loot": "Skips minigame when used alongside the vanilla-flavoured bobber",
 
   "tooltip.modifier.starcatcher.extra_exp_based_on_performance": "Extra exp is awarded based on your performance",
 
@@ -400,39 +420,13 @@
 
 
   "item.starcatcher.gunpowder_bait": "Gunpowder Bait",
-  "tooltip.starcatcher.gunpowder_bait.0": "An attempt at a bait made from gunpowder.",
-  "tooltip.starcatcher.gunpowder_bait.1": "No angler has attempted to use it before,",
-  "tooltip.starcatcher.gunpowder_bait.2": "probably for a good reason.",
-
   "item.starcatcher.cherry_bait": "Cherry Bait",
-  "tooltip.starcatcher.cherry_bait.0": "A bait made of pink petals which fish",
-  "tooltip.starcatcher.cherry_bait.1": "common to cherry groves love.",
-
   "item.starcatcher.lush_bait": "Lush Bait",
-  "tooltip.starcatcher.lush_bait.0": "A lush bait made mostly of moss which",
-  "tooltip.starcatcher.lush_bait.1": "often attracts fish living in the Lush Caves.",
-
   "item.starcatcher.sculk_bait": "Sculk Bait",
-  "tooltip.starcatcher.sculk_bait.0": "A silent bait made from sculk remains",
-  "tooltip.starcatcher.sculk_bait.1": "known for attracting even the quietest",
-  "tooltip.starcatcher.sculk_bait.2": "fish down in the Deep Dark.",
-
   "item.starcatcher.dripstone_bait": "Dripstone Bait",
-  "tooltip.starcatcher.dripstone_bait.0": "A hard bait made from dripstone,",
-  "tooltip.starcatcher.dripstone_bait.1": "sure to charm in even the stiffest of fishes.",
-
   "item.starcatcher.murkwater_bait": "Murkwater Bait",
-  "tooltip.starcatcher.murkwater_bait.0": "A murky bait suited for swamp fishing.",
-
   "item.starcatcher.meteorological_bait": "Meteorological Bait",
-  "tooltip.starcatcher.meteorological_bait.0": "This slightly-magical bait attracts fish",
-  "tooltip.starcatcher.meteorological_bait.1": "who would usually only come out during",
-  "tooltip.starcatcher.meteorological_bait.2": "specific weather! Very handy.",
-
   "item.starcatcher.legendary_bait": "Legendary Bait",
-  "tooltip.starcatcher.legendary_bait.name": "<sclegendary>Legendary Bait</sclegendary>",
-  "tooltip.starcatcher.legendary_bait.0": "A shiny golden bait which <sclegendary>legendary</sclegendary>",
-  "tooltip.starcatcher.legendary_bait.1": "fish can't seem to swim past.",
 
 
   "tooltip.starcatcher.templates": "Cosmetic Template:",
@@ -542,7 +536,6 @@
   "block.starcatcher.trophy_of_the_older_angler" : "Trophy Of The Older Angler",
 
   "block.starcatcher.display" : "Starcatcher's Display",
-  "tooltip.starcatcher.display.0" : "wip",
 
   "item.starcatcher.award_all_fishes" : "Award All Fishes",
   "item.starcatcher.award_one_fish" : "Award One Fish",

@@ -4,8 +4,12 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.text.DecimalFormat;
+import java.util.List;
 
 public class IgnoreWeatherRestrictionsModifier extends AbstractCatchModifier implements WeatherRestriction.SkipsWeatherRestriction
 {
@@ -24,6 +28,18 @@ public class IgnoreWeatherRestrictionsModifier extends AbstractCatchModifier imp
     }
 
     @Override
+    public List<Component> getNonOverriddenDescription(boolean shift)
+    {
+        if(shift)
+            return List.of(Component.translatable("tooltip.modifier.starcatcher.ignore_weather_restrictions", new DecimalFormat("#.##").format(chance * 100)));
+
+        if(chance >= 1)
+            return List.of(Component.translatable("tooltip.modifier.starcatcher.ignore_weather_restrictions"));
+        else
+            return List.of(Component.translatable("tooltip.modifier.starcatcher.ignore_weather_restrictions.maybe"));
+    }
+
+    @Override
     public boolean shouldSkipWeather(Level level)
     {
         return level.getRandom().nextFloat() < chance;
@@ -32,7 +48,7 @@ public class IgnoreWeatherRestrictionsModifier extends AbstractCatchModifier imp
     @Override
     public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
     {
-        return SCCatchModifiers.IGNORE_DAYTIME_RESTRICTION;
+        return SCCatchModifiers.IGNORE_WEATHER_RESTRICTION;
     }
 
     @Override

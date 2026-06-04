@@ -51,6 +51,8 @@ public class FishingBobEntity extends Projectile
     public static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> VOID = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.BOOLEAN);
 
+    public static final List<AbstractCatchModifier> MODIFIERS_TO_ADD = new ArrayList<>(){{add(new FishMessagesModifier());}};
+
     public final Player player;
     private FishHookState currentState;
     public FishProperties fpToFish;
@@ -115,7 +117,7 @@ public class FishingBobEntity extends Projectile
         this.modifiers = SCCatchModifiers.getCatchModifiers(player);
 
         //add fish messages modifier
-        modifiers.add(new FishMessagesModifier());
+        modifiers.addAll(MODIFIERS_TO_ADD);
 
         SingleStackContainer ssc = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty());
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));

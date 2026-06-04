@@ -27,7 +27,7 @@ public class OverrideFishPropertiesModifier extends AbstractCatchModifier
     @Override
     public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
     {
-        return SCCatchModifiers.EMPTY;
+        return SCCatchModifiers.OVERRIDE_FISH_CAUGHT;
     }
 
     @Override
