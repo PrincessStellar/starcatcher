@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -179,6 +180,31 @@ public interface SCMinigameModifiers
         rls.addAll(SCDataComponents.getOrDefault(bobber, SCDataComponents.MINIGAME_MODIFIERS, List.of()));
 
         return rls;
+    }
+
+    static List<ResourceLocation> getMinigameModifiersRLs(Player player)
+    {
+        List<ResourceLocation> modifiers = new ArrayList<>();
+
+        //rod
+        ItemStack main = player.getMainHandItem();
+        ItemStack off = player.getOffhandItem();
+
+        if (main.is(SCTags.RODS))
+            modifiers.addAll(getMinigameModifiersRLs(main));
+        else if (player.getOffhandItem().is(SCTags.RODS))
+            modifiers.addAll(getMinigameModifiersRLs(off));
+
+        //armor
+        player.getInventory().armor.forEach(o -> modifiers.addAll(getMinigameModifiersRLs(o)));
+
+        //curios
+        if (ModList.get().isLoaded("curios"))
+        {
+            CuriosCompat.getItems(player).forEach(o -> modifiers.addAll(getMinigameModifiersRLs(o)));
+        }
+
+        return modifiers;
     }
 
 

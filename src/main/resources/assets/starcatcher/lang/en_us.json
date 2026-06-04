@@ -190,62 +190,19 @@
   "item.starcatcher.starcatcher_rod": "Starcatcher's Rod",
 
   "item.starcatcher.naturalist_rod": "Naturalist Rod",
-  "tooltip.starcatcher.naturalist_rod.0": "A lost rod found very rarely in forests.",
-  "tooltip.starcatcher.naturalist_rod.1": "It appears to be nothing more than a",
-  "tooltip.starcatcher.naturalist_rod.2": "stick and a twine.",
-
   "item.starcatcher.iceborn_rod": "Iceborn Rod",
-  "tooltip.starcatcher.iceborn_rod.0": "A frozen rod made by an Iceborn, left",
-  "tooltip.starcatcher.iceborn_rod.1": "behind in a cold ocean for you to find.",
-
   "item.starcatcher.magmaforged_rod": "Magmaforged Rod",
-  "tooltip.starcatcher.magmaforged_rod.0": "A rod forged from magma.",
-  "tooltip.starcatcher.magmaforged_rod.1": "Found very rarely in Basalt Deltas.",
-
   "item.starcatcher.slimed_rod": "Slimed Rod",
-  "tooltip.starcatcher.slimed_rod.0": "A slimy rod found rarely in",
-  "tooltip.starcatcher.slimed_rod.1": "a waterlogged satchels.",
-
   "item.starcatcher.sharktooth_rod": "Sharktooth Rod",
-  "tooltip.starcatcher.sharktooth_rod.0": "A toy rod crafted to look like a shark.",
-  "tooltip.starcatcher.sharktooth_rod.1": "Left behind inside a satchel by whoever owned in.",
-
   "item.starcatcher.azure_crystal_rod": "Azure Crystal Rod",
-  "tooltip.starcatcher.azure_crystal_rod.0": "A <sclegendary>Legendary</sclegendary> rod made of pure azure crystals.",
-  "tooltip.starcatcher.azure_crystal_rod.1": "It's said the <scuncommon>Older Anglers</scuncommon> gift this rod",
-  "tooltip.starcatcher.azure_crystal_rod.2": "to those who greed for a treasure whilst catching an <sclegendary>Azure Crystalback Minnow</sclegendary>",
-
   "item.starcatcher.good_old_rod": "Good Ol' Rod",
-  "tooltip.starcatcher.good_old_rod.0": "A simple rod, now supportive of bobbers, hooks and baits.",
-  "tooltip.starcatcher.good_old_rod.1": "Found rarely in satchels.",
-
   "item.starcatcher.bamboo_rod": "Bamboo Rod",
-  "tooltip.starcatcher.bamboo_rod.0": "A rod built of bamboo, found rarely in bamboo jungles.",
-
   "item.starcatcher.obsidian_rod": "Obsidian Rod",
-  "tooltip.starcatcher.obsidian_rod.0": "A tough rod made of obsidian.",
-  "tooltip.starcatcher.obsidian_rod.1": "Found rarely in surface lava lakes,",
-  "tooltip.starcatcher.obsidian_rod.2": "was it purposely thrown in?",
-
   "item.starcatcher.alpha_rod": "Alpha Rod",
-  "tooltip.starcatcher.alpha_rod.0": "A rod reminiscing of old times.",
-  "tooltip.starcatcher.alpha_rod.1": "Found inside satchels.",
-
   "item.starcatcher.boner_rod": "Boner Rod",
-  "tooltip.starcatcher.boner_rod.0": "A rod made of bones...",
-  "tooltip.starcatcher.boner_rod.1": "Fished up in soulsand valleys...",
-
   "item.starcatcher.sky_rod": "Sky Rod",
-  "tooltip.starcatcher.sky_rod.0": "A rod made amongst the clouds.",
-  "tooltip.starcatcher.sky_rod.1": "Found very rarely when fishing close to heaven",
-
   "item.starcatcher.lush_glowberry_rod": "Lush Glowberry Rod",
-  "tooltip.starcatcher.lush_glowberry_rod.0": "A glowing glowberry rod that glows just like glowberries.",
-  "tooltip.starcatcher.lush_glowberry_rod.1": "Rarely fished up in lush caves.",
-
   "item.starcatcher.humble_rod": "Humble Rod",
-  "tooltip.starcatcher.humble_rod.0": "A very humble rod found rarely in rivers.",
-
 
   "item.starcatcher.starcatcher_guide": "Starcatcher's Guide",
   "tooltip.starcatcher.starcatcher_guide.0": "An angler's best companion, keeping track",
@@ -264,6 +221,7 @@
 
 
   "tooltip.starcatcher.modifiers": "Fishing Modifiers:",
+  "tooltip.starcatcher.modifiers.rod": "<scepic><u>Active Modifiers:</scepic></u>",
 
   "tooltip.modifier.starcatcher.prevent_frozen": "Prevents your handle from freezing up",
 
@@ -339,8 +297,10 @@
   "tooltip.modifier.starcatcher.ignore_weather_restrictions.maybe": "Fishing weather restrictions will sometimes be bypassed",
   "tooltip.modifier.starcatcher.ignore_weather_restrictions.shift": "%s%% chance of ignoring fishing weather restrictions",
 
+  "tooltip.modifier.starcatcher.new_catch_increase.shift" : "Increases the base chance of every uncaught fish by an extra %s",
+  "tooltip.modifier.starcatcher.new_catch_increase" : "Increases the likelihood of a new catch biting",
 
-
+  "tooltip.modifier.starcatcher.cancel_golden" : "You can no longer catch golden fishes",
 
   "tooltip.modifier.starcatcher.faster_handle_speed": "Increases the handle's rotation speed",
   "tooltip.modifier.starcatcher.slightly_faster_handle_speed": "Slightly increases the handle's rotation speed",
@@ -354,12 +314,7 @@
   "tooltip.modifier.starcatcher.guarantee_new_fish_always": "If available, an undiscovered fish will bite",
   "tooltip.modifier.starcatcher.guarantee_new_fish_half": "An undiscovered fish is more likely to bite",
 
-  "tooltip.modifier.starcatcher.extra_item": "An extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_two_item": "Two extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_three_item": "Three extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_five_item": "Five extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_ten_item": "A bunch of extra fish will come alongside your catch",
-  "tooltip.modifier.starcatcher.extra_thirty_two_item": "A whole school will come alongside your catch",
+  "tooltip.modifier.starcatcher.extra_base_catch": "%s extra fish will come alongside your catch",
 
 
   "tooltip.tackle.starcatcher.kimbe": "Kimbe",
@@ -407,13 +362,8 @@
 
 
   "item.starcatcher.worm": "Worm",
-  "tooltip.starcatcher.worm.0": "A common worm found by bonemealing some farmland.",
-
   "item.starcatcher.seeking_worm": "Seeking Worm",
-  "tooltip.starcatcher.seeking_worm.0": "A very rare worm found by bonemealing some farmland.",
-
   "item.starcatcher.almighty_worm": "Almighty Worm",
-  "tooltip.starcatcher.almighty_worm.0": "A rare worm found by bonemealing some farmland.",
 
   "item.starcatcher.dev_worm": "Dev Worm",
   "tooltip.starcatcher.dev_worm.0": "A worm that ignores all fish restrictions. For dev use.",

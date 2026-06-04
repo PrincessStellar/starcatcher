@@ -51,7 +51,7 @@ public class AddLootTableToFishedItemsModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         Level level = instance.level();
 

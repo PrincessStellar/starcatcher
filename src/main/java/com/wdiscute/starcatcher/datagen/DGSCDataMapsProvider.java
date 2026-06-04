@@ -157,11 +157,11 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         catchModifiers.add(SCItems.STONE_HOOK, List.of(
-                new AdjustLureTimeModifier(0.05f, 0.05f, 0.05f, "")
+                new AdjustLureTimeModifier(1.2f, 1.6f, 1f, "")
         ), false);
 
         catchModifiers.add(SCItems.SPLIT_HOOK, List.of(
-                new ExtraBaseCatchModifier(1, "")
+                new ExtraBaseCatchModifier(1, true, "")
         ), false);
 
         catchModifiers.add(SCItems.VANILLA_BOBBER, List.of(
@@ -169,7 +169,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
                         "tooltip.modifier.starcatcher.vanilla_bobber"),
                 new RemoveBaseFishedItemModifier("hide"),
                 new ModifyAwardFishRlModifier(Starcatcher.rl("missingno"), "hide"),
-                new OverrideFishPropertiesModifier(FishProperties.empty().withFish(new MaybeStack(SCItems.UNKNOWN_FISH)), "hide"),
+                new OverrideFishPropertiesModifier(FishProperties.empty().withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH)), "hide"),
                 new TriggersSkipMinigameModifier("hide")
         ), false);
 
@@ -248,7 +248,21 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //hats
         catchModifiers.add(SCBlocks.FISHERMAN_HAT_BLACK.asItem().builtInRegistryHolder(),
                 List.of(
-                        new ExtraBaseCatchModifier(2, ""),
+                        new ExtraBaseCatchModifier(1, false, ""),
+                        new HideCatchModifier(1, "")
+                ), false);
+
+
+        catchModifiers.add(SCBlocks.FISHERMAN_HAT_GRAY.asItem().builtInRegistryHolder(),
+                List.of(
+                        new ExtraBaseCatchModifier(3, true, ""),
+                        new HideCatchModifier(1, "")
+                ), false);
+
+        catchModifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_GRAY.asItem().builtInRegistryHolder(),
+                List.of(
+                        new ExtraBaseCatchModifier(3, false, ""),
+                        new CancelGoldenModifier(""),
                         new HideCatchModifier(1, "")
                 ), false);
 

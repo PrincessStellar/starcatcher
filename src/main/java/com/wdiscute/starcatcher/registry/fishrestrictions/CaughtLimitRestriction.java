@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -80,7 +81,7 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
 
     private int getCaughtCounter(FishProperties fp, Entity entity)
     {
-        ResourceLocation fpkey = FishProperties.getKey(entity.level(), fp);
+        ResourceLocation fpkey = FishApi.getKey(entity.level(), fp);
         if (fpkey == null) return 0;
         FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE);
         FishCaughtCounter fcc = fishingGuideAttachment.fishesCaught.get(fpkey);

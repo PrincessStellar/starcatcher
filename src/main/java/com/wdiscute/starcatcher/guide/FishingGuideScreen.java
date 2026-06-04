@@ -224,7 +224,7 @@ public class FishingGuideScreen extends Screen
 
         fishInArea = new ArrayList<>();
 
-        for (FishProperties fp : FishProperties.getAllFPs(level))
+        for (FishProperties fp : FishApi.getAllFPs(level))
         {
             if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_IN_AREA) > 0)
                 fishInArea.add(fp);
@@ -232,12 +232,12 @@ public class FishingGuideScreen extends Screen
 
         fishCaughtCounterMap = FishingGuideAttachment.getFishesCaught(player);
 
-        for (FishProperties fp : FishProperties.getAllFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
+        for (FishProperties fp : FishApi.getAllFPs(level)) if (fp.hasGuideEntry()) entries.add(fp);
         entries = sortEntries(SCConfig.SORT.get(), entries, player);
         fishInArea = sortEntries(SCConfig.SORT.get(), fishInArea, player);
 
-        trophies = FishProperties.getTrophies(level);
-        secrets = FishProperties.getSecrets(level);
+        trophies = FishApi.getTrophies(level);
+        secrets = FishApi.getSecrets(level);
 
         trophiesIS = new ArrayList<>();
         trophies.forEach(t ->
@@ -1327,7 +1327,7 @@ public class FishingGuideScreen extends Screen
             renderItem(new ItemStack(SCItems.MISSINGNO.get()), xOffset, yOffset, 1);
 
         //render fish notification icon
-        if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification() && !fpsSeen.contains(FishProperties.getKey(level, fp)))
+        if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification() && !fpsSeen.contains(FishApi.getKey(level, fp)))
             guiGraphics.renderOutline(xOffset - 1, yOffset - 1, 18, 18, 0xffc58c44);
         //guiGraphics.blit(STAR, xOffset + 10, yOffset + 7, 0, 0, 10, 10, 10, 10);
 

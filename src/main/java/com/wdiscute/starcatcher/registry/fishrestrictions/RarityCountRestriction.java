@@ -6,6 +6,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
@@ -141,8 +142,8 @@ public class RarityCountRestriction extends AbstractFishRestriction
         Level level = entity.level();
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE).fishesCaught;
-        var registry = FishProperties.getRegistry(level);
-        List<FishProperties> allFishes = FishProperties.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
+        var registry = FishApi.getRegistry(level);
+        List<FishProperties> allFishes = FishApi.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
         Map<Rarity, Pair<Integer, Integer>> map = new HashMap<>();
 
         //populate default map with all rarities and [0, 0]
@@ -182,8 +183,8 @@ public class RarityCountRestriction extends AbstractFishRestriction
 
         if (rarityCount.countType == RarityCount.CountType.ALL)
         {
-            Registry<FishProperties> registry = FishProperties.getRegistry(level);
-            List<FishProperties> fps = FishProperties.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
+            Registry<FishProperties> registry = FishApi.getRegistry(level);
+            List<FishProperties> fps = FishApi.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
 
             if (rarityCount.rarity.equals(Rarity.NONE))
             {
@@ -199,7 +200,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
 
                     if (obtainedEveryFish)
                         //if obtained every fish and every fp has corresponding fishesCaught entry with caughtGolden
-                        return fps.stream().allMatch(o -> fishesCaught.get(FishProperties.getKey(level, o)).caughtGolden());
+                        return fps.stream().allMatch(o -> fishesCaught.get(FishApi.getKey(level, o)).caughtGolden());
 
                     return false;
                 }

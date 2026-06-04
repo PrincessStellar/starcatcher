@@ -66,12 +66,12 @@ public interface SCCatchModifiers
 
     //almighty worm
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> FORCE_FISH_ENTITY =
-            register("force_fish_entity", new ForceFishEntityModifier(1,""));
+            register("force_fish_entity", new ForceFishEntityModifier(1, ""));
 
 
     //split hook
-    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> EXTRA_BASE_DROPS =
-            register("extra_base_catch_drops", new ExtraBaseCatchModifier(1, ""));
+    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> EXTRA_BASE_CATCH =
+            register("extra_base_catch", new ExtraBaseCatchModifier(1, false, ""));
 
 
     //gold hook
@@ -100,6 +100,10 @@ public interface SCCatchModifiers
     //golden
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> EXTRA_GOLDEN_CHANCE =
             register("extra_golden_chance", new ExtraGoldenRiskModifier(1f, false, ""));
+
+    //cancel golden
+    DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> CANCEL_GOLDEN =
+            register("cancel_golden", new CancelGoldenModifier(""));
 
     //hide catch
     DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> HIDE_CATCH =
@@ -134,23 +138,23 @@ public interface SCCatchModifiers
         ItemStack off = player.getOffhandItem();
 
         if (main.is(SCTags.RODS))
-            modifiers.addAll(getCatchModifiersRLs(main));
+            modifiers.addAll(getCatchModifiers(main));
         else if (player.getOffhandItem().is(SCTags.RODS))
-            modifiers.addAll(getCatchModifiersRLs(off));
+            modifiers.addAll(getCatchModifiers(off));
 
         //armor
-        player.getInventory().armor.forEach(o -> modifiers.addAll(getCatchModifiersRLs(o)));
+        player.getInventory().armor.forEach(o -> modifiers.addAll(getCatchModifiers(o)));
 
         //curios
         if (ModList.get().isLoaded("curios"))
         {
-            CuriosCompat.getItems(player).forEach(o -> modifiers.addAll(getCatchModifiersRLs(o)));
+            CuriosCompat.getItems(player).forEach(o -> modifiers.addAll(getCatchModifiers(o)));
         }
 
         return modifiers;
     }
 
-    static List<AbstractCatchModifier> getCatchModifiersRLs(ItemStack itemStack)
+    static List<AbstractCatchModifier> getCatchModifiers(ItemStack itemStack)
     {
         List<AbstractCatchModifier> modifiers = new ArrayList<>(SCDataComponents.getOrDefault(itemStack, SCDataComponents.CATCH_MODIFIERS, List.of()));
 
@@ -170,6 +174,8 @@ public interface SCCatchModifiers
         modifiers.addAll(SCDataComponents.getOrDefault(hook, SCDataComponents.CATCH_MODIFIERS, List.of()));
         modifiers.addAll(SCDataComponents.getOrDefault(bait, SCDataComponents.CATCH_MODIFIERS, List.of()));
         modifiers.addAll(SCDataComponents.getOrDefault(bobber, SCDataComponents.CATCH_MODIFIERS, List.of()));
+
+
 
         return modifiers;
     }

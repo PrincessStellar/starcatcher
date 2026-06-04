@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.compat.emi;
 
 import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipe;
@@ -99,7 +100,7 @@ public class StarcatcherEmiPlugin implements EmiPlugin
                 ),
                 SellingBin.rl("/hats")));
 
-        Registry<FishProperties> fps = FishProperties.getRegistry(Minecraft.getInstance().level);
+        Registry<FishProperties> fps = FishApi.getRegistry(Minecraft.getInstance().level);
 
         for (FishProperties fp : fps)
             registry.addRecipe(new StarcatcherEmiFPRecipe(fps.getKey(fp), fp));

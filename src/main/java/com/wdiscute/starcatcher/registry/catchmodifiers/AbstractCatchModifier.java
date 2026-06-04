@@ -120,7 +120,7 @@ public abstract class AbstractCatchModifier
 
     public boolean clearDefaultPool()
     {
-        return true;
+        return false;
     }
 
     public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
@@ -175,12 +175,12 @@ public abstract class AbstractCatchModifier
         return false;
     }
 
-    public void modifyBaseItemStack(ItemStack is)
+    public boolean shouldSkipAddingBaseItem(ItemStack is)
     {
-
+        return false;
     }
 
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         return List.of();
     }
@@ -193,5 +193,10 @@ public abstract class AbstractCatchModifier
     public boolean shouldHideCatch()
     {
         return false;
+    }
+
+    public float modifyPercentile(float percentile)
+    {
+        return percentile;
     }
 }

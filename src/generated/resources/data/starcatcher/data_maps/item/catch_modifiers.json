@@ -74,8 +74,9 @@
     ],
     "starcatcher:fisherman_hat_black": [
       {
-        "type": "starcatcher:extra_base_catch_drops",
-        "count": 2,
+        "type": "starcatcher:extra_base_catch",
+        "count": 1,
+        "only_for_perfect_catch": false,
         "translation_override": ""
       },
       {
@@ -91,6 +92,19 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:fisherman_hat_gray": [
+      {
+        "type": "starcatcher:extra_base_catch",
+        "count": 3,
+        "only_for_perfect_catch": true,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:hide_catch",
+        "chance": 1.0,
+        "translation_override": ""
+      }
+    ],
     "starcatcher:fisherman_hat_green": [
       {
         "type": "starcatcher:extra_exp_based_on_performance",
@@ -103,6 +117,23 @@
         "chance_every_tick_multiplier": 1.4,
         "max_ticks_multiplier": 1.4,
         "min_ticks_multiplier": 1.4,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:fisherman_hat_light_gray": [
+      {
+        "type": "starcatcher:extra_base_catch",
+        "count": 3,
+        "only_for_perfect_catch": false,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:cancel_golden",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:hide_catch",
+        "chance": 1.0,
         "translation_override": ""
       }
     ],
@@ -310,17 +341,18 @@
     ],
     "starcatcher:split_hook": [
       {
-        "type": "starcatcher:extra_base_catch_drops",
+        "type": "starcatcher:extra_base_catch",
         "count": 1,
+        "only_for_perfect_catch": true,
         "translation_override": ""
       }
     ],
     "starcatcher:stone_hook": [
       {
         "type": "starcatcher:adjust_lure_time",
-        "chance_every_tick_multiplier": 0.05,
-        "max_ticks_multiplier": 0.05,
-        "min_ticks_multiplier": 0.05,
+        "chance_every_tick_multiplier": 1.0,
+        "max_ticks_multiplier": 1.6,
+        "min_ticks_multiplier": 1.2,
         "translation_override": ""
       }
     ],
@@ -344,7 +376,8 @@
         "fish_properties": {
           "base_chance": 5,
           "catch_info": {
-            "item": {
+            "item": "minecraft:air",
+            "override_minigame_item": {
               "count": 1,
               "id": "starcatcher:unknown_fish"
             }

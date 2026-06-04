@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.bobentity;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -31,7 +32,6 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -177,20 +177,20 @@ public class FishingBobEntity extends Projectile
         modifiers.forEach(AbstractCatchModifier::onReelStart);
 
         //if any non-fish is available, select it
-        for (FishProperties fp : FishProperties.getNonFishes(level()))
+        for (FishProperties fp : FishApi.getNonFishes(level()))
         {
             int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
 
             if (chance > 0)
             {
                 fpToFish = fp;
-                rlToAwardUponFishingComplete = FishProperties.getKey(level(), fp);
+                rlToAwardUponFishingComplete = FishApi.getKey(level(), fp);
                 break;
             }
         }
 
         //add available fish to list if no trophy/secret/extra was available
-        for (FishProperties fp : FishProperties.getFishes(level()))
+        for (FishProperties fp : FishApi.getFishes(level()))
         {
             int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
             for (int i = 0; i < chance; i++) available.add(fp);
@@ -214,7 +214,7 @@ public class FishingBobEntity extends Projectile
         if (fpToFish == null)
         {
             fpToFish = available.get(random.nextInt(available.size()));
-            rlToAwardUponFishingComplete = FishProperties.getKey(level(), fpToFish);
+            rlToAwardUponFishingComplete = FishApi.getKey(level(), fpToFish);
         }
 
         //trigger modifiers for which fish to get based on available
@@ -232,12 +232,12 @@ public class FishingBobEntity extends Projectile
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
                 || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
         {
-            FishProperties.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
+            FishApi.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
         }
         else
         {
             //load treasure itemstack
-            treasure = fpToFish.getTreasure(((ServerPlayer) player));
+            treasure = FishApi.getTreasure(((ServerPlayer) player), fpToFish);
 
             //trigger modifiers to modify treasure fished
             for (AbstractCatchModifier modifier : modifiers)

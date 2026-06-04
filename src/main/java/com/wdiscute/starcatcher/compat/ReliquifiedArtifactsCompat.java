@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
-import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import it.hurts.sskirillss.relics.api.relics.IRelicItem;
 import it.hurts.sskirillss.relics.api.relics.data.AbilityData;
@@ -67,7 +67,7 @@ public class ReliquifiedArtifactsCompat
             float percentile = U.r.nextFloat(100);
             int size = SizeAndWeight.getRandomSize(fbe.fpToFish, percentile);
             int weight = SizeAndWeight.getRandomWeight(fbe.fpToFish, percentile);
-            ItemStack is = FishProperties.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, size, weight, percentile, false, player, false);
+            ItemStack is = FishApi.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, size, weight, percentile, false, player, false);
             items.add(is);
         }
 

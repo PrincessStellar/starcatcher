@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.compat.ReliquifiedArtifactsCompat;
 import com.wdiscute.starcatcher.fish.CatchInfo;
+import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -49,7 +50,7 @@ public class AnglersHatModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<ItemStack> addToFishedItems(int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
     {
         if (instance.fpToFish.catchInfo().alwaysSpawnEntity() ||
                 instance.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity) ||

@@ -12,12 +12,12 @@ import net.minecraft.world.level.Level;
 
 public class QualityFoodCompat
 {
-    public static void addQuality(ItemStack itemStack, Player player, Level level, boolean golden, boolean perfectCatch, float percentile)
+    public static void addQuality(ItemStack itemStack, Player player, boolean golden, boolean perfectCatch, float percentile)
     {
         percentile = percentile / 100;
         Holder<QualityType> selected = null;
 
-        for (Holder<QualityType> type : level.registryAccess().registryOrThrow(QFComponents.QUALITY_TYPE_REGISTRY).holders().toList())
+        for (Holder<QualityType> type : player.level().registryAccess().registryOrThrow(QFComponents.QUALITY_TYPE_REGISTRY).holders().toList())
         {
             if (selected == null || type.value().level() > selected.value().level())
             {

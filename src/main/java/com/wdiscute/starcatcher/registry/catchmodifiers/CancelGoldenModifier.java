@@ -3,17 +3,20 @@ package com.wdiscute.starcatcher.registry.catchmodifiers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class RemoveBaseFishedItemModifier extends AbstractCatchModifier
+import java.text.DecimalFormat;
+import java.util.List;
+
+public class CancelGoldenModifier extends AbstractCatchModifier
 {
-    public static final MapCodec<RemoveBaseFishedItemModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<CancelGoldenModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
-            ).apply(instance, RemoveBaseFishedItemModifier::new));
+            ).apply(instance, CancelGoldenModifier::new));
 
-    public RemoveBaseFishedItemModifier(String translationOverride)
+    public CancelGoldenModifier(String translationOverride)
     {
         super(translationOverride);
     }
@@ -21,7 +24,7 @@ public class RemoveBaseFishedItemModifier extends AbstractCatchModifier
     @Override
     public DeferredHolder<AbstractCatchModifier, AbstractCatchModifier> getRegistryHolder()
     {
-        return SCCatchModifiers.REMOVE_BASE_FISHED_ITEM;
+        return SCCatchModifiers.CANCEL_GOLDEN;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class RemoveBaseFishedItemModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean shouldSkipAddingBaseItem(ItemStack is)
+    public boolean cancelGolden()
     {
         return true;
     }

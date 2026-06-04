@@ -2,21 +2,24 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -83,8 +86,22 @@ public class TooltipEvents
         }
 
         //modifiers
-        List<ResourceLocation> minigameModifiersRLs = SCMinigameModifiers.getMinigameModifiersRLs(stack);
-        List<AbstractCatchModifier> catchModifiersRLs = SCCatchModifiers.getCatchModifiersRLs(stack);
+        Player player = Minecraft.getInstance().player;
+        List<ResourceLocation> minigameModifiersRLs;
+        List<AbstractCatchModifier> catchModifiersRLs;
+
+        //if rod + holding rod, get every modifier not just the itemstack
+        if (player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+            minigameModifiersRLs = SCMinigameModifiers.getMinigameModifiersRLs(player);
+        else
+            minigameModifiersRLs = SCMinigameModifiers.getMinigameModifiersRLs(stack);
+
+        //if rod, get every modifier not just the itemstack
+        if (player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+            catchModifiersRLs = SCCatchModifiers.getCatchModifiers(player);
+        else
+            catchModifiersRLs = SCCatchModifiers.getCatchModifiers(stack);
+
         if (!minigameModifiersRLs.isEmpty() || !catchModifiersRLs.isEmpty() && !stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
         {
             List<Component> modComp = new ArrayList<>();
@@ -116,7 +133,12 @@ public class TooltipEvents
                 );
 
                 if (!modComp.isEmpty())
-                    comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
+                {
+                    if (player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+                        comp.add(Component.translatable("tooltip.starcatcher.modifiers.rod").withStyle(ChatFormatting.GRAY));
+                    else
+                        comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
+                }
 
                 comp.addAll(modComp);
             }
