@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-31T14:38:12.695206	Tags for minecraft:item mod id starcatcher
+// 1.21.1	2026-06-05T16:42:11.4257301	Tags for minecraft:item mod id starcatcher
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/c/tags/item/foods/raw_fish.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/c/tags/item/tools/fishing_rod.json
 4a6efce3001f3df5fa31251ca2905008ee066879 data/minecraft/tags/item/bookshelf_books.json
@@ -7,7 +7,7 @@ fa81a3ee2877e8a2361adfc9df22c7dca7f237f3 data/minecraft/tags/item/enchantable/eq
 e8603f7b1d1ee86e37e188b6148fd6b8d556126d data/minecraft/tags/item/fishes.json
 dc1242aa2ce2e6b8a7429f0426a57379328faa29 data/starcatcher/tags/item/aquarium_guide_display.json
 4d6f093f66283f602d092cedd43b6f549f6a3718 data/starcatcher/tags/item/baits.json
-d0f36c4038bba27ed5dbd07b337f94bbe336421c data/starcatcher/tags/item/bobbers.json
+63b8118a8d5ab2678629fd76c8418f8dfef32853 data/starcatcher/tags/item/bobbers.json
 40934962db9edf79457ea4ca8cedc01c4f6a91f8 data/starcatcher/tags/item/bucketable_fishes.json
 4a259073dfe88e905271731b3bbbb83b5364ecb6 data/starcatcher/tags/item/crabs.json
 a3ae3084e07aaa3db9e4ac31b025dc10055578aa data/starcatcher/tags/item/eels.json

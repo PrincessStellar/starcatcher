@@ -8,26 +8,32 @@ import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-public class FreezeOnMissModifier extends AbstractTimedModifier
+public class FreezeOnMissModifier extends AbstractMinigameModifier
 {
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/freeze.png");
 
+    private final int length;
+    private final int rampTime;
+
     public static final MapCodec<FreezeOnMissModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
+                    Codec.INT.fieldOf("length").forGetter(o -> o.length),
+                    Codec.INT.optionalFieldOf("rampTime", -1).forGetter(o -> o.rampTime),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, FreezeOnMissModifier::new));
 
-    public FreezeOnMissModifier(int length, String translationOverride)
+    public FreezeOnMissModifier(int length, int rampTime, String translationOverride)
     {
-        super(length, translationOverride);
+        super(translationOverride);
+        this.rampTime = rampTime;
+        this.length = length;
     }
 
     @Override
     public void onMiss()
     {
         super.onMiss();
-        instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(40, 10, ""));
+        instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(length, rampTime));
     }
 
     @Override

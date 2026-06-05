@@ -19,7 +19,7 @@
     "speed": 13,
     "sweetspots": [
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,

@@ -38,7 +38,7 @@ public record FishProperties(
 {
     public static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
     public static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
-    public static final ResourceLocation END = Starcatcher.rl("textures/gui/minigame/end.png");
+    public static final ResourceLocation CAVE = Starcatcher.rl("textures/gui/minigame/cave.png");
 
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -136,6 +136,12 @@ public record FishProperties(
     {
         return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, rarity,
                 this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry, this.textures);
+    }
+
+    public FishProperties withTextures(ResourceLocation textures)
+    {
+        return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
+                this.restrictions, this.dif, this.skipMinigame, this.hasGuideEntry, textures);
     }
 
     public FishProperties withHasGuideEntry(boolean hasGuideEntry)

@@ -22,7 +22,7 @@
     "speed": 12,
     "sweetspots": [
       {
-        "color_as_int": 4802889,
+        "color_as_int": -11974327,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -32,7 +32,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 4802889,
+        "color_as_int": -11974327,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -42,7 +42,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 4802889,
+        "color_as_int": -11974327,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -52,7 +52,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 4802889,
+        "color_as_int": -11974327,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,

@@ -47,6 +47,36 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:clear_bobber": [
+      {
+        "type": "starcatcher:adjust_vanishing_rate",
+        "multiplier": 0.3,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:copper_hook": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 1.5,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:deep_ocean_bobber": [
+      {
+        "type": "starcatcher:add_basic_sweet_spot",
+        "sweet_spot_to_add": {
+          "color_as_int": -11569811,
+          "hitbox_size_in_pixels": 22,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 10,
+          "sweet_spot_type": "starcatcher:deep_ocean",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/deep_ocean.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": "tooltip.modifier.starcatcher.deep_ocean_bobber"
+      }
+    ],
     "starcatcher:dev_worm": [
       {
         "type": "starcatcher:adjust_lure_time",
@@ -68,7 +98,18 @@
     "starcatcher:echoing_hook": [
       {
         "type": "starcatcher:new_catch_increase",
-        "increase": 5,
+        "increase": 15,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:deep_dark",
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:exposed_copper_hook": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 1.25,
         "translation_override": ""
       }
     ],
@@ -93,12 +134,18 @@
       },
       {
         "type": "starcatcher:flip_every_hit",
-        "length": 10,
         "translation_override": ""
       },
       {
-        "type": "starcatcher:faster_handle_speed",
-        "base_speed_ratio": 0.75,
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 0.75,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:fisherman_hat_cyan": [
+      {
+        "type": "starcatcher:ignore_daytime_restrictions",
+        "chance": 0.5,
         "translation_override": ""
       }
     ],
@@ -130,11 +177,23 @@
         "translation_override": ""
       },
       {
-        "type": "starcatcher:add_aqua_sweet_spot",
+        "type": "starcatcher:add_basic_sweet_spot",
+        "sweet_spot_to_add": {
+          "color_as_int": -11569811,
+          "hitbox_size_in_pixels": 22,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 10,
+          "sweet_spot_type": "starcatcher:deep_ocean",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/deep_ocean.png",
+          "vanishing_rate": 0.0
+        },
         "translation_override": ""
       },
       {
         "type": "starcatcher:freeze_on_miss",
+        "length": 40,
+        "rampTime": 10,
         "translation_override": ""
       }
     ],
@@ -176,7 +235,7 @@
                 "cooldown": 5,
                 "sudoku_vanish": true,
                 "sweet_spot": {
-                  "color_as_int": 16711680,
+                  "color_as_int": -65536,
                   "hitbox_size_in_pixels": 33,
                   "is_flip": false,
                   "moving_rate": 0.0,
@@ -191,7 +250,7 @@
             "speed": 10,
             "sweetspots": [
               {
-                "color_as_int": 5329747,
+                "color_as_int": -11447469,
                 "hitbox_size_in_pixels": 22,
                 "is_flip": false,
                 "moving_rate": 0.0,
@@ -201,7 +260,7 @@
                 "vanishing_rate": 0.0
               },
               {
-                "color_as_int": 5329747,
+                "color_as_int": -11447469,
                 "hitbox_size_in_pixels": 22,
                 "is_flip": false,
                 "moving_rate": 0.0,
@@ -243,14 +302,38 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:fisherman_hat_magenta": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 1.25,
+        "translation_override": ""
+      }
+    ],
     "starcatcher:fisherman_hat_orange": [
       {
-        "type": "starcatcher:freeze_on_miss",
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 1.25,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:fisherman_hat_pink": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 5.0,
         "translation_override": ""
       },
       {
-        "type": "starcatcher:faster_handle_speed",
-        "base_speed_ratio": 1.25,
+        "type": "starcatcher:burn_on_miss",
+        "extra_speed": 20,
+        "length": 20,
+        "ramp_time": 20,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:fisherman_hat_purple": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 0.75,
         "translation_override": ""
       }
     ],
@@ -262,7 +345,6 @@
       },
       {
         "type": "starcatcher:flip_every_hit",
-        "length": 10,
         "translation_override": ""
       }
     ],
@@ -270,14 +352,14 @@
       {
         "type": "starcatcher:extra_golden_chance",
         "chance": 0.05,
-        "only_for_perfect_catch": false,
+        "only_for_perfect_catch": true,
         "translation_override": ""
       },
       {
         "type": "starcatcher:adjust_lure_time",
         "chance_every_tick_multiplier": 1.4,
-        "max_ticks_multiplier": 1.4,
-        "min_ticks_multiplier": 1.4,
+        "max_ticks_multiplier": 1.2,
+        "min_ticks_multiplier": 1.2,
         "translation_override": ""
       }
     ],
@@ -287,7 +369,31 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:glowing_bobber": [
+      {
+        "type": "starcatcher:add_basic_sweet_spot",
+        "sweet_spot_to_add": {
+          "color_as_int": -133793,
+          "hitbox_size_in_pixels": 20,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweet_spot_type": "starcatcher:glowing",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/glowing.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": "tooltip.modifier.starcatcher.glowing_bobber"
+      }
+    ],
     "starcatcher:gold_hook": [
+      {
+        "type": "starcatcher:extra_golden_chance",
+        "chance": 0.05,
+        "only_for_perfect_catch": false,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:golden_bobber": [
       {
         "type": "starcatcher:extra_golden_chance",
         "chance": 0.05,
@@ -301,6 +407,19 @@
         "chance_every_tick_multiplier": 1.3,
         "max_ticks_multiplier": 0.8,
         "min_ticks_multiplier": 0.7,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:heavy_hook": [
+      {
+        "type": "starcatcher:adjust_moving_sweet_spots",
+        "multiplier": 0.75,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:leaf_bobber": [
+      {
+        "type": "starcatcher:add_leaves_spots",
         "translation_override": ""
       }
     ],
@@ -341,12 +460,26 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:mossy_hook": [
+      {
+        "type": "starcatcher:award_treasure_on_perfect_catch",
+        "chance": 0.2,
+        "translation_override": ""
+      }
+    ],
     "starcatcher:murkwater_bait": [
       {
         "type": "starcatcher:adjust_lure_time",
         "chance_every_tick_multiplier": 1.3,
         "max_ticks_multiplier": 0.8,
         "min_ticks_multiplier": 0.7,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:oxidised_copper_hook": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 0.5,
         "translation_override": ""
       }
     ],
@@ -378,6 +511,17 @@
         "type": "starcatcher:hide_catch",
         "chance": 1.0,
         "translation_override": ""
+      },
+      {
+        "type": "starcatcher:spawn_treasure_on_hit_x",
+        "hits_to_spawn_treasure": 3,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:slimey_bobber": [
+      {
+        "type": "starcatcher:bounce_back",
+        "translation_override": ""
       }
     ],
     "starcatcher:split_hook": [
@@ -388,12 +532,22 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:steady_bobber": [
+      {
+        "type": "starcatcher:bigger_green_sweet_spots",
+        "translation_override": ""
+      }
+    ],
     "starcatcher:stone_hook": [
       {
         "type": "starcatcher:adjust_lure_time",
         "chance_every_tick_multiplier": 1.0,
         "max_ticks_multiplier": 1.6,
         "min_ticks_multiplier": 1.2,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:stop_decay_on_hit",
         "translation_override": ""
       }
     ],
@@ -431,7 +585,7 @@
             "speed": 9,
             "sweetspots": [
               {
-                "color_as_int": 65280,
+                "color_as_int": -16711936,
                 "hitbox_size_in_pixels": 22,
                 "is_flip": false,
                 "moving_rate": 0.0,
@@ -441,7 +595,7 @@
                 "vanishing_rate": 0.0
               },
               {
-                "color_as_int": 65280,
+                "color_as_int": -16711936,
                 "hitbox_size_in_pixels": 22,
                 "is_flip": false,
                 "moving_rate": 0.0,
@@ -482,6 +636,13 @@
     "starcatcher:vanilla_hook": [
       {
         "type": "starcatcher:skip_minigame_if_trigger_found",
+        "translation_override": "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber"
+      }
+    ],
+    "starcatcher:weathered_copper_hook": [
+      {
+        "type": "starcatcher:adjust_handle_speed",
+        "multiplier": 0.75,
         "translation_override": ""
       }
     ],

@@ -120,25 +120,61 @@ public class DGSCDataMapsProvider extends DataMapProvider
             sellable.add(SCItems.PEARL.get().asItem().builtInRegistryHolder(), AbstractProcessor.createEmpty(50), false);
         }
 
-        //minigame modifiers
-//        modifiers.add(SCItems.FROZEN_HOOK, List.of(SCMinigameModifiers.PREVENT_FROZEN.getId()), false);
-//        modifiers.add(SCItems.SHINY_HOOK, List.of(SCMinigameModifiers.SPAWN_TREASURE_ON_THREE_HITS.getId()), false);
-//        modifiers.add(SCItems.MOSSY_HOOK, List.of(SCMinigameModifiers.HARDER_WITH_TREASURE_ON_PERFECT.getId()), false);
-//        modifiers.add(SCItems.STONE_HOOK, List.of(SCMinigameModifiers.STOP_DECAY_ON_HIT.getId()), false);
-//        modifiers.add(SCItems.HEAVY_HOOK, List.of(SCMinigameModifiers.SLOWER_MOVING_SWEET_SPOTS.getId()), false);
-//        modifiers.add(SCItems.STEADY_BOBBER, List.of(SCMinigameModifiers.BIGGER_GREEN_SWEET_SPOTS.getId()), false);
-//        modifiers.add(SCItems.CLEAR_BOBBER, List.of(SCMinigameModifiers.SLOWER_VANISHING.getId()), false);
-//        modifiers.add(SCItems.AQUA_BOBBER, List.of(SCMinigameModifiers.ADD_AQUA_SWEET_SPOT.getId()), false);
-//        modifiers.add(SCItems.COPPER_HOOK, List.of(SCMinigameModifiers.FASTER_POINTER_SPEED.getId()), false);
-//        modifiers.add(SCItems.EXPOSED_COPPER_HOOK, List.of(SCMinigameModifiers.SLIGHTLY_FASTER_POINTER_SPEED.getId()), false);
-//        modifiers.add(SCItems.WEATHERED_COPPER_HOOK, List.of(SCMinigameModifiers.SLIGHTLY_SLOWER_POINTER_SPEED.getId()), false);
-//        modifiers.add(SCItems.OXIDISED_COPPER_HOOK, List.of(SCMinigameModifiers.SLOWER_POINTER_SPEED.getId()), false);
-//        modifiers.add(SCItems.LEAF_BOBBER, List.of(SCMinigameModifiers.ADD_LEAVES.getId()), false);
-//        modifiers.add(SCItems.SLIMEY_BOBBER, List.of(SCMinigameModifiers.BOUNCE_BACK.getId()), false);
-//        modifiers.add(SCItems.DEV_WORM, List.of(SCMinigameModifiers.NEVER_LOSE.getId()), false);
 
-        modifiers.add(SCItems.FROZEN_HOOK, List.of(
-                new PreventFrozenModifier("")
+        //
+        //                      ,--. ,--.  ,---. ,--.
+        //,--,--,--.  ,---.   ,-|  | `--' /  .-' `--'  ,---.  ,--.--.  ,---.
+        //|        | | .-. | ' .-. | ,--. |  `-, ,--. | .-. : |  .--' (  .-'
+        //|  |  |  | ' '-' ' \ `-' | |  | |  .-' |  | \   --. |  |    .-'  `)
+        //`--`--`--'  `---'   `---'  `--' `--'   `--'  `----' `--'    `----'
+        //
+
+        modifiers.add(SCItems.SLIMEY_BOBBER, List.of(
+                new BounceBackModifier("")
+        ), false);
+
+        modifiers.add(SCItems.CLEAR_BOBBER, List.of(
+                new AdjustVanishingRate(0.3f, "")
+        ), false);
+
+        modifiers.add(SCItems.STEADY_BOBBER, List.of(
+                new SteadyBobberModifier("")
+        ), false);
+
+        modifiers.add(SCItems.HEAVY_HOOK, List.of(
+                new AdjustMovingModifier(0.75f, "")
+        ), false);
+
+        modifiers.add(SCItems.COPPER_HOOK, List.of(
+                new AdjustBaseHandleSpeedModifier(1.5f, "")
+        ), false);
+
+        modifiers.add(SCItems.EXPOSED_COPPER_HOOK, List.of(
+                new AdjustBaseHandleSpeedModifier(1.25f, "")
+        ), false);
+
+        modifiers.add(SCItems.WEATHERED_COPPER_HOOK, List.of(
+                new AdjustBaseHandleSpeedModifier(0.75f, "")
+        ), false);
+
+        modifiers.add(SCItems.OXIDISED_COPPER_HOOK, List.of(
+                new AdjustBaseHandleSpeedModifier(0.5f, "")
+        ), false);
+
+        modifiers.add(SCItems.LEAF_BOBBER, List.of(
+                new AddLeavesSweetspotsModifier(0.025f, "")
+        ), false);
+
+        modifiers.add(SCItems.DEEP_OCEAN_BOBBER, List.of(
+                new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, "tooltip.modifier.starcatcher.deep_ocean_bobber")
+        ), false);
+
+        modifiers.add(SCItems.GLOWING_BOBBER, List.of(
+                new AddBasicSweetSpotModifier(Difficulty.SweetSpot.GLOWING, "tooltip.modifier.starcatcher.glowing_bobber")
+        ), false);
+
+        modifiers.add(SCItems.MOSSY_HOOK, List.of(
+                new AwardTreasureOnPerfectCatch(0.2f, "")
         ), false);
 
         modifiers.add(SCItems.FROZEN_HOOK, List.of(
@@ -146,11 +182,13 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         modifiers.add(SCItems.SHINY_HOOK, List.of(
-                new HideCatchModifier(1, "")
+                new HideCatchModifier(1, ""),
+                new SpawnTreasureOnHitX(3, "")
         ), false);
 
         modifiers.add(SCItems.ECHOING_HOOK, List.of(
-                new NewCatchIncreaseModifier(5, "")
+                new NewCatchIncreaseModifier(15, ""),
+                new DeepDarkModifier("")
         ), false);
 
         modifiers.add(SCItems.AMETHYST_HOOK, List.of(
@@ -161,8 +199,13 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new ExtraGoldenRiskModifier(0.05f, false, "")
         ), false);
 
+        modifiers.add(SCItems.GOLDEN_BOBBER, List.of(
+                new ExtraGoldenRiskModifier(0.05f, false, "")
+        ), false);
+
         modifiers.add(SCItems.STONE_HOOK, List.of(
-                new AdjustLureTimeModifier(1.2f, 1.6f, 1f, "")
+                new AdjustLureTimeModifier(1.2f, 1.6f, 1f, ""),
+                new StoneHookModifier("")
         ), false);
 
         modifiers.add(SCItems.SPLIT_HOOK, List.of(
@@ -179,7 +222,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         modifiers.add(SCItems.VANILLA_HOOK, List.of(
-                new SkipMinigameIfTriggerFoundModifier("")
+                new SkipMinigameIfTriggerFoundModifier("tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber")
         ), false);
 
         modifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(
@@ -257,6 +300,31 @@ public class DGSCDataMapsProvider extends DataMapProvider
                         new HideCatchModifier(1, "")
                 ), false);
 
+        modifiers.add(SCBlocks.FISHERMAN_HAT_CYAN.asItem().builtInRegistryHolder(),
+                List.of(
+                        new IgnoreWeatherRestrictionsModifier(0.5f, "")
+                ), false);
+
+        modifiers.add(SCBlocks.FISHERMAN_HAT_CYAN.asItem().builtInRegistryHolder(),
+                List.of(
+                        new IgnoreDaytimeRestrictionsModifier(0.5f, "")
+                ), false);
+
+        modifiers.add(SCBlocks.FISHERMAN_HAT_PURPLE.asItem().builtInRegistryHolder(),
+                List.of(
+                        new AdjustBaseHandleSpeedModifier(0.75f, "")
+                ), false);
+
+        modifiers.add(SCBlocks.FISHERMAN_HAT_MAGENTA.asItem().builtInRegistryHolder(),
+                List.of(
+                        new AdjustBaseHandleSpeedModifier(1.25f, "")
+                ), false);
+
+        modifiers.add(SCBlocks.FISHERMAN_HAT_PINK.asItem().builtInRegistryHolder(),
+                List.of(
+                        new AdjustBaseHandleSpeedModifier(5f, ""),
+                        new BurnOnMissModifier(20, 4,30, "")
+                ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_GRAY.asItem().builtInRegistryHolder(),
                 List.of(
@@ -286,7 +354,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
                                         .withAlwaysSpawnEntity()
                                         .withDifficulty(Difficulty.CREEPER)
                                         .withSkipsMinigame()
-                                , Starcatcher.rl("missingno"), 5, ""),
+                                , Starcatcher.rl("missingno"), 5, "tooltip.modifier.starcatcher.add_creeper"),
 
                         new AdjustLureTimeModifier(0.5f, 0.5f, 1, "")
                 ), false);
@@ -294,39 +362,46 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_YELLOW.asItem().builtInRegistryHolder(),
                 List.of(
-                        new ExtraGoldenRiskModifier(0.05f, false, ""),
-                        new AdjustLureTimeModifier(1.4f, 1.4f, 1.4f, "")
+                        new ExtraGoldenRiskModifier(0.05f, true, ""),
+                        new AdjustLureTimeModifier(1.2f, 1.2f, 1.4f, "")
                 ), false);
 
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_RED.asItem().builtInRegistryHolder(),
                 List.of(
                         new IgnoreDaytimeRestrictionsModifier(0.5f, ""),
-                        new FlipEveryHitModifier(10, "")
+                        new FlipEveryHitModifier("")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_BLUE.asItem().builtInRegistryHolder(),
                 List.of(
                         new IgnoreWeatherRestrictionsModifier(0.5f, ""),
-                        new FlipEveryHitModifier(10, ""),
-                        new ModifyBasePointerSpeedModifier(0.75f, "")
+                        new FlipEveryHitModifier(""),
+                        new AdjustBaseHandleSpeedModifier(0.75f, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem().builtInRegistryHolder(),
                 List.of(
                         new AdjustLureTimeModifier(1.4f, 1.4f, 1.4f, ""),
-                        new AquaBobberModifier(-1, 1, ""),
-                        new FreezeOnMissModifier(-1, "")
+                        new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, ""),
+                        new FreezeOnMissModifier(40, 10, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_ORANGE.asItem().builtInRegistryHolder(),
                 List.of(
-                        new FreezeOnMissModifier(-1, ""),
-                        new ModifyBasePointerSpeedModifier(1.25f, "")
+                        new AdjustBaseHandleSpeedModifier(1.25f, "")
                 ), false);
 
 
-        //tackle skins
+        //
+        //  ,--.                   ,--.     ,--.                     ,--.     ,--.
+        //,-'  '-.  ,--,--.  ,---. |  |,-.  |  |  ,---.       ,---.  |  |,-.  `--' ,--,--,   ,---.
+        //'-.  .-' ' ,-.  | | .--' |     /  |  | | .-. :     (  .-'  |     /  ,--. |      \ (  .-'
+        //  |  |   \ '-'  | \ `--. |  \  \  |  | \   --.     .-'  `) |  \  \  |  | |  ||  | .-'  `)
+        //  `--'    `--`--'  `---' `--'`--' `--'  `----'     `----'  `--'`--' `--' `--''--' `----'
+        //
+
+
         tackleSkin.add(SCItems.PEARL_SMITHING_TEMPLATE, SCTackleSkins.PEARL_TACKLE_SKIN, false);
         tackleSkin.add(SCItems.KING_SMITHING_TEMPLATE, SCTackleSkins.KING_TACKLE_SKIN, false);
         tackleSkin.add(SCItems.COLORFUL_SMITHING_TEMPLATE, SCTackleSkins.COLORFUL_TACKLE_SKIN, false);
@@ -335,7 +410,16 @@ public class DGSCDataMapsProvider extends DataMapProvider
         tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN, false);
         tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN, false);
 
-        Builder<Treasure.TreasureInstance, FishProperties> treasures = this.builder(SCDataMaps.TREASURE);
+
+        //
+        //  ,--.
+        //,-'  '-. ,--.--.  ,---.   ,--,--.  ,---.  ,--.,--. ,--.--.  ,---.   ,---.
+        //'-.  .-' |  .--' | .-. : ' ,-.  | (  .-'  |  ||  | |  .--' | .-. : (  .-'
+        //  |  |   |  |    \   --. \ '-'  | .-'  `) '  ''  ' |  |    \   --. .-'  `)
+        //  `--'   `--'     `----'  `--`--' `----'   `----'  `--'     `----' `----'
+        //
+
+        var treasures = this.builder(SCDataMaps.TREASURE);
 
         //todo fix tags datagen to use tags instead of hard coding every entry
         //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);

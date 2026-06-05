@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.fish.*;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.DeepDarkModifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
@@ -535,8 +536,8 @@ public class DGStarcatcherFishes
         //deep dark
         register(overworldDeepDarkFish(new MaybeStack(SCItems.SCULKFISH))
                 .withSizeAndWeight(new SizeAndWeight(30, 10, 2000, 600))
-                .withDifficulty(Difficulty.HARD_MOVING)
-                .withRarity(Rarity.UNCOMMON));
+                .withDifficulty(Difficulty.HARD_MOVING.withHP(300))
+                .withRarity(Rarity.RARE));
 
         register(overworldDeepDarkFish(new MaybeStack(SCItems.WARD))
                 .withSizeAndWeight(new SizeAndWeight(50, 10, 2600, 600))
@@ -548,7 +549,7 @@ public class DGStarcatcherFishes
         register(overworldDeepDarkFish(new MaybeStack(SCItems.GLOWING_DARK))
                 .withSizeAndWeight(new SizeAndWeight(100, 10, 3000, 600))
                 .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING));
+                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING.withHP(300)));
 
 
         //overworld surface lava

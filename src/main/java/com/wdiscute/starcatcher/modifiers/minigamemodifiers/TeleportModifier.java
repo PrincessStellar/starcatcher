@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import org.joml.Quaternionf;
 
-public class TeleportModifier extends AbstractTimedModifier
+public class TeleportModifier extends AbstractMinigameModifier
 {
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/teleport.png");
 
@@ -23,21 +23,20 @@ public class TeleportModifier extends AbstractTimedModifier
 
     public static final MapCodec<TeleportModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, TeleportModifier::new));
 
-    public TeleportModifier(int length, String translationOverride)
+    public TeleportModifier(String translationOverride)
     {
-        super(length, translationOverride);
+        super(translationOverride);
     }
 
     @Override
     public boolean onHit(ActiveSweetSpot ass)
     {
         Minecraft.getInstance().player.playSound(SoundEvents.ENDERMAN_TELEPORT, 0.6f, 1f);
-        instance.addParticles(instance.pointerPos, 20, 0x7935de);
-        instance.pointerPos = kimbePosition;
+        instance.addParticles(instance.handlePos, 20, 0x7935de);
+        instance.handlePos = kimbePosition;
         kimbePosition = ass.pos;
         return super.onHit(ass);
     }
@@ -71,8 +70,8 @@ public class TeleportModifier extends AbstractTimedModifier
     {
         super.onMiss();
         Minecraft.getInstance().player.playSound(SoundEvents.SHULKER_AMBIENT, 0.6f, 1f);
-        instance.addParticles(instance.pointerPos, 20, 0x7935de);
-        instance.pointerPos = U.r.nextFloat(360);
+        instance.addParticles(instance.handlePos, 20, 0x7935de);
+        instance.handlePos = U.r.nextFloat(360);
     }
 
     @Override

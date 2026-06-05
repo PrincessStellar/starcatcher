@@ -8,17 +8,16 @@ import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
-public class FlipEveryHitModifier extends AbstractTimedModifier
+public class FlipEveryHitModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<FlipEveryHitModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, FlipEveryHitModifier::new));
 
-    public FlipEveryHitModifier(int length, String translationOverride)
+    public FlipEveryHitModifier(String translationOverride)
     {
-        super(length, translationOverride);
+        super(translationOverride);
     }
 
     @Override

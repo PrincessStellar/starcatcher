@@ -90,10 +90,12 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(BOBBER);
         simpleItem(STEADY_BOBBER);
         simpleItem(CLEAR_BOBBER);
-        simpleItem(AQUA_BOBBER);
+        simpleItem(DEEP_OCEAN_BOBBER);
         simpleItem(VANILLA_BOBBER);
         simpleItem(LEAF_BOBBER);
         simpleItem(SLIMEY_BOBBER);
+        simpleItem(GLOWING_BOBBER);
+        simpleItem(GOLDEN_BOBBER);
 
         //baits
         simpleItem(WORM);

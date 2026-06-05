@@ -2,14 +2,12 @@ package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FrozenPointerWhileActiveModifier;
 
-public class FreezeSweetSpotBehaviour extends AbstractSweetSpotBehaviour
+public class FreezeSweetSpotBehaviour extends NormalSweetSpotBehaviour
 {
     @Override
     public void onHit()
     {
         super.onHit();
-        instance.addParticles(ass.pos, 30, 0xADD8E6);
-
-        instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(40, 10, ""));
+        instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(40, 10));
     }
 }

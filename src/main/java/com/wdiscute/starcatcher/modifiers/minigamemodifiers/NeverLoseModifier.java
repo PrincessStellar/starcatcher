@@ -28,7 +28,6 @@ public class NeverLoseModifier extends AbstractMinigameModifier
 
         if (instance.progressSmooth < 5)
         {
-            Minecraft.getInstance().player.playSound(SoundEvents.SLIME_HURT);
             instance.progressSmooth += instance.hp / 5;
             instance.progress = (float) instance.hp / 5;
         }

@@ -8,26 +8,35 @@ import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-public class BurnOnMissModifier extends AbstractTimedModifier
+public class BurnOnMissModifier extends AbstractMinigameModifier
 {
+    int length;
+    int rampTime;
+    int extraSpeed;
+
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/burn.png");
 
     public static final MapCodec<BurnOnMissModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
+                    Codec.INT.fieldOf("length").forGetter(o -> o.length),
+                    Codec.INT.fieldOf("ramp_time").forGetter(o -> o.length),
+                    Codec.INT.fieldOf("extra_speed").forGetter(o -> o.length),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, BurnOnMissModifier::new));
 
-    public BurnOnMissModifier(int length, String translationOverride)
+    public BurnOnMissModifier(int length, int rampTime, int extraSpeed, String translationOverride)
     {
-        super(length, translationOverride);
+        super(translationOverride);
+        this.length = length;
+        this.rampTime = rampTime;
+        this.extraSpeed = extraSpeed;
     }
 
     @Override
     public void onMiss()
     {
         super.onMiss();
-        instance.addUniqueModifier(new BurnPointerWhileActiveModifier(40, 5, 16));
+        instance.addUniqueModifier(new BurnPointerWhileActiveModifier(length, rampTime, extraSpeed));
     }
 
     @Override

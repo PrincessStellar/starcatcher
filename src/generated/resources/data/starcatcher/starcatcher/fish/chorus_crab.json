@@ -25,7 +25,7 @@
     "speed": 14,
     "sweetspots": [
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 24,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -35,7 +35,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 24,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -45,7 +45,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -55,7 +55,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -65,7 +65,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -75,7 +75,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -85,7 +85,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -95,7 +95,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 13008601,
+        "color_as_int": -3768615,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,

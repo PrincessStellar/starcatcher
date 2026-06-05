@@ -8,7 +8,10 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.registry.sweetspotbehaviour.LeafSweetSpotBehaviour;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 
 public class AddLeavesSweetspotsModifier extends AbstractMinigameModifier
 {
@@ -33,7 +36,9 @@ public class AddLeavesSweetspotsModifier extends AbstractMinigameModifier
 
         if(U.r.nextFloat() < chancePerTick)
         {
+            if(instance.getActiveSweetSpots().stream().anyMatch(o -> o.behaviour instanceof LeafSweetSpotBehaviour)) return;
             ActiveSweetSpot activeSweetSpot = new ActiveSweetSpot(instance, Difficulty.SweetSpot.LEAF);
+            Minecraft.getInstance().player.playSound(SoundEvents.BIG_DRIPLEAF_PLACE, 1f, 1f);
             instance.addSweetSpot(activeSweetSpot);
         }
     }

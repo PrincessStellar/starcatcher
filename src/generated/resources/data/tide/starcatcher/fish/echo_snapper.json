@@ -15,11 +15,16 @@
     "decay": 0.0,
     "hp": 100,
     "missPenalty": 20,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:deep_dark",
+        "translation_override": ""
+      }
+    ],
     "speed": 9,
     "sweetspots": [
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -29,7 +34,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -39,7 +44,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -49,7 +54,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -106,5 +111,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/cave.png"
 }

@@ -11,7 +11,6 @@ import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.secretnotes.*;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -81,10 +80,12 @@ public interface SCItems
     DeferredItem<Item> BOBBER = BOBBERS_REGISTRY.register("bobber", SingleStackBasicItem::new);
     DeferredItem<Item> STEADY_BOBBER = BOBBERS_REGISTRY.register("steady_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> CLEAR_BOBBER = BOBBERS_REGISTRY.register("clear_bobber", SingleStackBasicItem::new);
-    DeferredItem<Item> AQUA_BOBBER = BOBBERS_REGISTRY.register("aqua_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> DEEP_OCEAN_BOBBER = BOBBERS_REGISTRY.register("deep_ocean_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> LEAF_BOBBER = BOBBERS_REGISTRY.register("leaf_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> SLIMEY_BOBBER = BOBBERS_REGISTRY.register("slimey_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> GLOWING_BOBBER = BOBBERS_REGISTRY.register("glowing_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> GOLDEN_BOBBER = BOBBERS_REGISTRY.register("golden_bobber", SingleStackBasicItem::new);
 
     //baits
     DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);

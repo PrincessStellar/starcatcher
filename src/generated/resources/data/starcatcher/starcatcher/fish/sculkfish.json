@@ -14,13 +14,18 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 300,
     "missPenalty": 10,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:deep_dark",
+        "translation_override": ""
+      }
+    ],
     "speed": 11,
     "sweetspots": [
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -30,7 +35,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 1.0,
@@ -42,7 +47,7 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "uncommon",
+  "rarity": "rare",
   "restrictions": [
     {
       "type": "starcatcher:fluid",
@@ -87,5 +92,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/cave.png"
 }

@@ -3,9 +3,11 @@
     "starcatcher:bobber",
     "starcatcher:steady_bobber",
     "starcatcher:clear_bobber",
-    "starcatcher:aqua_bobber",
+    "starcatcher:deep_ocean_bobber",
     "starcatcher:vanilla_bobber",
     "starcatcher:leaf_bobber",
-    "starcatcher:slimey_bobber"
+    "starcatcher:slimey_bobber",
+    "starcatcher:glowing_bobber",
+    "starcatcher:golden_bobber"
   ]
 }

@@ -4,38 +4,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
-public class ModifyBasePointerSpeedModifier extends AbstractMinigameModifier
+public class AddBasicSweetSpotModifier extends AbstractMinigameModifier
 {
-    public float baseSpeedRatio;
+    Difficulty.SweetSpot ss;
 
-    public static final MapCodec<ModifyBasePointerSpeedModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<AddBasicSweetSpotModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.FLOAT.optionalFieldOf("base_speed_ratio", 0f).forGetter(o -> o.baseSpeedRatio),
+                    Difficulty.SweetSpot.CODEC.fieldOf("sweet_spot_to_add").forGetter(o -> o.ss),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
-                    ).apply(instance, ModifyBasePointerSpeedModifier::new));
+            ).apply(instance, AddBasicSweetSpotModifier::new));
 
-    public ModifyBasePointerSpeedModifier(float baseSpeed, String translationOverride)
+    public AddBasicSweetSpotModifier(Difficulty.SweetSpot ss, String translationOverride)
     {
         super(translationOverride);
-        this.baseSpeedRatio = baseSpeed;
+        this.ss = ss;
     }
 
     @Override
     public void onAdd(FishingMinigameScreen instance)
     {
         super.onAdd(instance);
-        instance.pointerBaseSpeed = instance.pointerBaseSpeed * baseSpeedRatio;
-        instance.pointerSpeed = instance.pointerBaseSpeed;
+
+        instance.addSweetSpot(new ActiveSweetSpot(instance, ss));
     }
 
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("faster_handle_speed");
+        return Starcatcher.rl("add_basic_sweet_spot");
     }
 
     @Override

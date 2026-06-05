@@ -241,7 +241,7 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .save(output);
 
         //aqua bobber
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.AQUA_BOBBER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.DEEP_OCEAN_BOBBER)
                 .define('B', SCItems.BOBBER)
                 .define('S', Items.STICK)
                 .define('D', Items.DIAMOND)

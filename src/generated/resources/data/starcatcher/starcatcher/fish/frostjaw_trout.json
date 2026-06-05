@@ -19,13 +19,15 @@
     "modifiers": [
       {
         "type": "starcatcher:freeze_on_miss",
+        "length": 40,
+        "rampTime": 10,
         "translation_override": ""
       }
     ],
     "speed": 9,
     "sweetspots": [
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -35,7 +37,7 @@
         "vanishing_rate": 0.1
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -45,7 +47,7 @@
         "vanishing_rate": 0.1
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -55,7 +57,7 @@
         "vanishing_rate": 0.1
       },
       {
-        "color_as_int": 65280,
+        "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,

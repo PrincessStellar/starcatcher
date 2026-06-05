@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-16T19:08:57.9904449	Item Models: starcatcher
+// 1.21.1	2026-06-05T16:42:11.4197298	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -6,7 +6,6 @@
 acec16217fc4eb41dcb582e6f31551d755510e80 assets/starcatcher/models/item/amethyst_hook.json
 c9d191032ac9251c4e385286728bcf4b6bb965b2 assets/starcatcher/models/item/aquamarine_pike.json
 bdb052fe86b326139cafba986d39689919e5913b assets/starcatcher/models/item/aquarium.json
-aa7f4e5e4a2981f6abc661318c551aac44f672de assets/starcatcher/models/item/aqua_bobber.json
 70cd9103418171fc70d6792227ba0363d6cfe066 assets/starcatcher/models/item/aurora.json
 3b80783c5d6efbd00485ec91b81037c52b011e21 assets/starcatcher/models/item/azure_crystalback_minnow.json
 6d4d453b3e48de529859f7f34ba40097114f31d6 assets/starcatcher/models/item/azure_crystal_skin_smithing_template.json
@@ -49,6 +48,7 @@ c21ddccb5dd997a4a4d122dfb83dabfe68c27dd5 assets/starcatcher/models/item/conch.js
 3b8f60b99ffb4097d6cab9006144fee8df33f25a assets/starcatcher/models/item/dark_amethyst_snapper.json
 1fe26a7404adf572b28c5753b3e037ebe0671b42 assets/starcatcher/models/item/deepjaw_herring.json
 80e715ec73efd5b04887017852efb17201b7d8ce assets/starcatcher/models/item/deepslatefish.json
+0334943a32ca64b24b3765eee4615a43ffb918c6 assets/starcatcher/models/item/deep_ocean_bobber.json
 13487cb409984a233903277cd21148d1c7607d52 assets/starcatcher/models/item/dev_worm.json
 05643542a4fee71e60c226df6009060d27eb12c8 assets/starcatcher/models/item/downfall_bream.json
 c27275d5cb8981959eb4ef6697357d627f57966a assets/starcatcher/models/item/dried_seaweed.json
@@ -91,9 +91,11 @@ d81451127a31e3e14f3db6f481f38a53b910239f assets/starcatcher/models/item/frostjaw
 0d86806c40dd51e2a4d155449b5d7f4cdc2206d6 assets/starcatcher/models/item/garnet_mackerel.json
 d4bef83874c673727f246ca8d2a6d19abaeeeaf5 assets/starcatcher/models/item/geode_eel.json
 25b9fec1dfce481564225092facf746f6da6b326 assets/starcatcher/models/item/ghostly_pike.json
+9a0d30c1c0355627e45ed2f3a47622ac68be4a29 assets/starcatcher/models/item/glowing_bobber.json
 21c10a34d194837bc515252c0844d7c254d6d827 assets/starcatcher/models/item/glowing_dark.json
 af52bda323b44617619515667949a62d36bd7443 assets/starcatcher/models/item/glowstone_pufferfish.json
 b36b128fa801cbb9408d2fd22a19205dbba08c4e assets/starcatcher/models/item/glowstone_seeker.json
+0d458e856637d6d09020cc8c87e163d2e2ab21bb assets/starcatcher/models/item/golden_bobber.json
 0cec096e2ac653e2fc204248ac0b760c09316e2d assets/starcatcher/models/item/gold_fan.json
 ca50f132187554666f3f9ad54003c3999b672b57 assets/starcatcher/models/item/gold_hook.json
 f2d5e46cbc9e48865dc830992470bb7c8d1edce8 assets/starcatcher/models/item/good_old_skin_smithing_template.json

@@ -238,7 +238,11 @@
   "tooltip.modifier.starcatcher.extra_golden_chance.base": "A golden fish is more likely to bite",
   "tooltip.modifier.starcatcher.extra_golden_chance.base.shift": "A golden fish is %s%% more likely to bite",
 
+  "tooltip.modifier.starcatcher.award_treasure_on_perfect_catch": "Perfect catch may award a treasure",
+  "tooltip.modifier.starcatcher.award_treasure_on_perfect_catch.always": "Perfect catches award a treasure",
+  "tooltip.modifier.starcatcher.award_treasure_on_perfect_catch.shift": "Perfect catches award treasure on a %s%% chance",
 
+  "tooltip.modifier.starcatcher.spawn_treasure_on_hit_x": "A treasure spawns after %s consecutive hits",
 
   "tooltip.modifier.starcatcher.anglers_hat": "",
 
@@ -275,19 +279,36 @@
 
 
 
+  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber": "Skips minigame if equipped alongsides the Vanilla-flavoured Bobber",
 
 
-  "tooltip.modifier.starcatcher.adjust_lure_time.big_decrease": "Tremendously decreases lure time",
-  "tooltip.modifier.starcatcher.adjust_lure_time.decrease": "Decreases lure time",
-  "tooltip.modifier.starcatcher.adjust_lure_time.increase": "Increases lure time",
-  "tooltip.modifier.starcatcher.adjust_lure_time.big_increase": "Tremendously increases lure time",
+  "tooltip.modifier.keyword.big_decrease": "Tremendously decreases",
+  "tooltip.modifier.keyword.decrease": "Decreases",
+  "tooltip.modifier.keyword.increase": "Increases",
+  "tooltip.modifier.keyword.big_increase": "Tremendously increases",
 
+  "tooltip.modifier.starcatcher.adjust_handle_speed": " the handle's rotation speed",
+  "tooltip.modifier.starcatcher.adjust_handle_speed.shift": "Adjusts the handle's rotation speed by %s%%",
+
+  "tooltip.modifier.starcatcher.add_basic_sweet_spot": "Adds a Sweet-spot",
+  "tooltip.modifier.starcatcher.deep_ocean_bobber": "Adds a Deep Ocean Sweet-spot",
+  "tooltip.modifier.starcatcher.glowing_bobber": "Adds a Glowing Sweet-spot",
+
+  "tooltip.modifier.starcatcher.adjust_vanishing_rate": " the vanishing rate of sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_vanishing_rate.shift": "Adjusts the vanishing rate of sweet-spots by %s%%",
+
+  "tooltip.modifier.starcatcher.adjust_lure_time.base": " lure time",
   "tooltip.modifier.starcatcher.adjust_lure_time.shift.min_ticks": "Adjusts minimum ticks to fish by %s%%",
   "tooltip.modifier.starcatcher.adjust_lure_time.shift.max_ticks": "Adjusts maximum ticks to fish by %s%%",
   "tooltip.modifier.starcatcher.adjust_lure_time.shift.random": "Adjusts the chance of biting every tick by %s%%",
 
+  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.increase": "Increases the speed of moving sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.decrease": "Decreases the speed of moving sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.shift": "Adjusts the speed of moving sweet-spots by %s%%",
 
   "tooltip.modifier.starcatcher.vanilla_bobber": "Restores vanilla fishing loot",
+
+  "tooltip.modifier.starcatcher.deep_dark": "Hitting sweet-spots will consume you by darkness",
 
   "tooltip.modifier.starcatcher.ignore_daytime_restrictions": "Ignores fishing daytime restrictions",
   "tooltip.modifier.starcatcher.ignore_daytime_restrictions.maybe": "Fishing daytime restrictions will sometimes be bypassed",
@@ -301,11 +322,6 @@
   "tooltip.modifier.starcatcher.new_catch_increase" : "Increases the likelihood of a new catch biting",
 
   "tooltip.modifier.starcatcher.cancel_golden" : "You can no longer catch golden fishes",
-
-  "tooltip.modifier.starcatcher.faster_handle_speed": "Increases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slightly_faster_handle_speed": "Slightly increases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slightly_slower_handle_speed": "Slightly decreases the handle's rotation speed",
-  "tooltip.modifier.starcatcher.slower_handle_speed": "Decreases the handle's rotation speed",
 
   "tooltip.modifier.starcatcher.extra_exp_based_on_performance": "Extra exp is awarded based on your performance",
 
@@ -355,9 +371,12 @@
   "item.starcatcher.steady_bobber": "Steady Bobber",
   "item.starcatcher.leaf_bobber": "Leafy Bobber",
   "item.starcatcher.clear_bobber": "Clear Bobber",
-  "item.starcatcher.aqua_bobber": "Aqua Bobber",
+  "item.starcatcher.deep_dark_bobber": "Deep Dark Bobber",
   "item.starcatcher.vanilla_bobber": "Vanilla-flavoured Bobber",
   "item.starcatcher.slimey_bobber": "Slimey Bobber",
+  "item.starcatcher.glowing_bobber": "Glowing Bobber",
+  "item.starcatcher.golden_bobber": "Golden Bobber",
+  "item.starcatcher.deep_ocean_bobber": "Deep Ocean Bobber",
 
 
 

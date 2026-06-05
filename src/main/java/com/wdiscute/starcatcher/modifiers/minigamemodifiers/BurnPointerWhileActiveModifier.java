@@ -11,9 +11,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
-import java.util.function.Supplier;
 
 public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
 {
@@ -46,25 +43,25 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     public void tick()
     {
         super.tick();
-        float currentSpeed = instance.pointerSpeed;
+        float currentSpeed = instance.handleSpeed;
 
         float increaseValueEveryTick = Math.abs(extraSpeed) / rampTime;
 
-        float targetSpeed = instance.pointerBaseSpeed + extraSpeed;
+        float targetSpeed = instance.handleBaseSpeed + extraSpeed;
 
         //who knows wtf is going on here tbh
         //speed up / starting
         if (tickCount <= rampTime)
         {
             //if the increase is bigger than the target speed, set to target speed, otherwise increase by the value every tick
-            instance.pointerSpeed = Math.abs(currentSpeed) + increaseValueEveryTick > targetSpeed ? targetSpeed : currentSpeed + Math.signum(currentSpeed) * increaseValueEveryTick;
+            instance.handleSpeed = Math.abs(currentSpeed) + increaseValueEveryTick > targetSpeed ? targetSpeed : currentSpeed + Math.signum(currentSpeed) * increaseValueEveryTick;
         }
 
         //slowdown / ending
         if (tickCount >= length - rampTime)
         {
             float newPointerSpeed = currentSpeed - U.sign(currentSpeed) * increaseValueEveryTick;
-            instance.pointerSpeed = Math.abs(instance.pointerBaseSpeed) < newPointerSpeed ? newPointerSpeed : instance.pointerBaseSpeed;
+            instance.handleSpeed = Math.abs(instance.handleBaseSpeed) < newPointerSpeed ? newPointerSpeed : instance.handleBaseSpeed;
         }
 
     }
@@ -82,14 +79,14 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     public void onRemove()
     {
         super.onRemove();
-        instance.pointerSpeed = instance.pointerBaseSpeed;
+        instance.handleSpeed = instance.handleBaseSpeed;
     }
 
     @Override
     public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderForeground(guiGraphics, partialTick, width, height);
-        RenderSystem.setShaderColor(1, 1, 1, 1 - (instance.pointerBaseSpeed - instance.pointerSpeed / 2) / (instance.pointerSpeed - instance.pointerSpeed / 2));
+        RenderSystem.setShaderColor(1, 1, 1, 1 - (instance.handleBaseSpeed - instance.handleSpeed / 2) / (instance.handleSpeed - instance.handleSpeed / 2));
         RenderSystem.enableBlend();
         int yoffset = tickCount % 32;
         guiGraphics.blit(TEXTURE, width / 2 - 8, height / 2 - 8 - 7, 16, 16, 0, yoffset * 16, 16, 16, 16, 512);

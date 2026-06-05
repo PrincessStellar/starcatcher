@@ -35,7 +35,10 @@ public abstract class AbstractSweetSpotBehaviour
 
     public void onHit()
     {
-        ass.modifiers.forEach(mod -> mod.onHit(this.ass));
+    }
+
+    public void onMiss()
+    {
     }
 
     public void onRemove()

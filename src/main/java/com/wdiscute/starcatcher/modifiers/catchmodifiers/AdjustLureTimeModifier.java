@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 
 import java.text.DecimalFormat;
@@ -71,16 +72,18 @@ public class AdjustLureTimeModifier extends AbstractCatchModifier
         {
             float total = (minTicks + maxTicks) / 2;
 
+            MutableComponent lureTime = Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.base");
+
             if (total > 2f)
-                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.big_increase"));
+                return List.of(Component.translatable("tooltip.modifier.keyword.big_increase").append(lureTime));
 
             if (total > 1f)
-                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.increase"));
+                return List.of(Component.translatable("tooltip.modifier.keyword.increase").append(lureTime));
 
             if (total < 0.75f)
-                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.big_decrease"));
+                return List.of(Component.translatable("tooltip.modifier.keyword.big_decrease").append(lureTime));
 
-            return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_lure_time.decrease"));
+            return List.of(Component.translatable("tooltip.modifier.keyword.decrease").append(lureTime));
         }
     }
 

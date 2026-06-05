@@ -9,6 +9,8 @@ import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
@@ -16,7 +18,6 @@ import com.wdiscute.starcatcher.registry.SCAttributes;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -40,10 +41,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 import org.joml.Vector2d;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.*;
 
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
@@ -72,11 +70,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public int gracePeriod = Integer.MAX_VALUE;
 
-    public float pointerSpeed;
-    public float pointerBaseSpeed;
+    public float handleSpeed;
+    public float handleBaseSpeed;
 
     public int tickCount = 0;
-    public float pointerPos = 0;
+    public float handlePos = 0;
     public int currentRotation = 1;
     public float partial;
     public float hitDelay;
@@ -90,6 +88,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public boolean treasureActive;
     public int treasureProgress = 0;
     public int treasureProgressSmooth = 0;
+
+    //used to store data that changes at runtime and is independent of each minigame, ie number of hits so far
+    public final Map<ResourceLocation, Object> modifierData = new HashMap<>();
 
     List<HitFakeParticle> hitParticles = new ArrayList<>();
 
@@ -156,14 +157,14 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         Player player = Minecraft.getInstance().player;
 
         //base - a lot of these are now hitZone-based
-        this.pointerSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
-        this.pointerBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.POINTER_SPEED_MULTIPLIER.get());
+        this.handleSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.HANDLE_SPEED_MULTIPLIER.get());
+        this.handleBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.HANDLE_SPEED_MULTIPLIER.get());
         this.penalty = (int) (difficulty.penalty() * player.getAttributeValue(SCAttributes.PENALTY_MULTIPLIER) * SCConfig.PENALTY_MULTIPLIER.get());
         this.decay = (float) (difficulty.decay() * player.getAttributeValue(SCAttributes.BASE_DECAY_MULTIPLIER) * SCConfig.DECAY_RATE_MULTIPLIER.get());
         this.hp = (int) (difficulty.hp() * player.getAttributeValue(SCAttributes.REQUIRED_SCORE_MULTIPLIER) * SCConfig.HP_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
-        addModifier(new BaseMinigameModifier(""));
+        Modifier.BASE_MINIGAME_MODIFIERS.forEach(this::addModifier);
 
         //add every modifier from fp json which is registered
         for (Modifier mod : fp.dif().modifiers())
@@ -425,7 +426,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.translate(centerX, centerY, 0);
 
-        poseStack.mulPose(Axis.ZP.rotationDegrees(pointerPos + ((pointerSpeed * partialTick) * currentRotation)));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(handlePos + ((handleSpeed * partialTick) * currentRotation)));
 
         poseStack.translate(0, -16, 0);
 
@@ -519,15 +520,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             {
 
                 //check if each modifier allows the hit to register
-                boolean isCanceled = false;
-                for (AbstractMinigameModifier modifier : modifiers)
-                {
-
-                    if (modifier.onHit(ass))
-                        isCanceled = true;
-                }
-
-                if (isCanceled) continue;
+                if (modifiers.stream().anyMatch(o -> o.onHit(ass))) continue;
 
                 hitSomething = true;
                 ass.behaviour.onHit();
@@ -543,15 +536,18 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             consecutiveHits = 0;
             if (SCConfig.ENABLE_MISS_SOUND.get())
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
+
+            activeSweetSpots.forEach(o -> o.behaviour.onMiss());
+
             progress -= penalty;
         }
     }
 
     public float getPointerPosPrecise()
     {
-        float pointerPosPrecise = (pointerPos + ((pointerSpeed * partial) * currentRotation));
+        float pointerPosPrecise = (handlePos + ((handleSpeed * partial) * currentRotation));
 
-        pointerPosPrecise += hitDelay * pointerSpeed * currentRotation;
+        pointerPosPrecise += hitDelay * handleSpeed * currentRotation;
         return pointerPosPrecise;
     }
 
@@ -604,13 +600,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         spotsToAdd.clear();
 
         //move pointer
-        pointerPos += pointerSpeed * currentRotation;
+        handlePos += handleSpeed * currentRotation;
 
         //decrease kimbe markers alpha
         kimbeMarkerAlpha -= 0.1f;
 
-        if (pointerPos > 360) pointerPos -= 360;
-        if (pointerPos < 0) pointerPos += 360;
+        if (handlePos > 360) handlePos -= 360;
+        if (handlePos < 0) handlePos += 360;
 
         gracePeriod--;
 

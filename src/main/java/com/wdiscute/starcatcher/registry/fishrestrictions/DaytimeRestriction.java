@@ -7,8 +7,6 @@ import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.Entity;

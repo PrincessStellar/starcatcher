@@ -12,7 +12,6 @@ import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
@@ -51,8 +50,6 @@ public class FishingBobEntity extends Projectile
     private static final Logger log = LoggerFactory.getLogger(FishingBobEntity.class);
     public static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> VOID = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.BOOLEAN);
-
-    public static final List<AbstractCatchModifier> MODIFIERS_TO_ADD = new ArrayList<>(){{add(new FishMessagesModifier());}};
 
     public final Player player;
     private FishHookState currentState;
@@ -118,7 +115,7 @@ public class FishingBobEntity extends Projectile
         this.modifiers = new ArrayList<>(Modifier.getCatchModifiers(player));
 
         //add fish messages modifier
-        modifiers.addAll(MODIFIERS_TO_ADD);
+        modifiers.addAll(Modifier.BASE_CATCH_MODIFIERS);
 
         SingleStackContainer ssc = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty());
         voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));

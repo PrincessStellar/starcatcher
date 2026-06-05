@@ -45,6 +45,7 @@ public class BounceBackModifier extends AbstractMinigameModifier
     @Override
     public void tick()
     {
+        //no idea wtf is going on here anymore
         super.tick();
 
         if (bounced)

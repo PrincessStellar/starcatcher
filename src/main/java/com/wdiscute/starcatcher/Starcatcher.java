@@ -2,18 +2,15 @@ package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
@@ -117,8 +114,7 @@ public class Starcatcher
         SCStats.register(modEventBus);
         SCAttributes.register(modEventBus);
 
-        SCMinigameModifiers.register();
-        SCCatchModifiers.register();
+        Modifier.registerCatch();
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
@@ -132,6 +128,7 @@ public class Starcatcher
     {
         public Client(ModContainer modContainer)
         {
+            Modifier.registerMinigame();
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         }
     }

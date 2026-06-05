@@ -29,7 +29,7 @@
         "cooldown": 5,
         "sudoku_vanish": true,
         "sweet_spot": {
-          "color_as_int": 16711680,
+          "color_as_int": -65536,
           "hitbox_size_in_pixels": 33,
           "is_flip": false,
           "moving_rate": 0.0,
@@ -44,7 +44,7 @@
     "speed": 10,
     "sweetspots": [
       {
-        "color_as_int": 5329747,
+        "color_as_int": -11447469,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -54,7 +54,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 5329747,
+        "color_as_int": -11447469,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,

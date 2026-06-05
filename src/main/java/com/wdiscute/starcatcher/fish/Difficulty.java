@@ -52,6 +52,11 @@ public record Difficulty(
         return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
     }
 
+    public Difficulty withHP(int hp)
+    {
+        return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
+    }
+
     public Difficulty vanishing()
     {
         List<SweetSpot> sss = new ArrayList<>();
@@ -267,10 +272,10 @@ public record Difficulty(
     );
 
     public static Difficulty AURORA = new Difficulty(
-            300,
-            14, 15, 1f,
+            500,
+            14, 75, 3f,
             List.of(),
-            SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
+            SweetSpot.FROZEN, SweetSpot.FROZEN
     );
 
     public static Difficulty STONEFISH = new Difficulty(
@@ -404,6 +409,8 @@ public record Difficulty(
         private static final ResourceLocation RL_TNT = Starcatcher.rl("textures/gui/minigame/spots/tnt.png");
         private static final ResourceLocation RL_STONE = Starcatcher.rl("textures/gui/minigame/spots/stone.png");
         private static final ResourceLocation RL_AQUA = Starcatcher.rl("textures/gui/minigame/spots/aqua.png");
+        private static final ResourceLocation RL_DEEP_OCEAN = Starcatcher.rl("textures/gui/minigame/spots/deep_ocean.png");
+        private static final ResourceLocation RL_GLOWING = Starcatcher.rl("textures/gui/minigame/spots/glowing.png");
         private static final ResourceLocation RL_LEAF = Starcatcher.rl("textures/gui/minigame/spots/leaf.png");
 
         private static final ResourceLocation RL_NETHER_CRAB_CLAW = Starcatcher.rl("textures/gui/minigame/spots/nether_crab_claw.png");
@@ -447,7 +454,7 @@ public record Difficulty(
                 RL_NORMAL,
                 22,
                 30,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot NORMAL_STEADY = new SweetSpot(
@@ -455,7 +462,7 @@ public record Difficulty(
                 RL_NORMAL_STEADY,
                 33,
                 15,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot NORMAL = new SweetSpot(
@@ -463,7 +470,7 @@ public record Difficulty(
                 RL_NORMAL,
                 22,
                 15,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot THIN_STEADY = new SweetSpot(
@@ -471,7 +478,7 @@ public record Difficulty(
                 RL_THIN_STEADY,
                 20,
                 20,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot THIN_STEADY_MOSSY = new SweetSpot(
@@ -480,7 +487,7 @@ public record Difficulty(
                 20,
                 10,
                 true, 0.01f, 1,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot THIN = new SweetSpot(
@@ -488,15 +495,15 @@ public record Difficulty(
                 RL_THIN,
                 15,
                 20,
-                0x00ff00
+                0xff00ff00
         );
 
-        public static SweetSpot FREEZE = new SweetSpot(
+        public static SweetSpot FROZEN = new SweetSpot(
                 SCSweetSpotsBehaviour.FROZEN,
                 RL_FREEZE,
                 33,
                 15,
-                0x095f92
+                0xffADD8E6
         );
 
         public static SweetSpot NORMAL_HEAVY = new SweetSpot(
@@ -504,7 +511,7 @@ public record Difficulty(
                 RL_NORMAL,
                 22,
                 1,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot TREASURE = new SweetSpot(
@@ -512,7 +519,7 @@ public record Difficulty(
                 RL_TREASURE,
                 20,
                 15,
-                0xFFD700
+                0xffFFD700
         );
 
         public static SweetSpot WITHER = new SweetSpot(
@@ -523,7 +530,7 @@ public record Difficulty(
                 false,
                 0,
                 3,
-                0x1f1f1f
+                0xff1f1f1f
         );
 
         public static SweetSpot WITHER_REVERSED = new SweetSpot(
@@ -534,7 +541,7 @@ public record Difficulty(
                 false,
                 0,
                 -3,
-                0x1f1f1f
+                0xff1f1f1f
         );
 
 
@@ -543,7 +550,7 @@ public record Difficulty(
                 RL_WITHER_BIG,
                 33,
                 15,
-                0x1f1f1f
+                0xff1f1f1f
         );
 
         public static SweetSpot CREEPER = new SweetSpot(
@@ -551,7 +558,7 @@ public record Difficulty(
                 RL_CREEPER,
                 22,
                 15,
-                0x515353
+                0xff515353
         );
 
         public static SweetSpot TNT = new SweetSpot(
@@ -559,7 +566,7 @@ public record Difficulty(
                 RL_TNT,
                 33,
                 30,
-                0xff0000
+                0xffff0000
         );
 
         public static SweetSpot STONE_5 = new SweetSpot(
@@ -567,7 +574,7 @@ public record Difficulty(
                 RL_STONE,
                 33,
                 5,
-                0x494949
+                0xff494949
         );
 
 
@@ -576,7 +583,7 @@ public record Difficulty(
                 RL_STONE,
                 33,
                 10,
-                0x494949
+                0xff494949
         );
 
         public static SweetSpot AQUA = new SweetSpot(
@@ -584,7 +591,23 @@ public record Difficulty(
                 RL_AQUA,
                 22,
                 10,
-                0x387982
+                0xff387982
+        );
+
+        public static SweetSpot DEEP_OCEAN = new SweetSpot(
+                SCSweetSpotsBehaviour.DEEP_OCEAN,
+                RL_DEEP_OCEAN,
+                22,
+                10,
+                0xff4f756d
+        );
+
+        public static SweetSpot GLOWING = new SweetSpot(
+                SCSweetSpotsBehaviour.GLOWING_SWEET_SPOT,
+                RL_GLOWING,
+                20,
+                0,
+                0xfffdf55f
         );
 
         public static SweetSpot LEAF = new SweetSpot(
@@ -592,47 +615,65 @@ public record Difficulty(
                 RL_LEAF,
                 15,
                 15,
-                0x00ff00
+                0xff00ff00
         );
 
         public static SweetSpot DEEPSLATE_CRAB_CLAW = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_DEEPSLATE_CRAB_CLAW, 24, 10, 0xff8400
+                RL_DEEPSLATE_CRAB_CLAW,
+                24,
+                10,
+                0xffff8400
         );
 
         public static SweetSpot DEEPSLATE_CRAB_LEG = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_DEEPSLATE_CRAB_LEG, 15, 1, 0xff8400
+                RL_DEEPSLATE_CRAB_LEG,
+                15,
+                1,
+                0xffff8400
         );
 
         public static SweetSpot OBSIDIAN_CRAB_CLAW = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_OBSIDIAN_CRAB_CLAW, 24, 10, 0x3b2754
+                RL_OBSIDIAN_CRAB_CLAW, 24,
+                10,
+                0xff3b2754
         );
 
         public static SweetSpot OBSIDIAN_CRAB_LEG = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_OBSIDIAN_CRAB_LEG, 15, 1, 0x3b2754
+                RL_OBSIDIAN_CRAB_LEG, 15,
+                1,
+                0xff3b2754
         );
 
         public static SweetSpot NETHER_CRAB_CLAW = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_NETHER_CRAB_CLAW, 24, 10, 0xcd4545
+                RL_NETHER_CRAB_CLAW, 24,
+                10,
+                0xffcd4545
         );
 
         public static SweetSpot NETHER_CRAB_LEG = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_NETHER_CRAB_LEG, 15, 1, 0xcd4545
+                RL_NETHER_CRAB_LEG, 15,
+                1,
+                0xffcd4545
         );
 
         public static SweetSpot END_CRAB_CLAW = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_END_CRAB_CLAW, 24, 10, 0xc67ed9
+                RL_END_CRAB_CLAW, 24,
+                10,
+                0xffc67ed9
         );
 
         public static SweetSpot END_CRAB_LEG = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_END_CRAB_LEG, 15, 1, 0xc67ed9
+                RL_END_CRAB_LEG, 15,
+                1,
+                0xffc67ed9
         );
 
 

@@ -26,7 +26,7 @@
     "speed": 10,
     "sweetspots": [
       {
-        "color_as_int": 2039583,
+        "color_as_int": -14737633,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
         "moving_rate": 0.0,
@@ -36,7 +36,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 2039583,
+        "color_as_int": -14737633,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 3.0,
@@ -46,7 +46,7 @@
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": 2039583,
+        "color_as_int": -14737633,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": -3.0,

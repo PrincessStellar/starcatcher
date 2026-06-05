@@ -8,25 +8,22 @@ import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
-public class StoneHookModifier extends AbstractTimedModifier
+public class StoneHookModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<StoneHookModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, StoneHookModifier::new));
 
-    public StoneHookModifier(int length, String translationOverride)
+    public StoneHookModifier(String translationOverride)
     {
-        super(length, translationOverride);
+        super(translationOverride);
     }
 
     @Override
     public boolean onHit(ActiveSweetSpot ass)
     {
         instance.gracePeriod = instance.rarity.getStoneHookGraceTicks();
-        ;
-
         return super.onHit(ass);
     }
 

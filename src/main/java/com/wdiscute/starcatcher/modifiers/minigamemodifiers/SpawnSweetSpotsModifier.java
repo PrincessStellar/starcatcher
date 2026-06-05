@@ -49,12 +49,6 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier
         }
     }
 
-    public static Difficulty.SweetSpot legacyFreeze()
-    {
-        Difficulty.SweetSpot original = Difficulty.SweetSpot.FREEZE;
-        return new Difficulty.SweetSpot(original.sweetSpotType(), original.texturePath(), original.size(), original.reward(), original.isFlip(), 0.02f, original.movingRate(), original.particleColor());
-    }
-
     @Override
     public ResourceLocation getIdentifier()
     {

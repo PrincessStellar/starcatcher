@@ -2,7 +2,6 @@ package com.wdiscute.starcatcher;
 
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class SCConfig
@@ -125,10 +124,10 @@ public class SCConfig
             .translation("starcatcher.configuration.hp_multiplier")
             .defineInRange("hp_multiplier", 1d, 0d, 100d);
 
-    public static final ModConfigSpec.DoubleValue POINTER_SPEED_MULTIPLIER = BUILDER_SERVER
-            .comment("Adjusts the pointer speed rate, useful if you want to adjust the fishes' difficulty globally.")
-            .translation("starcatcher.configuration.pointer_speed_multiplier")
-            .defineInRange("pointer_speed_multiplier", 1d, 0d, 100d);
+    public static final ModConfigSpec.DoubleValue HANDLE_SPEED_MULTIPLIER = BUILDER_SERVER
+            .comment("Adjusts the handle speed, useful if you want to adjust the fishes' difficulty globally.")
+            .translation("starcatcher.configuration.handle_speed_multiplier")
+            .defineInRange("handle_speed_multiplier", 1d, 0d, 100d);
 
     public static final ModConfigSpec.BooleanValue HIDE_ENTRIES_UNTIL_FOUND = BUILDER_SERVER
             .comment("Hides entries in the guide book until one has been caught.")
@@ -194,11 +193,6 @@ public class SCConfig
             .comment("Hides the catch during minigame")
             .translation("starcatcher.configuration.hide_catches")
             .define("hide_catches", false);
-
-    //todo add base modifiers config
-//    public static final ModConfigSpec.ListValueSpec BASE_MODIFIERS = BUILDER_SERVER
-//            .comment("Adjusts the fish decay rate multiplier, useful if you want to adjust the fishes' difficulty globally.")
-//            .define("pointer_speed_multiplier", List.of());
 
     static final ModConfigSpec SPEC_SERVER = BUILDER_SERVER.build();
 

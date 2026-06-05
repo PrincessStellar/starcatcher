@@ -7,9 +7,6 @@ import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -81,7 +78,6 @@ public class TooltipEvents
                 comp.add(Component.literal(" -").append(Component.literal(s))
                         .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
             }
-
         }
 
         //modifiers
