@@ -4,10 +4,9 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ExtraComposites;
-import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SpawnSweetSpotsModifier;
+import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnSweetSpotsModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -17,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 
 //region dif
 public record Difficulty(
@@ -25,23 +23,23 @@ public record Difficulty(
         int speed,
         int penalty,
         float decay,
-        List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers,
+        List<Modifier> modifiers,
         List<SweetSpot> sweetSpots
 )
 {
-    public Difficulty(int hp, int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
+    public Difficulty(int hp, int speed, int penalty, float decay, List<Modifier> modifiers, SweetSpot... sweetSpots)
     {
         this(hp, speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
     }
 
-    public Difficulty(int speed, int penalty, float decay, List<Supplier<Supplier<AbstractMinigameModifier>>> modifiers, SweetSpot... sweetSpots)
+    public Difficulty(int speed, int penalty, float decay, List<Modifier> modifiers, SweetSpot... sweetSpots)
     {
         this(100, speed, penalty, decay, modifiers, Arrays.stream(sweetSpots).toList());
     }
 
-    public Difficulty addModifiers(List<Supplier<Supplier<AbstractMinigameModifier>>> newModifier)
+    public Difficulty addModifiers(List<Modifier> newModifier)
     {
-        List<Supplier<Supplier<AbstractMinigameModifier>>> list = new ArrayList<>();
+        List<Modifier> list = new ArrayList<>();
         list.addAll(newModifier);
         list.addAll(this.modifiers);
         return new Difficulty(this.hp, this.speed, this.penalty, this.decay, list, this.sweetSpots);
@@ -290,7 +288,7 @@ public record Difficulty(
 
     public static Difficulty CREEPER = new Difficulty(
             10, 20, 1,
-            List.of(new SpawnSweetSpotsModifier(-1, 5, 0.25f, Difficulty.SweetSpot.TNT, true).toDoubleSup()),
+            List.of(new SpawnSweetSpotsModifier(-1, 5, 0.25f, Difficulty.SweetSpot.TNT, true, "")),
             SweetSpot.CREEPER, SweetSpot.CREEPER
     );
 
@@ -338,7 +336,7 @@ public record Difficulty(
 
     public static Difficulty CERBERAY = new Difficulty(
             16, 10, 1.5f,
-            List.of(SCMinigameModifiers.NIKDO53_MODIFIER),
+            List.of(new Nikdo53Modifier(2, "")),
             SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
     );
 
@@ -351,7 +349,7 @@ public record Difficulty(
                     Codec.INT.fieldOf("speed").forGetter(Difficulty::speed),
                     Codec.INT.fieldOf("missPenalty").forGetter(Difficulty::penalty),
                     Codec.FLOAT.fieldOf("decay").forGetter(Difficulty::decay),
-                    AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC.fieldOf("modifiers").forGetter(Difficulty::modifiers),
+                    Modifier.CODEC.listOf().fieldOf("modifiers").forGetter(Difficulty::modifiers),
                     SweetSpot.LIST_CODEC.fieldOf("sweetspots").forGetter(Difficulty::sweetSpots)
             ).apply(instance, Difficulty::new));
 
@@ -361,7 +359,7 @@ public record Difficulty(
             ByteBufCodecs.INT, Difficulty::speed,
             ByteBufCodecs.INT, Difficulty::penalty,
             ByteBufCodecs.FLOAT, Difficulty::decay,
-            ByteBufCodecs.fromCodec(AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC), Difficulty::modifiers,
+            ByteBufCodecs.fromCodec(Modifier.CODEC).apply(ByteBufCodecs.list()), Difficulty::modifiers,
             SweetSpot.LIST_STREAM_CODEC, Difficulty::sweetSpots,
             Difficulty::new
     );
@@ -375,10 +373,10 @@ public record Difficulty(
             float vanishingRate,
             float movingRate,
             int particleColor,
-            List<Supplier<Supplier<AbstractMinigameModifier>>> onHitModifiers
+            List<Modifier> modifiers
     )
     {
-        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, int particleColor, List<Supplier<Supplier<AbstractMinigameModifier>>> onHitModifiers)
+        public SweetSpot(ResourceLocation sweetSpotType, ResourceLocation texturePath, int size, int reward, int particleColor, List<Modifier> onHitModifiers)
         {
             this(sweetSpotType, texturePath, size, reward, false, 0, 0, particleColor, onHitModifiers);
         }
@@ -425,21 +423,20 @@ public record Difficulty(
 
         public SweetSpot flip()
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, true, this.vanishingRate, this.movingRate, this.particleColor, this.onHitModifiers);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, true, this.vanishingRate, this.movingRate, this.particleColor, this.modifiers);
         }
 
         public SweetSpot vanishing(float vanishingRate)
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, vanishingRate, this.movingRate, this.particleColor, this.onHitModifiers);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, vanishingRate, this.movingRate, this.particleColor, this.modifiers);
         }
 
         public SweetSpot moving(float movingRate)
         {
-            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, movingRate, this.particleColor, this.onHitModifiers);
+            return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, movingRate, this.particleColor, this.modifiers);
         }
 
-        @SafeVarargs
-        public final SweetSpot withModifiers(Supplier<Supplier<AbstractMinigameModifier>>... modifiers)
+        public final SweetSpot withModifiers(Modifier... modifiers)
         {
             return new SweetSpot(this.sweetSpotType, this.texturePath, this.size, this.reward, this.isFlip, this.vanishingRate, this.movingRate, this.particleColor, Arrays.stream(modifiers).toList());
         }
@@ -649,7 +646,7 @@ public record Difficulty(
                         Codec.FLOAT.fieldOf("vanishing_rate").forGetter(SweetSpot::vanishingRate),
                         Codec.FLOAT.fieldOf("moving_rate").forGetter(SweetSpot::movingRate),
                         Codec.INT.fieldOf("color_as_int").forGetter(SweetSpot::particleColor),
-                        AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC.optionalFieldOf("add_modifiers_on_hit", List.of()).forGetter(SweetSpot::onHitModifiers)
+                        Modifier.CODEC.listOf().optionalFieldOf("add_modifiers_on_hit", List.of()).forGetter(SweetSpot::modifiers)
                 ).apply(instance, SweetSpot::new));
 
         public static final Codec<List<SweetSpot>> LIST_CODEC = CODEC.listOf();
@@ -663,7 +660,7 @@ public record Difficulty(
                 ByteBufCodecs.FLOAT, SweetSpot::vanishingRate,
                 ByteBufCodecs.FLOAT, SweetSpot::movingRate,
                 ByteBufCodecs.INT, SweetSpot::particleColor,
-                ByteBufCodecs.fromCodec(AbstractMinigameModifier.DOUBLE_SUP_LIST_CODEC), SweetSpot::onHitModifiers,
+                ByteBufCodecs.fromCodec(Modifier.CODEC).apply(ByteBufCodecs.list()), SweetSpot::modifiers,
                 SweetSpot::new
         );
 

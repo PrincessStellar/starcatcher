@@ -6,7 +6,7 @@ import com.wdiscute.starcatcher.recipe.FishingRodSkinSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.NetheriteUpgradeSmithingRecipe;
 import com.wdiscute.starcatcher.recipe.TackleSkinSmithingRecipe;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
@@ -40,11 +40,9 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
 
         ItemStack template = new ItemStack(recipe.template().getItems()[0].getItem());
 
-        List<ResourceLocation> minigameRLs = SCDataMaps.getOrDefault(template, SCDataMaps.MINIGAME_MODIFIERS, List.of());
-        List<AbstractCatchModifier> catchModifiers = SCDataMaps.getOrDefault(template, SCDataMaps.CATCH_MODIFIERS, List.of());
+        List<Modifier> catchModifiers = SCDataMaps.getOrDefault(template, SCDataMaps.ITEM_MODIFIERS, List.of());
 
-        SCDataComponents.set(stack, SCDataComponents.MINIGAME_MODIFIERS, minigameRLs);
-        SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        SCDataComponents.set(stack, SCDataComponents.MODIFIERS, catchModifiers);
 
         this.output = EmiStack.of(stack);
     }
@@ -60,16 +58,14 @@ public class StarcatcherEmiSmithingRecipe implements EmiRecipe
 
         ItemStack template = new ItemStack(recipe.template().getItems()[0].getItem());
 
-        List<ResourceLocation> minigameRLs = SCDataMaps.getOrDefault(template, SCDataMaps.MINIGAME_MODIFIERS, List.of());
-        List<AbstractCatchModifier> catchModifiers = SCDataMaps.getOrDefault(template, SCDataMaps.CATCH_MODIFIERS, List.of());
+        List<Modifier> catchModifiers = SCDataMaps.getOrDefault(template, SCDataMaps.ITEM_MODIFIERS, List.of());
 
         ResourceLocation tackleSkin = SCDataComponents.get(template, SCDataComponents.TACKLE_SKIN);
 
         if (tackleSkin != null)
             SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
 
-        SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameRLs);
-        SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
+        SCDataComponents.set(resultRod, SCDataComponents.MODIFIERS, catchModifiers);
 
         this.output = EmiStack.of(resultRod);
     }

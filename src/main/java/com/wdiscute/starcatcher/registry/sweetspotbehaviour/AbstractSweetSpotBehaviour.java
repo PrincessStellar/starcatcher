@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import net.minecraft.client.gui.GuiGraphics;
 
 public abstract class AbstractSweetSpotBehaviour
@@ -35,12 +35,7 @@ public abstract class AbstractSweetSpotBehaviour
 
     public void onHit()
     {
-        ass.onHitModifiers.forEach(mod -> {
-            AbstractMinigameModifier modifier = mod.get();
-            modifier.tickCount = 0;
-            modifier.removed = false;
-            instance.addModifier(modifier);
-        });
+        ass.modifiers.forEach(mod -> mod.onHit(this.ass));
     }
 
     public void onRemove()

@@ -19,7 +19,8 @@
     "missPenalty": 0,
     "modifiers": [
       {
-        "type": "starcatcher:burn_on_miss"
+        "type": "starcatcher:burn_on_miss",
+        "translation_override": ""
       }
     ],
     "speed": 10,

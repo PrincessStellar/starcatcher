@@ -6,7 +6,7 @@ import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCRecipes;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -33,20 +33,16 @@ public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ing
     {
         ItemStack resultRod = input.base().copy();
 
-        List<AbstractCatchModifier> catchModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.CATCH_MODIFIERS, List.of()));
-        catchModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.CATCH_MODIFIERS, List.of()));
-        catchModifiers.addAll(SCDataMaps.getOrDefault(input.template(), SCDataMaps.CATCH_MODIFIERS, List.of()));
-
-        List<ResourceLocation> minigameModifiers = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        minigameModifiers.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MINIGAME_MODIFIERS, List.of()));
-        minigameModifiers.addAll(SCDataMaps.getOrDefault(input.template(), SCDataMaps.MINIGAME_MODIFIERS, List.of()));
+        //copy + add modifiers
+        List<Modifier> modifier = new ArrayList<>(SCDataComponents.getOrDefault(input.base(), SCDataComponents.MODIFIERS, List.of()));
+        modifier.addAll(SCDataComponents.getOrDefault(input.template(), SCDataComponents.MODIFIERS, List.of()));
+        modifier.addAll(SCDataMaps.getOrDefault(input.template(), SCDataMaps.ITEM_MODIFIERS, List.of()));
+        SCDataComponents.set(resultRod, SCDataComponents.MODIFIERS, modifier);
 
         ResourceLocation tackleSkin = SCTackleSkins.getTackleSkin(input.template());
         if (!tackleSkin.equals(SCTackleSkins.BASE_TACKLE_SKIN))
             SCDataComponents.set(resultRod, SCDataComponents.TACKLE_SKIN, tackleSkin);
 
-        SCDataComponents.set(resultRod, SCDataComponents.MINIGAME_MODIFIERS, minigameModifiers);
-        SCDataComponents.set(resultRod, SCDataComponents.CATCH_MODIFIERS, catchModifiers);
         return resultRod;
     }
 
@@ -71,8 +67,7 @@ public record TackleSkinSmithingRecipe(Ingredient template, Ingredient base, Ing
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries)
     {
-        ItemStack itemstack = new ItemStack(SCItems.ROD.get());
-        return itemstack;
+        return new ItemStack(SCItems.ROD.get());
     }
 
     @Override

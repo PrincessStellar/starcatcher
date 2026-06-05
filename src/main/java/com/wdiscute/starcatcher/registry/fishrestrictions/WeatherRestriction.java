@@ -6,8 +6,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.StringRepresentable;
@@ -105,11 +105,11 @@ public class WeatherRestriction extends AbstractFishRestriction
         //skip if any modifiers have skipsWeatherRestriction interface
         if (context.equals(Context.FISHING) && entity instanceof FishingBobEntity bob && bob.player != null)
         {
-            if (SCCatchModifiers.getCatchModifiers(bob.player).stream().anyMatch(
+            if (Modifier.getCatchModifiers(bob.player).stream().anyMatch(
                     o -> o instanceof SkipsWeatherRestriction sp && sp.shouldSkipWeather(level)))
                 return 0;
 
-            if (SCMinigameModifiers.getMinigameModifiers(bob.player).stream().anyMatch(
+            if (Modifier.getModifiers(bob.player).stream().anyMatch(
                     o -> o instanceof SkipsWeatherRestriction sp && sp.shouldSkipWeather(level)))
                 return 0;
         }

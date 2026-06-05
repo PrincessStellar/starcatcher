@@ -8,15 +8,15 @@ import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.SCAttributes;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.BaseMinigameModifier;
-import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -163,16 +163,17 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         this.hp = (int) (difficulty.hp() * player.getAttributeValue(SCAttributes.REQUIRED_SCORE_MULTIPLIER) * SCConfig.HP_RATE_MULTIPLIER.get());
 
         //add base modifier for kimbe before other modifiers so they can override kimbe if needed
-        addModifier(new BaseMinigameModifier());
+        addModifier(new BaseMinigameModifier(""));
 
         //add every modifier from fp json which is registered
-        for (Supplier<Supplier<AbstractMinigameModifier>> mod : fp.dif().modifiers())
+        for (Modifier mod : fp.dif().modifiers())
         {
-            addModifier(mod.get().get());
+            if (mod instanceof AbstractMinigameModifier amm)
+                addModifier(amm);
         }
 
         //add modifiers in armor/curios/rod
-        modifiersToAdd.addAll(SCMinigameModifiers.getMinigameModifiers(player));
+        modifiersToAdd.addAll(Modifier.getMinigameModifiers(player));
 
         //add every sweet spot from fp Json which is registered
         for (Difficulty.SweetSpot ss : fp.dif().sweetSpots())
@@ -477,8 +478,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey) && !SCKeymappings.MINIGAME_HIT.getKey().equals(mouseKey))
         {
             if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                    && !tackleSkin.skipMissSound()
+                && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                && !tackleSkin.skipMissSound()
             )
                 Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
             this.onClose();
@@ -630,8 +631,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             if (progressSmooth < 0)
             {
                 if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                        && !tackleSkin.skipMissSound()
+                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                    && !tackleSkin.skipMissSound()
                 )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
                 this.onClose();
@@ -643,8 +644,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
 
                 if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                        && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                        && !tackleSkin.skipSuccessSound()
+                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
+                    && !tackleSkin.skipSuccessSound()
                 )
                     Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
 

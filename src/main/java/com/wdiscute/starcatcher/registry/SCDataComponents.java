@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
@@ -62,13 +62,9 @@ public interface SCDataComponents
 
 
     //modifiers
-    DeferredHolder<DataComponentType<?>, DataComponentType<List<ResourceLocation>>> MINIGAME_MODIFIERS = register(
-            "minigame_modifiers",
-            builder -> builder.persistent(ResourceLocation.CODEC.listOf()));
-
-    DeferredHolder<DataComponentType<?>, DataComponentType<List<AbstractCatchModifier>>> CATCH_MODIFIERS = register(
-            "catch_modifiers",
-            builder -> builder.persistent(AbstractCatchModifier.CODEC.listOf()));
+    DeferredHolder<DataComponentType<?>, DataComponentType<List<Modifier>>> MODIFIERS = register(
+            "modifiers",
+            builder -> builder.persistent(Modifier.CODEC.listOf()));
 
     DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>> TACKLE_SKIN = register(
             "tackle_skin",
@@ -91,8 +87,7 @@ public interface SCDataComponents
     @Nullable
     static <T> T get(ItemStack stack, Supplier<DataComponentType<T>> component)
     {
-        if(component.equals(CATCH_MODIFIERS.get()));
-        if(component.equals(MINIGAME_MODIFIERS.get()));
+        if(component.equals(MODIFIERS.get()));
         if(component.equals(TACKLE_SKIN.get()));
         return stack.get(component);
     }

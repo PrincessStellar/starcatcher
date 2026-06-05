@@ -5,13 +5,14 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.catchmodifiers.FishMessagesModifier;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
@@ -88,7 +89,7 @@ public class FishingBobEntity extends Projectile
         this.player = level.isClientSide() ? PlayerGetter.getPlayer() : null;
         if (player != null)
         {
-            this.modifiers = SCCatchModifiers.getCatchModifiers(player);
+            this.modifiers = Modifier.getCatchModifiers(player);
             modifiers.forEach(acm -> acm.onAdd(this));
         }
         else
@@ -114,7 +115,7 @@ public class FishingBobEntity extends Projectile
         this.setOwner(player);
         this.player = player;
         this.rod = rod;
-        this.modifiers = SCCatchModifiers.getCatchModifiers(player);
+        this.modifiers = new ArrayList<>(Modifier.getCatchModifiers(player));
 
         //add fish messages modifier
         modifiers.addAll(MODIFIERS_TO_ADD);
@@ -251,8 +252,8 @@ public class FishingBobEntity extends Projectile
                     //hide catch
                     shouldHideCatch ? fpToFish.withCatchInfo(fpToFish.catchInfo().withFish(new MaybeStack(SCItems.UNKNOWN_FISH))) : fpToFish,
                     //hide treasure
-                    SCConfig.HIDE_TREASURES.get() ? SCItems.UNKNOWN_FISH.toStack() : treasure,
-                    rod);
+                    SCConfig.HIDE_TREASURES.get() ? new MaybeStack(SCItems.UNKNOWN_FISH.toStack()) : new MaybeStack(treasure),
+                    new MaybeStack(rod));
 
             //send payload
             PacketDistributor.sendToPlayer(((ServerPlayer) player), payload);

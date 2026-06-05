@@ -18,10 +18,12 @@
     "missPenalty": 10,
     "modifiers": [
       {
-        "type": "starcatcher:burn_on_miss"
+        "type": "starcatcher:burn_on_miss",
+        "translation_override": ""
       },
       {
-        "type": "starcatcher:nikdo53_modifier"
+        "type": "starcatcher:nikdo53_modifier",
+        "translation_override": ""
       }
     ],
     "speed": 16,

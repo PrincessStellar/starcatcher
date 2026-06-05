@@ -5,7 +5,7 @@ import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCAttributes;
 import com.wdiscute.starcatcher.fish.Difficulty;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +23,7 @@ public class ActiveSweetSpot
     public ResourceLocation texture;
     public int reward;
     public int particleColor;
-    public List<Supplier<AbstractMinigameModifier>> onHitModifiers;
+    public List<AbstractMinigameModifier> modifiers;
 
     //from minigame screen/rod
     public final FishingMinigameScreen instance;
@@ -69,7 +69,7 @@ public class ActiveSweetSpot
         this.thickness = ss.size();
         this.reward = ss.reward();
         this.particleColor = ss.particleColor();
-        this.onHitModifiers = ss.onHitModifiers().stream().map(Supplier::get).toList();
+        this.modifiers = ss.modifiers().stream().filter(o -> o instanceof AbstractMinigameModifier).map(o -> (AbstractMinigameModifier)o).toList();
 
         this.bobber = bobber;
         this.bait = bait;

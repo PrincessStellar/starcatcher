@@ -37,7 +37,8 @@
           "sweet_spot_type": "starcatcher:tnt",
           "texture_path": "starcatcher:textures/gui/minigame/spots/tnt.png",
           "vanishing_rate": 0.0
-        }
+        },
+        "translation_override": ""
       }
     ],
     "speed": 10,

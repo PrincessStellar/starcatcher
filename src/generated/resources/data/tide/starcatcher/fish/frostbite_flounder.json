@@ -17,7 +17,8 @@
     "missPenalty": 10,
     "modifiers": [
       {
-        "type": "starcatcher:freeze_on_miss"
+        "type": "starcatcher:freeze_on_miss",
+        "translation_override": ""
       }
     ],
     "speed": 11,

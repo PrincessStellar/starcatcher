@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 
 import com.wdiscute.starcatcher.SCConfig;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sounds.SoundEvents;
 

@@ -7,7 +7,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -18,12 +18,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Supplier;
 
 //      <><|    <- fish
 public record FishProperties(
@@ -183,8 +181,7 @@ public record FishProperties(
         return this;
     }
 
-    public FishProperties addModifier
-            (DeferredHolder<Supplier<AbstractMinigameModifier>, Supplier<AbstractMinigameModifier>> teleport)
+    public FishProperties addModifier(Modifier teleport)
     {
         return withDifficulty(dif.addModifiers(List.of(teleport)));
     }

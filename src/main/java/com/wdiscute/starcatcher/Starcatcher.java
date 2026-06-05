@@ -6,14 +6,14 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestrictio
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.catchmodifiers.SCCatchModifiers;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.SCCatchModifiers;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.guide.FishCaughtToast;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
@@ -49,14 +49,8 @@ public class Starcatcher
     public static final ResourceKey<Registry<AbstractFishRestriction>> FISH_RESTRICTIONS =
             ResourceKey.createRegistryKey(Starcatcher.rl("fish_restrictions"));
 
-    public static final ResourceKey<Registry<Supplier<AbstractMinigameModifier>>> MINIGAME_MODIFIERS =
-            ResourceKey.createRegistryKey(Starcatcher.rl("minigame_modifiers"));
-
     public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEET_SPOT_BEHAVIOUR =
             ResourceKey.createRegistryKey(Starcatcher.rl("sweet_spot_behaviour"));
-
-    public static final ResourceKey<Registry<AbstractCatchModifier>> CATCH_MODIFIERS =
-            ResourceKey.createRegistryKey(Starcatcher.rl("catch_modifiers"));
 
     public static final ResourceKey<Registry<AbstractTackleSkin>> TACKLE_SKIN =
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
@@ -67,19 +61,9 @@ public class Starcatcher
             .defaultKey(Starcatcher.rl("empty"))
             .create();
 
-    public static final Registry<Supplier<AbstractMinigameModifier>> MINIGAME_MODIFIERS_REGISTRY = new RegistryBuilder<>(MINIGAME_MODIFIERS)
-            .sync(true)
-            .defaultKey(Starcatcher.rl("slower_vanishing"))
-            .create();
-
     public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
             .sync(true)
             .defaultKey(Starcatcher.rl("normal"))
-            .create();
-
-    public static final Registry<AbstractCatchModifier> CATCH_MODIFIERS_REGISTRY = new RegistryBuilder<>(CATCH_MODIFIERS)
-            .sync(true)
-            .defaultKey(Starcatcher.rl("decrease_lure_time"))
             .create();
 
     public static final Registry<AbstractTackleSkin> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
@@ -127,13 +111,14 @@ public class Starcatcher
         SCDataAttachments.register(modEventBus);
         SCSweetSpotsBehaviour.register(modEventBus);
         SCFishRestrictions.register(modEventBus);
-        SCMinigameModifiers.register(modEventBus);
-        SCCatchModifiers.register(modEventBus);
         SCTackleSkins.register(modEventBus);
         SCProcessors.register(modEventBus);
         SCLootModifiers.register(modEventBus);
         SCStats.register(modEventBus);
         SCAttributes.register(modEventBus);
+
+        SCMinigameModifiers.register();
+        SCCatchModifiers.register();
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);

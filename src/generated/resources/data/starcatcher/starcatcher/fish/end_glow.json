@@ -18,7 +18,8 @@
     "missPenalty": 20,
     "modifiers": [
       {
-        "type": "starcatcher:teleport"
+        "type": "starcatcher:teleport",
+        "translation_override": ""
       }
     ],
     "speed": 10,

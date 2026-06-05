@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -12,14 +13,14 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record FishingStartedPayload(FishProperties fp, ItemStack treasure, ItemStack rod) implements CustomPacketPayload {
+public record FishingStartedPayload(FishProperties fp, MaybeStack treasure, MaybeStack rod) implements CustomPacketPayload {
 
     public static final Type<FishingStartedPayload> TYPE = new Type<>(Starcatcher.rl("fishing_started"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, FishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
             FishProperties.STREAM_CODEC, FishingStartedPayload::fp,
-            ItemStack.STREAM_CODEC, FishingStartedPayload::treasure,
-            ItemStack.STREAM_CODEC, FishingStartedPayload::rod,
+            MaybeStack.STREAM_CODEC, FishingStartedPayload::treasure,
+            MaybeStack.STREAM_CODEC, FishingStartedPayload::rod,
             FishingStartedPayload::new
     );
 
@@ -35,6 +36,6 @@ public record FishingStartedPayload(FishProperties fp, ItemStack treasure, ItemS
 
     @OnlyIn(Dist.CLIENT)
     public static void client(FishingStartedPayload data, IPayloadContext context) {
-        Minecraft.getInstance().setScreen(new FishingMinigameScreen(data.fp(), data.treasure, data.rod()));
+        Minecraft.getInstance().setScreen(new FishingMinigameScreen(data.fp(), data.treasure.toStack(), data.rod.toStack()));
     }
 }

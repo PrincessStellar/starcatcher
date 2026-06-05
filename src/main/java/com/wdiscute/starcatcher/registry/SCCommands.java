@@ -4,20 +4,22 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
-import com.wdiscute.starcatcher.registry.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.AbstractMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -110,27 +112,18 @@ public interface SCCommands
                 )
 
 
-                //starcatcher add_modifier starcatcher:freeze_on_miss
-                .then(Commands.literal("add_minigame_modifier")
-                        .then(Commands.argument("modifier", ResourceArgument.resource(context, Starcatcher.MINIGAME_MODIFIERS))
-                                .executes(c ->
-                                        addMinigameModifier(
-                                                c.getSource().getPlayerOrException(),
-                                                ResourceArgument.getResource(c, "modifier", Starcatcher.MINIGAME_MODIFIERS).unwrap().left().get()
-                                        )
-                                ))
-                )
-
                 //starcatcher add_modifier starcatcher:ignore_daytime_and_weather_restrictions
-                .then(Commands.literal("add_catch_modifier")
-                        .then(Commands.argument("modifier", ResourceArgument.resource(context, Starcatcher.CATCH_MODIFIERS))
+                .then(Commands.literal("add_modifier")
+                        .then(Commands.argument("modifier", StringArgumentType.string())
                                 .executes(c ->
                                         addCatchModifier(
                                                 c.getSource().getPlayerOrException(),
-                                                ResourceArgument.getResource(c, "modifier", Starcatcher.CATCH_MODIFIERS).unwrap().left().get()
+                                                StringArgumentType.getString(c, "modifier")
                                         )
-                                ))
+                                )
+                        )
                 )
+
 
                 //starcatcher add_tackle_skin starcatcher:ignore_daytime_and_weather_restrictions
                 .then(Commands.literal("add_tackle_skin")
@@ -140,23 +133,6 @@ public interface SCCommands
                                                 c.getSource().getPlayerOrException(),
                                                 ResourceArgument.getResource(c, "modifier", Starcatcher.TACKLE_SKIN).unwrap().left().get()
                                         )
-                                ))
-                )
-
-                //starcatcher remove_catch_modifier
-                .then(Commands.literal("remove_minigame_modifier")
-                        .executes(c ->
-                                removeMinigameModifier(
-                                        c.getSource().getPlayerOrException()
-                                )
-                        )
-                )
-
-                //starcatcher remove_minigame_modifier
-                .then(Commands.literal("remove_catch_modifier")
-                        .executes(c ->
-                                removeCatchModifier(
-                                        c.getSource().getPlayerOrException()
                                 )
                         )
                 )
@@ -271,6 +247,12 @@ public interface SCCommands
         );
     }
 
+    static int addCatchModifier(ServerPlayer playerOrException, String modifier)
+    {
+        System.out.println("got " + modifier);
+        return 0;
+    }
+
     private static int revokeAllFish(ServerPlayer player)
     {
         FishingGuideAttachment.getFishesCaught(player).clear();
@@ -331,71 +313,6 @@ public interface SCCommands
         return 0;
     }
 
-    private static int removeMinigameModifier(ServerPlayer player) throws CommandSyntaxException
-    {
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
-
-        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
-        {
-            SCDataComponents.remove(stack, SCDataComponents.MINIGAME_MODIFIERS);
-        }
-        return 1;
-    }
-
-    private static int removeCatchModifier(ServerPlayer player) throws CommandSyntaxException
-    {
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
-
-        if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
-        {
-            SCDataComponents.remove(stack, SCDataComponents.CATCH_MODIFIERS);
-        }
-        return 1;
-    }
-
-    private static int addMinigameModifier(ServerPlayer player, ResourceKey<Supplier<AbstractMinigameModifier>> modifier) throws CommandSyntaxException
-    {
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
-
-        if (SCDataComponents.has(stack, SCDataComponents.MINIGAME_MODIFIERS))
-        {
-            List<ResourceLocation> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.MINIGAME_MODIFIERS));
-            mods.add(modifier.location());
-            SCDataComponents.set(stack, SCDataComponents.MINIGAME_MODIFIERS, mods);
-        }
-        else
-        {
-            SCDataComponents.set(stack, SCDataComponents.MINIGAME_MODIFIERS, List.of(modifier.location()));
-        }
-
-        return 1;
-    }
-
-    private static int addCatchModifier(ServerPlayer player, ResourceKey<AbstractCatchModifier> modifier) throws CommandSyntaxException
-    {
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty()) throw ERROR_EMPTY.create(null);
-
-        if (SCDataComponents.has(stack, SCDataComponents.CATCH_MODIFIERS))
-        {
-            List<AbstractCatchModifier> mods = new ArrayList<>(SCDataComponents.get(stack, SCDataComponents.CATCH_MODIFIERS));
-
-            mods.add(player.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(modifier));
-
-            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, mods);
-        }
-        else
-        {
-            AbstractCatchModifier abs = player.registryAccess().registryOrThrow(Starcatcher.CATCH_MODIFIERS).get(modifier);
-            SCDataComponents.set(stack, SCDataComponents.CATCH_MODIFIERS, List.of(abs));
-        }
-
-        return 1;
-    }
-
     private static int addTackleSkin(ServerPlayer player, ResourceKey<AbstractTackleSkin> tackleSkin) throws CommandSyntaxException
     {
         ItemStack stack = player.getMainHandItem();
@@ -420,7 +337,7 @@ public interface SCCommands
         if (!available.isEmpty())
         {
             FishProperties fpToFish = available.get(U.r.nextInt(available.size()));
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, ItemStack.EMPTY, player.getMainHandItem()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
         }
         else
         {
@@ -437,7 +354,7 @@ public interface SCCommands
 
         if (optional.isPresent())
         {
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(),  ItemStack.EMPTY, player.getMainHandItem()));
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(), MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
             return 1;
         }
         else

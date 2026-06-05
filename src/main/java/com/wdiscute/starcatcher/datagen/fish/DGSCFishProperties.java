@@ -3,10 +3,13 @@ package com.wdiscute.starcatcher.datagen.fish;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.compat.*;
 import com.wdiscute.starcatcher.fish.*;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FreezeOnMissModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.TeleportModifier;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
-import com.wdiscute.starcatcher.registry.minigamemodifiers.SCMinigameModifiers;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SCMinigameModifiers;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,7 +20,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -190,49 +192,49 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.END)
-                .addModifier(SCMinigameModifiers.TELEPORT);
+                .addModifier(new TeleportModifier(-1, ""));
     }
 
     public static FishProperties endOuterIslandsFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.END_OUTER_ISLANDS)
-                .addModifier(SCMinigameModifiers.TELEPORT);
+                .addModifier(new TeleportModifier(-1, ""));
     }
 
     public static FishProperties netherLavaFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties netherLavaCrimsonForestFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties netherLavaWarpedForestFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties netherLavaSoulSandValleyFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties netherLavaBasaltDeltasFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties overworldLushCavesFish(MaybeStack fish)
@@ -259,7 +261,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_LAVA_SURFACE)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties overworldCavesFish(MaybeStack fish)
@@ -285,7 +287,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_LAVA_UNDERGROUND)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties overworldMountainFish(MaybeStack fish)
@@ -304,14 +306,14 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_LAVA_DEEPSLATE)
-                .addModifier(SCMinigameModifiers.BURN_ON_MISS);
+                .addModifier(new BurnOnMissModifier(-1, ""));
     }
 
     public static FishProperties overworldColdLakeFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_LAKE)
-                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(-1, ""))));
     }
 
     public static FishProperties overworldWarmLakeFish(MaybeStack fish)
@@ -330,20 +332,20 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
-                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)));
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(-1, ""))));
     }
 
     public static FishProperties overworldColdOceanFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
-                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(-1, ""))))
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN);
     }
 
     public static FishProperties overworldColdRiverFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
-                .withDifficulty(Difficulty.EASY.addModifiers(List.of(SCMinigameModifiers.FREEZE_ON_MISS)))
+                .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(-1, ""))))
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_RIVER);
     }
 

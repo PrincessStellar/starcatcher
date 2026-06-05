@@ -176,8 +176,6 @@ public class SCEvents
     public static void addRegistry(NewRegistryEvent event)
     {
         event.register(Starcatcher.SWEET_SPOT_BEHAVIOUR_REGISTRY);
-        event.register(Starcatcher.MINIGAME_MODIFIERS_REGISTRY);
-        event.register(Starcatcher.CATCH_MODIFIERS_REGISTRY);
         event.register(Starcatcher.TACKLE_SKIN_REGISTRY);
         event.register(Starcatcher.FISH_RESTRICTIONS_REGISTRY);
     }
@@ -242,8 +240,7 @@ public class SCEvents
     public static void registerDataMaps(RegisterDataMapTypesEvent event)
     {
         event.register(SCDataMaps.AQUARIUM_INTERACTION);
-        event.register(SCDataMaps.CATCH_MODIFIERS);
-        event.register(SCDataMaps.MINIGAME_MODIFIERS);
+        event.register(SCDataMaps.ITEM_MODIFIERS);
         event.register(SCDataMaps.TACKLE_SKIN);
         event.register(SCDataMaps.TREASURE);
     }
