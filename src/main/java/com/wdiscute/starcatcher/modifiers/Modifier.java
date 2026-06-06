@@ -5,6 +5,7 @@ import com.mojang.serialization.*;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
@@ -125,9 +126,18 @@ public interface Modifier
 
     static void registerCatch()
     {
+        //base modifiers added to every catch
         BASE_CATCH_MODIFIERS.add(new FishMessagesModifier());
+        BASE_CATCH_MODIFIERS.add(new LuckAttributeModifier(new HashMap<>()
+        {{
+            put(Rarity.COMMON, 0);
+            put(Rarity.UNCOMMON, 1);
+            put(Rarity.RARE, 2);
+            put(Rarity.EPIC, 3);
+            put(Rarity.LEGENDARY, 5);
+        }}, "tooltip.modifier.starcatcher.luck_attribute"));
 
-        //catch modifier
+        //catch modifier for codecs
         Modifier.MODIFIERS.put(Starcatcher.rl("empty"), EmptyModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_lure_time"), AdjustLureTimeModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_loot_table_to_fishing_loot"), AddLootTableToFishedItemsModifier.CODEC);
@@ -152,6 +162,7 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("award_treasure_on_perfect_catch"), AwardTreasureOnPerfectCatch.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("no_gravity"), NoGravityModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bost_thrown_speed"), BoostThrownSpeedModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("luck_attribute_modifier"), LuckAttributeModifier.CODEC);
     }
 
     List<AbstractMinigameModifier> BASE_MINIGAME_MODIFIERS = new ArrayList<>();

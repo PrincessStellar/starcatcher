@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
@@ -26,6 +27,13 @@ public class FishMessagesModifier extends AbstractCatchModifier
     public FishMessagesModifier()
     {
         super("");
+    }
+
+    @Override
+    public void onAdd(FishingBobEntity fishingBobEntity)
+    {
+        super.onAdd(fishingBobEntity);
+        messageFished = false;
     }
 
     @Override

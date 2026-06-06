@@ -333,6 +333,8 @@
 
   "tooltip.modifier.starcatcher.vanilla_bobber": "Restores vanilla fishing loot",
 
+  "tooltip.modifier.starcatcher.luck_attribute": "Adjusts fish chance based on your luck",
+
   "tooltip.modifier.starcatcher.burn_on_miss": "Missing will cause your handle to lit on fire",
 
   "tooltip.modifier.starcatcher.deep_dark": "Hitting sweet-spots will consume you by darkness",

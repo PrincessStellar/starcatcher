@@ -19,12 +19,15 @@ import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
@@ -460,6 +463,24 @@ public class DGSCDataMapsProvider extends DataMapProvider
         treasures.add(Starcatcher.rl("boreal"), Treasure.CLEAR_SMITHING_TEMPLATE, false);
         treasures.add(Starcatcher.rl("cerberay"), Treasure.KING_SMITHING_TEMPLATE, false);
         treasures.add(Starcatcher.rl("aurora"), Treasure.ICEBORN_SKIN_SMITHING_TEMPLATE, false);
+
+
+        //
+        //         ,---.  ,---.                  ,--.
+        // ,---.  /  .-' /  .-'  ,---.   ,---. ,-'  '-.  ,---.
+        //| .-. : |  `-, |  `-, | .-. : | .--' '-.  .-' (  .-'
+        //\   --. |  .-' |  .-' \   --. \ `--.   |  |   .-'  `)
+        // `----' `--'   `--'    `----'  `---'   `--'   `----'
+        //
+
+        var effects = this.builder(SCDataMaps.EFFECT_MODIFIERS);
+
+        effects.add(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MobEffects.LUCK.value()),
+                List.of(
+                        new AdjustBaseHandleSpeedModifier(1.25f, "")
+                ), false);
+
+
 
 
     }
