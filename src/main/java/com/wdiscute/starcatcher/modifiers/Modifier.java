@@ -41,7 +41,7 @@ public interface Modifier
                             return MODIFIERS.get(rl);
 
                         if (FMLEnvironment.dist.isClient())
-                            LogUtils.getLogger().warn("Modifier [" + "] not found. If this log is in");
+                            LogUtils.getLogger().warn("Modifier [" + rl + "] not found. If this log is in");
                         return EmptyModifier.CODEC;
                     }
             );
@@ -150,6 +150,8 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("add_to_available_pool"), AddToAvailablePoolModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("modify_award_fish"), ModifyAwardFishRlModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("award_treasure_on_perfect_catch"), AwardTreasureOnPerfectCatch.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("no_gravity"), NoGravityModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("bost_thrown_speed"), BoostThrownSpeedModifier.CODEC);
     }
 
     List<AbstractMinigameModifier> BASE_MINIGAME_MODIFIERS = new ArrayList<>();

@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
@@ -111,7 +112,7 @@ public class TooltipEvents
 
                 if (!modComp.isEmpty())
                     //if it's the active rod, add active modifiers, otherwise fishing modifiers
-                    if (player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+                    if (player != null && stack.is(SCTags.RODS) && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
                         comp.add(Component.translatable("tooltip.starcatcher.modifiers.active").withStyle(ChatFormatting.GRAY));
                     else
                         comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));

@@ -323,7 +323,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         modifiers.add(SCBlocks.FISHERMAN_HAT_PINK.asItem().builtInRegistryHolder(),
                 List.of(
                         new AdjustBaseHandleSpeedModifier(5f, ""),
-                        new BurnOnMissModifier(20, 4,30, "")
+                        new BurnOnMissModifier(20, 4, 30, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_GRAY.asItem().builtInRegistryHolder(),
@@ -339,12 +339,10 @@ public class DGSCDataMapsProvider extends DataMapProvider
                         new HideCatchModifier(1, "")
                 ), false);
 
-
         modifiers.add(SCBlocks.FISHERMAN_HAT_GREEN.asItem().builtInRegistryHolder(),
                 List.of(
                         new ExtraExpBasedOnPerformanceModifier("")
                 ), false);
-
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_LIME.asItem().builtInRegistryHolder(),
                 List.of(
@@ -359,6 +357,15 @@ public class DGSCDataMapsProvider extends DataMapProvider
                         new AdjustLureTimeModifier(0.5f, 0.5f, 1, "")
                 ), false);
 
+        modifiers.add(SCBlocks.FISHERMAN_HAT_WHITE.asItem().builtInRegistryHolder(),
+                List.of(
+                        new NoGravityModifier("")
+                ), false);
+
+        modifiers.add(SCBlocks.FISHERMAN_HAT_BROWN.asItem().builtInRegistryHolder(),
+                List.of(
+                        new BoostThrownSpeedModifier(3, "")
+                ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_YELLOW.asItem().builtInRegistryHolder(),
                 List.of(

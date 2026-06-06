@@ -142,6 +142,13 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:fisherman_hat_brown": [
+      {
+        "type": "starcatcher:bost_thrown_speed",
+        "multiplier": 3.0,
+        "translation_override": ""
+      }
+    ],
     "starcatcher:fisherman_hat_cyan": [
       {
         "type": "starcatcher:ignore_daytime_restrictions",
@@ -292,7 +299,7 @@
           "textures": "starcatcher:textures/gui/minigame/surface.png"
         },
         "quantity_to_add": 5,
-        "translation_override": ""
+        "translation_override": "tooltip.modifier.starcatcher.add_creeper"
       },
       {
         "type": "starcatcher:adjust_lure_time",
@@ -345,6 +352,12 @@
       },
       {
         "type": "starcatcher:flip_every_hit",
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:fisherman_hat_white": [
+      {
+        "type": "starcatcher:no_gravity",
         "translation_override": ""
       }
     ],

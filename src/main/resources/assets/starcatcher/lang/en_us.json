@@ -233,6 +233,8 @@
 
   "tooltip.modifier.starcatcher.add_creeper": "An ill-tempered friend might show up",
 
+  "tooltip.modifier.starcatcher.no_grabity": "Your bobber will no longer follow the laws of gravity",
+
   "tooltip.modifier.starcatcher.extra_golden_chance.perfect": "Perfect catches are more likely to become golden",
   "tooltip.modifier.starcatcher.extra_golden_chance.perfect.shift": "Perfect catches are %s%% more likely to become golden",
   "tooltip.modifier.starcatcher.extra_golden_chance.base": "A golden fish is more likely to bite",

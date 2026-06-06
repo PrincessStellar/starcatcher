@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -153,5 +154,15 @@ public abstract class AbstractCatchModifier implements Modifier
     public float modifyPercentile(float percentile)
     {
         return percentile;
+    }
+
+    public boolean noGravity()
+    {
+        return false;
+    }
+
+    public Vec3 modifyThrowVec(Vec3 vec3)
+    {
+        return vec3;
     }
 }

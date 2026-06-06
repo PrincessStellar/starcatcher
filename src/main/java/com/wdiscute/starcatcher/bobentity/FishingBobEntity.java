@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.bobentity;
 
+import com.sun.jna.platform.win32.Tlhelp32;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
@@ -11,13 +12,11 @@ import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -69,7 +68,7 @@ public class FishingBobEntity extends Projectile
 
     public int ticksInFluid;
 
-    boolean voidHook = false;
+    boolean noGravity = false;
 
     enum FishHookState
     {
@@ -117,10 +116,9 @@ public class FishingBobEntity extends Projectile
         //add fish messages modifier
         modifiers.addAll(Modifier.BASE_CATCH_MODIFIERS);
 
-        SingleStackContainer ssc = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty());
-        voidHook = BuiltInRegistries.ITEM.getKey(ssc.stack().getItem()).equals(U.rl("tide", "void_fishing_hook"));
+        noGravity = modifiers.stream().anyMatch(AbstractCatchModifier::noGravity);
 
-        entityData.set(VOID, voidHook);
+        entityData.set(VOID, noGravity);
 
         survivesLava = SCDataComponents.getOrDefault(rod, SCDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
 
@@ -155,11 +153,19 @@ public class FishingBobEntity extends Projectile
         Vec3 vec3 = new Vec3(-f3, Mth.clamp(-(f5 / f4), -5.0F, 5.0F), -f2);
         double d3 = vec3.length();
         vec3 = vec3.multiply(0.6 / d3 + this.random.triangle(0.5F, 0.0103365), 0.6 / d3 + this.random.triangle(0.5F, 0.0103365), 0.6 / d3 + this.random.triangle(0.5F, 0.0103365));
+
+        for (AbstractCatchModifier modifier : modifiers)
+        {
+            vec3 = modifier.modifyThrowVec(vec3);
+        }
+
         this.setDeltaMovement(vec3);
         this.setYRot((float) (Mth.atan2(vec3.x, vec3.z) * (double) 180.0F / (double) (float) Math.PI));
         this.setXRot((float) (Mth.atan2(vec3.y, vec3.horizontalDistance()) * (double) 180.0F / (double) (float) Math.PI));
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
+
+
 
         if (!level.isClientSide)
             SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
@@ -228,7 +234,7 @@ public class FishingBobEntity extends Projectile
 
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
-                || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
+            || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
         {
             FishApi.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
         }
@@ -265,9 +271,9 @@ public class FishingBobEntity extends Projectile
         if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldStopFishing)) return true;
 
         boolean holdingRod = player.getMainHandItem().is(SCTags.RODS)
-                || player.getOffhandItem().is(SCTags.RODS);
+                             || player.getOffhandItem().is(SCTags.RODS);
 
-        if (!player.isRemoved() && player.isAlive() && holdingRod && !(this.distanceToSqr(player) > 1024))
+        if (!player.isRemoved() && player.isAlive() && holdingRod && !(this.distanceToSqr(player) > 7024))
         {
             return false;
         }
@@ -306,7 +312,7 @@ public class FishingBobEntity extends Projectile
     {
         super.tick();
 
-        voidHook = entityData.get(VOID);
+        noGravity = entityData.get(VOID);
 
         if (!level().isClientSide)
         {
@@ -336,23 +342,10 @@ public class FishingBobEntity extends Projectile
 
         if (this.currentState == FishHookState.FLYING)
         {
-            //set voidhook fishing for overworld/nether/end negative offset (based on tide) and always for any other dimension
-            ResourceLocation dim = level().dimension().location();
-            if (voidHook && position().y < -71 && dim.equals(Level.OVERWORLD.location()))
-                if (!level().isClientSide) this.currentState = FishHookState.BOBBING;
 
-            if (voidHook && position().y < -5 && dim.equals(Level.NETHER.location()))
-                if (!level().isClientSide) this.currentState = FishHookState.BOBBING;
-
-            if (voidHook && position().y < 50 && dim.equals(Level.END.location()))
-                if (!level().isClientSide) this.currentState = FishHookState.BOBBING;
-
-            if (!dim.equals(Level.OVERWORLD.location()) && !dim.equals(Level.NETHER.location()) && !dim.equals(Level.END.location()))
-                if (!level().isClientSide) this.currentState = FishHookState.BOBBING;
-
-
-            if (getDeltaMovement().y < 1.2f)
-                this.setDeltaMovement(this.getDeltaMovement().add(0, -0.02, 0));
+            if (!noGravity)
+                if (getDeltaMovement().y < 1.2f)
+                    this.setDeltaMovement(this.getDeltaMovement().add(0, -0.02, 0));
 
             if (!fluid.isEmpty())
             {
@@ -411,7 +404,7 @@ public class FishingBobEntity extends Projectile
         }
 
         //if theres no fluid on block or under, changes to FLYING
-        if (fluid.isEmpty() && fluidBellow.isEmpty() && !voidHook)
+        if (fluid.isEmpty() && fluidBellow.isEmpty() && !noGravity)
         {
             if (!level().isClientSide) currentState = FishHookState.FLYING;
         }
@@ -424,7 +417,7 @@ public class FishingBobEntity extends Projectile
         {
             checkForFish();
 
-            if (!voidHook)
+            if (!noGravity)
             {
                 if (!fluid.isEmpty())
                 {
@@ -499,9 +492,15 @@ public class FishingBobEntity extends Projectile
     }
 
     @Override
+    public boolean shouldRender(double x, double y, double z)
+    {
+        return true;
+    }
+
+    @Override
     public AABB getBoundingBoxForCulling()
     {
-        AABB box = new AABB(-10, -10, -10, 10, 10, 10);
+        AABB box = new AABB(-100, -100, -100, 100, 100, 100);
         return box.move(position());
     }
 

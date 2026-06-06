@@ -35,7 +35,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 {
     public StarcatcherFishingRodItem()
     {
-        super(new Item.Properties()
+        super(new Properties()
                 .rarity(Rarity.EPIC)
                 .fireResistant()
                 .stacksTo(1)
@@ -52,10 +52,10 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
         if (!is.is(SCTags.RODS))
             return InteractionResultHolder.pass(is);
 
-        if(SCDataComponents.getOrDefault(is, SCDataComponents.HOOK, SingleStackContainer.empty()).stack().isEmpty()
-                || SCDataComponents.getOrDefault(is, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack().isEmpty())
+        if (SCDataComponents.getOrDefault(is, SCDataComponents.HOOK, SingleStackContainer.empty()).stack().isEmpty()
+            || SCDataComponents.getOrDefault(is, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack().isEmpty())
         {
-            player.displayClientMessage(Component.translatable("gui.starcatcher.no_hook_or_bobber") , true);
+            player.displayClientMessage(Component.translatable("gui.starcatcher.no_hook_or_bobber"), true);
             return InteractionResultHolder.fail(is);
         }
 
@@ -82,28 +82,20 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(player.getX(), entity.getEyeY(), player.getZ()));
 
                 fishingBobAttachment.setUuid(player, entity.getUUID());
-                if(SCDataComponents.has(is, SCDataComponents.TACKLE_SKIN))
+                if (SCDataComponents.has(is, SCDataComponents.TACKLE_SKIN))
                     SCDataAttachments.set(entity, SCDataAttachments.TACKLE_SKIN.get(), SCDataComponents.get(is, SCDataComponents.TACKLE_SKIN));
             }
         }
         else
         {
+            Entity maybeEntity = ((ServerLevel) level).getEntity(fishingBobAttachment.getUuid());
 
-            List<Entity> entities = level.getEntities(null, new AABB(-25, -65, -25, 25, 65, 25).move(player.position()));
-
-            for (Entity entity : entities)
+            if (maybeEntity instanceof FishingBobEntity fbe && !fbe.checkBiting())
             {
-                if (entity.getUUID().equals(fishingBobAttachment.getUuid()))
-                {
-                    if (entity instanceof FishingBobEntity fbe && !fbe.checkBiting())
-                    {
-                        SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onRetrieve(player);
+                SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onRetrieve(player);
 
-                        fbe.kill();
-                        SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());
-                        break;
-                    }
-                }
+                fbe.kill();
+                SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());
             }
 
         }
@@ -141,10 +133,13 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
     }
 
     @Override
-    public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
+    public Optional<TooltipComponent> getTooltipImage(ItemStack stack)
+    {
         return Optional.of(new RodSlotTooltip(stack));
     }
 
-    public record RodSlotTooltip(ItemStack rod) implements TooltipComponent {}
+    public record RodSlotTooltip(ItemStack rod) implements TooltipComponent
+    {
+    }
 }
 
