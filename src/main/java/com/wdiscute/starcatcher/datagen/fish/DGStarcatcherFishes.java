@@ -536,20 +536,20 @@ public class DGStarcatcherFishes
         //deep dark
         register(overworldDeepDarkFish(new MaybeStack(SCItems.SCULKFISH))
                 .withSizeAndWeight(new SizeAndWeight(30, 10, 2000, 600))
-                .withDifficulty(Difficulty.HARD_MOVING.withHP(300))
+                .withDifficulty(Difficulty.MEDIUM_MOVING.withHP(200))
                 .withRarity(Rarity.RARE));
 
         register(overworldDeepDarkFish(new MaybeStack(SCItems.WARD))
                 .withSizeAndWeight(new SizeAndWeight(50, 10, 2600, 600))
-                .withDifficulty(Difficulty.HEAVY_EIGHT_AQUA)
+                .withDifficulty(Difficulty.HARD_VANISHING.moving().withHP(500))
                 .addBait(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(Rarity.LEGENDARY)
                 .withBaseChance(2));
 
         register(overworldDeepDarkFish(new MaybeStack(SCItems.GLOWING_DARK))
                 .withSizeAndWeight(new SizeAndWeight(100, 10, 3000, 600))
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING.withHP(300)));
+                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING.withHP(300))
+                .withRarity(Rarity.UNCOMMON));
 
 
         //overworld surface lava

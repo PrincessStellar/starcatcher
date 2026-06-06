@@ -233,7 +233,7 @@
 
   "tooltip.modifier.starcatcher.add_creeper": "An ill-tempered friend might show up",
 
-  "tooltip.modifier.starcatcher.no_grabity": "Your bobber will no longer follow the laws of gravity",
+  "tooltip.modifier.starcatcher.no_gravity": "Your bobber will no longer follow the laws of gravity",
 
   "tooltip.modifier.starcatcher.extra_golden_chance.perfect": "Perfect catches are more likely to become golden",
   "tooltip.modifier.starcatcher.extra_golden_chance.perfect.shift": "Perfect catches are %s%% more likely to become golden",
@@ -289,6 +289,21 @@
   "tooltip.modifier.keyword.increase": "Increases",
   "tooltip.modifier.keyword.big_increase": "Tremendously increases",
 
+  "tooltip.modifier.number.1": "One",
+  "tooltip.modifier.number.2": "Two",
+  "tooltip.modifier.number.3": "Three",
+  "tooltip.modifier.number.4": "Four",
+  "tooltip.modifier.number.5": "Five",
+  "tooltip.modifier.number.6": "Six",
+  "tooltip.modifier.number.7": "Seven",
+  "tooltip.modifier.number.8": "Eight",
+  "tooltip.modifier.number.9": "Nine",
+  "tooltip.modifier.number.10": "Ten",
+  "tooltip.modifier.number.11": "Eleven",
+  "tooltip.modifier.number.12": "Twelve",
+  "tooltip.modifier.number.32": "Thirty-two",
+  "tooltip.modifier.number.64": "A stack",
+
   "tooltip.modifier.starcatcher.adjust_handle_speed": " the handle's rotation speed",
   "tooltip.modifier.starcatcher.adjust_handle_speed.shift": "Adjusts the handle's rotation speed by %s%%",
 
@@ -308,7 +323,17 @@
   "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.decrease": "Decreases the speed of moving sweet-spots",
   "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.shift": "Adjusts the speed of moving sweet-spots by %s%%",
 
+  "tooltip.modifier.starcatcher.adjust_decay_rate.increase": "Increases the rate at which fish swim away",
+  "tooltip.modifier.starcatcher.adjust_decay_rate.decrease": "Decreases the rate at which fish swim away",
+  "tooltip.modifier.starcatcher.adjust_decay_rate.shift": "Adjusts the rate of decay of fishes by %s%%",
+
+  "tooltip.modifier.starcatcher.adjust_penalty_rate.increase": "Increases the penalty for missing sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_penalty_rate.decrease": "Decreases the penalty for missing sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_penalty_rate.shift": "Adjusts the penalty of missing sweet-spots by %s%%",
+
   "tooltip.modifier.starcatcher.vanilla_bobber": "Restores vanilla fishing loot",
+
+  "tooltip.modifier.starcatcher.burn_on_miss": "Missing will cause your handle to lit on fire",
 
   "tooltip.modifier.starcatcher.deep_dark": "Hitting sweet-spots will consume you by darkness",
 
@@ -327,13 +352,13 @@
 
   "tooltip.modifier.starcatcher.extra_exp_based_on_performance": "Extra exp is awarded based on your performance",
 
-  "tooltip.modifier.starcatcher.fish_entity": "If available, will catch the live fish instead",
+  "tooltip.modifier.starcatcher.force_fish_entity": "If available, will catch the live fish instead",
 
   "tooltip.modifier.starcatcher.guarantee_new_fish_always": "If available, an undiscovered fish will bite",
   "tooltip.modifier.starcatcher.guarantee_new_fish_half": "An undiscovered fish is more likely to bite",
 
   "tooltip.modifier.starcatcher.extra_base_catch": "%s extra fish will come alongside your catch",
-
+  "tooltip.modifier.starcatcher.extra_base_catch.1": "One",
 
   "tooltip.tackle.starcatcher.kimbe": "Kimbe",
   "tooltip.tackle.starcatcher.clear": "Clear",

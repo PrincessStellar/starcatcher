@@ -116,13 +116,37 @@
     "starcatcher:fisherman_hat_black": [
       {
         "type": "starcatcher:extra_base_catch",
-        "count": 1,
+        "count": 5,
         "only_for_perfect_catch": false,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:cancel_golden",
         "translation_override": ""
       },
       {
         "type": "starcatcher:hide_catch",
         "chance": 1.0,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_penalty_rate",
+        "multiplier": 5.0,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_decay_rate",
+        "multiplier": 2.0,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_vanishing_rate",
+        "multiplier": 1.5,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_moving_sweet_spots",
+        "multiplier": 1.5,
         "translation_override": ""
       }
     ],
@@ -164,14 +188,28 @@
         "translation_override": ""
       },
       {
+        "type": "starcatcher:cancel_golden",
+        "translation_override": ""
+      },
+      {
         "type": "starcatcher:hide_catch",
         "chance": 1.0,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_penalty_rate",
+        "multiplier": 5.0,
         "translation_override": ""
       }
     ],
     "starcatcher:fisherman_hat_green": [
       {
         "type": "starcatcher:extra_exp_based_on_performance",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_decay_rate",
+        "multiplier": 1.5,
         "translation_override": ""
       }
     ],
@@ -207,7 +245,7 @@
     "starcatcher:fisherman_hat_light_gray": [
       {
         "type": "starcatcher:extra_base_catch",
-        "count": 3,
+        "count": 1,
         "only_for_perfect_catch": false,
         "translation_override": ""
       },
@@ -373,6 +411,11 @@
         "chance_every_tick_multiplier": 1.4,
         "max_ticks_multiplier": 1.2,
         "min_ticks_multiplier": 1.2,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_penalty_rate",
+        "multiplier": 1.5,
         "translation_override": ""
       }
     ],

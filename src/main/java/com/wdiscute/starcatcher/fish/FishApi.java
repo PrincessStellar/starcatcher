@@ -13,6 +13,7 @@ import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.Registry;
@@ -39,6 +40,21 @@ import java.util.List;
 
 public class FishApi
 {
+    public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
+    {
+        //if dev worm return base chance
+        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
+            fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+            return 1;
+
+        int chance = fp.baseChance();
+
+        for (var restriction : fp.restrictions())
+            chance += restriction.getFishChance(chance, level, fp, entity, rod, context);
+
+        return chance;
+    }
+
     public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
     {
         ServerLevel level = ((ServerLevel) player.level());

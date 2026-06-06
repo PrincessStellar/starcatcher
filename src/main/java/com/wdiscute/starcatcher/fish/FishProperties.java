@@ -36,9 +36,10 @@ public record FishProperties(
         ResourceLocation textures
 )
 {
-    public static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
-    public static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
-    public static final ResourceLocation CAVE = Starcatcher.rl("textures/gui/minigame/cave.png");
+    public static final ResourceLocation SURFACE    = Starcatcher.rl("textures/gui/minigame/surface.png");
+    public static final ResourceLocation NETHER     = Starcatcher.rl("textures/gui/minigame/nether.png");
+    public static final ResourceLocation CAVE       = Starcatcher.rl("textures/gui/minigame/cave.png");
+    public static final ResourceLocation ICY        = Starcatcher.rl("textures/gui/minigame/icy.png");
 
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
@@ -314,16 +315,6 @@ public record FishProperties(
 
     public int calculateChance(Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
-        //if dev worm return base chance
-        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
-                catchInfo.fishEntryType().equals(CatchInfo.FishEntryType.FISH))
-            return 1;
-
-        int chance = baseChance;
-
-        for (var restriction : restrictions)
-            chance += restriction.getFishChance(chance, level, this, entity, rod, context);
-
-        return chance;
+        return FishApi.calculateChance(this, entity, level, rod, context);
     }
 }

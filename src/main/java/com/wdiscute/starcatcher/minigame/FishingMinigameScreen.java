@@ -61,7 +61,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public final InteractionHand handToSwing;
 
     public int hp;
-    public int penalty;
+    public float penalty;
     public float decay;
 
     public float kimbeMarkerPos = 0;

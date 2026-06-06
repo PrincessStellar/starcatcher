@@ -325,6 +325,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     public static FishProperties overworldColdLakeFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
+                .withTextures(FishProperties.ICY)
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_LAKE)
                 .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(40, 10, ""))));
     }
@@ -345,12 +346,14 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_MOUNTAIN)
+                .withTextures(FishProperties.ICY)
                 .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(40, 10, ""))));
     }
 
     public static FishProperties overworldColdOceanFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
+                .withTextures(FishProperties.ICY)
                 .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(40, 10, ""))))
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN);
     }
@@ -358,6 +361,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     public static FishProperties overworldColdRiverFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
+                .withTextures(FishProperties.ICY)
                 .withDifficulty(Difficulty.EASY.addModifiers(List.of(new FreezeOnMissModifier(40, 10, ""))))
                 .addRestriction(WorldRestrictions.OVERWORLD_COLD_RIVER);
     }

@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -40,7 +41,7 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
     @Override
     public List<Component> getNonOverriddenDescription(boolean shift)
     {
-        return List.of(Component.translatable("tooltip.modifier.starcatcher.extra_base_catch", NumberToWords.convert(count)));
+        return List.of(Component.translatable("tooltip.modifier.starcatcher.extra_base_catch", I18n.get("tooltip.modifier.number." + count)));
     }
 
     @Override
@@ -76,39 +77,5 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
     public MapCodec<? extends Modifier> getCodec()
     {
         return CODEC;
-    }
-
-    //chatgpt code, don't blame me for any bugs
-    public static class NumberToWords
-    {
-        private static final String[] units = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
-        private static final String[] tens = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
-        private static final String[] multipliers = {"", " Thousand", " Million", " Billion"};
-
-        public static String convert(int number)
-        {
-            if (number == 0) return "Zero";
-            String res = "";
-            int group = 0;
-            while (number > 0)
-            {
-                if (number % 1000 != 0) res = convertGroup(number % 1000) + multipliers[group] + " " + res;
-                number /= 1000;
-                group++;
-            }
-            return res.trim();
-        }
-
-        private static String convertGroup(int n)
-        {
-            if (n < 100) return convertTwoDigit(n);
-            return units[n / 100] + " Hundred " + convertTwoDigit(n % 100);
-        }
-
-        private static String convertTwoDigit(int n)
-        {
-            if (n < 20) return units[n];
-            return tens[n / 10] + (n % 10 > 0 ? " " + units[n % 10] : "");
-        }
     }
 }
