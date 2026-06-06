@@ -44,7 +44,7 @@ public class TeleportModifier extends AbstractMinigameModifier
     @Override
     public boolean skipRenderingKimbeMarker()
     {
-        return true;
+        return false;
     }
 
     @Override
@@ -78,6 +78,7 @@ public class TeleportModifier extends AbstractMinigameModifier
     public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderBackground(guiGraphics, partialTick, width, height);
+
         guiGraphics.blit(
                 OVERLAY, width / 2 - 48, height / 2 - 48,
                 96, 96, 0, 0, 96, 96, 96, 96);
@@ -100,7 +101,7 @@ public class TeleportModifier extends AbstractMinigameModifier
         float centerY = height / 2f;
 
         poseStack.translate(centerX, centerY, 0);
-        poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(kimbePosition)));
+        poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(kimbePosition + 180)));
         poseStack.translate(-centerX, -centerY, 0);
 
         RenderSystem.setShaderColor(
@@ -108,11 +109,11 @@ public class TeleportModifier extends AbstractMinigameModifier
                 (float) U.intToGreen(0x653bea) / 255,
                 (float) U.intToBlue(0x653bea) / 255,
                 0.6f);
+
         RenderSystem.enableBlend();
 
-        guiGraphics.blit(
-                instance.texture, width / 2 - 32, height / 2 - 32 - 16,
-                64, 64, 128, 128, 64, 64, 256, 256);
+        guiGraphics.renderOutline(width / 2, height / 2 + 8, 2, 28, 0xffffffff);
+
 
         RenderSystem.setShaderColor(1, 1, 1, 1);
         RenderSystem.disableBlend();

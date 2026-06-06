@@ -175,8 +175,13 @@
     ],
     "starcatcher:fisherman_hat_cyan": [
       {
-        "type": "starcatcher:ignore_daytime_restrictions",
-        "chance": 0.5,
+        "type": "starcatcher:adjust_decay_rate",
+        "multiplier": 0.7,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:adjust_penalty_rate",
+        "multiplier": 0.7,
         "translation_override": ""
       }
     ],
@@ -233,7 +238,7 @@
           "texture_path": "starcatcher:textures/gui/minigame/spots/deep_ocean.png",
           "vanishing_rate": 0.0
         },
-        "translation_override": ""
+        "translation_override": "tooltip.modifier.starcatcher.deep_ocean_bobber"
       },
       {
         "type": "starcatcher:freeze_on_miss",

@@ -299,13 +299,8 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //hats
         modifiers.add(SCBlocks.FISHERMAN_HAT_CYAN.asItem().builtInRegistryHolder(),
                 List.of(
-                        new IgnoreWeatherRestrictionsModifier(0.5f, ""),
-                        new AdjustDecayRateModifier(2f, "")
-                ), false);
-
-        modifiers.add(SCBlocks.FISHERMAN_HAT_CYAN.asItem().builtInRegistryHolder(),
-                List.of(
-                        new IgnoreDaytimeRestrictionsModifier(0.5f, "")
+                        new AdjustDecayRateModifier(0.7f, ""),
+                        new AdjustPenaltyModifier(0.7f, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_PURPLE.asItem().builtInRegistryHolder(),
@@ -403,7 +398,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         modifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem().builtInRegistryHolder(),
                 List.of(
                         new AdjustLureTimeModifier(1.4f, 1.4f, 1.4f, ""),
-                        new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, ""),
+                        new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, "tooltip.modifier.starcatcher.deep_ocean_bobber"),
                         new FreezeOnMissModifier(40, 10, "")
                 ), false);
 
@@ -479,8 +474,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 List.of(
                         new AdjustBaseHandleSpeedModifier(1.25f, "")
                 ), false);
-
-
 
 
     }

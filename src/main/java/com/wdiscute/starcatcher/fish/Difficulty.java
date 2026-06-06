@@ -328,13 +328,13 @@ public record Difficulty(
             SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG);
 
     public static Difficulty VOIDBITER = new Difficulty(
-            14, 10, 1,
+            500, 14, 30, 3,
             List.of(),
-            SweetSpot.AQUA, SweetSpot.THIN, SweetSpot.THIN);
+            SweetSpot.THIN, SweetSpot.THIN);
 
     public static Difficulty JOEL = new Difficulty(
             200,
-            14, 5, 1,
+            14, 6, 1,
             List.of(),
             SweetSpot.AQUA, SweetSpot.AQUA
     );

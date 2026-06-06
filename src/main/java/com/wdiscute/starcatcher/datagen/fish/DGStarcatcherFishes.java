@@ -537,11 +537,11 @@ public class DGStarcatcherFishes
         register(overworldDeepDarkFish(new MaybeStack(SCItems.SCULKFISH))
                 .withSizeAndWeight(new SizeAndWeight(30, 10, 2000, 600))
                 .withDifficulty(Difficulty.MEDIUM_MOVING.withHP(200))
-                .withRarity(Rarity.RARE));
+                .withRarity(Rarity.EPIC));
 
         register(overworldDeepDarkFish(new MaybeStack(SCItems.WARD))
                 .withSizeAndWeight(new SizeAndWeight(50, 10, 2600, 600))
-                .withDifficulty(Difficulty.HARD_VANISHING.moving().withHP(500))
+                .withDifficulty(Difficulty.HARD_VANISHING.withHP(500))
                 .addBait(BaitRestriction.LEGENDARY_BAIT)
                 .withRarity(Rarity.LEGENDARY)
                 .withBaseChance(2));

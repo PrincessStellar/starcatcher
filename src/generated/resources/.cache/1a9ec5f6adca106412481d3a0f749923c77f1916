@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-06T15:38:27.8459031	FishingProperties
+// 1.21.1	2026-06-06T18:02:14.7040244	FishingProperties
 edbbfc301686bf90ae3e6801b7a3f8314dbf0d20 data/alexscaves/starcatcher/fish/lanternfish.json
 cb5fc9c628cefcceafe301fe7ca69b11c9ee1870 data/alexscaves/starcatcher/fish/radgill.json
 333f85ed2e9b05f7bcabcff08944539c65bb0731 data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -211,7 +211,7 @@ ea21cb8936fbd484682bd7ceccfa916efd6e6fdd data/starcatcher/starcatcher/fish/glows
 6660329f9681b6e6a0d95b7931e0ce312e56b138 data/starcatcher/starcatcher/fish/hollowbelly_darter.json
 ad9d49b51dc63c9b6d5522a11f2a72ab44691d55 data/starcatcher/starcatcher/fish/icetooth_sturgeon.json
 faefad49fb82ef2adc7ba90ebe669faab8112b38 data/starcatcher/starcatcher/fish/ironjaw_herring.json
-78bd43a4f258e48c9b96d6df4f910053e58b6c44 data/starcatcher/starcatcher/fish/joel.json
+9a39a95be64b38a60ac4f991ca3512b2421da7b8 data/starcatcher/starcatcher/fish/joel.json
 eb9f4adbf43f34b8b604c3cdcbd145a8adcf8d39 data/starcatcher/starcatcher/fish/lava_crab.json
 096d7da21f152e7d768d6b926d1ade1b5c92139e data/starcatcher/starcatcher/fish/lava_crab_claw.json
 e2238871eb539cf762ca247dbefbab0e1c23c19c data/starcatcher/starcatcher/fish/lightning_bass.json
@@ -242,7 +242,7 @@ d8f3907be3e0a5749dec9e6d037818c1d6768f80 data/starcatcher/starcatcher/fish/sandt
 92c75c910e57188fb49f52b694d53b89a8a1ccc0 data/starcatcher/starcatcher/fish/scalding_pike.json
 d70910df1d4dc71ae867db5f7ce502c5a5926d0a data/starcatcher/starcatcher/fish/scorched_bloodsucker.json
 d4b1046605530cbf2d22bc477872166229a5cd9f data/starcatcher/starcatcher/fish/scorchfish.json
-ad6ec2172728c4bced5ce0412bd8b2721908af47 data/starcatcher/starcatcher/fish/sculkfish.json
+5f7c80eb12bccccec33a87aa816eb05b6a64979c data/starcatcher/starcatcher/fish/sculkfish.json
 b63403d0725339fa6f091d759913de725d9bd548 data/starcatcher/starcatcher/fish/sea_bass.json
 2ad34da03075b8c7cebd1716ce840906a40d3d36 data/starcatcher/starcatcher/fish/secret_burning_bottle.json
 28d787d30823ba6c8088629cc8f223dcec1d82c8 data/starcatcher/starcatcher/fish/secret_drifting_waterlogged_bottle.json
@@ -270,8 +270,8 @@ a349f3ad25c03f61e9bf57a4c10dc068eef29f9d data/starcatcher/starcatcher/fish/troph
 a1ccb8105bb627344f875f8c8198d15b05f1d307 data/starcatcher/starcatcher/fish/twilight_koi.json
 9f80307048946758081b8b017d387bfc4e14d918 data/starcatcher/starcatcher/fish/vesani.json
 a283f0f84a184bead65f716137869298857cd5f4 data/starcatcher/starcatcher/fish/vivid_moss.json
-e049e085597d34544bd4dd38d8b336bf5fc70b26 data/starcatcher/starcatcher/fish/voidbiter.json
-0824b658d10462eb6a09726e0c4873e5c1fdf170 data/starcatcher/starcatcher/fish/ward.json
+4dffe4a8c2b0cb081565765fb9a5a95829109034 data/starcatcher/starcatcher/fish/voidbiter.json
+fb87a02e209f51b0a012e2e696658103f56c3573 data/starcatcher/starcatcher/fish/ward.json
 8dba97b0d40c8e33bc794c6d8a79289af9bdd4c5 data/starcatcher/starcatcher/fish/whiteveil.json
 a7c0850797b4c774a6bd596a4aa30af2c8f21a78 data/starcatcher/starcatcher/fish/willish.json
 f458836ca7d8f86fe13cc4cd372db512267e21d3 data/starcatcher/starcatcher/fish/willow_bream.json

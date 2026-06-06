@@ -15,7 +15,7 @@
   "difficulty": {
     "decay": 1.0,
     "hp": 200,
-    "missPenalty": 5,
+    "missPenalty": 6,
     "modifiers": [],
     "speed": 14,
     "sweetspots": [
