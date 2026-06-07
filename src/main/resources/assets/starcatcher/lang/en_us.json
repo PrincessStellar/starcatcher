@@ -42,6 +42,22 @@
 
   "emi.info.starcatcher.hat.0" : "Fisherman's hats may be found rarely inside Shipwrecks's chests.",
 
+  "starcatcher.tip.legendary_fish" : "Most legendary fish love legendary bait!",
+  "starcatcher.tip.too_hard" : "A fish feels too hard? Better rethink which Bobber & Hook you're using!",
+  "starcatcher.tip.fisherman_hat" : "Fisherman Hats can be found rarely inside shipwrecks.",
+  "starcatcher.tip.templates" : "Fishing templates can be used to modify the look of your rod!",
+  "starcatcher.tip.tackle_box" : "Lots of fishes filling up your inventory? Better place them in a tackle box!",
+  "starcatcher.tip.secret_messages" : "Secret messages may sometimes be fished up! Who knows what stories they might tell...",
+  "starcatcher.tip.clam" : "Clams may produce pearls when placed on sand!",
+  "starcatcher.tip.aquarium" : "Too many fish and don't know how to display? Why not build an Aquarium!",
+  "starcatcher.tip.weather" : "Some fish will only come out during specific Weather and Daytime conditions.",
+  "starcatcher.tip.golden" : "Golden Fishes can only be caught once!",
+  "starcatcher.tip.wither" : "Using a wither skeleton skull as a bait might produce... undesirable results...",
+  "starcatcher.tip.sell" : "Fishes will sell for more if they are a low percentile. And even more if they are golden",
+  "starcatcher.tip.dimension" : "You can find fishes everywhere, even in The Nether and The End",
+  "starcatcher.tip.ice" : "Icy fishes will freeze your handle on misses!",
+
+
 
   "tag.starcatcher.is_beach" : "Beaches",
   "tag.starcatcher.is_birch_forest" : "Birch Forests",
