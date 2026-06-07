@@ -189,12 +189,31 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
     {
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.END)
+                .withTextures(FishProperties.END)
+                .addModifier(new TeleportModifier(""));
+    }
+
+    public static FishProperties endVoidFish(MaybeStack fish)
+    {
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.END_VOID)
+                .withTextures(FishProperties.END_VOID)
+                .addModifier(new TeleportModifier(""))
+                ;
+    }
+
+    public static FishProperties endVoidOuterIslandsFish(MaybeStack fish)
+    {
+        return FishProperties.empty().withFish(fish)
+                .withTextures(FishProperties.END_VOID)
+                .addRestriction(WorldRestrictions.END_VOID_OUTER_ISLANDS)
                 .addModifier(new TeleportModifier(""));
     }
 
     public static FishProperties endOuterIslandsFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
+                .withTextures(FishProperties.END)
                 .addRestriction(WorldRestrictions.END_OUTER_ISLANDS)
                 .addModifier(new TeleportModifier(""));
     }
@@ -258,6 +277,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.CAVE)
                 .addModifier(new DeepDarkModifier(""))
+                .withTextures(FishProperties.DEEP_DARK)
                 .addRestriction(WorldRestrictions.OVERWORLD_DEEP_DARK)
                 .addBait(BaitRestriction.SCULK_BAIT);
     }

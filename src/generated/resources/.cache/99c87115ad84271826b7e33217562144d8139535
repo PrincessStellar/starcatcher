@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-05T16:42:11.4197298	Item Models: starcatcher
+// 1.21.1	2026-06-07T17:43:23.3149941	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -31,6 +31,7 @@ f6383369cb097a667f5406f76a8ecd9ec0bd23ce assets/starcatcher/models/item/cerberay
 79b5cc1a5234adfd11b11def8c91364aa4a44655 assets/starcatcher/models/item/charfish.json
 0c77190e961a836d737046d35796897c2585f4fd assets/starcatcher/models/item/cherry_bait.json
 2868c28fc9094f68a9e7f4909b441d9299d5f279 assets/starcatcher/models/item/chorus_crab.json
+9deb809233412100291a4c32b5e59ef606432620 assets/starcatcher/models/item/chorus_minnow.json
 3bb359940e775f1b106d2866999ccd8768a094ad assets/starcatcher/models/item/cinder_squid.json
 466ccba57f59a2202e00d64369b6d8f2f72fcc66 assets/starcatcher/models/item/clam.json
 413dc56c829ae02782003df0fd89bc51a45b17da assets/starcatcher/models/item/clear_bobber.json
@@ -140,6 +141,7 @@ d98b04fa0f7414323b56a41c977190c4d48f8bfd assets/starcatcher/models/item/mirage_c
 d4f78be947fa0653ab211626b347a668a5c740e9 assets/starcatcher/models/item/mossy_hook.json
 532c47348452ae5450777653c35b99b69a455ac7 assets/starcatcher/models/item/murkwater_bait.json
 1e5dfe0c5ce1ea6b478211bb48a89ef1ad327041 assets/starcatcher/models/item/naturalist_skin_smithing_template.json
+6c786cdd13b970b7d2ec5cb4f45dbe98972c1d66 assets/starcatcher/models/item/nebula_squid.json
 47f8b6d0e08479358c93b2b2fb5740f1eeb1d932 assets/starcatcher/models/item/obidontiee.json
 3dd99d16d54d03ec0000cc535d815ec7dc373869 assets/starcatcher/models/item/obsidian_crab.json
 a7f1f64d2fa0d02b33ca86786c89635b32586b84 assets/starcatcher/models/item/obsidian_eel.json
@@ -155,6 +157,7 @@ f03df0085ca72f8e6b99ee8170144ec41fc4c357 assets/starcatcher/models/item/peakdwel
 2d6e48df616372258bc4a7b0aa18266971189927 assets/starcatcher/models/item/pinfish.json
 9d9af629ceab2b9158a92968a9483373aba1eef2 assets/starcatcher/models/item/pink_koi.json
 89b1889e4ef0fc49665f9284077ce979cd58b85c assets/starcatcher/models/item/pipehead.json
+29b8b1f39b9a56f6548b4767a2649eb25baac427 assets/starcatcher/models/item/purple_carp.json
 c9dc38049fcc1a77e54fb6b7e295462ff987fd3f assets/starcatcher/models/item/pyrotrout.json
 84fcc355cf21726de316d194e7f96c4d897b9a50 assets/starcatcher/models/item/redscaled_tuna.json
 6c3a55061144f9826e0adf18ba7f1f7d047d0259 assets/starcatcher/models/item/rockgill.json
@@ -180,6 +183,7 @@ f0fd4696bb77c46600fcd8b72e54bdda3fddef98 assets/starcatcher/models/item/shiny_ho
 c3133d62b9b6d86eb1a3becb807aec2fab223395 assets/starcatcher/models/item/slimed_skin_smithing_template.json
 bc72287664810b8b117c31337aecbaada44a5fcd assets/starcatcher/models/item/slimey_bobber.json
 1a8027de10d5846f36f4a52ed21e4816165892a3 assets/starcatcher/models/item/sludge_catfish.json
+f5974f6a4842dce69d625133a25afc7048320882 assets/starcatcher/models/item/spacejelly.json
 0383069604e5c523a16837d94d99b6d9fc56e7c5 assets/starcatcher/models/item/split_hook.json
 a0b1b4a48004bd29218d918496264e80c07e32da assets/starcatcher/models/item/sporefish.json
 ce5e10dc8fc86156b332f5aa3c844a4d4a9120e3 assets/starcatcher/models/item/starcatcher_guide.json
@@ -227,6 +231,7 @@ f8244e258c3aa09083edb536856e8ed6d1343e34 assets/starcatcher/models/item/vanilla_
 8e7e929a1bb8b539880cf10ea60c810b48071a69 assets/starcatcher/models/item/vesani.json
 38d92c7bf5f06561e97a46df04099c8c0354ec7d assets/starcatcher/models/item/vivid_moss.json
 f52bb9144ddc25b53baa049f5ae12af3f707a9bb assets/starcatcher/models/item/voidbiter.json
+fbc2b287c5743cfad146fc248dc52060a66bcd0d assets/starcatcher/models/item/voidfin.json
 9b811446384ffb617b1d650af26591b19e6c112f assets/starcatcher/models/item/ward.json
 f4026da08dc68d4ad19c382d9abe5b0f59edf7e9 assets/starcatcher/models/item/waterlogged_satchel.json
 24056e5d646a1341a8f94c0094dd55afbcf307a4 assets/starcatcher/models/item/weathered_copper_hook.json

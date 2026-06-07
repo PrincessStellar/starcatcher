@@ -5,9 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnSweetSpotsModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -54,6 +52,21 @@ public record Difficulty(
     }
 
     public Difficulty withHP(int hp)
+    {
+        return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
+    }
+
+    public Difficulty withPenalty(int penalty)
+    {
+        return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
+    }
+
+    public Difficulty withDecay(int decay)
+    {
+        return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
+    }
+
+    public Difficulty withSpeed(int speed)
     {
         return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
     }
@@ -329,9 +342,13 @@ public record Difficulty(
             SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG);
 
     public static Difficulty VOIDBITER = new Difficulty(
-            500, 14, 30, 3,
-            List.of(),
-            SweetSpot.THIN, SweetSpot.THIN);
+            500, 10, 30, 1,
+            List.of(
+                    new TeleportModifier(""),
+                    new FreezeOnMissModifier(40, 10, ""),
+                    new Nikdo53Modifier(1, "")
+            ),
+            SweetSpot.VOIDBITER_SPOT, SweetSpot.VOIDBITER_SPOT);
 
     public static Difficulty JOEL = new Difficulty(
             200,
@@ -680,6 +697,12 @@ public record Difficulty(
                 0xffc67ed9
         );
 
+        public static SweetSpot VOIDBITER_SPOT = new SweetSpot(
+                SCSweetSpotsBehaviour.NORMAL,
+                RL_END_CRAB_LEG, 15,
+                15,
+                0xffc67ed9
+        );
 
         public static final Codec<SweetSpot> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(

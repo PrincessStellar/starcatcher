@@ -347,7 +347,7 @@ public class FishingBobEntity extends Projectile
                 if (getDeltaMovement().y < 1.2f)
                     this.setDeltaMovement(this.getDeltaMovement().add(0, -0.02, 0));
 
-            if (!fluid.isEmpty() || noGravity)
+            if (!fluid.isEmpty() || (noGravity && tickCount > 50))
             {
                 this.setDeltaMovement(this.getDeltaMovement().multiply(0.3, 0.3, 0.3));
                 if (!level().isClientSide) this.currentState = FishHookState.BOBBING;

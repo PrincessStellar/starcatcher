@@ -1924,14 +1924,30 @@
   "tooltip.starcatcher.end_glow.1" : "Enderman don't seem to mind it.",
 
   "item.starcatcher.voidbiter" : "Voidbiter",
-  "tooltip.starcatcher.voidbiter.0" : "A <sclegendary>legendary</sclegendary> fish found in outer islands of The End.",
+  "tooltip.starcatcher.voidbiter.0" : "A <sclegendary>legendary</sclegendary> fish found floating in the vast void of The End.",
   "tooltip.starcatcher.voidbiter.1" : "So few anglers have seen it that it's only rumored to exist.",
   "tooltip.starcatcher.voidbiter.2" : "It's said only <scuncommon>Older Anglers</scuncommon> have successfully",
   "tooltip.starcatcher.voidbiter.3" : "caught it before.",
 
+  "item.starcatcher.purple_carp" : "Purple Carp",
+  "tooltip.starcatcher.purple_carp.0" : "These species of carp have adapted to the cold void of The End.",
+  "tooltip.starcatcher.purple_carp.1" : "It is said to make a great stew,",
+  "tooltip.starcatcher.purple_carp.2" : "although no one is sure how they cook it.",
 
+  "item.starcatcher.voidfin" : "Voidfin",
+  "tooltip.starcatcher.voidfin.0" : "A pale purple fish known for its large fins used to glide the void.",
 
+  "item.starcatcher.spacejelly" : "Spacejelly",
+  "tooltip.starcatcher.spacejelly.0" : "An incredibly light pink jellyfish.",
+  "tooltip.starcatcher.spacejelly.1" : "It floats around the outer islands of The End in search of End Cities.",
 
+  "item.starcatcher.chorus_minnow" : "Chorus Minnow",
+  "tooltip.starcatcher.chorus_minnow.0" : "A species of Minnor consumed by Chorus.",
+  "tooltip.starcatcher.chorus_minnow.1" : "It is unknown if they are native to The End.",
+
+  "item.starcatcher.nebula_squid" : "Nebula Squid",
+  "tooltip.starcatcher.nebula_squid.0" : "Unlike the Cinder Squid, Nebula Squids are quite sticky,",
+  "tooltip.starcatcher.nebula_squid.1" : "and often use their tentacles to wrap around chorus fruits whilst feeding.",
 
 
   

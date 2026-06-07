@@ -43,8 +43,6 @@ public class LuckAttributeModifier extends AbstractCatchModifier
         if(attribute == null) return available;
         double luck = attribute.getValue();
 
-        System.out.println(luck);
-
         List<FishProperties> list = new ArrayList<>();
 
         for (FishProperties fp : available)

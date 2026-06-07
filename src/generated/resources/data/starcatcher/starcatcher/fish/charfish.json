@@ -14,7 +14,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 250,
     "missPenalty": 10,
     "modifiers": [
       {
@@ -71,5 +71,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/end.png"
 }

@@ -323,14 +323,7 @@
           },
           "has_guide_entry": true,
           "rarity": "common",
-          "restrictions": [
-            {
-              "type": "starcatcher:fluid",
-              "fluids": [
-                "minecraft:water"
-              ]
-            }
-          ],
+          "restrictions": [],
           "size_and_weight": {
             "average_size_cm": 41.0,
             "average_weight_grams": 2001.0,
@@ -669,14 +662,7 @@
           },
           "has_guide_entry": true,
           "rarity": "common",
-          "restrictions": [
-            {
-              "type": "starcatcher:fluid",
-              "fluids": [
-                "minecraft:water"
-              ]
-            }
-          ],
+          "restrictions": [],
           "size_and_weight": {
             "average_size_cm": 41.0,
             "average_weight_grams": 2001.0,

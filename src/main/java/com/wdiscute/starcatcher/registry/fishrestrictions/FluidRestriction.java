@@ -89,6 +89,8 @@ public class FluidRestriction extends AbstractFishRestriction
             boolean fluidAbove = fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.above()).getType())));
             boolean fluidBelow = fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.below()).getType())));
 
+            var wad = BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp).getType()));
+
             if (!fluid && !fluidAbove && !fluidBelow) return -9999;
             else return 0;
         }

@@ -1526,6 +1526,10 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:chorus_minnow": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:cinder_squid": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
@@ -1754,6 +1758,10 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:nebula_squid": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:obidontiee": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
@@ -1787,6 +1795,10 @@
       "location": "minecraft:gameplay/fishing/treasure"
     },
     "starcatcher:pink_koi": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:purple_carp": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
@@ -1878,6 +1890,10 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:spacejelly": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:sporefish": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
@@ -1944,6 +1960,10 @@
       "location": "minecraft:gameplay/fishing/treasure"
     },
     "starcatcher:voidbiter": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:voidfin": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },

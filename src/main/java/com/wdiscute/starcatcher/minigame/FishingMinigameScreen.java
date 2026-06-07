@@ -265,8 +265,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         boolean shouldDarken = modifiers.stream().anyMatch(AbstractMinigameModifier::shouldDarkenWheel);
 
         //render tank background
-        guiGraphics.blit(texture, centerX - 44 - 100, centerY - 48,
-                85, 97, 0, 112, 96, 112, 256, 256);
+        guiGraphics.blit(texture, centerX - 44 - 106, centerY - 58,
+                96, 112, 0, 112, 96, 112, 256, 256);
 
         //render wheel background
         if (shouldDarken) RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);

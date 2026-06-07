@@ -25,8 +25,6 @@ public interface SCItems
     static void registerExtraItems()
     {
         if (ModList.get().isLoaded("create")) CreateCompat.register();
-
-
     }
 
     DeferredRegister.Items ITEMS = DeferredRegister.createItems(Starcatcher.MOD_ID);
@@ -317,7 +315,14 @@ public interface SCItems
     DeferredItem<Item> CHARFISH = registerBucketFish("charfish");
     DeferredItem<Item> CHORUS_CRAB = registerNonBucketFish("chorus_crab");
     DeferredItem<Item> END_GLOW = registerNonBucketFish("end_glow");
+
+    //end void
     DeferredItem<Item> VOIDBITER = registerNonBucketFish("voidbiter");
+    DeferredItem<Item> PURPLE_CARP = registerNonBucketFish("purple_carp");
+    DeferredItem<Item> VOIDFIN = registerNonBucketFish("voidfin");
+    DeferredItem<Item> SPACEJELLY = registerNonBucketFish("spacejelly");
+    DeferredItem<Item> CHORUS_MINNOW = registerNonBucketFish("chorus_minnow");
+    DeferredItem<Item> NEBULA_SQUID = registerNonBucketFish("nebula_squid");
 
     //bucket
     DeferredItem<Item> STARCAUGHT_BUCKET = ITEMS.register("starcaught_bucket", () -> new StarcaughtBucket(Fluids.WATER));

@@ -44,12 +44,6 @@
   "rarity": "common",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:season",
       "season_extra_chance": {
         "early_spring": 0,

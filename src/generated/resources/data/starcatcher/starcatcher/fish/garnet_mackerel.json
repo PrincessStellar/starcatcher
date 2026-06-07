@@ -45,17 +45,17 @@
   "rarity": "uncommon",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
       ],
       "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",

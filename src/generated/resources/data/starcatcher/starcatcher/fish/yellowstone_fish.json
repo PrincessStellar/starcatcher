@@ -45,12 +45,6 @@
   "rarity": "uncommon",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -65,6 +59,12 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": []
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",

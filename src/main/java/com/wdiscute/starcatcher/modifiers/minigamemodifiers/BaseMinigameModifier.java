@@ -4,8 +4,10 @@ import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
 public class BaseMinigameModifier extends AbstractMinigameModifier
@@ -42,12 +44,30 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
 
         instance.consecutiveHits++;
 
-        if(U.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
+        if (U.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
         {
             instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.TREASURE));
         }
 
         return super.onHit(ass);
+    }
+
+    public static final ResourceLocation GOLD_OUTLINE = Starcatcher.rl("textures/gui/minigame/gold_outline.png");
+
+    @Override
+    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    {
+
+        if (instance.rarity.equals(Rarity.LEGENDARY))
+            guiGraphics.blit(GOLD_OUTLINE,
+                    width / 2 - 150, height / 2 - 58,
+                    96, 112,
+                    0, 0,
+                    96, 112,
+                    96, 112
+            );
+
+
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.DeepDarkModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FreezeOnMissModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
@@ -650,23 +652,56 @@ public class DGStarcatcherFishes
         register(endFish(new MaybeStack(SCItems.CHARFISH))
                 .withSizeAndWeight(new SizeAndWeight(135, 25, 4000, 700))
                 .withRarity(Rarity.RARE)
-                .withDifficulty(Difficulty.HARD));
+                .withDifficulty(Difficulty.HARD.withHP(250)));
 
         register(endFish(new MaybeStack(SCItems.CHORUS_CRAB))
                 .withSizeAndWeight(new SizeAndWeight(15, 8, 700, 300))
                 .withRarity(Rarity.EPIC)
-                .withDifficulty(Difficulty.END_CRAB));
+                .withDifficulty(Difficulty.END_CRAB.withHP(350)));
 
         register(endFish(new MaybeStack(SCItems.END_GLOW))
                 .withSizeAndWeight(new SizeAndWeight(235, 25, 7000, 700))
                 .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.MEDIUM));
+                .withDifficulty(Difficulty.MEDIUM.withHP(250)));
 
-        register(endOuterIslandsFish(new MaybeStack(SCItems.VOIDBITER))
+        //end void
+        register(fish(new MaybeStack(SCItems.VOIDBITER))
                 .withSizeAndWeight(new SizeAndWeight(50, 15, 2000, 200))
-                .withRarity(Rarity.EPIC)
+                .addRestriction(WorldRestrictions.END_VOID)
+                .withRarity(Rarity.LEGENDARY)
+                .withTextures(FishProperties.END_VOID)
                 .withDifficulty(Difficulty.VOIDBITER)
-                .addBait(BaitRestriction.LEGENDARY_BAIT));
+        );
 
+        register(endVoidFish(new MaybeStack(SCItems.PURPLE_CARP))
+                .withSizeAndWeight(new SizeAndWeight(150, 70, 4000, 1200))
+                .withRarity(Rarity.EPIC)
+                .withDifficulty(Difficulty.HARD_MOVING.withHP(350))
+        );
+
+        register(endVoidFish(new MaybeStack(SCItems.VOIDFIN))
+                .withSizeAndWeight(new SizeAndWeight(250, 60, 6000, 800))
+                .withRarity(Rarity.EPIC)
+                .withDifficulty(Difficulty.HARD_VANISHING.withHP(350))
+        );
+
+        //end void outer islands
+        register(endVoidOuterIslandsFish(new MaybeStack(SCItems.SPACEJELLY))
+                .withSizeAndWeight(new SizeAndWeight(100, 20, 10, 1))
+                .withRarity(Rarity.RARE)
+                .withDifficulty(Difficulty.HARD_MOVING.withPenalty(25).withHP(250))
+        );
+
+        register(endVoidOuterIslandsFish(new MaybeStack(SCItems.CHORUS_MINNOW))
+                .withSizeAndWeight(new SizeAndWeight(250, 60, 6000, 2200))
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.HARD_VANISHING.withHP(250))
+        );
+
+        register(endVoidOuterIslandsFish(new MaybeStack(SCItems.NEBULA_SQUID))
+                .withSizeAndWeight(new SizeAndWeight(40, 20, 1300, 700))
+                .withRarity(Rarity.EPIC)
+                .withDifficulty(Difficulty.HARD_MOVING.withHP(250))
+        );
     }
 }

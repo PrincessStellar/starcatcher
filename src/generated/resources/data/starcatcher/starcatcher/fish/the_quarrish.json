@@ -94,6 +94,12 @@
       "translation_override": "tag.starcatcher.lush_and_jungle"
     },
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": -2147483648,

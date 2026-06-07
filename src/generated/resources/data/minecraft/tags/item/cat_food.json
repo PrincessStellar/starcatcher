@@ -451,6 +451,26 @@
     {
       "id": "starcatcher:voidbiter",
       "required": false
+    },
+    {
+      "id": "starcatcher:purple_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:voidfin",
+      "required": false
+    },
+    {
+      "id": "starcatcher:spacejelly",
+      "required": false
+    },
+    {
+      "id": "starcatcher:chorus_minnow",
+      "required": false
+    },
+    {
+      "id": "starcatcher:nebula_squid",
+      "required": false
     }
   ]
 }

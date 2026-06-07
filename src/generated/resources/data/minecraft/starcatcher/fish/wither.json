@@ -61,12 +61,6 @@
   "rarity": "legendary",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:bait",
       "baits": {
         "minecraft:wither_skeleton_skull": 200,

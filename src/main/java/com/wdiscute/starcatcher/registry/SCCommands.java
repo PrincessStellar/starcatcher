@@ -249,7 +249,6 @@ public interface SCCommands
 
     static int addCatchModifier(ServerPlayer playerOrException, String modifier)
     {
-        System.out.println("got " + modifier);
         return 0;
     }
 
