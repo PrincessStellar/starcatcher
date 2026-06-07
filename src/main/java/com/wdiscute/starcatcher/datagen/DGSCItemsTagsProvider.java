@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.HolderLookup;
@@ -37,17 +38,17 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         //fishes, cat_food, foods/raw_fish
         for (var item : BUCKETABLE_FISHES_REGISTRY.getEntries())
         {
-            tag(ItemTags.FISHES).add(item.get());
-            tag(ItemTags.CAT_FOOD).add(item.get());
-            tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
-            tag(SCTags.BUCKETABLE_FISHES).add(item.get());
+            tag(ItemTags.FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
+            tag(ItemTags.CAT_FOOD).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
+            tag(Tags.Items.FOODS_RAW_FISH).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
+            tag(SCTags.BUCKETABLE_FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
         }
 
         for (var item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
         {
-            tag(ItemTags.FISHES).add(item.get());
-            tag(ItemTags.CAT_FOOD).add(item.get());
-            tag(Tags.Items.FOODS_RAW_FISH).add(item.get());
+            tag(ItemTags.FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
+            tag(ItemTags.CAT_FOOD).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
+            tag(Tags.Items.FOODS_RAW_FISH).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
         }
 
         //rarity tags for starcatcher fish only
@@ -85,7 +86,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         tag(SCTags.EELS)
                 .add(BLACK_EEL.get())
                 .add(GEODE_EEL.get())
-                .add(OBSIDIAN_EEL.get());
+                .add(OBSIDIAN_EEL.get())
+                .addOptional(BuiltInRegistries.ITEM.getKey(CreateCompat.EEL_DYNAMO.value()))
+        ;
 
         //shrimps
         tag(SCTags.SHRIMPS)
@@ -139,7 +142,6 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
 
         //Equipment tag
         RODS_REGISTRY.getEntries().forEach(o -> tag(SCTags.EQUIPMENTS).add(o.get()));
-        //ModItems.HATS_REGISTRY.getEntries().stream().forEach(o -> tag(StarcatcherTags.EQUIPMENTS).add(o.get()));
 
         //gadgets
         tag(SCTags.GADGETS).add(FISH_RADAR.get());

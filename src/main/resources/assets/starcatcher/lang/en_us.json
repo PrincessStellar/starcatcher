@@ -1929,10 +1929,14 @@
   "tooltip.starcatcher.voidbiter.2" : "It's said only <scuncommon>Older Anglers</scuncommon> have successfully",
   "tooltip.starcatcher.voidbiter.3" : "caught it before.",
 
+
+
+
+
+
+  
   "item.starcatcher.coggill" : "Coggill",
-  "tooltip.starcatcher.coggill.0" : "A mechanical construct resembling the Embergill,",
-  "tooltip.starcatcher.coggill.1" : "made to survive high temperature fluids.",
-  "tooltip.starcatcher.coggill.2" : "It's use is unknown.",
+  "tooltip.starcatcher.coggill.0" : "A dusty construct made of brass gears and cogs often used in arid areas to move air around.",
 
   "item.starcatcher.mechanical_brass_snail" : "Mechanical Brass Snail",
   "tooltip.starcatcher.mechanical_brass_snail.0" : "A machine made to clean oil off of beaches.",
@@ -1967,7 +1971,9 @@
   "tooltip.starcatcher.drive_pike.0" : "An aggressive machine made to control the fish population around rivers",
 
   "item.starcatcher.brassgill" : "Brassgill",
-  "tooltip.starcatcher.brassgill.0" : "A dusty construct made of brass gears and cogs often used in arid areas to move air around.",
+  "tooltip.starcatcher.brassgill.0" : "A mechanical construct resembling the Embergill,",
+  "tooltip.starcatcher.brassgill.1" : "made to survive high temperature fluids.",
+  "tooltip.starcatcher.brassgill.2" : "It's use is unknown.",
 
   "item.starcatcher.meka_agave_bream" : "Meka Agave Bream",
   "tooltip.starcatcher.meka_agave_bream.0" : "The mechanical version of an Agave Bream made for controlling bream population.",

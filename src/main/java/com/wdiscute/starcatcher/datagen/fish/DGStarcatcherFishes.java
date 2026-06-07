@@ -131,7 +131,8 @@ public class DGStarcatcherFishes
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withWeather(WeatherRestriction.CLEAR)
-                .withDifficulty(Difficulty.HARD));
+                .withDifficulty(Difficulty.HARD)
+        );
 
 
         //mountain

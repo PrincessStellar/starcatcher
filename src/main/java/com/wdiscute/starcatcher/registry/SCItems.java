@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
 import com.wdiscute.starcatcher.registry.items.FishItem;
 import com.wdiscute.starcatcher.registry.items.SCFoodProperties;
@@ -23,21 +24,9 @@ public interface SCItems
 
     static void registerExtraItems()
     {
-        //this works!
-        if (ModList.get().isLoaded("create"))
-        {
-            registerNonBucketFish("coggill");
-            registerNonBucketFish("mechanical_brass_snail");
-            registerNonBucketFish("mechanical_snail");
-            registerNonBucketFish("phillipsfish");
-            registerNonBucketFish("valve");
-            registerNonBucketFish("pipehead");
-            registerNonBucketFish("cogtopus");
-            registerNonBucketFish("eel_dynamo");
-            registerNonBucketFish("drive_pike");
-            registerNonBucketFish("brassgill");
-            registerNonBucketFish("meka_agave_bream");
-        }
+        if (ModList.get().isLoaded("create")) CreateCompat.register();
+
+
     }
 
     DeferredRegister.Items ITEMS = DeferredRegister.createItems(Starcatcher.MOD_ID);
