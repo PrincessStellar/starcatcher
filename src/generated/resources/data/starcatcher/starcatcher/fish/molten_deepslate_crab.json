@@ -14,14 +14,14 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 200,
     "missPenalty": 10,
     "modifiers": [
       {
         "type": "starcatcher:burn_on_miss",
-        "extra_speed": 40,
+        "extra_speed": 16,
         "length": 40,
-        "ramp_time": 40,
+        "ramp_time": 10,
         "translation_override": ""
       }
     ],

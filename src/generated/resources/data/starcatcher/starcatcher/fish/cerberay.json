@@ -14,33 +14,24 @@
   },
   "difficulty": {
     "decay": 1.5,
-    "hp": 100,
+    "hp": 500,
     "missPenalty": 10,
     "modifiers": [
       {
         "type": "starcatcher:burn_on_miss",
-        "extra_speed": 40,
+        "extra_speed": 20,
         "length": 40,
-        "ramp_time": 40,
+        "ramp_time": 10,
         "translation_override": ""
       },
       {
-        "type": "starcatcher:nikdo53_modifier",
+        "type": "starcatcher:multi_layer_modifier",
+        "max_layers": 2,
         "translation_override": ""
       }
     ],
-    "speed": 16,
+    "speed": 14,
     "sweetspots": [
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 15,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 20,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.0
-      },
       {
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 15,

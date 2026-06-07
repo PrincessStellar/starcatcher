@@ -213,7 +213,7 @@ public class DGStarcatcherFishes
                 .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(10, 3, 67, 0))
                 .withRarity(Rarity.LEGENDARY)
-                .withDifficulty(Difficulty.NO_SWEET_SPOTS));
+                .withDifficulty(Difficulty.NO_SWEET_SPOTS.withHP(300)));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.BLOSSOMFISH))
                 .withSeasons(SeasonRestriction.SPRING_SUMMER)
@@ -623,7 +623,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(new SizeAndWeight(200, 53, 4000, 300))
                 .withRarity(Rarity.LEGENDARY)
                 .addBait(BaitRestriction.LEGENDARY_BAIT)
-                .withDifficulty(Difficulty.CERBERAY));
+                .withDifficultyRaw(Difficulty.CERBERAY));
 
         register(netherLavaFish(new MaybeStack(SCItems.SCALDING_PIKE))
                 .withSizeAndWeight(new SizeAndWeight(75, 20, 5000, 3000))

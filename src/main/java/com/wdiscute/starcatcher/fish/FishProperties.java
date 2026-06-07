@@ -163,6 +163,12 @@ public record FishProperties(
                 this.restrictions, dif.addModifiers(this.dif.modifiers()), this.skipMinigame, this.hasGuideEntry, this.textures);
     }
 
+    public FishProperties withDifficultyRaw(Difficulty dif)
+    {
+        return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
+                this.restrictions, dif, this.skipMinigame, this.hasGuideEntry, this.textures);
+    }
+
     public FishProperties withSkipsMinigame()
     {
         return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
@@ -188,9 +194,9 @@ public record FishProperties(
         return this;
     }
 
-    public FishProperties addModifier(Modifier teleport)
+    public FishProperties addModifier(Modifier modifier)
     {
-        return withDifficulty(dif.addModifiers(List.of(teleport)));
+        return withDifficultyRaw(dif.addModifiers(List.of(modifier)));
     }
 
     public FishProperties addRestriction(AbstractFishRestriction restriction)

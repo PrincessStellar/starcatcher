@@ -178,7 +178,7 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure_on_hit_x"), SpawnTreasureOnHitX.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("stop_decay_on_hit"), StoneHookModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bigger_green_sweet_spots"), SteadyBobberModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("nikdo53_modifier"), Nikdo53Modifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("multi_layer_modifier"), Nikdo53Modifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("flip_every_hit"), FlipEveryHitModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_sweet_spots"), SpawnSweetSpotsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_leaves_spots"), AddLeavesSweetspotsModifier.CODEC);

@@ -18,9 +18,14 @@
     "modifiers": [
       {
         "type": "starcatcher:burn_on_miss",
-        "extra_speed": 40,
+        "extra_speed": 16,
         "length": 40,
-        "ramp_time": 40,
+        "ramp_time": 10,
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:multi_layer_modifier",
+        "max_layers": 2,
         "translation_override": ""
       }
     ],

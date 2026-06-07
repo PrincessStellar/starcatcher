@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.ExtraComposites;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnSweetSpotsModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SCSweetSpotsBehaviour;
@@ -300,28 +301,28 @@ public record Difficulty(
     public static Difficulty NO_SWEET_SPOTS = new Difficulty(10, 20, 1, List.of());
 
     public static Difficulty DEEPSLATE_CRAB = new Difficulty(
-            14, 10, 1,
+            200, 14, 10, 1,
             List.of(),
             SweetSpot.DEEPSLATE_CRAB_CLAW, SweetSpot.DEEPSLATE_CRAB_CLAW,
             SweetSpot.DEEPSLATE_CRAB_LEG, SweetSpot.DEEPSLATE_CRAB_LEG, SweetSpot.DEEPSLATE_CRAB_LEG,
             SweetSpot.DEEPSLATE_CRAB_LEG, SweetSpot.DEEPSLATE_CRAB_LEG, SweetSpot.DEEPSLATE_CRAB_LEG);
 
     public static Difficulty OBSIDIAN_CRAB = new Difficulty(
-            14, 10, 1,
+            200, 14, 10, 1,
             List.of(),
             SweetSpot.OBSIDIAN_CRAB_CLAW, SweetSpot.OBSIDIAN_CRAB_CLAW,
             SweetSpot.OBSIDIAN_CRAB_LEG, SweetSpot.OBSIDIAN_CRAB_LEG, SweetSpot.OBSIDIAN_CRAB_LEG,
             SweetSpot.OBSIDIAN_CRAB_LEG, SweetSpot.OBSIDIAN_CRAB_LEG, SweetSpot.OBSIDIAN_CRAB_LEG);
 
     public static Difficulty NETHER_CRAB = new Difficulty(
-            14, 10, 1,
+            200, 14, 10, 1,
             List.of(),
             SweetSpot.NETHER_CRAB_CLAW, SweetSpot.NETHER_CRAB_CLAW,
             SweetSpot.NETHER_CRAB_LEG, SweetSpot.NETHER_CRAB_LEG, SweetSpot.NETHER_CRAB_LEG,
             SweetSpot.NETHER_CRAB_LEG, SweetSpot.NETHER_CRAB_LEG, SweetSpot.NETHER_CRAB_LEG);
 
     public static Difficulty END_CRAB = new Difficulty(
-            14, 10, 1,
+            200, 14, 10, 1,
             List.of(),
             SweetSpot.END_CRAB_CLAW, SweetSpot.END_CRAB_CLAW,
             SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG, SweetSpot.END_CRAB_LEG,
@@ -340,9 +341,12 @@ public record Difficulty(
     );
 
     public static Difficulty CERBERAY = new Difficulty(
-            16, 10, 1.5f,
-            List.of(new Nikdo53Modifier(2, "")),
-            SweetSpot.THIN, SweetSpot.THIN, SweetSpot.THIN
+            500, 14, 10, 1.5f,
+            List.of(
+                    new BurnOnMissModifier(40, 10, 20, ""),
+                    new Nikdo53Modifier(2, "")
+            ),
+            SweetSpot.THIN, SweetSpot.THIN
     );
 
     //endregion preset difficulties

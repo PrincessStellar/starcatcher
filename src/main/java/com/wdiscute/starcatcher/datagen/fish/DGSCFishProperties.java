@@ -3,10 +3,7 @@ package com.wdiscute.starcatcher.datagen.fish;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.compat.*;
 import com.wdiscute.starcatcher.fish.*;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.DeepDarkModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FreezeOnMissModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.TeleportModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
@@ -207,7 +204,9 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .addRestriction(WorldRestrictions.NETHER_LAVA)
                 .withTextures(FishProperties.NETHER)
-                .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
+                .addModifier(new Nikdo53Modifier(1, ""))
+                .addModifier(new BurnOnMissModifier(40, 10, 16, ""))
+                ;
     }
 
     public static FishProperties netherLavaCrimsonForestFish(MaybeStack fish)
@@ -215,6 +214,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
+                .addModifier(new Nikdo53Modifier(2, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -223,6 +223,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
+                .addModifier(new Nikdo53Modifier(2, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -231,6 +232,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
+                .addModifier(new Nikdo53Modifier(2, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -239,6 +241,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
+                .addModifier(new Nikdo53Modifier(2, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 

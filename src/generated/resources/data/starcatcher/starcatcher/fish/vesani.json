@@ -14,7 +14,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 300,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,

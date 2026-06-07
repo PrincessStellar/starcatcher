@@ -40,9 +40,21 @@ public class FreezeOnMissModifier extends AbstractMinigameModifier
     public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderBackground(guiGraphics, partialTick, width, height);
-        guiGraphics.blit(
-                OVERLAY, width / 2 - 48, height / 2 - 48,
-                96, 96, 0, 0, 96, 96, 96, 96);
+
+        int layers = (int) instance.modifierData.getOrDefault(Starcatcher.rl("multi_layer_modifier"), 0);
+
+        float increase = layers * 0.22f + 1;
+
+        int posX = (int) ((float) width / 2 - 48 * increase);
+        int posY = (int) ((float) height / 2 - 48 * increase);
+
+        guiGraphics.blit(OVERLAY,
+                posX, posY,
+                (int) (96 * increase), (int) (96 * increase),
+                0, 0,
+                96, 96,
+                96, 96
+        );
     }
 
     @Override

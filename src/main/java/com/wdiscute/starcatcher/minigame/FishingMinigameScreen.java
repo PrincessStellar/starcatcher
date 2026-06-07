@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
@@ -261,19 +262,24 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         int centerX = width / 2;
         int centerY = height / 2;
 
+        boolean shouldDarken = modifiers.stream().anyMatch(AbstractMinigameModifier::shouldDarkenWheel);
+
         //render tank background
         guiGraphics.blit(texture, centerX - 44 - 100, centerY - 48,
                 85, 97, 0, 112, 96, 112, 256, 256);
 
         //render wheel background
+        if (shouldDarken) RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
         guiGraphics.blit(texture, centerX - 32, centerY - 32,
                 64, 64, 96, 112, 64, 64, 256, 256);
+        if (shouldDarken) RenderSystem.setShaderColor(1f, 1f, 1f, 1);
+
 
         //render spacebar
         Component displayName = SCKeymappings.MINIGAME_HIT.getKey().getDisplayName();
         String string = displayName.getString();
 
-        guiGraphics.blit(texture, centerX - 24, centerY + 40,
+        guiGraphics.blit(texture, centerX - 24, centerY + 40 + (modifiers.stream().anyMatch(Nikdo53Modifier.class::isInstance) ? 10 : 0),
                 48, 16,
                 96, (isHoldingKey ? 16 : 0) + (string.length() < 3 ? 32 : 0),
                 48, 16,
@@ -281,14 +287,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         //render spacebar keybind
         renderCenteredString(guiGraphics, font, displayName,
-                centerX, centerY + 42 + (isHoldingKey ? 2 : 0), 0xff546170, false);
+                centerX, centerY + 42 + (modifiers.stream().anyMatch(Nikdo53Modifier.class::isInstance) ? 10 : 0) + (isHoldingKey ? 2 : 0), 0xff546170, false);
 
         //render all sweet spots
         activeSweetSpots.forEach(ass -> renderSweetSpot(ass, guiGraphics, partialTick, poseStack));
 
         //render wheel second layer
+        if (shouldDarken) RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
         guiGraphics.blit(texture, centerX - 32, centerY - 32,
                 64, 64, 160, 112, 64, 64, 256, 256);
+        if (shouldDarken) RenderSystem.setShaderColor(1f, 1f, 1f, 1);
 
         //render pointer
         renderPointer(guiGraphics, poseStack, partialTick);
@@ -453,6 +461,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         modifiers.forEach(mod -> mod.onKeyReleased(keyCode, scanCode, keyModifiers));
 
         return super.keyReleased(keyCode, scanCode, keyModifiers);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
+    {
+        modifiers.forEach(o -> o.mouseScrolled(mouseX, mouseY, scrollX, scrollY));
+        return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }
 
     @Override

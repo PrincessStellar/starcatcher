@@ -22,10 +22,10 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
             instance.group(
                     Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.INT.fieldOf("ramp_time").forGetter(mod -> mod.rampTime),
-                    Codec.INT.fieldOf("extra_speed").forGetter(mod -> mod.rampTime)
+                    Codec.FLOAT.fieldOf("extra_speed").forGetter(mod -> mod.extraSpeed)
             ).apply(instance, BurnPointerWhileActiveModifier::new));
 
-    public BurnPointerWhileActiveModifier(int length, int rampTime, int extraSpeed)
+    public BurnPointerWhileActiveModifier(int length, int rampTime, float extraSpeed)
     {
         super(length, "");
         this.rampTime = rampTime;
@@ -86,7 +86,10 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
     public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderForeground(guiGraphics, partialTick, width, height);
-        RenderSystem.setShaderColor(1, 1, 1, 1 - (instance.handleBaseSpeed - instance.handleSpeed / 2) / (instance.handleSpeed - instance.handleSpeed / 2));
+
+        float alpha = 1 - (instance.handleBaseSpeed - instance.handleSpeed / 2) / (instance.handleSpeed - instance.handleSpeed / 2);
+
+        RenderSystem.setShaderColor(1, 1, 1, alpha);
         RenderSystem.enableBlend();
         int yoffset = tickCount % 32;
         guiGraphics.blit(TEXTURE, width / 2 - 8, height / 2 - 8 - 7, 16, 16, 0, yoffset * 16, 16, 16, 16, 512);

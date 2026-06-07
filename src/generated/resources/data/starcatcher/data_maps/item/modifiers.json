@@ -374,9 +374,9 @@
       },
       {
         "type": "starcatcher:burn_on_miss",
-        "extra_speed": 20,
+        "extra_speed": 30,
         "length": 20,
-        "ramp_time": 20,
+        "ramp_time": 4,
         "translation_override": ""
       }
     ],

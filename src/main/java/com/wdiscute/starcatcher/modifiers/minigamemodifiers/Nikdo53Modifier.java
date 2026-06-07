@@ -6,6 +6,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
@@ -13,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import org.joml.Quaternionf;
 
 public class Nikdo53Modifier extends AbstractMinigameModifier
 {
@@ -27,14 +29,21 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
     public static final MapCodec<Nikdo53Modifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.optionalFieldOf("layers", 2).forGetter(mod -> mod.maxPointerLayer + 1),
+                    Codec.INT.fieldOf("max_layers").forGetter(mod -> mod.maxPointerLayer),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, Nikdo53Modifier::new));
 
-    public Nikdo53Modifier(int layers, String translationOverride)
+    public Nikdo53Modifier(int extra_layers, String translationOverride)
     {
         super(translationOverride);
-        this.maxPointerLayer = layers - 1;
+        this.maxPointerLayer = extra_layers;
+    }
+
+    @Override
+    public void onAdd(FishingMinigameScreen instance)
+    {
+        super.onAdd(instance);
+        instance.modifierData.put(getIdentifier(), maxPointerLayer);
     }
 
     @Override
@@ -64,6 +73,24 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
+    public void mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
+    {
+        if(scrollY < 0)
+            pointerLayer--;
+
+        if(scrollY > 0)
+            pointerLayer++;
+
+        if (pointerLayer > maxPointerLayer)
+            pointerLayer = maxPointerLayer;
+
+        if (pointerLayer < 0)
+            pointerLayer = 0;
+
+        super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
+    }
+
+    @Override
     public void onKeyPress(int key, int scanCode, int keyModifiers)
     {
         if (key == getOptions().keyLeft.getKey().getValue())
@@ -83,6 +110,12 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
         if (pointerLayer < 0)
             pointerLayer = 0;
+    }
+
+    @Override
+    public boolean skipRenderingKimbeMarker()
+    {
+        return true;
     }
 
     @Override
@@ -120,7 +153,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
         // Dim when not in use
         if (pointerLayer != layer)
-            RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
+            RenderSystem.setShaderColor(0.3f, 0.3f, 0.3f, 1);
 
         spot.behaviour.render(guiGraphics, poseStack, partialTick);
 
@@ -130,34 +163,79 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
+    public boolean shouldDarkenWheel()
+    {
+        return pointerLayer != 0;
+    }
+
+    @Override
     public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderBackground(guiGraphics, partialTick, width, height);
         PoseStack poseStack = guiGraphics.pose();
-
-        //render A
-        guiGraphics.blit(instance.texture, width / 2 - 40, height / 2 + 40, 32, 16,
-                112, isHoldingLeft ? 32 : 48, 32, 16, 256, 256);
-
-        //render D
-        guiGraphics.blit(instance.texture, width / 2 + 8, height / 2 + 40, 32, 16,
-                112, isHoldingLeft ? 32 : 48, 32, 16, 256, 256);
-
-
         poseStack.pushPose();
 
         // kapiten reference!1!1!1!1!!
         poseStack.translate(width >> 1, height >> 1, 0);
 
-        // Dim when not in use
-        if (pointerLayer != 1)
-            RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
 
-        FishingMinigameScreen.renderPoseCentered(guiGraphics, WHEEL, 128);
+        for (int i = maxPointerLayer; i > 0; i--)
+        {
+            // Dim when not in use
 
-        RenderSystem.setShaderColor(1, 1, 1, 1);
+            if(pointerLayer != i)
+                RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
+
+            float increase = (i - 1) * 0.22f + 1;
+
+            guiGraphics.blit(WHEEL,
+                    (int) (-48 * increase), (int) (-48 * increase),
+                    (int) (96 * increase), (int) (96 * increase),
+                    0, 0,
+                    96, 96,
+                    96, 96);
+
+            RenderSystem.setShaderColor(1, 1, 1, 1);
+        }
+
 
         poseStack.popPose();
+    }
+
+    @Override
+    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    {
+        PoseStack poseStack = guiGraphics.pose();
+        poseStack.pushPose();
+
+        float centerX = (float) width / 2;
+        float centerY = (float) height / 2;
+
+        poseStack.translate(centerX, centerY, 0);
+        poseStack.mulPose(new Quaternionf().rotateZ((float) Math.toRadians(instance.kimbeMarkerPos)));
+        poseStack.translate(-centerX, -centerY, 0);
+
+        RenderSystem.setShaderColor(
+                (float) U.intToRed(instance.kimbeMarkerColor) / 255,
+                (float) U.intToGreen(instance.kimbeMarkerColor) / 255,
+                (float) U.intToBlue(instance.kimbeMarkerColor) / 255,
+                instance.kimbeMarkerAlpha);
+        RenderSystem.enableBlend();
+
+        guiGraphics.renderOutline((int) centerX, (int) centerY - 34 - maxPointerLayer * 7, 2, 34 + maxPointerLayer * 7, 0xffffffff);
+
+        RenderSystem.setShaderColor(1, 1, 1, 1);
+        RenderSystem.disableBlend();
+
+        poseStack.popPose();
+
+        //render A
+        guiGraphics.blit(instance.texture, width / 2 - 50, height / 2 + 50, 32, 16,
+                112, isHoldingLeft ? 80 : 64, 32, 16, 256, 256);
+
+        //render D
+        guiGraphics.blit(instance.texture, width / 2 + 18, height / 2 + 50, 32, 16,
+                144, isHoldingRight ? 80 : 64, 32, 16, 256, 256);
     }
 
     @Override
@@ -185,7 +263,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("nikdo53_modifier");
+        return Starcatcher.rl("multi_layer_modifier");
     }
 
     @Override

@@ -31,6 +31,10 @@ public abstract class AbstractMinigameModifier implements Modifier
         return List.of(Component.translatable("tooltip.modifier." + getIdentifier().toLanguageKey()));
     }
 
+    public void mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
+    {
+    }
+
     protected AbstractMinigameModifier(String translationOverride)
     {
         this.translationOverride = translationOverride;
@@ -82,6 +86,11 @@ public abstract class AbstractMinigameModifier implements Modifier
 
     public void onKeyPress(int key, int scanCode, int keyModifiers)
     {
+    }
+
+    public boolean shouldDarkenWheel()
+    {
+        return false;
     }
 
     public void onKeyReleased(int key, int scanCode, int keyModifiers)
