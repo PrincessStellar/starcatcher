@@ -14,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import org.joml.Quaternionf;
 
 public class Nikdo53Modifier extends AbstractMinigameModifier
@@ -76,10 +77,16 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     public void mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
     {
         if(scrollY < 0)
+        {
+            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.6f, 1f);
             pointerLayer--;
+        }
 
         if(scrollY > 0)
+        {
+            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.6f, 1f);
             pointerLayer++;
+        }
 
         if (pointerLayer > maxPointerLayer)
             pointerLayer = maxPointerLayer;
@@ -95,12 +102,14 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     {
         if (key == getOptions().keyLeft.getKey().getValue())
         {
+            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.6f, 1f);
             pointerLayer--;
             isHoldingLeft = true;
         }
 
         if (key == getOptions().keyRight.getKey().getValue())
         {
+            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.6f, 1f);
             pointerLayer++;
             isHoldingRight = true;
         }

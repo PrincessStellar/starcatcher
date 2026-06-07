@@ -206,6 +206,10 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new ExtraGoldenRiskModifier(0.05f, false, "")
         ), false);
 
+        modifiers.add(SCItems.VOID_BOBBER, List.of(
+                new NoGravityModifier("")
+        ), false);
+
         modifiers.add(SCItems.STONE_HOOK, List.of(
                 new AdjustLureTimeModifier(1.2f, 1.6f, 1f, ""),
                 new StoneHookModifier("")
@@ -246,7 +250,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCItems.SEEKING_WORM, List.of(
                 new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, ""),
-                new NewCatchIncreaseModifier(2, "")
+                new NewCatchIncreaseModifier(5, "")
         ), false);
 
         modifiers.add(SCItems.DEV_WORM, List.of(

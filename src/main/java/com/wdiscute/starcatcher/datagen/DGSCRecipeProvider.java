@@ -263,6 +263,42 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
+        //glowing bobber
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GLOWING_BOBBER)
+                .define('B', SCItems.BOBBER)
+                .define('S', Items.STICK)
+                .define('W', Items.GLOW_INK_SAC)
+                .define('G', Items.GLOW_BERRIES)
+                .pattern(" WS")
+                .pattern("GBG")
+                .pattern("SG ")
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
+                .save(output);
+
+        //golden bobber
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOLDEN_BOBBER)
+                .define('B', SCItems.BOBBER)
+                .define('S', Items.STICK)
+                .define('G', Items.GOLD_BLOCK)
+                .define('W', Items.GOLD_INGOT)
+                .pattern(" GS")
+                .pattern("WBW")
+                .pattern("SW ")
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
+                .save(output);
+
+        //void bobber
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.VOID_BOBBER)
+                .define('B', SCItems.BOBBER)
+                .define('S', Items.STICK)
+                .define('F', Items.CHORUS_FLOWER)
+                .define('O', Items.OBSIDIAN)
+                .pattern(" FS")
+                .pattern("OBO")
+                .pattern("SO ")
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
+                .save(output);
+
         //vanilla bobber from rod
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.VANILLA_BOBBER)
                 .requires(Items.FISHING_ROD)

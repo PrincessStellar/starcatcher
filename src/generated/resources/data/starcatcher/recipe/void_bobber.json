@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "starcatcher:bobber"
+    },
+    "F": {
+      "item": "minecraft:chorus_flower"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " FS",
+    "OBO",
+    "SO "
+  ],
+  "result": {
+    "count": 1,
+    "id": "starcatcher:void_bobber"
+  }
+}

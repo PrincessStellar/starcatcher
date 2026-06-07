@@ -556,7 +556,7 @@
       },
       {
         "type": "starcatcher:new_catch_increase",
-        "increase": 2,
+        "increase": 5,
         "translation_override": ""
       }
     ],
@@ -684,6 +684,12 @@
       {
         "type": "starcatcher:skip_minigame_if_trigger_found",
         "translation_override": "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber"
+      }
+    ],
+    "starcatcher:void_bobber": [
+      {
+        "type": "starcatcher:no_gravity",
+        "translation_override": ""
       }
     ],
     "starcatcher:weathered_copper_hook": [
