@@ -47,6 +47,8 @@ public abstract class AbstractMinigameModifier implements Modifier
     public void onAdd(FishingMinigameScreen instance)
     {
         this.instance = instance;
+        removed = false;
+        tickCount = 0;
     }
 
     /**

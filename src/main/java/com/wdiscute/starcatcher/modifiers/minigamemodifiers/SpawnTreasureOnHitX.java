@@ -37,7 +37,7 @@ public class SpawnTreasureOnHitX extends AbstractMinigameModifier
     public void onMiss()
     {
         super.onMiss();
-        instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
+        instance.modifierData.put(getIdentifier(), 0);
     }
 
     @Override

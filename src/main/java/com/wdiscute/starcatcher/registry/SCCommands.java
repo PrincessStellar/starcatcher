@@ -7,9 +7,11 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
@@ -353,7 +355,9 @@ public interface SCCommands
 
         if (optional.isPresent())
         {
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(), MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
+            var treasure = new MaybeStack(FishApi.getTreasure(player, optional.get()));
+            if (SCConfig.HIDE_TREASURES.get()) treasure = new MaybeStack(SCItems.UNKNOWN_FISH);
+            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(), treasure, new MaybeStack(player.getMainHandItem())));
             return 1;
         }
         else

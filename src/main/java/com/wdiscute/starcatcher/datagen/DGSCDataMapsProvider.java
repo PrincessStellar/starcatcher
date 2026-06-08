@@ -440,21 +440,13 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         var treasures = this.builder(SCDataMaps.TREASURE);
 
-        //todo fix tags datagen to use tags instead of hard coding every entry
-        //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
-        //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
-        //treasures.add(SCTags.COMMON_FISHES_FP, new Treasure.ItemStackListTreasureInstance(SCItems.AGAVE_BREAM.value().getDefaultInstance()), false);
+        //add base treasure to every fish
+        treasures.add(SCTags.COMMON_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
+        treasures.add(SCTags.UNCOMMON_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
+        treasures.add(SCTags.RARE_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
+        treasures.add(SCTags.EPIC_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
+        treasures.add(SCTags.LEGENDARY_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
 
-        DGSCFishProperties.PROPERTIES.forEach((k, v) ->
-        {
-            String namespace = k.location().getNamespace();
-
-            //This keeps it from spamming the log
-            if (namespace.equals(Starcatcher.MOD_ID) || namespace.equals(ResourceLocation.DEFAULT_NAMESPACE))
-                treasures.add(k, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
-            else
-                treasures.add(k, Treasure.VANILLA_FISHING_LOOT_TABLE, false, new ModLoadedCondition(namespace));
-        });
 
         treasures.add(Starcatcher.rl("azure_crystalback_minnow"), Treasure.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE, false);
         treasures.add(Starcatcher.rl("willish"), Treasure.KIMBE_SMITHING_TEMPLATE, false);

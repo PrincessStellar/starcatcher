@@ -4,14 +4,18 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.MaybeStack;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -24,7 +28,7 @@ import java.util.List;
 
 public class Treasure
 {
-    public static final TreasureInstance VANILLA_FISHING_LOOT_TABLE = new LootTableTreasureInstance(BuiltInLootTables.FISHING_TREASURE.location());
+    public static final TreasureInstance VANILLA_FISHING_LOOT_TABLE = new LootTableTreasureInstance(BuiltInLootTables.FISHING_TREASURE.location(), List.of(Items.FISHING_ROD));
     public static final TreasureInstance AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE = new ItemStackListTreasureInstance(SCItems.AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE.value().getDefaultInstance());
     public static final TreasureInstance KIMBE_SMITHING_TEMPLATE = new ItemStackListTreasureInstance(SCItems.KIMBE_SMITHING_TEMPLATE.value().getDefaultInstance());
     public static final TreasureInstance COLORFUL_SMITHING_TEMPLATE = new ItemStackListTreasureInstance(SCItems.COLORFUL_SMITHING_TEMPLATE.value().getDefaultInstance());
@@ -46,15 +50,18 @@ public class Treasure
     public static class LootTableTreasureInstance extends TreasureInstance
     {
         ResourceLocation rl;
+        List<Item> blackListedItems;
 
         public static final MapCodec<LootTableTreasureInstance> CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
-                        ResourceLocation.CODEC.fieldOf("location").forGetter(o -> o.rl)
+                        ResourceLocation.CODEC.fieldOf("location").forGetter(o -> o.rl),
+                        BuiltInRegistries.ITEM.byNameCodec().listOf().fieldOf("blacklisted_items").forGetter(o -> o.blackListedItems)
                 ).apply(instance, LootTableTreasureInstance::new));
 
-        public LootTableTreasureInstance(ResourceLocation rl)
+        public LootTableTreasureInstance(ResourceLocation rl, List<Item> blackListedItems)
         {
             this.rl = rl;
+            this.blackListedItems = blackListedItems;
         }
 
         @Override
@@ -83,32 +90,38 @@ public class Treasure
 
                 if(randomItems.isEmpty()) return ItemStack.EMPTY;
 
-                return randomItems.get(U.r.nextInt(randomItems.size()));
+                for (int i = 0; i < 100; i++)
+                {
+                    ItemStack maybeLoot = randomItems.get(U.r.nextInt(randomItems.size()));
+                    if(blackListedItems.contains(maybeLoot.getItem())) continue;
+                    return maybeLoot;
+                }
             }
             else
             {
                 return ItemStack.EMPTY;
             }
+            return ItemStack.EMPTY;
         }
     }
 
     public static class ItemStackListTreasureInstance extends TreasureInstance
     {
-        List<ItemStack> items;
+        List<MaybeStack> items;
 
         public static final MapCodec<ItemStackListTreasureInstance> CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
-                        ItemStack.OPTIONAL_CODEC.listOf().fieldOf("items").forGetter(o -> o.items)
+                        MaybeStack.CODEC.listOf().fieldOf("items").forGetter(o -> o.items)
                 ).apply(instance, ItemStackListTreasureInstance::new));
 
-        public ItemStackListTreasureInstance(List<ItemStack> items)
+        public ItemStackListTreasureInstance(List<MaybeStack> items)
         {
             this.items = items;
         }
 
         public ItemStackListTreasureInstance(ItemStack... items)
         {
-            this.items = Arrays.stream(items).toList();
+            this.items = Arrays.stream(items).map(MaybeStack::new).toList();
         }
 
         @Override
@@ -121,7 +134,7 @@ public class Treasure
         public ItemStack unpack(Player player)
         {
             if(items.isEmpty()) return ItemStack.EMPTY;
-            return items.get(U.r.nextInt(items.size()));
+            return items.get(U.r.nextInt(items.size())).toStack();
         }
     }
 }

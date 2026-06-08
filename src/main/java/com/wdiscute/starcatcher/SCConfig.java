@@ -33,6 +33,10 @@ public class SCConfig
             .translation("starcatcher.configuration.tournament_scale")
             .defineInRange("tournament_y_offset", 0, -10000, 10000);
 
+    public static final ModConfigSpec.BooleanValue DEBUG_MINIGAME = BUILDER_CLIENT
+            .translation("starcatcher.configuration.debug")
+            .define("debug", false);
+
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .pop()
             .translation("starcatcher.configuration.hit_delay")
