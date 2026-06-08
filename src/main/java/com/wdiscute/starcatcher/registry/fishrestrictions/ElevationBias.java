@@ -3,8 +3,10 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,50 +21,29 @@ public class ElevationBias extends AbstractFishRestriction
     private final int bestY;
     private final int range;
     private final int extraChance;
-    private final String translationOverride;
 
     public static final MapCodec<ElevationBias> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.fieldOf("best_y").forGetter(ElevationBias::getBestY),
-                    Codec.INT.fieldOf("range").forGetter(ElevationBias::getRange),
-                    Codec.INT.fieldOf("extra_chance_at_best").forGetter(ElevationBias::getExtraChance),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(ElevationBias::getTranslationOverride)
+                    Codec.INT.fieldOf("best_y").forGetter(o -> o.bestY),
+                    Codec.INT.fieldOf("range").forGetter(o -> o.range),
+                    Codec.INT.fieldOf("extra_chance_at_best").forGetter(o -> o.extraChance),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, ElevationBias::new));
 
     public ElevationBias()
     {
+        super("");
         this.bestY = 90;
         this.range = 10;
         this.extraChance = 0;
-        this.translationOverride = "";
     }
 
     public ElevationBias(int bestY, int range, int extraChance, String translationOverride)
     {
+        super(translationOverride);
         this.bestY = bestY;
         this.range = range;
         this.extraChance = extraChance;
-        this.translationOverride = translationOverride;
-    }
-
-    public int getBestY()
-    {
-        return bestY;
-    }
-
-    public int getRange()
-    {
-        return range;
-    }
-
-    public int getExtraChance()
-    {
-        return extraChance;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -89,11 +70,15 @@ public class ElevationBias extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        return Component.translatable("gui.guide.elevation").copy().append(
-                translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride)
-        );
+        return Component.translatable("gui.guide.elevation");
+    }
+
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return Component.translatable("gui.guide.hover");
     }
 
     @Override

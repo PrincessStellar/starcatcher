@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -20,35 +21,29 @@ import java.util.List;
 public class ChancePercentageRestriction extends AbstractFishRestriction
 {
     private final float chance;
-    private final String translationOverride;
 
     public static final MapCodec<ChancePercentageRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("chance").forGetter(o -> o.chance),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(ChancePercentageRestriction::getTranslationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, ChancePercentageRestriction::new));
 
     public ChancePercentageRestriction()
     {
+        super("");
         this.chance = 0.5f;
-        this.translationOverride = "";
     }
 
     public ChancePercentageRestriction(float chance)
     {
+        super("");
         this.chance = chance;
-        this.translationOverride = "";
     }
 
     public ChancePercentageRestriction(float chance, String translationOverride)
     {
+        super(translationOverride);
         this.chance = chance;
-        this.translationOverride = translationOverride;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -89,10 +84,14 @@ public class ChancePercentageRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if(!translationOverride.isEmpty()) return Component.translatable(translationOverride);
+        return SCColors.GUIDE_TEXT;
+    }
 
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         return Component.translatable("gui.guide.chance", ((int) (chance * 100)) + "%");
     }
 }

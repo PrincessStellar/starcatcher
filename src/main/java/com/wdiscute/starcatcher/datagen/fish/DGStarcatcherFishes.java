@@ -1,12 +1,10 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.fish.*;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.DeepDarkModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FreezeOnMissModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +13,8 @@ import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGStarcatcherFishes
 {
-    public static final List<FishProperties> FISHABLE = new ArrayList<>();
     public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
+    public static final List<FishProperties> STARCATCHER_BUCKETABLE = new ArrayList<>();
 
     public static void bootstrap()
     {
@@ -671,6 +669,7 @@ public class DGStarcatcherFishes
                 .withRarity(Rarity.LEGENDARY)
                 .withTextures(FishProperties.END_VOID)
                 .withDifficulty(Difficulty.VOIDBITER)
+                .addBait(BaitRestriction.LEGENDARY_BAIT)
         );
 
         register(endVoidFish(new MaybeStack(SCItems.PURPLE_CARP))
@@ -689,6 +688,7 @@ public class DGStarcatcherFishes
         register(endVoidOuterIslandsFish(new MaybeStack(SCItems.SPACEJELLY))
                 .withSizeAndWeight(new SizeAndWeight(100, 20, 10, 1))
                 .withRarity(Rarity.RARE)
+                .addRestriction(new StructureRestriction(List.of(BuiltinStructures.END_CITY.location()), ""))
                 .withDifficulty(Difficulty.HARD_MOVING.withPenalty(25).withHP(250))
         );
 

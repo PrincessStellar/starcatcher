@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,50 +20,29 @@ public class DaytimeBias extends AbstractFishRestriction
     private final int bestDaytime;
     private final int range;
     private final int extraChance;
-    private final String translationOverride;
 
     public static final MapCodec<DaytimeBias> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.fieldOf("best_daytime").forGetter(DaytimeBias::getBestDaytime),
-                    Codec.INT.fieldOf("range").forGetter(DaytimeBias::getRange),
-                    Codec.INT.fieldOf("extra_chance_at_best").forGetter(DaytimeBias::getExtraChance),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(DaytimeBias::getTranslationOverride)
+                    Codec.INT.fieldOf("best_daytime").forGetter(o -> o.bestDaytime),
+                    Codec.INT.fieldOf("range").forGetter(o -> o.range),
+                    Codec.INT.fieldOf("extra_chance_at_best").forGetter(o -> o.extraChance),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, DaytimeBias::new));
 
     public DaytimeBias()
     {
+        super("");
         this.bestDaytime = 90;
         this.range = 10;
         this.extraChance = 0;
-        this.translationOverride = "";
     }
 
     public DaytimeBias(int bestY, int range, int extraChance, String translationOverride)
     {
+        super(translationOverride);
         this.bestDaytime = bestY;
         this.range = range;
         this.extraChance = extraChance;
-        this.translationOverride = translationOverride;
-    }
-
-    public int getBestDaytime()
-    {
-        return bestDaytime;
-    }
-
-    public int getRange()
-    {
-        return range;
-    }
-
-    public int getExtraChance()
-    {
-        return extraChance;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -92,11 +72,15 @@ public class DaytimeBias extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        return Component.translatable("gui.guide.elevation").copy().append(
-                translationOverride.isEmpty() ? Component.translatable("gui.guide.hover") : Component.translatable(translationOverride)
-        );
+        return Component.translatable("gui.guide.elevation");
+    }
+
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return Component.translatable("gui.guide.hover");
     }
 
     @Override

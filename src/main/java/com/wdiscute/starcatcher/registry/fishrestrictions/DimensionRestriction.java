@@ -25,42 +25,26 @@ public class DimensionRestriction extends AbstractFishRestriction
 
     private final List<ResourceLocation> dimensions;
     private final List<ResourceLocation> dimensionsBlacklist;
-    private final String translationOverride;
 
     public static final MapCodec<DimensionRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    ResourceLocation.CODEC.listOf().fieldOf("dimensions").forGetter(DimensionRestriction::getDimensions),
-                    ResourceLocation.CODEC.listOf().fieldOf("dimensions_blacklist").forGetter(DimensionRestriction::getDimensionsBlacklist),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(DimensionRestriction::getTranslationOverride)
+                    ResourceLocation.CODEC.listOf().fieldOf("dimensions").forGetter(o -> o.dimensions),
+                    ResourceLocation.CODEC.listOf().fieldOf("dimensions_blacklist").forGetter(o -> o.dimensionsBlacklist),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, DimensionRestriction::new));
 
     public DimensionRestriction()
     {
+        super("");
         this.dimensions = List.of();
         this.dimensionsBlacklist = List.of();
-        this.translationOverride = "";
     }
 
     public DimensionRestriction(List<ResourceLocation> dimensions, List<ResourceLocation> dimensionsBlacklist, String translationOverride)
     {
+        super(translationOverride);
         this.dimensions = dimensions;
         this.dimensionsBlacklist = dimensionsBlacklist;
-        this.translationOverride = translationOverride;
-    }
-
-    public List<ResourceLocation> getDimensions()
-    {
-        return dimensions;
-    }
-
-    public List<ResourceLocation> getDimensionsBlacklist()
-    {
-        return dimensionsBlacklist;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -94,41 +78,21 @@ public class DimensionRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
+        return Component.translatable("gui.guide.dimension");
+    }
 
-        MutableComponent comp;
-        List<Component> hover = new ArrayList<>();
-
-        if (dimensions.isEmpty())
-            return Component.translatable("gui.guide.dimension").append(Component.translatable("gui.guide.no_restriction"));
-
-
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         //if there's only one dimension
         if (dimensions.size() == 1)
-        {
-            comp = Component.translatable("dimension." + dimensions.getFirst().toLanguageKey());
-        }
+            return Component.translatable("dimension." + dimensions.getFirst().toLanguageKey());
         else
-        {
-            comp = Component.translatable("gui.guide.hover");
-
-            //show tooltip while hovering
-            List<Component> c = new ArrayList<>();
-
-            c.add(Component.translatable("gui.guide.dimensions"));
-
-            for (ResourceLocation dimension : dimensions)
-                hover.add(Component.translatable("dimension." + dimension.toLanguageKey()));
-        }
-
-        if (dimensions.contains(level.dimension().location()))
-            comp.withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN));
-        else
-            comp.withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED));
-
-        return Component.translatable("gui.guide.dimension").append(comp);
+            return Component.translatable("gui.guide.hover");
     }
+
 
     @Override
     public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)

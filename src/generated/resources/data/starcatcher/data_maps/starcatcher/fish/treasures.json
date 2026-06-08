@@ -1497,6 +1497,10 @@
         }
       ]
     },
+    "starcatcher:brassgill": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:bright_amethyst_snapper": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
@@ -1535,6 +1539,14 @@
       "location": "minecraft:gameplay/fishing/treasure"
     },
     "starcatcher:clam": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:coggill": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:cogtopus": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
@@ -1590,7 +1602,15 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:drive_pike": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:dusktail_snapper": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:eel_dynamo": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
@@ -1734,6 +1754,18 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:mechanical_brass_snail": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:mechanical_snail": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:meka_agave_bream": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:mirage_carp": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
@@ -1790,11 +1822,19 @@
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
+    "starcatcher:phillipsfish": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
     "starcatcher:pinfish": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
     "starcatcher:pink_koi": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:pipehead": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },
@@ -1943,6 +1983,10 @@
       "location": "minecraft:gameplay/fishing/treasure"
     },
     "starcatcher:twilight_koi": {
+      "is_loot_table": true,
+      "location": "minecraft:gameplay/fishing/treasure"
+    },
+    "starcatcher:valve": {
       "is_loot_table": true,
       "location": "minecraft:gameplay/fishing/treasure"
     },

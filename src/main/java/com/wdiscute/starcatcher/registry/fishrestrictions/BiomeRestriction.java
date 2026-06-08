@@ -35,7 +35,6 @@ public class BiomeRestriction extends AbstractFishRestriction
     private final List<ResourceLocation> biomesBlacklist;
     private final List<ResourceLocation> biomesBlacklistTags;
     private final String hover;
-    private final String translationOverride;
 
     public static final MapCodec<BiomeRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
@@ -49,42 +48,42 @@ public class BiomeRestriction extends AbstractFishRestriction
 
     public BiomeRestriction()
     {
+        super("");
         this.biomes = List.of();
         this.biomesTags = List.of();
         this.biomesBlacklist = List.of();
         this.biomesBlacklistTags = List.of();
-        this.translationOverride = "";
         this.hover = "";
     }
 
     public BiomeRestriction(ResourceLocation biome, String translationOverride)
     {
+        super(translationOverride);
         this.biomes = List.of(biome);
         this.biomesTags = List.of();
         this.biomesBlacklist = List.of();
         this.biomesBlacklistTags = List.of();
-        this.translationOverride = translationOverride;
         this.hover = "";
     }
 
     public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String translationOverride)
     {
+        super(translationOverride);
         this.biomes = biomes;
         this.biomesTags = biomesTags;
         this.biomesBlacklist = biomesBlacklist;
         this.biomesBlacklistTags = biomesBlacklistTags;
         this.hover = "";
-        this.translationOverride = translationOverride;
     }
 
     public BiomeRestriction(List<ResourceLocation> biomes, List<ResourceLocation> biomesTags, List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, String hover, String translationOverride)
     {
+        super(translationOverride);
         this.biomes = biomes;
         this.biomesTags = biomesTags;
         this.biomesBlacklist = biomesBlacklist;
         this.biomesBlacklistTags = biomesBlacklistTags;
         this.hover = hover;
-        this.translationOverride = translationOverride;
     }
 
     @Override
@@ -139,15 +138,14 @@ public class BiomeRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return Component.translatable("gui.guide.biome");
+    }
 
-        if (!translationOverride.isEmpty())
-            return Component.translatable("gui.guide.biome").append(Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color)));
-
-        MutableComponent comp;
-
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
 
         //Biomes: ------
@@ -156,13 +154,11 @@ public class BiomeRestriction extends AbstractFishRestriction
 
         //single biome name / biome tag name / [hover]
         if (biomesList.size() == 1)
-            comp = Component.translatable("biome." + biomesList.getFirst().toLanguageKey());
+            return Component.translatable("biome." + biomesList.getFirst().toLanguageKey());
         else if (biomesTags.size() == 1)
-            comp = Component.translatable("tag." + biomesTags.getFirst().toLanguageKey());
+            return Component.translatable("tag." + biomesTags.getFirst().toLanguageKey());
         else
-            comp = Component.translatable("gui.guide.hover");
-
-        return Component.translatable("gui.guide.biome").append(comp.withStyle(Style.EMPTY.withColor(color)));
+            return Component.translatable("gui.guide.hover");
     }
 
     @Override
@@ -171,7 +167,7 @@ public class BiomeRestriction extends AbstractFishRestriction
         List<Component> hover = new ArrayList<>();
         List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
 
-        if(!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
+        if (!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
 
         if (!biomesList.isEmpty())
         {

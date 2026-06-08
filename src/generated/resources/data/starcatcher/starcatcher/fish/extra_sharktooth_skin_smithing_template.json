@@ -74,6 +74,13 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
+      "type": "starcatcher:structure_restriction",
+      "structure": [
+        "minecraft:shipwreck",
+        "minecraft:shipwreck_beached"
+      ]
+    },
+    {
       "type": "starcatcher:percentage_chance",
       "chance": 0.05
     }

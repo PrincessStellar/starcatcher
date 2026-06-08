@@ -21,42 +21,26 @@ public class ElevationRestriction extends AbstractFishRestriction
 {
     private final int minY;
     private final int maxY;
-    private final String translationOverride;
 
     public static final MapCodec<ElevationRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.INT.fieldOf("min_y").forGetter(ElevationRestriction::getMinY),
-                    Codec.INT.fieldOf("max_y").forGetter(ElevationRestriction::getMaxY),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(ElevationRestriction::getTranslationOverride)
+                    Codec.INT.fieldOf("min_y").forGetter(o -> o.minY),
+                    Codec.INT.fieldOf("max_y").forGetter(o -> o.maxY),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, ElevationRestriction::new));
 
     public ElevationRestriction()
     {
+        super("");
         this.minY = Integer.MIN_VALUE;
         this.maxY = Integer.MAX_VALUE;
-        this.translationOverride = "";
     }
 
     public ElevationRestriction(int minY, int maxY, String translationOverride)
     {
+        super(translationOverride);
         this.minY = minY;
         this.maxY = maxY;
-        this.translationOverride = translationOverride;
-    }
-
-    public int getMinY()
-    {
-        return minY;
-    }
-
-    public int getMaxY()
-    {
-        return maxY;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -74,7 +58,7 @@ public class ElevationRestriction extends AbstractFishRestriction
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        if (entity.getY() > minY && entity.getY() < getMaxY())
+        if (entity.getY() > minY && entity.getY() < maxY)
             return 0;
         else
             return -9999;
@@ -92,30 +76,33 @@ public class ElevationRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return List.of(Component.translatable("gui.guide.elevation.between", minY, maxY));
+        if (minY != Integer.MIN_VALUE && maxY != Integer.MAX_VALUE)
+            return List.of(Component.translatable("gui.guide.between", minY, maxY));
+
+        if (minY != Integer.MIN_VALUE)
+            return List.of(Component.translatable("gui.guide.above", minY));
+
+        return List.of(Component.translatable("gui.guide.below", maxY));
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        MutableComponent comp = Component.empty();
-        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return Component.translatable("gui.guide.elevation");
+    }
 
-        if (translationOverride.isEmpty())
-        {
-            if (minY != Integer.MIN_VALUE && maxY != Integer.MAX_VALUE)
-                comp = Component.literal("> " + minY + ", < " + maxY).withStyle(Style.EMPTY.withColor(color));
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        if (minY != Integer.MIN_VALUE && maxY != Integer.MAX_VALUE)
+            return Component.literal("> " + minY + ", < " + maxY);
 
-            if (minY != Integer.MIN_VALUE && maxY == Integer.MAX_VALUE)
-                comp = Component.translatable("gui.guide.above", minY).withStyle(Style.EMPTY.withColor(color));
+        if (minY != Integer.MIN_VALUE && maxY == Integer.MAX_VALUE)
+            return Component.translatable("gui.guide.above", minY);
 
-            if (minY == Integer.MIN_VALUE && maxY != Integer.MAX_VALUE)
-                comp = Component.translatable("gui.guide.below", maxY).withStyle(Style.EMPTY.withColor(color));
-        }
-        else
-            comp = Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color));
-
-        return Component.translatable("gui.guide.elevation").append(comp);
+        if (minY == Integer.MIN_VALUE && maxY != Integer.MAX_VALUE)
+            return Component.translatable("gui.guide.below", maxY);
+        return Component.empty();
     }
 
     public static final ElevationRestriction ABOVE_FIFTY = new ElevationRestriction(50, Integer.MAX_VALUE, "gui.guide.elevation.surface");

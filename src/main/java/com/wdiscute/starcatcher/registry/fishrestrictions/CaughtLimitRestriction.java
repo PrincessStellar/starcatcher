@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -26,34 +27,28 @@ import java.util.List;
 public class CaughtLimitRestriction extends AbstractFishRestriction
 {
     private final int limit;
-    private final String translationOverride;
 
     public static final MapCodec<CaughtLimitRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.fieldOf("limit").forGetter(CaughtLimitRestriction::getLimit),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(CaughtLimitRestriction::getTranslationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, CaughtLimitRestriction::new));
 
     public CaughtLimitRestriction()
     {
+        super("");
         this.limit = Integer.MAX_VALUE;
-        this.translationOverride = "";
     }
 
     public CaughtLimitRestriction(int limit, String translationOverride)
     {
+        super(translationOverride);
         this.limit = limit;
-        this.translationOverride = translationOverride;
     }
 
     public int getLimit()
     {
         return limit;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -81,10 +76,10 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
 
     private int getCaughtCounter(FishProperties fp, Entity entity)
     {
-        ResourceLocation fpkey = FishApi.getKey(entity.level(), fp);
-        if (fpkey == null) return 0;
+        ResourceLocation fpKey = FishApi.getKey(entity.level(), fp);
+        if (fpKey == null) return 0;
         FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE);
-        FishCaughtCounter fcc = fishingGuideAttachment.fishesCaught.get(fpkey);
+        FishCaughtCounter fcc = fishingGuideAttachment.fishesCaught.get(fpKey);
 
         if (fcc == null) return 0;
         return limit;
@@ -102,15 +97,15 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return Component.translatable("gui.guide.caught_limit");
+    }
 
-        return Component.translatable("gui.guide.caught_limit").copy().append(
-                translationOverride.isEmpty() ?
-                        Component.literal(getCaughtCounter(fp, player) + " / " + limit).withStyle(Style.EMPTY.withColor(color)) :
-                        Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color))
-        );
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return Component.literal(getCaughtCounter(fp, player) + " / " + limit);
     }
 
     @Override

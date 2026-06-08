@@ -286,14 +286,14 @@ public record FishProperties(
         {
             if (o instanceof BaitRestriction be)
             {
-                map.putAll(be.getBaits());
-                override.set(be.getTranslationOverride());
+                map.putAll(be.baits);
+                override.set(be.translationOverride);
             }
         });
 
         //put baits from method param
-        map.putAll(bait.getBaits());
-        override.set(bait.getTranslationOverride());
+        map.putAll(bait.baits);
+        override.set(bait.translationOverride);
 
         this.restrictions.removeIf(o -> o instanceof BaitRestriction);
         this.restrictions.add(new BaitRestriction(map, override.get()));

@@ -485,7 +485,7 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .pattern("   ")
                 .pattern("BBB")
                 .pattern(" P ")
-                .unlockedBy("has_fish", has(SCTags.STARCAUGHT_FISHES))
+                .unlockedBy("has_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output);
 
         //aquarium
@@ -527,34 +527,34 @@ public class DGSCRecipeProvider extends RecipeProvider
 
         //starcaught fish
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.STARCAUGHT_FISH, 1)
-                .requires(SCTags.STARCAUGHT_FISHES)
+                .requires(SCTags.STARCAUGHT_FISHABLES)
                 .unlockedBy("has_common_fish", has(SCTags.COMMON_FISHES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_common"));
 
         //cooked fish from starcaught
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smelting_from_starcaught_fish"));
 
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_campfire_from_starcaught_fish"));
 
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking_from_starcaught_fish"));
 
         //cooked fish from tag
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smelting"));
 
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_campfire"));
 
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCTags.STARCAUGHT_FISHES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHES))
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
         //netherite

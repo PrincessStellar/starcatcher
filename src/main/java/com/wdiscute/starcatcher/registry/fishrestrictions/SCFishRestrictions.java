@@ -1,11 +1,14 @@
 package com.wdiscute.starcatcher.registry.fishrestrictions;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public interface SCFishRestrictions
@@ -15,7 +18,7 @@ public interface SCFishRestrictions
 
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> EMPTY =
-            registerFishRestriction("empty", EmptyRestriction::new);
+            registerFishRestriction("empty", () -> new EmptyRestriction(""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DIMENSION =
             registerFishRestriction("dimension", DimensionRestriction::new);
@@ -24,7 +27,7 @@ public interface SCFishRestrictions
             registerFishRestriction("biome", BiomeRestriction::new);
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> BAIT =
-            registerFishRestriction("bait", BaitRestriction::new);
+            registerFishRestriction("bait", () -> new BaitRestriction(Map.of(), ""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> FLUID =
             registerFishRestriction("fluid", FluidRestriction::new);
@@ -37,10 +40,10 @@ public interface SCFishRestrictions
             registerFishRestriction("elevation_bias", ElevationBias::new);
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> WEATHER =
-            registerFishRestriction("weather_restriction", WeatherRestriction::new);
+            registerFishRestriction("weather_restriction", () -> new WeatherRestriction(WeatherRestriction.Weather.RAIN, ""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DAYTIME_RESTRICTION =
-            registerFishRestriction("daytime_restriction", DaytimeRestriction::new);
+            registerFishRestriction("daytime_restriction", () -> new DaytimeRestriction(List.of(), ""));
 
     //todo add fishes with this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DAYTIME_BIAS =
@@ -48,10 +51,10 @@ public interface SCFishRestrictions
 
     //todo add this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> MOON_PHASE =
-            registerFishRestriction("moon_phase", EmptyRestriction::new);
+            registerFishRestriction("moon_phase", () -> new EmptyRestriction(""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> SEASON =
-            registerFishRestriction("season", SeasonRestriction::new);
+            registerFishRestriction("season", () -> new SeasonRestriction(Map.of(), ""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> MAX_CATCH_LIMIT =
             registerFishRestriction("caught_limit", CaughtLimitRestriction::new);
@@ -62,16 +65,8 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> CHANCE_RESTRICTION =
             registerFishRestriction("percentage_chance", ChancePercentageRestriction::new);
 
-    class Extra
-    {
-        public static DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> TFC_HUMIDITY = null;
-
-        static void registerOptionals()
-        {
-            if (ModList.get().isLoaded("tfc"))
-                Extra.TFC_HUMIDITY = registerFishRestriction("tfc_huminity", EmptyRestriction::new);
-        }
-    }
+    DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> STRUCTURE_RESTRICTION =
+            registerFishRestriction("structure_restriction", () -> new StructureRestriction(List.of(), ""));
 
     static DeferredHolder<AbstractFishRestriction, AbstractFishRestriction>
     registerFishRestriction(String name, Supplier<AbstractFishRestriction> sup)
@@ -81,7 +76,7 @@ public interface SCFishRestrictions
 
     static void register(IEventBus eventBus)
     {
-        Extra.registerOptionals();
+        //TFCCompat.registerOptionals();
         REGISTRY.register(eventBus);
     }
 }

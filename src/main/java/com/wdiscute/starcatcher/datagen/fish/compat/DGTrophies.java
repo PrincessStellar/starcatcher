@@ -10,7 +10,9 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
@@ -276,6 +278,14 @@ public class DGTrophies
         //humble rod
         register(overworldRiverFish(new MaybeStack(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE))
                 .withDifficulty(Difficulty.TRASH)
+                .addRestriction(new StructureRestriction(
+                        List.of(
+                                BuiltinStructures.VILLAGE_DESERT.location(),
+                                BuiltinStructures.VILLAGE_PLAINS.location(),
+                                BuiltinStructures.VILLAGE_SAVANNA.location(),
+                                BuiltinStructures.VILLAGE_SNOWY.location(),
+                                BuiltinStructures.VILLAGE_TAIGA.location()
+                        ), ""))
                 .withHasGuideEntry(false)
                 .withPercentageChance(0.01f)
                 .extra()
@@ -284,6 +294,11 @@ public class DGTrophies
         //shark rod
         register(overworldRiverFish(new MaybeStack(SCItems.SHARKTOOTH_SKIN_SMITHING_TEMPLATE))
                 .withDifficulty(Difficulty.TRASH)
+                .addRestriction(new StructureRestriction(
+                        List.of(
+                                BuiltinStructures.SHIPWRECK.location(),
+                                BuiltinStructures.SHIPWRECK_BEACHED.location()
+                        ), ""))
                 .withHasGuideEntry(false)
                 .withPercentageChance(0.01f)
                 .extra()

@@ -1,0 +1,88 @@
+{
+  "values": [
+    {
+      "id": "starcatcher:thunder_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lightning_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:agave_bream",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sunny_sturgeon",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sun_seeking_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lily_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pale_pinfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_herring",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sporefish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:fossilized_angelfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:suneater",
+      "required": false
+    },
+    {
+      "id": "starcatcher:molten_shrimp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cinder_squid",
+      "required": false
+    },
+    {
+      "id": "starcatcher:glowstone_pufferfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:charfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:spacejelly",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_brass_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
+      "required": false
+    }
+  ]
+}

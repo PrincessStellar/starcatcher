@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.teamtea.eclipticseasons.data.start;
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.BlockPos;
@@ -27,40 +28,29 @@ import java.util.List;
 public class FluidRestriction extends AbstractFishRestriction
 {
     private final List<ResourceLocation> fluids;
-    private final String translationOverride;
 
     public static final MapCodec<FluidRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    ResourceLocation.CODEC.listOf().fieldOf("fluids").forGetter(FluidRestriction::getFluids),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(FluidRestriction::getTranslationOverride)
+                    ResourceLocation.CODEC.listOf().fieldOf("fluids").forGetter(o -> o.fluids),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, FluidRestriction::new));
 
     public FluidRestriction()
     {
+        super("");
         this.fluids = List.of();
-        this.translationOverride = "";
     }
 
     public FluidRestriction(List<ResourceLocation> fluids, String translationOverride)
     {
+        super(translationOverride);
         this.fluids = fluids;
-        this.translationOverride = translationOverride;
     }
 
     public FluidRestriction(ResourceLocation fluids, String translationOverride)
     {
+        super(translationOverride);
         this.fluids = List.of(fluids);
-        this.translationOverride = translationOverride;
-    }
-
-    public List<ResourceLocation> getFluids()
-    {
-        return fluids;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -89,27 +79,38 @@ public class FluidRestriction extends AbstractFishRestriction
             boolean fluidAbove = fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.above()).getType())));
             boolean fluidBelow = fluids.contains(BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp.below()).getType())));
 
-            var wad = BuiltInRegistries.FLUID.getKey(getSource(level.getFluidState(bp).getType()));
-
             if (!fluid && !fluidAbove && !fluidBelow) return -9999;
             else return 0;
         }
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        if (!translationOverride.isEmpty()) return Component.translatable(translationOverride);
+        return Component.translatable("gui.guide.fluid");
+    }
 
+    @Override
+    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         if(fluids.size() == 1 && fluids.getFirst().equals(ResourceLocation.withDefaultNamespace("water"))) return Component.empty();
+        return super.getDescription(level, fp, player, context);
+    }
 
-        MutableComponent start = Component.translatable("gui.guide.fluid");
+    @Override
+    public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return SCColors.GUIDE_TEXT_DARK;
+    }
 
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         //Fluid name / [hover]
         if (fluids.size() == 1)
-            return start.append(Component.translatable("block." + fluids.getFirst().toLanguageKey()));
+            return Component.translatable("block." + fluids.getFirst().toLanguageKey());
         else
-            return start.append(Component.translatable("gui.guide.hover"));
+            return Component.translatable("gui.guide.hover");
     }
 
     @Override

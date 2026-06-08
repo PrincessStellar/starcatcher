@@ -56,7 +56,7 @@ public class DGMinecraftFishes
         );
 
         //mobs
-        registerSpecial(fish(new MaybeStack(Items.NETHER_STAR))
+        register(fish(new MaybeStack(Items.NETHER_STAR))
                 .withAlwaysSpawnEntity()
                 .withEntityToSpawn(EntityType.WITHER.builtInRegistryHolder())
                 .withBaseChance(0)
@@ -66,7 +66,7 @@ public class DGMinecraftFishes
                 .withRarity(Rarity.LEGENDARY)
         );
 
-        registerSpecial(fish(new MaybeStack(Items.CREEPER_HEAD))
+        register(fish(new MaybeStack(Items.CREEPER_HEAD))
                 .withAlwaysSpawnEntity()
                 .withEntityToSpawn(EntityType.CREEPER.builtInRegistryHolder())
                 .withBaseChance(0)
@@ -77,7 +77,7 @@ public class DGMinecraftFishes
                 .withRarity(Rarity.EPIC)
         );
 
-        registerSpecial(overworldSurfaceFish(new MaybeStack(Items.ROTTEN_FLESH))
+        register(overworldSurfaceFish(new MaybeStack(Items.ROTTEN_FLESH))
                 .withEntityToSpawn(EntityType.DROWNED.builtInRegistryHolder())
                 .withBaseChance(1)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)

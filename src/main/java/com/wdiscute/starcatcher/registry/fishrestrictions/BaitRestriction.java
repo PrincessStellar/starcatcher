@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
@@ -10,6 +11,7 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
@@ -29,35 +31,18 @@ import java.util.Optional;
 
 public class BaitRestriction extends AbstractFishRestriction
 {
-    private final Map<ResourceLocation, Integer> baits;
-    private final String translationOverride;
+    public final Map<ResourceLocation, Integer> baits;
 
     public static final MapCodec<BaitRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    ExtraCodecs.strictUnboundedMap(ResourceLocation.CODEC, Codec.INT).fieldOf("baits").forGetter(BaitRestriction::getBaits),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(BaitRestriction::getTranslationOverride)
+                    ExtraCodecs.strictUnboundedMap(ResourceLocation.CODEC, Codec.INT).fieldOf("baits").forGetter(o -> o.baits),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, BaitRestriction::new));
-
-    public BaitRestriction()
-    {
-        this.baits = Map.of();
-        this.translationOverride = "";
-    }
 
     public BaitRestriction(Map<ResourceLocation, Integer> baits, String translationOverride)
     {
+        super(translationOverride);
         this.baits = baits;
-        this.translationOverride = translationOverride;
-    }
-
-    public Map<ResourceLocation, Integer> getBaits()
-    {
-        return baits;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -86,20 +71,25 @@ public class BaitRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @Nullable Player player, Context context)
+    public MutableComponent getDescriptionPrefix()
     {
-        Component comp;
+        return Component.translatable("gui.guide.bait");
+    }
 
+    @Override
+    public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return SCColors.GUIDE_TEXT_DARK;
+    }
+
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         //bait name / [hover]
         if (baits.size() == 1)
-            comp = BuiltInRegistries.ITEM.get(baits.keySet().stream().findFirst().get()).getDescription();
+            return MutableComponent.create(BuiltInRegistries.ITEM.get(baits.keySet().stream().findFirst().get()).getDescription().getContents());
         else
-            comp = Component.translatable("gui.guide.hover");
-
-        if (!translationOverride.isEmpty())
-            comp = Component.translatable(translationOverride);
-
-        return Component.translatable("gui.guide.bait").copy().append(comp);
+            return Component.translatable("gui.guide.hover");
     }
 
     @Override

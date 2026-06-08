@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
@@ -23,12 +24,11 @@ import java.util.function.Predicate;
 public class WeatherRestriction extends AbstractFishRestriction
 {
     private final Weather weather;
-    private final String translationOverride;
 
     public static final MapCodec<WeatherRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Weather.CODEC.fieldOf("weather").forGetter(WeatherRestriction::getWeather),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(WeatherRestriction::getTranslationOverride)
+                    Weather.CODEC.fieldOf("weather").forGetter(o -> o.weather),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, WeatherRestriction::new));
 
     public enum Weather implements StringRepresentable
@@ -45,6 +45,11 @@ public class WeatherRestriction extends AbstractFishRestriction
         private final String name;
         public final Predicate<Level> isCorrect;
 
+        public String toLanguageKey()
+        {
+            return "gui.guide.weather." + name;
+        }
+
         Weather(String name, Predicate<Level> isCorrect)
         {
             this.name = name;
@@ -58,32 +63,17 @@ public class WeatherRestriction extends AbstractFishRestriction
         }
     }
 
-    public WeatherRestriction()
-    {
-        this.weather = Weather.CLEAR;
-        this.translationOverride = "";
-    }
 
     public WeatherRestriction(Weather weather)
     {
+        super("");
         this.weather = weather;
-        this.translationOverride = "";
     }
 
     public WeatherRestriction(Weather weather, String translationOverride)
     {
+        super(translationOverride);
         this.weather = weather;
-        this.translationOverride = translationOverride;
-    }
-
-    public Weather getWeather()
-    {
-        return weather;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -96,6 +86,12 @@ public class WeatherRestriction extends AbstractFishRestriction
     public DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> getRegistryHolder()
     {
         return SCFishRestrictions.WEATHER;
+    }
+
+    @Override
+    public MutableComponent getDescriptionPrefix()
+    {
+        return Component.translatable("gui.guide.weather");
     }
 
     @Override
@@ -129,16 +125,9 @@ public class WeatherRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0 ?
-                SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
-
-        return Component.translatable("gui.guide.weather").copy().append(
-                translationOverride.isEmpty() ?
-                        Component.translatable("gui.guide.weather." + weather.name).withStyle(Style.EMPTY.withColor(color)) :
-                        Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color))
-        );
+        return Component.translatable(weather.toLanguageKey());
     }
 
     public static final WeatherRestriction CLEAR = new WeatherRestriction(Weather.CLEAR);

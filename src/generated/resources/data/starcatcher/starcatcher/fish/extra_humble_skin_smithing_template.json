@@ -74,6 +74,16 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
+      "type": "starcatcher:structure_restriction",
+      "structure": [
+        "minecraft:village_desert",
+        "minecraft:village_plains",
+        "minecraft:village_savanna",
+        "minecraft:village_snowy",
+        "minecraft:village_taiga"
+      ]
+    },
+    {
       "type": "starcatcher:percentage_chance",
       "chance": 0.05
     }

@@ -15,6 +15,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 
@@ -45,6 +46,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGCrittersAndCompanionsFishes.bootstrap();
         DGHybridAquaticFishes.bootstrap();
         DGSpawnFishes.bootstrap();
+        if (ModList.get().isLoaded("create"))
+            DGCreateFishes.bootstrap();
 
         //compat 1.20.1 only
         DGUnusualFishFishes.bootstrap();
@@ -127,15 +130,10 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 
     public static void register(FishProperties builder)
     {
-        register(builder, "", true);
+        register(builder, "");
     }
 
-    public static void registerSpecial(FishProperties builder)
-    {
-        register(builder, "", false);
-    }
-
-    public static void register(FishProperties fp, String modLoadedRestriction, boolean runSpecialStuff)
+    public static void register(FishProperties fp, String modLoadedRestriction)
     {
         String modIdOfFish = fp.catchInfo().fish().rl().getNamespace();
 
@@ -144,22 +142,19 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         //if bucketable fish, add bucket and entity
         if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getDelegate().value()).toList()
                     .stream().anyMatch(fish::is)
-            && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !runSpecialStuff)
+            && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
         {
             fp = fp.withCatchInfo(fp.catchInfo().withBucket(new MaybeStack(SCItems.STARCAUGHT_BUCKET)));
             fp = fp.withCatchInfo(fp.catchInfo().withEntityToSpawn(SCEntities.FISH));
 
             //if item is from starcatcher, add to list of bucketable fishes, for rarity tagging
             if (modIdOfFish.equals("starcatcher"))
-                DGStarcatcherFishes.STARCATCHER_FISHABLE.add(fp);
-            DGStarcatcherFishes.FISHABLE.add(fp);
+                DGStarcatcherFishes.STARCATCHER_BUCKETABLE.add(fp);
         }
 
-        if (!runSpecialStuff)
-        {
-            if (fp.rarity().equals(Rarity.LEGENDARY))
-                fp = fp.addBait(BaitRestriction.LEGENDARY_BAIT);
-        }
+        //adds every starcatcher item that has guide entry, is of fish type, and is not trash rarity
+        if (modIdOfFish.equals("starcatcher") && fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.rarity().equals(Rarity.TRASH))
+            DGStarcatcherFishes.STARCATCHER_FISHABLE.add(fp);
 
         ResourceKey<FishProperties> key = createKey(fp);
 

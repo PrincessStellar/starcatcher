@@ -55,7 +55,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHABLE)
         {
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
-            tag(SCTags.STARCAUGHT_FISHES).addOptional(key);
+            tag(SCTags.STARCAUGHT_FISHABLES).addOptional(key);
 
             switch (fp.rarity())
             {
@@ -65,14 +65,17 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(key);
                 case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(key);
             }
-        }
 
-        //fishable for tackle box
-        for (FishProperties fp : DGStarcatcherFishes.FISHABLE)
-        {
-            ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
+            //fishable for tackle box
             tag(SCTags.FISHABLE).addOptional(key);
         }
+
+        //bucketable fish
+        for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_BUCKETABLE)
+        {
+            tag(SCTags.STARCAUGHT_FISHABLES).add(fp.catchInfo().fish().toItem());
+        }
+
 
 
         //crabs
@@ -188,14 +191,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.BAITS)
                 .addTag(SCTags.HOOKS)
                 .addTag(SCTags.BOBBERS)
-                .addTag(ItemTags.FISHES)
-                .addTag(ItemTags.FISHES)
-        ;
-
-        tag(SCTags.PLACEABLE_IN_TACKLE_BOX_FISH_SLOT)
+                .addTag(SCTags.FISHABLE)
                 .addTag(ItemTags.FISHES)
         ;
-
 
         //tackle boxes
         tag(SCTags.TACKLE_BOXES)

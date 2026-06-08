@@ -30,12 +30,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RarityCountRestriction extends AbstractFishRestriction
 {
     private final List<RarityCount> rarityCount;
-    private final String translationOverride;
 
     public static final MapCodec<RarityCountRestriction> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    RarityCount.CODEC.listOf().fieldOf("rarities").forGetter(RarityCountRestriction::getRarityCount),
-                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(RarityCountRestriction::getTranslationOverride)
+                    RarityCount.CODEC.listOf().fieldOf("rarities").forGetter(o -> o.rarityCount),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, RarityCountRestriction::new));
 
 
@@ -80,34 +79,16 @@ public class RarityCountRestriction extends AbstractFishRestriction
         }
     }
 
-
-    public RarityCountRestriction()
-    {
-        this.rarityCount = List.of();
-        this.translationOverride = "";
-    }
-
     public RarityCountRestriction(RarityCount... rarityCount)
     {
+        super("");
         this.rarityCount = List.of(rarityCount);
-        this.translationOverride = "";
     }
 
     public RarityCountRestriction(List<RarityCount> rarityCount, String translationOverride)
     {
+        super(translationOverride);
         this.rarityCount = rarityCount;
-        this.translationOverride = translationOverride;
-    }
-
-
-    public List<RarityCount> getRarityCount()
-    {
-        return rarityCount;
-    }
-
-    public String getTranslationOverride()
-    {
-        return translationOverride;
     }
 
     @Override
@@ -231,7 +212,6 @@ public class RarityCountRestriction extends AbstractFishRestriction
         }
     }
 
-
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
@@ -245,14 +225,14 @@ public class RarityCountRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        int color = getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+    }
 
-        if (!translationOverride.isEmpty())
-            return Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(color));
-
-
+    @Override
+    public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = SCDataAttachments.get(player, SCDataAttachments.FISHING_GUIDE).fishesCaught;
 
         if (rarityCount.size() == 1)
@@ -264,7 +244,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
         }
         else
         {
-            return Component.translatable("gui.guide.rarity_count.caught").append(Component.translatable("gui.guide.hover").withStyle(Style.EMPTY.withColor(color)));
+            return Component.translatable("gui.guide.hover");
         }
     }
 

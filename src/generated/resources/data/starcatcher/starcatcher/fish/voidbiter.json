@@ -72,6 +72,12 @@
       "fluids": [
         "minecraft:empty"
       ]
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:legendary_bait": 50
+      }
     }
   ],
   "size_and_weight": {

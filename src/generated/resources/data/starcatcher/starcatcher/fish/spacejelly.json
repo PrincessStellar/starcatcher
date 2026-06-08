@@ -72,6 +72,12 @@
       "biomes_tags": [
         "minecraft:is_end"
       ]
+    },
+    {
+      "type": "starcatcher:structure_restriction",
+      "structure": [
+        "minecraft:end_city"
+      ]
     }
   ],
   "size_and_weight": {
