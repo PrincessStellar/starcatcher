@@ -1797,7 +1797,7 @@ public class FishingGuideScreen extends Screen
 
         rodIcon = new ItemStack(SCItems.ROD.get());
         sweetspotsIcon = new ItemStack(SCItems.AURORA.get());
-        treasureIcon = new ItemStack(SCItems.WATERLOGGED_SATCHEL.get());
+        treasureIcon = new ItemStack(Items.DIAMOND);
         cosmeticsIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
         tackleBoxIcon = new ItemStack(SCBlocks.TACKLE_BOX.get());
         baitIcon = new ItemStack(SCItems.CHERRY_BAIT.get());

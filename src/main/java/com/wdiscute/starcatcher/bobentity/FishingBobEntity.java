@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.bobentity;
 
-import com.sun.jna.platform.win32.Tlhelp32;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
@@ -13,6 +13,8 @@ import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -24,7 +26,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
@@ -43,6 +44,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class FishingBobEntity extends Projectile
 {
@@ -455,9 +457,16 @@ public class FishingBobEntity extends Projectile
 
     public boolean checkBiting()
     {
-
         if (currentState == FishHookState.BITING)
         {
+            if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
+            {
+                ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
+
+                Optional<AbstractTackleSkin> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
+                optional.orElseGet(BaseTackleSkin::new).onMinigameStarted(player);
+            }
+
             currentState = FishHookState.FISHING;
             reel();
             return true;
@@ -476,15 +485,16 @@ public class FishingBobEntity extends Projectile
             boolean fish = U.r.nextFloat() < chanceToFishEachTick;
             if ((fish || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
             {
-                if (SCConfig.SHOW_EXCLAMATION_MARK_PARTICLE.get())
-                    ((ServerLevel) level()).sendParticles(
-                            SCParticles.FISHING_NOTIFICATION.get(),
-                            position().x, position().y + 1, position().z,
-                            1, 0, 0, 0, 0);
-
                 this.setPos(position().x, position().y - 0.5f, position().z);
                 if (!level().isClientSide) currentState = FishHookState.BITING;
-                this.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
+
+                //trigger tackle skin on biting
+                if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
+                {
+                    ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
+                    Optional<AbstractTackleSkin> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
+                    optional.orElseGet(BaseTackleSkin::new).onBiting(player, this);
+                }
             }
         }
 

@@ -6,7 +6,6 @@ import com.wdiscute.starcatcher.guide.FishingGuideItem;
 import com.wdiscute.starcatcher.registry.items.FishItem;
 import com.wdiscute.starcatcher.registry.items.SCFoodProperties;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
-import com.wdiscute.starcatcher.registry.items.WaterloggedSatchel;
 import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
@@ -37,7 +36,6 @@ public interface SCItems
 
     DeferredItem<Item> MISSINGNO = ITEMS.register("missingno", BasicItem::new);
     DeferredItem<Item> UNKNOWN_FISH = ITEMS.register("unknown_fish", BasicItem::new);
-    DeferredItem<Item> TREASURE = ITEMS.register("treasure", BasicItem::new);
 
     DeferredItem<Item> GUIDE = ITEMS.register("starcatcher_guide", FishingGuideItem::new);
 
@@ -98,6 +96,7 @@ public interface SCItems
     DeferredItem<Item> CLEAR_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("clear_smithing_template", BasicItem::new);
     DeferredItem<Item> FROG_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("frog_smithing_template", BasicItem::new);
     DeferredItem<Item> KING_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("king_smithing_template", BasicItem::new);
+    DeferredItem<Item> VALLEY_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("valley_smithing_template", BasicItem::new);
 
     //skin templates
     DeferredItem<Item> NATURALIST_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("naturalist_skin_smithing_template", BasicItem::new);
@@ -152,9 +151,6 @@ public interface SCItems
     DeferredItem<Item> HOPELESS_BOTTLE = ITEMS.register("hopeless_bottle", () -> new NoteContainer(SecretNote.Note.HOPELESS_NOTE));
     DeferredItem<Item> TRUE_BLUE_BOTTLE = ITEMS.register("true_blue_bottle", () -> new NoteContainer(SecretNote.Note.TRUE_BLUE));
     DeferredItem<Item> WITHERED_BOTTLE = ITEMS.register("withered_bottle", () -> new NoteContainer(SecretNote.Note.WITHER));
-
-    //treasure
-    DeferredItem<Item> WATERLOGGED_SATCHEL = ITEMS.register("waterlogged_satchel", WaterloggedSatchel::new);
 
     DeferredItem<Item> FISH_BONES = ITEMS.register("fish_bones", BasicItem::new);
     DeferredItem<Item> PEARL = ITEMS.register("pearl", BasicItem::new);

@@ -80,9 +80,9 @@
     "starcatcher:dev_worm": [
       {
         "type": "starcatcher:adjust_lure_time",
-        "chance_every_tick_multiplier": 6.0,
-        "max_ticks_multiplier": 6.0,
-        "min_ticks_multiplier": 6.0,
+        "chance_every_tick_multiplier": 0.2,
+        "max_ticks_multiplier": 0.2,
+        "min_ticks_multiplier": 0.2,
         "translation_override": ""
       }
     ],

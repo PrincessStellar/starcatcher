@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.bobentity.tackles;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.wdiscute.starcatcher.Starcatcher;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -11,14 +10,14 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-public class BaseModel<T extends Entity> extends EntityModel<T>
+public class SurvivorModel<T extends Entity> extends net.minecraft.client.model.EntityModel<T>
 {
     private static final String NAME = "base";
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
     private final ModelPart root;
 
 
-    public BaseModel(ModelPart root)
+    public SurvivorModel(ModelPart root)
     {
         this.root = root.getChild("root");
     }

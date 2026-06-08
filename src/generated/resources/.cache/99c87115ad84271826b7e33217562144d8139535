@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-07T23:47:52.3097097	Item Models: starcatcher
+// 1.21.1	2026-06-08T15:12:36.4574148	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -215,7 +215,6 @@ f79c9be34618db935d84ff0ae1e6c947fa8b4950 assets/starcatcher/models/item/tackle_b
 6b2ecf046f44c4cf0a066fc34d964b4dcf4bafcd assets/starcatcher/models/item/tackle_box_yellow.json
 823d63cbbbccf33e7a72a185090a0b5e3d3f3e04 assets/starcatcher/models/item/the_quarrish.json
 19136e6b93fb18168335f453de71640a302b47ec assets/starcatcher/models/item/thunder_bass.json
-8a017292a780c7ecbd58d207c0ee41ecd63ab57e assets/starcatcher/models/item/treasure.json
 9265be69271f403df2693c238b5797c033c309aa assets/starcatcher/models/item/trophy_copper.json
 2b75358663c3df4f5a4be1b1f0ac5e299d6d3cc0 assets/starcatcher/models/item/trophy_diamond.json
 806abf1d32933363db28501757ef7f3f7659e4a7 assets/starcatcher/models/item/trophy_emerald.json
@@ -225,6 +224,7 @@ d239457f31bee31f809d53f8a8b102c6c6ef8069 assets/starcatcher/models/item/trophy_o
 6f13c844b940f4cd884b98b5493ffc4d7686a988 assets/starcatcher/models/item/true_blue_bottle.json
 0d146fe6435760833a0678c8ffda95f73a139b12 assets/starcatcher/models/item/twilight_koi.json
 c9e4806b81ff40a7424f42dcc56ee59e8736cabd assets/starcatcher/models/item/unknown_fish.json
+7d46b9f19a3a96bea0b0f186d589858e00de83fe assets/starcatcher/models/item/valley_smithing_template.json
 b8a2832acfd6fbc25e212ab2c37634c133915fc8 assets/starcatcher/models/item/valve.json
 2e39ade97290d6287dc4d3e326be10567302ed1e assets/starcatcher/models/item/vanilla_bobber.json
 f8244e258c3aa09083edb536856e8ed6d1343e34 assets/starcatcher/models/item/vanilla_hook.json
@@ -234,7 +234,6 @@ f52bb9144ddc25b53baa049f5ae12af3f707a9bb assets/starcatcher/models/item/voidbite
 fbc2b287c5743cfad146fc248dc52060a66bcd0d assets/starcatcher/models/item/voidfin.json
 ebdff718b50d5a74c6b9a4ab20853afd8b9d11b7 assets/starcatcher/models/item/void_bobber.json
 9b811446384ffb617b1d650af26591b19e6c112f assets/starcatcher/models/item/ward.json
-f4026da08dc68d4ad19c382d9abe5b0f59edf7e9 assets/starcatcher/models/item/waterlogged_satchel.json
 24056e5d646a1341a8f94c0094dd55afbcf307a4 assets/starcatcher/models/item/weathered_copper_hook.json
 27953081eeade9a0ed934f5f112dfe8216794046 assets/starcatcher/models/item/whiteveil.json
 76a4012f80b50f38199d41938fe6c494a427bad3 assets/starcatcher/models/item/willish.json

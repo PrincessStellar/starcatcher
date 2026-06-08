@@ -1,9 +1,9 @@
-// 1.21.1	2026-06-08T12:23:22.7963497	Data Maps
+// 1.21.1	2026-06-08T15:12:36.4624152	Data Maps
 4898e59ea0ff42cb28f83a1b61e59834ead271b1 data/neoforge/data_maps/item/compostables.json
 813fb735bf77d930c172d32fd84a5f09a09bb4a8 data/selling_bin/data_maps/item/selling_bin_currencies.json
 813fb735bf77d930c172d32fd84a5f09a09bb4a8 data/selling_bin/data_maps/item/selling_bin_value.json
 3e1a9e1e492784f6742d77f383ff7f0523d01d08 data/starcatcher/data_maps/item/aquarium_interaction.json
-8d0b020b247fd46d61081b3aa11816e9b315d18c data/starcatcher/data_maps/item/modifiers.json
+b5162269373b386fd2d4176ef71ae2d1cecc0618 data/starcatcher/data_maps/item/modifiers.json
 80a6c4ab9c7be94ce0f52b540f4962c3b191cdc4 data/starcatcher/data_maps/item/tackle_skin.json
 288e312e30af36d6cb161820bb8d2fc65aec7b31 data/starcatcher/data_maps/mob_effect/modifiers.json
 8e7e8730409ec0574df4e592ec55a94bde0c2134 data/starcatcher/data_maps/starcatcher/fish/treasures.json

@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class HatItem extends BlockItem implements Equipable
 {
-
     public HatItem(Block block)
     {
         super(block, new Properties()

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-08T12:23:22.7993497	Tags for minecraft:item mod id starcatcher
+// 1.21.1	2026-06-08T15:12:36.4639308	Tags for minecraft:item mod id starcatcher
 2f1ada585c38ada365d96a07ffc14851087ecd25 data/c/tags/item/foods/raw_fish.json
 cd76b40635f273884aec7b0f26a351a83f76fed5 data/c/tags/item/tools/fishing_rod.json
 4a6efce3001f3df5fa31251ca2905008ee066879 data/minecraft/tags/item/bookshelf_books.json
@@ -27,6 +27,6 @@ cd76b40635f273884aec7b0f26a351a83f76fed5 data/starcatcher/tags/item/rods.json
 3c3b0e2c447ec482dab12d6469e4519efe62178e data/starcatcher/tags/item/starcaught_fishables.json
 87b73d3fb6c755d8b5be7ba13a6abb0bdd402639 data/starcatcher/tags/item/tackle_boxes.json
 ad81f33c7ca60124679240657d41deb9acd10775 data/starcatcher/tags/item/tackle_skins.json
-004f74787b6b49717cfeff892de351a5c60fcd6a data/starcatcher/tags/item/templates.json
+f275e77e8846977e4649965e3df485fee7ffacbb data/starcatcher/tags/item/templates.json
 c77f84b3ec0360ebeae639230dfb299c6760a8b0 data/starcatcher/tags/item/uncommon_fishes.json
 69139883578e6eb497451206144345de53149fa7 data/starcatcher/tags/item/worms.json

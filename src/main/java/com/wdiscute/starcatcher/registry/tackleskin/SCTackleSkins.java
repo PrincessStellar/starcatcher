@@ -38,6 +38,12 @@ public interface SCTackleSkins
     //king
     ResourceLocation KING_TACKLE_SKIN = registerCatchModifier("king", KingTackleSkin::new);
 
+    //valley
+    ResourceLocation VALLEY_TACKLE_SKIN = registerCatchModifier("valley", ValleyTackleSkin::new);
+
+    //survivor
+    ResourceLocation SURVIVOR_TACKLE_SKIN = registerCatchModifier("survivor_valley", SurvivorTackleSkin::new);
+
     static ResourceLocation getTackleSkin(ItemStack stack)
     {
         //if skin on tackle not default, return that

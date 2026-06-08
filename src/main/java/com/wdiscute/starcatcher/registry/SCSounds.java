@@ -19,7 +19,16 @@ public interface SCSounds
     Supplier<SoundEvent> KING_CRY = registerSoundEvent("king_cry");
     Supplier<SoundEvent> KING_GRR = registerSoundEvent("king_grr");
 
+    Supplier<SoundEvent> VALLEY_BITING = registerSoundEvent("valley_biting");
+    Supplier<SoundEvent> VALLEY_CAST = registerSoundEvent("valley_cast");
+    Supplier<SoundEvent> VALLEY_FAILED = registerSoundEvent("valley_failed");
+    Supplier<SoundEvent> VALLEY_MISSED = registerSoundEvent("valley_missed");
+    Supplier<SoundEvent> VALLEY_BOOP = registerSoundEvent("valley_boop");
+    Supplier<SoundEvent> VALLEY_REEL = registerSoundEvent("valley_reel");
+    Supplier<SoundEvent> VALLEY_MINIGAME_STARTS = registerSoundEvent("valley_minigame_starts");
 
+    Supplier<SoundEvent> SURVIVOR_BITING = registerSoundEvent("survivor_biting");
+    Supplier<SoundEvent> SURVIVOR_MINIGAME_STARTS = registerSoundEvent("survivor_minigame_starts");
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = Starcatcher.rl(name);

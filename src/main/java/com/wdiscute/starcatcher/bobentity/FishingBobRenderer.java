@@ -46,6 +46,8 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         BOB_MODELS.put(Starcatcher.rl("kimbe"), new KimbeModel<>(modelSet.bakeLayer(KimbeModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("king"), new KingModel<>(modelSet.bakeLayer(KingModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("pearl"), new PearlModel<>(modelSet.bakeLayer(PearlModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("valley"), new ValleyModel<>(modelSet.bakeLayer(ValleyModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("survivor"), new SurvivorModel<>(modelSet.bakeLayer(ValleyModel.LAYER_LOCATION)));
     }
 
     public FishingBobRenderer(EntityRendererProvider.Context context)

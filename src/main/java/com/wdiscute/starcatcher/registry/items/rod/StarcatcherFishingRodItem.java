@@ -75,8 +75,6 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
             if (level instanceof ServerLevel)
             {
-                //TODO ADD CUSTOM STAT FOR NUMBER OF FISHES CAUGHT TOTAL ON STAT SCREEN
-
                 Entity entity = new FishingBobEntity(level, player, is);
                 level.addFreshEntity(entity);
                 entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(player.getX(), entity.getEyeY(), player.getZ()));

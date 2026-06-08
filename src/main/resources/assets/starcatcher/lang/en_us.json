@@ -129,6 +129,13 @@
   "sounds.starcatcher.king_grr" : "Angry noises",
   "sounds.starcatcher.king_heheha" : "HEHEHEHA noises",
 
+  "sounds.starcatcher.biting" : "Fish biting sounds!",
+  "sounds.starcatcher.cast" : "Fishing rod cast",
+  "sounds.starcatcher.failed" : "Fishing minigame failed",
+  "sounds.starcatcher.missed" : "Fish swam away",
+  "sounds.starcatcher.boop" : "Fishing boop",
+  "sounds.starcatcher.reel" : "Fishing rod reeled in",
+
   "commands.starcatcher.fish_entry_not_found" : "Fish Entry %s not found",
   "commands.starcatcher.modifier_not_found" : "Modifier %s not found",
   "commands.starcatcher.rod_not_found" : "You must have a StarcatcherCompatible™ rod in your hand",
@@ -147,7 +154,6 @@
   "starcatcher.configuration.remove_notif_on_hover" : "Remove New Fish Notif on Hover",
 
   "starcatcher.configuration.give_guide" : "Give Guide",
-  "starcatcher.configuration.show_exclamation_mark_particle" : "Show [!] particle on bite",
   "starcatcher.configuration.enable_worms" : "Worms From Bonemealing Farmland",
   "starcatcher.configuration.enable_minigame" : "Enable Fishing Minigame",
   "starcatcher.configuration.enable_ftb_team_sharing" : "Enable FTBTeams Sharing",
@@ -386,6 +392,7 @@
   "tooltip.tackle.starcatcher.base": "Simple",
   "tooltip.tackle.starcatcher.frog": "Frog",
   "tooltip.tackle.starcatcher.king": "King",
+  "tooltip.tackle.starcatcher.valley": "Valley",
 
 
   "item.starcatcher.hook": "Iron Hook",

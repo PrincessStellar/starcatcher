@@ -51,9 +51,10 @@ public class SCConfig
             .translation("starcatcher.configuration.sort")
             .defineEnum("sort", FishingGuideScreen.Sort.ALPHABETICAL_DOWN);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_VILLAGER_SOUND = BUILDER_CLIENT
-            .translation("starcatcher.configuration.enable_villager_sound")
-            .define("enable_villager_sound", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_TACKLE_SOUNDS = BUILDER_CLIENT
+            .comment("Controls whether sounds for reeling, failing minigame, completing minigame etc should play")
+            .translation("starcatcher.configuration.enable_tackle_sounds")
+            .define("enable_tackle_sound", true);
 
     public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUND = BUILDER_CLIENT
             .translation("starcatcher.configuration.enable_hit_sound")
@@ -73,10 +74,6 @@ public class SCConfig
             .translation("starcatcher.configuration.give_guide")
             .comment("Award guide when joining the world/server once per player")
             .define("give_guide", true);
-
-    public static final ModConfigSpec.BooleanValue SHOW_EXCLAMATION_MARK_PARTICLE = BUILDER_SERVER
-            .translation("starcatcher.configuration.show_exclamation_mark_particle")
-            .define("show_exclamation_mark_particle", false);
 
     public static final ModConfigSpec.BooleanValue ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS = BUILDER_SERVER
             .translation("starcatcher.configuration.enable_worms")

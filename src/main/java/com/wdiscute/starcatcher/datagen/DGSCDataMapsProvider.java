@@ -254,7 +254,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         modifiers.add(SCItems.DEV_WORM, List.of(
-                new AdjustLureTimeModifier(6f, 6f, 6f, "")
+                new AdjustLureTimeModifier(0.2f, 0.2f, 0.2f, "")
         ), false);
 
         //baits

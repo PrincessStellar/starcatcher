@@ -26,23 +26,15 @@ import com.wdiscute.starcatcher.shaders.BakedModelRemapper;
 import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.KeyboardHandler;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
 public class SCClientEvents
@@ -98,7 +90,7 @@ public class SCClientEvents
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event)
     {
-        event.registerSpriteSet(SCParticles.FISHING_NOTIFICATION.get(), FishingNotificationParticles.Provider::new);
+        event.registerSpriteSet(SCParticles.VALLEY_NOTIFICATION.get(), FishingNotificationParticles.Provider::new);
         event.registerSpriteSet(SCParticles.FISHING_BITING.get(), FishingBitingParticles.Provider::new);
         event.registerSpriteSet(SCParticles.FISHING_BITING_LAVA.get(), FishingBitingLavaParticles.Provider::new);
     }
@@ -122,6 +114,7 @@ public class SCClientEvents
         event.registerLayerDefinition(KimbeModel.LAYER_LOCATION, KimbeModel::createBodyLayer);
         event.registerLayerDefinition(KingModel.LAYER_LOCATION, KingModel::createBodyLayer);
         event.registerLayerDefinition(PearlModel.LAYER_LOCATION, PearlModel::createBodyLayer);
+        event.registerLayerDefinition(ValleyModel.LAYER_LOCATION, ValleyModel::createBodyLayer);
 
         //tackle box
         event.registerLayerDefinition(TackleBoxRenderer.LAYER_LOCATION, TackleBoxRenderer::createBodyLayer);

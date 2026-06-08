@@ -11,22 +11,23 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-public class BaseModel<T extends Entity> extends EntityModel<T>
+public class ValleyModel<T extends Entity> extends EntityModel<T>
 {
     private static final String NAME = "base";
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
     private final ModelPart root;
 
 
-    public BaseModel(ModelPart root)
+    public ValleyModel(ModelPart root)
     {
         this.root = root.getChild("root");
     }
 
     public static ResourceLocation getTexture()
     {
-        return Starcatcher.rl("textures/entity/tackle/base.png");
+        return Starcatcher.rl("textures/entity/tackle/valley.png");
     }
+
 
     public static LayerDefinition createBodyLayer()
     {

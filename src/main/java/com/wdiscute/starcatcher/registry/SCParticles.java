@@ -15,8 +15,8 @@ public interface SCParticles
             DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, Starcatcher.MOD_ID);
 
 
-    Supplier<SimpleParticleType> FISHING_NOTIFICATION =
-            PARTICLE_TYPES.register("fishing_notification", () -> new SimpleParticleType(true));
+    Supplier<SimpleParticleType> VALLEY_NOTIFICATION =
+            PARTICLE_TYPES.register("valley_notification", () -> new SimpleParticleType(true));
 
     Supplier<SimpleParticleType> FISHING_BITING =
             PARTICLE_TYPES.register("fishing_biting", () -> new SimpleParticleType(true));

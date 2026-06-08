@@ -9,14 +9,11 @@ import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.SCAttributes;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -493,11 +490,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         InputConstants.Key mouseKey = InputConstants.getKey(keyCode, scanCode);
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey) && !SCKeymappings.MINIGAME_HIT.getKey().equals(mouseKey))
         {
-            if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                && !tackleSkin.skipMissSound()
-            )
-                Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
+            //play miss sound
+            if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
+                tackleSkin.onFailedMinigame(Minecraft.getInstance().player);
             this.onClose();
             return true;
         }
@@ -641,11 +636,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
             if (progressSmooth < 0)
             {
-                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                    && !tackleSkin.skipMissSound()
-                )
-                    Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_NO);
+                if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
+                    tackleSkin.onFailedMinigame(Minecraft.getInstance().player);
                 this.onClose();
             }
 
@@ -654,11 +646,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
                 boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
 
-                if (SCConfig.ENABLE_VILLAGER_SOUND.get()
-                    && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound)
-                    && !tackleSkin.skipSuccessSound()
-                )
-                    Minecraft.getInstance().player.playSound(SoundEvents.VILLAGER_CELEBRATE);
+                if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
+                    tackleSkin.onSuccessfulMinigame(Minecraft.getInstance().player);
 
                 PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
                 this.onClose();
