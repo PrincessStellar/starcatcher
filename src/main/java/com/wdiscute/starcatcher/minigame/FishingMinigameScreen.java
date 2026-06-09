@@ -335,6 +335,73 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         hitParticles.forEach(p -> p.render(guiGraphics, width, height));
 
         poseStack.popPose();
+
+        if (SCConfig.DEBUG_MINIGAME.get())
+        {
+            int yOffsetMod = 10;
+            guiGraphics.drawString(this.font, "minigame modifiers:", 10, yOffsetMod, 0xffffff00);
+
+            for (AbstractMinigameModifier modifier : modifiers)
+            {
+                yOffsetMod = yOffsetMod + 10;
+                guiGraphics.drawString(this.font, modifier.toString().contains(".")
+                        ? modifier.toString().substring(modifier.toString().lastIndexOf('.') + 1)
+                        : modifier.toString(), 10, yOffsetMod, 0xffffffff);
+            }
+
+            int yOffsetASS = 10;
+            guiGraphics.drawString(this.font, "active sweet-spots:", width / 2 + 120, yOffsetASS, 0xffffff00);
+
+            for (ActiveSweetSpot ass : activeSweetSpots)
+            {
+                yOffsetASS += 10;
+                guiGraphics.drawString(this.font, "texture: " + (
+                        ass.texture.getPath().contains("/")
+                                ? ass.texture.getPath().substring(ass.texture.getPath().lastIndexOf('/') + 1)
+                                : ass.texture.getPath()
+                ), width / 2 + 120, yOffsetASS, 0xffffffff);
+                yOffsetASS += 10;
+                guiGraphics.drawString(this.font, "rew:" + ass.reward + " van:" + ass.vanishingRate + " mov:" + ass.movingRate + " pos:" + ass.pos, width / 2 + 120, yOffsetASS, 0xffffffff);
+                yOffsetASS += 10;
+                guiGraphics.drawString(this.font, "alpha: " + ass.alpha + " col:" + ass.particleColor + " thick:" + ass.thickness, width / 2 + 120, yOffsetASS, 0xffffffff);
+                yOffsetASS += 10;
+                guiGraphics.drawString(this.font, "behaviour: " + (
+                        ass.behaviour.toString().contains(".")
+                                ? ass.behaviour.toString().substring(ass.behaviour.toString().lastIndexOf('.') + 1)
+                                : ass.behaviour.toString()
+                ), width / 2 + 120, yOffsetASS, 0xffffffff);
+                yOffsetASS += 10;
+            }
+
+            //fish
+            guiGraphics.drawString(this.font, "fish: ", width / 2 - 100, height / 2 + 80, 0xffffff00);
+            guiGraphics.drawString(this.font, "item: " + itemBeingFished, width / 2 - 100, height / 2 + 90, 0xffffffff);
+            guiGraphics.drawString(this.font, "progress: " + progress + "/" + hp, width / 2 - 100, height / 2 + 100, 0xffffffff);
+            guiGraphics.drawString(this.font, "rarity: " + rarity, width / 2 - 100, height / 2 + 110, 0xffffffff);
+
+            //treasure
+            guiGraphics.drawString(this.font, "treasure: " + (treasureActive ? "active" : "not active"), width / 2 - 100, height / 2 + 130, 0xffffff00);
+            guiGraphics.drawString(this.font, "item: " + treasureIS.toString(), width / 2 - 100, height / 2 + 140, 0xffffffff);
+            guiGraphics.drawString(this.font, "progress: " + treasureProgress + "/100", width / 2 - 100, height / 2 + 150, 0xffffffff);
+
+            guiGraphics.drawString(this.font, "fp: ", 10, height / 2 - 40, 0xffffff00);
+            guiGraphics.drawString(this.font, "penalty: " + penalty, 10, height / 2 - 30, 0xffffffff);
+            guiGraphics.drawString(this.font, "handle speed: " + handleSpeed, 10, height / 2 - 20, 0xffffffff);
+            guiGraphics.drawString(this.font, "handle pos: " + handlePos, 10, height / 2 - 10, 0xffffffff);
+            guiGraphics.drawString(this.font, "decay: " + decay, 10, height / 2, 0xffffffff);
+            guiGraphics.drawString(this.font, "perfect catch: " + perfectCatch, 10, height / 2 + 10, 0xffffffff);
+            guiGraphics.drawString(this.font, "cons. hits: " + consecutiveHits, 10, height / 2 + 20, 0xffffffff);
+            guiGraphics.drawString(this.font, "particles: " + hitParticles.size(), 10, height / 2 + 30, 0xffffffff);
+            guiGraphics.drawString(this.font, "grace: " + gracePeriod, 10, height / 2 + 40, 0xffffffff);
+            guiGraphics.drawString(this.font, "tick: " + tickCount, 10, height / 2 + 50, 0xffffffff);
+
+            //rod attachments
+            guiGraphics.drawString(this.font, "attachments: ", 10, height - 50, 0xffffff00);
+            guiGraphics.drawString(this.font, "bobber: " + bobber, 10, height - 40, 0xffffffff);
+            guiGraphics.drawString(this.font, "bait: " + bait, 10, height - 30, 0xffffffff);
+            guiGraphics.drawString(this.font, "hook: " + hook, 10, height - 20, 0xffffffff);
+        }
+
     }
 
     public void renderSweetSpot(ActiveSweetSpot ass, GuiGraphics guiGraphics, float partialTick, PoseStack poseStack)
