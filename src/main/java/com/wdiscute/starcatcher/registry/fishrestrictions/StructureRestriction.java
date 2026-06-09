@@ -52,7 +52,7 @@ public class StructureRestriction extends AbstractFishRestriction
         if(structures.isEmpty()) return Component.empty();
 
         if (structures.size() == 1)
-            return Component.translatable("gui.guide.structure", structures.getFirst().toString());
+            return Component.translatable("structure." + structures.getFirst().toLanguageKey());
         else
             return Component.translatable("gui.guide.hover");
     }
@@ -63,7 +63,7 @@ public class StructureRestriction extends AbstractFishRestriction
         if(structures.size() > 1)
         {
             List<Component> list = new ArrayList<>();
-            structures.forEach(o -> list.add(Component.translatable(o.toLanguageKey())));
+            structures.forEach(o -> list.add(Component.translatable("structure." + o.toLanguageKey())));
             return list;
         }
         else

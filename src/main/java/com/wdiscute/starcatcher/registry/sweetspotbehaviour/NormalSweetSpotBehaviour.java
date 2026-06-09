@@ -16,7 +16,7 @@ public class NormalSweetSpotBehaviour extends AbstractSweetSpotBehaviour
         instance.progress += ass.reward;
         if (ass.isFlip) instance.currentRotation *= -1;
         ass.pos = instance.getRandomFreePosition(ass.thickness);
-        if (SCConfig.ENABLE_HIT_SOUND.get() && instance.getModifiers().stream().noneMatch(AbstractMinigameModifier::skipHitSound))
+        if (SCConfig.ENABLE_HIT_SOUNDS.get() && instance.getModifiers().stream().noneMatch(AbstractMinigameModifier::skipHitSound))
             Minecraft.getInstance().player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.3f, 1f);
         ass.alpha = 1;
     }

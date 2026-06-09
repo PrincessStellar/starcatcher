@@ -250,7 +250,7 @@ public class FishingBobEntity extends Projectile
                 treasure = modifier.modifyTreasure(treasure, fpToFish, player, this);
 
             //should hide catch from config or modifiers
-            boolean shouldHideCatch = SCConfig.HIDE_TREASURES.get() || modifiers.stream().anyMatch(AbstractCatchModifier::shouldHideCatch);
+            boolean shouldHideCatch = SCConfig.HIDE_CATCHES.get() || modifiers.stream().anyMatch(AbstractCatchModifier::shouldHideCatch);
 
             //create payload
             FishingStartedPayload payload = new FishingStartedPayload(

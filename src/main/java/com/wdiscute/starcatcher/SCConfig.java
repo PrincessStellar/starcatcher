@@ -8,32 +8,45 @@ public class SCConfig
 {
     private static final ModConfigSpec.Builder BUILDER_CLIENT = new ModConfigSpec.Builder();
 
+    public static final ModConfigSpec.DoubleValue MINIGAME_X_OFFSET = BUILDER_CLIENT
+            .push("ui_settings")
+            .translation("starcatcher.configuration.minigame_x_offset")
+            .defineInRange("minigame_x_offset", 0d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue MINIGAME_Y_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.minigame_y_offset")
+            .defineInRange("minigame_y_offset", 0d, -10000, 10000);
+
     public static final ModConfigSpec.DoubleValue MINIGAME_RENDER_SCALE = BUILDER_CLIENT
-            .push("minigame_window")
             .translation("starcatcher.configuration.minigame_scale")
             .defineInRange("minigame_scale", 1.5, 0.1, 6);
 
-    public static final ModConfigSpec.IntValue MINIGAME_X_OFFSET = BUILDER_CLIENT
-            .translation("starcatcher.configuration.x_offset")
-            .defineInRange("minigame_x_offset", 0, -10000, 10000);
-
-    public static final ModConfigSpec.IntValue MINIGAME_Y_OFFSET = BUILDER_CLIENT
-            .translation("starcatcher.configuration.y_offset")
-            .defineInRange("minigame_y_offset", 0, -10000, 10000);
-
-    public static final ModConfigSpec.IntValue TOURNAMENT_X_OFFSET = BUILDER_CLIENT
+    public static final ModConfigSpec.DoubleValue TOURNAMENT_X_OFFSET = BUILDER_CLIENT
             .translation("starcatcher.configuration.tournament_x_offset")
-            .defineInRange("tournament_x_offset", 0, -10000, 10000);
+            .defineInRange("tournament_x_offset", 0d, -10000, 10000);
 
-    public static final ModConfigSpec.IntValue TOURNAMENT_Y_OFFSET = BUILDER_CLIENT
+    public static final ModConfigSpec.DoubleValue TOURNAMENT_Y_OFFSET = BUILDER_CLIENT
             .translation("starcatcher.configuration.tournament_y_offset")
-            .defineInRange("tournament_y_offset", 0, -10000, 10000);
+            .defineInRange("tournament_y_offset", 0d, -10000, 10000);
 
-    public static final ModConfigSpec.IntValue TOURNAMENT_SCALE = BUILDER_CLIENT
+    public static final ModConfigSpec.DoubleValue TOURNAMENT_SCALE = BUILDER_CLIENT
             .translation("starcatcher.configuration.tournament_scale")
-            .defineInRange("tournament_y_offset", 0, -10000, 10000);
+            .defineInRange("tournament_scale", 1d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue RADAR_X_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.radar_x_offset")
+            .defineInRange("radar_x_offset", 0d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue RADAR_Y_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.radar_y_offset")
+            .defineInRange("radar_y_offset", 0d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue RADAR_SCALE = BUILDER_CLIENT
+            .translation("starcatcher.configuration.radar_scale")
+            .defineInRange("radar_scale", 1d, -10000, 10000);
 
     public static final ModConfigSpec.BooleanValue DEBUG_MINIGAME = BUILDER_CLIENT
+            .comment("Shows a bunch of extra text info during the minigame for debugging")
             .translation("starcatcher.configuration.debug")
             .define("debug", false);
 
@@ -60,11 +73,13 @@ public class SCConfig
             .translation("starcatcher.configuration.enable_tackle_sounds")
             .define("enable_tackle_sound", true);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUND = BUILDER_CLIENT
-            .translation("starcatcher.configuration.enable_hit_sound")
-            .define("enable_hit_sound", true);
+    public static final ModConfigSpec.BooleanValue ENABLE_HIT_SOUNDS = BUILDER_CLIENT
+            .comment("Should sweet-spots play the hit sounds")
+            .translation("starcatcher.configuration.enable_hit_sounds")
+            .define("enable_hit_sounds", true);
 
     public static final ModConfigSpec.BooleanValue ENABLE_MISS_SOUND = BUILDER_CLIENT
+            .comment("Should play the hit sound")
             .translation("starcatcher.configuration.enable_miss_sound")
             .define("enable_miss_sound", true);
 

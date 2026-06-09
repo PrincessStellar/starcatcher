@@ -42,6 +42,9 @@ public class DGSCBlockLootTableProvider extends BlockLootSubProvider
                                                         ))))
                 ));
 
+
+
+
         dropSelf(AQUARIUM.get());
 
         dropSelf(DISPLAY.get());

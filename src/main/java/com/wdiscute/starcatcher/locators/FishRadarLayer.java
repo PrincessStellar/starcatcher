@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.locators;
 
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
@@ -76,15 +78,15 @@ public class FishRadarLayer implements LayeredDraw.Layer
         if (Minecraft.getInstance().player == null) return;
         else player = Minecraft.getInstance().player;
 
-        boolean shouldShow = player.getMainHandItem().is(SCItems.FISH_RADAR) || player.getOffhandItem().is(SCItems.FISH_RADAR);
+        boolean shouldShow = player.getMainHandItem().is(SCItems.FISH_RADAR) || player.getOffhandItem().is(SCItems.FISH_RADAR) || Minecraft.getInstance().screen instanceof SettingsScreen;
 
         //smoothly moves ui in and out of screen
         if (!shouldShow)
-            if (offScreen > -150)
+            if (offScreen > -150 + SCConfig.RADAR_X_OFFSET.get())
                 offScreen -= 15 * deltaTracker.getGameTimeDeltaTicks();
             else
             {
-                offScreen = -150;
+                offScreen = (float) (-150 + SCConfig.RADAR_X_OFFSET.get());
                 return;
             }
         else if (offScreen < 0)
@@ -94,6 +96,9 @@ public class FishRadarLayer implements LayeredDraw.Layer
 
 
         guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(((float) SCConfig.RADAR_SCALE.getAsDouble()), ((float) SCConfig.RADAR_SCALE.getAsDouble()), 1);
+        guiGraphics.pose().translate(SCConfig.RADAR_X_OFFSET.get(), SCConfig.RADAR_Y_OFFSET.get(), 0);
+
         guiGraphics.pose().translate(-offScreen, 0, 0);
 
         switch (fpsInArea.size())

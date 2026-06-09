@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.SCColors;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.Util;
 import net.minecraft.client.DeltaTracker;
@@ -21,7 +22,6 @@ import java.util.*;
 
 public class TournamentOverlay implements LayeredDraw.Layer
 {
-    private static final Logger log = LoggerFactory.getLogger(TournamentOverlay.class);
     public static Tournament tournament;
 
     public static Tournament.PlayerScore firstPlace = null;
@@ -67,8 +67,8 @@ public class TournamentOverlay implements LayeredDraw.Layer
 
 
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(0, 0, 0);
-        //add scale with config like minigame
+        guiGraphics.pose().translate(SCConfig.TOURNAMENT_X_OFFSET.get(), SCConfig.TOURNAMENT_Y_OFFSET.get(), 0);
+        guiGraphics.pose().scale(((float) SCConfig.TOURNAMENT_SCALE.getAsDouble()), ((float) SCConfig.TOURNAMENT_SCALE.getAsDouble()), 1);
 
         //get fish for player position
         ResourceLocation fish = null;
@@ -260,7 +260,7 @@ public class TournamentOverlay implements LayeredDraw.Layer
 
         //set player place name & score
         Optional<Tournament.PlayerScore> optional = t.playerScores.stream().filter(p -> p.uuid.equals(Minecraft.getInstance().player.getUUID())).findFirst();
-        optional.ifPresent(playerScore -> TournamentOverlay.playerScore = playerScore);
+        optional.ifPresentOrElse(playerScore -> TournamentOverlay.playerScore = playerScore, () -> playerScore = new Tournament.PlayerScore(UUID.randomUUID(), "???", 0));
 
         tournament = t;
     }

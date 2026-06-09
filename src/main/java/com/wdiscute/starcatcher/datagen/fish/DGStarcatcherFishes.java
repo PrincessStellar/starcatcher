@@ -19,6 +19,18 @@ public class DGStarcatcherFishes
     public static void bootstrap()
     {
         register(overworldLakeFish(new MaybeStack(SCItems.OBIDONTIEE))
+                .withRestrictions(List.of(
+                        WeatherRestriction.CLEAR,
+                        WeatherRestriction.RAIN,
+                        WeatherRestriction.THUNDER,
+                        ElevationRestriction.ABOVE_FIFTY,
+                        ElevationRestriction.ABOVE_HUNDRED,
+                        ElevationRestriction.ABOVE_TWO_HUNDRED,
+                        ElevationRestriction.BELOW_ZERO,
+                        DaytimeRestriction.DAY,
+                        DaytimeRestriction.MIDNIGHT,
+                        DaytimeRestriction.NIGHT
+                ))
                 .withSizeAndWeight(new SizeAndWeight(17.7f, 5, 1200, 200)));
 
         register(overworldLakeFish(new MaybeStack(SCItems.MORGANITE))

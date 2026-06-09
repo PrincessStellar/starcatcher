@@ -44,6 +44,7 @@ import java.util.*;
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
     public ResourceLocation texture;
+    public boolean renderBlur = true;
 
     public Difficulty difficulty;
     public Rarity rarity;
@@ -99,11 +100,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected boolean isHoldingKey = false;
     protected boolean isHoldingMouse = false;
 
-    public float renderScale;
-    public int xOffset = SCConfig.MINIGAME_X_OFFSET.getAsInt();
-    public int yOffset = SCConfig.MINIGAME_Y_OFFSET.getAsInt();
-
-
     protected final List<ActiveSweetSpot> activeSweetSpots = new ArrayList<>();
     protected final List<ActiveSweetSpot> spotsToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
@@ -118,7 +114,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         texture = fp.textures();
 
-        renderScale = SCConfig.MINIGAME_RENDER_SCALE.get().floatValue();
         hitDelay = SCConfig.HIT_DELAY.get().floatValue();
 
         this.difficulty = fp.dif();
@@ -235,7 +230,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public void renderBackground(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTickNeo)
     {
-        super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
+        if (renderBlur)
+            super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
 
         final float partialTick = PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
 
@@ -245,9 +241,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.pushPose();
         poseStack.translate(width >> 1, height >> 1, 0);
 
-        poseStack.translate(xOffset, yOffset, 0);
+        poseStack.translate(SCConfig.MINIGAME_X_OFFSET.get(), SCConfig.MINIGAME_Y_OFFSET.get(), 0);
 
-        poseStack.scale(renderScale, renderScale, 1);
+        poseStack.scale(((float) SCConfig.MINIGAME_RENDER_SCALE.getAsDouble()), ((float) SCConfig.MINIGAME_RENDER_SCALE.getAsDouble()), 1);
 
         poseStack.translate(-width >> 1, -height >> 1, 0);
 
