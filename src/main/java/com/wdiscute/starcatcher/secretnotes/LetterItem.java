@@ -38,7 +38,7 @@ public class LetterItem extends Item
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
     {
-        if(SCDataComponents.has(stack, SCDataComponents.MESSAGE) && tooltipFlag.isAdvanced())
+        if (SCDataComponents.has(stack, SCDataComponents.MESSAGE) && tooltipFlag.isAdvanced())
         {
             Message wd = SCDataComponents.get(stack, SCDataComponents.MESSAGE);
             tooltipComponents.add(Component.literal("written by uuid: " + wd.sender).withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_GRAY)));
@@ -49,8 +49,21 @@ public class LetterItem extends Item
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand)
     {
-        Message message = SCDataComponents.getOrDefault(player.getItemInHand(usedHand), SCDataComponents.MESSAGE, Message.empty());
-        if(level.isClientSide)
+        Message message = SCDataComponents.getOrDefault(player.getItemInHand(usedHand), SCDataComponents.MESSAGE, new LetterItem.Message(UUID.randomUUID(), "-wd", Level.OVERWORLD.location(),
+                List.of(
+                        "",
+                        "",
+                        "This is an example message.",
+                        "",
+                        "Players can write their own letters,",
+                        "bottle them up and then throw them into the ocean.",
+                        "",
+                        "Other players in that dimension can then fish them up."
+                ),
+                true
+        ));
+
+        if (level.isClientSide)
         {
             if (message.locked)
                 openMessageScreen(message);

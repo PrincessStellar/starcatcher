@@ -282,7 +282,7 @@ public interface SCItems
     DeferredItem<Item> THE_QUARRISH = registerBucketFish("the_quarrish");
 
     //bamboo
-    DeferredItem<Item> LIVID_BAMBOO = registerBucketFish("livid_bamboo");
+    DeferredItem<Item> LIVID_BAMBOO = registerNonBucketFish("livid_bamboo");
 
     //deepslate
     DeferredItem<Item> GHOSTLY_PIKE = registerBucketFish("ghostly_pike");

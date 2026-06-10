@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import net.mcexpanded.fancytabsections.FancyTabSections;
 import net.mcexpanded.fancytabsections.creativetab.ConglomerateOfItems;
 import net.mcexpanded.fancytabsections.creativetab.SectionColored;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -128,6 +129,27 @@ public interface SCCreativeModeTabs
                         items
                 )
         );
+
+        //message in a bottle itemstack
+        LetterItem.Message message = new LetterItem.Message(UUID.randomUUID(), "-wd", Level.OVERWORLD.location(),
+                List.of(
+                        "",
+                        "",
+                        "This is an example message.",
+                        "",
+                        "Players can write their own letters,",
+                        "bottle them up and then throw them into the ocean.",
+                        "",
+                        "Other players in that dimension can then fish them up."
+                ),
+                true
+        );
+
+        //message itemstack
+        //ItemStack bottle = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
+        //bottle.set(SCDataComponents.MESSAGE, message);
+        //ItemStack messageIS = new ItemStack(SCItems.MESSAGE.get());
+        //bottle.set(SCDataComponents.MESSAGE, message);
 
         //Trophies & Secrets
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),

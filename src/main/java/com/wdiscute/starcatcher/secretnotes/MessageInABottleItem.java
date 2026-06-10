@@ -10,6 +10,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
+import java.util.UUID;
+
 public class MessageInABottleItem extends Item
 {
     public MessageInABottleItem()
@@ -27,6 +30,32 @@ public class MessageInABottleItem extends Item
             ItemStack is = new ItemStack(SCItems.MESSAGE.get());
             LetterItem.Message message = SCDataComponents.get(itemInHand, SCDataComponents.MESSAGE);
             SCDataComponents.set(is, SCDataComponents.MESSAGE, message.lock());
+            player.addItem(is);
+
+            player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);
+
+            //replace with broken bottle
+            player.setItemInHand(usedHand, new ItemStack(SCItems.BROKEN_BOTTLE.get()));
+        }
+        else
+        {
+            LetterItem.Message message = new LetterItem.Message(UUID.randomUUID(), "-wd", Level.OVERWORLD.location(),
+                    List.of(
+                            "",
+                            "",
+                            "This is an example message.",
+                            "",
+                            "Players can write their own letters,",
+                            "bottle them up and then throw them into the ocean.",
+                            "",
+                            "Other players in that dimension can then fish them up."
+                    ),
+                    true
+            );
+
+            //give note
+            ItemStack is = new ItemStack(SCItems.MESSAGE.get());
+            SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
             player.addItem(is);
 
             player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);
