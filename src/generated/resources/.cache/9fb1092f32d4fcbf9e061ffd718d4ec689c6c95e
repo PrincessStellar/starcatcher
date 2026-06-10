@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-08T12:06:30.7688285	Recipes
+// 1.21.1	2026-06-10T15:49:40.4782312	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -60,6 +60,7 @@ fe3959bd52196228e944f30eb1b3190ce7baa7d1 data/starcatcher/advancement/recipes/mi
 03dd883f14cf460cf9ca672df45ecfe1ccbfd631 data/starcatcher/advancement/recipes/misc/dripstone_bait_from_pointed_dripstone.json
 86237f0a47eb7d239d5531dd03172871ba8252ca data/starcatcher/advancement/recipes/misc/echoing_hook.json
 5dc45f99e5b60056111df2ab7d82bccf0ae5fb4e data/starcatcher/advancement/recipes/misc/exposed_copper_hook.json
+6477b9b0d5f8fbf392eafab819e2c70e0e946026 data/starcatcher/advancement/recipes/misc/fish_radar.json
 3abfcc1ba783448a043d8aea4a51ccf7250ed0b2 data/starcatcher/advancement/recipes/misc/frog_smithing_template.json
 87e25bdc6122bbd463d50aec9087e48029027491 data/starcatcher/advancement/recipes/misc/frozen_hook.json
 31ef85bf2a6da2e8638470d3bbbca5aa4e8a9d97 data/starcatcher/advancement/recipes/misc/glowing_bobber.json
@@ -180,6 +181,7 @@ d971f8e5c06e1483ccc3c1775d0fc7161604f8fc data/starcatcher/recipe/deep_ocean_bobb
 7f2be50478cfa80ef1d51b2827541967269305c0 data/starcatcher/recipe/dripstone_bait_from_pointed_dripstone.json
 78430acd9dbafcaad34d82bdff047aba0c503d05 data/starcatcher/recipe/echoing_hook.json
 9e549a61320cd8d119eba00be1c8e7c6f5c8e7e3 data/starcatcher/recipe/exposed_copper_hook.json
+b83d640fb3af8b9da14a8f9eabaecd939185ac7f data/starcatcher/recipe/fish_radar.json
 e393c07b88d53a34735bc561bca9e447bf1c18f7 data/starcatcher/recipe/frog_smithing_template.json
 57ea0fe0a732c10f9b97b0e66583cbd5c3051339 data/starcatcher/recipe/frog_tackle.json
 424f5c6200af78f95c939325fd633980cd5ec09a data/starcatcher/recipe/frozen_hook.json

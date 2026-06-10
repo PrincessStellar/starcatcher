@@ -24,6 +24,12 @@ public interface SCDataAttachments
                     .build()
     );
 
+    Supplier<AttachmentType<ResourceLocation>> TRACKED_FISH = ATTACHMENT_TYPES.register(
+            "tracked_fish", () -> AttachmentType.builder(() -> Starcatcher.MISSINGNO)
+                    .serialize(ResourceLocation.CODEC)
+                    .sync(ResourceLocation.STREAM_CODEC)
+                    .build()
+    );
 
     Supplier<AttachmentType<FishingGuideAttachment>> FISHING_GUIDE = ATTACHMENT_TYPES.register(
             "fishing_guide", () -> AttachmentType.builder(FishingGuideAttachment::createDefault)

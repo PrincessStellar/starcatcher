@@ -47,12 +47,6 @@
   "rarity": "common",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -78,6 +72,12 @@
     {
       "type": "starcatcher:weather_restriction",
       "weather": "rain"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

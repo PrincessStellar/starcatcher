@@ -1,15 +1,16 @@
 package com.wdiscute.starcatcher.bobentity;
 
+import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
@@ -24,7 +25,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -168,7 +168,6 @@ public class FishingBobEntity extends Projectile
         this.xRotO = this.getXRot();
 
 
-
         if (!level.isClientSide)
             SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
 
@@ -177,62 +176,16 @@ public class FishingBobEntity extends Projectile
 
     public void reel()
     {
-        //server only
-        List<FishProperties> available = new ArrayList<>();
+        Pair<FishProperties, ResourceLocation> fp = FishApi.getFP(this, player, modifiers, rod, true);
 
-        modifiers.forEach(AbstractCatchModifier::onReelStart);
-
-        //if any non-fish is available, select it
-        for (FishProperties fp : FishApi.getNonFishes(level()))
+        if (fp == null)
         {
-            int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
-
-            if (chance > 0)
-            {
-                fpToFish = fp;
-                rlToAwardUponFishingComplete = FishApi.getKey(level(), fp);
-                break;
-            }
-        }
-
-        //add available fish to list if no trophy/secret/extra was available
-        for (FishProperties fp : FishApi.getFishes(level()))
-        {
-            int chance = fp.calculateChance(this, level(), rod, AbstractFishRestriction.Context.FISHING);
-            for (int i = 0; i < chance; i++) available.add(fp);
-        }
-
-        //trigger modifiers to clear available pool
-        if (modifiers.stream().anyMatch(AbstractCatchModifier::clearDefaultPool)) available = new ArrayList<>();
-
-        //trigger modifiers to modify available pool
-        for (AbstractCatchModifier acm : modifiers) available = acm.modifyAvailablePool(available);
-
-        //if no fish is available and no non-fish was selected, reset player fishing data and award nothing
-        if (available.isEmpty() && fpToFish == null)
-        {
-            player.displayClientMessage(Component.translatable("gui.starcatcher.reel_no_fish"), true);
-            this.kill();
+            kill();
             return;
         }
 
-        //get random fish from available pool, if no trophy/secret is selected
-        if (fpToFish == null)
-        {
-            fpToFish = available.get(random.nextInt(available.size()));
-            rlToAwardUponFishingComplete = FishApi.getKey(level(), fpToFish);
-        }
-
-        //trigger modifiers for which fish to get based on available
-        List<FishProperties> immutableAvailable = List.copyOf(available);
-        modifiers.forEach(acm -> acm.afterChoosingTheCatch(immutableAvailable));
-
-        //should cancel to prevent normal minigame/item fished (vanilla bobber & messages)
-        if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldCancelBeforeSkipsMinigameCheck))
-        {
-            this.kill();
-            return;
-        }
+        fpToFish = fp.getFirst();
+        rlToAwardUponFishingComplete = fp.getSecond();
 
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
@@ -253,7 +206,7 @@ public class FishingBobEntity extends Projectile
             boolean shouldHideCatch = SCConfig.HIDE_CATCHES.get() || modifiers.stream().anyMatch(AbstractCatchModifier::shouldHideCatch);
 
             //create payload
-            FishingStartedPayload payload = new FishingStartedPayload(
+            CBFishingStartedPayload payload = new CBFishingStartedPayload(
                     //hide catch
                     shouldHideCatch ? fpToFish.withCatchInfo(fpToFish.catchInfo().withFish(new MaybeStack(SCItems.UNKNOWN_FISH))) : fpToFish,
                     //hide treasure

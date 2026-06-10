@@ -223,7 +223,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new AddLootTableToFishedItemsModifier(ResourceLocation.withDefaultNamespace("gameplay/fishing"),
                         "tooltip.modifier.starcatcher.vanilla_bobber"),
                 new RemoveBaseFishedItemModifier("hide"),
-                new ModifyAwardFishRlModifier(Starcatcher.rl("missingno"), "hide"),
+                new ModifyAwardFishRlModifier(Starcatcher.MISSINGNO, "hide"),
                 new OverrideFishPropertiesModifier(FishProperties.empty().withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH)), "hide"),
                 new TriggersSkipMinigameModifier("hide")
         ), false);
@@ -232,10 +232,13 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new SkipMinigameIfTriggerFoundModifier("tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber")
         ), false);
 
+        //templates
         modifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(
                 new SurvivesLavaModifier(""),
                 new ExtraGoldenRiskModifier(0.1f, true, "")
         ), false);
+
+        //rods
 
 
         //worms
@@ -363,7 +366,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
                                         .withAlwaysSpawnEntity()
                                         .withDifficulty(Difficulty.CREEPER)
                                         .withSkipsMinigame()
-                                , Starcatcher.rl("missingno"), 5, "tooltip.modifier.starcatcher.add_creeper"),
+                                , Starcatcher.MISSINGNO, 5, "tooltip.modifier.starcatcher.add_creeper"),
 
                         new AdjustLureTimeModifier(0.5f, 0.5f, 1, "")
                 ), false);

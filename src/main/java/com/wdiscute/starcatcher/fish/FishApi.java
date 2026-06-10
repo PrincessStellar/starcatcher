@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.fish;
 
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
@@ -11,6 +12,8 @@ import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
+import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
+import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
@@ -19,6 +22,7 @@ import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -34,12 +38,81 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FishApi
 {
+    public static Pair<FishProperties, ResourceLocation> getFP(@NotNull Entity entity, Player player, List<AbstractCatchModifier> modifiers, ItemStack rod, boolean includeNonFish)
+    {
+        Level level = entity.level();
+
+        FishProperties fpToFish = null;
+        ResourceLocation rlToAwardUponFishingComplete = null;
+
+        //server only
+        List<FishProperties> available = new ArrayList<>();
+
+        modifiers.forEach(AbstractCatchModifier::onReelStart);
+
+        //if any non-fish is available, select it
+        if (includeNonFish)
+            for (FishProperties fp : FishApi.getNonFishes(level))
+            {
+                int chance = fp.calculateChance(entity, level, rod, AbstractFishRestriction.Context.FISHING);
+
+                if (chance > 0)
+                {
+                    fpToFish = fp;
+                    rlToAwardUponFishingComplete = FishApi.getKey(level, fp);
+                    break;
+                }
+            }
+
+        //add available fish to list if no trophy/secret/extra was available
+        for (FishProperties fp : FishApi.getFishes(level))
+        {
+            int chance = fp.calculateChance(entity, level, rod, AbstractFishRestriction.Context.FISHING);
+            for (int i = 0; i < chance; i++) available.add(fp);
+        }
+
+        //trigger modifiers to clear available pool
+        if (modifiers.stream().anyMatch(AbstractCatchModifier::clearDefaultPool)) available = new ArrayList<>();
+
+        //trigger modifiers to modify available pool
+        for (AbstractCatchModifier acm : modifiers) available = acm.modifyAvailablePool(available);
+
+        //if no fish is available and no non-fish was selected, reset player fishing data and award nothing
+        if (available.isEmpty() && fpToFish == null && player != null)
+        {
+            player.displayClientMessage(Component.translatable("gui.starcatcher.reel_no_fish"), true);
+            return null;
+        }
+
+        //get random fish from available pool, if no trophy/secret is selected
+        if (fpToFish == null)
+        {
+            fpToFish = available.get(entity.getRandom().nextInt(available.size()));
+            rlToAwardUponFishingComplete = FishApi.getKey(level, fpToFish);
+        }
+
+        //trigger modifiers for which fish to get based on available
+        List<FishProperties> immutableAvailable = List.copyOf(available);
+        modifiers.forEach(acm -> acm.afterChoosingTheCatch(immutableAvailable));
+
+        //should cancel to prevent normal minigame/item fished (vanilla bobber & messages)
+        if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldCancelBeforeSkipsMinigameCheck))
+        {
+            return null;
+        }
+
+        return Pair.of(fpToFish, rlToAwardUponFishingComplete);
+    }
+
+
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
         //if dev worm return base chance

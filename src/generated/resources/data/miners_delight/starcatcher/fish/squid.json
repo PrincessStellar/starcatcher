@@ -33,12 +33,6 @@
   "rarity": "uncommon",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -46,23 +40,11 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 2147483647,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
       ],
       "dimensions_blacklist": []
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
     },
     {
       "type": "starcatcher:biome",
@@ -75,9 +57,27 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
       "max_y": 100,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

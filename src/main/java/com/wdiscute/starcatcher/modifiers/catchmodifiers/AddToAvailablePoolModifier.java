@@ -23,7 +23,7 @@ public class AddToAvailablePoolModifier extends AbstractCatchModifier
     public static final MapCodec<AddToAvailablePoolModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     FishProperties.CODEC.optionalFieldOf("fish_properties", FishProperties.empty()).forGetter(o -> o.fp),
-                    ResourceLocation.CODEC.optionalFieldOf("fish_properties_location", Starcatcher.rl("missingno")).forGetter(o -> o.rl),
+                    ResourceLocation.CODEC.optionalFieldOf("fish_properties_location", Starcatcher.MISSINGNO).forGetter(o -> o.rl),
                     Codec.INT.fieldOf("quantity_to_add").forGetter(o -> o.count),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, AddToAvailablePoolModifier::new));
@@ -39,7 +39,7 @@ public class AddToAvailablePoolModifier extends AbstractCatchModifier
     @Override
     public List<FishProperties> modifyAvailablePool(List<FishProperties> available)
     {
-        if (!rl.equals(Starcatcher.rl("missingno")))
+        if (!rl.equals(Starcatcher.MISSINGNO))
         {
             Registry<FishProperties> registry = instance.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY);
             Optional<FishProperties> optional = registry.getOptional(rl);

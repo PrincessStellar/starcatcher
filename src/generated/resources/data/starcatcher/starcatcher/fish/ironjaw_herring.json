@@ -116,12 +116,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [],
       "biomes_blacklist": [],
@@ -135,6 +129,12 @@
       "max_y": 100,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

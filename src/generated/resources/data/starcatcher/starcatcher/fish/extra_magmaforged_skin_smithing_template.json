@@ -27,7 +27,7 @@
       },
       {
         "type": "starcatcher:multi_layer_modifier",
-        "max_layers": 2,
+        "max_layers": 1,
         "translation_override": ""
       }
     ],
@@ -75,14 +75,14 @@
       ]
     },
     {
+      "type": "starcatcher:percentage_chance",
+      "chance": 0.05
+    },
+    {
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:lava"
       ]
-    },
-    {
-      "type": "starcatcher:percentage_chance",
-      "chance": 0.05
     }
   ],
   "size_and_weight": {

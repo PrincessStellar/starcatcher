@@ -87,6 +87,12 @@ public class BiomeRestriction extends AbstractFishRestriction
     }
 
     @Override
+    public int getSortPriority()
+    {
+        return -50;
+    }
+
+    @Override
     public MapCodec<? extends AbstractFishRestriction> codec()
     {
         return CODEC;

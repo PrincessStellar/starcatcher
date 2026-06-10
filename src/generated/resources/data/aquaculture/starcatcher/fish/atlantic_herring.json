@@ -51,12 +51,6 @@
   "rarity": "rare",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -99,6 +93,12 @@
         }
       ],
       "translation_override": "gui.guide.day"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

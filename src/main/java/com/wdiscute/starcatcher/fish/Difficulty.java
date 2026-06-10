@@ -116,6 +116,24 @@ public record Difficulty(
     public static Difficulty EASY_VANISHING = EASY.vanishing();
     public static Difficulty EASY_MOVING = EASY.moving();
 
+    public static Difficulty EASY_STONE = new Difficulty(
+            10, 20, 1,
+            List.of(),
+            SweetSpot.STONE_LOW_REWARD, SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
+    );
+
+    public static Difficulty MEDIUM_STONE= new Difficulty(
+            150, 10, 20, 1,
+            List.of(),
+            SweetSpot.STONE_LOW_REWARD,  SweetSpot.NORMAL
+    );
+
+    public static Difficulty HARD_STONE= new Difficulty(
+            200, 12, 30, 2,
+            List.of(),
+            SweetSpot.STONE_LOW_REWARD,  SweetSpot.THIN
+    );
+
     public static Difficulty MEDIUM = new Difficulty(
             10, 20, 1,
             List.of(),
@@ -598,6 +616,13 @@ public record Difficulty(
                 0xff494949
         );
 
+        public static SweetSpot STONE_LOW_REWARD = new SweetSpot(
+                SCSweetSpotsBehaviour.NORMAL,
+                RL_STONE,
+                33,
+                3,
+                0xff494949
+        );
 
         public static SweetSpot STONE = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,

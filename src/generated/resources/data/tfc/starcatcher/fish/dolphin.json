@@ -51,12 +51,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [],
       "biomes_blacklist": [],
@@ -79,6 +73,12 @@
         "tfc:food/salmon": 50,
         "tfc:food/tropical_fish": 50
       }
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

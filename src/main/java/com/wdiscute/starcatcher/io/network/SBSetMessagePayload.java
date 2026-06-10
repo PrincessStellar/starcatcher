@@ -16,14 +16,14 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.List;
 
-public record SetMessagePayload(List<String> text, String name) implements CustomPacketPayload
+public record SBSetMessagePayload(List<String> text, String name) implements CustomPacketPayload
 {
-    public static final Type<SetMessagePayload> TYPE = new Type<>(Starcatcher.rl("set_message"));
+    public static final Type<SBSetMessagePayload> TYPE = new Type<>(Starcatcher.rl("set_message"));
 
-    public static final StreamCodec<ByteBuf, SetMessagePayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), SetMessagePayload::text,
-            ByteBufCodecs.STRING_UTF8, SetMessagePayload::name,
-            SetMessagePayload::new
+    public static final StreamCodec<ByteBuf, SBSetMessagePayload> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), SBSetMessagePayload::text,
+            ByteBufCodecs.STRING_UTF8, SBSetMessagePayload::name,
+            SBSetMessagePayload::new
     );
 
     @Override

@@ -15,6 +15,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.loading.DatagenModLoader;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -23,7 +26,9 @@ public interface SCItems
 
     static void registerExtraItems()
     {
-        if (ModList.get().isLoaded("create")) CreateCompat.register();
+        //needs to be commented out during datagen is create is not loaded on dev
+        if (ModList.get().isLoaded("create") || DatagenModLoader.isRunningDataGen())
+            CreateCompat.register();
     }
 
     DeferredRegister.Items ITEMS = DeferredRegister.createItems(Starcatcher.MOD_ID);

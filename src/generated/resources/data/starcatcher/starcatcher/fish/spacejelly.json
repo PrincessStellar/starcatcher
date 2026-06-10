@@ -50,12 +50,6 @@
   "rarity": "rare",
   "restrictions": [
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:empty"
-      ]
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:the_end"
@@ -77,6 +71,12 @@
       "type": "starcatcher:structure_restriction",
       "structure": [
         "minecraft:end_city"
+      ]
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:empty"
       ]
     }
   ],

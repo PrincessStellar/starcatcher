@@ -73,6 +73,8 @@ public class Starcatcher
         return ResourceLocation.fromNamespaceAndPath(Starcatcher.MOD_ID, s);
     }
 
+    public static final ResourceLocation MISSINGNO = rl("missingno");
+
     @OnlyIn(Dist.CLIENT)
     public static void fishCaughtToast(FishProperties fp, boolean newFish, int sizeCM, int weightCM)
     {

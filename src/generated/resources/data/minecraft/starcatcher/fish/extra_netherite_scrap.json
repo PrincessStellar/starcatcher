@@ -66,12 +66,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:lava"
-      ]
-    },
-    {
       "type": "starcatcher:caught_limit",
       "limit": 3
     },
@@ -83,6 +77,12 @@
           "count_type": "total",
           "rarity": "golden"
         }
+      ]
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:lava"
       ]
     }
   ],

@@ -74,12 +74,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [],
       "biomes_blacklist": [],
@@ -99,6 +93,12 @@
       "baits": {
         "starcatcher:almighty_worm": 5
       }
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

@@ -56,12 +56,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [],
       "biomes_blacklist": [],
@@ -87,6 +81,12 @@
         "mid_summer": 0
       },
       "translation_override": "gui.guide.seasons.spring_summer"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

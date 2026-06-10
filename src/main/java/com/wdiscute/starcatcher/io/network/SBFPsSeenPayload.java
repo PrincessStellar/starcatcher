@@ -14,14 +14,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public record FPsSeenPayload(List<ResourceLocation> locs) implements CustomPacketPayload {
+public record SBFPsSeenPayload(List<ResourceLocation> locs) implements CustomPacketPayload {
 
-    public static final Type<FPsSeenPayload> TYPE = new Type<>(Starcatcher.rl("fps_seen"));
+    public static final Type<SBFPsSeenPayload> TYPE = new Type<>(Starcatcher.rl("fps_seen"));
 
-    public static final StreamCodec<ByteBuf, FPsSeenPayload> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<ByteBuf, SBFPsSeenPayload> STREAM_CODEC = StreamCodec.composite(
             ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list()),
-            FPsSeenPayload::locs,
-            FPsSeenPayload::new
+            SBFPsSeenPayload::locs,
+            SBFPsSeenPayload::new
     );
 
     @Override

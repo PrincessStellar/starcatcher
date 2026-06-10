@@ -42,12 +42,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [
         "minecraft:beach",
@@ -59,6 +53,12 @@
         "starcatcher:is_lukewarm_ocean",
         "starcatcher:is_warm_ocean"
       ]
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 100,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
     }
   ],
   "size_and_weight": {

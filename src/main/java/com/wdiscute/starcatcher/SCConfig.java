@@ -45,6 +45,18 @@ public class SCConfig
             .translation("starcatcher.configuration.radar_scale")
             .defineInRange("radar_scale", 1d, -10000, 10000);
 
+    public static final ModConfigSpec.DoubleValue TRACKER_X_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tracker_x_offset")
+            .defineInRange("tracker_x_offset", 0d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue TRACKER_Y_OFFSET = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tracker_y_offset")
+            .defineInRange("tracker_y_offset", 0d, -10000, 10000);
+
+    public static final ModConfigSpec.DoubleValue TRACKER_SCALE = BUILDER_CLIENT
+            .translation("starcatcher.configuration.tracker_scale")
+            .defineInRange("tracker_scale", 1d, -10000, 10000);
+
     public static final ModConfigSpec.BooleanValue DEBUG_MINIGAME = BUILDER_CLIENT
             .comment("Shows a bunch of extra text info during the minigame for debugging")
             .translation("starcatcher.configuration.debug")

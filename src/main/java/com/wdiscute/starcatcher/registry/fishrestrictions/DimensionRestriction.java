@@ -69,6 +69,12 @@ public class DimensionRestriction extends AbstractFishRestriction
     }
 
     @Override
+    public int getSortPriority()
+    {
+        return -99;
+    }
+
+    @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)

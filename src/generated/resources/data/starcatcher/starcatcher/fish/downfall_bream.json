@@ -56,12 +56,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [],
       "biomes_blacklist": [],
@@ -89,6 +83,12 @@
     {
       "type": "starcatcher:weather_restriction",
       "weather": "rain"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

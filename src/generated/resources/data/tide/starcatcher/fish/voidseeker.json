@@ -71,16 +71,16 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:empty"
-      ]
-    },
-    {
       "type": "starcatcher:bait",
       "baits": {
         "starcatcher:legendary_bait": 50
       }
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:empty"
+      ]
     }
   ],
   "size_and_weight": {

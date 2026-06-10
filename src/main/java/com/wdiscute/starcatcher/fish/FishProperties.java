@@ -36,13 +36,13 @@ public record FishProperties(
         ResourceLocation textures
 )
 {
-    public static final ResourceLocation SURFACE    = Starcatcher.rl("textures/gui/minigame/surface.png");
-    public static final ResourceLocation NETHER     = Starcatcher.rl("textures/gui/minigame/nether.png");
-    public static final ResourceLocation CAVE       = Starcatcher.rl("textures/gui/minigame/cave.png");
-    public static final ResourceLocation ICY        = Starcatcher.rl("textures/gui/minigame/icy.png");
-    public static final ResourceLocation DEEP_DARK  = Starcatcher.rl("textures/gui/minigame/deep_dark.png");
-    public static final ResourceLocation END        = Starcatcher.rl("textures/gui/minigame/end.png");
-    public static final ResourceLocation END_VOID   = Starcatcher.rl("textures/gui/minigame/end_void.png");
+    public static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
+    public static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
+    public static final ResourceLocation CAVE = Starcatcher.rl("textures/gui/minigame/cave.png");
+    public static final ResourceLocation ICY = Starcatcher.rl("textures/gui/minigame/icy.png");
+    public static final ResourceLocation DEEP_DARK = Starcatcher.rl("textures/gui/minigame/deep_dark.png");
+    public static final ResourceLocation END = Starcatcher.rl("textures/gui/minigame/end.png");
+    public static final ResourceLocation END_VOID = Starcatcher.rl("textures/gui/minigame/end_void.png");
 
     public static final Codec<FishProperties> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(

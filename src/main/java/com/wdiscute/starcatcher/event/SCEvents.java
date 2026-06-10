@@ -250,27 +250,27 @@ public class SCEvents
     {
         final PayloadRegistrar registrar = event.registrar("1");
         registrar.playToClient(
-                FishingStartedPayload.TYPE,
-                FishingStartedPayload.STREAM_CODEC,
-                FishingStartedPayload::handle
+                CBFishingStartedPayload.TYPE,
+                CBFishingStartedPayload.STREAM_CODEC,
+                CBFishingStartedPayload::handle
         );
 
         registrar.playToServer(
-                FishingCompletedPayload.TYPE,
-                FishingCompletedPayload.STREAM_CODEC,
-                FishingCompletedPayload::handle
+                SBFishingCompletedPayload.TYPE,
+                SBFishingCompletedPayload.STREAM_CODEC,
+                SBFishingCompletedPayload::handle
         );
 
         registrar.playToClient(
-                FishCaughtPayload.TYPE,
-                FishCaughtPayload.STREAM_CODEC,
-                FishCaughtPayload::handle
+                CBFishCaughtPayload.TYPE,
+                CBFishCaughtPayload.STREAM_CODEC,
+                CBFishCaughtPayload::handle
         );
 
         registrar.playToServer(
-                FPsSeenPayload.TYPE,
-                FPsSeenPayload.STREAM_CODEC,
-                FPsSeenPayload::handle
+                SBFPsSeenPayload.TYPE,
+                SBFPsSeenPayload.STREAM_CODEC,
+                SBFPsSeenPayload::handle
         );
 
         registrar.playToServer(
@@ -292,9 +292,9 @@ public class SCEvents
         );
 
         registrar.playToServer(
-                SetMessagePayload.TYPE,
-                SetMessagePayload.STREAM_CODEC,
-                SetMessagePayload::handle
+                SBSetMessagePayload.TYPE,
+                SBSetMessagePayload.STREAM_CODEC,
+                SBSetMessagePayload::handle
         );
 
         registrar.playToServer(
@@ -307,6 +307,12 @@ public class SCEvents
                 CBFinishedTournamentsListPayload.TYPE,
                 CBFinishedTournamentsListPayload.STREAM_CODEC,
                 CBFinishedTournamentsListPayload::handle
+        );
+
+        registrar.playToServer(
+                SBTrackFishPayload.TYPE,
+                SBTrackFishPayload.STREAM_CODEC,
+                SBTrackFishPayload::handle
         );
     }
 }

@@ -135,6 +135,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 
     public static void register(FishProperties fp, String modLoadedRestriction)
     {
+        fp = fp.withRestrictions(fp.restrictions().stream().sorted().toList());
+
         String modIdOfFish = fp.catchInfo().fish().rl().getNamespace();
 
         ItemStack fish = fp.catchInfo().fish().toStack();
@@ -155,6 +157,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         //adds every starcatcher item that has guide entry, is of fish type, and is not trash rarity
         if (modIdOfFish.equals("starcatcher") && fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.rarity().equals(Rarity.TRASH))
             DGStarcatcherFishes.STARCATCHER_FISHABLE.add(fp);
+
+        DGStarcatcherFishes.ALL_FISHABLE.add(fp);
 
         ResourceKey<FishProperties> key = createKey(fp);
 
@@ -228,7 +232,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_CRIMSON_FOREST)
-                .addModifier(new Nikdo53Modifier(2, ""))
+                .addModifier(new Nikdo53Modifier(1, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -237,7 +241,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_WARPED_FOREST)
-                .addModifier(new Nikdo53Modifier(2, ""))
+                .addModifier(new Nikdo53Modifier(1, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -246,7 +250,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_SOUL_SAND_VALLEY)
-                .addModifier(new Nikdo53Modifier(2, ""))
+                .addModifier(new Nikdo53Modifier(1, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 
@@ -255,7 +259,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         return FishProperties.empty().withFish(fish)
                 .withTextures(FishProperties.NETHER)
                 .addRestriction(WorldRestrictions.NETHER_LAVA_BASALT_DELTAS)
-                .addModifier(new Nikdo53Modifier(2, ""))
+                .addModifier(new Nikdo53Modifier(1, ""))
                 .addModifier(new BurnOnMissModifier(40, 10, 16, ""));
     }
 

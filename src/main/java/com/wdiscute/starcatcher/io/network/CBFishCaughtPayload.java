@@ -8,24 +8,24 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record FishCaughtPayload(FishProperties fp, boolean newFish, int size, int weight,
-                                float percentile) implements CustomPacketPayload
+public record CBFishCaughtPayload(FishProperties fp, boolean newFish, int size, int weight,
+                                  float percentile) implements CustomPacketPayload
 {
 
-    public static final Type<FishCaughtPayload> TYPE = new Type<>(Starcatcher.rl("fish_caught"));
+    public static final Type<CBFishCaughtPayload> TYPE = new Type<>(Starcatcher.rl("fish_caught"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, FishCaughtPayload> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<RegistryFriendlyByteBuf, CBFishCaughtPayload> STREAM_CODEC = StreamCodec.composite(
             FishProperties.STREAM_CODEC,
-            FishCaughtPayload::fp,
+            CBFishCaughtPayload::fp,
             ByteBufCodecs.BOOL,
-            FishCaughtPayload::newFish,
+            CBFishCaughtPayload::newFish,
             ByteBufCodecs.INT,
-            FishCaughtPayload::size,
+            CBFishCaughtPayload::size,
             ByteBufCodecs.INT,
-            FishCaughtPayload::weight,
+            CBFishCaughtPayload::weight,
             ByteBufCodecs.FLOAT,
-            FishCaughtPayload::percentile,
-            FishCaughtPayload::new
+            CBFishCaughtPayload::percentile,
+            CBFishCaughtPayload::new
     );
 
     @Override

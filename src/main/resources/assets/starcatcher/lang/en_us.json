@@ -183,7 +183,7 @@
   "starcatcher.configuration.penalty_multiplier" : "Global Penalty Multiplier",
   "starcatcher.configuration.decay_multiplier" : "Global Decay Multiplier",
   "starcatcher.configuration.hp_multiplier" : "Global HP Multiplier",
-  "starcatcher.configuration.pointer_speed_multiplier" : "Global Pointer Speed Multiplier",
+  "starcatcher.configuration.handle_speed_multiplier" : "Global Handle Speed Multiplier",
   "starcatcher.configuration.hide_entries_until_found" : "Hide Guide Entries Until Found",
   "starcatcher.configuration.fish_player_messages_chance" : "Player Messages Chance To Fish",
   "starcatcher.configuration.save_data_to_items" : "Size, Weight, Rarity & Golden NBT saving",
@@ -711,6 +711,7 @@
   "gui.guide.heaviest" : "Heaviest: ",
   "gui.guide.percentile" : "Best: top ",
 
+  "gui.guide.track" : "Click to track this fish!",
   "gui.guide.bucketable" : "Can be caught in a bucket when using one as a bait!",
   "gui.guide.entity" : "Can be caught alive when using an Almighty Worm as a bait!",
   "gui.guide.always_entity" : "This fish is more lively than usual!",
@@ -1535,8 +1536,8 @@
   "tooltip.starcatcher.aurora.2" : "rest if they wish to take it home as proof of their skills.",
 
   "item.starcatcher.wintery_pike" : "Wintery Pike",
-  "tooltip.starcatcher.wintery_pike.0" : "A predatory fish. This specific species loves cold",
-  "tooltip.starcatcher.wintery_pike.1" : "climates and is often found inside icy lakes.",
+  "tooltip.starcatcher.wintery_pike.0" : "A spiky predatory fish. ",
+  "tooltip.starcatcher.wintery_pike.1" : "It is often seen searching for prey in icy lakes.",
 
 
 
@@ -1680,8 +1681,8 @@
   "tooltip.starcatcher.carpenjoe.1" : "It is said anglers eat it for good luck before debugging.",
 
   "item.starcatcher.willow_bream" : "Willow Bream",
-  "tooltip.starcatcher.willow_bream.0" : "A really tricky to catch fish which",
-  "tooltip.starcatcher.willow_bream.1" : "only reveals itself during nighttime.",
+  "tooltip.starcatcher.willow_bream.0" : "A tricky catch only found during nighttime.",
+  "tooltip.starcatcher.willow_bream.1" : "Its blue scales makes it incredibly hard to track whilst reeling it in.",
 
   "item.starcatcher.drifting_bream" : "Drifting Bream",
   "tooltip.starcatcher.drifting_bream.0" : "A species of bream known for slowly",
@@ -1816,8 +1817,7 @@
   "tooltip.starcatcher.dripfin.1" : "water pools of dripstone caves.",
 
   "item.starcatcher.yellowstone_fish" : "Yellowstone Fish",
-  "tooltip.starcatcher.yellowstone_fish.0" : "A beautiful gold colored fish",
-  "tooltip.starcatcher.yellowstone_fish.1" : "common to dripstone caves.",
+  "tooltip.starcatcher.yellowstone_fish.0" : "A beautiful gold colored fish common to dripstone caves.",
 
 
 
@@ -1936,10 +1936,8 @@
   "tooltip.starcatcher.glowstone_pufferfish.0" : "A pufferfish glittering just like glowstone.",
 
   "item.starcatcher.willish" : "Willish",
-  "tooltip.starcatcher.willish.0" : "A fish commonly known for scamming",
-  "tooltip.starcatcher.willish.1" : "other fishes out of their food.",
-  "tooltip.starcatcher.willish.2" : "It is incredibly ugly and should be",
-  "tooltip.starcatcher.willish.3" : "discarded back to The Nether where it belongs.",
+  "tooltip.starcatcher.willish.0" : "A fish known for scamming other fishes out of their food.",
+  "tooltip.starcatcher.willish.1" : "It is incredibly ugly and should be discarded back to The Nether where it belongs.",
 
   "item.starcatcher.lava_crab_claw" : "Lava Crab Claw",
   "tooltip.starcatcher.lava_crab_claw.0" : "A claw ripped off from a Lava Crab.",

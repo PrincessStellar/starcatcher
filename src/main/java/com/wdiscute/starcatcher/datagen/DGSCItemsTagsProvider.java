@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
+import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -57,17 +58,26 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
             tag(SCTags.STARCAUGHT_FISHABLES).addOptional(key);
 
-            switch (fp.rarity())
-            {
-                case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(key);
-                case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).addOptional(key);
-                case RARE -> tag(SCTags.RARE_FISHES).addOptional(key);
-                case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(key);
-                case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(key);
-            }
-
             //fishable for tackle box
             tag(SCTags.FISHABLE).addOptional(key);
+        }
+
+        for (FishProperties fp : DGStarcatcherFishes.ALL_FISHABLE)
+        {
+            ResourceLocation key = fp.catchInfo().fish().rl();
+
+            //add all "normal catches" to rarity tags
+            if(fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.catchInfo().alwaysSpawnEntity())
+            {
+                switch (fp.rarity())
+                {
+                    case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(key);
+                    case UNCOMMON -> tag(SCTags.UNCOMMON_FISHES).addOptional(key);
+                    case RARE -> tag(SCTags.RARE_FISHES).addOptional(key);
+                    case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(key);
+                    case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(key);
+                }
+            }
         }
 
         //bucketable fish
@@ -219,6 +229,12 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         tag(ItemTags.BOOKSHELF_BOOKS)
                 .add(GUIDE.get());
 
+        tag(SCTags.HAS_RADAR_LAYER)
+                .add(FISH_RADAR.get());
+
+        tag(SCTags.HAS_TRACKER_LAYER)
+                .add(GUIDE.get())
+                .addTag(SCTags.RODS);
     }
 
 

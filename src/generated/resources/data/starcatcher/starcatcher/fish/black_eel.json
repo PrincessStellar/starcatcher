@@ -14,11 +14,21 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 150,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,
     "sweetspots": [
+      {
+        "color_as_int": -11974327,
+        "hitbox_size_in_pixels": 33,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 3,
+        "sweet_spot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/stone.png",
+        "vanishing_rate": 0.0
+      },
       {
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
@@ -27,16 +37,6 @@
         "reward": 15,
         "sweet_spot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 15,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 20,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]

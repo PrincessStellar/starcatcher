@@ -1,31 +1,19 @@
 {
   "values": [
     {
-      "id": "starcatcher:sage_catfish",
+      "id": "tide:neptune_koi",
       "required": false
     },
     {
-      "id": "tide:saturn_cuttlefish",
+      "id": "tide:marstilus",
       "required": false
     },
     {
-      "id": "tide:blazing_swordfish",
+      "id": "aquaculture:catfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:raw_snowflake",
-      "required": false
-    },
-    {
-      "id": "tide:chasm_eel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
-      "id": "starcatcher:the_quarrish",
+      "id": "starcatcher:dark_amethyst_snapper",
       "required": false
     },
     {
@@ -37,59 +25,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:chorus_crab",
-      "required": false
-    },
-    {
-      "id": "tide:neptune_koi",
-      "required": false
-    },
-    {
-      "id": "starcatcher:voidfin",
-      "required": false
-    },
-    {
-      "id": "tide:mantyvern",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:lava_pufferfish",
-      "required": false
-    },
-    {
-      "id": "tide:darkness_eater",
-      "required": false
-    },
-    {
-      "id": "tide:pluto_snail",
-      "required": false
-    },
-    {
-      "id": "tide:aquathorn",
-      "required": false
-    },
-    {
-      "id": "tide:echo_snapper",
-      "required": false
-    },
-    {
-      "id": "tide:shooting_starfish",
-      "required": false
-    },
-    {
-      "id": "tide:mooneye",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:wither_bonefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bright_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sculkfish",
+      "id": "tide:shadow_shark",
       "required": false
     },
     {
@@ -97,11 +33,11 @@
       "required": false
     },
     {
-      "id": "tide:shadow_shark",
+      "id": "fishofthieves:wrecker",
       "required": false
     },
     {
-      "id": "betterend:cubozoa",
+      "id": "tide:blazing_swordfish",
       "required": false
     },
     {
@@ -109,7 +45,27 @@
       "required": false
     },
     {
-      "id": "minecraft:creeper",
+      "id": "tide:shooting_starfish",
+      "required": false
+    },
+    {
+      "id": "tide:pluto_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sage_catfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sculkfish",
+      "required": false
+    },
+    {
+      "id": "tide:mantyvern",
+      "required": false
+    },
+    {
+      "id": "starcatcher:purple_carp",
       "required": false
     },
     {
@@ -117,59 +73,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:dark_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "tide:great_white_shark",
-      "required": false
-    },
-    {
-      "id": "aquaculture:catfish",
-      "required": false
-    },
-    {
-      "id": "tide:windbass",
-      "required": false
-    },
-    {
-      "id": "aquaculture:pink_salmon",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:skipper",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:soulsucker",
-      "required": false
-    },
-    {
-      "id": "tide:sun_emblem",
-      "required": false
-    },
-    {
-      "id": "aquaculture:brown_shrooma",
-      "required": false
-    },
-    {
-      "id": "starcatcher:carpenjoe",
-      "required": false
-    },
-    {
-      "id": "starcatcher:rose_siamese_fish",
-      "required": false
-    },
-    {
-      "id": "spawn:sunfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab",
-      "required": false
-    },
-    {
-      "id": "tide:bull_shark",
+      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -177,7 +81,51 @@
       "required": false
     },
     {
+      "id": "starcatcher:twilight_koi",
+      "required": false
+    },
+    {
+      "id": "starcatcher:scorched_bloodsucker",
+      "required": false
+    },
+    {
+      "id": "tide:darkness_eater",
+      "required": false
+    },
+    {
       "id": "starcatcher:molten_deepslate_crab",
+      "required": false
+    },
+    {
+      "id": "tide:saturn_cuttlefish",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:wizard_jelly",
+      "required": false
+    },
+    {
+      "id": "starcatcher:amethystback",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_crab",
+      "required": false
+    },
+    {
+      "id": "aquaculture:brown_shrooma",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lava_crab",
+      "required": false
+    },
+    {
+      "id": "aquaculture:pink_salmon",
+      "required": false
+    },
+    {
+      "id": "betterend:cubozoa",
       "required": false
     },
     {
@@ -189,15 +137,59 @@
       "required": false
     },
     {
-      "id": "starcatcher:twilight_koi",
+      "id": "tide:uranias_pisces",
       "required": false
     },
     {
-      "id": "unusualfishmod:wizard_jelly",
+      "id": "unusualfishmod:raw_snowflake",
       "required": false
     },
     {
-      "id": "starcatcher:purple_carp",
+      "id": "tide:windbass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:rose_siamese_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:chorus_crab",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:wither_bonefish",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:skipper",
+      "required": false
+    },
+    {
+      "id": "spawn:sunfish",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:lava_pufferfish",
+      "required": false
+    },
+    {
+      "id": "tide:mooneye",
+      "required": false
+    },
+    {
+      "id": "starcatcher:carpenjoe",
+      "required": false
+    },
+    {
+      "id": "tide:aquathorn",
+      "required": false
+    },
+    {
+      "id": "tide:great_white_shark",
+      "required": false
+    },
+    {
+      "id": "tide:chasm_eel",
       "required": false
     },
     {
@@ -205,27 +197,31 @@
       "required": false
     },
     {
-      "id": "starcatcher:obsidian_crab",
+      "id": "starcatcher:voidfin",
       "required": false
     },
     {
-      "id": "fishofthieves:wrecker",
+      "id": "tide:echo_snapper",
       "required": false
     },
     {
-      "id": "tide:uranias_pisces",
+      "id": "tide:bull_shark",
       "required": false
     },
     {
-      "id": "starcatcher:scorched_bloodsucker",
+      "id": "tide:sun_emblem",
       "required": false
     },
     {
-      "id": "tide:marstilus",
+      "id": "starcatcher:bright_amethyst_snapper",
       "required": false
     },
     {
-      "id": "starcatcher:eel_dynamo",
+      "id": "minecraft:creeper",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:soulsucker",
       "required": false
     }
   ]

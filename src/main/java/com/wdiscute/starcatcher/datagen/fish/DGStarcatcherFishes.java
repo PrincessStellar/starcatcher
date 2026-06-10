@@ -13,24 +13,13 @@ import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGStarcatcherFishes
 {
+    public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
     public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
     public static final List<FishProperties> STARCATCHER_BUCKETABLE = new ArrayList<>();
 
     public static void bootstrap()
     {
         register(overworldLakeFish(new MaybeStack(SCItems.OBIDONTIEE))
-                .withRestrictions(List.of(
-                        WeatherRestriction.CLEAR,
-                        WeatherRestriction.RAIN,
-                        WeatherRestriction.THUNDER,
-                        ElevationRestriction.ABOVE_FIFTY,
-                        ElevationRestriction.ABOVE_HUNDRED,
-                        ElevationRestriction.ABOVE_TWO_HUNDRED,
-                        ElevationRestriction.BELOW_ZERO,
-                        DaytimeRestriction.DAY,
-                        DaytimeRestriction.MIDNIGHT,
-                        DaytimeRestriction.NIGHT
-                ))
                 .withSizeAndWeight(new SizeAndWeight(17.7f, 5, 1200, 200)));
 
         register(overworldLakeFish(new MaybeStack(SCItems.MORGANITE))
@@ -226,6 +215,7 @@ public class DGStarcatcherFishes
                 .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(10, 3, 67, 0))
                 .withRarity(Rarity.LEGENDARY)
+                .addBait(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(Difficulty.NO_SWEET_SPOTS.withHP(300)));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.BLOSSOMFISH))
@@ -298,7 +288,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(new SizeAndWeight(36, 12, 2000, 1000))
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                .withDifficulty(Difficulty.HARD_VANISHING)
+                .withDifficulty(Difficulty.HARD_VANISHING.withHP(200))
                 .withRarity(Rarity.EPIC));
 
         register(overworldRiverFish(new MaybeStack(SCItems.HOLLOWBELLY_DARTER))
@@ -454,17 +444,18 @@ public class DGStarcatcherFishes
 
         //caves
         register(overworldCavesFish(new MaybeStack(SCItems.WHITEVEIL))
-                .withSizeAndWeight(new SizeAndWeight(100, 30, 3000, 2000))
-                .withDifficulty(Difficulty.EASY_MOVING));
+                .withSizeAndWeight(new SizeAndWeight(100, 30, 33000, 7000))
+                .withDifficulty(Difficulty.EASY_STONE));
 
         register(overworldCavesFish(new MaybeStack(SCItems.BLACK_EEL))
                 .withSizeAndWeight(new SizeAndWeight(500, 150, 6000, 2000))
-                .withDifficulty(Difficulty.MEDIUM)
+                .withDifficulty(Difficulty.MEDIUM_STONE)
                 .withRarity(Rarity.UNCOMMON));
 
         register(overworldCavesFish(new MaybeStack(SCItems.STONEFISH))
                 .withSizeAndWeight(new SizeAndWeight(300, 150, 26000, 7000))
                 .withRarity(Rarity.LEGENDARY)
+                .addBait(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(Difficulty.STONEFISH));
 
         register(fish(new MaybeStack(SCItems.AMETHYSTBACK))

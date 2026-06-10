@@ -80,7 +80,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("missingno");
+        return Starcatcher.MISSINGNO;
     }
 
     @Override

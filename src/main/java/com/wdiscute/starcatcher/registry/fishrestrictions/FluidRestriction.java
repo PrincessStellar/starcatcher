@@ -7,10 +7,12 @@ import com.teamtea.eclipticseasons.data.start;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -85,9 +87,23 @@ public class FluidRestriction extends AbstractFishRestriction
     }
 
     @Override
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        if(fluids.size() == 1 && !fluids.getFirst().getPath().equals("water"))
+            return List.of(Component.translatable("block." + fluids.getFirst().toLanguageKey()).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_TEXT_DARK)));
+        return super.getIndexHover(level, fp, player, context);
+    }
+
+    @Override
     public MutableComponent getDescriptionPrefix()
     {
         return Component.translatable("gui.guide.fluid");
+    }
+
+    @Override
+    public int getSortPriority()
+    {
+        return 99;
     }
 
     @Override

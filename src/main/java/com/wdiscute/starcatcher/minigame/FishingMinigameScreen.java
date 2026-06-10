@@ -12,7 +12,7 @@ import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.io.network.FishingCompletedPayload;
+import com.wdiscute.starcatcher.io.network.SBFishingCompletedPayload;
 import com.wdiscute.starcatcher.registry.SCAttributes;
 import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
@@ -712,7 +712,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
                     tackleSkin.onSuccessfulMinigame(Minecraft.getInstance().player);
 
-                PacketDistributor.sendToServer(new FishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
+                PacketDistributor.sendToServer(new SBFishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
                 this.onClose();
             }
         }
@@ -725,7 +725,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         modifiers.forEach(AbstractMinigameModifier::onRemove);
 
-        PacketDistributor.sendToServer(new FishingCompletedPayload(-1, false, false, consecutiveHits));
+        PacketDistributor.sendToServer(new SBFishingCompletedPayload(-1, false, false, consecutiveHits));
         this.minecraft.popGuiLayer();
     }
 

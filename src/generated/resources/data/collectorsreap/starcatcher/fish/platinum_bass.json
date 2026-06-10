@@ -44,17 +44,6 @@
   "rarity": "common",
   "restrictions": [
     {
-      "type": "starcatcher:season",
-      "season_extra_chance": {
-        "early_spring": 0,
-        "early_summer": 0,
-        "late_spring": 0,
-        "late_winter": 0,
-        "mid_spring": 0
-      },
-      "translation_override": "gui.guide.seasons.around_spring"
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -69,6 +58,17 @@
       "biomes_tags": [
         "collectorsreap:biome/has_spawn/platinum_bass"
       ]
+    },
+    {
+      "type": "starcatcher:season",
+      "season_extra_chance": {
+        "early_spring": 0,
+        "early_summer": 0,
+        "late_spring": 0,
+        "late_winter": 0,
+        "mid_spring": 0
+      },
+      "translation_override": "gui.guide.seasons.around_spring"
     }
   ],
   "size_and_weight": {

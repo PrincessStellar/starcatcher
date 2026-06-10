@@ -184,6 +184,17 @@ public class DGSCRecipeProvider extends RecipeProvider
         //hats
         colorBlockWithDye(output, dyes, hats, "fisherman_hats");
 
+        //radar
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FISH_RADAR)
+                .define('E', Items.ECHO_SHARD)
+                .define('F', SCTags.LEGENDARY_FISHES)
+                .define('I', Items.IRON_INGOT)
+                .pattern(" E ")
+                .pattern("IFI")
+                .pattern(" I ")
+                .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
+                .save(output);
+
         //bobber
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BOBBER)
                 .define('P', ItemTags.PLANKS)

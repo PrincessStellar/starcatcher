@@ -116,12 +116,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:biome",
       "biomes": [
         "minecraft:lush_caves"
@@ -142,6 +136,12 @@
         "starcatcher:legendary_bait": 50,
         "starcatcher:lush_bait": 50
       }
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

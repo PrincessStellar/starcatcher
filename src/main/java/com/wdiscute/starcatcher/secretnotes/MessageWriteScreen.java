@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.secretnotes;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.network.SetMessagePayload;
+import com.wdiscute.starcatcher.io.network.SBSetMessagePayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
@@ -117,7 +117,7 @@ public class MessageWriteScreen extends Screen
     {
         List<String> list = new ArrayList<>();
         boxes.forEach(b -> list.add(b.getValue()));
-        PacketDistributor.sendToServer(new SetMessagePayload(list, name.getValue()));
+        PacketDistributor.sendToServer(new SBSetMessagePayload(list, name.getValue()));
         super.onClose();
     }
 

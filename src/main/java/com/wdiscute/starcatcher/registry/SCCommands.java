@@ -17,11 +17,9 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.io.network.FishingStartedPayload;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
+import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -29,7 +27,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.ResourceArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -39,7 +36,6 @@ import net.neoforged.neoforge.server.command.EnumArgument;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public interface SCCommands
 {
@@ -338,7 +334,7 @@ public interface SCCommands
         if (!available.isEmpty())
         {
             FishProperties fpToFish = available.get(U.r.nextInt(available.size()));
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(fpToFish, MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
+            PacketDistributor.sendToPlayer(player, new CBFishingStartedPayload(fpToFish, MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
         }
         else
         {
@@ -357,7 +353,7 @@ public interface SCCommands
         {
             var treasure = new MaybeStack(FishApi.getTreasure(player, optional.get()));
             if (SCConfig.HIDE_TREASURES.get()) treasure = new MaybeStack(SCItems.UNKNOWN_FISH);
-            PacketDistributor.sendToPlayer(player, new FishingStartedPayload(optional.get(), treasure, new MaybeStack(player.getMainHandItem())));
+            PacketDistributor.sendToPlayer(player, new CBFishingStartedPayload(optional.get(), treasure, new MaybeStack(player.getMainHandItem())));
             return 1;
         }
         else

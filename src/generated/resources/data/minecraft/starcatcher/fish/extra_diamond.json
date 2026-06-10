@@ -53,12 +53,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 0,
       "min_y": -2147483648,
@@ -76,6 +70,12 @@
           "count_type": "total",
           "rarity": "golden"
         }
+      ]
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
       ]
     }
   ],

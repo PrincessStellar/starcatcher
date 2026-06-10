@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public abstract class AbstractFishRestriction
+public abstract class AbstractFishRestriction implements Comparable<AbstractFishRestriction>
 {
     public final String translationOverride;
 
@@ -115,6 +115,17 @@ public abstract class AbstractFishRestriction
 
     public void render(GuiGraphics guiGraphics, int topLeftX, int topLeftY, int mouseX, int mouseY, Context context)
     {
+    }
+
+    public int getSortPriority()
+    {
+        return 0;
+    }
+
+    @Override
+    public int compareTo(AbstractFishRestriction other)
+    {
+        return Integer.compare(this.getSortPriority(), other.getSortPriority());
     }
 
     public enum Context

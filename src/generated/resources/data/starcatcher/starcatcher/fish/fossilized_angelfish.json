@@ -61,12 +61,6 @@
       "biomes_tags": []
     },
     {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 0,
       "min_y": -2147483648,
@@ -77,6 +71,12 @@
       "baits": {
         "starcatcher:dripstone_bait": 50
       }
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {

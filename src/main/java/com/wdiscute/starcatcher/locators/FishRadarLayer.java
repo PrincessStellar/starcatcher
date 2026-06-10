@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.locators;
 
 import com.wdiscute.starcatcher.SCConfig;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
@@ -78,7 +79,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
         if (Minecraft.getInstance().player == null) return;
         else player = Minecraft.getInstance().player;
 
-        boolean shouldShow = player.getMainHandItem().is(SCItems.FISH_RADAR) || player.getOffhandItem().is(SCItems.FISH_RADAR) || Minecraft.getInstance().screen instanceof SettingsScreen;
+        boolean shouldShow = player.getMainHandItem().is(SCTags.HAS_RADAR_LAYER) || player.getOffhandItem().is(SCTags.HAS_RADAR_LAYER) || Minecraft.getInstance().screen instanceof SettingsScreen;
 
         //smoothly moves ui in and out of screen
         if (!shouldShow)

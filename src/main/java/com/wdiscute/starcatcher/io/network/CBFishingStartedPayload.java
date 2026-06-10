@@ -8,20 +8,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record FishingStartedPayload(FishProperties fp, MaybeStack treasure, MaybeStack rod) implements CustomPacketPayload {
+public record CBFishingStartedPayload(FishProperties fp, MaybeStack treasure, MaybeStack rod) implements CustomPacketPayload {
 
-    public static final Type<FishingStartedPayload> TYPE = new Type<>(Starcatcher.rl("fishing_started"));
+    public static final Type<CBFishingStartedPayload> TYPE = new Type<>(Starcatcher.rl("fishing_started"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, FishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
-            FishProperties.STREAM_CODEC, FishingStartedPayload::fp,
-            MaybeStack.STREAM_CODEC, FishingStartedPayload::treasure,
-            MaybeStack.STREAM_CODEC, FishingStartedPayload::rod,
-            FishingStartedPayload::new
+    public static final StreamCodec<RegistryFriendlyByteBuf, CBFishingStartedPayload> STREAM_CODEC = StreamCodec.composite(
+            FishProperties.STREAM_CODEC, CBFishingStartedPayload::fp,
+            MaybeStack.STREAM_CODEC, CBFishingStartedPayload::treasure,
+            MaybeStack.STREAM_CODEC, CBFishingStartedPayload::rod,
+            CBFishingStartedPayload::new
     );
 
     @Override
@@ -35,7 +34,7 @@ public record FishingStartedPayload(FishProperties fp, MaybeStack treasure, Mayb
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void client(FishingStartedPayload data, IPayloadContext context) {
+    public static void client(CBFishingStartedPayload data, IPayloadContext context) {
         Minecraft.getInstance().setScreen(new FishingMinigameScreen(data.fp(), data.treasure.toStack(), data.rod.toStack()));
     }
 }

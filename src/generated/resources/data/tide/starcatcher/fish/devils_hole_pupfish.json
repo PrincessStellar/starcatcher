@@ -41,24 +41,6 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 50,
-      "min_y": 0,
-      "translation_override": "gui.guide.elevation.stone_caves"
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ]
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
-    },
-    {
       "type": "starcatcher:dimension",
       "dimensions": [
         "minecraft:overworld"
@@ -67,8 +49,26 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
+      "max_y": 50,
+      "min_y": 0,
+      "translation_override": "gui.guide.elevation.stone_caves"
+    },
+    {
+      "type": "starcatcher:bait",
+      "baits": {
+        "starcatcher:legendary_bait": 50
+      }
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
       "max_y": 30,
       "min_y": 20
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {
