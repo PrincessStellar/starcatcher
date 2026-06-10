@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-08T15:12:36.4574148	Item Models: starcatcher
+// 1.21.1	2026-06-10T21:24:16.9821418	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -120,6 +120,7 @@ d2723d60eb3f0c4b23296d49fcb9a2d5ea8bca65 assets/starcatcher/models/item/icetooth
 d48a148b1df658af436bf82aa9a3ab52b4221f01 assets/starcatcher/models/item/letter.json
 00bd90c22b41b2c2d021172da194d453a264ed37 assets/starcatcher/models/item/lightning_bass.json
 6a58183a973f6b668c2898d92d9621d1e72fc232 assets/starcatcher/models/item/lily_snapper.json
+1b10992427c4f884db7009a60fa6377d612571bc assets/starcatcher/models/item/livid_bamboo.json
 5a7ba3ccb7bb40e095604f2e09bc9d66f3f4c25d assets/starcatcher/models/item/lush_bait.json
 7371766f9fbf69872cb8442d48c53c02c72081f6 assets/starcatcher/models/item/lush_glowberry_skin_smithing_template.json
 f9b89819bbd4f54f901873dac04f2b6e82a20332 assets/starcatcher/models/item/lush_pike.json
@@ -153,6 +154,7 @@ f03df0085ca72f8e6b99ee8170144ec41fc4c357 assets/starcatcher/models/item/peakdwel
 5835db7e920a22e1ab5a328ba5099f399f0c9bbc assets/starcatcher/models/item/pearl.json
 4b718f5bc360344ece03347659be3349071fa77a assets/starcatcher/models/item/pearl_smithing_template.json
 1c347b5111e4d05d07f04b8a6f1d5c05def1b973 assets/starcatcher/models/item/petaldrift_carp.json
+5b285b329924227629106a6cdbe4c4b58696c9b9 assets/starcatcher/models/item/petal_bass.json
 5bd492ad8d9c6cde16f201a8e1ee04526326b2e4 assets/starcatcher/models/item/phillipsfish.json
 2d6e48df616372258bc4a7b0aa18266971189927 assets/starcatcher/models/item/pinfish.json
 9d9af629ceab2b9158a92968a9483373aba1eef2 assets/starcatcher/models/item/pink_koi.json
@@ -194,6 +196,7 @@ c60f4d91d247f92cdef24770d406e46d63c06d97 assets/starcatcher/models/item/steady_b
 05f2f19b5abadef973880ce5ca99e6ed5e05995c assets/starcatcher/models/item/stonefish.json
 76c637178e81c898203c58fff3b8367b2d6c4bc8 assets/starcatcher/models/item/stone_hook.json
 f6e70d2ff0e47b07921c5a689281124766ae7cb6 assets/starcatcher/models/item/suneater.json
+9def5ccce63f7055d6af3d0780d63b28736d57a1 assets/starcatcher/models/item/sunflower_carp.json
 fae193138ec4619b25eeea36f035ddde469644b8 assets/starcatcher/models/item/sunny_sturgeon.json
 26429ac8538354e824cd9798074b9acc024ced85 assets/starcatcher/models/item/sun_seeking_carp.json
 f4d8afe7dbe79c84d5f52e2e8173b2bea1ab1478 assets/starcatcher/models/item/tackle_box.json

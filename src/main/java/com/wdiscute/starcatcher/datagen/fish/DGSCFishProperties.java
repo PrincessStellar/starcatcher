@@ -436,6 +436,18 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
                 .addRestriction(WorldRestrictions.OVERWORLD_BAMBOO_JUNGLE);
     }
 
+    public static FishProperties flowerForestFish(MaybeStack fish)
+    {
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.FLOWER_FOREST);
+    }
+
+    public static FishProperties sunflowerPlainsFish(MaybeStack fish)
+    {
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.SUNFLOWER_PLAINS);
+    }
+
     public static FishProperties overworldJungleFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)

@@ -45,6 +45,22 @@ public class WorldRestrictions
                     ElevationRestriction.FIFTY_TO_HUNDRED
             );
 
+    public static final List<AbstractFishRestriction> FLOWER_FOREST =
+            List.of(
+                    DimensionRestriction.OVERWORLD,
+                    FluidRestriction.WATER,
+                    BiomeRestriction.FLOWER_FOREST,
+                    ElevationRestriction.FIFTY_TO_HUNDRED
+            );
+
+    public static final List<AbstractFishRestriction> SUNFLOWER_PLAINS =
+            List.of(
+                    DimensionRestriction.OVERWORLD,
+                    FluidRestriction.WATER,
+                    BiomeRestriction.SUNFLOWER_PLAINS,
+                    ElevationRestriction.FIFTY_TO_HUNDRED
+            );
+
     public static final List<AbstractFishRestriction> OVERWORLD_STONE_CAVES =
             List.of(
                     DimensionRestriction.OVERWORLD,

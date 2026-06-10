@@ -1064,9 +1064,32 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .save(output);
 
 
+        //fish recipes
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUNFLOWER, 1)
+                .requires(SCItems.SUNFLOWER_CARP)
+                .unlockedBy("has_sunflower_carp", has(SCItems.SUNFLOWER_CARP))
+                .save(output);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BAMBOO, 1)
+                .requires(SCItems.LIVID_BAMBOO)
+                .unlockedBy("has_livid_bamboo", has(SCItems.LIVID_BAMBOO))
+                .save(output);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.OBSIDIAN, 4)
+                .requires(SCItems.OBSIDIAN_CRAB)
+                .unlockedBy("has_obsidian_crab", has(SCItems.OBSIDIAN_CRAB))
+                .save(output);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SEAGRASS, 1)
+                .requires(SCItems.DRIED_SEAWEED)
+                .requires(Items.POTION)
+                .unlockedBy("has_dried_seaweed", has(SCItems.DRIED_SEAWEED))
+                .save(output);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SCULK, 1)
+                .requires(SCItems.SCULKFISH)
+                .unlockedBy("has_sculkfish", has(SCItems.SCULKFISH))
+                .save(output);
     }
 
     protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group)

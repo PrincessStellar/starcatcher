@@ -1648,7 +1648,11 @@
   "tooltip.starcatcher.rose_siamese_fish.1" : "A decently challenging catch for even experienced anglers.",
 
 
+  "item.starcatcher.livid_bamboo" : "Livid Bamboo",
+  "tooltip.starcatcher.livid_bamboo.0" : "A piece of bamboo, but as a fish. Or so it is said.",
 
+  "item.starcatcher.petal_bass" : "Petal Bass",
+  "tooltip.starcatcher.petal_bass.0" : "A species of bass adapted to live amongst the flowers of the Overworld.",
 
   "item.starcatcher.crystalback_sturgeon" : "Crystalback Sturgeon",
   "tooltip.starcatcher.crystalback_sturgeon.0" : "A sturgeon often found in high altitudes,",

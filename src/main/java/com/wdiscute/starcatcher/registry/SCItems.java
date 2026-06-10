@@ -216,6 +216,12 @@ public interface SCItems
     DeferredItem<Item> ROSE_SIAMESE_FISH = registerNonBucketFish("rose_siamese_fish");
     DeferredItem<Item> VESANI = registerNonBucketFish("vesani");
 
+    //flower forest
+    DeferredItem<Item> PETAL_BASS = registerNonBucketFish("petal_bass");
+
+    //sunflower field
+    DeferredItem<Item> SUNFLOWER_CARP = registerNonBucketFish("sunflower_carp");
+
     //icy mountain
     DeferredItem<Item> CRYSTALBACK_STURGEON = registerNonBucketFish("crystalback_sturgeon");
     DeferredItem<Item> ICETOOTH_STURGEON = registerBucketFish("icetooth_sturgeon");
@@ -271,7 +277,12 @@ public interface SCItems
     //lush caves
     DeferredItem<Item> LUSH_PIKE = registerBucketFish("lush_pike");
     DeferredItem<Item> VIVID_MOSS = registerBucketFish("vivid_moss");
+
+    //jungle
     DeferredItem<Item> THE_QUARRISH = registerBucketFish("the_quarrish");
+
+    //bamboo
+    DeferredItem<Item> LIVID_BAMBOO = registerBucketFish("livid_bamboo");
 
     //deepslate
     DeferredItem<Item> GHOSTLY_PIKE = registerBucketFish("ghostly_pike");

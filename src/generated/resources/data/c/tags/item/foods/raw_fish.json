@@ -181,6 +181,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:livid_bamboo",
+      "required": false
+    },
+    {
       "id": "starcatcher:ghostly_pike",
       "required": false
     },
@@ -238,6 +242,14 @@
     },
     {
       "id": "starcatcher:vesani",
+      "required": false
+    },
+    {
+      "id": "starcatcher:petal_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sunflower_carp",
       "required": false
     },
     {

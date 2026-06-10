@@ -245,6 +245,23 @@ public class DGStarcatcherFishes
                 .withWeather(WeatherRestriction.RAIN)
                 .withRarity(Rarity.EPIC));
 
+        //bamboo
+        register(overworldBambooJungleFish(new MaybeStack(SCItems.LIVID_BAMBOO))
+                .withSizeAndWeight(new SizeAndWeight(620, 270, 5300, 700))
+                .withDifficulty(Difficulty.HARD.withHP(200))
+                .withRarity(Rarity.EPIC));
+
+        //flower forest
+        register(flowerForestFish(new MaybeStack(SCItems.PETAL_BASS))
+                .withSizeAndWeight(new SizeAndWeight(420, 20, 2000, 100))
+                .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING.withHP(200))
+                .withRarity(Rarity.RARE));
+
+        //sunflower
+        register(sunflowerPlainsFish(new MaybeStack(SCItems.SUNFLOWER_CARP))
+                .withSizeAndWeight(new SizeAndWeight(920, 120, 6000, 400))
+                .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING.withHP(200))
+                .withRarity(Rarity.RARE));
 
         //cold mountain
         register(overworldColdMountainFish(new MaybeStack(SCItems.CRYSTALBACK_STURGEON))
@@ -503,7 +520,6 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.HEAVY_FIVE_NORMAL)
                 .withRarity(Rarity.EPIC)
                 .withRestrictions(WorldRestrictions.OVERWORLD_LUSH_CAVES_AND_JUNGLES));
-
 
         //deepslate
         register(overworldDeepslateFish(new MaybeStack(SCItems.GHOSTLY_PIKE))

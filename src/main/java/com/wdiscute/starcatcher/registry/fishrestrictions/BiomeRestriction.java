@@ -23,7 +23,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,6 +226,8 @@ public class BiomeRestriction extends AbstractFishRestriction
     public static final BiomeRestriction LUSH_CAVES = new BiomeRestriction(Biomes.LUSH_CAVES.location(), "");
     public static final BiomeRestriction DRIPSTONE_CAVES = new BiomeRestriction(Biomes.DRIPSTONE_CAVES.location(), "");
     public static final BiomeRestriction DEEP_DARK = new BiomeRestriction(Biomes.DEEP_DARK.location(), "");
+    public static final BiomeRestriction FLOWER_FOREST = new BiomeRestriction(Biomes.FLOWER_FOREST.location(), "");
+    public static final BiomeRestriction SUNFLOWER_PLAINS = new BiomeRestriction(Biomes.SUNFLOWER_PLAINS.location(), "");
     public static final BiomeRestriction SWAMP_ONLY = new BiomeRestriction(Biomes.SWAMP.location(), "");
     public static final BiomeRestriction BAMBOO_JUNGLE = new BiomeRestriction(Biomes.BAMBOO_JUNGLE.location(), "");
     public static final BiomeRestriction RIVERS = new BiomeRestriction(List.of(), List.of(SCTags.IS_RIVER), List.of(), List.of(), "");
