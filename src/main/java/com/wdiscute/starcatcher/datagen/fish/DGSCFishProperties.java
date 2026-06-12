@@ -45,9 +45,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGMinersDelightFishes.bootstrap();
         DGCrittersAndCompanionsFishes.bootstrap();
         DGHybridAquaticFishes.bootstrap();
-        DGSpawnFishes.bootstrap();
-        if (ModList.get().isLoaded("create"))
-            DGCreateFishes.bootstrap();
+        DGCreateFishes.bootstrap();
+        DGEternalStarlightFishes.bootstrap();
 
         //compat 1.20.1 only
         DGUnusualFishFishes.bootstrap();

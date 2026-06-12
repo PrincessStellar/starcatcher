@@ -22,14 +22,6 @@ public class DGStarcatcherFishes
         register(overworldLakeFish(new MaybeStack(SCItems.OBIDONTIEE))
                 .withSizeAndWeight(new SizeAndWeight(17.7f, 5, 1200, 200)));
 
-        register(overworldLakeFish(new MaybeStack(SCItems.MORGANITE))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
-                .withSizeAndWeight(new SizeAndWeight(120, 80, 7000, 1000))
-                .withWeather(WeatherRestriction.RAIN)
-                .withBaseChance(8)
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.MEDIUM));
-
         register(overworldLakeFish(new MaybeStack(SCItems.SILVERVEIL_PERCH))
                 .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(27.0f, 11, 500, 352))
@@ -460,6 +452,14 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.HARD_VANISHING));
 
         //caves
+        register(overworldCavesFish(new MaybeStack(SCItems.MORGANITE))
+                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
+                .withSizeAndWeight(new SizeAndWeight(120, 80, 7000, 1000))
+                .withWeather(WeatherRestriction.RAIN)
+                .withBaseChance(8)
+                .withRarity(Rarity.UNCOMMON)
+                .withDifficulty(Difficulty.MEDIUM));
+
         register(overworldCavesFish(new MaybeStack(SCItems.WHITEVEIL))
                 .withSizeAndWeight(new SizeAndWeight(100, 30, 33000, 7000))
                 .withDifficulty(Difficulty.EASY_STONE));
