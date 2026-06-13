@@ -72,7 +72,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         aquarium.add(SCItems.STARCAUGHT_BUCKET, AquariumBlock.Interaction.PLACE_FISH, false);
         aquarium.add(SCTags.BUCKETABLE_FISHES, AquariumBlock.Interaction.PLACE_FISH_CREATIVE, false);
-        aquarium.add(Tags.Items.BUCKETS, AquariumBlock.Interaction.RETRIEVE_FISH, false);
+        aquarium.add(Tags.Items.BUCKETS_EMPTY, AquariumBlock.Interaction.RETRIEVE_FISH, false);
 
         //compostable
         compostable.add(SCTags.WORMS, new Compostable(0.65F, false), false);

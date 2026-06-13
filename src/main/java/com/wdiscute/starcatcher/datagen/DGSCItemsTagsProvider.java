@@ -128,7 +128,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(LEGENDARY_BAIT.get())
                 .add(METEOROLOGICAL_BAIT.get())
                 .add(Items.WITHER_SKELETON_SKULL)
-                .addTag(Tags.Items.BUCKETS)
+                .addTag(Tags.Items.BUCKETS_EMPTY)
 
                 .addOptional(rl("fishofthieves", "earthworms"))
                 .addOptional(rl("fishofthieves", "grubs"))
@@ -179,7 +179,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(Items.RED_SAND)
                 .add(Items.KELP)
                 .add(Items.SEAGRASS)
-                .addTag(Tags.Items.BUCKETS)
+                .addTag(Tags.Items.BUCKETS_EMPTY)
                 .add(AURORA.get())
                 .add(CONCH.asItem())
                 .add(CLAM.asItem())

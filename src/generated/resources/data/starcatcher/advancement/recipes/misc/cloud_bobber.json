@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "starcatcher:void_bobber"
+        "recipe": "starcatcher:cloud_bobber"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "starcatcher:void_bobber"
+      "starcatcher:cloud_bobber"
     ]
   }
 }

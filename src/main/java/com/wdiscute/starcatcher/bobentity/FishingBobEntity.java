@@ -328,7 +328,7 @@ public class FishingBobEntity extends Projectile
                 player.awardStat(SCStats.STARCAUGHT_FISH_MISSED.get());
 
                 ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack();
-                if (!bait.is(Tags.Items.BUCKETS))
+                if (!bait.is(Tags.Items.BUCKETS_EMPTY))
                 {
                     bait.shrink(1);
                     if (bait.getCount() < 5)

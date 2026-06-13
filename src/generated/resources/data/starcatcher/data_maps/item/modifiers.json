@@ -54,6 +54,12 @@
         "translation_override": ""
       }
     ],
+    "starcatcher:cloud_bobber": [
+      {
+        "type": "starcatcher:no_gravity",
+        "translation_override": ""
+      }
+    ],
     "starcatcher:copper_hook": [
       {
         "type": "starcatcher:adjust_handle_speed",
@@ -713,12 +719,6 @@
       {
         "type": "starcatcher:skip_minigame_if_trigger_found",
         "translation_override": "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber"
-      }
-    ],
-    "starcatcher:void_bobber": [
-      {
-        "type": "starcatcher:no_gravity",
-        "translation_override": ""
       }
     ],
     "starcatcher:weathered_copper_hook": [

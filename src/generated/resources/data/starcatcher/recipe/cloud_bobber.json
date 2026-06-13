@@ -6,10 +6,10 @@
       "item": "starcatcher:bobber"
     },
     "F": {
-      "item": "minecraft:chorus_flower"
+      "item": "minecraft:phantom_membrane"
     },
     "O": {
-      "item": "minecraft:obsidian"
+      "tag": "minecraft:wool"
     },
     "S": {
       "item": "minecraft:stick"
@@ -22,6 +22,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "starcatcher:void_bobber"
+    "id": "starcatcher:cloud_bobber"
   }
 }

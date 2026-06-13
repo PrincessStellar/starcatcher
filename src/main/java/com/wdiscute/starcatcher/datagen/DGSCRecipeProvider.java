@@ -296,12 +296,12 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
-        //void bobber
+        //cloud bobber
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLOUD_BOBBER)
                 .define('B', SCItems.BOBBER)
                 .define('S', Items.STICK)
-                .define('F', Items.CHORUS_FLOWER)
-                .define('O', Items.OBSIDIAN)
+                .define('F', Items.PHANTOM_MEMBRANE)
+                .define('O', ItemTags.WOOL)
                 .pattern(" FS")
                 .pattern("OBO")
                 .pattern("SO ")

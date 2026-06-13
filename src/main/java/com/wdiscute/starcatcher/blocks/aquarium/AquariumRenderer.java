@@ -92,7 +92,7 @@ public class AquariumRenderer implements BlockEntityRenderer<AquariumBlockEntity
         LocalPlayer player = Minecraft.getInstance().player;
         if (player != null)
         {
-            if (!player.getMainHandItem().is(Tags.Items.BUCKETS) && !player.getOffhandItem().is(Tags.Items.BUCKETS))
+            if (!player.getMainHandItem().is(Tags.Items.BUCKETS_EMPTY) && !player.getOffhandItem().is(Tags.Items.BUCKETS_EMPTY))
             {
                 poseStack.translate(be.x, be.y, be.z);
 

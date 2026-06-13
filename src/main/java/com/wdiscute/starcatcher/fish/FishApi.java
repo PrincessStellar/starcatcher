@@ -308,14 +308,14 @@ public class FishApi
 
             //consume bait if not bucket
             ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
-            if (!bait.is(Tags.Items.BUCKETS))
+            if (!bait.is(Tags.Items.BUCKETS_EMPTY))
             {
                 bait.shrink(1);
                 SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
             }
 
             //consume bait if bucket & bucketed fish available, and completed minigame (fish don't eat buckets!)
-            if (bait.is(Tags.Items.BUCKETS) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && time != -1)
+            if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && time != -1)
             {
                 bait.shrink(1);
                 SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
@@ -350,7 +350,7 @@ public class FishApi
     {
         ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
 
-        boolean canBeBucketed = !fp.catchInfo().bucketedFish().toStack().isEmpty() && bait.is(Tags.Items.BUCKETS);
+        boolean canBeBucketed = !fp.catchInfo().bucketedFish().toStack().isEmpty() && bait.is(Tags.Items.BUCKETS_EMPTY);
 
         //if bucketed fish
         if (canBeBucketed)

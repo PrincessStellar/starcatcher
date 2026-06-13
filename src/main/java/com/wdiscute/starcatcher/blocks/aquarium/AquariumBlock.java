@@ -219,7 +219,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
         if (context instanceof EntityCollisionContext ecc)
         {
             if (ecc.getEntity() instanceof LivingEntity le)
-                if (le.getMainHandItem().is(Tags.Items.BUCKETS) || le.getMainHandItem().is(SCBlocks.AQUARIUM.asItem()))
+                if (le.getMainHandItem().is(Tags.Items.BUCKETS_EMPTY) || le.getMainHandItem().is(SCBlocks.AQUARIUM.asItem()))
                     return Shapes.block();
                 else
                     return shape;
@@ -250,7 +250,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Tags.Items.BUCKETS))
+        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Tags.Items.BUCKETS_EMPTY))
         {
             bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));

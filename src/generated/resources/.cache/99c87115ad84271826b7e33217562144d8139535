@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-13T15:14:00.8449239	Item Models: starcatcher
+// 1.21.1	2026-06-13T20:33:54.9287122	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -36,6 +36,7 @@ f6383369cb097a667f5406f76a8ecd9ec0bd23ce assets/starcatcher/models/item/cerberay
 466ccba57f59a2202e00d64369b6d8f2f72fcc66 assets/starcatcher/models/item/clam.json
 413dc56c829ae02782003df0fd89bc51a45b17da assets/starcatcher/models/item/clear_bobber.json
 7624bdc48e8cebe54bdeed194657679e0e27a0a7 assets/starcatcher/models/item/clear_smithing_template.json
+c09d112a9d99a38fb55785925e6dddb957d50f04 assets/starcatcher/models/item/cloud_bobber.json
 3a3d8f2f21f04250a28bb8665cb47f159b668a2a assets/starcatcher/models/item/coggill.json
 30b12a942f140f273527d8419bc82931ccaf99e8 assets/starcatcher/models/item/cogtopus.json
 ae2c1d929a5ea501d66d5340bfc9b4657db9b199 assets/starcatcher/models/item/colorful_smithing_template.json
@@ -236,7 +237,6 @@ f8244e258c3aa09083edb536856e8ed6d1343e34 assets/starcatcher/models/item/vanilla_
 38d92c7bf5f06561e97a46df04099c8c0354ec7d assets/starcatcher/models/item/vivid_moss.json
 f52bb9144ddc25b53baa049f5ae12af3f707a9bb assets/starcatcher/models/item/voidbiter.json
 fbc2b287c5743cfad146fc248dc52060a66bcd0d assets/starcatcher/models/item/voidfin.json
-ebdff718b50d5a74c6b9a4ab20853afd8b9d11b7 assets/starcatcher/models/item/void_bobber.json
 9b811446384ffb617b1d650af26591b19e6c112f assets/starcatcher/models/item/ward.json
 24056e5d646a1341a8f94c0094dd55afbcf307a4 assets/starcatcher/models/item/weathered_copper_hook.json
 27953081eeade9a0ed934f5f112dfe8216794046 assets/starcatcher/models/item/whiteveil.json

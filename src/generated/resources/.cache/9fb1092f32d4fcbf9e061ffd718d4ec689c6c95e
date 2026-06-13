@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-13T15:14:00.8504463	Recipes
+// 1.21.1	2026-06-13T20:33:54.935713	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -62,6 +62,7 @@ cf0aedc4fe79686de68daaf2a8befb006672090e data/starcatcher/advancement/recipes/mi
 f576974cdc5a6a25de4795f93639017994522982 data/starcatcher/advancement/recipes/misc/cherry_bait.json
 0924626e65bc5d31c46c30832a611ebed3b61cc4 data/starcatcher/advancement/recipes/misc/clear_bobber.json
 db107c0b857c3e456d2b39fe545fb7946eecc485 data/starcatcher/advancement/recipes/misc/clear_smithing_template.json
+a06acf390766ae2693d09677e723aa1eecf6979c data/starcatcher/advancement/recipes/misc/cloud_bobber.json
 442ab997a9ad98844871eaafa67868a6a1c148af data/starcatcher/advancement/recipes/misc/colorful_smithing_template.json
 b24d2e985e4c27e4b01ded46c9824111095b4057 data/starcatcher/advancement/recipes/misc/copper_hook.json
 82d33c4f2bacc70071f628f38266a93964ed0bda data/starcatcher/advancement/recipes/misc/deep_ocean_bobber.json
@@ -138,7 +139,6 @@ f45964553a7a9ba7126fd8cec8574af0c1b59b37 data/starcatcher/advancement/recipes/mi
 a8c1319c00532f1ba5e001844a8bb9c1aab050c4 data/starcatcher/advancement/recipes/misc/vanilla_bobber.json
 1eb278bd0636b0340890575e310d70810dc976ae data/starcatcher/advancement/recipes/misc/vanilla_bobber_from_vanilla_fishing_rod.json
 480b2fff24d0a9d0eb7c6f9d0fc37fe72d110fcc data/starcatcher/advancement/recipes/misc/vanilla_hook.json
-84343f115ed36e1259069fe36129995df7fe6c6e data/starcatcher/advancement/recipes/misc/void_bobber.json
 3d671e65a78cb60f71206c74d75f73a39336340e data/starcatcher/advancement/recipes/misc/weathered_copper_hook.json
 12ea86f4223bbf539e78143148820f5dc172659c data/starcatcher/advancement/recipes/tools/alpha_rod.json
 9de0bddf1f7f5854f7fe865c1be71f00d19342b5 data/starcatcher/advancement/recipes/tools/azure_rod.json
@@ -182,6 +182,7 @@ ffedf3434b42941fb130ebb5e1e30f74d34e50c7 data/starcatcher/recipe/bone_meal_from_
 0899377c7fe5d7f8d58987b647dae990e0236501 data/starcatcher/recipe/clear_bobber.json
 f2161577f6d583512bb7dd875b97e1f0ddc48052 data/starcatcher/recipe/clear_smithing_template.json
 992f815c789b703a7570abe5c3e3e1caecac80d6 data/starcatcher/recipe/clear_tackle.json
+0908303071581e3198311cdf5cbfbc6d1e671057 data/starcatcher/recipe/cloud_bobber.json
 532b09f6fba35cb01b485f09d8cedd06a96b277d data/starcatcher/recipe/colorful_smithing_template.json
 5303529aef4a32c00141485c526097a76c843640 data/starcatcher/recipe/colorful_tackle.json
 8ccb42668559a3ad341a1ea2311d99ffad5753e6 data/starcatcher/recipe/copper_hook.json
@@ -283,5 +284,4 @@ f032ddf1b70f94dfe61a66001ca76a83265e66e2 data/starcatcher/recipe/tackle_box_yell
 89fd0169b2f580764d8fcb68efc04b03ff6ef4ab data/starcatcher/recipe/vanilla_bobber.json
 7cb0cb106f964e4bcc5e508e3f04ba4e655db38c data/starcatcher/recipe/vanilla_bobber_from_vanilla_fishing_rod.json
 0171166f3cd346b9eb8e4d9cdff7b5b72c28421b data/starcatcher/recipe/vanilla_hook.json
-a9f2d710f61ea5d88fc632279bdeead7808b8f12 data/starcatcher/recipe/void_bobber.json
 aeb0a365f53be9d8449045dff59b084441212cea data/starcatcher/recipe/weathered_copper_hook.json

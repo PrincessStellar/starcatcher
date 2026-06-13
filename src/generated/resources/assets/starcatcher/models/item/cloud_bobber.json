@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "starcatcher:item/void_bobber"
+    "layer0": "starcatcher:item/cloud_bobber"
   }
 }
