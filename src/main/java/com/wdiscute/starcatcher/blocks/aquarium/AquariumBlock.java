@@ -17,9 +17,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
@@ -48,6 +50,8 @@ import net.minecraft.world.phys.shapes.*;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.awt.*;
 
 public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
@@ -95,7 +99,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     {
         if (level.getBlockEntity(pos) instanceof AquariumBlockEntity abe && !level.isClientSide)
         {
-            if(abe.getFish().is(SCTags.BUCKETABLE_FISHES))
+            if (abe.getFish().is(SCTags.BUCKETABLE_FISHES))
             {
                 ItemStack itemstack = abe.getFish().copy();
                 FishEntity entity = SCEntities.FISH.get().create(level);
@@ -146,6 +150,54 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
         return level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
     }
 
+    private static final VoxelShape BOTTOM_SHAPE = Block.box(-2, -2, -2, 18, 2, 18);
+
+    private static final VoxelShape NORTH_SHAPE = Block.box(-2, -2, -2, 18, 18, 2);
+    private static final VoxelShape SOUTH_SHAPE = Block.box(-2, -2, 14, 18, 18, 18);
+
+    private static final VoxelShape WEST_SHAPE = Block.box(-2, -2, -2, 2, 18, 18);
+    private static final VoxelShape EAST_SHAPE = Block.box(14, -2, -2, 18, 18, 18);
+
+    private static final VoxelShape[] SHAPES = new VoxelShape[32];
+
+    static
+    {
+        for (int i = 0; i < 32; i++)
+        {
+            VoxelShape shape = Shapes.empty();
+
+            if ((i & 1) == 0)
+                shape = Shapes.or(shape, BOTTOM_SHAPE);
+
+            if ((i & 2) == 0)
+                shape = Shapes.or(shape, NORTH_SHAPE);
+
+            if ((i & 4) == 0)
+                shape = Shapes.or(shape, SOUTH_SHAPE);
+
+            if ((i & 8) == 0)
+                shape = Shapes.or(shape, WEST_SHAPE);
+
+            if ((i & 16) == 0)
+                shape = Shapes.or(shape, EAST_SHAPE);
+
+            SHAPES[i] = shape.optimize();
+        }
+    }
+
+    private static int getShapeIndex(BlockState state)
+    {
+        int index = 0;
+
+        if (state.getValue(BOTTOM)) index |= 1;
+        if (state.getValue(NORTH)) index |= 2;
+        if (state.getValue(SOUTH)) index |= 4;
+        if (state.getValue(WEST)) index |= 8;
+        if (state.getValue(EAST)) index |= 16;
+
+        return index;
+    }
+
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
     {
@@ -153,18 +205,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
         {
             if (e.getEntity() != null)
             {
-                VoxelShape shape = Shapes.empty();
-
-                if (!state.getValue(BOTTOM)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 2, 18), BooleanOp.OR);
-                //if (!state.getValue(TOP)) shape = Shapes.join(shape, Block.box(-2, 14, -2, 16, 16, 16), BooleanOp.OR);
-
-                if (!state.getValue(NORTH)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 18, 0), BooleanOp.OR);
-                if (!state.getValue(WEST)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 0, 18, 18), BooleanOp.OR);
-
-                if (!state.getValue(EAST)) shape = Shapes.join(shape, Block.box(16, -2, -2, 18, 18, 18), BooleanOp.OR);
-                if (!state.getValue(SOUTH)) shape = Shapes.join(shape, Block.box(-2, -2, 16, 18, 18, 18), BooleanOp.OR);
-
-                return shape;
+                return SHAPES[getShapeIndex(state)];
             }
         }
 
@@ -174,17 +215,17 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
     {
-        VoxelShape shape = Shapes.empty();
-
-        if (!state.getValue(BOTTOM)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 2, 18), BooleanOp.OR);
-        //if (!state.getValue(TOP)) shape = Shapes.join(shape, Block.box(-2, 14, -2, 16, 16, 16), BooleanOp.OR);
-
-        if (!state.getValue(NORTH)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 18, 18, 4), BooleanOp.OR);
-        if (!state.getValue(WEST)) shape = Shapes.join(shape, Block.box(-2, -2, -2, 4, 18, 18), BooleanOp.OR);
-
-        if (!state.getValue(EAST)) shape = Shapes.join(shape, Block.box(12, -2, -2, 18, 18, 18), BooleanOp.OR);
-        if (!state.getValue(SOUTH)) shape = Shapes.join(shape, Block.box(-2, -2, 12, 18, 18, 18), BooleanOp.OR);
-
+        VoxelShape shape = SHAPES[getShapeIndex(state)];
+        if (context instanceof EntityCollisionContext ecc)
+        {
+            if (ecc.getEntity() instanceof LivingEntity le)
+                if (le.getMainHandItem().is(Tags.Items.BUCKETS) || le.getMainHandItem().is(SCBlocks.AQUARIUM.asItem()))
+                    return Shapes.block();
+                else
+                    return Shapes.empty();
+        }
+        if (shape.isEmpty())
+            return Shapes.block();
         return shape;
     }
 
