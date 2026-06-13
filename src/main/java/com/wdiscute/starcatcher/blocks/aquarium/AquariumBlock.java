@@ -152,11 +152,11 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
     private static final VoxelShape BOTTOM_SHAPE = Block.box(-2, -2, -2, 18, 2, 18);
 
-    private static final VoxelShape NORTH_SHAPE = Block.box(-2, -2, -2, 18, 18, 2);
-    private static final VoxelShape SOUTH_SHAPE = Block.box(-2, -2, 14, 18, 18, 18);
+    private static final VoxelShape NORTH_SHAPE = Block.box(0, 0, 0, 16, 16, 2);
+    private static final VoxelShape SOUTH_SHAPE = Block.box(0, 0, 14, 16, 16, 16);
 
-    private static final VoxelShape WEST_SHAPE = Block.box(-2, -2, -2, 2, 18, 18);
-    private static final VoxelShape EAST_SHAPE = Block.box(14, -2, -2, 18, 18, 18);
+    private static final VoxelShape WEST_SHAPE = Block.box(0, 0, 0, 2, 16, 16);
+    private static final VoxelShape EAST_SHAPE = Block.box(14, 0, 0, 16, 16, 16);
 
     private static final VoxelShape[] SHAPES = new VoxelShape[32];
 
@@ -222,7 +222,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
                 if (le.getMainHandItem().is(Tags.Items.BUCKETS) || le.getMainHandItem().is(SCBlocks.AQUARIUM.asItem()))
                     return Shapes.block();
                 else
-                    return Shapes.empty();
+                    return shape;
         }
         if (shape.isEmpty())
             return Shapes.block();
