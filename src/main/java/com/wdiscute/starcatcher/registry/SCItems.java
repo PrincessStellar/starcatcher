@@ -15,8 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.loading.DatagenModLoader;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -78,7 +76,7 @@ public interface SCItems
     DeferredItem<Item> SLIMEY_BOBBER = BOBBERS_REGISTRY.register("slimey_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> GLOWING_BOBBER = BOBBERS_REGISTRY.register("glowing_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> GOLDEN_BOBBER = BOBBERS_REGISTRY.register("golden_bobber", SingleStackBasicItem::new);
-    DeferredItem<Item> VOID_BOBBER = BOBBERS_REGISTRY.register("void_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> CLOUD_BOBBER = BOBBERS_REGISTRY.register("void_bobber", SingleStackBasicItem::new);
 
     //baits
     DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);
@@ -209,6 +207,8 @@ public interface SCItems
     DeferredItem<Item> SUNNY_STURGEON = registerBucketFish("sunny_sturgeon");
     DeferredItem<Item> ROCKGILL = registerNonBucketFish("rockgill");
     DeferredItem<Item> PEAKDWELLER = registerNonBucketFish("peakdweller");
+
+    //sky
     DeferredItem<Item> SUN_SEEKING_CARP = registerBucketFish("sun_seeking_carp");
 
     //cherry grove

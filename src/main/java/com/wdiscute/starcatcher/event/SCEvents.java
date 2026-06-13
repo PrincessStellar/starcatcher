@@ -175,7 +175,7 @@ public class SCEvents
     @SubscribeEvent
     public static void addRegistry(NewRegistryEvent event)
     {
-        event.register(Starcatcher.SWEET_SPOT_BEHAVIOUR_REGISTRY);
+        event.register(Starcatcher.SWEETSPOT_BEHAVIOUR_REGISTRY);
         event.register(Starcatcher.TACKLE_SKIN_REGISTRY);
         event.register(Starcatcher.FISH_RESTRICTIONS_REGISTRY);
     }

@@ -274,13 +274,13 @@
 
     "tooltip.modifier.starcatcher.freeze_on_miss": "스위트스팟을 ​​놓치면 손잡이가 잠시 얼어버릴 수 있다.",
 
-    "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots": "가끔씩 얼어붙은 스위트스팟이 나타날 수 있다.",
+    "tooltip.modifier.starcatcher.spawn_frozen_sweetspots": "가끔씩 얼어붙은 스위트스팟이 나타날 수 있다.",
 
-    "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots": "폭발 스위트스팟이 나타날 수 있다",
+    "tooltip.modifier.starcatcher.spawn_tnt_sweetspots": "폭발 스위트스팟이 나타날 수 있다",
 
     "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits": "스위트스팟을 세 번 연속으로 정확히 맞추면 보물 상자를 소환한다",
 
-    "tooltip.modifier.starcatcher.slower_moving_sweet_spots": "움직이는 스위트스팟의 속도를 늦춘다",
+    "tooltip.modifier.starcatcher.slower_moving_sweetspots": "움직이는 스위트스팟의 속도를 늦춘다",
 
     "tooltip.modifier.starcatcher.stop_decay_on_hit": "스위트스팟을 맞춘 후 잠시 동안 물고기가 도망가지 못하게 한다",
 
@@ -290,13 +290,13 @@
 
     "tooltip.modifier.starcatcher.slower_vanishing": "사라지는 스위트스팟이 더 오래 유지됩니다",
 
-    "tooltip.modifier.starcatcher.bigger_green_sweet_spots": "녹색 스위트스팟이 약간 더 커집니다",
+    "tooltip.modifier.starcatcher.bigger_green_sweetspots": "녹색 스위트스팟이 약간 더 커집니다",
 
     "tooltip.modifier.starcatcher.add_leaves_spots": "나뭇잎 스위트스팟이 무작위로 나타난다",
 
-    "tooltip.modifier.starcatcher.add_aqua_sweet_spot": "추가적인 아쿠아 스위트스팟이 추가됩니다",
+    "tooltip.modifier.starcatcher.add_aqua_sweetspot": "추가적인 아쿠아 스위트스팟이 추가됩니다",
 
-    "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot": "추가적인 아쿠아 스위트스팟이 세 개 추가됩니다",
+    "tooltip.modifier.starcatcher.add_three_aqua_sweetspot": "추가적인 아쿠아 스위트스팟이 세 개 추가됩니다",
 
     "tooltip.modifier.starcatcher.flip_every_hit": "스위트스팟을 타격할 때 마다 방향을 뒤집습니다",
 

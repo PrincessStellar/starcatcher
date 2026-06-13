@@ -155,6 +155,13 @@ public class WorldRestrictions
                     ElevationRestriction.ABOVE_HUNDRED
             );
 
+    public static final List<AbstractFishRestriction> OVERWORLD_SKY =
+            List.of(
+                    FluidRestriction.VOID,
+                    DimensionRestriction.OVERWORLD,
+                    ElevationRestriction.ABOVE_TWO_HUNDRED
+            );
+
     public static final List<AbstractFishRestriction> OVERWORLD_LAKE =
             List.of(
                     FluidRestriction.WATER,

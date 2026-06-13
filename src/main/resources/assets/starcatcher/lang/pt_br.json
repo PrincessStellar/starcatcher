@@ -264,13 +264,13 @@
 
   "tooltip.modifier.starcatcher.freeze_on_miss": "Errar um ponto ideal fará com que sua manivela congele por um curto período",
 
-  "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots": "De vez em quando, um ponto ideal congelado pode aparecer",
+  "tooltip.modifier.starcatcher.spawn_frozen_sweetspots": "De vez em quando, um ponto ideal congelado pode aparecer",
 
-  "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots": "Pontos ideais explosivos podem aparecer",
+  "tooltip.modifier.starcatcher.spawn_tnt_sweetspots": "Pontos ideais explosivos podem aparecer",
 
   "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits": "Acertar 3 pontos ideais seguidos com sucesso invocará um baú de tesouro",
 
-  "tooltip.modifier.starcatcher.slower_moving_sweet_spots": "Desacelera pontos ideais em movimento",
+  "tooltip.modifier.starcatcher.slower_moving_sweetspots": "Desacelera pontos ideais em movimento",
 
   "tooltip.modifier.starcatcher.stop_decay_on_hit": "Impede que o peixe nade para longe por um curto período após um acerto",
 
@@ -280,13 +280,13 @@
 
   "tooltip.modifier.starcatcher.slower_vanishing": "Pontos ideais que desaparecem levarão mais tempo para desaparecer",
 
-  "tooltip.modifier.starcatcher.bigger_green_sweet_spots": "Pontos ideais verdes serão ligeiramente maiores",
+  "tooltip.modifier.starcatcher.bigger_green_sweetspots": "Pontos ideais verdes serão ligeiramente maiores",
 
   "tooltip.modifier.starcatcher.add_leaves_spots": "Pontos ideais de folhas aparecerão aleatoriamente",
 
-  "tooltip.modifier.starcatcher.add_aqua_sweet_spot": "Um ponto ideal aquático extra é adicionado",
+  "tooltip.modifier.starcatcher.add_aqua_sweetspot": "Um ponto ideal aquático extra é adicionado",
 
-  "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot": "Três pontos ideais aquáticos extras são adicionados",
+  "tooltip.modifier.starcatcher.add_three_aqua_sweetspot": "Três pontos ideais aquáticos extras são adicionados",
 
   "tooltip.modifier.starcatcher.flip_every_hit": "Vira toda vez que você acerta um ponto ideal",
 

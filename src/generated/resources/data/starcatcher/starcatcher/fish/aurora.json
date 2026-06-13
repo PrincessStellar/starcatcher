@@ -32,7 +32,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 15,
-        "sweet_spot_type": "starcatcher:freeze",
+        "sweetspot_type": "starcatcher:freeze",
         "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
         "vanishing_rate": 0.0
       },
@@ -42,7 +42,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 15,
-        "sweet_spot_type": "starcatcher:freeze",
+        "sweetspot_type": "starcatcher:freeze",
         "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
         "vanishing_rate": 0.0
       }

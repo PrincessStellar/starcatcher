@@ -33,14 +33,14 @@ public class AdjustMovingModifier extends AbstractMinigameModifier
     public List<Component> getNonOverriddenDescription(boolean shift)
     {
         if (shift)
-            return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweet_spots.shift",
+            return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweetspots.shift",
                     new DecimalFormat("#.##").format(multiplier * 100)));
         else
         {
             if (multiplier > 1)
-                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweet_spots.increase"));
+                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweetspots.increase"));
             else
-                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweet_spots.decrease"));
+                return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_moving_sweetspots.decrease"));
         }
     }
 
@@ -55,7 +55,7 @@ public class AdjustMovingModifier extends AbstractMinigameModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("adjust_moving_sweet_spots");
+        return Starcatcher.rl("adjust_moving_sweetspots");
     }
 
     @Override

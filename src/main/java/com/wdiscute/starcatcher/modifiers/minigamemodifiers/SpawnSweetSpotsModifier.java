@@ -24,7 +24,7 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier
                     Codec.INT.optionalFieldOf("length", -1).forGetter(AbstractTimedModifier::getLength),
                     Codec.INT.fieldOf("cooldown").forGetter(mod -> mod.cooldown),
                     Codec.FLOAT.fieldOf("chance").forGetter(mod -> mod.chance),
-                    Difficulty.SweetSpot.CODEC.fieldOf("sweet_spot").forGetter(mod -> mod.sweetSpot),
+                    Difficulty.SweetSpot.CODEC.fieldOf("sweetspot").forGetter(mod -> mod.sweetSpot),
                     Codec.BOOL.fieldOf("sudoku_vanish").forGetter(mod -> mod.sudokuVanish),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, SpawnSweetSpotsModifier::new));
@@ -52,7 +52,7 @@ public class SpawnSweetSpotsModifier extends AbstractTimedModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("spawn_sweet_spots");
+        return Starcatcher.rl("spawn_sweetspots");
     }
 
     @Override

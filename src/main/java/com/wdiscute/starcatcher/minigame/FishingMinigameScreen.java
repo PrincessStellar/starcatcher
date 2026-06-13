@@ -207,7 +207,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             }
         }
 
-        LogUtils.getLogger().warn("Starcatcher's minigame couldn't find a non-overlapping free position! Consider not having so many active sweet spots");
+        LogUtils.getLogger().warn("Starcatcher's minigame couldn't find a non-overlapping free position! Consider not having so many active sweet-spots");
         return U.r.nextInt(360);
     }
 
@@ -295,16 +295,29 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
 
         //fishing line
-        guiGraphics.blit(
-                texture, centerX - 6 - 102, centerY - 56 - 18,
-                16, (int) (112 - yoffset),
-                176F, yoffset,
-                16, (int) (112 - yoffset),
-                256, 256);
+        if (flip)
+        {
+            guiGraphics.blit(
+                    texture, centerX - 6 - 102, centerY - 46 + (int) yoffset,
+                    16, (int) (112 - yoffset - 15),
+                    176F, yoffset,
+                    16, (int) (112 - yoffset - 15),
+                    256, 256);
+        }
+        else
+            guiGraphics.blit(
+                    texture, centerX - 6 - 102, centerY - 56 - 24,
+                    16, (int) (112 - yoffset),
+                    176F, yoffset - 10,
+                    16, (int) (112 - yoffset),
+                    256, 256);
 
         //item being fished
         poseStack.pushPose();
-        poseStack.translate(0, -yoffset * -1 - 77, 0);
+        if (flip)
+            poseStack.translate(0, -yoffset * -1 - 77, 0);
+        else
+            poseStack.translate(0, -yoffset, 0);
         guiGraphics.renderItem(itemBeingFished, centerX - 8 - 100, centerY - 8 + 35);
         poseStack.popPose();
 
@@ -540,7 +553,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey) && !SCKeymappings.MINIGAME_HIT.getKey().equals(mouseKey))
         {
             //play miss sound
-            if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
+            if (SCConfig.ENABLE_TACKLE_SOUNDS.get() && modifiers.stream().anyMatch(AbstractMinigameModifier::skipMissSound))
                 tackleSkin.onFailedMinigame(Minecraft.getInstance().player);
             this.onClose();
             return true;
@@ -593,7 +606,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             this.modifiers.forEach(AbstractMinigameModifier::onMiss);
 
             consecutiveHits = 0;
-            if (SCConfig.ENABLE_MISS_SOUND.get())
+            if (SCConfig.ENABLE_MISS_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
 
             activeSweetSpots.forEach(o -> o.behaviour.onMiss());

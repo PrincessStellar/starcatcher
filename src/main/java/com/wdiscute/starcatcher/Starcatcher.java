@@ -48,8 +48,8 @@ public class Starcatcher
     public static final ResourceKey<Registry<AbstractFishRestriction>> FISH_RESTRICTIONS =
             ResourceKey.createRegistryKey(Starcatcher.rl("fish_restrictions"));
 
-    public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEET_SPOT_BEHAVIOUR =
-            ResourceKey.createRegistryKey(Starcatcher.rl("sweet_spot_behaviour"));
+    public static final ResourceKey<Registry<Supplier<? extends AbstractSweetSpotBehaviour>>> SWEETSPOT_BEHAVIOUR =
+            ResourceKey.createRegistryKey(Starcatcher.rl("sweetspot_behaviour"));
 
     public static final ResourceKey<Registry<AbstractTackleSkin>> TACKLE_SKIN =
             ResourceKey.createRegistryKey(Starcatcher.rl("bobber_skin"));
@@ -60,7 +60,7 @@ public class Starcatcher
             .defaultKey(Starcatcher.rl("empty"))
             .create();
 
-    public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEET_SPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEET_SPOT_BEHAVIOUR)
+    public static final Registry<Supplier<? extends AbstractSweetSpotBehaviour>> SWEETSPOT_BEHAVIOUR_REGISTRY = new RegistryBuilder<>(SWEETSPOT_BEHAVIOUR)
             .sync(true)
             .defaultKey(Starcatcher.rl("normal"))
             .create();

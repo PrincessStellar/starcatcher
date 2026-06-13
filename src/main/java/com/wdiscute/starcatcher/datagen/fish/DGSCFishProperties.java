@@ -329,6 +329,13 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
                 .addRestriction(WorldRestrictions.OVERWORLD_MOUNTAIN);
     }
 
+    public static FishProperties overworldSkyFish(MaybeStack fish)
+    {
+        return FishProperties.empty().withFish(fish)
+                .addRestriction(WorldRestrictions.OVERWORLD_SKY);
+    }
+
+
     public static FishProperties overworldDeepslateFish(MaybeStack fish)
     {
         return FishProperties.empty().withFish(fish)
