@@ -47,7 +47,7 @@ public class LuckAttributeModifier extends AbstractCatchModifier
 
         for (FishProperties fp : available)
         {
-            //add base fp to list
+            //add rod fp to list
             list.add(fp);
 
             //add X amount of fp based on map and luck level

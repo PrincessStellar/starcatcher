@@ -2,10 +2,13 @@ package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import com.wdiscute.starcatcher.tournament.TournamentScoreSettings;
@@ -30,9 +33,9 @@ public class SettingsScreen extends FishingMinigameScreen
 
     List<Button> buttons = new ArrayList<>();
 
-    public SettingsScreen(FishProperties fp, ItemStack rod)
+    public SettingsScreen()
     {
-        super(fp, ItemStack.EMPTY, rod);
+        super(FishProperties.empty().withFish(new MaybeStack(SCItems.AURORA)), SCItems.UNKNOWN_FISH.toStack(), List.of(), new BaseTackleSkin());
     }
 
     @Override

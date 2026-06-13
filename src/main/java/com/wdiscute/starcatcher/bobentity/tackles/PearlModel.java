@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class PearlModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "pearl";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("pearl"), "main");
     private final ModelPart root;
 
     public PearlModel(ModelPart root)

@@ -5,10 +5,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:morganite",
-      "required": false
-    },
-    {
       "id": "starcatcher:silverveil_perch",
       "required": false
     },
@@ -253,6 +249,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:morganite",
+      "required": false
+    },
+    {
       "id": "starcatcher:whiteveil",
       "required": false
     },
@@ -428,8 +428,55 @@
       "id": "starcatcher:nebula_squid",
       "required": false
     },
+    {
+      "id": "starcatcher:coggill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_brass_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:phillipsfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:valve",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:eel_dynamo",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:brassgill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
+      "required": false
+    },
     "starcatcher:obidontiee",
-    "starcatcher:morganite",
     "starcatcher:silverveil_perch",
     "starcatcher:elderscale",
     "starcatcher:driftfin",
@@ -449,7 +496,6 @@
     "starcatcher:pinfish",
     "starcatcher:petaldrift_carp",
     "starcatcher:pink_koi",
-    "starcatcher:livid_bamboo",
     "starcatcher:icetooth_sturgeon",
     "starcatcher:boreal",
     "starcatcher:crystalback_boreal",
@@ -469,6 +515,7 @@
     "starcatcher:dusktail_snapper",
     "starcatcher:redscaled_tuna",
     "starcatcher:bigeye_tuna",
+    "starcatcher:morganite",
     "starcatcher:whiteveil",
     "starcatcher:yellowstone_fish",
     "starcatcher:lush_pike",

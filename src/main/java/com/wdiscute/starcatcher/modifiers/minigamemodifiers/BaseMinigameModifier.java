@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.modifiers.minigamemodifiers;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
@@ -12,9 +14,14 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BaseMinigameModifier extends AbstractMinigameModifier
 {
-    public BaseMinigameModifier()
+    public static final MapCodec<BaseMinigameModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+            ).apply(instance, BaseMinigameModifier::new));
+
+    public BaseMinigameModifier(String translationOverride)
     {
-        super("");
+        super(translationOverride);
     }
 
     @Override
@@ -79,6 +86,6 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
     @Override
     public MapCodec<? extends Modifier> getCodec()
     {
-        return null;
+        return CODEC;
     }
 }

@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class FrogModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "frog";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("frog"), "main");
     private final ModelPart root;
 
     public FrogModel(ModelPart root)

@@ -77,6 +77,28 @@
         "translation_override": "tooltip.modifier.starcatcher.deep_ocean_bobber"
       }
     ],
+    "starcatcher:default_catch": [
+      {
+        "type": "starcatcher:fish_messages",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:luck_attribute_modifier",
+        "rarity_count_increase_times_luck": {
+          "common": 0,
+          "epic": 3,
+          "legendary": 5,
+          "rare": 2,
+          "uncommon": 1
+        },
+        "translation_override": "tooltip.modifier.starcatcher.luck_attribute"
+      }
+    ],
+    "starcatcher:default_minigame": [
+      {
+        "type": "starcatcher:rod"
+      }
+    ],
     "starcatcher:dev_worm": [
       {
         "type": "starcatcher:adjust_lure_time",
@@ -569,6 +591,12 @@
       {
         "type": "starcatcher:spawn_treasure_on_hit_x",
         "hits_to_spawn_treasure": 3,
+        "translation_override": ""
+      }
+    ],
+    "starcatcher:sky_rod": [
+      {
+        "type": "starcatcher:pull_down",
         "translation_override": ""
       }
     ],

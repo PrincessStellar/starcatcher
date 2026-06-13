@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class ClearModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "clear";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("clear"), "main");
     private final ModelPart root;
 
     public ClearModel(ModelPart root)

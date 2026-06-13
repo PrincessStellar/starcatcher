@@ -27,9 +27,6 @@ public class ActiveSweetSpot
 
     //from minigame screen/rod
     public final FishingMinigameScreen instance;
-    public final ItemStack bobber;
-    public final ItemStack bait;
-    public final ItemStack hook;
 
     //from fp
     public boolean isFlip;
@@ -47,7 +44,7 @@ public class ActiveSweetSpot
     // For use with modifiers, map an id with some data
     public Map<Integer, Object> extraData = new HashMap<>();
 
-    public ActiveSweetSpot(FishingMinigameScreen instance, Difficulty.SweetSpot ss, ItemStack bobber, ItemStack bait, ItemStack hook)
+    public ActiveSweetSpot(FishingMinigameScreen instance, Difficulty.SweetSpot ss)
     {
         //get sweet spot type from rl
         Optional<Supplier<? extends AbstractSweetSpotBehaviour>> behaviour = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.SWEET_SPOT_BEHAVIOUR).getOptional(ss.sweetSpotType());
@@ -71,10 +68,6 @@ public class ActiveSweetSpot
         this.particleColor = ss.particleColor();
         this.modifiers = ss.modifiers().stream().filter(o -> o instanceof AbstractMinigameModifier).map(o -> (AbstractMinigameModifier)o).toList();
 
-        this.bobber = bobber;
-        this.bait = bait;
-        this.hook = hook;
-
         this.isFlip = ss.isFlip();
         this.vanishingRate = (float) (ss.vanishingRate() * Minecraft.getInstance().player.getAttributeValue(SCAttributes.VANISHING_RATE_MULTIPLIER) * SCConfig.VANISHING_RATE_MULTIPLIER.get());
         this.movingRate = (float) (ss.movingRate() * SCConfig.MOVING_SPEED_MULTIPLIER.get());
@@ -82,11 +75,6 @@ public class ActiveSweetSpot
         currentRotation = -1;
 
         this.alpha = 1;
-    }
-
-    public ActiveSweetSpot(FishingMinigameScreen instance, Difficulty.SweetSpot ss)
-    {
-        this(instance, ss, instance.bobber, instance.bait, instance.hook);
     }
 
     public boolean isHoveredOver()

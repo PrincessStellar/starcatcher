@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
@@ -34,9 +35,9 @@ public interface SCDataMaps
 
 
 
-    DataMapType<Item, ResourceLocation> TACKLE_SKIN = DataMapType.builder(
-            Starcatcher.rl("tackle_skin"), Registries.ITEM, ResourceLocation.CODEC
-    ).synced(ResourceLocation.CODEC, true).build();
+    DataMapType<Item, AbstractTackleSkin> TACKLE_SKIN = DataMapType.builder(
+            Starcatcher.rl("tackle_skin"), Registries.ITEM, Starcatcher.TACKLE_SKIN_REGISTRY.byNameCodec()
+    ).synced(Starcatcher.TACKLE_SKIN_REGISTRY.byNameCodec(), true).build();
 
     DataMapType<FishProperties, Treasure.TreasureInstance> TREASURE = DataMapType.builder(
             Starcatcher.rl("treasures"), Starcatcher.FISH_REGISTRY_KEY, Treasure.TREASURE_CODEC

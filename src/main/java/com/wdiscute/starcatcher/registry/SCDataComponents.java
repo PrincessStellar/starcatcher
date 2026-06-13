@@ -5,6 +5,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
@@ -31,7 +32,7 @@ public interface SCDataComponents
             "bucketed_fish",
             builder -> builder.persistent(SingleStackContainer.CODEC));
 
-    
+
     //signed book system
     DeferredHolder<DataComponentType<?>, DataComponentType<SignedGuide>> SIGNED_GUIDE = register(
             "signed_guide",
@@ -66,9 +67,9 @@ public interface SCDataComponents
             "modifiers",
             builder -> builder.persistent(Modifier.CODEC.listOf()));
 
-    DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>> TACKLE_SKIN = register(
+    DeferredHolder<DataComponentType<?>, DataComponentType<AbstractTackleSkin>> TACKLE_SKIN = register(
             "tackle_skin",
-            builder -> builder.persistent(ResourceLocation.CODEC));
+            builder -> builder.persistent(Starcatcher.TACKLE_SKIN_REGISTRY.byNameCodec()));
 
     DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> NETHERITE_UPGRADE = register(
             "netherite_upgraded",
@@ -87,8 +88,6 @@ public interface SCDataComponents
     @Nullable
     static <T> T get(ItemStack stack, Supplier<DataComponentType<T>> component)
     {
-        if(component.equals(MODIFIERS.get()));
-        if(component.equals(TACKLE_SKIN.get()));
         return stack.get(component);
     }
 

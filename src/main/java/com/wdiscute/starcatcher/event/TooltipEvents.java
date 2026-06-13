@@ -8,6 +8,8 @@ import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -68,11 +70,26 @@ public class TooltipEvents
             }
         }
 
-        //tackle skin
-        ResourceLocation rl = SCTackleSkins.getTackleSkin(stack);
-        if (!rl.equals(SCTackleSkins.BASE_TACKLE_SKIN))
+        //tackle skin data component
+        ResourceLocation tackleSkinDC = Starcatcher.TACKLE_SKIN_REGISTRY.getKey(
+                SCDataComponents.getOrDefault(stack, SCDataComponents.TACKLE_SKIN, Starcatcher.TACKLE_SKIN_REGISTRY.get(Starcatcher.BASE)));
+        if (tackleSkinDC != null && !tackleSkinDC.equals(Starcatcher.BASE))
         {
-            String s = I18n.get("tooltip.tackle." + rl.toLanguageKey());
+            String s = I18n.get("tooltip.tackle." + tackleSkinDC.toLanguageKey());
+            if (!s.isEmpty())
+            {
+                comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
+                comp.add(Component.literal(" -").append(Component.literal(s))
+                        .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
+            }
+        }
+
+        //tackle skin data map
+        ResourceLocation tackleSkinDM = Starcatcher.TACKLE_SKIN_REGISTRY.getKey(
+                SCDataMaps.getOrDefault(stack, SCDataMaps.TACKLE_SKIN, Starcatcher.TACKLE_SKIN_REGISTRY.get(Starcatcher.BASE)));
+        if (tackleSkinDM != null && !tackleSkinDM.equals(Starcatcher.BASE))
+        {
+            String s = I18n.get("tooltip.tackle." + tackleSkinDM.toLanguageKey());
             if (!s.isEmpty())
             {
                 comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
@@ -91,7 +108,7 @@ public class TooltipEvents
         else
             modifiers = Modifier.getModifiers(stack);
 
-        if (!modifiers.isEmpty() || !stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+        if (!modifiers.isEmpty())
         {
             List<Component> modComp = new ArrayList<>();
 

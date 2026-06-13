@@ -183,7 +183,7 @@ public class SCConfig
             .defineInRange("base_max_ticks", 300, 0, 999999);
 
     public static final ModConfigSpec.DoubleValue BASE_CHANCE_TO_FISH = BUILDER_SERVER
-            .comment("The base chance to fish every tick (out of 1)")
+            .comment("The rod chance to fish every tick (out of 1)")
             .translation("starcatcher.configuration.base_chance")
             .defineInRange("base_chance", 0.005d, 0, 1);
 

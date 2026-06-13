@@ -56,23 +56,10 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [
-        "starcatcher:is_ocean",
-        "starcatcher:is_river",
-        "starcatcher:is_mushroom_fields"
-      ],
-      "biomes_tags": [],
-      "hover_translation": "gui.guide.lakes.hover",
-      "translation_override": "gui.guide.lakes"
-    },
-    {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "max_y": 50,
+      "min_y": 0,
+      "translation_override": "gui.guide.elevation.stone_caves"
     },
     {
       "type": "starcatcher:season",
@@ -105,5 +92,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/cave.png"
 }

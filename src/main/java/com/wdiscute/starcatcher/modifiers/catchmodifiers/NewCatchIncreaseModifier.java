@@ -45,7 +45,7 @@ public class NewCatchIncreaseModifier extends AbstractCatchModifier
         List<FishProperties> list = new ArrayList<>(available);
 
         //keep a unique set of fps so it doesn't add for each instance of the fp already in the list,
-        // otherwise FPs with high base chances would disproportionally get increased odds
+        // otherwise FPs with high rod chances would disproportionally get increased odds
         Set<FishProperties> set = new HashSet<>();
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = instance.player.getData(SCDataAttachments.FISHING_GUIDE).fishesCaught;

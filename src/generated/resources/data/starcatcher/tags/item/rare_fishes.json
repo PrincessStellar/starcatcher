@@ -249,11 +249,23 @@
       "required": false
     },
     {
-      "id": "spawn:angler_fish",
+      "id": "starcatcher:mechanical_brass_snail",
       "required": false
     },
     {
-      "id": "spawn:captured_octopus",
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
       "required": false
     },
     {

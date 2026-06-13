@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class ValleyModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "base";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("valley"), "main");
     private final ModelPart root;
 
 

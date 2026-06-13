@@ -157,4 +157,9 @@ public abstract class AbstractMinigameModifier implements Modifier
     {
         return false;
     }
+
+    public boolean flipRodAndProgressDisplay()
+    {
+        return false;
+    }
 }

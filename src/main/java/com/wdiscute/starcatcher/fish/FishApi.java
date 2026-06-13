@@ -115,7 +115,7 @@ public class FishApi
 
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
-        //if dev worm return base chance
+        //if dev worm return rod chance
         if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
             fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             return 1;
@@ -151,13 +151,13 @@ public class FishApi
                 fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(player, time, completedTreasure, perfectCatch, hits));
 
                 //play sound
-                SCTackleSkins.get(level, fbe.rod).onSuccessfulMinigame(player);
+                fbe.tackleSkin.onSuccessfulMinigame(player);
 
                 //if should cancel because of modifier, return
                 if (fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
                         player, time, completedTreasure, perfectCatch, hits))) return;
 
-                //pick base percentile
+                //pick rod percentile
                 float percentile = U.r.nextFloat(100);
 
                 //modify percentile from modifiers
@@ -244,7 +244,7 @@ public class FishApi
                     entity.setDeltaMovement(vec3);
                     level.addFreshEntity(entity);
                 }
-                //if not entity then add base item stack
+                //if not entity then add rod item stack
                 else
                 {
 
@@ -303,7 +303,7 @@ public class FishApi
                 fbe.modifiers.forEach(AbstractCatchModifier::onFailedMinigame);
 
                 //play sound from tackle skin
-                SCTackleSkins.get(level, fbe.rod).onFailedMinigame(player);
+                fbe.tackleSkin.onFailedMinigame(player);
             }
 
             //consume bait if not bucket

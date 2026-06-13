@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-10T21:24:16.9821418	Item Models: starcatcher
+// 1.21.1	2026-06-13T15:14:00.8449239	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -199,6 +199,7 @@ f6e70d2ff0e47b07921c5a689281124766ae7cb6 assets/starcatcher/models/item/suneater
 9def5ccce63f7055d6af3d0780d63b28736d57a1 assets/starcatcher/models/item/sunflower_carp.json
 fae193138ec4619b25eeea36f035ddde469644b8 assets/starcatcher/models/item/sunny_sturgeon.json
 26429ac8538354e824cd9798074b9acc024ced85 assets/starcatcher/models/item/sun_seeking_carp.json
+7a1cb18e7c5033f6da703e70f3fbfde116213f81 assets/starcatcher/models/item/survivor_smithing_template.json
 f4d8afe7dbe79c84d5f52e2e8173b2bea1ab1478 assets/starcatcher/models/item/tackle_box.json
 89075825526b5828e0c3a5745c20150d2de08c20 assets/starcatcher/models/item/tackle_box_black.json
 78e50edc0dd6c592a701ddbc010eac0efe3869bd assets/starcatcher/models/item/tackle_box_blue.json

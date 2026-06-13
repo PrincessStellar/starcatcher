@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class KingModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "king";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("king"), "main");
     private final ModelPart root;
 
     public KingModel(ModelPart root)

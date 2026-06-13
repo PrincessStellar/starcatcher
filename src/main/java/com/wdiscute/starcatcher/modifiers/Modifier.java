@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -27,6 +28,28 @@ public interface Modifier
 {
     Map<ResourceLocation, MapCodec<? extends Modifier>> MODIFIERS = new HashMap<>();
 
+    static List<AbstractMinigameModifier> getDefaultMinigameModifiers()
+    {
+        List<Modifier> data = SCItems.DEFAULT_MINIGAME.getData(SCDataMaps.ITEM_MODIFIERS);
+
+        if(data == null) data = List.of();
+
+        return data.stream()
+            .filter(AbstractMinigameModifier.class::isInstance)
+            .map(o -> (AbstractMinigameModifier) o).toList();
+    }
+
+    static List<AbstractCatchModifier> getDefaultCatchModifiers()
+    {
+        List<Modifier> data = SCItems.DEFAULT_CATCH.getData(SCDataMaps.ITEM_MODIFIERS);
+
+        if(data == null) data = List.of();
+
+        return data.stream()
+                .filter(AbstractCatchModifier.class::isInstance)
+                .map(o -> (AbstractCatchModifier) o).toList();
+    }
+
     List<Component> getDescription(boolean shift);
 
     ResourceLocation getIdentifier();
@@ -42,7 +65,7 @@ public interface Modifier
                             return MODIFIERS.get(rl);
 
                         if (FMLEnvironment.dist.isClient())
-                            LogUtils.getLogger().warn("Modifier [" + rl + "] not found. If this log is in");
+                            LogUtils.getLogger().warn("Modifier [{}] not found. If this log is in a dedicated server you can ignore this warning.", rl);
                         return EmptyModifier.CODEC;
                     }
             );
@@ -101,7 +124,7 @@ public interface Modifier
         //add all modifiers stored directly in the item, in the data component
         modifiers.addAll(SCDataComponents.getOrDefault(itemStack, SCDataComponents.MODIFIERS, List.of()));
 
-        //add all modifiers from base data map
+        //add all modifiers from rod data map
         modifiers.addAll(SCDataMaps.getOrDefault(itemStack, SCDataMaps.ITEM_MODIFIERS, List.of()));
 
         //todo add enchants
@@ -122,23 +145,16 @@ public interface Modifier
         return modifiers;
     }
 
-    List<AbstractCatchModifier> BASE_CATCH_MODIFIERS = new ArrayList<>();
-
     static void registerCatch()
     {
-        //base modifiers added to every catch
-        BASE_CATCH_MODIFIERS.add(new FishMessagesModifier());
-        BASE_CATCH_MODIFIERS.add(new LuckAttributeModifier(new HashMap<>()
-        {{
-            put(Rarity.COMMON, 0);
-            put(Rarity.UNCOMMON, 1);
-            put(Rarity.RARE, 2);
-            put(Rarity.EPIC, 3);
-            put(Rarity.LEGENDARY, 5);
-        }}, "tooltip.modifier.starcatcher.luck_attribute"));
-
         //catch modifier for codecs
         Modifier.MODIFIERS.put(Starcatcher.rl("empty"), EmptyModifier.CODEC);
+
+        //defaults
+        Modifier.MODIFIERS.put(Starcatcher.rl("fish_messages"), FishMessagesModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("luck_attribute_modifier"), LuckAttributeModifier.CODEC);
+
+        //others
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_lure_time"), AdjustLureTimeModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_loot_table_to_fishing_loot"), AddLootTableToFishedItemsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("remove_base_fished_item"), RemoveBaseFishedItemModifier.CODEC);
@@ -162,17 +178,18 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("award_treasure_on_perfect_catch"), AwardTreasureOnPerfectCatch.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("no_gravity"), NoGravityModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bost_thrown_speed"), BoostThrownSpeedModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("luck_attribute_modifier"), LuckAttributeModifier.CODEC);
     }
 
-    List<AbstractMinigameModifier> BASE_MINIGAME_MODIFIERS = new ArrayList<>();
 
     static void registerMinigame()
     {
-        BASE_MINIGAME_MODIFIERS.add(new BaseMinigameModifier());
-
         //minigame modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("freeze_on_miss"), FreezeOnMissModifier.CODEC);
+
+        //defaults
+        Modifier.MODIFIERS.put(Starcatcher.rl("base"), BaseMinigameModifier.CODEC);
+
+        //others
         Modifier.MODIFIERS.put(Starcatcher.rl("burn_on_miss"), BurnOnMissModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("teleport"), TeleportModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure_on_hit_x"), SpawnTreasureOnHitX.CODEC);
@@ -187,6 +204,7 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("prevent_frozen"), PreventFrozenModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("deep_dark"), DeepDarkModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_basic_sweet_spot"), AddBasicSweetSpotModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("pull_down"), PullDownModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_moving_sweet_spots"), AdjustMovingModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_vanishing_rate"), AdjustVanishingRate.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_handle_speed"), AdjustBaseHandleSpeedModifier.CODEC);

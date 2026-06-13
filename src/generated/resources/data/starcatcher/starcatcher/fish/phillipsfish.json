@@ -2,14 +2,15 @@
   "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
-      "modid": "spawn"
+      "modid": "create"
     }
   ],
   "base_chance": 5,
   "catch_info": {
-    "entity": "spawn:herring",
-    "fish_bucket": "spawn:herring_bucket",
-    "item": "spawn:herring"
+    "item": {
+      "count": 1,
+      "id": "starcatcher:phillipsfish"
+    }
   },
   "difficulty": {
     "decay": 1.0,
@@ -22,7 +23,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweet_spot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -32,7 +33,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweet_spot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -73,10 +74,10 @@
     }
   ],
   "size_and_weight": {
-    "average_size_cm": 80.0,
-    "average_weight_grams": 12000.0,
-    "deviation_size_cm": 40.0,
-    "deviation_weight_grams": 7000.0,
+    "average_size_cm": 7.0,
+    "average_weight_grams": 100.0,
+    "deviation_size_cm": 1.0,
+    "deviation_weight_grams": 60.0,
     "golden_chance": 0.02
   },
   "skips_minigame": false,

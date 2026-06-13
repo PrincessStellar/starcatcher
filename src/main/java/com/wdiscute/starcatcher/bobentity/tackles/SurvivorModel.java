@@ -12,8 +12,7 @@ import net.minecraft.world.entity.Entity;
 
 public class SurvivorModel<T extends Entity> extends net.minecraft.client.model.EntityModel<T>
 {
-    private static final String NAME = "base";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("survivor"), "main");
     private final ModelPart root;
 
 
@@ -24,7 +23,7 @@ public class SurvivorModel<T extends Entity> extends net.minecraft.client.model.
 
     public static ResourceLocation getTexture()
     {
-        return Starcatcher.rl("textures/entity/tackle/base.png");
+        return Starcatcher.rl("textures/entity/tackle/survivor.png");
     }
 
     public static LayerDefinition createBodyLayer()

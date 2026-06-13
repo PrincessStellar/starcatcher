@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class ColorfulModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "colorful";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("colorful"), "main");
     private final ModelPart root;
 
     public ColorfulModel(ModelPart root)

@@ -421,7 +421,15 @@
       "required": false
     },
     {
-      "id": "spawn:herring",
+      "id": "starcatcher:phillipsfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:valve",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
       "required": false
     },
     {

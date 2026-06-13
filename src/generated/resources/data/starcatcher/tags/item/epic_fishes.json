@@ -197,6 +197,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:eel_dynamo",
+      "required": false
+    },
+    {
       "id": "unusualfishmod:raw_snowflake",
       "required": false
     }

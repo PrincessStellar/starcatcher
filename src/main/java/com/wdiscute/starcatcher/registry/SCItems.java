@@ -48,6 +48,8 @@ public interface SCItems
     DeferredItem<Item> STARCATCHER_TWINE = ITEMS.register("starcatcher_twine", SingleStackBasicItem::new);
 
     DeferredItem<Item> SETTINGS = ITEMS.register("settings", BasicItem::new);
+    DeferredItem<Item> DEFAULT_MINIGAME = ITEMS.register("default_minigame", BasicItem::new);
+    DeferredItem<Item> DEFAULT_CATCH = ITEMS.register("default_catch", BasicItem::new);
 
     //hooks
     DeferredItem<Item> HOOK = HOOKS_REGISTRY.register("hook", SingleStackBasicItem::new);
@@ -102,6 +104,7 @@ public interface SCItems
     DeferredItem<Item> FROG_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("frog_smithing_template", BasicItem::new);
     DeferredItem<Item> KING_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("king_smithing_template", BasicItem::new);
     DeferredItem<Item> VALLEY_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("valley_smithing_template", BasicItem::new);
+    DeferredItem<Item> SURVIVOR_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("survivor_smithing_template", BasicItem::new);
 
     //skin templates
     DeferredItem<Item> NATURALIST_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("naturalist_skin_smithing_template", BasicItem::new);

@@ -39,7 +39,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
     {
         if (!BOB_MODELS.isEmpty()) return;
 
-        BOB_MODELS.put(Starcatcher.rl("base"), new BaseModel<>(modelSet.bakeLayer(BaseModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.BASE, new BaseModel<>(modelSet.bakeLayer(BaseModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("clear"), new ClearModel<>(modelSet.bakeLayer(ClearModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("colorful"), new ColorfulModel<>(modelSet.bakeLayer(ColorfulModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("frog"), new FrogModel<>(modelSet.bakeLayer(FrogModel.LAYER_LOCATION)));
@@ -47,7 +47,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         BOB_MODELS.put(Starcatcher.rl("king"), new KingModel<>(modelSet.bakeLayer(KingModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("pearl"), new PearlModel<>(modelSet.bakeLayer(PearlModel.LAYER_LOCATION)));
         BOB_MODELS.put(Starcatcher.rl("valley"), new ValleyModel<>(modelSet.bakeLayer(ValleyModel.LAYER_LOCATION)));
-        BOB_MODELS.put(Starcatcher.rl("survivor"), new SurvivorModel<>(modelSet.bakeLayer(ValleyModel.LAYER_LOCATION)));
+        BOB_MODELS.put(Starcatcher.rl("survivor"), new SurvivorModel<>(modelSet.bakeLayer(SurvivorModel.LAYER_LOCATION)));
     }
 
     public FishingBobRenderer(EntityRendererProvider.Context context)
@@ -77,7 +77,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         //data attachment returns starcatcher:base if there's no attachment
         ResourceLocation tackleRl = SCDataAttachments.get(fishingBobEntity, SCDataAttachments.TACKLE_SKIN);
 
-        EntityModel<FishEntity> model = BOB_MODELS.getOrDefault(tackleRl, BOB_MODELS.get(Starcatcher.rl("base")));
+        EntityModel<FishEntity> model = BOB_MODELS.getOrDefault(tackleRl, BOB_MODELS.get(Starcatcher.BASE));
         VertexConsumer vertexconsumer = buffer.getBuffer(model.renderType(U.rl(tackleRl.getNamespace(),
                 "textures/entity/tackle/" + tackleRl.getPath() + ".png")));
         model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);

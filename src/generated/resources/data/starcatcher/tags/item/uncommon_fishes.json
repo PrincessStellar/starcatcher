@@ -5,10 +5,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:morganite",
-      "required": false
-    },
-    {
       "id": "starcatcher:silverveil_perch",
       "required": false
     },
@@ -50,6 +46,10 @@
     },
     {
       "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
+      "id": "starcatcher:morganite",
       "required": false
     },
     {
@@ -310,6 +310,18 @@
     },
     {
       "id": "hybrid-aquatic:betta",
+      "required": false
+    },
+    {
+      "id": "starcatcher:coggill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:brassgill",
       "required": false
     },
     {

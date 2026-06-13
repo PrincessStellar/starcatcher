@@ -13,8 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class KimbeModel<T extends Entity> extends EntityModel<T>
 {
-    private static final String NAME = "kimbe";
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl(NAME), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Starcatcher.rl("kimbe"), "main");
     private final ModelPart root;
 
     public KimbeModel(ModelPart root)

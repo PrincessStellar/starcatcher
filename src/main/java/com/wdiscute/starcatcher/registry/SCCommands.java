@@ -315,7 +315,7 @@ public interface SCCommands
         ItemStack stack = player.getMainHandItem();
         if (!stack.is(SCTags.RODS)) throw ERROR_ROD.create(null);
 
-        SCDataComponents.set(stack, SCDataComponents.TACKLE_SKIN, tackleSkin.location());
+        SCDataComponents.set(stack, SCDataComponents.TACKLE_SKIN, Starcatcher.TACKLE_SKIN_REGISTRY.get(tackleSkin));
 
         return 1;
     }

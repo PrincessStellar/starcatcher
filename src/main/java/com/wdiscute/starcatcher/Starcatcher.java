@@ -38,6 +38,8 @@ public class Starcatcher
 {
     public static final String MOD_ID = "starcatcher";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final ResourceLocation MISSINGNO = rl("missingno");
+    public static final ResourceLocation BASE = rl("base");
 
     //resource keys
     public static final ResourceKey<Registry<FishProperties>> FISH_REGISTRY_KEY =
@@ -65,15 +67,13 @@ public class Starcatcher
 
     public static final Registry<AbstractTackleSkin> TACKLE_SKIN_REGISTRY = new RegistryBuilder<>(TACKLE_SKIN)
             .sync(true)
-            .defaultKey(Starcatcher.rl("pearl"))
+            .defaultKey(Starcatcher.BASE)
             .create();
 
     public static ResourceLocation rl(String s)
     {
         return ResourceLocation.fromNamespaceAndPath(Starcatcher.MOD_ID, s);
     }
-
-    public static final ResourceLocation MISSINGNO = rl("missingno");
 
     @OnlyIn(Dist.CLIENT)
     public static void fishCaughtToast(FishProperties fp, boolean newFish, int sizeCM, int weightCM)

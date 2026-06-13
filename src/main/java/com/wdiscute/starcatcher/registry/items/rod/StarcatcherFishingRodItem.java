@@ -2,12 +2,14 @@ package com.wdiscute.starcatcher.registry.items.rod;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.network.chat.Component;
@@ -68,20 +70,20 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
         if (level.isClientSide) return InteractionResultHolder.success(is);
 
+        AbstractTackleSkin tackleSkin = SCDataComponents.getOrDefault(is, SCDataComponents.TACKLE_SKIN, Starcatcher.TACKLE_SKIN_REGISTRY.get(Starcatcher.BASE));
 
         if (fishingBobAttachment.isEmpty())
         {
-            SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onCast(player);
-
             if (level instanceof ServerLevel)
             {
-                Entity entity = new FishingBobEntity(level, player, is);
+                Entity entity = new FishingBobEntity(level, player, is, tackleSkin);
+
                 level.addFreshEntity(entity);
                 entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(player.getX(), entity.getEyeY(), player.getZ()));
 
                 fishingBobAttachment.setUuid(player, entity.getUUID());
-                if (SCDataComponents.has(is, SCDataComponents.TACKLE_SKIN))
-                    SCDataAttachments.set(entity, SCDataAttachments.TACKLE_SKIN.get(), SCDataComponents.get(is, SCDataComponents.TACKLE_SKIN));
+
+                SCDataAttachments.set(entity, SCDataAttachments.TACKLE_SKIN.get(), Starcatcher.TACKLE_SKIN_REGISTRY.getKey(tackleSkin));
             }
         }
         else
@@ -90,7 +92,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
             if (maybeEntity instanceof FishingBobEntity fbe && !fbe.checkBiting())
             {
-                SCTackleSkins.get(player.level(), player.getItemInHand(hand)).onRetrieve(player);
+                tackleSkin.onRetrieve(player);
 
                 fbe.kill();
                 SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB.get());

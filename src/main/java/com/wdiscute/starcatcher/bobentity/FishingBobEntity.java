@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.bobentity;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.MaybeStack;
@@ -13,11 +12,8 @@ import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
@@ -39,6 +35,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,6 +55,7 @@ public class FishingBobEntity extends Projectile
     public ItemStack treasure;
     public ResourceLocation rlToAwardUponFishingComplete;
     public ItemStack rod = ItemStack.EMPTY;
+    public AbstractTackleSkin tackleSkin;
     public final List<AbstractCatchModifier> modifiers;
 
     public boolean survivesLava = false;
@@ -84,39 +82,23 @@ public class FishingBobEntity extends Projectile
     public FishingBobEntity(EntityType<? extends FishingBobEntity> entityType, Level level)
     {
         super(entityType, level);
-        this.player = level.isClientSide() ? PlayerGetter.getPlayer() : null;
-        if (player != null)
-        {
-            this.modifiers = Modifier.getCatchModifiers(player);
-            modifiers.forEach(acm -> acm.onAdd(this));
-        }
-        else
-        {
-            this.modifiers = new ArrayList<>();
-        }
-    }
-
-    // This is how you replace the OnlyIn annotation
-    public static class PlayerGetter
-    {
-        public static Player getPlayer()
-        {
-            return Minecraft.getInstance().player;
-        }
+        this.modifiers = new ArrayList<>();
+        this.player = getOwner() instanceof Player ? (Player) getOwner() : null;
     }
 
     //server
-    public FishingBobEntity(Level level, Player player, ItemStack rod)
+    public FishingBobEntity(@NotNull Level level, @NotNull Player player, @NotNull ItemStack rod, @NotNull AbstractTackleSkin tackleSkin)
     {
         super(SCEntities.FISHING_BOB.get(), level);
 
         this.setOwner(player);
         this.player = player;
+        this.tackleSkin = tackleSkin;
         this.rod = rod;
         this.modifiers = new ArrayList<>(Modifier.getCatchModifiers(player));
 
         //add fish messages modifier
-        modifiers.addAll(Modifier.BASE_CATCH_MODIFIERS);
+        modifiers.addAll(Modifier.getDefaultCatchModifiers());
 
         noGravity = modifiers.stream().anyMatch(AbstractCatchModifier::noGravity);
 
@@ -128,7 +110,7 @@ public class FishingBobEntity extends Projectile
         maxTicksToFish = SCConfig.BASE_MAX_TICKS_TO_FISH.getAsInt();
         chanceToFishEachTick = (float) SCConfig.BASE_CHANCE_TO_FISH.getAsDouble();
 
-        //modify base chances
+        //modify rod chances
         for (AbstractCatchModifier acm : modifiers)
         {
             minTicksToFish = acm.adjustMinTicksToFish(minTicksToFish);
@@ -166,6 +148,8 @@ public class FishingBobEntity extends Projectile
         this.setXRot((float) (Mth.atan2(vec3.y, vec3.horizontalDistance()) * (double) 180.0F / (double) (float) Math.PI));
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
+
+
 
 
         if (!level.isClientSide)
@@ -335,7 +319,7 @@ public class FishingBobEntity extends Projectile
             if (timeBiting > 80)
             {
                 SCDataAttachments.remove(player, SCDataAttachments.FISHING_BOB);
-                SCTackleSkins.get(level(), rod).onMissed(player);
+                tackleSkin.onMissed(player);
 
                 player.awardStat(SCStats.STARCAUGHT_FISH_MISSED.get());
 
@@ -414,10 +398,7 @@ public class FishingBobEntity extends Projectile
         {
             if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
             {
-                ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
-
-                Optional<AbstractTackleSkin> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
-                optional.orElseGet(BaseTackleSkin::new).onMinigameStarted(player);
+                tackleSkin.onMinigameStarted(player);
             }
 
             currentState = FishHookState.FISHING;
@@ -444,9 +425,7 @@ public class FishingBobEntity extends Projectile
                 //trigger tackle skin on biting
                 if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
                 {
-                    ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
-                    Optional<AbstractTackleSkin> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
-                    optional.orElseGet(BaseTackleSkin::new).onBiting(player, this);
+                    tackleSkin.onBiting(player, this);
                 }
             }
         }

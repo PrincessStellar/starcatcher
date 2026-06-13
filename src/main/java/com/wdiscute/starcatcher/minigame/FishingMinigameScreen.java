@@ -10,11 +10,9 @@ import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
-import com.wdiscute.starcatcher.registry.SCDataComponents;
+import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.io.network.SBFishingCompletedPayload;
-import com.wdiscute.starcatcher.registry.SCAttributes;
-import com.wdiscute.starcatcher.registry.SCKeymappings;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
@@ -50,9 +48,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public Rarity rarity;
 
     public final ItemStack itemBeingFished;
-    public final ItemStack bobber;
-    public final ItemStack bait;
-    public final ItemStack hook;
     public final ItemStack treasureIS;
 
     public final AbstractTackleSkin tackleSkin;
@@ -106,7 +101,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
     protected final List<AbstractMinigameModifier> modifiersToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
-    public FishingMinigameScreen(FishProperties fp, ItemStack treasure, ItemStack rod)
+    public FishingMinigameScreen(FishProperties fp, ItemStack treasure, List<AbstractMinigameModifier> baseModifiers, AbstractTackleSkin tackleSkin)
     {
         super(Component.empty());
 
@@ -128,36 +123,23 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         else
             this.itemBeingFished = fp.catchInfo().overrideMinigameWith().toStack();
 
-        this.bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
-        this.bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
-        this.hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
-
-
-        if (SCDataComponents.has(rod, SCDataComponents.TACKLE_SKIN))
-        {
-            ResourceLocation rl = SCDataComponents.get(rod, SCDataComponents.TACKLE_SKIN);
-
-            Optional<AbstractTackleSkin> optional = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.TACKLE_SKIN).getOptional(rl);
-            this.tackleSkin = optional.orElseGet(BaseTackleSkin::new);
-        }
-        else
-        {
-            this.tackleSkin = new BaseTackleSkin();
-        }
-
+        this.tackleSkin = tackleSkin;
 
         //tank texture change
         Player player = Minecraft.getInstance().player;
 
-        //base - a lot of these are now hitZone-based
+        //rod - a lot of these are now hitZone-based
         this.handleSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.HANDLE_SPEED_MULTIPLIER.get());
         this.handleBaseSpeed = (float) (difficulty.speed() * player.getAttributeValue(SCAttributes.HANDLE_ROTATION_SPEED_MULTIPLIER) * SCConfig.HANDLE_SPEED_MULTIPLIER.get());
         this.penalty = (int) (difficulty.penalty() * player.getAttributeValue(SCAttributes.PENALTY_MULTIPLIER) * SCConfig.PENALTY_MULTIPLIER.get());
         this.decay = (float) (difficulty.decay() * player.getAttributeValue(SCAttributes.BASE_DECAY_MULTIPLIER) * SCConfig.DECAY_RATE_MULTIPLIER.get());
         this.hp = (int) (difficulty.hp() * player.getAttributeValue(SCAttributes.REQUIRED_SCORE_MULTIPLIER) * SCConfig.HP_RATE_MULTIPLIER.get());
 
-        //add base modifier for kimbe before other modifiers so they can override kimbe if needed
-        Modifier.BASE_MINIGAME_MODIFIERS.forEach(this::addModifier);
+        //add default modifiers
+        Modifier.getDefaultMinigameModifiers().forEach(this::addModifier);
+
+        //add modifiers from constructor
+        baseModifiers.forEach(this::addModifier);
 
         //add every modifier from fp json which is registered
         for (Modifier mod : fp.dif().modifiers())
@@ -169,10 +151,12 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //add modifiers in armor/curios/rod
         modifiersToAdd.addAll(Modifier.getMinigameModifiers(player));
 
+        tick();
+
         //add every sweet spot from fp Json which is registered
         for (Difficulty.SweetSpot ss : fp.dif().sweetSpots())
         {
-            var newSweetSpot = new ActiveSweetSpot(this, ss, bobber, bait, hook);
+            var newSweetSpot = new ActiveSweetSpot(this, ss);
             addSweetSpot(newSweetSpot);
         }
     }
@@ -301,9 +285,12 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         guiGraphics.blit(texture, centerX - 16, centerY - 16,
                 32, 32, 224, 128, 32, 32, 256, 256);
 
+        boolean flip = modifiers.stream().anyMatch(AbstractMinigameModifier::flipRodAndProgressDisplay);
+
         //fishing rod
-        guiGraphics.blit(texture, centerX - 32 - 70, centerY - 24 - 57,
+        guiGraphics.blit(texture, centerX - 32 - 70, centerY - 24 - 57 + (flip ? 130 : 0),
                 64, 48, 192, 0, 64, 48, 256, 256);
+
 
         float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
 
@@ -317,7 +304,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         //item being fished
         poseStack.pushPose();
-        poseStack.translate(0, -yoffset, 0);
+        poseStack.translate(0, -yoffset * -1 - 77, 0);
         guiGraphics.renderItem(itemBeingFished, centerX - 8 - 100, centerY - 8 + 35);
         poseStack.popPose();
 
@@ -392,12 +379,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             guiGraphics.drawString(this.font, "tick: " + tickCount, 10, height / 2 + 50, 0xffffffff);
 
             //rod attachments
-            guiGraphics.drawString(this.font, "attachments: ", 10, height - 50, 0xffffff00);
-            guiGraphics.drawString(this.font, "bobber: " + bobber, 10, height - 40, 0xffffffff);
-            guiGraphics.drawString(this.font, "bait: " + bait, 10, height - 30, 0xffffffff);
-            guiGraphics.drawString(this.font, "hook: " + hook, 10, height - 20, 0xffffffff);
+//            guiGraphics.drawString(this.font, "attachments: ", 10, height - 50, 0xffffff00);
+//            guiGraphics.drawString(this.font, "bobber: " + bobber, 10, height - 40, 0xffffffff);
+//            guiGraphics.drawString(this.font, "bait: " + bait, 10, height - 30, 0xffffffff);
+//            guiGraphics.drawString(this.font, "hook: " + hook, 10, height - 20, 0xffffffff);
         }
-
     }
 
     public void renderSweetSpot(ActiveSweetSpot ass, GuiGraphics guiGraphics, float partialTick, PoseStack poseStack)

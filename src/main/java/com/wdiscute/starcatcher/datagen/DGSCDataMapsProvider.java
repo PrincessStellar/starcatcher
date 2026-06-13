@@ -9,6 +9,7 @@ import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
@@ -36,6 +37,7 @@ import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -131,6 +133,30 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //|  |  |  | ' '-' ' \ `-' | |  | |  .-' |  | \   --. |  |    .-'  `)
         //`--`--`--'  `---'   `---'  `--' `--'   `--'  `----' `--'    `----'
         //
+
+        //default catch modifiers
+        modifiers.add(SCItems.DEFAULT_CATCH,
+                List.of
+                        (
+                                new FishMessagesModifier(""),
+                                new LuckAttributeModifier(new HashMap<>()
+                                {{
+                                    put(Rarity.COMMON, 0);
+                                    put(Rarity.UNCOMMON, 1);
+                                    put(Rarity.RARE, 2);
+                                    put(Rarity.EPIC, 3);
+                                    put(Rarity.LEGENDARY, 5);
+                                }}, "tooltip.modifier.starcatcher.luck_attribute")
+                        ), false
+        );
+
+        //default minigame modifiers
+        modifiers.add(SCItems.DEFAULT_MINIGAME,
+                List.of(
+                        new BaseMinigameModifier("")
+                ), false
+        );
+
 
         modifiers.add(SCItems.SLIMEY_BOBBER, List.of(
                 new BounceBackModifier("")
@@ -239,7 +265,9 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         //rods
-
+        modifiers.add(SCItems.SKY_ROD, List.of(
+                new PullDownModifier("")
+        ), false);
 
         //worms
         modifiers.add(SCItems.WORM, List.of(
@@ -424,13 +452,14 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //
 
 
-        tackleSkin.add(SCItems.PEARL_SMITHING_TEMPLATE, SCTackleSkins.PEARL_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.KING_SMITHING_TEMPLATE, SCTackleSkins.KING_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.COLORFUL_SMITHING_TEMPLATE, SCTackleSkins.COLORFUL_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.CLEAR_SMITHING_TEMPLATE, SCTackleSkins.CLEAR_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.FROG_SMITHING_TEMPLATE, SCTackleSkins.FROG_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN, false);
-        tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN, false);
+        tackleSkin.add(SCItems.PEARL_SMITHING_TEMPLATE, SCTackleSkins.PEARL_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.KING_SMITHING_TEMPLATE, SCTackleSkins.KING_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.COLORFUL_SMITHING_TEMPLATE, SCTackleSkins.COLORFUL_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.CLEAR_SMITHING_TEMPLATE, SCTackleSkins.CLEAR_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.FROG_SMITHING_TEMPLATE, SCTackleSkins.FROG_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.KIMBE_SMITHING_TEMPLATE, SCTackleSkins.KIMBE_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.VALLEY_SMITHING_TEMPLATE, SCTackleSkins.VALLEY_TACKLE_SKIN.get(), false);
+        tackleSkin.add(SCItems.SURVIVOR_SMITHING_TEMPLATE, SCTackleSkins.SURVIVOR_TACKLE_SKIN.get(), false);
 
 
         //
@@ -443,7 +472,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         var treasures = this.builder(SCDataMaps.TREASURE);
 
-        //add base treasure to every fish
+        //add rod treasure to every fish
         treasures.add(SCTags.COMMON_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
         treasures.add(SCTags.UNCOMMON_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);
         treasures.add(SCTags.RARE_ENTRIES_FP, Treasure.VANILLA_FISHING_LOOT_TABLE, false);

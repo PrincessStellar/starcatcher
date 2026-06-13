@@ -181,10 +181,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:livid_bamboo",
-      "required": false
-    },
-    {
       "id": "starcatcher:ghostly_pike",
       "required": false
     },

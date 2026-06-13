@@ -106,7 +106,7 @@ public record FishProperties(
         );
     }
 
-    //base constructors
+    //rod constructors
     public FishProperties withCatchInfo(CatchInfo catchInfo)
     {
         return new FishProperties(catchInfo, this.baseChance, this.sizeWeight, this.rarity,

@@ -638,13 +638,10 @@ public class FishingGuideScreen extends Screen
             //render settings screen
             case -99 ->
             {
-                Minecraft.getInstance().setScreen(
-                        new SettingsScreen(
-                                FishProperties.empty().withFish(new MaybeStack(SCItems.AURORA)),
-                                new ItemStack(SCItems.ROD.get())
-                        ));
+                Minecraft.getInstance().setScreen(new SettingsScreen());
                 return;
             }
+
             //render index
             case 0 ->
             {
@@ -655,6 +652,7 @@ public class FishingGuideScreen extends Screen
                 renderIndex(guiGraphics, mouseX, mouseY);
                 renderCompass(guiGraphics);
             }
+
             //render help pages
             case 1 ->
             {
@@ -664,6 +662,7 @@ public class FishingGuideScreen extends Screen
                 renderTheBasics(guiGraphics, mouseX, mouseY);
                 renderCompass(guiGraphics);
             }
+
             //render entries
             case 2 ->
             {

@@ -117,6 +117,7 @@ public class SCClientEvents
         event.registerLayerDefinition(KingModel.LAYER_LOCATION, KingModel::createBodyLayer);
         event.registerLayerDefinition(PearlModel.LAYER_LOCATION, PearlModel::createBodyLayer);
         event.registerLayerDefinition(ValleyModel.LAYER_LOCATION, ValleyModel::createBodyLayer);
+        event.registerLayerDefinition(SurvivorModel.LAYER_LOCATION, SurvivorModel::createBodyLayer);
 
         //tackle box
         event.registerLayerDefinition(TackleBoxRenderer.LAYER_LOCATION, TackleBoxRenderer::createBodyLayer);

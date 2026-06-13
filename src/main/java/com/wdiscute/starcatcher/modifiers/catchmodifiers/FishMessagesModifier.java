@@ -1,6 +1,8 @@
 package com.wdiscute.starcatcher.modifiers.catchmodifiers;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
@@ -24,9 +26,14 @@ public class FishMessagesModifier extends AbstractCatchModifier
 {
     private boolean messageFished = false;
 
-    public FishMessagesModifier()
+    public static final MapCodec<FishMessagesModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+            ).apply(instance, FishMessagesModifier::new));
+
+    public FishMessagesModifier(String translationOverride)
     {
-        super("");
+        super(translationOverride);
     }
 
     @Override
@@ -80,12 +87,12 @@ public class FishMessagesModifier extends AbstractCatchModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.MISSINGNO;
+        return Starcatcher.rl("fish_messages");
     }
 
     @Override
     public MapCodec<? extends Modifier> getCodec()
     {
-        return null;
+        return CODEC;
     }
 }
