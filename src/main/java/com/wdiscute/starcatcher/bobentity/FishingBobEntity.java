@@ -13,6 +13,7 @@ import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
@@ -55,7 +56,7 @@ public class FishingBobEntity extends Projectile
     public ItemStack treasure;
     public ResourceLocation rlToAwardUponFishingComplete;
     public ItemStack rod = ItemStack.EMPTY;
-    public AbstractTackleSkin tackleSkin;
+    public final AbstractTackleSkin tackleSkin;
     public final List<AbstractCatchModifier> modifiers;
 
     public boolean survivesLava = false;
@@ -84,6 +85,7 @@ public class FishingBobEntity extends Projectile
         super(entityType, level);
         this.modifiers = new ArrayList<>();
         this.player = getOwner() instanceof Player ? (Player) getOwner() : null;
+        tackleSkin = new BaseTackleSkin();
     }
 
     //server
@@ -250,6 +252,8 @@ public class FishingBobEntity extends Projectile
     public void tick()
     {
         super.tick();
+
+        tackleSkin.onTick(this);
 
         noGravity = entityData.get(VOID);
 

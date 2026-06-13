@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.tackleskin;
 
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -42,5 +43,10 @@ public abstract class AbstractTackleSkin
     public void onFailedMinigame(Player player)
     {
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.VILLAGER_NO, SoundSource.NEUTRAL, 1.0F, 1.0F);
+    }
+
+    public void onTick(FishingBobEntity bobEntity)
+    {
+
     }
 }
