@@ -35,7 +35,7 @@
       },
       {
         "type": "starcatcher:flip_sweetspots_on_miss",
-        "chance": 0.4,
+        "chance": 0.05,
         "translation_override": ""
       }
     ],

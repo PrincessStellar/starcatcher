@@ -278,7 +278,7 @@ public record Difficulty(
                     new PullDownModifier(""),
                     new DisableHitSoundsModifier(""),
                     new DisableMissSoundsModifier(""),
-                    new FlipSweetSpotsOnMissModifier(0.4f, "")
+                    new FlipSweetSpotsOnMissModifier(0.05f, "")
             ),
             SweetSpot.CLOUD_1, SweetSpot.CLOUD_2, SweetSpot.CLOUD_3, SweetSpot.CLOUD_4
     );
