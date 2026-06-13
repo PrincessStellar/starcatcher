@@ -291,13 +291,13 @@
 
   "tooltip.modifier.starcatcher.freeze_on_miss": "Missing a sweet-spot will cause your handle to freeze up for a short period",
 
-  "tooltip.modifier.starcatcher.spawn_frozen_sweet_spots": "Every so often a frozen sweet-spot might show up",
+  "tooltip.modifier.starcatcher.spawn_frozen_sweetspots": "Every so often a frozen sweet-spot might show up",
 
-  "tooltip.modifier.starcatcher.spawn_tnt_sweet_spots": "Explosive sweet-spots might show up",
+  "tooltip.modifier.starcatcher.spawn_tnt_sweetspots": "Explosive sweet-spots might show up",
 
   "tooltip.modifier.starcatcher.spawn_treasure_on_three_hits": "Successfully hitting 3 sweet-spots in a row will summon a treasure chest",
 
-  "tooltip.modifier.starcatcher.slower_moving_sweet_spots": "Slows down moving sweet-spots",
+  "tooltip.modifier.starcatcher.slower_moving_sweetspots": "Slows down moving sweet-spots",
 
   "tooltip.modifier.starcatcher.stop_decay_on_hit": "Prevents the fish from swimming away for a short period after a hit",
 
@@ -307,13 +307,13 @@
 
   "tooltip.modifier.starcatcher.slower_vanishing": "Vanishing sweet-spots will take longer to vanish",
 
-  "tooltip.modifier.starcatcher.bigger_green_sweet_spots": "Green sweet-spots will be slightly bigger",
+  "tooltip.modifier.starcatcher.bigger_green_sweetspots": "Green sweet-spots will be slightly bigger",
 
   "tooltip.modifier.starcatcher.add_leaves_spots": "Leaf sweetspots will appear at random",
 
-  "tooltip.modifier.starcatcher.add_aqua_sweet_spot": "An extra aqua sweet-spot is added",
+  "tooltip.modifier.starcatcher.add_aqua_sweetspot": "An extra aqua sweet-spot is added",
 
-  "tooltip.modifier.starcatcher.add_three_aqua_sweet_spot": "Three extra aqua sweet-spot are added",
+  "tooltip.modifier.starcatcher.add_three_aqua_sweetspot": "Three extra aqua sweet-spot are added",
 
   "tooltip.modifier.starcatcher.flip_every_hit": "Flip every time you hit a sweet-spot",
 
@@ -346,7 +346,7 @@
   "tooltip.modifier.starcatcher.adjust_handle_speed": " the handle's rotation speed",
   "tooltip.modifier.starcatcher.adjust_handle_speed.shift": "Adjusts the handle's rotation speed by %s%%",
 
-  "tooltip.modifier.starcatcher.add_basic_sweet_spot": "Adds a Sweet-spot",
+  "tooltip.modifier.starcatcher.add_basic_sweetspot": "Adds a Sweet-spot",
   "tooltip.modifier.starcatcher.deep_ocean_bobber": "Adds a Deep Ocean Sweet-spot",
   "tooltip.modifier.starcatcher.glowing_bobber": "Adds a Glowing Sweet-spot",
 
@@ -358,9 +358,9 @@
   "tooltip.modifier.starcatcher.adjust_lure_time.shift.max_ticks": "Adjusts maximum ticks to fish by %s%%",
   "tooltip.modifier.starcatcher.adjust_lure_time.shift.random": "Adjusts the chance of biting every tick by %s%%",
 
-  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.increase": "Increases the speed of moving sweet-spots",
-  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.decrease": "Decreases the speed of moving sweet-spots",
-  "tooltip.modifier.starcatcher.adjust_moving_sweet_spots.shift": "Adjusts the speed of moving sweet-spots by %s%%",
+  "tooltip.modifier.starcatcher.adjust_moving_sweetspots.increase": "Increases the speed of moving sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_moving_sweetspots.decrease": "Decreases the speed of moving sweet-spots",
+  "tooltip.modifier.starcatcher.adjust_moving_sweetspots.shift": "Adjusts the speed of moving sweet-spots by %s%%",
 
   "tooltip.modifier.starcatcher.adjust_decay_rate.increase": "Increases the rate at which fish swim away",
   "tooltip.modifier.starcatcher.adjust_decay_rate.decrease": "Decreases the rate at which fish swim away",
@@ -409,6 +409,7 @@
   "tooltip.tackle.starcatcher.frog": "Frog",
   "tooltip.tackle.starcatcher.king": "King",
   "tooltip.tackle.starcatcher.valley": "Valley",
+  "tooltip.tackle.starcatcher.survivor": "Survivor",
 
 
   "item.starcatcher.hook": "Iron Hook",

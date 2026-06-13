@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 public interface SCSweetSpotsBehaviour
 {
     DeferredRegister<Supplier<? extends AbstractSweetSpotBehaviour>> REGISTRY =
-            DeferredRegister.create(Starcatcher.SWEET_SPOT_BEHAVIOUR_REGISTRY, Starcatcher.MOD_ID);
+            DeferredRegister.create(Starcatcher.SWEETSPOT_BEHAVIOUR_REGISTRY, Starcatcher.MOD_ID);
 
     ResourceLocation NORMAL = registerSweetspot("normal", () -> NormalSweetSpotBehaviour::new);
     ResourceLocation FROZEN = registerSweetspot("freeze", () -> FreezeSweetSpotBehaviour::new);
@@ -19,7 +19,8 @@ public interface SCSweetSpotsBehaviour
     ResourceLocation AQUA = registerSweetspot("aqua", () -> AquaSweetSpotBehaviour::new);
     ResourceLocation LEAF = registerSweetspot("leaf", () -> LeafSweetSpotBehaviour::new);
     ResourceLocation DEEP_OCEAN = registerSweetspot("deep_ocean", () -> DeepOceanSweetSpotBehaviour::new);
-    ResourceLocation GLOWING_SWEET_SPOT = registerSweetspot("glowing", () -> GlowingSweetSpotBehaviour::new);
+    ResourceLocation CLOUD = registerSweetspot("cloud", () -> CloudSweetSpotBehaviour::new);
+    ResourceLocation GLOWING_SWEETSPOT = registerSweetspot("glowing", () -> GlowingSweetSpotBehaviour::new);
 
 
     static ResourceLocation registerSweetspot(String name, Supplier<Supplier<? extends AbstractSweetSpotBehaviour>> supplier)

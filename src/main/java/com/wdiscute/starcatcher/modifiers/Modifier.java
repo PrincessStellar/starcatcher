@@ -194,21 +194,25 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("teleport"), TeleportModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure_on_hit_x"), SpawnTreasureOnHitX.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("stop_decay_on_hit"), StoneHookModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("bigger_green_sweet_spots"), SteadyBobberModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("bigger_green_sweetspots"), SteadyBobberModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("multi_layer_modifier"), Nikdo53Modifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("flip_every_hit"), FlipEveryHitModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("spawn_sweet_spots"), SpawnSweetSpotsModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("spawn_sweetspots"), SpawnSweetSpotsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_leaves_spots"), AddLeavesSweetspotsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bounce_back"), BounceBackModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("never_lose"), NeverLoseModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("prevent_frozen"), PreventFrozenModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("deep_dark"), DeepDarkModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("add_basic_sweet_spot"), AddBasicSweetSpotModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("add_basic_sweetspot"), AddBasicSweetSpotModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("pull_down"), PullDownModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("adjust_moving_sweet_spots"), AdjustMovingModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("adjust_moving_sweetspots"), AdjustMovingModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_vanishing_rate"), AdjustVanishingRate.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_handle_speed"), AdjustBaseHandleSpeedModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_decay_rate"), AdjustDecayRateModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_penalty_rate"), AdjustPenaltyModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("disable_miss_sounds"), DisableMissSoundsModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("disable_hit_sounds"), DisableHitSoundsModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("move_sweetspots_on_miss"), MoveSweetSpotsOnMissModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("flip_sweetspots_on_miss"), FlipSweetSpotsOnMissModifier.CODEC);
     }
 }

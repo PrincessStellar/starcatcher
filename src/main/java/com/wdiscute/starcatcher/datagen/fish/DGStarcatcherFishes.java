@@ -146,11 +146,11 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 5000))
                 .withDifficulty(Difficulty.MEDIUM));
 
-        register(overworldMountainFish(new MaybeStack(SCItems.SUN_SEEKING_CARP))
+        register(overworldSkyFish(new MaybeStack(SCItems.SUN_SEEKING_CARP))
                 .withSeasons(SeasonRestriction.AROUND_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
-                .withRarity(Rarity.RARE)
-                .withBaseChance(15)
+                .withRarity(Rarity.LEGENDARY)
+                .withDifficulty(Difficulty.SUN_SEEKING_CARP)
                 .withDaytimeRestriction(DaytimeRestriction.NOON));
 
 
@@ -208,7 +208,7 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(new SizeAndWeight(10, 3, 67, 0))
                 .withRarity(Rarity.LEGENDARY)
                 .addBait(BaitRestriction.LEGENDARY_BAIT)
-                .withDifficulty(Difficulty.NO_SWEET_SPOTS.withHP(300)));
+                .withDifficulty(Difficulty.NO_SWEETSPOTS.withHP(300)));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.BLOSSOMFISH))
                 .withSeasons(SeasonRestriction.SPRING_SUMMER)

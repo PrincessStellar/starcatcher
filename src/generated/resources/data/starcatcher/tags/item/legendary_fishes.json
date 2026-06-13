@@ -5,6 +5,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:sun_seeking_carp",
+      "required": false
+    },
+    {
       "id": "starcatcher:vesani",
       "required": false
     },

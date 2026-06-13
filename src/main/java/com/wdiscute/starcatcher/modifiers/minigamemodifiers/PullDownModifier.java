@@ -31,6 +31,11 @@ public class PullDownModifier extends AbstractMinigameModifier
     }
 
     @Override
+    public boolean onHit(ActiveSweetSpot ass)
+    {
+        return super.onHit(ass);
+    }
+    @Override
     public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         super.renderForeground(guiGraphics, partialTick, width, height);

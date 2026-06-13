@@ -63,14 +63,14 @@
     ],
     "starcatcher:deep_ocean_bobber": [
       {
-        "type": "starcatcher:add_basic_sweet_spot",
-        "sweet_spot_to_add": {
+        "type": "starcatcher:add_basic_sweetspot",
+        "sweetspot_to_add": {
           "color_as_int": -11569811,
           "hitbox_size_in_pixels": 22,
           "is_flip": false,
           "moving_rate": 0.0,
           "reward": 10,
-          "sweet_spot_type": "starcatcher:deep_ocean",
+          "sweetspot_type": "starcatcher:deep_ocean",
           "texture_path": "starcatcher:textures/gui/minigame/spots/deep_ocean.png",
           "vanishing_rate": 0.0
         },
@@ -96,7 +96,8 @@
     ],
     "starcatcher:default_minigame": [
       {
-        "type": "starcatcher:rod"
+        "type": "starcatcher:base",
+        "translation_override": ""
       }
     ],
     "starcatcher:dev_worm": [
@@ -167,7 +168,7 @@
         "translation_override": ""
       },
       {
-        "type": "starcatcher:adjust_moving_sweet_spots",
+        "type": "starcatcher:adjust_moving_sweetspots",
         "multiplier": 1.5,
         "translation_override": ""
       }
@@ -249,14 +250,14 @@
         "translation_override": ""
       },
       {
-        "type": "starcatcher:add_basic_sweet_spot",
-        "sweet_spot_to_add": {
+        "type": "starcatcher:add_basic_sweetspot",
+        "sweetspot_to_add": {
           "color_as_int": -11569811,
           "hitbox_size_in_pixels": 22,
           "is_flip": false,
           "moving_rate": 0.0,
           "reward": 10,
-          "sweet_spot_type": "starcatcher:deep_ocean",
+          "sweetspot_type": "starcatcher:deep_ocean",
           "texture_path": "starcatcher:textures/gui/minigame/spots/deep_ocean.png",
           "vanishing_rate": 0.0
         },
@@ -302,17 +303,17 @@
             "missPenalty": 20,
             "modifiers": [
               {
-                "type": "starcatcher:spawn_sweet_spots",
+                "type": "starcatcher:spawn_sweetspots",
                 "chance": 0.25,
                 "cooldown": 5,
                 "sudoku_vanish": true,
-                "sweet_spot": {
+                "sweetspot": {
                   "color_as_int": -65536,
                   "hitbox_size_in_pixels": 33,
                   "is_flip": false,
                   "moving_rate": 0.0,
                   "reward": 30,
-                  "sweet_spot_type": "starcatcher:tnt",
+                  "sweetspot_type": "starcatcher:tnt",
                   "texture_path": "starcatcher:textures/gui/minigame/spots/tnt.png",
                   "vanishing_rate": 0.0
                 },
@@ -327,7 +328,7 @@
                 "is_flip": false,
                 "moving_rate": 0.0,
                 "reward": 15,
-                "sweet_spot_type": "starcatcher:normal",
+                "sweetspot_type": "starcatcher:normal",
                 "texture_path": "starcatcher:textures/gui/minigame/spots/creeper.png",
                 "vanishing_rate": 0.0
               },
@@ -337,7 +338,7 @@
                 "is_flip": false,
                 "moving_rate": 0.0,
                 "reward": 15,
-                "sweet_spot_type": "starcatcher:normal",
+                "sweetspot_type": "starcatcher:normal",
                 "texture_path": "starcatcher:textures/gui/minigame/spots/creeper.png",
                 "vanishing_rate": 0.0
               }
@@ -447,14 +448,14 @@
     ],
     "starcatcher:glowing_bobber": [
       {
-        "type": "starcatcher:add_basic_sweet_spot",
-        "sweet_spot_to_add": {
+        "type": "starcatcher:add_basic_sweetspot",
+        "sweetspot_to_add": {
           "color_as_int": -133793,
           "hitbox_size_in_pixels": 20,
           "is_flip": false,
           "moving_rate": 0.0,
           "reward": 0,
-          "sweet_spot_type": "starcatcher:glowing",
+          "sweetspot_type": "starcatcher:glowing",
           "texture_path": "starcatcher:textures/gui/minigame/spots/glowing.png",
           "vanishing_rate": 0.0
         },
@@ -488,7 +489,7 @@
     ],
     "starcatcher:heavy_hook": [
       {
-        "type": "starcatcher:adjust_moving_sweet_spots",
+        "type": "starcatcher:adjust_moving_sweetspots",
         "multiplier": 0.75,
         "translation_override": ""
       }
@@ -616,7 +617,7 @@
     ],
     "starcatcher:steady_bobber": [
       {
-        "type": "starcatcher:bigger_green_sweet_spots",
+        "type": "starcatcher:bigger_green_sweetspots",
         "translation_override": ""
       }
     ],
@@ -672,7 +673,7 @@
                 "is_flip": false,
                 "moving_rate": 0.0,
                 "reward": 15,
-                "sweet_spot_type": "starcatcher:normal",
+                "sweetspot_type": "starcatcher:normal",
                 "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
                 "vanishing_rate": 0.0
               },
@@ -682,7 +683,7 @@
                 "is_flip": false,
                 "moving_rate": 0.0,
                 "reward": 15,
-                "sweet_spot_type": "starcatcher:normal",
+                "sweetspot_type": "starcatcher:normal",
                 "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
                 "vanishing_rate": 0.0
               }

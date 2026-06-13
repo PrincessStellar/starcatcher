@@ -30,7 +30,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 10,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_claw.png",
         "vanishing_rate": 0.0
       },
@@ -40,7 +40,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 10,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_claw.png",
         "vanishing_rate": 0.0
       },
@@ -50,7 +50,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       },
@@ -60,7 +60,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       },
@@ -70,7 +70,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       },
@@ -80,7 +80,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       },
@@ -90,7 +90,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       },
@@ -100,7 +100,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 1,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/end_crab_leg.png",
         "vanishing_rate": 0.0
       }

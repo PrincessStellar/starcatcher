@@ -122,16 +122,16 @@ public record Difficulty(
             SweetSpot.STONE_LOW_REWARD, SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
     );
 
-    public static Difficulty MEDIUM_STONE= new Difficulty(
+    public static Difficulty MEDIUM_STONE = new Difficulty(
             150, 10, 20, 1,
             List.of(),
-            SweetSpot.STONE_LOW_REWARD,  SweetSpot.NORMAL
+            SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
     );
 
-    public static Difficulty HARD_STONE= new Difficulty(
+    public static Difficulty HARD_STONE = new Difficulty(
             200, 12, 30, 2,
             List.of(),
-            SweetSpot.STONE_LOW_REWARD,  SweetSpot.THIN
+            SweetSpot.STONE_LOW_REWARD, SweetSpot.THIN
     );
 
     public static Difficulty MEDIUM = new Difficulty(
@@ -272,6 +272,17 @@ public record Difficulty(
             SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
     );
 
+    public static Difficulty SUN_SEEKING_CARP = new Difficulty(
+            5000, 10, -10, 1,
+            List.of(
+                    new PullDownModifier(""),
+                    new DisableHitSoundsModifier(""),
+                    new DisableMissSoundsModifier(""),
+                    new FlipSweetSpotsOnMissModifier(0.4f, "")
+            ),
+            SweetSpot.CLOUD_1, SweetSpot.CLOUD_2, SweetSpot.CLOUD_3, SweetSpot.CLOUD_4
+    );
+
     public static Difficulty SINGLE_THIN_FAST = new Difficulty(
             14, 10, 1,
             List.of(),
@@ -329,7 +340,7 @@ public record Difficulty(
             SweetSpot.CREEPER, SweetSpot.CREEPER
     );
 
-    public static Difficulty NO_SWEET_SPOTS = new Difficulty(10, 20, 1, List.of());
+    public static Difficulty NO_SWEETSPOTS = new Difficulty(10, 20, 1, List.of());
 
     public static Difficulty DEEPSLATE_CRAB = new Difficulty(
             200, 14, 10, 1,
@@ -451,6 +462,10 @@ public record Difficulty(
         private static final ResourceLocation RL_DEEP_OCEAN = Starcatcher.rl("textures/gui/minigame/spots/deep_ocean.png");
         private static final ResourceLocation RL_GLOWING = Starcatcher.rl("textures/gui/minigame/spots/glowing.png");
         private static final ResourceLocation RL_LEAF = Starcatcher.rl("textures/gui/minigame/spots/leaf.png");
+        private static final ResourceLocation RL_CLOUD_1 = Starcatcher.rl("textures/gui/minigame/spots/cloud_1.png");
+        private static final ResourceLocation RL_CLOUD_2 = Starcatcher.rl("textures/gui/minigame/spots/cloud_2.png");
+        private static final ResourceLocation RL_CLOUD_3 = Starcatcher.rl("textures/gui/minigame/spots/cloud_3.png");
+        private static final ResourceLocation RL_CLOUD_4 = Starcatcher.rl("textures/gui/minigame/spots/cloud_4.png");
 
         private static final ResourceLocation RL_NETHER_CRAB_CLAW = Starcatcher.rl("textures/gui/minigame/spots/nether_crab_claw.png");
         private static final ResourceLocation RL_NETHER_CRAB_LEG = Starcatcher.rl("textures/gui/minigame/spots/nether_crab_leg.png");
@@ -635,10 +650,42 @@ public record Difficulty(
         public static SweetSpot AQUA = new SweetSpot(
                 SCSweetSpotsBehaviour.AQUA,
                 RL_AQUA,
-                22,
+                24,
                 10,
                 0xff387982
         );
+
+        public static SweetSpot CLOUD_1 = new SweetSpot(
+                SCSweetSpotsBehaviour.CLOUD,
+                RL_CLOUD_1,
+                40,
+                -50,
+                0xffffffff
+        ).moving(1);
+
+        public static SweetSpot CLOUD_2 = new SweetSpot(
+                SCSweetSpotsBehaviour.CLOUD,
+                RL_CLOUD_2,
+                30,
+                -50,
+                0xffffffff
+        ).moving(-1);
+
+        public static SweetSpot CLOUD_3 = new SweetSpot(
+                SCSweetSpotsBehaviour.CLOUD,
+                RL_CLOUD_3,
+                41,
+                -50,
+                0xffffffff
+        ).moving(1);
+
+        public static SweetSpot CLOUD_4 = new SweetSpot(
+                SCSweetSpotsBehaviour.CLOUD,
+                RL_CLOUD_4,
+                60,
+                -50,
+                0xffffffff
+        ).moving(-1);
 
         public static SweetSpot DEEP_OCEAN = new SweetSpot(
                 SCSweetSpotsBehaviour.DEEP_OCEAN,
@@ -649,7 +696,7 @@ public record Difficulty(
         );
 
         public static SweetSpot GLOWING = new SweetSpot(
-                SCSweetSpotsBehaviour.GLOWING_SWEET_SPOT,
+                SCSweetSpotsBehaviour.GLOWING_SWEETSPOT,
                 RL_GLOWING,
                 20,
                 0,
@@ -731,7 +778,7 @@ public record Difficulty(
 
         public static final Codec<SweetSpot> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
-                        ResourceLocation.CODEC.fieldOf("sweet_spot_type").forGetter(SweetSpot::sweetSpotType),
+                        ResourceLocation.CODEC.fieldOf("sweetspot_type").forGetter(SweetSpot::sweetSpotType),
                         ResourceLocation.CODEC.fieldOf("texture_path").forGetter(SweetSpot::texturePath),
                         Codec.INT.fieldOf("hitbox_size_in_pixels").forGetter(SweetSpot::size),
                         Codec.INT.fieldOf("reward").forGetter(SweetSpot::reward),

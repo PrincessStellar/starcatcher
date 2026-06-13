@@ -24,7 +24,7 @@
         "is_flip": false,
         "moving_rate": 0.0,
         "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/wither_big.png",
         "vanishing_rate": 0.0
       },
@@ -34,7 +34,7 @@
         "is_flip": false,
         "moving_rate": 3.0,
         "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/wither.png",
         "vanishing_rate": 0.0
       },
@@ -44,7 +44,7 @@
         "is_flip": false,
         "moving_rate": -3.0,
         "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
+        "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/wither.png",
         "vanishing_rate": 0.0
       }

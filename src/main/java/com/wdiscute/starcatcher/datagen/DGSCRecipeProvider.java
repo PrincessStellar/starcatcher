@@ -297,7 +297,7 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .save(output);
 
         //void bobber
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.VOID_BOBBER)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.CLOUD_BOBBER)
                 .define('B', SCItems.BOBBER)
                 .define('S', Items.STICK)
                 .define('F', Items.CHORUS_FLOWER)

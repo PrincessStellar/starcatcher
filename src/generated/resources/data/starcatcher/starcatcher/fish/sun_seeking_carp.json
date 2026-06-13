@@ -5,7 +5,7 @@
       "modid": "starcatcher"
     }
   ],
-  "base_chance": 15,
+  "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
       "count": 1,
@@ -18,35 +18,73 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
-    "missPenalty": 5,
-    "modifiers": [],
-    "speed": 9,
+    "hp": 5000,
+    "missPenalty": -10,
+    "modifiers": [
+      {
+        "type": "starcatcher:pull_down",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:disable_hit_sounds",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:disable_miss_sounds",
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:flip_sweetspots_on_miss",
+        "chance": 0.4,
+        "translation_override": ""
+      }
+    ],
+    "speed": 10,
     "sweetspots": [
       {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "color_as_int": -1,
+        "hitbox_size_in_pixels": 40,
         "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "moving_rate": 1.0,
+        "reward": -50,
+        "sweetspot_type": "starcatcher:cloud",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/cloud_1.png",
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "color_as_int": -1,
+        "hitbox_size_in_pixels": 30,
         "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 15,
-        "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "moving_rate": -1.0,
+        "reward": -50,
+        "sweetspot_type": "starcatcher:cloud",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/cloud_2.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -1,
+        "hitbox_size_in_pixels": 41,
+        "is_flip": false,
+        "moving_rate": 1.0,
+        "reward": -50,
+        "sweetspot_type": "starcatcher:cloud",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/cloud_3.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -1,
+        "hitbox_size_in_pixels": 60,
+        "is_flip": false,
+        "moving_rate": -1.0,
+        "reward": -50,
+        "sweetspot_type": "starcatcher:cloud",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/cloud_4.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "rare",
+  "rarity": "legendary",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -56,23 +94,10 @@
       "dimensions_blacklist": []
     },
     {
-      "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [
-        "starcatcher:is_ocean",
-        "starcatcher:is_river",
-        "starcatcher:is_mushroom_fields"
-      ],
-      "biomes_tags": [],
-      "hover_translation": "gui.guide.lakes.hover",
-      "translation_override": "gui.guide.lakes"
-    },
-    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 100,
-      "translation_override": "gui.guide.elevation.mountains"
+      "translation_override": "gui.guide.elevation.skies"
     },
     {
       "type": "starcatcher:season",
@@ -98,7 +123,7 @@
     {
       "type": "starcatcher:fluid",
       "fluids": [
-        "minecraft:water"
+        "minecraft:empty"
       ]
     }
   ],

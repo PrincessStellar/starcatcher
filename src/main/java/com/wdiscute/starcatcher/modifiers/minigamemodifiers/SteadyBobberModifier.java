@@ -42,7 +42,7 @@ public class SteadyBobberModifier extends AbstractMinigameModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("bigger_green_sweet_spots");
+        return Starcatcher.rl("bigger_green_sweetspots");
     }
 
     @Override
