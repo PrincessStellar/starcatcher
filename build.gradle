@@ -51,11 +51,6 @@ repositories
         url = "https://maven.theillusivec4.top/"
     }
 
-    //tyson the ember
-    repositories {
-        maven { url = 'https://maven.tysontheember.dev' }
-    }
-
     //sable-companion
     maven {
         name = "RyanHCode Maven"
@@ -78,7 +73,7 @@ repositories
 
 dependencies {
     //libtooltips
-    jarJar(implementation("maven.modrinth:libtooltips:1.7-NEOFORGE-1.21.1"))
+    jarJar(implementation("maven.modrinth:libtooltips:2.0-NEOFORGE-1.21.1"))
 
     //selling bin
     jarJar(implementation("maven.modrinth:wds-selling-bin:nrGOzmNu"))

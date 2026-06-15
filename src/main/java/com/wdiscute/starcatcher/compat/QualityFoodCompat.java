@@ -28,7 +28,7 @@ public class QualityFoodCompat
 
                 chance = Math.max((1 - percentile), chance);
 
-                //rolls for chance 3 more times
+                //rolls for weight 3 more times
                 if(perfectCatch)
                 {
                     chance = Math.max(U.r.nextDouble(), chance);

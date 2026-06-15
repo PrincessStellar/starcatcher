@@ -20,7 +20,7 @@ public class ExtraGoldenRiskModifier extends AbstractCatchModifier
 
     public static final MapCodec<ExtraGoldenRiskModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.FLOAT.fieldOf("chance").forGetter(o -> o.risk),
+                    Codec.FLOAT.fieldOf("weight").forGetter(o -> o.risk),
                     Codec.BOOL.fieldOf("only_for_perfect_catch").forGetter(o -> o.onlyForPerfectCatch),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, ExtraGoldenRiskModifier::new));

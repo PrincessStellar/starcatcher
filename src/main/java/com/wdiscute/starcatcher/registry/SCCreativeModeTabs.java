@@ -43,7 +43,7 @@ public interface SCCreativeModeTabs
                     "Usually players would write their own",
                     "message and send it to the ocean for",
                     "others to fish later.",
-                    "(5% chance if there is any available)",
+                    "(5% weight if there is any available)",
                     "",
                     "<scgolden>Also did you know it supports markdown?</scgolden>",
                     "learn more about it in the LibTooltips wiki"

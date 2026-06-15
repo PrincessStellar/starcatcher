@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class IsolatedEmiFPScreen extends IsolatedFPScreen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/emi_entry.png");
+    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/entry.png");
 
     private final EmiRecipe emiRecipe;
 

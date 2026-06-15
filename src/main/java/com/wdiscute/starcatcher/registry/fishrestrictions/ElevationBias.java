@@ -61,7 +61,7 @@ public class ElevationBias extends AbstractFishRestriction
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        //returns the extra chance scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
+        //returns the extra weight scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
         int distance = Math.abs(entity.blockPosition().getY() - bestY);
 
         int scaledChance = extraChance * (1 - distance / range);

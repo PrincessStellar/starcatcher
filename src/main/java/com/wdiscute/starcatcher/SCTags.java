@@ -9,6 +9,10 @@ import net.minecraft.world.item.Item;
 public class SCTags
 {
 
+    public static final ResourceLocation IS_OVERWORLD = Starcatcher.rl("is_overworld");
+    public static final ResourceLocation IS_NETHER = Starcatcher.rl("is_nether");
+    public static final ResourceLocation IS_END = Starcatcher.rl("is_end");
+
     public static final ResourceLocation IS_COLD_LAKE = Starcatcher.rl("is_cold_lake");
     public static final ResourceLocation IS_COLD_RIVER = Starcatcher.rl("is_cold_river");
     public static final ResourceLocation IS_COLD_OCEAN = Starcatcher.rl("is_cold_ocean");

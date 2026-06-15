@@ -1,11 +1,11 @@
 {
   "values": [
     {
-      "id": "starcatcher:clam",
+      "id": "starcatcher:lava_crab_claw",
       "required": false
     },
     {
-      "id": "starcatcher:boot",
+      "id": "starcatcher:dried_seaweed",
       "required": false
     },
     {
@@ -17,11 +17,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:dried_seaweed",
+      "id": "starcatcher:boot",
       "required": false
     },
     {
-      "id": "starcatcher:lava_crab_claw",
+      "id": "starcatcher:clam",
       "required": false
     }
   ]

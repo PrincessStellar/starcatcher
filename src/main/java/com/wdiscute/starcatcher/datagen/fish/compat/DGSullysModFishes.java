@@ -6,7 +6,6 @@ import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
-import com.wdiscute.starcatcher.fish.FishProperties;
 
 import java.util.List;
 

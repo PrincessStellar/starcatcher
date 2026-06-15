@@ -1,6 +1,14 @@
 {
   "values": [
     {
+      "id": "tide:voidseeker",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:prawn",
+      "required": false
+    },
+    {
       "id": "tide:devils_hole_pupfish",
       "required": false
     },
@@ -9,67 +17,7 @@
       "required": false
     },
     {
-      "id": "tide:coelacanth",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:celestial",
-      "required": false
-    },
-    {
       "id": "tide:dragon_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:aurora",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cerberay",
-      "required": false
-    },
-    {
-      "id": "starcatcher:stonefish",
-      "required": false
-    },
-    {
-      "id": "tide:voidseeker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lush_pike",
-      "required": false
-    },
-    {
-      "id": "minecraft:wither",
-      "required": false
-    },
-    {
-      "id": "starcatcher:joel",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_spindlefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_eel",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:blazefish",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:prawn",
-      "required": false
-    },
-    {
-      "id": "starcatcher:shroomfish",
-      "required": false
-    },
-    {
-      "id": "aquaculture:piranha",
       "required": false
     },
     {
@@ -77,11 +25,15 @@
       "required": false
     },
     {
-      "id": "starcatcher:azure_crystalback_minnow",
+      "id": "starcatcher:joel",
       "required": false
     },
     {
-      "id": "tide:alpha_fish",
+      "id": "netherdepthsupgrade:blazefish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:shroomfish",
       "required": false
     },
     {
@@ -89,7 +41,23 @@
       "required": false
     },
     {
+      "id": "tide:midas_fish",
+      "required": false
+    },
+    {
       "id": "starcatcher:ward",
+      "required": false
+    },
+    {
+      "id": "aquaculture:piranha",
+      "required": false
+    },
+    {
+      "id": "starcatcher:aurora",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:celestial",
       "required": false
     },
     {
@@ -97,11 +65,43 @@
       "required": false
     },
     {
+      "id": "starcatcher:stonefish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:azure_crystalback_minnow",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_eel",
+      "required": false
+    },
+    {
+      "id": "minecraft:wither",
+      "required": false
+    },
+    {
       "id": "starcatcher:boreal",
       "required": false
     },
     {
-      "id": "tide:midas_fish",
+      "id": "tide:coelacanth",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cerberay",
+      "required": false
+    },
+    {
+      "id": "tide:alpha_fish",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:raw_spindlefish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lush_pike",
       "required": false
     }
   ]

@@ -1,91 +1,122 @@
 {
   "values": {
     "#starcatcher:common_entries": {
-      "blacklisted_items": [
-        "minecraft:fishing_rod"
+      "blacklist": [
+        {
+          "item": "minecraft:fishing_rod"
+        }
       ],
-      "is_loot_table": true,
-      "location": "minecraft:gameplay/fishing/treasure"
+      "loot_tables": [
+        {
+          "loot_table": "minecraft:gameplay/fishing/treasure"
+        }
+      ]
     },
     "#starcatcher:epic_entries": {
-      "blacklisted_items": [
-        "minecraft:fishing_rod"
+      "blacklist": [
+        {
+          "item": "minecraft:fishing_rod"
+        }
       ],
-      "is_loot_table": true,
-      "location": "minecraft:gameplay/fishing/treasure"
+      "loot_tables": [
+        {
+          "loot_table": "minecraft:gameplay/fishing/treasure"
+        }
+      ]
     },
     "#starcatcher:legendary_entries": {
-      "blacklisted_items": [
-        "minecraft:fishing_rod"
+      "blacklist": [
+        {
+          "item": "minecraft:fishing_rod"
+        }
       ],
-      "is_loot_table": true,
-      "location": "minecraft:gameplay/fishing/treasure"
+      "loot_tables": [
+        {
+          "loot_table": "minecraft:gameplay/fishing/treasure"
+        }
+      ]
     },
     "#starcatcher:rare_entries": {
-      "blacklisted_items": [
-        "minecraft:fishing_rod"
+      "blacklist": [
+        {
+          "item": "minecraft:fishing_rod"
+        }
       ],
-      "is_loot_table": true,
-      "location": "minecraft:gameplay/fishing/treasure"
+      "loot_tables": [
+        {
+          "loot_table": "minecraft:gameplay/fishing/treasure"
+        }
+      ]
     },
     "#starcatcher:uncommon_entries": {
-      "blacklisted_items": [
-        "minecraft:fishing_rod"
+      "blacklist": [
+        {
+          "item": "minecraft:fishing_rod"
+        }
       ],
-      "is_loot_table": true,
-      "location": "minecraft:gameplay/fishing/treasure"
+      "loot_tables": [
+        {
+          "loot_table": "minecraft:gameplay/fishing/treasure"
+        }
+      ]
     },
     "starcatcher:aurora": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:iceborn_skin_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:iceborn_skin_smithing_template"
+          }
         }
       ]
     },
     "starcatcher:azure_crystalback_minnow": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:azure_crystal_skin_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:azure_crystal_skin_smithing_template"
+          }
         }
       ]
     },
     "starcatcher:boreal": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:clear_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:clear_smithing_template"
+          }
         }
       ]
     },
     "starcatcher:cerberay": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:king_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:king_smithing_template"
+          }
         }
       ]
     },
     "starcatcher:vesani": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:colorful_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:colorful_smithing_template"
+          }
         }
       ]
     },
     "starcatcher:willish": {
-      "is_loot_table": false,
-      "items": [
+      "stacks": [
         {
-          "count": 1,
-          "id": "starcatcher:kimbe_smithing_template"
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:kimbe_smithing_template"
+          }
         }
       ]
     }

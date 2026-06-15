@@ -5,8 +5,6 @@ import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
-import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 

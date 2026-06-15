@@ -163,7 +163,7 @@ public class SCConfig
             .define("hide_entries_until_found", true);
 
     public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
-            .comment("Controls the chance of fishing up messages-in-a-bottle left by other players of the server. Does not affect built-in Secrets")
+            .comment("Controls the weight of fishing up messages-in-a-bottle left by other players of the server. Does not affect built-in Secrets")
             .translation("starcatcher.configuration.fish_player_messages_chance")
             .defineInRange("fish_player_messages_chance", 0.05d, 0d, 1d);
 
@@ -183,7 +183,7 @@ public class SCConfig
             .defineInRange("base_max_ticks", 300, 0, 999999);
 
     public static final ModConfigSpec.DoubleValue BASE_CHANCE_TO_FISH = BUILDER_SERVER
-            .comment("The rod chance to fish every tick (out of 1)")
+            .comment("The rod weight to fish every tick (out of 1)")
             .translation("starcatcher.configuration.base_chance")
             .defineInRange("base_chance", 0.005d, 0, 1);
 

@@ -63,7 +63,7 @@ public class DaytimeBias extends AbstractFishRestriction
         //fishes in area for guidebook ignores this restriction
         if (context.equals(Context.GUIDE_FISHES_HOVER)) return 0;
 
-        //returns the extra chance scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
+        //returns the extra weight scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
         int distance = Math.abs(entity.blockPosition().getY() - bestDaytime);
 
         int scaledChance = extraChance * (1 - distance / range);

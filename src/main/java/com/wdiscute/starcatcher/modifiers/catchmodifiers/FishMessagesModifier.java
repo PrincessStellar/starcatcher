@@ -65,7 +65,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
 
             SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
 
-            //make ItemEntities for fish item stack
+            //make ItemEntities for fish item resourceLocation
             ItemEntity messageInABottle = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);
 
             //assign delta movement so fish flies towards player

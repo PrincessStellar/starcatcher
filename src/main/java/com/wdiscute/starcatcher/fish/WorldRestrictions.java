@@ -446,6 +446,39 @@ public class WorldRestrictions
         return rls;
     }
 
+    public static List<ResourceLocation> getDimensionsAsListFromTags(List<ResourceLocation> dimensions, List<ResourceLocation> tags, Level level)
+    {
+        if(level.isClientSide) return List.of();
+        level.registryAccess().registry(Registries.DIMENSION);
+
+        List<ResourceLocation> rls = new ArrayList<>();
+
+        for (ResourceLocation rl : tags)
+        {
+            TagKey<Level> dimensionBeingChecked = TagKey.create(Registries.DIMENSION, rl);
+
+            Optional<HolderSet.Named<Level>> optional = level.registryAccess().lookupOrThrow(Registries.DIMENSION).get(dimensionBeingChecked);
+
+            if (optional.isPresent())
+            {
+                for (Holder<Level> dimensionHolder : optional.get())
+                {
+                    String biomeString = dimensionHolder.getRegisteredName();
+
+                    rls.add(ResourceLocation.parse(biomeString));
+                }
+            }
+        }
+
+        for (ResourceLocation rl : dimensions)
+        {
+            Optional<Holder.Reference<Level>> optional = level.registryAccess().lookupOrThrow(Registries.DIMENSION).get(ResourceKey.create(Registries.DIMENSION, rl));
+            if (optional.isPresent()) if (!rls.contains(rl)) rls.add(rl);
+        }
+
+        return rls;
+    }
+
     public static List<ResourceLocation> getBiomesBlacklistAsList(List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, Level level)
     {
         level.registryAccess().registry(Registries.BIOME);
@@ -477,5 +510,4 @@ public class WorldRestrictions
 
         return rls;
     }
-
 }

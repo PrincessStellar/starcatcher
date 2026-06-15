@@ -48,6 +48,7 @@ public interface SCItems
     DeferredItem<Item> SETTINGS = ITEMS.register("settings", BasicItem::new);
     DeferredItem<Item> DEFAULT_MINIGAME = ITEMS.register("default_minigame", BasicItem::new);
     DeferredItem<Item> DEFAULT_CATCH = ITEMS.register("default_catch", BasicItem::new);
+    DeferredItem<Item> TREASURE = ITEMS.register("treasure", BasicItem::new);
 
     //hooks
     DeferredItem<Item> HOOK = HOOKS_REGISTRY.register("hook", SingleStackBasicItem::new);

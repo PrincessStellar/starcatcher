@@ -13,9 +13,9 @@
       },
       {
         "type": "starcatcher:extra_golden_chance",
-        "chance": 0.1,
         "only_for_perfect_catch": true,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.1
       }
     ],
     "starcatcher:almighty_worm": [
@@ -28,8 +28,8 @@
       },
       {
         "type": "starcatcher:force_fish_entity",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       }
     ],
     "starcatcher:amethyst_hook": [
@@ -155,8 +155,8 @@
       },
       {
         "type": "starcatcher:hide_catch",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       },
       {
         "type": "starcatcher:adjust_penalty_rate",
@@ -182,8 +182,8 @@
     "starcatcher:fisherman_hat_blue": [
       {
         "type": "starcatcher:ignore_weather_restrictions",
-        "chance": 0.5,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.5
       },
       {
         "type": "starcatcher:flip_every_hit",
@@ -227,8 +227,8 @@
       },
       {
         "type": "starcatcher:hide_catch",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       },
       {
         "type": "starcatcher:adjust_penalty_rate",
@@ -289,8 +289,8 @@
       },
       {
         "type": "starcatcher:hide_catch",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       }
     ],
     "starcatcher:fisherman_hat_lime": [
@@ -412,8 +412,8 @@
     "starcatcher:fisherman_hat_red": [
       {
         "type": "starcatcher:ignore_daytime_restrictions",
-        "chance": 0.5,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.5
       },
       {
         "type": "starcatcher:flip_every_hit",
@@ -429,9 +429,9 @@
     "starcatcher:fisherman_hat_yellow": [
       {
         "type": "starcatcher:extra_golden_chance",
-        "chance": 0.05,
         "only_for_perfect_catch": true,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.05
       },
       {
         "type": "starcatcher:adjust_lure_time",
@@ -471,17 +471,17 @@
     "starcatcher:gold_hook": [
       {
         "type": "starcatcher:extra_golden_chance",
-        "chance": 0.05,
         "only_for_perfect_catch": false,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.05
       }
     ],
     "starcatcher:golden_bobber": [
       {
         "type": "starcatcher:extra_golden_chance",
-        "chance": 0.05,
         "only_for_perfect_catch": false,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.05
       }
     ],
     "starcatcher:gunpowder_bait": [
@@ -534,20 +534,20 @@
       },
       {
         "type": "starcatcher:ignore_daytime_restrictions",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       },
       {
         "type": "starcatcher:ignore_weather_restrictions",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       }
     ],
     "starcatcher:mossy_hook": [
       {
         "type": "starcatcher:award_treasure_on_perfect_catch",
-        "chance": 0.2,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 0.2
       }
     ],
     "starcatcher:murkwater_bait": [
@@ -592,8 +592,8 @@
     "starcatcher:shiny_hook": [
       {
         "type": "starcatcher:hide_catch",
-        "chance": 1.0,
-        "translation_override": ""
+        "translation_override": "",
+        "weight": 1.0
       },
       {
         "type": "starcatcher:spawn_treasure_on_hit_x",

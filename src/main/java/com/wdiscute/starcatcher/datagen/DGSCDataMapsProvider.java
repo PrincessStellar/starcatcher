@@ -13,7 +13,7 @@ import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
-import com.wdiscute.starcatcher.registry.Treasure;
+import com.wdiscute.starcatcher.fish.Treasure;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;

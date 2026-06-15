@@ -81,7 +81,7 @@ public class TackleBoxBlockEntity extends BlockEntity implements WorldlyContaine
             fishes.removeLast();
         }
 
-        //todo re-stack fishes stored for better hopper and stuff interaction
+        //todo re-resourceLocation fishes stored for better hopper and stuff interaction
 
         setChanged();
         if (level instanceof ServerLevel serverLevel)

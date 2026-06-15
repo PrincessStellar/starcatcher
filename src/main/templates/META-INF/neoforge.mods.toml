@@ -58,6 +58,6 @@ side="BOTH"
 [[dependencies.starcatcher]]
 modId="libtooltips"
 type="required"
-versionRange="[1.6, 1.9)"
+versionRange="[2.0,)"
 ordering="AFTER"
 side="CLIENT"

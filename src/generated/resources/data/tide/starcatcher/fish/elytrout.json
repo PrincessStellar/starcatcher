@@ -35,10 +35,11 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:the_end"
+      "dimensions": [],
+      "dimensions_tags": [
+        "starcatcher:is_end"
       ],
-      "dimensions_blacklist": []
+      "translation_override": "dimension.minecraft.the_end"
     },
     {
       "type": "starcatcher:fluid",

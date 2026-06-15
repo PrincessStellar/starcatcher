@@ -12,12 +12,9 @@ import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
-import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -38,7 +35,6 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -115,7 +111,7 @@ public class FishApi
 
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
-        //if dev worm return rod chance
+        //if dev worm return rod weight
         if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
             fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             return 1;
@@ -244,7 +240,7 @@ public class FishApi
                     entity.setDeltaMovement(vec3);
                     level.addFreshEntity(entity);
                 }
-                //if not entity then add rod item stack
+                //if not entity then add rod item resourceLocation
                 else
                 {
 
@@ -279,7 +275,7 @@ public class FishApi
                 //spawn items from list
                 for (ItemStack itemStackToSpawn : items)
                 {
-                    //make ItemEntities for fish item stack
+                    //make ItemEntities for fish item resourceLocation
                     ItemEntity itemFished = new ItemEntity(level, fbe.position().x, fbe.position().y + 1.2f, fbe.position().z, itemStackToSpawn);
 
                     //assign delta movement so fish flies towards player
@@ -368,7 +364,7 @@ public class FishApi
                 if (ModList.get().isLoaded("quality_food") && SCConfig.SAVE_DATA_TO_ITEMS.get())
                     QualityFoodCompat.addQuality(baseFish, player, golden, perfectCatch, percentile);
 
-                //only save data on fish stack if config is enabled
+                //only save data on fish resourceLocation if config is enabled
                 if (SCConfig.SAVE_DATA_TO_ITEMS.get())
                     SCDataComponents.set(bucket, SCDataComponents.CAUGHT_FISH_INFO, caughtFishInfo);
 
@@ -387,8 +383,7 @@ public class FishApi
     public static ItemStack getTreasure(ServerPlayer player, FishProperties fp)
     {
         Registry<FishProperties> fishProperties = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY);
-
-        Treasure.TreasureInstance data = fishProperties.wrapAsHolder(fp).getData(SCDataMaps.TREASURE);
+        Treasure data = fishProperties.wrapAsHolder(fp).getData(SCDataMaps.TREASURE);
 
         if (data == null) return ItemStack.EMPTY;
 

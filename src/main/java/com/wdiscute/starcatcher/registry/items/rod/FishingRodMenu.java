@@ -184,7 +184,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         // Check if the slot clicked is one of the vanilla container slots
         if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT)
         {
-            // This is a vanilla container slot so merge the stack into the tile inventory
+            // This is a vanilla container slot so merge the resourceLocation into the tile inventory
             if (!moveItemStackTo(
                     sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
                             + TE_INVENTORY_SLOT_COUNT, false))
@@ -194,7 +194,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         }
         else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT)
         {
-            // This is a TE slot so merge the stack into the playerScores inventory
+            // This is a TE slot so merge the resourceLocation into the playerScores inventory
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false))
             {
                 return ItemStack.EMPTY;
@@ -204,7 +204,7 @@ public class FishingRodMenu extends AbstractContainerMenu
         {
             return ItemStack.EMPTY;
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
+        // If resourceLocation size == 0 (the entire resourceLocation was moved) set slot contents to null
         if (sourceStack.getCount() == 0)
         {
             sourceSlot.set(ItemStack.EMPTY);

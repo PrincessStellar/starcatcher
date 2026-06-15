@@ -55,7 +55,7 @@ public class ReliquifiedArtifactsCompat
         if (stack.isEmpty()) return List.of();
 
         AbilityData ability = getCatchAbility(player, stack);
-        double chance = ability.getStatData("chance").getValue();
+        double chance = ability.getStatData("weight").getValue();
         int maxCasts = (int) Math.round(ability.getStatData("max_casts").getValue());
 
         int bonusCount = MathUtils.multicast(player.getRandom(), chance, maxCasts);

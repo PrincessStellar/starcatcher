@@ -18,7 +18,7 @@ public class AwardTreasureOnPerfectCatch extends AbstractCatchModifier
 
     public static final MapCodec<AwardTreasureOnPerfectCatch> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.FLOAT.fieldOf("chance").forGetter(o -> o.chance),
+                    Codec.FLOAT.fieldOf("weight").forGetter(o -> o.chance),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, AwardTreasureOnPerfectCatch::new));
 

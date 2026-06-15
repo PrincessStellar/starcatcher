@@ -66,6 +66,10 @@
 
 
 
+  "tag.starcatcher.is_overworld" : "Overworld-like",
+  "tag.starcatcher.is_nether" : "Nether-like",
+  "tag.starcatcher.is_end" : "End-like",
+
   "tag.starcatcher.is_beach" : "Beaches",
   "tag.starcatcher.is_birch_forest" : "Birch Forests",
   "tag.starcatcher.is_cherry_grove" : "Cherry Groves",
@@ -1188,7 +1192,9 @@
   "gui.guide.hover.caught_limit" : "Caught Limit: %s",
 
   "gui.guide.dimension" : "Dimension: ",
+  "gui.guide.dimension_tags" : "Dimension Tags: ",
   "gui.guide.dimensions" : "Dimensions: ",
+  "gui.guide.dimension.empty" : "[No Dimensions]",
   "gui.guide.biome" : "Biome: ",
   "gui.guide.biome_tags" : "Biome Tags: ",
   "gui.guide.biomes" : "Biomes: ",

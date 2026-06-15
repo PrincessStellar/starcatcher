@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.compat.emi;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.widget.Bounds;
@@ -8,11 +7,9 @@ import dev.emi.emi.api.widget.Widget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 
 public class StarcatcherShowInGuideEmiWidget extends Widget
 {
-    private static final ResourceLocation ICON = Starcatcher.rl("textures/gui/emi/emi_guide_icon.png");
     private final FishProperties fp;
     private final int x;
     private final int y;
@@ -46,10 +43,8 @@ public class StarcatcherShowInGuideEmiWidget extends Widget
     @Override
     public void render(GuiGraphics draw, int mouseX, int mouseY, float delta)
     {
-        draw.blit(ICON, x, y, 0, 0, 20, 20, 20, 20);
+        //render tooltip
         if(mouseX > x && mouseX < x + 19 && mouseY > y && mouseY < y + 19)
-        {
             draw.renderTooltip(Minecraft.getInstance().font, Component.translatable("emi.starcatcher.open_as_guide_entry"), mouseX, mouseY);
-        }
     }
 }

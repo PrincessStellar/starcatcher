@@ -10,7 +10,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-//use stack() when obtaining the stack from the container to prevent accidental mutation of the itemstack
+//use resourceLocation() when obtaining the resourceLocation from the container to prevent accidental mutation of the itemstack
 public record SingleStackContainer(@Deprecated ItemStack stackDoNotUse)
 {
 

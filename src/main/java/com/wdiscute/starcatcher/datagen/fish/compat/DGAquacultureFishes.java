@@ -304,7 +304,7 @@ public class DGAquacultureFishes
                 .withSeasons(SeasonRestriction.SUMMER)
                 .withSizeAndWeight(15, 5, 100, 5)
                 .withBaseChance(0)
-                //0.5% chance
+                //0.5% weight
                 .withPercentageChance(0.005f)
         );
 

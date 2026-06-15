@@ -8,7 +8,6 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SeasonRestriction;
-import com.wdiscute.starcatcher.fish.FishProperties;
 
 import java.util.List;
 

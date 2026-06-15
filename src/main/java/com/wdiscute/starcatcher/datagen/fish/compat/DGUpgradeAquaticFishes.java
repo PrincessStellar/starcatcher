@@ -2,14 +2,12 @@ package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
-import net.minecraft.world.item.Item;
 
 import java.util.List;
 

@@ -179,7 +179,7 @@ public class FishTrackedLayer implements LayeredDraw.Layer
 
 
 
-        //render chance
+        //render weight
         double percentage = (double) cachedChance / cachedTotalChance * 100;
         renderCenteredString(guiGraphics, font, Component.literal(new DecimalFormat("0.#").format(percentage) + "%"),
                 uiX + 34, uiY + 65, SCColors.GUIDE_TEXT_DARK);

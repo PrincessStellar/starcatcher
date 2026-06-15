@@ -155,7 +155,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
         //Biomes: ------
         if (biomesList.isEmpty())
-            return Component.translatable("gui.guide.biome").append(Component.translatable("gui.guide.no_restriction"));
+            return Component.translatable("gui.guide.biomes.empty");
 
         //single biome name / biome tag name / [hover]
         if (biomesList.size() == 1)

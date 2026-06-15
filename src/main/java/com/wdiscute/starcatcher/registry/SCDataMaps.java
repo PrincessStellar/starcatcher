@@ -3,10 +3,10 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumBlock;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.Treasure;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,17 +33,13 @@ public interface SCDataMaps
             Starcatcher.rl("modifiers"), Registries.ENCHANTMENT, Modifier.CODEC.listOf()
     ).synced(Modifier.CODEC.listOf(), true).build();
 
-
-
     DataMapType<Item, AbstractTackleSkin> TACKLE_SKIN = DataMapType.builder(
             Starcatcher.rl("tackle_skin"), Registries.ITEM, Starcatcher.TACKLE_SKIN_REGISTRY.byNameCodec()
     ).synced(Starcatcher.TACKLE_SKIN_REGISTRY.byNameCodec(), true).build();
 
-    DataMapType<FishProperties, Treasure.TreasureInstance> TREASURE = DataMapType.builder(
-            Starcatcher.rl("treasures"), Starcatcher.FISH_REGISTRY_KEY, Treasure.TREASURE_CODEC
-    ).synced(Treasure.TREASURE_CODEC, true).build();
-
-
+    DataMapType<FishProperties, Treasure> TREASURE = DataMapType.builder(
+            Starcatcher.rl("treasures"), Starcatcher.FISH_REGISTRY_KEY, Treasure.CODEC
+    ).synced(Treasure.CODEC, true).build();
 
 
     static <T> T getOrDefault(ItemStack stack, DataMapType<Item, T> dataMap, T d)

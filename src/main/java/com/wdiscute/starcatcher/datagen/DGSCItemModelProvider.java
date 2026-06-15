@@ -48,6 +48,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(STARCAUGHT_FISH);
         simpleItem(COOKED_STARCAUGHT_FISH);
         simpleItem(SETTINGS);
+        simpleItem(TREASURE);
 
         //notes & messages
         simpleItem(LETTER);

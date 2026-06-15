@@ -8,6 +8,8 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -58,6 +60,9 @@ public class DataGenerators
 
         //fp tags
         gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
+
+        //dimension tags - both nikdo and kapiten said hell nah
+        //gen.addProvider(event.includeServer(), new DGDimensionTagsProvider(output, lookupProvider, existingFileHelper));
 
         //advancements
         gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));

@@ -65,10 +65,11 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
+      "dimensions": [],
+      "dimensions_tags": [
+        "starcatcher:is_overworld"
       ],
-      "dimensions_blacklist": []
+      "translation_override": "dimension.minecraft.overworld"
     },
     {
       "type": "starcatcher:elevation_restriction",

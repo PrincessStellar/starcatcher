@@ -7,7 +7,6 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
-import com.wdiscute.starcatcher.fish.FishProperties;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 

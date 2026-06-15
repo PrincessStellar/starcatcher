@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class IsolatedJeiFPScreen extends IsolatedFPScreen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/emi_entry.png");
+    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/entry.png");
 
     private final StarcatcherJeiFPRecipe.Recipe recipe;
 

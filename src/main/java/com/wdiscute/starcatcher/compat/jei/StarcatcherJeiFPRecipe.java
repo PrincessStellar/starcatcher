@@ -7,7 +7,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.Treasure;
+import com.wdiscute.starcatcher.fish.Treasure;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -123,17 +123,17 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
         {
             List<Component> restrictions = new ArrayList<>();
 
-            ItemStack tre;
+            ItemStack tre = ItemStack.EMPTY;
 
 
             Holder<FishProperties> holder = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).wrapAsHolder(fp);
-            Treasure.TreasureInstance data = holder.getData(SCDataMaps.TREASURE);
+            Treasure data = holder.getData(SCDataMaps.TREASURE);
 
 
             if (data == null)
                 tre = ItemStack.EMPTY;
-            else
-                tre = data.unpack(Minecraft.getInstance().player);
+//            else
+//                tre = data.unpack(Minecraft.getInstance().player);
 
             //aurora
             restrictions.add(fp.getDisplayName());

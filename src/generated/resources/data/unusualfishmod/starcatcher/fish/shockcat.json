@@ -46,10 +46,11 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
+      "dimensions": [],
+      "dimensions_tags": [
+        "starcatcher:is_overworld"
       ],
-      "dimensions_blacklist": []
+      "translation_override": "dimension.minecraft.overworld"
     }
   ],
   "size_and_weight": {
