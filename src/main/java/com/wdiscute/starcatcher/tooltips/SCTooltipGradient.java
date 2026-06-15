@@ -10,7 +10,7 @@ public class SCTooltipGradient
     {
         MutableComponent component = Component.empty();
 
-        double time = System.currentTimeMillis() * 0.0006f;
+        double time = System.currentTimeMillis() * 0.0006d;
 
         for (int i = 0; i < text.length(); i++)
         {
