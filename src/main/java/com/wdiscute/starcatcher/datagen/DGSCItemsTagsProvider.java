@@ -56,6 +56,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             if (!fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH)) return;
             if (fp.catchInfo().alwaysSpawnEntity()) return;
 
+            tag(SCTags.FISHABLE)
+                    .addOptional(fp.catchInfo().fish().getKey().location());
+
             switch (p.getSecond().rarity())
             {
                 case TRASH -> tag(SCTags.TRASH).addOptional(fp.catchInfo().fish().getKey().location());
