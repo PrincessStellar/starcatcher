@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher;
 
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.registry.FishProperties.SizeAndWeight.Units;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SCFishRestrictions;
@@ -20,8 +20,9 @@ import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBeh
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.sellingbin.SCProcessors;
 import com.wdiscute.starcatcher.registry.FishProperties;
+import com.wdiscute.starcatcher.tooltips.SCLegendary;
+import com.wdiscute.starcatcher.tooltips.SCTooltipGradient;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -35,6 +36,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.registries.RegistryBuilder;
+import org.apache.commons.lang3.tuple.Triple;
 import org.slf4j.Logger;
 
 import java.util.function.Supplier;
@@ -150,6 +152,48 @@ public class Starcatcher
         public Client(ModContainer modContainer)
         {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+
+            //register tooltip tag processors
+            Tooltips.registerProcessor("scgolden",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(202, 93, 5),
+                            Triple.of(230, 204, 9)
+                    ));
+
+            Tooltips.registerProcessor("sclegendary", SCLegendary::process);
+
+            Tooltips.registerProcessor("scepic",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(61, 0, 255),
+                            Triple.of(255, 0, 224)
+                    ));
+
+            Tooltips.registerProcessor("scrare",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(20, 40, 120),
+                            Triple.of(100, 180, 255)
+                    ));
+
+            Tooltips.registerProcessor("scuncommon",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(11, 185, 2),
+                            Triple.of(2, 185, 69)
+                    ));
+
+            Tooltips.registerProcessor("sccommon",
+                    (t, s, e) -> Component.literal(t));
+
+            Tooltips.registerProcessor("sctrash",
+                    (t, s, e) -> Component.literal(t));
+
+            Tooltips.registerProcessor("sclava",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(197, 11, 11),
+                            Triple.of(197, 64, 11)
+                    ));
+
+            Tooltips.registerProcessor("scnone",
+                    (t, s, e) -> Component.literal(t));
         }
     }
 }

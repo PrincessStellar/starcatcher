@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.math.Axis;
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.*;
 import com.wdiscute.starcatcher.compat.emi.StarcatcherEmiPlugin;
@@ -40,6 +41,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -204,7 +206,7 @@ public class FishingGuideScreen extends Screen
         uiY = (height - imageHeight) / 2;
 
         //editbox for cover
-        this.editBox = new EditBox(this.font, uiX + 240, uiY + 102, 103, 12, Component.translatable("container.repair"));
+        this.editBox = new EditBox(this.font, uiX + 240, uiY + 102, 103, 12, translatable("container.repair"));
         this.editBox.setCanLoseFocus(false);
         this.editBox.setTextColor(0xff937d70);
         this.editBox.setBordered(false);
@@ -702,7 +704,7 @@ public class FishingGuideScreen extends Screen
         if (mouseX > uiX + 285 - width1 / 2 && mouseX < uiX + 285 + width1 / 2 && mouseY > uiY + 117 && mouseY < uiY + 117 + 12)
         {
 
-            guiGraphics.renderTooltip(font, List.of(Component.translatable("gui.guide.sign.locked.0"), Component.translatable("gui.guide.sign.locked.1")), Optional.empty(), mouseX, mouseY);
+            guiGraphics.renderTooltip(font, List.of(translatable("gui.guide.sign.locked.0"), translatable("gui.guide.sign.locked.1")), Optional.empty(), mouseX, mouseY);
             guiGraphics.renderOutline(uiX + 285 - width1 / 2, uiY + 117, width1, 12, 0xff000000);
             if (clicked)
             {
@@ -720,22 +722,22 @@ public class FishingGuideScreen extends Screen
         for (int i = 0; i < 40; i++)
         {
             if (!I18n.exists("gui.guide.page." + page + ".left." + i)) break;
-            Component comp = Component.translatable("gui.guide.page." + page + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            Component comp = translatable("gui.guide.page." + page + ".left." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 52, uiY + 10 * i + 13, 0xff000000, false);
         }
 
         for (int i = 0; i < 40; i++)
         {
             if (!I18n.exists("gui.guide.page." + page + ".right." + i)) break;
-            Component comp = Component.translatable("gui.guide.page." + page + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
+            Component comp = translatable("gui.guide.page." + page + ".right." + i).copy().withStyle(Style.EMPTY.withColor(0x635040));
             guiGraphics.drawString(this.font, comp, uiX + 213, uiY + 10 * i + 13, 0xff000000, false);
         }
 
         if (I18n.exists("gui.guide.page." + page + ".left.title"))
-            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.page." + page + ".left.title"), uiX + 116, uiY + 45, 0x635040);
+            renderCenteredString(guiGraphics, this.font, translatable("gui.guide.page." + page + ".left.title"), uiX + 116, uiY + 45, 0x635040);
 
         if (I18n.exists("gui.guide.page." + page + ".right.title"))
-            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.page." + page + ".right.title"), uiX + 270, uiY + 45, 0x635040);
+            renderCenteredString(guiGraphics, this.font, translatable("gui.guide.page." + page + ".right.title"), uiX + 270, uiY + 45, 0x635040);
 
     }
 
@@ -1125,7 +1127,7 @@ public class FishingGuideScreen extends Screen
                 renderItem(indexEntries.get(i).getFirst(), xx + i * 20, uiY + 47, 1);
 
                 if (mouseX > xx + (i * 20) - 2 && mouseX < xx + (i * 20) + 17 && mouseY > uiY + 47 - 2 && mouseY < uiY + 47 + 17)
-                    guiGraphics.renderTooltip(this.font, Component.translatable(indexEntries.get(i).getSecond()), mouseX, mouseY);
+                    guiGraphics.renderTooltip(this.font, translatable(indexEntries.get(i).getSecond()), mouseX, mouseY);
 
                 if (clicked && mouseX > xx + (i * 20) - 2 && mouseX < xx + (i * 20) + 17 && mouseY > uiY + 47 - 2 && mouseY < uiY + 47 + 17)
                 {
@@ -1153,7 +1155,7 @@ public class FishingGuideScreen extends Screen
 
                 if (mouseX > xx + ((i - 7) * 20) - 2 && mouseX < xx + ((i - 7) * 20) + 17 && mouseY > uiY + 47 + 20 - 2 && mouseY < uiY + 47 + 20 + 17)
                 {
-                    guiGraphics.renderTooltip(this.font, Component.translatable(indexEntries.get(i).getSecond()), mouseX, mouseY);
+                    guiGraphics.renderTooltip(this.font, translatable(indexEntries.get(i).getSecond()), mouseX, mouseY);
                     if (clicked)
                     {
                         clicked = false;
@@ -1177,10 +1179,10 @@ public class FishingGuideScreen extends Screen
         //[sort] text
         if (page == 0)
         {
-            renderCenteredString(guiGraphics, this.font, Component.translatable("gui.guide.sort"), uiX + 171, uiY + 88, 0x937d70);
+            renderCenteredString(guiGraphics, this.font, translatable("gui.guide.sort"), uiX + 171, uiY + 88, 0x937d70);
             if (mouseX > uiX + 145 && mouseX < uiX + 190 && mouseY > uiY + 86 && mouseY < uiY + 96)
             {
-                guiGraphics.renderTooltip(this.font, Component.translatable(SCConfig.SORT.get().getTranslationKey()), mouseX, mouseY);
+                guiGraphics.renderTooltip(this.font, translatable(SCConfig.SORT.get().getTranslationKey()), mouseX, mouseY);
                 if (clicked)
                 {
                     SCConfig.SORT.set(SCConfig.SORT.get().next());
@@ -1335,7 +1337,7 @@ public class FishingGuideScreen extends Screen
         if (mouseX > xOffset - 3 && mouseX < xOffset + 21 - 3 && mouseY > yOffset - 3 && mouseY < yOffset + 21 - 3)
         {
             ArrayList<Component> components = new ArrayList<>(getCachedTooltipForHoverEntry(fp, caught));
-            components.add(1, Component.translatable("gui.guide.rarity." + fp.rarity().getSerializedName()));
+            components.add(1, translatable("gui.guide.rarity." + fp.rarity().getSerializedName()));
 
             guiGraphics.renderTooltip(this.font, components, Optional.empty(), mouseX, mouseY);
 
@@ -1357,19 +1359,19 @@ public class FishingGuideScreen extends Screen
         boolean isFish = fp.catchInfo().fishEntryType().equals(FishProperties.CatchInfo.FishEntryType.FISH);
         if (caught == 0 && SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get())
         {
-            components.add(Component.translatable("gui.guide.not_caught_fish_name"));
+            components.add(translatable("gui.guide.not_caught_fish_name"));
             if (isFish)
-                components.add(Component.translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
+                components.add(translatable("gui.guide.not_caught_yet").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
         }
         else
         {
             if (fp.catchInfo().alwaysSpawnEntity() && !fp.catchInfo().entityToSpawn().is(U.holderEntity(SCEntities.FISH)))
-                components.add(Component.translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
+                components.add(translatable("entity." + fp.catchInfo().entityToSpawn().getRegisteredName().replace(":", ".")));
             else
-                components.add(Component.translatable(fp.catchInfo().fish().value().getDescriptionId()));
+                components.add(translatable(fp.catchInfo().fish().value().getDescriptionId()));
 
             if (isFish)
-                components.add(Component.translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+                components.add(translatable("gui.guide.caught").append(Component.literal(" [" + caught + "]")).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         }
 
         //Aurora
@@ -1863,7 +1865,7 @@ public class FishingGuideScreen extends Screen
         //render caught:
         //caught:
         guiGraphics.drawString(
-                font, Component.translatable("gui.guide.caught"),
+                font, translatable("gui.guide.caught"),
                 x + 73, y + 64, 0x9c897c, false);
 
         //render caught count
@@ -1871,7 +1873,7 @@ public class FishingGuideScreen extends Screen
         {
             //------
             guiGraphics.drawString(
-                    font, Component.translatable("gui.guide.not_caught"),
+                    font, translatable("gui.guide.not_caught"),
                     x + 73, y + 73, 0x9c897c, false);
         }
         else
@@ -1884,11 +1886,11 @@ public class FishingGuideScreen extends Screen
         //render rarity (always shown)
         //rarity:
         guiGraphics.drawString(
-                font, Component.translatable("gui.guide.rarity"),
+                font, translatable("gui.guide.rarity"),
                 x + 73, y + 84, 0x9c897c, false);
         //common
         guiGraphics.drawString(
-                font, Component.translatable("gui.guide.rarity." + fp.rarity().getSerializedName()),
+                font, translatable("gui.guide.rarity." + fp.rarity().getSerializedName()),
                 x + 73, y + 93, 0, false);
 
         //render bucketable
@@ -1896,7 +1898,7 @@ public class FishingGuideScreen extends Screen
         {
             guiGraphics.blit(BUCKET, x + 77, y + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > 75 && mouseX < 93 && mouseY > 105 && mouseY < 115)
-                guiGraphics.renderTooltip(font, Component.translatable("gui.guide.bucketable"), absoluteMouseX, absoluteMouseY);
+                guiGraphics.renderTooltip(font, translatable("gui.guide.bucketable"), absoluteMouseX, absoluteMouseY);
         }
 
         //render almighty wormable
@@ -1905,7 +1907,7 @@ public class FishingGuideScreen extends Screen
         {
             guiGraphics.blit(ENTITY, x + 93, y + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > 92 && mouseX < 107 && mouseY > 105 && mouseY < 115)
-                guiGraphics.renderTooltip(font, Component.translatable("gui.guide.entity"), absoluteMouseX, absoluteMouseY);
+                guiGraphics.renderTooltip(font, translatable("gui.guide.entity"), absoluteMouseX, absoluteMouseY);
         }
 
         //render sword
@@ -1913,7 +1915,7 @@ public class FishingGuideScreen extends Screen
         {
             guiGraphics.blit(ALWAYS_ENTITY, x + 93, y + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > 92 && mouseX < 107 && mouseY > 105 && mouseY < 115)
-                guiGraphics.renderTooltip(font, Component.translatable("gui.guide.always_entity"), absoluteMouseX, absoluteMouseY);
+                guiGraphics.renderTooltip(font, translatable("gui.guide.always_entity"), absoluteMouseX, absoluteMouseY);
         }
 
         //render name
@@ -2017,16 +2019,16 @@ public class FishingGuideScreen extends Screen
             String formatted = zdt.format(formatter);
             String formatted2 = zdt.format(formatter2);
 
-            components.add(Component.translatable("gui.guide.first"));
+            components.add(translatable("gui.guide.first"));
             components.add(Component.literal(formatted).withStyle(ChatFormatting.BOLD));
             components.add(Component.literal(formatted2).withStyle(ChatFormatting.BOLD));
             components.add(Component.literal(""));
-            components.add(Component.translatable("gui.guide.fastest").append(Component.literal((((float) fcc.fastestTicks()) / 20) + "s").withStyle(ChatFormatting.BOLD)));
-            components.add(Component.translatable("gui.guide.average").append(Component.literal(averageTicks + "s").withStyle(ChatFormatting.BOLD)));
+            components.add(translatable("gui.guide.fastest").append(Component.literal((((float) fcc.fastestTicks()) / 20) + "s").withStyle(ChatFormatting.BOLD)));
+            components.add(translatable("gui.guide.average").append(Component.literal(averageTicks + "s").withStyle(ChatFormatting.BOLD)));
             components.add(Component.literal(""));
-            components.add(Component.translatable("gui.guide.biggest").append(Component.literal(size).withStyle(ChatFormatting.BOLD)));
-            components.add(Component.translatable("gui.guide.heaviest").append(Component.literal(weight).withStyle(ChatFormatting.BOLD)));
-            components.add(Component.translatable("gui.guide.percentile").append(Component.literal(fcc.percentile() + "%").withStyle(ChatFormatting.BOLD)));
+            components.add(translatable("gui.guide.biggest").append(Component.literal(size).withStyle(ChatFormatting.BOLD)));
+            components.add(translatable("gui.guide.heaviest").append(Component.literal(weight).withStyle(ChatFormatting.BOLD)));
+            components.add(translatable("gui.guide.percentile").append(Component.literal(fcc.percentile() + "%").withStyle(ChatFormatting.BOLD)));
 
             guiGraphics.renderTooltip(font, components, Optional.empty(), absoluteMouseX, absoluteMouseY);
         }
@@ -2076,4 +2078,10 @@ public class FishingGuideScreen extends Screen
         FormattedCharSequence formattedcharsequence = text.getVisualOrderText();
         guiGraphics.drawString(font, formattedcharsequence, x - font.width(formattedcharsequence) / 2, y, color, shadow);
     }
+
+    public static MutableComponent translatable(String key)
+    {
+        return Tooltips.resolveTagsToComponentFromTranslationKey(key);
+    }
+
 }
