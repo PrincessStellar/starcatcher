@@ -246,7 +246,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super.renderBackground(guiGraphics, mouseX, mouseY, partialTickNeo);
 
-        final float partialTick = SCConfig.VANILLA_PARTIAL_TICK.get() ? partialTickNeo : PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
+        final float partialTick = PartialTickHelper.INSTANCE.getPartialTicks(minecraft.level);
 
         PoseStack poseStack = guiGraphics.pose();
         partial = partialTick;
