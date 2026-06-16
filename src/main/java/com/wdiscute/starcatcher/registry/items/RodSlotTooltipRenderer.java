@@ -56,16 +56,25 @@ public class RodSlotTooltipRenderer implements ClientTooltipComponent
         if (bobber.isEmpty())
             guiGraphics.blit(BOBBER, x + 2, y + 1, 0, 0, 16, 16, 16, 16);
         else
+        {
             guiGraphics.renderItem(bobber, x + 2, y + 1);
+            guiGraphics.renderItemDecorations(font, bobber, x + 2 + 2, y + 1);
+        }
 
         if (bait.isEmpty())
             guiGraphics.blit(BAIT, x + 18 + 2, y + 1, 0, 0, 16, 16, 16, 16);
         else
+        {
             guiGraphics.renderItem(bait, x + 18 + 2, y + 1);
+            guiGraphics.renderItemDecorations(font, bait, x + 18 + 2, y + 1);
+        }
 
         if (hook.isEmpty())
             guiGraphics.blit(HOOK, x + 18 + 18 + 2, y + 1, 0, 0, 16, 16, 16, 16);
         else
+        {
             guiGraphics.renderItem(hook, x + 18 + 18 + 2, y + 1);
+            guiGraphics.renderItemDecorations(font, hook, x + 18 + 18 + 2, y + 1);
+        }
     }
 }
