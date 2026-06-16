@@ -53,11 +53,11 @@ public class MessageScreen extends Screen
         List<String> text = message.text();
         for (int i = 0; i < text.size(); i++)
         {
-            guiGraphics.drawString(this.font, Component.translatable(text.get(i)), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
+            guiGraphics.drawString(this.font, Tooltips.resolveTagsToComponentFromTranslationKey(text.get(i)), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
         }
 
         //render name
-        guiGraphics.drawString(this.font, Component.translatable(message.senderDisplayName()), uiX + 255, uiY + 208, 0x635040, false);
+        guiGraphics.drawString(this.font, Tooltips.resolveTagsToComponentFromTranslationKey(message.senderDisplayName()), uiX + 255, uiY + 208, 0x635040, false);
 
     }
 

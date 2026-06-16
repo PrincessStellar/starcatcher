@@ -57,9 +57,6 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         {
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
             tag(SCTags.STARCAUGHT_FISHABLES).addOptional(key);
-
-            //fishable for tackle box
-            tag(SCTags.FISHABLE).addOptional(key);
         }
 
         for (FishProperties fp : DGStarcatcherFishes.ALL_FISHABLE)
@@ -69,6 +66,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
             //add all "normal catches" to rarity tags
             if(fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.catchInfo().alwaysSpawnEntity())
             {
+                //fishable for tackle box
+                tag(SCTags.FISHABLE).addOptional(key);
+
                 switch (fp.rarity())
                 {
                     case COMMON -> tag(SCTags.COMMON_FISHES).addOptional(key);

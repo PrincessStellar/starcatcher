@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.event;
 
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
@@ -66,7 +67,7 @@ public class TooltipEvents
         {
             if (Boolean.TRUE.equals(SCDataComponents.get(stack, SCDataComponents.NETHERITE_UPGRADE)))
             {
-                comp.add(Component.translatable("tooltip.starcatcher.rod.netherite"));
+                comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.rod.netherite"));
             }
         }
 
@@ -78,7 +79,7 @@ public class TooltipEvents
             String s = I18n.get("tooltip.tackle." + tackleSkinDC.toLanguageKey());
             if (!s.isEmpty())
             {
-                comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
+                comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
                 comp.add(Component.literal(" -").append(Component.literal(s))
                         .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
             }
@@ -92,7 +93,7 @@ public class TooltipEvents
             String s = I18n.get("tooltip.tackle." + tackleSkinDM.toLanguageKey());
             if (!s.isEmpty())
             {
-                comp.add(Component.translatable("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
+                comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.tackle").withStyle(ChatFormatting.GRAY));
                 comp.add(Component.literal(" -").append(Component.literal(s))
                         .withStyle(Style.EMPTY.withColor(SCColors.TOOLTIP_GRAY)));
             }
@@ -130,9 +131,9 @@ public class TooltipEvents
                 if (!modComp.isEmpty())
                     //if it's the active rod, add active modifiers, otherwise fishing modifiers
                     if (player != null && stack.is(SCTags.RODS) && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
-                        comp.add(Component.translatable("tooltip.starcatcher.modifiers.active").withStyle(ChatFormatting.GRAY));
+                        comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.modifiers.active").withStyle(ChatFormatting.GRAY));
                     else
-                        comp.add(Component.translatable("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
+                        comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
 
                 comp.addAll(modComp);
             }
@@ -146,7 +147,7 @@ public class TooltipEvents
 
             if (sw.golden())
             {
-                MutableComponent element = Component.empty().append(Component.translatable("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
+                MutableComponent element = Component.empty().append(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
                 if (hasShiftDown)
                     element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
                 comp.add(element);
