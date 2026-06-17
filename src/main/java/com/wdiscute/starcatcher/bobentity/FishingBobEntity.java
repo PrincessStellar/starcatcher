@@ -102,11 +102,11 @@ public class FishingBobEntity extends Projectile
         //add fish messages modifier
         modifiers.addAll(Modifier.getDefaultCatchModifiers());
 
-        noGravity = modifiers.stream().anyMatch(AbstractCatchModifier::noGravity);
+        noGravity = modifiers.stream().anyMatch(o -> o.noGravity(this));
 
         entityData.set(VOID, noGravity);
 
-        survivesLava = SCDataComponents.getOrDefault(rod, SCDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(AbstractCatchModifier::survivesLava);
+        survivesLava = SCDataComponents.getOrDefault(rod, SCDataComponents.NETHERITE_UPGRADE, false) || modifiers.stream().anyMatch(o -> o.survivesLava(this));
 
         minTicksToFish = SCConfig.BASE_MIN_TICKS_TO_FISH.getAsInt();
         maxTicksToFish = SCConfig.BASE_MAX_TICKS_TO_FISH.getAsInt();
@@ -141,18 +141,13 @@ public class FishingBobEntity extends Projectile
         vec3 = vec3.multiply(0.6 / d3 + this.random.triangle(0.5F, 0.0103365), 0.6 / d3 + this.random.triangle(0.5F, 0.0103365), 0.6 / d3 + this.random.triangle(0.5F, 0.0103365));
 
         for (AbstractCatchModifier modifier : modifiers)
-        {
-            vec3 = modifier.modifyThrowVec(vec3);
-        }
+            vec3 = modifier.modifyThrowVec(this, vec3);
 
         this.setDeltaMovement(vec3);
         this.setYRot((float) (Mth.atan2(vec3.x, vec3.z) * (double) 180.0F / (double) (float) Math.PI));
         this.setXRot((float) (Mth.atan2(vec3.y, vec3.horizontalDistance()) * (double) 180.0F / (double) (float) Math.PI));
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
-
-
-
 
         if (!level.isClientSide)
             SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).setUuid(player, this.uuid);
@@ -162,7 +157,7 @@ public class FishingBobEntity extends Projectile
 
     public void reel()
     {
-        Pair<FishProperties, ResourceLocation> fp = FishApi.getFP(this, player, modifiers, rod, true);
+        Pair<FishProperties, ResourceLocation> fp = FishApi.getFP(this, player, modifiers, rod);
 
         if (fp == null)
         {
@@ -175,21 +170,21 @@ public class FishingBobEntity extends Projectile
 
         //skips minigame if (skipsminigame() or server config of minigame enabled = false) OR any modifier wants to
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
-            || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(SCConfig.ENABLE_MINIGAME.get())))
+            || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(this)))
         {
             FishApi.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
         }
         else
         {
             //load treasure itemstack
-            treasure = FishApi.getTreasure(((ServerPlayer) player), fpToFish);
+            treasure = FishApi.getTreasure(((ServerPlayer) player), fpToFish, modifiers);
 
             //trigger modifiers to modify treasure fished
             for (AbstractCatchModifier modifier : modifiers)
-                treasure = modifier.modifyTreasure(treasure, fpToFish, player, this);
+                treasure = modifier.modifyTreasure(this, treasure, fpToFish);
 
             //should hide catch from config or modifiers
-            boolean shouldHideCatch = SCConfig.HIDE_CATCHES.get() || modifiers.stream().anyMatch(AbstractCatchModifier::shouldHideCatch);
+            boolean shouldHideCatch = SCConfig.HIDE_CATCHES.get() || modifiers.stream().anyMatch(o -> o.shouldHideCatch(this));
 
             //create payload
             CBFishingStartedPayload payload = new CBFishingStartedPayload(
@@ -209,7 +204,7 @@ public class FishingBobEntity extends Projectile
         if (level().isClientSide) return false;
 
         //if any modifier wants to stop fishing
-        if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldStopFishing)) return true;
+        if (modifiers.stream().anyMatch(o -> o.shouldStopFishing(this))) return true;
 
         boolean holdingRod = player.getMainHandItem().is(SCTags.RODS)
                              || player.getOffhandItem().is(SCTags.RODS);

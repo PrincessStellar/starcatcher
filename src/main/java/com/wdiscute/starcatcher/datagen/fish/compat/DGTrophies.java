@@ -101,62 +101,62 @@ public class DGTrophies
         //`----'   `----'  `---' `--'     `----'   `--'   `----'
         //
 
-        register(overworldSurfaceFish(new MaybeStack(SCItems.DRIFTING_WATERLOGGED_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .withHasGuideEntry(false)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.NONE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .secret()
-        );
-
-        register(overworldSurfaceLava(new MaybeStack(SCItems.SCALDING_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .withHasGuideEntry(false)
-                .secret()
-        );
-
-        register(overworldSurfaceLava(new MaybeStack(SCItems.BURNING_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 2, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .withHasGuideEntry(false)
-                .secret()
-        );
-
-        register(overworldSurfaceFish(new MaybeStack(SCItems.HOPEFUL_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .withHasGuideEntry(false)
-                .secret()
-        );
-
-        register(overworldSurfaceFish(new MaybeStack(SCItems.HOPELESS_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 15, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .withHasGuideEntry(false)
-                .secret()
-        );
-
-        register(overworldSurfaceFish(new MaybeStack(SCItems.TRUE_BLUE_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                .withHasGuideEntry(false)
-                .secret()
-        );
-
-        register(fish(new MaybeStack(SCItems.WITHERED_BOTTLE))
-                .withMaxLimit(1)
-                .withDifficulty(Difficulty.TRASH)
-                .withHasGuideEntry(false)
-                .secret()
-                .withBaseChance(0)
-                .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), "200"))
-        );
+//        register(overworldSurfaceFish(new MaybeStack(SCItems.DRIFTING_WATERLOGGED_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .withHasGuideEntry(false)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.NONE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .secret()
+//        );
+//
+//        register(overworldSurfaceLava(new MaybeStack(SCItems.SCALDING_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .withHasGuideEntry(false)
+//                .secret()
+//        );
+//
+//        register(overworldSurfaceLava(new MaybeStack(SCItems.BURNING_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 2, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .withHasGuideEntry(false)
+//                .secret()
+//        );
+//
+//        register(overworldSurfaceFish(new MaybeStack(SCItems.HOPEFUL_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .withHasGuideEntry(false)
+//                .secret()
+//        );
+//
+//        register(overworldSurfaceFish(new MaybeStack(SCItems.HOPELESS_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 15, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .withHasGuideEntry(false)
+//                .secret()
+//        );
+//
+//        register(overworldSurfaceFish(new MaybeStack(SCItems.TRUE_BLUE_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
+//                .withHasGuideEntry(false)
+//                .secret()
+//        );
+//
+//        register(fish(new MaybeStack(SCItems.WITHERED_BOTTLE))
+//                .withMaxLimit(1)
+//                .withDifficulty(Difficulty.TRASH)
+//                .withHasGuideEntry(false)
+//                .secret()
+//                .withBaseChance(0)
+//                .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), "200"))
+//        );
 
         //
         //          ,--.   ,--.

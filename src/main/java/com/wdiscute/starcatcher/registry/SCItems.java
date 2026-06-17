@@ -10,7 +10,10 @@ import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
 import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
-import com.wdiscute.starcatcher.secretnotes.*;
+import com.wdiscute.starcatcher.message.*;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -140,24 +143,14 @@ public interface SCItems
     DeferredItem<Item> HUMBLE_ROD = RODS_REGISTRY.register("humble_rod", StarcatcherFishingRodItem::new);
 
     //secrets
-    DeferredItem<Item> LETTER = ITEMS.register("letter", LetterItem::new);
+    DeferredItem<Item> LETTER = ITEMS.register("letter", MessageItem::new);
     DeferredItem<Item> BOTTLED_LETTER = ITEMS.register("bottled_letter", BottledLetterItem::new);
 
     DeferredItem<Item> MESSAGE_IN_A_BOTTLE = ITEMS.register("message_in_a_bottle", MessageInABottleItem::new);
-    DeferredItem<Item> MESSAGE = ITEMS.register("message", LetterItem::new);
+    DeferredItem<Item> MESSAGE = ITEMS.register("message", MessageItem::new);
 
     DeferredItem<Item> BROKEN_BOTTLE = ITEMS.register("broken_bottle", BrokenBottleItem::new);
 
-    //built-in secret notes
-    DeferredItem<Item> SECRET_NOTE = ITEMS.register("secret_note", SecretNote::new);
-
-    DeferredItem<Item> DRIFTING_WATERLOGGED_BOTTLE = ITEMS.register("drifting_waterlogged_bottle", () -> new NoteContainer(SecretNote.Note.AMETHYST_HOOK));
-    DeferredItem<Item> SCALDING_BOTTLE = ITEMS.register("scalding_bottle", () -> new NoteContainer(new Item.Properties().stacksTo(1).fireResistant(), SecretNote.Note.ARNWULF_1));
-    DeferredItem<Item> BURNING_BOTTLE = ITEMS.register("burning_bottle", () -> new NoteContainer(new Item.Properties().stacksTo(1).fireResistant(), SecretNote.Note.ARNWULF_2));
-    DeferredItem<Item> HOPEFUL_BOTTLE = ITEMS.register("hopeful_bottle", () -> new NoteContainer(SecretNote.Note.HOPEFUL_NOTE));
-    DeferredItem<Item> HOPELESS_BOTTLE = ITEMS.register("hopeless_bottle", () -> new NoteContainer(SecretNote.Note.HOPELESS_NOTE));
-    DeferredItem<Item> TRUE_BLUE_BOTTLE = ITEMS.register("true_blue_bottle", () -> new NoteContainer(SecretNote.Note.TRUE_BLUE));
-    DeferredItem<Item> WITHERED_BOTTLE = ITEMS.register("withered_bottle", () -> new NoteContainer(SecretNote.Note.WITHER));
 
     DeferredItem<Item> FISH_BONES = ITEMS.register("fish_bones", BasicItem::new);
     DeferredItem<Item> PEARL = ITEMS.register("pearl", BasicItem::new);

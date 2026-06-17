@@ -147,6 +147,7 @@ public class TooltipEvents
 
             if (sw.golden())
             {
+                cachedTimer = -1;
                 MutableComponent element = Component.empty().append(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
                 if (hasShiftDown)
                     element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));

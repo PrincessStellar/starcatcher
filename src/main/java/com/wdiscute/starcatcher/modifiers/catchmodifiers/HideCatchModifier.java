@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -25,9 +26,9 @@ public class HideCatchModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean shouldHideCatch()
+    public boolean shouldHideCatch(FishingBobEntity fbe)
     {
-        return instance.level().getRandom().nextFloat() < chance;
+        return fbe.level().getRandom().nextFloat() < chance;
     }
 
     @Override

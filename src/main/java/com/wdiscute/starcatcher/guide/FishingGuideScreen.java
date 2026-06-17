@@ -15,13 +15,13 @@ import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.io.network.SBTrackFishPayload;
+import com.wdiscute.starcatcher.message.Message;
+import com.wdiscute.starcatcher.message.MessageScreen;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.io.network.SignGuidePayload;
 import com.wdiscute.starcatcher.io.network.SBFPsSeenPayload;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import com.wdiscute.starcatcher.secretnotes.NoteContainer;
-import com.wdiscute.starcatcher.secretnotes.SecretNoteScreen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -1149,8 +1149,10 @@ public class FishingGuideScreen extends Screen
                             guiGraphics.renderTooltip(font, stack, mouseX, mouseY);
 
                         //if clicked on a trophy, display FP
-                        if (clicked && !fp.equals(FishProperties.empty()) && fcc != null && stack.getItem() instanceof NoteContainer nc)
-                            Minecraft.getInstance().setScreen(new SecretNoteScreen(nc.note, this));
+                        if (clicked && !fp.equals(FishProperties.empty()) && fcc != null && stack.is(SCItems.MESSAGE_IN_A_BOTTLE))
+                            Minecraft.getInstance().setScreen(
+                                    new MessageScreen(SCDataComponents.getOrDefault(stack, SCDataComponents.MESSAGE, Message.DEFAULT))
+                            );
                     }
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);

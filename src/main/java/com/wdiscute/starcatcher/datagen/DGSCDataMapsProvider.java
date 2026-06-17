@@ -5,10 +5,11 @@ import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.SBDataMaps;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
@@ -27,8 +28,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
@@ -55,6 +56,12 @@ public class DGSCDataMapsProvider extends DataMapProvider
         var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         var modifiers = this.builder(SCDataMaps.ITEM_MODIFIERS);
         var tackleSkin = this.builder(SCDataMaps.TACKLE_SKIN);
+        var messages = this.builder(SCDataMaps.MESSAGE_BACKGROUND);
+
+        //messages background
+        messages.add(LevelStem.OVERWORLD, Message.BACKGROUND_OVERWORLD, false);
+        messages.add(LevelStem.NETHER, Message.BACKGROUND_NETHER, false);
+        messages.add(LevelStem.END, Message.BACKGROUND_END, false);
 
         //ground
         aquarium.add(Items.GRAVEL.builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_GRAVEL, false);
@@ -133,18 +140,19 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         //default catch modifiers
         modifiers.add(SCItems.DEFAULT_CATCH,
-                List.of
-                        (
-                                new FishMessagesModifier(""),
-                                new LuckAttributeModifier(new HashMap<>()
-                                {{
-                                    put(Rarity.COMMON, 0);
-                                    put(Rarity.UNCOMMON, 1);
-                                    put(Rarity.RARE, 2);
-                                    put(Rarity.EPIC, 3);
-                                    put(Rarity.LEGENDARY, 5);
-                                }}, "tooltip.modifier.starcatcher.luck_attribute")
-                        ), false
+                List.of(
+                        new FishMessagesModifier(0.05f, ""),
+                        new LuckAttributeModifier(new HashMap<>()
+                        {{
+                            put(Rarity.COMMON, 0);
+                            put(Rarity.UNCOMMON, 1);
+                            put(Rarity.RARE, 2);
+                            put(Rarity.EPIC, 3);
+                            put(Rarity.LEGENDARY, 5);
+                        }}, "tooltip.modifier.starcatcher.luck_attribute"),
+                        new ExtraGoldenChanceModifier(0.01f, false, ""),
+                        new ExtraGoldenChanceModifier(0.01f, true, "")
+                ), false
         );
 
         //default minigame modifiers
@@ -222,11 +230,11 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         modifiers.add(SCItems.GOLD_HOOK, List.of(
-                new ExtraGoldenRiskModifier(0.05f, false, "")
+                new ExtraGoldenChanceModifier(0.05f, false, "")
         ), false);
 
         modifiers.add(SCItems.GOLDEN_BOBBER, List.of(
-                new ExtraGoldenRiskModifier(0.05f, false, "")
+                new ExtraGoldenChanceModifier(0.05f, false, "")
         ), false);
 
         modifiers.add(SCItems.CLOUD_BOBBER, List.of(
@@ -243,11 +251,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         ), false);
 
         modifiers.add(SCItems.VANILLA_BOBBER, List.of(
-                new AddLootTableToFishedItemsModifier(ResourceLocation.withDefaultNamespace("gameplay/fishing"),
-                        "tooltip.modifier.starcatcher.vanilla_bobber"),
-                new RemoveBaseFishedItemModifier("hide"),
-                new ModifyAwardFishRlModifier(Starcatcher.MISSINGNO, "hide"),
-                new OverrideFishPropertiesModifier(FishProperties.empty().withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH)), "hide"),
+                new VanillaFishingLootModifier(1, ""),
                 new TriggersSkipMinigameModifier("hide")
         ), false);
 
@@ -258,7 +262,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //templates
         modifiers.add(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE.builtInRegistryHolder(), List.of(
                 new SurvivesLavaModifier(""),
-                new ExtraGoldenRiskModifier(0.1f, true, "")
+                new ExtraGoldenChanceModifier(0.1f, true, "")
         ), false);
 
         //rods
@@ -385,13 +389,11 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_LIME.asItem().builtInRegistryHolder(),
                 List.of(
-                        new AddToAvailablePoolModifier(
-                                FishProperties.empty()
-                                        .withEntityToSpawn(EntityType.CREEPER.builtInRegistryHolder())
-                                        .withAlwaysSpawnEntity()
-                                        .withDifficulty(Difficulty.CREEPER)
-                                        .withSkipsMinigame()
-                                , Starcatcher.MISSINGNO, 5, "tooltip.modifier.starcatcher.add_creeper"),
+                        new ForceSelectFishFromEntryModifier(
+                                1,
+                                U.rl("creeper"),
+                                "tooltip.modifier.starcatcher.add_creeper"
+                        ),
 
                         new AdjustLureTimeModifier(0.5f, 0.5f, 1, "")
                 ), false);
@@ -408,7 +410,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_YELLOW.asItem().builtInRegistryHolder(),
                 List.of(
-                        new ExtraGoldenRiskModifier(0.05f, true, ""),
+                        new ExtraGoldenChanceModifier(0.05f, true, ""),
                         new AdjustLureTimeModifier(1.2f, 1.2f, 1.4f, ""),
                         new AdjustPenaltyModifier(1.5f, "")
                 ), false);

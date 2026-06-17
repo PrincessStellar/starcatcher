@@ -189,7 +189,6 @@
   "starcatcher.configuration.hp_multiplier" : "Global HP Multiplier",
   "starcatcher.configuration.handle_speed_multiplier" : "Global Handle Speed Multiplier",
   "starcatcher.configuration.hide_entries_until_found" : "Hide Guide Entries Until Found",
-  "starcatcher.configuration.fish_player_messages_chance" : "Player Messages Chance To Fish",
   "starcatcher.configuration.save_data_to_items" : "Size, Weight, Rarity & Golden NBT saving",
   "starcatcher.configuration.base_min_ticks" : "Minimum Ticks To Fish",
   "starcatcher.configuration.base_max_ticks" : "Maximum Ticks To Fish",
@@ -322,11 +321,6 @@
   "tooltip.modifier.starcatcher.flip_every_hit": "Flip every time you hit a sweet-spot",
 
 
-
-
-  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber": "Skips minigame if equipped alongsides the Vanilla-flavoured Bobber",
-
-
   "tooltip.modifier.keyword.big_decrease": "Tremendously decreases",
   "tooltip.modifier.keyword.decrease": "Decreases",
   "tooltip.modifier.keyword.increase": "Increases",
@@ -374,7 +368,9 @@
   "tooltip.modifier.starcatcher.adjust_penalty_rate.decrease": "Decreases the penalty for missing sweet-spots",
   "tooltip.modifier.starcatcher.adjust_penalty_rate.shift": "Adjusts the penalty of missing sweet-spots by %s%%",
 
-  "tooltip.modifier.starcatcher.vanilla_bobber": "Restores vanilla fishing loot",
+  "tooltip.modifier.starcatcher.vanilla_fishing_loot": "Restores vanilla fishing loot",
+  "tooltip.modifier.starcatcher.skip_minigame_if_vanilla_bobber": "Skips minigame if equipped alongsides the Vanilla-flavoured Bobber",
+
 
   "tooltip.modifier.starcatcher.luck_attribute": "Adjusts fish chance based on your luck",
 
@@ -1285,13 +1281,6 @@
   "gui.starcatcher.tournament.scoring.advanced" : "Advanced",
 
 
-  "gui.secret_note.sample_note.0" : "Hey how did you get this note??",
-  "gui.secret_note.sample_note.1" : "Are you cheating in creative mode??",
-  "gui.secret_note.sample_note.2" : "",
-  "gui.secret_note.sample_note.3" : "These notes should only be obtained through",
-  "gui.secret_note.sample_note.4" : "bottles otherwise they won't have the correct",
-  "gui.secret_note.sample_note.5" : "data and might crash the game! Be careful.",
-
   "gui.secret_note.amethyst_hook.0" : "Day 34",
   "gui.secret_note.amethyst_hook.1" : "",
   "gui.secret_note.amethyst_hook.2" : "After yesterday's trouble I decided it's best",
@@ -1426,6 +1415,7 @@
   "tooltip.starcatcher.bottled_letter.2" : "the ocean and let it start its journey.",
 
   "item.starcatcher.bottled_letter.thrown" : "Your bottled letter starts its journey...",
+  "item.starcatcher.bottled_letter.thrown.fail" : "Your bottled letter seems to have been eaten by a crab... [No Editable Message Data Component found in item, report this to the dev!]",
 
   "item.starcatcher.message_in_a_bottle" : "Message in a Bottle",
   "tooltip.starcatcher.message_in_a_bottle.0" : "A bottle containing a message written many moons ago.",
@@ -1577,7 +1567,7 @@
 
 
   "item.starcatcher.sunny_sturgeon" : "Sunny Sturgeon",
-  "tooltip.starcatcher.sunny_sturgeon.0" : "A rare surgeon often found high up in mountains during sunny days.",
+  "tooltip.starcatcher.sunny_sturgeon.0" : "A rare sturgeon often found high up in mountains during sunny days.",
   "tooltip.starcatcher.sunny_sturgeon.1" : "Because of it's size it's a rather hard catch,",
   "tooltip.starcatcher.sunny_sturgeon.2" : "requiring a strong grip and tight adjustments of your rod.",
 

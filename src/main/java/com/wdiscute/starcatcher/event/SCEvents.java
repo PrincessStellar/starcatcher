@@ -243,6 +243,7 @@ public class SCEvents
         event.register(SCDataMaps.ITEM_MODIFIERS);
         event.register(SCDataMaps.TACKLE_SKIN);
         event.register(SCDataMaps.TREASURE);
+        event.register(SCDataMaps.MESSAGE_BACKGROUND);
     }
 
     @SubscribeEvent
@@ -292,12 +293,6 @@ public class SCEvents
         );
 
         registrar.playToServer(
-                SBSetMessagePayload.TYPE,
-                SBSetMessagePayload.STREAM_CODEC,
-                SBSetMessagePayload::handle
-        );
-
-        registrar.playToServer(
                 SignGuidePayload.TYPE,
                 SignGuidePayload.STREAM_CODEC,
                 SignGuidePayload::handle
@@ -313,6 +308,24 @@ public class SCEvents
                 SBTrackFishPayload.TYPE,
                 SBTrackFishPayload.STREAM_CODEC,
                 SBTrackFishPayload::handle
+        );
+
+        registrar.playToServer(
+                SBSetEditableMessagePayload.TYPE,
+                SBSetEditableMessagePayload.STREAM_CODEC,
+                SBSetEditableMessagePayload::handle
+        );
+
+        registrar.playToClient(
+                CBOpenEditableMessagePayload.TYPE,
+                CBOpenEditableMessagePayload.STREAM_CODEC,
+                CBOpenEditableMessagePayload::handle
+        );
+
+        registrar.playToClient(
+                CBOpenMessagePayload.TYPE,
+                CBOpenMessagePayload.STREAM_CODEC,
+                CBOpenMessagePayload::handle
         );
     }
 }

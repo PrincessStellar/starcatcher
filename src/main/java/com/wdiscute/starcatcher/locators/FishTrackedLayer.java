@@ -97,8 +97,10 @@ public class FishTrackedLayer implements LayeredDraw.Layer
             {
                 cachedFP = fish;
                 if (chance > 0)
+                {
                     cachedChance = chance;
-                cachedTotalChance += chance;
+                    cachedTotalChance += chance;
+                }
             }
             else if (chance > 0)
                 cachedTotalChance += chance;

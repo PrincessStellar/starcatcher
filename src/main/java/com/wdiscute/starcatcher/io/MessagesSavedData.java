@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.io;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.secretnotes.LetterItem;
+import com.wdiscute.starcatcher.message.Message;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -16,12 +16,12 @@ import java.util.List;
 
 public class MessagesSavedData extends SavedData
 {
-    public static final Codec<List<LetterItem.Message>> CODEC = LetterItem.Message.CODEC.listOf();
+    public static final Codec<List<Message>> CODEC = Message.CODEC.listOf();
     public static final String NAME = "starcaught_messages";
 
-    private List<LetterItem.Message> messages = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 
-    public MessagesSavedData(List<LetterItem.Message> tournaments)
+    public MessagesSavedData(List<Message> tournaments)
     {
         this.messages = tournaments;
     }
@@ -31,12 +31,12 @@ public class MessagesSavedData extends SavedData
 
     }
 
-    public void addMessage(LetterItem.Message message)
+    public void addMessage(Message message)
     {
         messages.add(message);
     }
 
-    public void removeMessage(LetterItem.Message message)
+    public void removeMessage(Message message)
     {
         messages.remove(message);
     }
@@ -46,7 +46,7 @@ public class MessagesSavedData extends SavedData
         return level.getDataStorage().computeIfAbsent(factory(), NAME);
     }
 
-    public List<LetterItem.Message> getMessages()
+    public List<Message> getMessages()
     {
         return messages;
     }
@@ -70,7 +70,7 @@ public class MessagesSavedData extends SavedData
     {
         Tag tag = compoundTag.get(NAME);
 
-        List<LetterItem.Message> messagesNew = CODEC.decode(NbtOps.INSTANCE, tag)
+        List<Message> messagesNew = CODEC.decode(NbtOps.INSTANCE, tag)
                 .resultOrPartial(Starcatcher.LOGGER::error)
                 .map(Pair::getFirst)
                 .orElseGet(ArrayList::new);

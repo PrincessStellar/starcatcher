@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
@@ -25,17 +26,17 @@ public class SkipMinigameIfTriggerFoundModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishingBobEntity fbe, FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure)
     {
-        if (player.level().getRandom().nextFloat() < 0.1f && instance.modifiers.stream().anyMatch(o -> o instanceof SkipsMinigame))
-            return List.of(instance.treasure);
-        return super.addToFishedItems(fp, time, perfectCatch, hits, completedTreasure, player);
+        if (fbe.level().getRandom().nextFloat() < 0.1f && fbe.modifiers.stream().anyMatch(o -> o instanceof SkipsMinigame))
+            return List.of(fbe.treasure);
+        return super.addToFishedItems(fbe, fp, time, perfectCatch, hits, completedTreasure);
     }
 
     @Override
-    public boolean forceSkipMinigame(Boolean enableMinigameConfig)
+    public boolean forceSkipMinigame(FishingBobEntity fbe)
     {
-        return instance.modifiers.stream().anyMatch(o -> o instanceof SkipsMinigame);
+        return fbe.modifiers.stream().anyMatch(o -> o instanceof SkipsMinigame);
     }
 
     @Override

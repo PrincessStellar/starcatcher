@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.secretnotes.BottledLetterEntity;
-import com.wdiscute.starcatcher.secretnotes.BrokenBottleEntity;
+import com.wdiscute.starcatcher.message.BottledLetterEntity;
+import com.wdiscute.starcatcher.message.BrokenBottleEntity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import net.minecraft.core.registries.BuiltInRegistries;

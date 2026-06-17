@@ -1,9 +1,12 @@
 package com.wdiscute.starcatcher.modifiers.catchmodifiers;
 
+import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.WeightedStack;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -14,7 +17,6 @@ import java.util.List;
 
 public abstract class AbstractCatchModifier implements Modifier
 {
-    FishingBobEntity instance;
     final String translationOverride;
 
     protected AbstractCatchModifier(String translationOverride)
@@ -41,7 +43,6 @@ public abstract class AbstractCatchModifier implements Modifier
 
     public void onAdd(FishingBobEntity fishingBobEntity)
     {
-        this.instance = fishingBobEntity;
     }
 
     public int adjustMinTicksToFish(int minTicksToFish)
@@ -59,61 +60,43 @@ public abstract class AbstractCatchModifier implements Modifier
         return chanceToFishEachTick;
     }
 
-    public boolean survivesLava()
+    public boolean survivesLava(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public void onReelStart()
+    public void onReelStart(FishingBobEntity fbe)
     {
 
     }
 
-    public List<FishProperties> modifyAvailablePool(List<FishProperties> available)
+    public List<FishProperties> modifyAvailablePool(FishingBobEntity fbe, List<FishProperties> available)
     {
         return available;
     }
 
-    public boolean clearDefaultPool()
+    public boolean forceSkipMinigame(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
-    {
-    }
-
-    public boolean forceSkipMinigame(Boolean enableMinigameConfig)
+    public boolean shouldStopFishing(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public boolean shouldStopFishing()
+    public boolean forceSpawnEntity(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public boolean forceSpawnEntity()
+    public void onFailedMinigame(FishingBobEntity fbe)
     {
-        return false;
+
     }
 
-    public void onFailedMinigame()
+    public void onSuccessfulMinigameCompletion(FishingBobEntity fbe, int time, boolean completedTreasure, boolean perfectCatch, int hits)
     {
-    }
-
-    public void onSuccessfulMinigameCompletion(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
-    {
-    }
-
-    public boolean shouldCancelAfterSuccessfulMinigameCompletion(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
-    {
-        return false;
-    }
-
-    public boolean shouldCancelBeforeSkipsMinigameCheck()
-    {
-        return false;
     }
 
     public boolean forceAwardTreasure(FishingBobEntity fbe, int time, boolean completedTreasure, boolean perfectCatch, int hits)
@@ -121,48 +104,63 @@ public abstract class AbstractCatchModifier implements Modifier
         return false;
     }
 
-    public boolean shouldBeGolden(int time, boolean treasure, boolean perfect, int hits)
+    public boolean shouldBeGolden(FishingBobEntity fbe, int time, boolean treasure, boolean perfect, int hits)
     {
         return false;
     }
 
-    public boolean cancelGolden()
+    public boolean cancelGolden(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public boolean shouldSkipAddingBaseItem(ItemStack is)
+    public boolean shouldSkipAddingBaseItem(FishingBobEntity fbe, ItemStack is)
     {
         return false;
     }
 
-    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishingBobEntity fbe, FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure)
     {
         return List.of();
     }
 
-    public ItemStack modifyTreasure(ItemStack originalTreasure, FishProperties fp, Player player, Entity entity)
+    public ItemStack modifyTreasure(FishingBobEntity fbe, ItemStack originalTreasure, FishProperties fp)
     {
         return originalTreasure;
     }
 
-    public boolean shouldHideCatch()
+    public boolean shouldHideCatch(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public float modifyPercentile(float percentile)
+    public float modifyPercentile(FishingBobEntity fbe, float percentile)
     {
         return percentile;
     }
 
-    public boolean noGravity()
+    public boolean noGravity(FishingBobEntity fbe)
     {
         return false;
     }
 
-    public Vec3 modifyThrowVec(Vec3 vec3)
+    public Vec3 modifyThrowVec(FishingBobEntity fbe, Vec3 vec3)
     {
         return vec3;
+    }
+
+    public Pair<FishProperties, ResourceLocation> forceSelectFish(FishingBobEntity fbe)
+    {
+        return null;
+    }
+
+    public Pair<FishProperties, ResourceLocation> forceSelectFishIfNoNonFishAvailable(FishingBobEntity fbe)
+    {
+        return null;
+    }
+
+    public List<ItemStack> addToTreasureWeightedList()
+    {
+        return List.of();
     }
 }

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
@@ -13,19 +14,19 @@ import net.minecraft.server.level.ServerPlayer;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ExtraGoldenRiskModifier extends AbstractCatchModifier
+public class ExtraGoldenChanceModifier extends AbstractCatchModifier
 {
     final float risk;
     final boolean onlyForPerfectCatch;
 
-    public static final MapCodec<ExtraGoldenRiskModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<ExtraGoldenChanceModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("weight").forGetter(o -> o.risk),
-                    Codec.BOOL.fieldOf("only_for_perfect_catch").forGetter(o -> o.onlyForPerfectCatch),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
-            ).apply(instance, ExtraGoldenRiskModifier::new));
+                    Codec.BOOL.optionalFieldOf("only_for_perfect_catch", false).forGetter(o -> o.onlyForPerfectCatch),
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
+            ).apply(instance, ExtraGoldenChanceModifier::new));
 
-    public ExtraGoldenRiskModifier(float chance, boolean onlyForPerfectCatch, String translationOverride)
+    public ExtraGoldenChanceModifier(float chance, boolean onlyForPerfectCatch, String translationOverride)
     {
         super(translationOverride);
         this.risk = chance;
@@ -54,17 +55,17 @@ public class ExtraGoldenRiskModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean shouldBeGolden(int time, boolean treasure, boolean perfect, int hits)
+    public boolean shouldBeGolden(FishingBobEntity fbe, int time, boolean treasure, boolean perfect, int hits)
     {
         //if dont need perfect catch, do normal math
         if (!onlyForPerfectCatch)
-            return FishCaughtCounter.canCatchGolden(instance.fpToFish, (ServerPlayer) instance.player)
-                    && instance.level().getRandom().nextFloat() < risk;
+            return FishCaughtCounter.canCatchGolden(fbe.fpToFish, (ServerPlayer) fbe.player)
+                    && fbe.level().getRandom().nextFloat() < risk;
 
         //otherwise only run if it's perfect
         if (perfect)
-            return FishCaughtCounter.canCatchGolden(instance.fpToFish, (ServerPlayer) instance.player)
-                    && instance.level().getRandom().nextFloat() < risk;
+            return FishCaughtCounter.canCatchGolden(fbe.fpToFish, (ServerPlayer) fbe.player)
+                    && fbe.level().getRandom().nextFloat() < risk;
 
         return false;
     }

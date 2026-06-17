@@ -14,7 +14,6 @@
       {
         "type": "starcatcher:extra_golden_chance",
         "only_for_perfect_catch": true,
-        "translation_override": "",
         "weight": 0.1
       }
     ],
@@ -86,6 +85,7 @@
     "starcatcher:default_catch": [
       {
         "type": "starcatcher:fish_messages",
+        "chance": 0.05,
         "translation_override": ""
       },
       {
@@ -98,6 +98,15 @@
           "uncommon": 1
         },
         "translation_override": "tooltip.modifier.starcatcher.luck_attribute"
+      },
+      {
+        "type": "starcatcher:extra_golden_chance",
+        "weight": 0.01
+      },
+      {
+        "type": "starcatcher:extra_golden_chance",
+        "only_for_perfect_catch": true,
+        "weight": 0.01
       }
     ],
     "starcatcher:default_minigame": [
@@ -295,75 +304,8 @@
     ],
     "starcatcher:fisherman_hat_lime": [
       {
-        "type": "starcatcher:add_to_available_pool",
-        "fish_properties": {
-          "base_chance": 5,
-          "catch_info": {
-            "always_spawn_entity": true,
-            "entity": "minecraft:creeper",
-            "item": "minecraft:air"
-          },
-          "difficulty": {
-            "decay": 1.0,
-            "hp": 100,
-            "missPenalty": 20,
-            "modifiers": [
-              {
-                "type": "starcatcher:spawn_sweetspots",
-                "chance": 0.25,
-                "cooldown": 5,
-                "sudoku_vanish": true,
-                "sweetspot": {
-                  "color_as_int": -65536,
-                  "hitbox_size_in_pixels": 33,
-                  "is_flip": false,
-                  "moving_rate": 0.0,
-                  "reward": 30,
-                  "sweetspot_type": "starcatcher:tnt",
-                  "texture_path": "starcatcher:textures/gui/minigame/spots/tnt.png",
-                  "vanishing_rate": 0.0
-                },
-                "translation_override": ""
-              }
-            ],
-            "speed": 10,
-            "sweetspots": [
-              {
-                "color_as_int": -11447469,
-                "hitbox_size_in_pixels": 22,
-                "is_flip": false,
-                "moving_rate": 0.0,
-                "reward": 15,
-                "sweetspot_type": "starcatcher:normal",
-                "texture_path": "starcatcher:textures/gui/minigame/spots/creeper.png",
-                "vanishing_rate": 0.0
-              },
-              {
-                "color_as_int": -11447469,
-                "hitbox_size_in_pixels": 22,
-                "is_flip": false,
-                "moving_rate": 0.0,
-                "reward": 15,
-                "sweetspot_type": "starcatcher:normal",
-                "texture_path": "starcatcher:textures/gui/minigame/spots/creeper.png",
-                "vanishing_rate": 0.0
-              }
-            ]
-          },
-          "has_guide_entry": true,
-          "rarity": "common",
-          "restrictions": [],
-          "size_and_weight": {
-            "average_size_cm": 41.0,
-            "average_weight_grams": 2001.0,
-            "deviation_size_cm": 21.0,
-            "deviation_weight_grams": 701.0,
-            "golden_chance": 0.02
-          },
-          "skips_minigame": true,
-          "textures": "starcatcher:textures/gui/minigame/surface.png"
-        },
-        "quantity_to_add": 5,
+        "type": "starcatcher:force_select_fish_from_entry",
+        "entry": "minecraft:creeper",
         "translation_override": "tooltip.modifier.starcatcher.add_creeper"
       },
       {
@@ -430,7 +372,6 @@
       {
         "type": "starcatcher:extra_golden_chance",
         "only_for_perfect_catch": true,
-        "translation_override": "",
         "weight": 0.05
       },
       {
@@ -471,16 +412,12 @@
     "starcatcher:gold_hook": [
       {
         "type": "starcatcher:extra_golden_chance",
-        "only_for_perfect_catch": false,
-        "translation_override": "",
         "weight": 0.05
       }
     ],
     "starcatcher:golden_bobber": [
       {
         "type": "starcatcher:extra_golden_chance",
-        "only_for_perfect_catch": false,
-        "translation_override": "",
         "weight": 0.05
       }
     ],
@@ -546,8 +483,7 @@
     "starcatcher:mossy_hook": [
       {
         "type": "starcatcher:award_treasure_on_perfect_catch",
-        "translation_override": "",
-        "weight": 0.2
+        "chance": 0.2
       }
     ],
     "starcatcher:murkwater_bait": [
@@ -642,73 +578,7 @@
     ],
     "starcatcher:vanilla_bobber": [
       {
-        "type": "starcatcher:add_loot_table_to_fishing_loot",
-        "loot_table_to_add": "minecraft:gameplay/fishing",
-        "translation_override": "tooltip.modifier.starcatcher.vanilla_bobber"
-      },
-      {
-        "type": "starcatcher:remove_base_fished_item",
-        "translation_override": "hide"
-      },
-      {
-        "type": "starcatcher:modify_award_fish",
-        "resource_location_to_award": "starcatcher:missingno",
-        "translation_override": "hide"
-      },
-      {
-        "type": "starcatcher:override_fish_caught",
-        "fish_properties": {
-          "base_chance": 5,
-          "catch_info": {
-            "item": "minecraft:air",
-            "override_minigame_item": {
-              "count": 1,
-              "id": "starcatcher:unknown_fish"
-            }
-          },
-          "difficulty": {
-            "decay": 1.0,
-            "hp": 100,
-            "missPenalty": 5,
-            "modifiers": [],
-            "speed": 9,
-            "sweetspots": [
-              {
-                "color_as_int": -16711936,
-                "hitbox_size_in_pixels": 22,
-                "is_flip": false,
-                "moving_rate": 0.0,
-                "reward": 15,
-                "sweetspot_type": "starcatcher:normal",
-                "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-                "vanishing_rate": 0.0
-              },
-              {
-                "color_as_int": -16711936,
-                "hitbox_size_in_pixels": 22,
-                "is_flip": false,
-                "moving_rate": 0.0,
-                "reward": 15,
-                "sweetspot_type": "starcatcher:normal",
-                "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-                "vanishing_rate": 0.0
-              }
-            ]
-          },
-          "has_guide_entry": true,
-          "rarity": "common",
-          "restrictions": [],
-          "size_and_weight": {
-            "average_size_cm": 41.0,
-            "average_weight_grams": 2001.0,
-            "deviation_size_cm": 21.0,
-            "deviation_weight_grams": 701.0,
-            "golden_chance": 0.02
-          },
-          "skips_minigame": false,
-          "textures": "starcatcher:textures/gui/minigame/surface.png"
-        },
-        "translation_override": "hide"
+        "type": "starcatcher:vanilla_fishing_loot"
       },
       {
         "type": "starcatcher:trigger_skip_minigame",

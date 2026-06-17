@@ -5,6 +5,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:mossy_boot",
+      "required": false
+    },
+    {
       "id": "starcatcher:clam",
       "required": false
     },
@@ -13,15 +17,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:conch",
-      "required": false
-    },
-    {
       "id": "starcatcher:boot",
       "required": false
     },
     {
-      "id": "starcatcher:mossy_boot",
+      "id": "starcatcher:conch",
       "required": false
     }
   ]

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -20,7 +21,7 @@ public class SurvivesLavaModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean survivesLava()
+    public boolean survivesLava(FishingBobEntity fbe)
     {
         return true;
     }

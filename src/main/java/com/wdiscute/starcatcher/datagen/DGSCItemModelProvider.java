@@ -59,15 +59,6 @@ public class DGSCItemModelProvider extends ItemModelProvider
 
         simpleItem(BROKEN_BOTTLE);
 
-        simpleItem(SECRET_NOTE);
-        simpleItem(DRIFTING_WATERLOGGED_BOTTLE);
-        simpleItem(SCALDING_BOTTLE);
-        simpleItem(BURNING_BOTTLE);
-        simpleItem(HOPEFUL_BOTTLE);
-        simpleItem(HOPELESS_BOTTLE);
-        simpleItem(TRUE_BLUE_BOTTLE);
-        simpleItem(WITHERED_BOTTLE);
-
         //hooks
         simpleItem(HOOK);
         simpleItem(AMETHYST_HOOK);

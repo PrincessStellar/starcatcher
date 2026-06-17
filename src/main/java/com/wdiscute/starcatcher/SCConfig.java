@@ -162,11 +162,6 @@ public class SCConfig
             .translation("starcatcher.configuration.hide_entries_until_found")
             .define("hide_entries_until_found", true);
 
-    public static final ModConfigSpec.DoubleValue FISH_PLAYER_MESSAGES_CHANCE = BUILDER_SERVER
-            .comment("Controls the weight of fishing up messages-in-a-bottle left by other players of the server. Does not affect built-in Secrets")
-            .translation("starcatcher.configuration.fish_player_messages_chance")
-            .defineInRange("fish_player_messages_chance", 0.05d, 0d, 1d);
-
     public static final ModConfigSpec.BooleanValue SAVE_DATA_TO_ITEMS = BUILDER_SERVER
             .comment("If enabled the size, weight, percentile, rarity & golden values will be saved to the item for displaying")
             .translation("starcatcher.configuration.save_data_to_items")

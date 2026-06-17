@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.mixin;
 
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
@@ -45,7 +46,7 @@ public class GetNameMixin
             Rarity rarity = sw.golden() ? Rarity.GOLDEN : sw.rarity();
 
             //decode name string and return value
-            cir.setReturnValue(rarity.wrapWithRarityMarkdown(baseName.getString()));
+            cir.setReturnValue(Tooltips.resolveTagsToComponent(rarity.wrapWithRarityMarkdownAsString(baseName.getString())));
             cir.cancel();
         }
     }

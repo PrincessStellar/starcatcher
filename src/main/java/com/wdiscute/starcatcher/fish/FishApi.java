@@ -42,44 +42,58 @@ import java.util.List;
 
 public class FishApi
 {
-    public static Pair<FishProperties, ResourceLocation> getFP(@NotNull Entity entity, Player player, List<AbstractCatchModifier> modifiers, ItemStack rod, boolean includeNonFish)
+    /**
+     * Runs all the logic including modifiers to select which FishProperties to catch.
+     * The ResourceLocation might be MISSINGNO if the FishProperties was created by a modifier, such as player-written Message-in-a-Bottle
+     */
+    public static Pair<FishProperties, ResourceLocation> getFP(FishingBobEntity fbe, Player player, List<AbstractCatchModifier> modifiers, ItemStack rod)
     {
-        Level level = entity.level();
+        //force select fish from modifiers
+        for (AbstractCatchModifier modifier : modifiers)
+        {
+            Pair<FishProperties, ResourceLocation> force = modifier.forceSelectFish(fbe);
+            if (force != null) return force;
+        }
+
+        Level level = fbe.level();
 
         FishProperties fpToFish = null;
         ResourceLocation rlToAwardUponFishingComplete = null;
 
-        //server only
         List<FishProperties> available = new ArrayList<>();
 
-        modifiers.forEach(AbstractCatchModifier::onReelStart);
+        modifiers.forEach(o -> o.onReelStart(fbe));
 
-        //if any non-fish is available, select it
-        if (includeNonFish)
-            for (FishProperties fp : FishApi.getNonFishes(level))
+        //if any non-fish (trophies, secrets, extras) is available, select it
+        for (FishProperties fp : FishApi.getNonFishes(level))
+        {
+            int chance = fp.calculateChance(fbe, level, rod, AbstractFishRestriction.Context.FISHING);
+
+            if (chance > 0)
             {
-                int chance = fp.calculateChance(entity, level, rod, AbstractFishRestriction.Context.FISHING);
+                fpToFish = fp;
+                rlToAwardUponFishingComplete = FishApi.getKey(level, fp);
+                break;
+            }
+        }
 
-                if (chance > 0)
-                {
-                    fpToFish = fp;
-                    rlToAwardUponFishingComplete = FishApi.getKey(level, fp);
-                    break;
-                }
+        //run force select fish modifiers if no non-fish is available (vanilla bobber, creeper hat)
+        if (fpToFish == null)
+            for (AbstractCatchModifier modifier : modifiers)
+            {
+                Pair<FishProperties, ResourceLocation> force = modifier.forceSelectFishIfNoNonFishAvailable(fbe);
+                if (force != null) return force;
             }
 
         //add available fish to list if no trophy/secret/extra was available
         for (FishProperties fp : FishApi.getFishes(level))
         {
-            int chance = fp.calculateChance(entity, level, rod, AbstractFishRestriction.Context.FISHING);
+            int chance = fp.calculateChance(fbe, level, rod, AbstractFishRestriction.Context.FISHING);
             for (int i = 0; i < chance; i++) available.add(fp);
         }
 
-        //trigger modifiers to clear available pool
-        if (modifiers.stream().anyMatch(AbstractCatchModifier::clearDefaultPool)) available = new ArrayList<>();
-
         //trigger modifiers to modify available pool
-        for (AbstractCatchModifier acm : modifiers) available = acm.modifyAvailablePool(available);
+        for (AbstractCatchModifier acm : modifiers) available = acm.modifyAvailablePool(fbe, available);
 
         //if no fish is available and no non-fish was selected, reset player fishing data and award nothing
         if (available.isEmpty() && fpToFish == null && player != null)
@@ -91,24 +105,18 @@ public class FishApi
         //get random fish from available pool, if no trophy/secret is selected
         if (fpToFish == null)
         {
-            fpToFish = available.get(entity.getRandom().nextInt(available.size()));
+            fpToFish = available.get(fbe.getRandom().nextInt(available.size()));
             rlToAwardUponFishingComplete = FishApi.getKey(level, fpToFish);
-        }
-
-        //trigger modifiers for which fish to get based on available
-        List<FishProperties> immutableAvailable = List.copyOf(available);
-        modifiers.forEach(acm -> acm.afterChoosingTheCatch(immutableAvailable));
-
-        //should cancel to prevent normal minigame/item fished (vanilla bobber & messages)
-        if (modifiers.stream().anyMatch(AbstractCatchModifier::shouldCancelBeforeSkipsMinigameCheck))
-        {
-            return null;
         }
 
         return Pair.of(fpToFish, rlToAwardUponFishingComplete);
     }
 
 
+    /**
+     * Calculates the chance of catching the specific FP.
+     * None of the parameters should be passed as null as different restrictions might check for data in those parameters.
+     */
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
         //if dev worm return rod weight
@@ -124,6 +132,9 @@ public class FishApi
         return chance;
     }
 
+    /**
+     * Spawns the fished (item)entity using the FishingBobEntity linked in the player DataAttachment.
+     */
     public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
     {
         ServerLevel level = ((ServerLevel) player.level());
@@ -144,34 +155,29 @@ public class FishApi
                 player.awardStat(SCStats.STARCAUGHT_FISH.get());
 
                 //trigger modifiers
-                fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(player, time, completedTreasure, perfectCatch, hits));
+                fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(fbe, time, completedTreasure, perfectCatch, hits));
 
                 //play sound
                 fbe.tackleSkin.onSuccessfulMinigame(player);
-
-                //if should cancel because of modifier, return
-                if (fbe.modifiers.stream().anyMatch(m -> m.shouldCancelAfterSuccessfulMinigameCompletion(
-                        player, time, completedTreasure, perfectCatch, hits))) return;
 
                 //pick rod percentile
                 float percentile = U.r.nextFloat(100);
 
                 //modify percentile from modifiers
                 for (AbstractCatchModifier modifier : fbe.modifiers)
-                    percentile = modifier.modifyPercentile(percentile);
+                    percentile = modifier.modifyPercentile(fbe, percentile);
 
                 //pick size and weight based on percentile
                 int size = SizeAndWeight.getRandomSize(fp, percentile);
                 int weight = SizeAndWeight.getRandomWeight(fp, percentile);
 
-                //golden if got lucky & hasn't caught golden yet
-                boolean golden = U.r.nextFloat() < fp.sizeWeight().goldenChance() && FishCaughtCounter.canCatchGolden(fp, player);
-
-                //golden if previous, or any modifier overrides it to be golden
-                golden = golden || fbe.modifiers.stream().anyMatch(o -> o.shouldBeGolden(time, completedTreasure, perfectCatch, hits));
+                //golden if any modifier wants (base chance is from default modifiers, 1% + 1% for perfect catch
+                boolean golden = FishCaughtCounter.canCatchGolden(fp, player) &&
+                                 fbe.modifiers.stream().anyMatch(o ->
+                                         o.shouldBeGolden(fbe, time, completedTreasure, perfectCatch, hits));
 
                 //if any modifier cancels golden, then not golden
-                if (fbe.modifiers.stream().anyMatch(AbstractCatchModifier::cancelGolden)) golden = false;
+                if (fbe.modifiers.stream().anyMatch(o -> o.cancelGolden(fbe))) golden = false;
 
                 //award fish counter entry to guide book
                 FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToAwardUponFishingComplete, player, time, size, weight, percentile, perfectCatch, true, golden);
@@ -203,7 +209,7 @@ public class FishApi
                 if (canSpawnEntity &&
                     (
                             fp.catchInfo().alwaysSpawnEntity()
-                            || fbe.modifiers.stream().anyMatch(AbstractCatchModifier::forceSpawnEntity)
+                            || fbe.modifiers.stream().anyMatch(o -> o.forceSpawnEntity(fbe))
                             || ModList.get().isLoaded("fishingreal")
                     )
                 )
@@ -246,13 +252,13 @@ public class FishApi
 
                     ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, size, weight, percentile, golden, player, perfectCatch);
 
-                    if (fbe.modifiers.stream().noneMatch(acm -> acm.shouldSkipAddingBaseItem(is)))
+                    if (fbe.modifiers.stream().noneMatch(acm -> acm.shouldSkipAddingBaseItem(fbe, is)))
                         items.add(is);
                 }
 
                 //add items to list from modifiers
                 for (AbstractCatchModifier acm : fbe.modifiers)
-                    items.addAll(acm.addToFishedItems(fp, time, perfectCatch, hits, completedTreasure, player));
+                    items.addAll(acm.addToFishedItems(fbe, fp, time, perfectCatch, hits, completedTreasure));
 
                 //add treasure
                 if (completedTreasure || fbe.modifiers.stream().anyMatch(acm -> acm.forceAwardTreasure(fbe, time, completedTreasure, perfectCatch, hits)))
@@ -296,7 +302,7 @@ public class FishApi
                 player.awardStat(SCStats.STARCAUGHT_FISH_MISSED.get());
 
                 //if fish minigame failed/canceled
-                fbe.modifiers.forEach(AbstractCatchModifier::onFailedMinigame);
+                fbe.modifiers.forEach(o -> o.onFailedMinigame(fbe));
 
                 //play sound from tackle skin
                 fbe.tackleSkin.onFailedMinigame(player);
@@ -335,7 +341,7 @@ public class FishApi
             QualityFoodCompat.addQuality(fish, player, golden, perfectCatch, percentile);
 
         //store caught fish info data component
-        if (fp.hasGuideEntry() && SCConfig.SAVE_DATA_TO_ITEMS.get())
+        if (fp.hasGuideEntry() && SCConfig.SAVE_DATA_TO_ITEMS.get() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             SCDataComponents.set(fish, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
 
         return fish;
@@ -380,14 +386,14 @@ public class FishApi
         return makeItemStackNonBucket(fp, size, weight, percentile, golden, player, perfectCatch);
     }
 
-    public static ItemStack getTreasure(ServerPlayer player, FishProperties fp)
+    public static ItemStack getTreasure(ServerPlayer player, FishProperties fp, List<AbstractCatchModifier> modifiers)
     {
         Registry<FishProperties> fishProperties = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY);
         Treasure data = fishProperties.wrapAsHolder(fp).getData(SCDataMaps.TREASURE);
 
         if (data == null) return ItemStack.EMPTY;
 
-        return data.unpack(player);
+        return data.unpack(player, modifiers);
     }
 
     public static ResourceLocation getKey(Level level, FishProperties fp)

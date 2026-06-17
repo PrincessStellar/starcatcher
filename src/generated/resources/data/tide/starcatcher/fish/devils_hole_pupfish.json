@@ -35,19 +35,15 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [],
-      "dimensions_tags": [
-        "starcatcher:is_overworld"
-      ],
-      "translation_override": "dimension.minecraft.overworld"
+      "dimensions": [
+        "minecraft:overworld"
+      ]
     },
     {
       "type": "starcatcher:dimension",
-      "dimensions": [],
-      "dimensions_tags": [
-        "starcatcher:is_overworld"
-      ],
-      "translation_override": "dimension.minecraft.overworld"
+      "dimensions": [
+        "minecraft:overworld"
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",

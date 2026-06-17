@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -24,9 +25,9 @@ public class ForceFishEntityModifier extends AbstractCatchModifier
     }
 
     @Override
-    public boolean forceSpawnEntity()
+    public boolean forceSpawnEntity(FishingBobEntity fbe)
     {
-        return instance.level().getRandom().nextFloat() < chance;
+        return fbe.level().getRandom().nextFloat() < chance;
     }
 
     @Override

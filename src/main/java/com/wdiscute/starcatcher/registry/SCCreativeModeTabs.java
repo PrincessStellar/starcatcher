@@ -2,21 +2,16 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import net.mcexpanded.fancytabsections.FancyTabSections;
 import net.mcexpanded.fancytabsections.creativetab.ConglomerateOfItems;
 import net.mcexpanded.fancytabsections.creativetab.SectionColored;
-import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.List;
-import java.util.UUID;
 import java.util.function.Supplier;
 
 
@@ -30,26 +25,6 @@ public interface SCCreativeModeTabs
         CREATIVE_MODE_TABS.register(eventBus);
         addItems();
     }
-
-    LetterItem.Message MESSAGE = new LetterItem.Message(
-            UUID.randomUUID(),
-            "<sclegendary>-dev (wd)</sclegendary>",
-            Level.OVERWORLD.location(),
-            List.of(
-                    "",
-                    "",
-                    "This is a cheated message from creative.",
-                    "",
-                    "Usually players would write their own",
-                    "message and send it to the ocean for",
-                    "others to fish later.",
-                    "(5% weight if there is any available)",
-                    "",
-                    "<scgolden>Also did you know it supports markdown?</scgolden>",
-                    "learn more about it in the LibTooltips wiki"
-            ),
-            true
-    );
 
     static void addItems()
     {
@@ -130,21 +105,6 @@ public interface SCCreativeModeTabs
                 )
         );
 
-        //message in a bottle itemstack
-        LetterItem.Message message = new LetterItem.Message(UUID.randomUUID(), "-wd", Level.OVERWORLD.location(),
-                List.of(
-                        "",
-                        "",
-                        "This is an example message.",
-                        "",
-                        "Players can write their own letters,",
-                        "bottle them up and then throw them into the ocean.",
-                        "",
-                        "Other players in that dimension can then fish them up."
-                ),
-                true
-        );
-
         //message itemstack
         //ItemStack bottle = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
         //bottle.set(SCDataComponents.MESSAGE, message);
@@ -165,15 +125,6 @@ public interface SCCreativeModeTabs
                                 .add(SCBlocks.TROPHY_EMERALD)
                                 .add(SCBlocks.TROPHY_DIAMOND)
                                 .add(SCBlocks.TROPHY_OF_THE_OLDER_ANGLER)
-
-                                .add(SCItems.SECRET_NOTE)
-                                .add(SCItems.DRIFTING_WATERLOGGED_BOTTLE)
-                                .add(SCItems.SCALDING_BOTTLE)
-                                .add(SCItems.BURNING_BOTTLE)
-                                .add(SCItems.HOPEFUL_BOTTLE)
-                                .add(SCItems.HOPELESS_BOTTLE)
-                                .add(SCItems.TRUE_BLUE_BOTTLE)
-                                .add(SCItems.WITHERED_BOTTLE)
 
                                 .add(SCItems.LETTER)
                                 .add(SCItems.BOTTLED_LETTER)

@@ -8,10 +8,12 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.WorldRestrictions;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
@@ -26,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BiomeRestriction extends AbstractFishRestriction
 {
@@ -151,7 +154,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
+        List<ResourceLocation> biomesList = getBiomesAsListFromTags(biomes, biomesTags, level);
 
         //Biomes: ------
         if (biomesList.isEmpty())
@@ -170,7 +173,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         List<Component> hover = new ArrayList<>();
-        List<ResourceLocation> biomesList = WorldRestrictions.getBiomesAsListFromTags(biomes, biomesTags, level);
+        List<ResourceLocation> biomesList = getBiomesAsListFromTags(biomes, biomesTags, level);
 
         if (!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
 
@@ -200,7 +203,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         List<Component> blacklist = new ArrayList<>();
-        List<ResourceLocation> biomesBlacklistList = WorldRestrictions.getBiomesBlacklistAsList(biomesBlacklist, biomesBlacklistTags, level);
+        List<ResourceLocation> biomesBlacklistList = getBiomesBlacklistAsList(biomesBlacklist, biomesBlacklistTags, level);
 
         if (!biomesBlacklistTags.isEmpty())
         {
@@ -220,6 +223,70 @@ public class BiomeRestriction extends AbstractFishRestriction
         }
 
         return blacklist;
+    }
+
+    public static List<ResourceLocation> getBiomesAsListFromTags(List<ResourceLocation> biomes, List<ResourceLocation> tags, Level level)
+    {
+        level.registryAccess().registry(Registries.BIOME);
+
+        List<ResourceLocation> rls = new ArrayList<>();
+
+        for (ResourceLocation rl : tags)
+        {
+            TagKey<Biome> biomeBeingChecked = TagKey.create(Registries.BIOME, rl);
+
+            Optional<HolderSet.Named<Biome>> optional = level.registryAccess().lookupOrThrow(Registries.BIOME).get(biomeBeingChecked);
+
+            if (optional.isPresent())
+            {
+                for (Holder<Biome> biomeHolder : optional.get())
+                {
+                    String biomeString = biomeHolder.getRegisteredName();
+
+                    rls.add(ResourceLocation.parse(biomeString));
+                }
+            }
+        }
+
+        for (ResourceLocation rl : biomes)
+        {
+            Optional<Holder.Reference<Biome>> optional = level.registryAccess().lookupOrThrow(Registries.BIOME).get(ResourceKey.create(Registries.BIOME, rl));
+            if (optional.isPresent()) if (!rls.contains(rl)) rls.add(rl);
+        }
+
+        return rls;
+    }
+
+    public static List<ResourceLocation> getBiomesBlacklistAsList(List<ResourceLocation> biomesBlacklist, List<ResourceLocation> biomesBlacklistTags, Level level)
+    {
+        level.registryAccess().registry(Registries.BIOME);
+
+        List<ResourceLocation> rls = new ArrayList<>();
+
+        for (ResourceLocation rl : biomesBlacklistTags)
+        {
+            TagKey<Biome> biomeBeingChecked = TagKey.create(Registries.BIOME, rl);
+
+            Optional<HolderSet.Named<Biome>> optional = level.registryAccess().lookupOrThrow(Registries.BIOME).get(biomeBeingChecked);
+
+            if (optional.isPresent())
+            {
+                for (Holder<Biome> biomeHolder : optional.get())
+                {
+                    String biomeString = biomeHolder.getRegisteredName();
+
+                    rls.add(ResourceLocation.parse(biomeString));
+                }
+            }
+        }
+
+        for (ResourceLocation rl : biomesBlacklist)
+        {
+            Optional<Holder.Reference<Biome>> optional = level.registryAccess().lookupOrThrow(Registries.BIOME).get(ResourceKey.create(Registries.BIOME, rl));
+            if (optional.isPresent()) if (!rls.contains(rl)) rls.add(rl);
+        }
+
+        return rls;
     }
 
     //Vanilla

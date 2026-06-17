@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
@@ -40,20 +41,20 @@ public class NewCatchIncreaseModifier extends AbstractCatchModifier
 
 
     @Override
-    public List<FishProperties> modifyAvailablePool(List<FishProperties> available)
+    public List<FishProperties> modifyAvailablePool(FishingBobEntity fbe, List<FishProperties> available)
     {
         List<FishProperties> list = new ArrayList<>(available);
 
         //keep a unique set of fps so it doesn't add for each instance of the fp already in the list,
-        // otherwise FPs with high rod chances would disproportionally get increased odds
+        // otherwise FPs with high base chances would disproportionally get increased odds
         Set<FishProperties> set = new HashSet<>();
 
-        Map<ResourceLocation, FishCaughtCounter> fishesCaught = instance.player.getData(SCDataAttachments.FISHING_GUIDE).fishesCaught;
+        Map<ResourceLocation, FishCaughtCounter> fishesCaught = fbe.player.getData(SCDataAttachments.FISHING_GUIDE).fishesCaught;
 
         for (FishProperties fp : available)
         {
             if(set.contains(fp)) continue;
-            ResourceLocation key = instance.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fp);
+            ResourceLocation key = fbe.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fp);
 
             if (key == null) continue;
 

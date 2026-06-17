@@ -5,16 +5,17 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.io.FishCaughtCounter;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LuckAttributeModifier extends AbstractCatchModifier
 {
@@ -33,24 +34,30 @@ public class LuckAttributeModifier extends AbstractCatchModifier
         this.map = map;
     }
 
-
-
     @Override
-    public List<FishProperties> modifyAvailablePool(List<FishProperties> available)
+    public List<FishProperties> modifyAvailablePool(FishingBobEntity fbe, List<FishProperties> available)
     {
-        if(!instance.player.getAttributes().hasAttribute(Attributes.LUCK)) return available;
-        AttributeInstance attribute = instance.player.getAttribute(Attributes.LUCK);
+        if(!fbe.player.getAttributes().hasAttribute(Attributes.LUCK)) return available;
+        AttributeInstance attribute = fbe.player.getAttribute(Attributes.LUCK);
         if(attribute == null) return available;
         double luck = attribute.getValue();
 
+        //list to return
         List<FishProperties> list = new ArrayList<>();
+
+        //set to make sure we only run the logic once for each fp
+        Set<FishProperties> set = new HashSet<>();
 
         for (FishProperties fp : available)
         {
-            //add rod fp to list
+            //add the fp being checked to keep the list at least the exact same
             list.add(fp);
 
-            //add X amount of fp based on map and luck level
+            //skip if extra chance logic already ran for fp, skip
+            if(set.contains(fp)) continue;
+            set.add(fp);
+
+            //add X amount of extra fp based on map and luck level
             int countToAdd = (int) (map.getOrDefault(fp.rarity(), 0) * luck);
             for (int i = 0; i < countToAdd; i++)
                 list.add(fp);

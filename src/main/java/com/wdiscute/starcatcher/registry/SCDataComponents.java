@@ -4,13 +4,12 @@ import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
+import com.wdiscute.starcatcher.message.EditableMessage;
+import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.secretnotes.LetterItem;
-import com.wdiscute.starcatcher.secretnotes.SecretNote;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -52,11 +51,11 @@ public interface SCDataComponents
 
 
     //storing data on itemstack
-    DeferredHolder<DataComponentType<?>, DataComponentType<SecretNote.Note>> SECRET_NOTE = register(
-            "secret_note", builder -> builder.persistent(SecretNote.Note.CODEC));
+    DeferredHolder<DataComponentType<?>, DataComponentType<EditableMessage>> EDITABLE_MESSAGE = register(
+            "editable_message", builder -> builder.persistent(EditableMessage.CODEC));
 
-    DeferredHolder<DataComponentType<?>, DataComponentType<LetterItem.Message>> MESSAGE = register(
-            "message", builder -> builder.persistent(LetterItem.Message.CODEC));
+    DeferredHolder<DataComponentType<?>, DataComponentType<Message>> MESSAGE = register(
+            "message", builder -> builder.persistent(Message.CODEC));
 
     DeferredHolder<DataComponentType<?>, DataComponentType<CaughtFishInfo>> CAUGHT_FISH_INFO = register(
             "caught_fish_info", builder -> builder.persistent(CaughtFishInfo.CODEC));

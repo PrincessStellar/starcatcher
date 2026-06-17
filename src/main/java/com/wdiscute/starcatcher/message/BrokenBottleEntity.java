@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.secretnotes;
+package com.wdiscute.starcatcher.message;
 
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;

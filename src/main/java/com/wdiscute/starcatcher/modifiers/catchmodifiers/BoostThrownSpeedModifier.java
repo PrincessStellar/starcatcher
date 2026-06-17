@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
@@ -24,7 +25,7 @@ public class BoostThrownSpeedModifier extends AbstractCatchModifier
     }
 
     @Override
-    public Vec3 modifyThrowVec(Vec3 vec3)
+    public Vec3 modifyThrowVec(FishingBobEntity fbe, Vec3 vec3)
     {
         return vec3.multiply(multiplier, multiplier, multiplier);
     }

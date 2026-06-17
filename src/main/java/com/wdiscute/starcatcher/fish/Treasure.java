@@ -2,6 +2,8 @@ package com.wdiscute.starcatcher.fish;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.SCItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.Registries;
@@ -83,7 +85,7 @@ public record Treasure
         return new Treasure(List.of(), List.of(new WeightedStack(new MaybeStack(itemStack), 1)), List.of());
     }
 
-    public ItemStack unpack(ServerPlayer player)
+    public ItemStack unpack(ServerPlayer player, List<AbstractCatchModifier> modifiers)
     {
         List<ResourceLocation> weightedLootTables = new ArrayList<>();
 
@@ -98,6 +100,8 @@ public record Treasure
         }
 
         List<ItemStack> weightedStacks = new ArrayList<>();
+
+        modifiers.forEach(o -> weightedStacks.addAll(o.addToTreasureWeightedList()));
 
         for (WeightedStack stack : this.stacks)
         {

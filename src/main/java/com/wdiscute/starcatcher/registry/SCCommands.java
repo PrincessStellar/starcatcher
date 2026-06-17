@@ -351,7 +351,7 @@ public interface SCCommands
 
         if (optional.isPresent())
         {
-            var treasure = new MaybeStack(FishApi.getTreasure(player, optional.get()));
+            var treasure = new MaybeStack(FishApi.getTreasure(player, optional.get(), List.of()));
             if (SCConfig.HIDE_TREASURES.get()) treasure = new MaybeStack(SCItems.UNKNOWN_FISH);
             PacketDistributor.sendToPlayer(player, new CBFishingStartedPayload(optional.get(), treasure, new MaybeStack(player.getMainHandItem())));
             return 1;

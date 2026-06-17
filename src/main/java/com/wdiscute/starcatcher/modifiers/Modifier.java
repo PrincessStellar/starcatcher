@@ -5,7 +5,6 @@ import com.mojang.serialization.*;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
-import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
@@ -156,9 +155,8 @@ public interface Modifier
 
         //others
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_lure_time"), AdjustLureTimeModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("add_loot_table_to_fishing_loot"), AddLootTableToFishedItemsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("remove_base_fished_item"), RemoveBaseFishedItemModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("override_fish_caught"), OverrideFishPropertiesModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("vanilla_fishing_loot"), VanillaFishingLootModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("trigger_skip_minigame"), TriggersSkipMinigameModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("skip_minigame_if_trigger_found"), SkipMinigameIfTriggerFoundModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("new_catch_increase"), NewCatchIncreaseModifier.CODEC);
@@ -169,15 +167,15 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("ignore_weather_restrictions"), IgnoreWeatherRestrictionsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("skip_minigame"), SkipMinigameModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("survives_lava"), SurvivesLavaModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("extra_golden_chance"), ExtraGoldenRiskModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("extra_golden_chance"), ExtraGoldenChanceModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("cancel_golden"), CancelGoldenModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("hide_catch"), HideCatchModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("anglers_hat"), AnglersHatModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("add_to_available_pool"), AddToAvailablePoolModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("modify_award_fish"), ModifyAwardFishRlModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("award_treasure_on_perfect_catch"), AwardTreasureOnPerfectCatch.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("no_gravity"), NoGravityModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bost_thrown_speed"), BoostThrownSpeedModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("force_select_fish_from_entry"), ForceSelectFishFromEntryModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("force_select_fish"), ForceSelectFishModifier.CODEC);
     }
 
 

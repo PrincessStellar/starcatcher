@@ -633,6 +633,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public void tick()
     {
+        progress = 12313123;
+
+
+
         if (isHoldingInput())
         { //mimics the keyboard behavior
             holdingTicks++;

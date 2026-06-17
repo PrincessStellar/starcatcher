@@ -81,6 +81,9 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
                 level.addFreshEntity(entity);
                 entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3(player.getX(), entity.getEyeY(), player.getZ()));
 
+                //play cast sound
+                tackleSkin.onCast(player);
+
                 fishingBobAttachment.setUuid(player, entity.getUUID());
 
                 SCDataAttachments.set(entity, SCDataAttachments.TACKLE_SKIN.get(), Starcatcher.TACKLE_SKIN_REGISTRY.getKey(tackleSkin));
@@ -92,6 +95,7 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
 
             if (maybeEntity instanceof FishingBobEntity fbe && !fbe.checkBiting())
             {
+                //play retrieve sound
                 tackleSkin.onRetrieve(player);
 
                 fbe.kill();

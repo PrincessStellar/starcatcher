@@ -1,34 +1,47 @@
-package com.wdiscute.starcatcher.secretnotes;
+package com.wdiscute.starcatcher.message;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.network.SBSetMessagePayload;
+import com.wdiscute.starcatcher.io.network.SBSetEditableMessagePayload;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageWriteScreen extends Screen
+public class EditableMessageScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/message/message.png");
-    private final LetterItem.Message message;
-
+    private final String sender;
     private final List<String> text = new ArrayList<>();
     private final List<EditBox> boxes = new ArrayList<>();
     private EditBox name = null;
 
-    public MessageWriteScreen(LetterItem.Message message)
+    public static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/message/message.png");
+
+    public static void openEditableMessageScreen(EditableMessage message)
+    {
+        Minecraft.getInstance().player.playSound(SoundEvents.BOOK_PAGE_TURN);
+        Minecraft.getInstance().setScreen(new EditableMessageScreen(message));
+    }
+
+    public EditableMessageScreen(EditableMessage message)
     {
         super(Component.empty());
 
-        this.message = message;
         text.addAll(message.text());
+        sender = message.sender();
     }
 
     int uiX;
@@ -52,7 +65,7 @@ public class MessageWriteScreen extends Screen
             box.setMaxLength(40);
             box.setTextShadow(false);
             box.setEditable(true);
-            if(message.text().size() > i) box.setValue(message.text().get(i));
+            if (text.size() > i) box.setValue(text.get(i));
             addWidget(box);
             boxes.add(box);
         }
@@ -63,7 +76,7 @@ public class MessageWriteScreen extends Screen
         name.setTextColor(0x635040);
         name.setBordered(false);
         name.setMaxLength(17);
-        name.setValue(message.senderDisplayName());
+        name.setValue(sender);
         name.setTextShadow(false);
         name.setEditable(true);
         addWidget(name);
@@ -115,9 +128,9 @@ public class MessageWriteScreen extends Screen
     @Override
     public void onClose()
     {
-        List<String> list = new ArrayList<>();
-        boxes.forEach(b -> list.add(b.getValue()));
-        PacketDistributor.sendToServer(new SBSetMessagePayload(list, name.getValue()));
+        List<String> text = new ArrayList<>();
+        boxes.forEach(b -> text.add(b.getValue()));
+        PacketDistributor.sendToServer(new SBSetEditableMessagePayload(new EditableMessage(name.getValue(), text)));
         super.onClose();
     }
 

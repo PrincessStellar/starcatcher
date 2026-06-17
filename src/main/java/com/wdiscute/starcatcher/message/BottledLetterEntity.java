@@ -1,13 +1,19 @@
-package com.wdiscute.starcatcher.secretnotes;
+package com.wdiscute.starcatcher.message;
 
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -20,6 +26,7 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -55,10 +62,28 @@ public class BottledLetterEntity extends ThrowableItemProjectile
             {
                 if(getOwner() instanceof ServerPlayer sp)
                 {
-                    sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), true);
-                    if(SCDataComponents.has(getItem(), SCDataComponents.MESSAGE))
+                    EditableMessage editableMessage = SCDataComponents.get(getItem(), SCDataComponents.EDITABLE_MESSAGE);
+
+                    if(editableMessage != null)
                     {
-                        MessagesSavedData.get(((ServerLevel) level())).addMessage(SCDataComponents.get(getItem(), SCDataComponents.MESSAGE));
+                        sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), true);
+
+                        Registry<LevelStem> levelStemRegistry = level().registryAccess().registryOrThrow(Registries.LEVEL_STEM);
+                        LevelStem levelStem = levelStemRegistry.get(level().dimension().location());
+
+                        Holder<LevelStem> levelStemHolder = levelStemRegistry.wrapAsHolder(levelStem);
+
+                        ResourceLocation data = levelStemHolder.getData(SCDataMaps.MESSAGE_BACKGROUND);
+
+                        if(data == null)
+                            data = Message.BACKGROUND_OVERWORLD;
+
+                        Message message = new Message(sp.getUUID(), editableMessage.sender(), editableMessage.text(), level().dimension().location(), data);
+                        MessagesSavedData.get(((ServerLevel) level())).addMessage(message);
+                    }
+                    else
+                    {
+                        sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), false);
                     }
                 }
             }

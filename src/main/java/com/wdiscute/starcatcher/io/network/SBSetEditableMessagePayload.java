@@ -1,10 +1,11 @@
 package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.message.EditableMessage;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -16,14 +17,13 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.List;
 
-public record SBSetMessagePayload(List<String> text, String name) implements CustomPacketPayload
+public record SBSetEditableMessagePayload(EditableMessage editableMessage) implements CustomPacketPayload
 {
-    public static final Type<SBSetMessagePayload> TYPE = new Type<>(Starcatcher.rl("set_message"));
+    public static final Type<SBSetEditableMessagePayload> TYPE = new Type<>(Starcatcher.rl("set_editable_message"));
 
-    public static final StreamCodec<ByteBuf, SBSetMessagePayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), SBSetMessagePayload::text,
-            ByteBufCodecs.STRING_UTF8, SBSetMessagePayload::name,
-            SBSetMessagePayload::new
+    public static final StreamCodec<RegistryFriendlyByteBuf, SBSetEditableMessagePayload> STREAM_CODEC = StreamCodec.composite(
+            EditableMessage.STREAM_CODEC, SBSetEditableMessagePayload::editableMessage,
+            SBSetEditableMessagePayload::new
     );
 
     @Override
@@ -39,7 +39,7 @@ public record SBSetMessagePayload(List<String> text, String name) implements Cus
             Player player = context.player();
 
             Level level = player.level();
-            if (level instanceof ServerLevel sl)
+            if (level instanceof ServerLevel)
             {
                 ItemStack is = null;
                 ItemStack main = player.getMainHandItem();
@@ -48,11 +48,8 @@ public record SBSetMessagePayload(List<String> text, String name) implements Cus
                 if(main.is(SCItems.LETTER)) is = main;
                 if(off.is(SCItems.LETTER)) is = off;
                 if(is == null) return;
-
-                LetterItem.Message message = new LetterItem.Message(player.getUUID(), name, level.dimension().location(), text(), false);
-                SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
+                SCDataComponents.set(is, SCDataComponents.EDITABLE_MESSAGE, editableMessage);
             }
-
         });
     }
 }

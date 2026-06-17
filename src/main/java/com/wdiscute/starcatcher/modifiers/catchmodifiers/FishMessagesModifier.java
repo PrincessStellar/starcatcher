@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.modifiers.catchmodifiers;
 
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -7,81 +8,71 @@ import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import com.wdiscute.starcatcher.fish.CatchInfo;
+import com.wdiscute.starcatcher.fish.Difficulty;
+import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.io.MessagesSavedData;
+import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.secretnotes.LetterItem;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
 public class FishMessagesModifier extends AbstractCatchModifier
 {
-    private boolean messageFished = false;
+    private final float chance;
 
     public static final MapCodec<FishMessagesModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
+                    Codec.FLOAT.fieldOf("chance").forGetter(o -> o.chance),
                     Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
             ).apply(instance, FishMessagesModifier::new));
 
-    public FishMessagesModifier(String translationOverride)
+    public FishMessagesModifier(float chance, String translationOverride)
     {
         super(translationOverride);
+        this.chance = chance;
     }
 
     @Override
     public void onAdd(FishingBobEntity fishingBobEntity)
     {
         super.onAdd(fishingBobEntity);
-        messageFished = false;
     }
 
     @Override
-    public void afterChoosingTheCatch(List<FishProperties> immutableAvailable)
+    public Pair<FishProperties, ResourceLocation> forceSelectFishIfNoNonFishAvailable(FishingBobEntity fbe)
     {
-        if (U.r.nextDouble() > SCConfig.FISH_PLAYER_MESSAGES_CHANCE.get())
-        {
-            return;
-        }
-        List<LetterItem.Message> messages = MessagesSavedData.get(((ServerLevel) instance.level())).getMessages();
+        //if passes the chance
+        if (U.r.nextDouble() > chance)
+            return null;
+
+        List<Message> messages = MessagesSavedData.get(((ServerLevel) fbe.level())).getMessages();
 
         //if there are any messages
-        List<LetterItem.Message> list = messages.stream().filter(o -> o.dimension().equals(instance.level().dimension().location()) && !o.sender().equals(instance.player.getUUID())).toList();
+        List<Message> list = messages.stream().filter(o -> o.dimension().equals(fbe.level().dimension().location()) && !o.sender().equals(fbe.player.getUUID())).toList();
 
         if (!list.isEmpty())
         {
-            messageFished = true;
             ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
 
-            LetterItem.Message message = list.get(U.r.nextInt(list.size()));
-            MessagesSavedData.get(((ServerLevel) instance.level())).removeMessage(message);
+            Message message = list.get(U.r.nextInt(list.size()));
+            MessagesSavedData.get(((ServerLevel) fbe.level())).removeMessage(message);
 
             SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
 
-            //make ItemEntities for fish item resourceLocation
-            ItemEntity messageInABottle = new ItemEntity(instance.level(), instance.position().x, instance.position().y + 1.2f, instance.position().z, is);
-
-            //assign delta movement so fish flies towards player
-            double x = Math.clamp((instance.player.position().x - instance.position().x) / 25, -1, 1);
-            double y = Math.clamp((instance.player.position().y - instance.position().y) / 20, -1, 1);
-            double z = Math.clamp((instance.player.position().z - instance.position().z) / 25, -1, 1);
-            Vec3 vec3 = new Vec3(x, 0.7 + y, z);
-            messageInABottle.setDeltaMovement(vec3);
-            instance.level().addFreshEntity(messageInABottle);
+            return Pair.of(FishProperties.empty().withFish(new MaybeStack(is))
+                    .withDifficulty(Difficulty.TRASH), Starcatcher.MISSINGNO);
         }
-    }
 
-    @Override
-    public boolean shouldCancelBeforeSkipsMinigameCheck()
-    {
-        return messageFished;
+        return null;
     }
 
     @Override

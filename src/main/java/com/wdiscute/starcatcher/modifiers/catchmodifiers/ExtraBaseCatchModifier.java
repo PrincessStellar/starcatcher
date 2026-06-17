@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -45,9 +46,9 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
     }
 
     @Override
-    public List<ItemStack> addToFishedItems(FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure, Player player)
+    public List<ItemStack> addToFishedItems(FishingBobEntity fbe, FishProperties fp, int time, boolean perfectCatch, int hits, boolean completedTreasure)
     {
-        //return if not a fish aka trophy/secret
+        //return if non-fish aka trophy/secret/extra
         if (!fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH)) return List.of();
 
         List<ItemStack> list = new ArrayList<>();
@@ -59,7 +60,7 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
             int size = SizeAndWeight.getRandomSize(fp, percentile);
             int weight = SizeAndWeight.getRandomWeight(fp, percentile);
 
-            ItemStack itemStack = FishApi.makeItemStackNonBucket(fp, size, weight, percentile, false, player, perfectCatch);
+            ItemStack itemStack = FishApi.makeItemStackNonBucket(fp, size, weight, percentile, false, fbe.player, perfectCatch);
 
             list.add(itemStack);
         }

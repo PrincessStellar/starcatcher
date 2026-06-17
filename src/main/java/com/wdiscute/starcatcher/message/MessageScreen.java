@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.secretnotes;
+package com.wdiscute.starcatcher.message;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.libtooltips.Tooltips;
@@ -6,16 +6,28 @@ import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.Level;
 
-public class SecretNoteScreen extends Screen
+import java.util.List;
+
+public class MessageScreen extends Screen
 {
-    private final ResourceLocation background;
+    private final Message message;
 
-    private final String translationKey;
-    private final Screen screen;
+    public MessageScreen(Message message)
+    {
+        super(Component.empty());
+        this.message = message;
+    }
+
+    public static void openMessageScreen(Message message)
+    {
+        Minecraft.getInstance().player.playSound(SoundEvents.BOOK_PAGE_TURN);
+        Minecraft.getInstance().setScreen(new MessageScreen(message));
+    }
 
     int uiX;
     int uiY;
@@ -33,20 +45,18 @@ public class SecretNoteScreen extends Screen
     {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
-        renderImage(guiGraphics, background);
+        renderImage(guiGraphics, message.background());
 
-        for (int i = 0; i < 20; i++)
+        //render main text
+        List<String> text = message.text();
+        for (int i = 0; i < text.size(); i++)
         {
-            String key = translationKey + i;
-            if (I18n.exists(key))
-            {
-                guiGraphics.drawString(this.font, Tooltips.resolveTagsToComponentFromTranslationKey(key), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
-            }
-            else
-            {
-                break;
-            }
+            guiGraphics.drawString(this.font, Tooltips.resolveTagsToComponentFromTranslationKey(text.get(i)), uiX + 140, uiY + 55 + 9 * i, 0x635040, false);
         }
+
+        //render name
+        guiGraphics.drawString(this.font, Tooltips.resolveTagsToComponentFromTranslationKey(message.senderDisplayName()), uiX + 255, uiY + 208, 0x635040, false);
+
     }
 
     @Override
@@ -59,22 +69,6 @@ public class SecretNoteScreen extends Screen
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
-    }
-
-    @Override
-    public void onClose()
-    {
-        super.onClose();
-        if (screen != null)
-            Minecraft.getInstance().setScreen(screen);
-    }
-
-    public SecretNoteScreen(SecretNote.Note note, Screen screen)
-    {
-        super(Component.empty());
-        this.screen = screen;
-        this.translationKey = "gui.secret_note." + note.getSerializedName() + ".";
-        this.background = Starcatcher.rl("textures/gui/message/" + note.getTexture() + ".png");
     }
 
     private void renderImage(GuiGraphics guiGraphics, ResourceLocation rl)
