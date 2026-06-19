@@ -8,7 +8,7 @@
   "base_chance": 5,
   "catch_info": {
     "entity": "unusualfishmod:eyelash",
-    "fish_bucket": "unusualfishmod:eyelash_bucket",
+    "fish_bucket": "unusualfishmod:eyelash_fish_bucket",
     "item": "unusualfishmod:raw_eyelash"
   },
   "difficulty": {

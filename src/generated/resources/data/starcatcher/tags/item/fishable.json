@@ -1389,15 +1389,11 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:raw_snowflake",
+      "id": "unusualfishmod:raw_frosty_fin",
       "required": false
     },
     {
-      "id": "unusualfishmod:trumpet_squid_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_circus",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {

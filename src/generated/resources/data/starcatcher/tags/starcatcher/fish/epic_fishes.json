@@ -189,19 +189,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:wizard_jelly_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_snowflake",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:zebra_cornetfish_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:lobed_skipper_bucket",
+      "id": "unusualfishmod:raw_frosty_fin",
       "required": false
     },
     {

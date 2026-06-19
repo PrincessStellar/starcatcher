@@ -8,16 +8,16 @@
   "base_chance": 5,
   "catch_info": {
     "always_spawn_entity": true,
-    "entity": "unusualfishmod:muddytop",
-    "fish_bucket": "unusualfishmod:muddytop_snail_bucket",
-    "item": "unusualfishmod:muddytop_snail_bucket"
+    "entity": "unusualfishmod:picklefish",
+    "fish_bucket": "unusualfishmod:picklefish_bucket",
+    "item": "unusualfishmod:raw_picklefish"
   },
   "difficulty": {
     "decay": 1.0,
     "hp": 100,
-    "missPenalty": 20,
+    "missPenalty": 5,
     "modifiers": [],
-    "speed": 10,
+    "speed": 9,
     "sweetspots": [
       {
         "color_as_int": 65280,
@@ -31,18 +31,18 @@
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 1.0,
-        "reward": 20,
+        "reward": 15,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "uncommon",
+  "rarity": "common",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -53,18 +53,28 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [
-        "minecraft:mangrove_swamp"
-      ],
+      "biomes": [],
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
-      "biomes_tags": []
+      "biomes_tags": [
+        "starcatcher:is_lukewarm_ocean"
+      ]
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 2147483647,
+      "max_y": 100,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 0,
+          "second": 12700
+        }
+      ],
+      "translation_override": "gui.guide.day"
     }
   ],
   "size_and_weight": {

@@ -261,39 +261,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:brick_snail_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:volt_angler_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_circus",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:tiger_puffer_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:crimsonshell_squid_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:blackcap_snail_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:roughback_guitarfish_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:freshwater_mantis_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:kalappa_spawn_egg",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {

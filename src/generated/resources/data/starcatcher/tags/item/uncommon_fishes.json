@@ -385,10 +385,6 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:trumpet_squid_bucket",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_sneep_snorp",
       "required": false
     },
