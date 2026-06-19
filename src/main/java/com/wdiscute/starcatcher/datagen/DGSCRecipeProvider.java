@@ -36,6 +36,12 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("in_water", insideOf(Blocks.WATER))
                 .save(output);
 
+        //guide sign reset
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, SCItems.GUIDE)
+                .requires(SCItems.GUIDE)
+                .unlockedBy("has_guide", has(SCItems.GUIDE))
+                .save(output, "guide_sign_reset");
+
         //rod
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SCItems.ROD)
                 .define('S', Items.STICK)

@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.locators;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -19,6 +20,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +81,19 @@ public class FishRadarLayer implements LayeredDraw.Layer
         if (Minecraft.getInstance().player == null) return;
         else player = Minecraft.getInstance().player;
 
-        boolean shouldShow = player.getMainHandItem().is(SCTags.HAS_RADAR_LAYER) || player.getOffhandItem().is(SCTags.HAS_RADAR_LAYER) || Minecraft.getInstance().screen instanceof SettingsScreen;
+        //if is holding item with tag to show radar in hand or is in settings screen
+        boolean shouldShow = player.getMainHandItem().is(SCTags.HAS_RADAR_LAYER)
+                             || player.getOffhandItem().is(SCTags.HAS_RADAR_LAYER)
+                             || Minecraft.getInstance().screen instanceof SettingsScreen;
+
+        //if any armor slots has tag
+        if (!shouldShow)
+            shouldShow = player.getInventory().armor.stream().anyMatch(o -> o.is(SCTags.HAS_RADAR_LAYER));
+
+        //if any of the curios has the tag
+        if (!shouldShow)
+            if (ModList.get().isLoaded("curios"))
+                shouldShow = CuriosCompat.getItems(player).stream().anyMatch(o -> o.is(SCTags.HAS_RADAR_LAYER));
 
         //smoothly moves ui in and out of screen
         if (!shouldShow)

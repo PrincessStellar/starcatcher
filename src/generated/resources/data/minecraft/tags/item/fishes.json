@@ -5,6 +5,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:driftfin",
+      "required": false
+    },
+    {
+      "id": "starcatcher:rainfin",
+      "required": false
+    },
+    {
       "id": "starcatcher:silverveil_perch",
       "required": false
     },
@@ -13,11 +21,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:driftfin",
+      "id": "starcatcher:twilight_koi",
       "required": false
     },
     {
-      "id": "starcatcher:twilight_koi",
+      "id": "starcatcher:ripple_catfish",
       "required": false
     },
     {

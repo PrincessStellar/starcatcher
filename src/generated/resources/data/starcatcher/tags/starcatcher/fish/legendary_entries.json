@@ -1,19 +1,15 @@
 {
   "values": [
     {
-      "id": "starcatcher:shroomfish",
+      "id": "starcatcher:ward",
       "required": false
     },
     {
-      "id": "unusualfishmod:prawn",
+      "id": "starcatcher:sun_seeking_carp",
       "required": false
     },
     {
-      "id": "unusualfishmod:raw_spindlefish",
-      "required": false
-    },
-    {
-      "id": "aquaculture:piranha",
+      "id": "starcatcher:cerberay",
       "required": false
     },
     {
@@ -21,15 +17,11 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:celestial",
+      "id": "starcatcher:joel",
       "required": false
     },
     {
-      "id": "tide:dragon_fish",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:gnasher",
+      "id": "minecraft:wither",
       "required": false
     },
     {
@@ -41,27 +33,11 @@
       "required": false
     },
     {
-      "id": "tide:coelacanth",
+      "id": "starcatcher:lush_pike",
       "required": false
     },
     {
-      "id": "minecraft:wither",
-      "required": false
-    },
-    {
-      "id": "tide:midas_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_eel",
-      "required": false
-    },
-    {
-      "id": "tide:devils_hole_pupfish",
-      "required": false
-    },
-    {
-      "id": "tide:voidseeker",
+      "id": "starcatcher:shroomfish",
       "required": false
     },
     {
@@ -69,11 +45,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:ward",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:blazefish",
+      "id": "starcatcher:aurora",
       "required": false
     },
     {
@@ -81,27 +53,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:cerberay",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sun_seeking_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:joel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:aurora",
-      "required": false
-    },
-    {
-      "id": "tide:alpha_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lush_pike",
+      "id": "starcatcher:obsidian_eel",
       "required": false
     }
   ]

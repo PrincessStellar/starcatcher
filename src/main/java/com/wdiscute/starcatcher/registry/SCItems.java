@@ -164,14 +164,20 @@ public interface SCItems
     //
 
     //lake
+    DeferredItem<Item> BOOT = ITEMS.register("boot", BasicItem::new);
+
     DeferredItem<Item> OBIDONTIEE = registerBucketFish("obidontiee");
+    DeferredItem<Item> DRIFTFIN = registerBucketFish("driftfin");
+    DeferredItem<Item> RAINFIN = registerBucketFish("rainfin");
+
     DeferredItem<Item> SILVERVEIL_PERCH = registerBucketFish("silverveil_perch");
     DeferredItem<Item> ELDERSCALE = registerBucketFish("elderscale");
-    DeferredItem<Item> DRIFTFIN = registerBucketFish("driftfin");
+
     DeferredItem<Item> TWILIGHT_KOI = registerBucketFish("twilight_koi");
+    DeferredItem<Item> RIPPLE_CATFISH = registerBucketFish("ripple_catfish");
+
     DeferredItem<Item> THUNDER_BASS = registerBucketFish("thunder_bass");
     DeferredItem<Item> LIGHTNING_BASS = registerBucketFish("lightning_bass");
-    DeferredItem<Item> BOOT = ITEMS.register("boot", BasicItem::new);
 
     //swamp
     DeferredItem<Item> SLUDGE_CATFISH = registerBucketFish("sludge_catfish");

@@ -19,58 +19,78 @@ public class DGStarcatcherFishes
 
     public static void bootstrap()
     {
-        register(overworldLakeFish(new MaybeStack(SCItems.OBIDONTIEE))
-                .withSizeAndWeight(new SizeAndWeight(17.7f, 5, 1200, 200)));
+        //lakes - trash
+        register(overworldLakeFish(new MaybeStack(SCItems.BOOT)).withBaseChance(1)
+                .withDifficulty(Difficulty.TRASH)
+                .withRarity(Rarity.TRASH)
+                .withHasGuideEntry(false)
+        );
 
+        //lakes - common
+        register(overworldLakeFish(new MaybeStack(SCItems.OBIDONTIEE))
+                .withDifficulty(Difficulty.EASY)
+                .withSizeAndWeight(new SizeAndWeight(17.7f, 5, 1200, 200))
+        );
+
+        register(overworldLakeFish(new MaybeStack(SCItems.DRIFTFIN))
+                .withDifficulty(Difficulty.EASY)
+                .withSizeAndWeight(new SizeAndWeight(16.0f, 3, 167, 70))
+        );
+
+        register(overworldLakeFish(new MaybeStack(SCItems.RAINFIN))
+                .withDifficulty(Difficulty.EASY.withHP(125))
+                .withWeather(WeatherRestriction.RAIN)
+                .withBaseChance(10)
+                .withSizeAndWeight(new SizeAndWeight(32.0f, 9, 9500, 200))
+        );
+
+
+        //lakes - uncommon
         register(overworldLakeFish(new MaybeStack(SCItems.SILVERVEIL_PERCH))
-                .withSeasons(SeasonRestriction.SPRING_WINTER)
-                .withSizeAndWeight(new SizeAndWeight(27.0f, 11, 500, 352))
                 .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.MEDIUM_MOVING));
+                .withBaseChance(3)
+                .withDifficulty(Difficulty.EASY_MOVING)
+                .withSizeAndWeight(new SizeAndWeight(27.0f, 11, 500, 352))
+        );
 
         register(overworldLakeFish(new MaybeStack(SCItems.ELDERSCALE))
                 .withSizeAndWeight(new SizeAndWeight(160.0f, 85, 2300, 652))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withDifficulty(Difficulty.EASY_VANISHING)
+                .withBaseChance(3)
                 .withRarity(Rarity.UNCOMMON)
-                .withBaseChance(3));
+        );
 
-        register(overworldLakeFish(new MaybeStack(SCItems.DRIFTFIN))
-                .withSizeAndWeight(new SizeAndWeight(16.0f, 3, 167, 70))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
-                .withWeather(WeatherRestriction.CLEAR));
-
+        //lakes - rare
         register(overworldLakeFish(new MaybeStack(SCItems.TWILIGHT_KOI))
                 .withSizeAndWeight(new SizeAndWeight(60, 13, 3500, 731))
-                .withBaseChance(25)
-                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                .withRarity(Rarity.EPIC)
-                .withWeather(WeatherRestriction.RAIN)
+                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                .withRarity(Rarity.RARE)
                 .withDifficulty(Difficulty.HARD_MOVING));
 
+        register(overworldLakeFish(new MaybeStack(SCItems.RIPPLE_CATFISH))
+                .withSizeAndWeight(new SizeAndWeight(60, 13, 3500, 731))
+                .withWeather(WeatherRestriction.RAIN)
+                .withRarity(Rarity.RARE)
+                .withDifficulty(Difficulty.HARD_MOVING));
+
+
+        //lakes - epic
         register(overworldLakeFish(new MaybeStack(SCItems.THUNDER_BASS))
                 .withSizeAndWeight(new SizeAndWeight(40, 12, 1200, 800))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
-                .withRarity(Rarity.RARE)
+                .withRarity(Rarity.EPIC)
                 .withBaseChance(15)
                 .withWeather(WeatherRestriction.THUNDER)
                 .withDifficulty(Difficulty.HARD));
 
         register(overworldLakeFish(new MaybeStack(SCItems.LIGHTNING_BASS))
                 .withSizeAndWeight(new SizeAndWeight(40, 12, 1300, 620))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withBaseChance(15)
                 .withRarity(Rarity.RARE)
                 .withWeather(WeatherRestriction.THUNDER)
                 .withDifficulty(Difficulty.HARD_VANISHING));
 
-        register(overworldLakeFish(new MaybeStack(SCItems.BOOT)).withBaseChance(1)
-                .withDifficulty(Difficulty.TRASH)
-                .withRarity(Rarity.TRASH)
-                .withHasGuideEntry(false));
 
-
-        //cold lake
+        //cold lakes
         register(overworldColdLakeFish(new MaybeStack(SCItems.FROSTJAW_TROUT))
                 .withSizeAndWeight(new SizeAndWeight(35, 8, 1600, 1200))
                 .withDifficulty(Difficulty.FOUR_BIG_VANISHING)
@@ -78,7 +98,6 @@ public class DGStarcatcherFishes
 
         register(overworldColdLakeFish(new MaybeStack(SCItems.CRYSTALBACK_TROUT))
                 .withSizeAndWeight(new SizeAndWeight(35, 8, 1600, 1200))
-                .withSeasons(SeasonRestriction.AUTUMN_WINTER)
                 .withDifficulty(Difficulty.MEDIUM));
 
         register(overworldColdLakeFish(new MaybeStack(SCItems.AURORA))
@@ -89,7 +108,6 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.AURORA));
 
         register(overworldColdLakeFish(new MaybeStack(SCItems.WINTERY_PIKE))
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(75, 20, 5000, 3000))
                 .withDifficulty(Difficulty.EASY_MOVING));
 
@@ -97,7 +115,6 @@ public class DGStarcatcherFishes
         //lake warm
         register(overworldWarmLakeFish(new MaybeStack(SCItems.SANDTAIL))
                 .withSizeAndWeight(new SizeAndWeight(200, 100, 1600, 1200))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT));
 
@@ -110,12 +127,10 @@ public class DGStarcatcherFishes
 
         register(overworldWarmLakeFish(new MaybeStack(SCItems.SCORCHFISH))
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
-                .withSeasons(SeasonRestriction.NOT_WINTER)
                 .withWeather(WeatherRestriction.CLEAR));
 
         register(overworldWarmLakeFish(new MaybeStack(SCItems.CACTIFISH))
                 .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 3000))
-                .withSeasons(SeasonRestriction.SUMMER)
                 .withDaytimeRestriction(DaytimeRestriction.DAY));
 
         register(overworldWarmLakeFish(new MaybeStack(SCItems.AGAVE_BREAM))
@@ -131,14 +146,12 @@ public class DGStarcatcherFishes
         //mountain
         register(overworldMountainFish(new MaybeStack(SCItems.SUNNY_STURGEON))
                 .withSizeAndWeight(new SizeAndWeight(400, 200, 100000, 50000))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withDifficulty(Difficulty.HARD_MOVING)
                 .withRarity(Rarity.RARE)
                 .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withBaseChance(2));
 
         register(overworldMountainFish(new MaybeStack(SCItems.PEAKDWELLER))
-                .withSeasons(SeasonRestriction.AROUND_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 5000))
                 .withDifficulty(Difficulty.HARD));
 
@@ -147,7 +160,6 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.MEDIUM));
 
         register(overworldSkyFish(new MaybeStack(SCItems.SUN_SEEKING_CARP))
-                .withSeasons(SeasonRestriction.AROUND_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
                 .withRarity(Rarity.LEGENDARY)
                 .withDifficulty(Difficulty.SUN_SEEKING_CARP)
@@ -157,7 +169,6 @@ public class DGStarcatcherFishes
         //swamp
         register(overworldSwampFish(new MaybeStack(SCItems.SLUDGE_CATFISH))
                 .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 3000))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withRarity(Rarity.UNCOMMON));
 
         register(overworldSwampFish(new MaybeStack(SCItems.LILY_SNAPPER))
@@ -167,7 +178,6 @@ public class DGStarcatcherFishes
 
         register(overworldSwampFish(new MaybeStack(SCItems.SAGE_CATFISH))
                 .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 3000))
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withRarity(Rarity.EPIC)
                 .withDifficulty(Difficulty.SINGLE_BIG_FAST)
                 .withBaseChance(8)
@@ -183,7 +193,6 @@ public class DGStarcatcherFishes
         //darkoak forest
         register(overworldDarkForestFish(new MaybeStack(SCItems.PALE_PINFISH))
                 .withSizeAndWeight(new SizeAndWeight(15, 5, 150, 100))
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withBaseChance(15)
                 .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                 .withRarity(Rarity.RARE)
@@ -197,21 +206,18 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.MEDIUM));
 
         register(overworldDarkForestFish(new MaybeStack(SCItems.PALE_CARP))
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
                 .withDaytimeRestriction(DaytimeRestriction.DAY));
 
 
         //cherry grove
         register(overworldCherryGroveFish(new MaybeStack(SCItems.VESANI))
-                .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(10, 3, 67, 0))
                 .withRarity(Rarity.LEGENDARY)
                 .addBait(BaitRestriction.LEGENDARY_BAIT)
                 .withDifficulty(Difficulty.NO_SWEETSPOTS.withHP(300)));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.BLOSSOMFISH))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
                 .withWeather(WeatherRestriction.CLEAR));
 
@@ -223,13 +229,11 @@ public class DGStarcatcherFishes
                 .withRarity(Rarity.UNCOMMON));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.PINK_KOI))
-                .withSeasons(SeasonRestriction.SPRING_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 3000, 2000))
                 .withBaseChance(8)
                 .withWeather(WeatherRestriction.RAIN));
 
         register(overworldCherryGroveFish(new MaybeStack(SCItems.ROSE_SIAMESE_FISH))
-                .withSeasons(SeasonRestriction.SPRING_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(30, 10, 1000, 500))
                 .withDifficulty(Difficulty.MEDIUM_VANISHING)
                 .withDaytimeRestriction(DaytimeRestriction.DAY)
@@ -260,7 +264,6 @@ public class DGStarcatcherFishes
                 .withSizeAndWeight(new SizeAndWeight(400, 200, 100000, 50000)));
 
         register(overworldColdMountainFish(new MaybeStack(SCItems.ICETOOTH_STURGEON))
-                .withSeasons(SeasonRestriction.AROUND_SPRING)
                 .withSizeAndWeight(new SizeAndWeight(400, 200, 100000, 50000))
                 .withDifficulty(Difficulty.MEDIUM));
 
@@ -272,7 +275,6 @@ public class DGStarcatcherFishes
                 .withBaseChance(3));
 
         register(overworldColdMountainFish(new MaybeStack(SCItems.CRYSTALBACK_BOREAL))
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(30, 15, 6000, 2000))
                 .withDifficulty(Difficulty.MEDIUM));
 
@@ -286,14 +288,12 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.EASY_VANISHING));
 
         register(overworldRiverFish(new MaybeStack(SCItems.DRIFTING_BREAM))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(36, 12, 2000, 1000))
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                 .withDifficulty(Difficulty.EASY_MOVING));
 
         register(overworldRiverFish(new MaybeStack(SCItems.WILLOW_BREAM))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(36, 12, 2000, 1000))
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
@@ -301,17 +301,14 @@ public class DGStarcatcherFishes
                 .withRarity(Rarity.EPIC));
 
         register(overworldRiverFish(new MaybeStack(SCItems.HOLLOWBELLY_DARTER))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(6, 2, 7, 6))
                 .withDifficulty(Difficulty.EASY_MOVING));
 
         register(overworldRiverFish(new MaybeStack(SCItems.MISTBACK_CHUB))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withSizeAndWeight(new SizeAndWeight(30, 10, 1400, 600)));
 
         register(overworldRiverFish(new MaybeStack(SCItems.BLUEGIGI))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withSizeAndWeight(new SizeAndWeight(20, 5, 400, 100)));
 
@@ -335,12 +332,11 @@ public class DGStarcatcherFishes
 
         //cold river
         register(overworldColdRiverFish(new MaybeStack(SCItems.FROSTGILL_CHUB))
-                .withSizeAndWeight(new SizeAndWeight(30, 10, 1400, 600))
-                .withSeasons(SeasonRestriction.NOT_WINTER));
+                .withSizeAndWeight(new SizeAndWeight(30, 10, 1400, 600)))
+        ;
 
         register(overworldColdRiverFish(new MaybeStack(SCItems.CRYSTALBACK_MINNOW))
                 .withSizeAndWeight(new SizeAndWeight(6, 4, 5, 3))
-                .withSeasons(SeasonRestriction.WINTER)
                 .withDifficulty(Difficulty.EASY_MOVING)
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT));
@@ -354,7 +350,6 @@ public class DGStarcatcherFishes
                 .withDifficulty(Difficulty.NON_STOP_ACTION_THREE_BIG));
 
         register(overworldColdRiverFish(new MaybeStack(SCItems.BLUE_CRYSTAL_FIN))
-                .withSeasons(SeasonRestriction.AROUND_SPRING)
                 .withSizeAndWeight(new SizeAndWeight(12, 4, 70, 30))
                 .withDaytimeRestriction(DaytimeRestriction.DAY)
                 .withDifficulty(Difficulty.EASY_MOVING)
@@ -363,7 +358,6 @@ public class DGStarcatcherFishes
 
         //ocean
         register(overworldOceanFish(new MaybeStack(SCItems.SEA_BASS))
-                .withSeasons(SeasonRestriction.NOT_SPRING)
                 .withSizeAndWeight(new SizeAndWeight(40, 12, 1600, 1100))
                 .withBaseChance(15)
                 .withDifficulty(Difficulty.EASY_MOVING)
@@ -383,16 +377,13 @@ public class DGStarcatcherFishes
                 .withRarity(Rarity.UNCOMMON));
 
         register(overworldOceanFish(new MaybeStack(SCItems.DEEPJAW_HERRING))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(30, 8, 300, 100))
                 .withDifficulty(Difficulty.MEDIUM));
 
         register(overworldOceanFish(new MaybeStack(SCItems.DUSKTAIL_SNAPPER))
-                .withSeasons(SeasonRestriction.SPRING_SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(60, 20, 7000, 2000)));
 
         register(overworldOceanFish(new MaybeStack(SCItems.JOEL))
-                .withSeasons(SeasonRestriction.SUMMER)
                 .withSizeAndWeight(new SizeAndWeight(69, 0, 2000, 600))
                 .withDifficulty(Difficulty.JOEL)
                 .withBaseChance(1)
@@ -408,7 +399,6 @@ public class DGStarcatcherFishes
 
         //deep ocean
         register(overworldDeepOceanFish(new MaybeStack(SCItems.BIGEYE_TUNA))
-                .withSeasons(SeasonRestriction.SPRING_WINTER)
                 .withSizeAndWeight(new SizeAndWeight(150, 50, 120000, 60000))
                 .withBaseChance(8)
                 .withDaytimeRestriction(DaytimeRestriction.NIGHT)
@@ -453,7 +443,6 @@ public class DGStarcatcherFishes
 
         //caves
         register(overworldCavesFish(new MaybeStack(SCItems.MORGANITE))
-                .withSeasons(SeasonRestriction.SUMMER_AUTUMN)
                 .withSizeAndWeight(new SizeAndWeight(120, 80, 7000, 1000))
                 .withWeather(WeatherRestriction.RAIN)
                 .withBaseChance(8)

@@ -304,7 +304,17 @@ public class BiomeRestriction extends AbstractFishRestriction
     public static final BiomeRestriction COLD_AND_LUKEWARM_OCEAN = new BiomeRestriction(List.of(), List.of(SCTags.IS_LUKEWARM_OCEAN, SCTags.IS_COLD_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction WARM_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_OCEAN), List.of(), List.of(), "");
     public static final BiomeRestriction DEEP_OCEANS = new BiomeRestriction(List.of(), List.of(SCTags.IS_DEEP_OCEAN), List.of(), List.of(), "");
-    public static final BiomeRestriction LAKES = new BiomeRestriction(List.of(), List.of(), List.of(), List.of(SCTags.IS_OCEAN, SCTags.IS_RIVER, SCTags.IS_MUSHROOM_FIELDS),
+    public static final BiomeRestriction LAKES = new BiomeRestriction(
+            List.of(),
+            List.of(),
+            List.of(),
+            List.of(
+                    SCTags.IS_OCEAN,
+                    SCTags.IS_RIVER,
+                    SCTags.IS_MUSHROOM_FIELDS,
+                    SCTags.IS_COLD_LAKE,
+                    SCTags.IS_WARM_LAKE
+            ),
             "gui.guide.lakes.hover", "gui.guide.lakes");
     public static final BiomeRestriction WARM_LAKES = new BiomeRestriction(List.of(), List.of(SCTags.IS_WARM_LAKE), List.of(), List.of(), "");
     public static final BiomeRestriction COLD_RIVERS = new BiomeRestriction(List.of(), List.of(SCTags.IS_COLD_RIVER), List.of(), List.of(), "");

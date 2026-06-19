@@ -198,7 +198,7 @@ dependencies {
 
     //curios (check modifiers in curio slots)
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-    //runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     //octolib because jarinjar must be illegal or something
     //compileOnly "maven.modrinth:octo-lib:AbiyvpxR"

@@ -29,7 +29,6 @@ public class DGCollectorsReapFishes
                 .withBucketedFish(new MaybeStack("collectorsreap", "platinum_bass_bucket"))
                 .withEntityToSpawn(U.holderEntity("collectorsreap", "platinum_bass"))
                 .withSizeAndWeight(40, 12, 1600, 1100)
-                .withSeasons(SeasonRestriction.AROUND_WINTER)
                 .withDifficulty(Difficulty.EASY_MOVING)
                 .addRestrictions(
                         DimensionRestriction.OVERWORLD,

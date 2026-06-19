@@ -59,6 +59,21 @@
       ]
     },
     {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "biomes_blacklist": [],
+      "biomes_blacklist_tags": [
+        "starcatcher:is_ocean",
+        "starcatcher:is_river",
+        "starcatcher:is_mushroom_fields",
+        "starcatcher:is_cold_lake",
+        "starcatcher:is_warm_lake"
+      ],
+      "biomes_tags": [],
+      "hover_translation": "gui.guide.lakes.hover",
+      "translation_override": "gui.guide.lakes"
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,

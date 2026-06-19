@@ -209,7 +209,7 @@ public class DisplayBlock extends BaseEntityBlock implements SimpleWaterloggedBl
 
     @OnlyIn(Dist.CLIENT)
     private void openPersonalGuide() {
-        Minecraft.getInstance().setScreen(new FishingGuideScreen());
+        Minecraft.getInstance().setScreen(new FishingGuideScreen(true));
     }
 
     @OnlyIn(Dist.CLIENT)

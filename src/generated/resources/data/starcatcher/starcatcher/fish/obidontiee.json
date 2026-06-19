@@ -19,28 +19,28 @@
   "difficulty": {
     "decay": 1.0,
     "hp": 100,
-    "missPenalty": 5,
+    "missPenalty": 10,
     "modifiers": [],
-    "speed": 9,
+    "speed": 11,
     "sweetspots": [
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]
@@ -61,7 +61,9 @@
       "biomes_blacklist_tags": [
         "starcatcher:is_ocean",
         "starcatcher:is_river",
-        "starcatcher:is_mushroom_fields"
+        "starcatcher:is_mushroom_fields",
+        "starcatcher:is_cold_lake",
+        "starcatcher:is_warm_lake"
       ],
       "biomes_tags": [],
       "hover_translation": "gui.guide.lakes.hover",
@@ -69,7 +71,7 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
+      "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
     },

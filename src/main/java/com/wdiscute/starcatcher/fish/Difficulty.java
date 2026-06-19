@@ -109,7 +109,7 @@ public record Difficulty(
     );
 
     public static Difficulty EASY = new Difficulty(
-            9, 5, 1,
+            75, 7, 5, 1,
             List.of(),
             SweetSpot.NORMAL, SweetSpot.NORMAL
     );

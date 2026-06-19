@@ -29,6 +29,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         COMPAT_KEYS = new HashMap<>();
         PROPERTIES = new HashMap<>();
 
+        boolean compat = false;
+
         //register all entries of built-in compat mods
 
         //vanilla & starcatcher
@@ -36,27 +38,30 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGMinecraftFishes.bootstrap();
         DGStarcatcherFishes.bootstrap();
 
-        //compat
-        DGTideFishes.bootstrap();
-        DGAquacultureFishes.bootstrap();
-        DGFishOfThievesFishes.bootstrap();
-        DGNetherDepthsUpgradeFishes.bootstrap();
-        DGEnvironmentalFishes.bootstrap();
-        DGMinersDelightFishes.bootstrap();
-        DGCrittersAndCompanionsFishes.bootstrap();
-        DGHybridAquaticFishes.bootstrap();
-        DGCreateFishes.bootstrap();
-        DGEternalStarlightFishes.bootstrap();
+        if(compat)
+        {
+            //compat
+            DGTideFishes.bootstrap();
+            DGAquacultureFishes.bootstrap();
+            DGFishOfThievesFishes.bootstrap();
+            DGNetherDepthsUpgradeFishes.bootstrap();
+            DGEnvironmentalFishes.bootstrap();
+            DGMinersDelightFishes.bootstrap();
+            DGCrittersAndCompanionsFishes.bootstrap();
+            DGHybridAquaticFishes.bootstrap();
+            DGCreateFishes.bootstrap();
+            DGEternalStarlightFishes.bootstrap();
 
-        //compat 1.20.1 only
-        DGUnusualFishFishes.bootstrap();
-        DGAlexsCavesFishes.bootstrap();
-        DGCollectorsReapFishes.bootstrap();
-        DGFintasticFishes.bootstrap();
-        DGSullysModFishes.bootstrap();
-        DGTerraFirmaCraftFishes.bootstrap();
-        DGBetterEndFishes.bootstrap();
-        DGUpgradeAquaticFishes.bootstrap();
+            //compat 1.20.1 only
+            DGUnusualFishFishes.bootstrap();
+            DGAlexsCavesFishes.bootstrap();
+            DGCollectorsReapFishes.bootstrap();
+            DGFintasticFishes.bootstrap();
+            DGSullysModFishes.bootstrap();
+            DGTerraFirmaCraftFishes.bootstrap();
+            DGBetterEndFishes.bootstrap();
+            DGUpgradeAquaticFishes.bootstrap();
+        }
     }
 
     public static final Map<ResourceKey<FishProperties>, FishProperties> PROPERTIES;

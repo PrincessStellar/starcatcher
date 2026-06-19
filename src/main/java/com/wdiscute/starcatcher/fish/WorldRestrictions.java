@@ -167,7 +167,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.LAKES,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_WARM_LAKE =
@@ -175,7 +175,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.WARM_LAKES,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_SAVANNA =
@@ -183,7 +183,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.SAVANNAS,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_COLD_RIVER =
@@ -191,7 +191,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.COLD_RIVERS,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_COLD_OCEAN =
@@ -199,7 +199,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.COLD_OCEANS,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_COLD_LAKE =
@@ -207,7 +207,7 @@ public class WorldRestrictions
                     FluidRestriction.WATER,
                     DimensionRestriction.OVERWORLD,
                     BiomeRestriction.COLD_LAKES,
-                    ElevationRestriction.FIFTY_TO_HUNDRED
+                    ElevationRestriction.ABOVE_FIFTY
             );
 
     public static final List<AbstractFishRestriction> OVERWORLD_COLD_MOUNTAIN =
@@ -317,6 +317,7 @@ public class WorldRestrictions
             List.of(
                     DimensionRestriction.OVERWORLD,
                     ElevationRestriction.ABOVE_FIFTY,
+                    BiomeRestriction.LAKES,
                     FluidRestriction.LAVA
             );
 

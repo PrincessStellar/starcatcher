@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-13T20:33:54.935713	Recipes
+// 1.21.1	2026-06-19T14:08:49.6829546	Recipes
 f968cb2b961d2ef7a8e382e361521a5f59e6191b data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_black.json
 5b83047db71b5f423bb95dffeac1e4ccd86a5157 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_blue.json
 07486a70ea2e97be89b71e86a795248417414a77 data/minecraft/advancement/recipes/building_blocks/dye_fisherman_hat_brown.json
@@ -21,6 +21,7 @@ d9d3d41741a74bdd3e37dc8f6e90a637c8fa1dba data/minecraft/advancement/recipes/buil
 3e0a50d3e59f9f78eb53ea960b2ef2a5bc5f5e55 data/minecraft/advancement/recipes/misc/sculk.json
 3de7f58be33274d178fe6f9dad7f7a73b1de080a data/minecraft/advancement/recipes/misc/seagrass.json
 c6dea25395c86d535af93843ca8a120929e43c0d data/minecraft/advancement/recipes/misc/sunflower.json
+e76ac8bfa00200b0161f7c40c5744269bbf5b626 data/minecraft/advancement/recipes/tools/guide_sign_reset.json
 71e881ef7e1a34bc6622d6a4c3dbdef5636f8ffd data/minecraft/recipe/bamboo.json
 82cbdc1f709c44f73650cbd0bdbaf0da664b9f93 data/minecraft/recipe/dye_fisherman_hat_black.json
 51a55863855efa29890600bea3035dca6b0ee24b data/minecraft/recipe/dye_fisherman_hat_blue.json
@@ -38,6 +39,7 @@ efddbbb8308943e9f6768084c98ebb2e30a7c056 data/minecraft/recipe/dye_fisherman_hat
 9cd4ba0c0ccbbdd62d8c061e82d0328441df50f3 data/minecraft/recipe/dye_fisherman_hat_red.json
 777c16e9aba0582a996b26f62ee8cdcd17130b9c data/minecraft/recipe/dye_fisherman_hat_white.json
 c1ef8ab6b4ad77e17d724c262d1d7e414c961fc9 data/minecraft/recipe/dye_fisherman_hat_yellow.json
+3a15a36d58ee933d32a049d131ab19b310ae2605 data/minecraft/recipe/guide_sign_reset.json
 08d0d8524e0d085be044b90d8a973e9a180dfefa data/minecraft/recipe/moss_block.json
 d70d6d2f87bf8b99b14bfb639bc1140d28b7408d data/minecraft/recipe/obsidian.json
 d1fa849bf4373cb27836544fb838116d2d62d383 data/minecraft/recipe/sculk.json

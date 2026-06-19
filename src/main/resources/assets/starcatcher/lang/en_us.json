@@ -1174,7 +1174,7 @@
 
 
   "gui.guide.lakes" : "Lakes",
-  "gui.guide.lakes.hover" : "Surface biomes besides Rivers and Oceans",
+  "gui.guide.lakes.hover" : "Unremarkable surface biomes.",
 
   "gui.guide.hover.dimension.correct" : "✅ Dimension",
   "gui.guide.hover.dimension.incorrect" : "❌ Dimension",

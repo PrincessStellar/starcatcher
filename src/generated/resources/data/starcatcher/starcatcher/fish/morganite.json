@@ -61,18 +61,6 @@
       "translation_override": "gui.guide.elevation.stone_caves"
     },
     {
-      "type": "starcatcher:season",
-      "season_extra_chance": {
-        "early_autumn": 0,
-        "early_summer": 0,
-        "late_autumn": 0,
-        "late_summer": 0,
-        "mid_autumn": 0,
-        "mid_summer": 0
-      },
-      "translation_override": "gui.guide.seasons.summer_autumn"
-    },
-    {
       "type": "starcatcher:weather_restriction",
       "weather": "rain"
     },

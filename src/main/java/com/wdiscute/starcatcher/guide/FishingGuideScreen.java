@@ -181,6 +181,8 @@ public class FishingGuideScreen extends Screen
 
     public boolean isSigned = false;
 
+    final boolean inLectern;
+
     ClientLevel level;
     LocalPlayer player;
 
@@ -362,7 +364,7 @@ public class FishingGuideScreen extends Screen
                         return true;
                     }
                     //go to book cover
-                    else
+                    else if (!inLectern || isSigned)
                     {
                         minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
                         menu = -1;
@@ -584,7 +586,7 @@ public class FishingGuideScreen extends Screen
         {
             player.playSound(SoundEvents.NOTE_BLOCK_CHIME.value(), 0.1f, 1.2f);
             player.playSound(SoundEvents.GLASS_STEP, 0.4f, 1.2f);
-            compassRotationOffset += U.r.nextInt(40) - 20;
+            compassRotation += U.r.nextInt(40) - 20;
         }
 
 
@@ -622,8 +624,37 @@ public class FishingGuideScreen extends Screen
         highlightLeftAlpha -= 0.025f;
         highlightRightAlpha -= 0.025f;
         arrowPressedFromScrollDecay--;
+    }
 
-        compassRotationOffset = (int) Mth.lerp(0.1f + Math.abs((float) compassRotationOffset / 60), compassRotationOffset, 0);
+    static float compassRotation = 0;
+
+    private void renderCompass(GuiGraphics guiGraphics)
+    {
+        float targetRotation = ((Minecraft.getInstance().player.yRotO % 360.0f) + 360.0f) % 360.0f;
+        float smoothing = 0.05f;   // Lower = smoother, higher = faster
+
+        // Calculate shortest difference (-180 to 180)
+        float diff = targetRotation - compassRotation;
+        if (diff > 180.0f) diff -= 360.0f;
+        if (diff < -180.0f) diff += 360.0f;
+
+        // Move a fraction of the remaining distance
+        compassRotation += diff * smoothing;
+
+        // Wrap back into 0-360
+        if (compassRotation < 0.0f)
+            compassRotation += 360.0f;
+        else if (compassRotation >= 360.0f)
+            compassRotation -= 360.0f;
+
+        PoseStack pose = guiGraphics.pose();
+
+        pose.pushPose();
+        pose.translate(uiX + 16 + 16.5, uiY + 16 + 34.5, 0);
+        pose.mulPose(Axis.ZP.rotationDegrees(-compassRotation - 45 - 180));
+        pose.translate(-16, -16, 0);
+        guiGraphics.blit(COMPASS, 0, 0, 0, 0, 32, 32, 32, 32);
+        pose.popPose();
     }
 
     @Override
@@ -728,23 +759,6 @@ public class FishingGuideScreen extends Screen
             arrowPreviousPressed = false;
         }
         clicked = false;
-    }
-
-
-    int compassRotationOffset = U.r.nextInt(40) - 20;
-
-    private void renderCompass(GuiGraphics guiGraphics)
-    {
-        float yRot = Minecraft.getInstance().player.getYRot() + compassRotationOffset;
-
-        PoseStack pose = guiGraphics.pose();
-
-        pose.pushPose();
-        pose.translate(uiX + 16 + 16.5, uiY + 16 + 34.5, 0);
-        pose.mulPose(Axis.ZP.rotationDegrees(-yRot - 45 - 180));
-        pose.translate(-16, -16, 0);
-        guiGraphics.blit(COMPASS, 0, 0, 0, 0, 32, 32, 32, 32);
-        pose.popPose();
     }
 
     public void renderCoverText(GuiGraphics guiGraphics, int mouseX, int mouseY)
@@ -1900,9 +1914,10 @@ public class FishingGuideScreen extends Screen
         return entriesToSort;
     }
 
-    public FishingGuideScreen()
+    public FishingGuideScreen(boolean inLectern)
     {
         super(Component.empty());
+        this.inLectern = inLectern;
 
         rodIcon = new ItemStack(SCItems.ROD.get());
         sweetspotsIcon = new ItemStack(SCItems.AURORA.get());

@@ -18,7 +18,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 75,
     "missPenalty": 5,
     "modifiers": [
       {
@@ -28,7 +28,7 @@
         "translation_override": ""
       }
     ],
-    "speed": 9,
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -72,24 +72,9 @@
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
+      "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:season",
-      "season_extra_chance": {
-        "early_autumn": 0,
-        "early_spring": 0,
-        "early_summer": 0,
-        "late_autumn": 0,
-        "late_spring": 0,
-        "late_summer": 0,
-        "mid_autumn": 0,
-        "mid_spring": 0,
-        "mid_summer": 0
-      },
-      "translation_override": "gui.guide.seasons.not_winter"
     },
     {
       "type": "starcatcher:fluid",

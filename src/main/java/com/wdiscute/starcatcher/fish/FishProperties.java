@@ -301,12 +301,6 @@ public record FishProperties(
         return this;
     }
 
-    public FishProperties withSeasons(SeasonRestriction summerAutumn)
-    {
-        this.restrictions.add(summerAutumn);
-        return this;
-    }
-
     public FishProperties withWeather(WeatherRestriction rain)
     {
         this.restrictions.add(rain);

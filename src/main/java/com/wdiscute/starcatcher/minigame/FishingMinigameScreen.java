@@ -633,7 +633,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public void tick()
     {
-        progress = 12313123;
+        //progress = 12313123;
 
 
 

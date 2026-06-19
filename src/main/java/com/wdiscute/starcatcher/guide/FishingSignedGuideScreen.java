@@ -17,7 +17,7 @@ public class FishingSignedGuideScreen extends FishingGuideScreen
 
     public FishingSignedGuideScreen(SignedGuide signedGuide)
     {
-        super();
+        super(false);
         this.signedGuide = signedGuide;
         isSigned = true;
     }

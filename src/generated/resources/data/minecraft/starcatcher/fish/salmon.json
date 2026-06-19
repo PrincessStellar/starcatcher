@@ -19,10 +19,10 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 75,
     "missPenalty": 5,
     "modifiers": [],
-    "speed": 9,
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
