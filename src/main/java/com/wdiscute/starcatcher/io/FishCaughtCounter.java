@@ -35,38 +35,6 @@ public record FishCaughtCounter(
         boolean hasGuideNotification
 )
 {
-
-    public static final Codec<FishCaughtCounter> CODEC = RecordCodecBuilder.create(instance ->
-            instance.group(
-                    Codec.INT.optionalFieldOf("count", 0).forGetter(FishCaughtCounter::count),
-                    Codec.INT.optionalFieldOf("fastest_ticks", 0).forGetter(FishCaughtCounter::fastestTicks),
-                    Codec.FLOAT.optionalFieldOf("average_ticks", 0.0f).forGetter(FishCaughtCounter::averageTicks),
-                    Codec.INT.optionalFieldOf("best_size", 0).forGetter(FishCaughtCounter::size),
-                    Codec.INT.optionalFieldOf("best_weight", 0).forGetter(FishCaughtCounter::weight),
-                    Codec.FLOAT.optionalFieldOf("best_percentile", 0f).forGetter(FishCaughtCounter::percentile),
-                    Codec.LONG.optionalFieldOf("first_catch", 0L).forGetter(FishCaughtCounter::firstCatch),
-                    Codec.BOOL.optionalFieldOf("caught_golden", false).forGetter(FishCaughtCounter::caughtGolden),
-                    Codec.BOOL.optionalFieldOf("perfect_catch", false).forGetter(FishCaughtCounter::perfectCatch),
-                    Codec.BOOL.optionalFieldOf("has_guide_notification", false).forGetter(FishCaughtCounter::hasGuideNotification)
-
-            ).apply(instance, FishCaughtCounter::new)
-    );
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, FishCaughtCounter> STREAM_CODEC = ExtraComposites.composite(
-            ByteBufCodecs.VAR_INT, FishCaughtCounter::count,
-            ByteBufCodecs.VAR_INT, FishCaughtCounter::fastestTicks,
-            ByteBufCodecs.FLOAT, FishCaughtCounter::averageTicks,
-            ByteBufCodecs.INT, FishCaughtCounter::size,
-            ByteBufCodecs.INT, FishCaughtCounter::weight,
-            ByteBufCodecs.FLOAT, FishCaughtCounter::percentile,
-            ByteBufCodecs.VAR_LONG, FishCaughtCounter::firstCatch,
-            ByteBufCodecs.BOOL, FishCaughtCounter::caughtGolden,
-            ByteBufCodecs.BOOL, FishCaughtCounter::perfectCatch,
-            ByteBufCodecs.BOOL, FishCaughtCounter::hasGuideNotification,
-
-            FishCaughtCounter::new
-    );
-
     public static FishCaughtCounter get(Player player, FishProperties loc)
     {
         return get(player, U.getRlFromFp(player.level(), loc));
@@ -77,12 +45,7 @@ public record FishCaughtCounter(
         return FishingGuideAttachment.getFishesCaught(player).get(loc);
     }
 
-    public static FishCaughtCounter createHacked()
-    {
-        return new FishCaughtCounter(999999, 0, 0, 0, 0, 0, 0, false, false, true);
-    }
-
-    public static boolean canCatchGolden(FishProperties fp, ServerPlayer player)
+    public static boolean canCatchGolden(FishProperties fp, Player player)
     {
         //returns false if player has already caught the golden fish of that fp
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
@@ -166,8 +129,36 @@ public record FishCaughtCounter(
 
             FishingGuideAttachment.setFishesCaught(player, fishesCaught);
         }
-
-
     }
 
+    public static final Codec<FishCaughtCounter> CODEC = RecordCodecBuilder.create(instance ->
+            instance.group(
+                    Codec.INT.optionalFieldOf("count", 0).forGetter(FishCaughtCounter::count),
+                    Codec.INT.optionalFieldOf("fastest_ticks", 0).forGetter(FishCaughtCounter::fastestTicks),
+                    Codec.FLOAT.optionalFieldOf("average_ticks", 0.0f).forGetter(FishCaughtCounter::averageTicks),
+                    Codec.INT.optionalFieldOf("best_size", 0).forGetter(FishCaughtCounter::size),
+                    Codec.INT.optionalFieldOf("best_weight", 0).forGetter(FishCaughtCounter::weight),
+                    Codec.FLOAT.optionalFieldOf("best_percentile", 0f).forGetter(FishCaughtCounter::percentile),
+                    Codec.LONG.optionalFieldOf("first_catch", 0L).forGetter(FishCaughtCounter::firstCatch),
+                    Codec.BOOL.optionalFieldOf("caught_golden", false).forGetter(FishCaughtCounter::caughtGolden),
+                    Codec.BOOL.optionalFieldOf("perfect_catch", false).forGetter(FishCaughtCounter::perfectCatch),
+                    Codec.BOOL.optionalFieldOf("has_guide_notification", false).forGetter(FishCaughtCounter::hasGuideNotification)
+
+            ).apply(instance, FishCaughtCounter::new)
+    );
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, FishCaughtCounter> STREAM_CODEC = ExtraComposites.composite(
+            ByteBufCodecs.VAR_INT, FishCaughtCounter::count,
+            ByteBufCodecs.VAR_INT, FishCaughtCounter::fastestTicks,
+            ByteBufCodecs.FLOAT, FishCaughtCounter::averageTicks,
+            ByteBufCodecs.INT, FishCaughtCounter::size,
+            ByteBufCodecs.INT, FishCaughtCounter::weight,
+            ByteBufCodecs.FLOAT, FishCaughtCounter::percentile,
+            ByteBufCodecs.VAR_LONG, FishCaughtCounter::firstCatch,
+            ByteBufCodecs.BOOL, FishCaughtCounter::caughtGolden,
+            ByteBufCodecs.BOOL, FishCaughtCounter::perfectCatch,
+            ByteBufCodecs.BOOL, FishCaughtCounter::hasGuideNotification,
+
+            FishCaughtCounter::new
+    );
 }

@@ -122,6 +122,8 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation ENTITY = Starcatcher.rl("textures/gui/guide/entity.png");
     private static final ResourceLocation ALWAYS_ENTITY = Starcatcher.rl("textures/gui/guide/always_entity.png");
 
+    public static final CaughtFishInfo GOLDEN = new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true);
+
     public static final int MAX_HELP_PAGES = 12;
 
 
@@ -362,6 +364,7 @@ public class FishingGuideScreen extends Screen
                     //go to book cover
                     else
                     {
+                        minecraft.player.playSound(SoundEvents.BOOK_PAGE_TURN);
                         menu = -1;
                     }
                 }
@@ -495,6 +498,8 @@ public class FishingGuideScreen extends Screen
             ResourceLocation key = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fishProperties);
             if (key != null)
                 PacketDistributor.sendToServer(new SBTrackFishPayload(key));
+            Minecraft.getInstance().player.playSound(SoundEvents.GLASS_HIT);
+            Minecraft.getInstance().player.playSound(SoundEvents.AMETHYST_BLOCK_HIT, 0.3f, 0.6f);
         }
 
         //track fish right
@@ -504,6 +509,8 @@ public class FishingGuideScreen extends Screen
             ResourceLocation key = Minecraft.getInstance().level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fishProperties);
             if (key != null)
                 PacketDistributor.sendToServer(new SBTrackFishPayload(key));
+            Minecraft.getInstance().player.playSound(SoundEvents.GLASS_HIT);
+            Minecraft.getInstance().player.playSound(SoundEvents.AMETHYST_BLOCK_HIT, 0.3f, 0.6f);
         }
 
         if (button == 0)
@@ -628,6 +635,14 @@ public class FishingGuideScreen extends Screen
 
         switch (menu)
         {
+            //render settings screen
+            case -99 ->
+            {
+                Minecraft.getInstance().setScreen(new SettingsScreen());
+                return;
+            }
+
+            //sign page
             case -1 ->
             {
                 RenderSystem.enableBlend();
@@ -635,13 +650,6 @@ public class FishingGuideScreen extends Screen
                 RenderSystem.disableBlend();
                 renderCoverText(guiGraphics, mouseX, mouseY);
                 renderCompass(guiGraphics);
-            }
-
-            //render settings screen
-            case -99 ->
-            {
-                Minecraft.getInstance().setScreen(new SettingsScreen());
-                return;
             }
 
             //render index
@@ -1324,11 +1332,13 @@ public class FishingGuideScreen extends Screen
     private void renderFishIndex(GuiGraphics guiGraphics, int xOffset, int yOffset, int mouseX, int mouseY, FishProperties fp, int backgroundFillColor)
     {
         ResourceLocation rl = U.getRlFromFp(level, fp);
-        FishCaughtCounter fishCaughtCounter = fishCaughtCounterMap.get(rl);
+        FishCaughtCounter fcc = fishCaughtCounterMap.get(rl);
         ItemStack is = fp.catchInfo().fish().toStack();
 
+        SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, GOLDEN);
+
         //calculate caught counter
-        int caught = fishCaughtCounter == null ? 0 : fishCaughtCounter.count();
+        int caught = fcc == null ? 0 : fcc.count();
 
         //handle click
         if (clicked && mouseX > xOffset - 3 && mouseX < xOffset + 21 - 3 && mouseY > yOffset - 3 && mouseY < yOffset + 21 - 3)
@@ -1380,7 +1390,7 @@ public class FishingGuideScreen extends Screen
             renderItem(new ItemStack(SCItems.MISSINGNO.get()), xOffset, yOffset, 1);
 
         //render fish notification icon
-        if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification() && !fpsSeen.contains(FishApi.getKey(level, fp)))
+        if (fcc != null && fcc.hasGuideNotification() && !fpsSeen.contains(FishApi.getKey(level, fp)))
             guiGraphics.renderOutline(xOffset - 1, yOffset - 1, 18, 18, 0xffc58c44);
         //guiGraphics.blit(STAR, xOffset + 10, yOffset + 7, 0, 0, 10, 10, 10, 10);
 
@@ -1390,10 +1400,11 @@ public class FishingGuideScreen extends Screen
         {
             ArrayList<Component> components = new ArrayList<>(getCachedTooltipForHoverEntry(fp, caught));
             components.add(1, translatable("gui.guide.rarity." + fp.rarity().getSerializedName()));
+            components.add(translatable("gui.guide.click").withStyle(ChatFormatting.DARK_GRAY));
 
             guiGraphics.renderTooltip(this.font, components, Optional.empty(), mouseX, mouseY);
 
-            if (fishCaughtCounter != null && fishCaughtCounter.hasGuideNotification() && SCConfig.REMOVE_NOTIFICATION_ON_HOVER.get() && !fpsSeen.contains(rl))
+            if (fcc != null && fcc.hasGuideNotification() && SCConfig.REMOVE_NOTIFICATION_ON_HOVER.get() && !fpsSeen.contains(rl))
                 fpsSeen.add(rl);
         }
     }
@@ -1448,6 +1459,17 @@ public class FishingGuideScreen extends Screen
         return components;
     }
 
+    public static final ItemStack SPYGLASS;
+    public static final ItemStack SPYGLASS_GOLDEN;
+
+    static
+    {
+        SPYGLASS = new ItemStack(Items.SPYGLASS);
+        SPYGLASS_GOLDEN = new ItemStack(Items.SPYGLASS);
+        //TODO FIX GOLDEN SHADER TO MAKE THIS WORK
+        //SPYGLASS_GOLDEN.set(SCDataComponents.CAUGHT_FISH_INFO, GOLDEN);
+    }
+
     private void renderEntry(GuiGraphics guiGraphics, int mouseX, int mouseY, int xOffset, int entry)
     {
         if (level == null) level = getMinecraft().level;
@@ -1473,15 +1495,6 @@ public class FishingGuideScreen extends Screen
         int x = mouseX - uiX;
         int y = mouseY - uiY;
 
-        //render spyglass + hover
-        if (x > 50 && x < 67 && y > 111 && y < 128)
-            guiGraphics.renderTooltip(font, translatable("gui.guide.track"), mouseX, mouseY);
-        guiGraphics.renderItem(new ItemStack(Items.SPYGLASS), uiX + 51, uiY + 111);
-
-        if (x > 210 && x < 227 && y > 111 && y < 128)
-            guiGraphics.renderTooltip(font, translatable("gui.guide.track"), mouseX, mouseY);
-        guiGraphics.renderItem(new ItemStack(Items.SPYGLASS), uiX + 211, uiY + 111);
-
         //render fish tracker icon if tracked fish matches fp being rendered
         if (trackedFP.equals(fp))
         {
@@ -1496,7 +1509,21 @@ public class FishingGuideScreen extends Screen
             //sound on clicking
             if (x > 124 + xOffset && x < 145 + xOffset && y > 44 && y < 64 && clicked)
                 Minecraft.getInstance().player.playSound(SoundEvents.AMETHYST_BLOCK_HIT, 0.4f, 1.5f);
+            //render golden spyglass if tracked
+            int xxx = -1;
+            int yyy = 111;
+            guiGraphics.fill(uiX + xxx + xOffset, uiY + yyy, uiX + 16 + xxx + xOffset, uiY + 16 + yyy, SCColors.GUIDE_TEXT);
+            guiGraphics.renderItem(SPYGLASS_GOLDEN, uiX + xOffset - 1, uiY + 111);
         }
+        else
+        {
+            //render spyglass
+            guiGraphics.renderItem(SPYGLASS, uiX + xOffset - 1, uiY + 111);
+        }
+
+        //render spyglass hover text
+        if (x > xOffset - 3 && x < 17 + xOffset - 2 && y > 111 && y < 128)
+            guiGraphics.renderTooltip(font, translatable("gui.guide.track"), mouseX, mouseY);
 
 
         //white highlight on jumping to

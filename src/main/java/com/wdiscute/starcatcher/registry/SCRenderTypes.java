@@ -45,7 +45,7 @@ public class SCRenderTypes  {
                     .setOutputState(ITEM_ENTITY_TARGET)
                     .setLightmapState(LIGHTMAP)
                     .setOverlayState(OVERLAY)
-                    .setDepthTestState(EQUAL_DEPTH_TEST)
+                    //.setDepthTestState(EQUAL_DEPTH_TEST)
                     .setWriteMaskState(RenderStateShard.COLOR_DEPTH_WRITE)
                     .setTexturingState(TEXTURING_GOLD_FISH_GLINT)
                     .createCompositeState(true)

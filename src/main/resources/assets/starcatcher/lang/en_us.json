@@ -703,6 +703,7 @@
   "gui.guide.caught" : "Caught:",
   "gui.guide.not_caught" : "------",
   "gui.guide.not_caught_yet" : "Not Caught Yet!",
+  "gui.guide.click" : "Click to view entry",
   "gui.guide.rarity" : "Rarity:",
 
   "gui.guide.first" : "First Catch:",
@@ -1490,7 +1491,7 @@
   "item.starcatcher.elderscale" : "Elderscale",
   "tooltip.starcatcher.elderscale.0" : "A deceiving fish often found in lakes.",
   "tooltip.starcatcher.elderscale.1" : "Elderscales may live up to several decades and often",
-  "tooltip.starcatcher.elderscale.2" : "spend all day hiding during their youth, making sighing a",
+  "tooltip.starcatcher.elderscale.2" : "spend all day hiding during their youth, making sighting a",
   "tooltip.starcatcher.elderscale.3" : "young one little more than a rumor, therefore the name.",
 
   "item.starcatcher.driftfin" : "Driftfin",
