@@ -81,19 +81,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:celestial_fish_spawn_egg",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_spindlefish",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:gnasher_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:prawn_spawn_egg",
       "required": false
     }
   ]

@@ -477,14 +477,6 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:sea_spider_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:squoddle_bucket",
-      "required": false
-    },
-    {
       "id": "unusualfishmod:raw_copperflame_anthias",
       "required": false
     },
@@ -493,19 +485,11 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:picklefish_bucket",
+      "id": "unusualfishmod:raw_picklefish",
       "required": false
     },
     {
       "id": "unusualfishmod:raw_amber_goby",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:sea_mosquito_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:coral_skrimp_bucket",
       "required": false
     },
     {
@@ -514,22 +498,6 @@
     },
     {
       "id": "unusualfishmod:raw_bark_angelfish",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:stout_bichir_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:tiger_jungle_shark_spawn_egg",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:deep_crawler_bucket",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:mossthorn_bucket",
       "required": false
     },
     {

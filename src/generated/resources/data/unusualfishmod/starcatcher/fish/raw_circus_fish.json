@@ -5,59 +5,68 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 2,
+  "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": true,
-    "entity": "unusualfishmod:tiger_puffer",
-    "fish_bucket": "unusualfishmod:tiger_puffer_bucket",
-    "item": "unusualfishmod:tiger_puffer_bucket"
+    "entity": "unusualfishmod:circus",
+    "fish_bucket": "unusualfishmod:circus_fish_bucket",
+    "item": "unusualfishmod:raw_circus_fish"
   },
   "difficulty": {
     "decay": 0.0,
     "hp": 100,
-    "missPenalty": 20,
+    "missPenalty": 40,
     "modifiers": [],
-    "speed": 9,
+    "speed": 5,
     "sweetspots": [
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 1,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.1
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 1,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.1
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 1,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.1
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
       },
       {
         "color_as_int": 65280,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 1,
         "sweet_spot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.1
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": 65280,
+        "hitbox_size_in_pixels": 22,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweet_spot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
       }
     ]
   },
@@ -77,7 +86,7 @@
       "biomes_blacklist": [],
       "biomes_blacklist_tags": [],
       "biomes_tags": [
-        "starcatcher:is_warm_ocean"
+        "starcatcher:is_lukewarm_ocean"
       ]
     },
     {
@@ -87,21 +96,25 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
+      "type": "starcatcher:weather_restriction",
+      "weather": "clear"
+    },
+    {
       "type": "starcatcher:daytime_restriction",
       "ranges": [
         {
-          "first": 12700,
-          "second": 24000
+          "first": 0,
+          "second": 12700
         }
       ],
-      "translation_override": "gui.guide.night"
+      "translation_override": "gui.guide.day"
     }
   ],
   "size_and_weight": {
-    "average_size_cm": 41.0,
-    "average_weight_grams": 2001.0,
-    "deviation_size_cm": 21.0,
-    "deviation_weight_grams": 701.0,
+    "average_size_cm": 80.0,
+    "average_weight_grams": 12000.0,
+    "deviation_size_cm": 40.0,
+    "deviation_weight_grams": 7000.0,
     "golden_chance": 0.02
   },
   "skips_minigame": false
