@@ -30,7 +30,6 @@ public final class FishRegistration
         registerInternal(context, key(fp), fp, requiredModId);
     }
 
-
     public static void register(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties, String requiredModId)
     {
         registerInternal(context, key, properties, "");

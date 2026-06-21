@@ -34,15 +34,12 @@ public class SCDataGenerators
         PackOutput output = gen.getPackOutput();
 
         //fish properties datapack??
-//        event.createDatapackRegistryObjects(
-//                new RegistrySetBuilder().add(
-//                        Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
-//        );
+        event.createDatapackRegistryObjects(DGSCFishProperties.BUILDER);
 
         //fish properties
         gen.addProvider(
                 event.includeServer(),
-                new DGSCFishProperties(output, lookupProvider)
+                new DGSCFishProperties(output,  lookupProvider)
         );
 
         gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));

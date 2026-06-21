@@ -61,6 +61,8 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         //starcatcher
         DGStarcatcherFishes.bootstrap(context);
 
+        if (true) return;
+
         //starcatcher compat
         DGCreateFishes.bootstrap(context);
 
