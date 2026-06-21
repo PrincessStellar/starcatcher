@@ -10,36 +10,35 @@ import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
-import com.wdiscute.starcatcher.registry.SCRenderTypes;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FishRenderer extends EntityRenderer<FishEntity>
+public class FishRenderer extends MobRenderer<FishEntity, EntityModel<FishEntity>>
 {
     ItemRenderer itemRenderer;
     public static Map<Item, EntityModel<FishEntity>> map = new HashMap<>();
 
     public FishRenderer(EntityRendererProvider.Context context)
     {
-        super(context);
+        super(context, null, 0.25f);
         itemRenderer = context.getItemRenderer();
         createMap(context.getModelSet());
     }
@@ -103,10 +102,11 @@ public class FishRenderer extends EntityRenderer<FishEntity>
         map.put(SCItems.THUNDER_BASS.get(), new ThunderBass<>(modelSet.bakeLayer(ThunderBass.LAYER_LOCATION)));
         map.put(SCItems.TWILIGHT_KOI.get(), new TwilightKoi<>(modelSet.bakeLayer(TwilightKoi.LAYER_LOCATION)));
         map.put(SCItems.WILLOW_BREAM.get(), new WillowBream<>(modelSet.bakeLayer(WillowBream.LAYER_LOCATION)));
+        map.put(SCItems.CERBERAY.get(), new Cerberay<>(modelSet.bakeLayer(Cerberay.LAYER_LOCATION)));
     }
 
-    @Override
-    public void render(FishEntity fishEntity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
+    // Used for the 2D fishes and stuff like the aquarium
+    public void renderOld(FishEntity fishEntity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
     {
         ItemStack fish = fishEntity.getFish();
 
@@ -134,25 +134,59 @@ public class FishRenderer extends EntityRenderer<FishEntity>
 
         // Render model here
         if (!fish.isEmpty())
-            FishRenderer.renderFishFromItem(itemRenderer, FishRenderer.map, fish, buffer, poseStack, packedLight, fishEntity.level());
+            FishRenderer.renderFishFromItem(itemRenderer, FishRenderer.map, fish, buffer, poseStack, packedLight, LivingEntityRenderer.getOverlayCoords(fishEntity, 0), fishEntity.level());
 
         poseStack.popPose();
     }
 
     @Override
-    public ResourceLocation getTextureLocation(FishEntity fish)
-    {
-        return Starcatcher.MISSINGNO;
+    public void render(FishEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        model = map.get(entity.getFish().getItem());
+        if (model == null) {
+            renderOld(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+            return;
+        }
+
+        poseStack.pushPose();
+        poseStack.translate(0, -0.2, 0);
+
+        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+
+
+        poseStack.popPose();
     }
 
-    public static void renderFishFromItem(ItemRenderer itemRenderer, Map<Item, EntityModel<FishEntity>> map, ItemStack itemStack, MultiBufferSource buffer, PoseStack poseStack, int packedLight, Level level)
+    @Override
+    protected @Nullable RenderType getRenderType(FishEntity livingEntity, boolean bodyVisible, boolean translucent, boolean glowing) {
+        ItemStack fish = livingEntity.getFish();
+
+        return getGoldRendertype(getTextureLocation(livingEntity), model, fish);
+    }
+
+    @Override
+    public @NotNull ResourceLocation getTextureLocation(FishEntity fish)
+    {
+        Item item = fish.getFish().getItem();
+        if (map.containsKey(item))
+           return Starcatcher.rl("entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath());
+
+       return Starcatcher.MISSINGNO;
+    }
+
+    @Override
+    protected void setupRotations(FishEntity entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {
+        super.setupRotations(entity, poseStack, bob, yBodyRot, partialTick, scale);
+
+    }
+
+    public static void renderFishFromItem(ItemRenderer itemRenderer, Map<Item, EntityModel<FishEntity>> map, ItemStack itemStack, MultiBufferSource buffer, PoseStack poseStack, int packedLight, int overlay, Level level)
     {
         if (map.containsKey(itemStack.getItem()))
         {
             Item item = itemStack.getItem();
             EntityModel<FishEntity> model = map.get(item);
             VertexConsumer vertexconsumer = buffer.getBuffer(getGoldRendertype(Starcatcher.rl("entity/fishes/" + BuiltInRegistries.ITEM.getKey(item).getPath()), model, itemStack));
-            model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
+            model.renderToBuffer(poseStack, vertexconsumer, packedLight, overlay);
         }
         else
         {
@@ -160,7 +194,7 @@ public class FishRenderer extends EntityRenderer<FishEntity>
             poseStack.mulPose(Axis.YP.rotationDegrees(270.0F));
             poseStack.mulPose(Axis.ZP.rotationDegrees(45.0F));
             itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, packedLight,
-                    OverlayTexture.NO_OVERLAY, poseStack, buffer, level, U.r.nextInt());
+                    overlay, poseStack, buffer, level, 0);
         }
 
     }

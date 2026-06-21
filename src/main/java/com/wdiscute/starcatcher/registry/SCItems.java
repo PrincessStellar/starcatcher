@@ -334,7 +334,7 @@ public interface SCItems
     DeferredItem<Item> GLOWSTONE_PUFFERFISH = registerNonBucketFish("glowstone_pufferfish", true);
     DeferredItem<Item> WILLISH = registerNonBucketFish("willish", true);
 
-    DeferredItem<Item> CERBERAY = registerNonBucketFish("cerberay", true);
+    DeferredItem<Item> CERBERAY = registerBucketFish("cerberay");
 
     DeferredItem<Item> LAVA_CRAB_CLAW = registerNonBucketFish("lava_crab_claw", true);
 

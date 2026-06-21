@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.fishentity;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -94,6 +96,14 @@ public class FishEntity extends AbstractFish
                 setBodyArmorItem(is);
             }
         }
+    }
+
+    @Override
+    public float getScale() {
+        return SCDataComponents.getOrDefault(
+                getFish(), SCDataComponents.CAUGHT_FISH_INFO,
+                new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
+        ).getScale();
     }
 
     @Override

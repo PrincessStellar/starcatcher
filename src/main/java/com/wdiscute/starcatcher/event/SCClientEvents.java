@@ -181,6 +181,8 @@ public class SCClientEvents
         event.registerLayerDefinition(ThunderBass.LAYER_LOCATION, ThunderBass::createBodyLayer);
         event.registerLayerDefinition(TwilightKoi.LAYER_LOCATION, TwilightKoi::createBodyLayer);
         event.registerLayerDefinition(WillowBream.LAYER_LOCATION, WillowBream::createBodyLayer);
+        event.registerLayerDefinition(Cerberay.LAYER_LOCATION, Cerberay::createBodyLayer);
+
     }
 
     @SubscribeEvent
