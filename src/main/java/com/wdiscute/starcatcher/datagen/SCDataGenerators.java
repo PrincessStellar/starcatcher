@@ -34,10 +34,10 @@ public class SCDataGenerators
         PackOutput output = gen.getPackOutput();
 
         //fish properties datapack??
-        event.createDatapackRegistryObjects(
-                new RegistrySetBuilder().add(
-                        Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
-        );
+//        event.createDatapackRegistryObjects(
+//                new RegistrySetBuilder().add(
+//                        Starcatcher.FISH_REGISTRY_KEY, DGSCFishProperties::bootstrap)
+//        );
 
         //fish properties
         gen.addProvider(
@@ -59,11 +59,8 @@ public class SCDataGenerators
         ItemTagsProvider itp = new DGSCItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
 
-        //fp tags
-        gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
-
-        //dimension tags - both nikdo and kapiten said hell nah
-        //gen.addProvider(event.includeServer(), new DGDimensionTagsProvider(output, lookupProvider, existingFileHelper));
+        //fp tags todo
+        //gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
 
         //advancements
         gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));

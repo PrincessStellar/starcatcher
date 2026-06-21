@@ -7,15 +7,10 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DGStarcatcherFishes
 {
-    public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
-    public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
-    public static final List<FishProperties> STARCATCHER_BUCKETABLE = new ArrayList<>();
-
     public static void bootstrap(BootstrapContext<FishProperties> context)
     {
         //

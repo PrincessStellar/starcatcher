@@ -4,6 +4,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
+import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.HolderLookup;
@@ -53,13 +54,13 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         }
 
         //rarity tags for starcatcher fish only
-        for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_FISHABLE)
+        for (FishProperties fp : FishRegistration.STARCATCHER_FISHABLE)
         {
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
             tag(SCTags.STARCAUGHT_FISHABLES).addOptional(key);
         }
 
-        for (FishProperties fp : DGStarcatcherFishes.ALL_FISHABLE)
+        for (FishProperties fp : FishRegistration.ALL_FISHABLE)
         {
             ResourceLocation key = fp.catchInfo().fish().rl();
 
@@ -81,7 +82,7 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         }
 
         //bucketable fish
-        for (FishProperties fp : DGStarcatcherFishes.STARCATCHER_BUCKETABLE)
+        for (FishProperties fp : FishRegistration.STARCATCHER_BUCKETABLE)
         {
             tag(SCTags.STARCAUGHT_FISHABLES).add(fp.catchInfo().fish().toItem());
         }

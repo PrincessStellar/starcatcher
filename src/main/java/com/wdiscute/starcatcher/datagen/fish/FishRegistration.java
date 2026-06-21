@@ -11,11 +11,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class FishRegistration
 {
-    private FishRegistration()
-    {
-    }
+    public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
+    public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
+    public static final List<FishProperties> STARCATCHER_BUCKETABLE = new ArrayList<>();
 
     public static void register(BootstrapContext<FishProperties> context, FishProperties fp)
     {
@@ -41,7 +44,6 @@ public final class FishRegistration
         FishProperties fp = prepare(input);
 
         context.register(key, fp);
-
         //todo compat keys?
     }
 
@@ -50,8 +52,21 @@ public final class FishRegistration
         fp = sortRestrictions(fp);
         fp = applyStarcaughtLogic(fp);
         //todo list for item tags?
-        //fp = updateGlobalLists(fp);
+        addToLists(fp);
         return fp;
+    }
+
+    private static void addToLists(FishProperties fp)
+    {
+        ALL_FISHABLE.add(fp);
+
+        if(fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+            STARCATCHER_FISHABLE.add(fp);
+
+        if(SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getKey().location())
+                .anyMatch(o -> fp.catchInfo().fish().rl().equals(o)))
+            STARCATCHER_BUCKETABLE.add(fp);
+
     }
 
     private static FishProperties sortRestrictions(FishProperties fp)
@@ -62,7 +77,6 @@ public final class FishRegistration
     private static FishProperties applyStarcaughtLogic(FishProperties fp)
     {
         ItemStack fish = fp.catchInfo().fish().toStack();
-        String modId = fp.catchInfo().fish().rl().getNamespace();
 
         boolean isBucketable = SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(e -> e.getDelegate().value()).anyMatch(fish::is);
 
@@ -71,11 +85,6 @@ public final class FishRegistration
             fp = fp.withCatchInfo(fp.catchInfo().withBucket(new MaybeStack(SCItems.STARCAUGHT_BUCKET)));
 
             fp = fp.withCatchInfo(fp.catchInfo().withEntityToSpawn(SCEntities.FISH));
-
-            if (modId.equals("starcatcher"))
-            {
-                DGStarcatcherFishes.STARCATCHER_BUCKETABLE.add(fp);
-            }
         }
 
         return fp;

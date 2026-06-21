@@ -24,6 +24,10 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
                 output,
                 registries,
                 BUILDER,
+                (wad) ->
+                {
+                    System.out.println("test");
+                },
                 Set.of(
                         "minecraft",
 
