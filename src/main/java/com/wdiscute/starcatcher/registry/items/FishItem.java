@@ -9,9 +9,9 @@ import net.minecraft.world.item.context.UseOnContext;
 
 public class FishItem extends Item
 {
-    public FishItem()
+    public FishItem(Item.Properties properties)
     {
-        super(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH));
+        super(properties);
     }
 
     @Override

@@ -78,6 +78,8 @@ public class DGSCDataMapsProvider extends DataMapProvider
         aquarium.add(SCBlocks.CLAM.get().asItem().builtInRegistryHolder(), AquariumBlock.Interaction.PLACE_CLAM, false);
 
         aquarium.add(SCItems.STARCAUGHT_BUCKET, AquariumBlock.Interaction.PLACE_FISH, false);
+        aquarium.add(SCItems.STARCAUGHT_LAVA_BUCKET, AquariumBlock.Interaction.PLACE_FISH, false);
+
         aquarium.add(SCTags.BUCKETABLE_FISHES, AquariumBlock.Interaction.PLACE_FISH_CREATIVE, false);
         aquarium.add(Tags.Items.BUCKETS_EMPTY, AquariumBlock.Interaction.RETRIEVE_FISH, false);
 

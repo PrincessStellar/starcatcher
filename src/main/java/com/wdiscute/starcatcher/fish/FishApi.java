@@ -15,9 +15,11 @@ import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
+import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -362,9 +364,9 @@ public class FishApi
             CaughtFishInfo caughtFishInfo = new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden);
 
             //if starcatcher bucketed fish
-            if (fp.catchInfo().fish().toStack().is(SCTags.BUCKETABLE_FISHES))
+            if (baseFish.is(SCTags.BUCKETABLE_FISHES))
             {
-                ItemStack bucket = SCItems.STARCAUGHT_BUCKET.toStack();
+                ItemStack bucket = StarcaughtBucket.getBucketForStack(baseFish).getDefaultInstance();
 
                 //quality food compat
                 if (ModList.get().isLoaded("quality_food") && SCConfig.SAVE_DATA_TO_ITEMS.get())

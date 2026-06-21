@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -23,6 +24,7 @@ import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.pathfinder.PathType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class FishEntity extends AbstractFish
     public FishEntity(EntityType<? extends FishEntity> entityType, Level level)
     {
         super(entityType, level);
+        if (fireImmune()) this.setPathfindingMalus(PathType.LAVA, 0.0F);
     }
 
     private boolean shouldDropItem = true;
@@ -67,9 +70,19 @@ public class FishEntity extends AbstractFish
         return SoundEvents.TROPICAL_FISH_FLOP;
     }
 
+    @Override
+    public boolean fireImmune() {
+        return getFish().has(DataComponents.FIRE_RESISTANT);
+    }
+
     public static AttributeSupplier.Builder createAttributes()
     {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0F);
+    }
+
+    @Override
+    public boolean isInWater() {
+        return !fireImmune() ? super.isInWater() : isInLava();
     }
 
     @Override
@@ -127,7 +140,7 @@ public class FishEntity extends AbstractFish
     @Override
     public ItemStack getBucketItemStack()
     {
-        ItemStack is = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
+        ItemStack is = new ItemStack(fireImmune() ? SCItems.STARCAUGHT_LAVA_BUCKET.asItem() : SCItems.STARCAUGHT_BUCKET.asItem());
         SCDataComponents.set(is, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
         return is;
     }

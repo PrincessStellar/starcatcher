@@ -334,7 +334,7 @@ public interface SCItems
     DeferredItem<Item> GLOWSTONE_PUFFERFISH = registerNonBucketFish("glowstone_pufferfish", true);
     DeferredItem<Item> WILLISH = registerNonBucketFish("willish", true);
 
-    DeferredItem<Item> CERBERAY = registerBucketFish("cerberay");
+    DeferredItem<Item> CERBERAY = registerLavaBucketFish("cerberay");
 
     DeferredItem<Item> LAVA_CRAB_CLAW = registerNonBucketFish("lava_crab_claw", true);
 
@@ -353,6 +353,7 @@ public interface SCItems
 
     //bucket
     DeferredItem<Item> STARCAUGHT_BUCKET = ITEMS.register("starcaught_bucket", () -> new StarcaughtBucket(Fluids.WATER));
+    DeferredItem<Item> STARCAUGHT_LAVA_BUCKET = ITEMS.register("starcaught_lava_bucket", () -> new StarcaughtBucket(Fluids.LAVA));
 
     DeferredItem<Item> STARCAUGHT_FISH = ITEMS.register("starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH)));
     DeferredItem<Item> COOKED_STARCAUGHT_FISH = ITEMS.register("cooked_starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_COOKED_FISH)));
@@ -360,8 +361,14 @@ public interface SCItems
 
     static DeferredItem<Item> registerBucketFish(String name)
     {
-        return BUCKETABLE_FISHES_REGISTRY.register(name, FishItem::new);
+        return BUCKETABLE_FISHES_REGISTRY.register(name, () -> new FishItem(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH)));
     }
+
+    static DeferredItem<Item> registerLavaBucketFish(String name)
+    {
+        return BUCKETABLE_FISHES_REGISTRY.register(name, () -> new FishItem(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH).fireResistant()));
+    }
+
 
     static DeferredItem<Item> registerNonBucketFish(String name)
     {

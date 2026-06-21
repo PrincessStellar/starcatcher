@@ -170,6 +170,7 @@ public interface SCCreativeModeTabs
                                 .add(SCItems.MISSINGNO)
                                 .add(SCItems.UNKNOWN_FISH)
                                 .add(SCItems.STARCAUGHT_BUCKET)
+                                .add(SCItems.STARCAUGHT_LAVA_BUCKET)
                                 .add(SCItems.STARCAUGHT_FISH)
                                 .add(SCItems.COOKED_STARCAUGHT_FISH)
                 )

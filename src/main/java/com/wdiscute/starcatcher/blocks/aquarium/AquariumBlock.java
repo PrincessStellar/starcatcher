@@ -13,6 +13,7 @@ import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -250,7 +251,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
-        if (stack.getItem() instanceof BucketItem bucket && !stack.is(SCItems.STARCAUGHT_BUCKET) && !stack.is(Tags.Items.BUCKETS_EMPTY))
+        if (stack.getItem() instanceof BucketItem bucket && !(stack.getItem() instanceof StarcaughtBucket) && !stack.is(Tags.Items.BUCKETS_EMPTY))
         {
             bucket.checkExtraContent(player, level, stack, pos);
             player.setItemInHand(hand, BucketItem.getEmptySuccessItem(stack, player));
@@ -514,7 +515,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
                 if (abe.getFish().isEmpty()) return false;
                 is.shrink(1);
 
-                ItemStack bucketToReturn = new ItemStack(SCItems.STARCAUGHT_BUCKET.get());
+                ItemStack bucketToReturn = new ItemStack(StarcaughtBucket.getBucketForStack(abe.fish));
 
                 SCDataComponents.set(bucketToReturn, SCDataComponents.BUCKETED_FISH, SingleStackContainer.from(abe.fish));
                 p.addItem(bucketToReturn);

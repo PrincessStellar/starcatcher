@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-21T03:15:20.0663002	Item Models: starcatcher
+// 1.21.1	2026-06-21T23:38:59.7295263	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -192,6 +192,7 @@ ce5e10dc8fc86156b332f5aa3c844a4d4a9120e3 assets/starcatcher/models/item/starcatc
 3918c4ce228ba7e6b2dbfdb8761ee542d9822561 assets/starcatcher/models/item/starcatcher_twine.json
 38c575590867de049b86a9eac7a8bb04a0c24ef7 assets/starcatcher/models/item/starcaught_bucket.json
 6d61cda400633fb4b4d752cc3abff7762108d2e4 assets/starcatcher/models/item/starcaught_fish.json
+1a2e64c9ca19f5e484113cff4695f11ae521346d assets/starcatcher/models/item/starcaught_lava_bucket.json
 c60f4d91d247f92cdef24770d406e46d63c06d97 assets/starcatcher/models/item/steady_bobber.json
 05f2f19b5abadef973880ce5ca99e6ed5e05995c assets/starcatcher/models/item/stonefish.json
 76c637178e81c898203c58fff3b8367b2d6c4bc8 assets/starcatcher/models/item/stone_hook.json

@@ -39,6 +39,10 @@ public class StarcaughtBucket extends BucketItem
         entity = SCEntities.FISH.get();
     }
 
+    public static Item getBucketForStack(ItemStack stack){
+        return stack.has(DataComponents.FIRE_RESISTANT) ? SCItems.STARCAUGHT_LAVA_BUCKET.get() : SCItems.STARCAUGHT_BUCKET.get();
+    }
+
     @Override
     public void checkExtraContent(@Nullable Player player, Level level, ItemStack containerStack, BlockPos pos)
     {
@@ -55,7 +59,7 @@ public class StarcaughtBucket extends BucketItem
         if (SCDataComponents.has(bucketedMobStack, SCDataComponents.BUCKETED_FISH))
             fishEntity.setFish(getFish(bucketedMobStack));
         else
-            fishEntity.setFish(SCItems.AURORA.toStack());
+            fishEntity.setFish(SCItems.CERBERAY.toStack());
     }
 
     private static ItemStack getFish(ItemStack bucket)

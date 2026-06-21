@@ -6,6 +6,7 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -81,7 +82,7 @@ public final class FishRegistration
 
         if (isBucketable && fp.catchInfo().fishEntryType() == CatchInfo.FishEntryType.FISH)
         {
-            fp = fp.withCatchInfo(fp.catchInfo().withBucket(new MaybeStack(SCItems.STARCAUGHT_BUCKET)));
+            fp = fp.withCatchInfo(fp.catchInfo().withBucket(new MaybeStack(StarcaughtBucket.getBucketForStack(fish))));
 
             fp = fp.withCatchInfo(fp.catchInfo().withEntityToSpawn(SCEntities.FISH));
         }
