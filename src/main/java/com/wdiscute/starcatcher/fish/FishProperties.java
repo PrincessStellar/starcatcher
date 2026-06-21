@@ -16,8 +16,12 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -259,9 +263,34 @@ public record FishProperties(
         return withCatchInfo(catchInfo.withFish(fish));
     }
 
+    public FishProperties withFish(DeferredBlock<Block> fish)
+    {
+        return withCatchInfo(catchInfo.withFish(new MaybeStack(fish)));
+    }
+
+    public FishProperties withFish(Item fish)
+    {
+        return withCatchInfo(catchInfo.withFish(new MaybeStack(fish)));
+    }
+
+    public FishProperties withFish(String namespace, String path)
+    {
+        return withCatchInfo(catchInfo.withFish(new MaybeStack(namespace, path)));
+    }
+
+    public FishProperties withFish(DeferredItem<Item> fish)
+    {
+        return withCatchInfo(catchInfo.withFish(new MaybeStack(fish)));
+    }
+
     public FishProperties withBucketedFish(MaybeStack bucket)
     {
         return withCatchInfo(catchInfo.withBucket(bucket));
+    }
+
+    public FishProperties withBucketedFish(String namespace, String path)
+    {
+        return withCatchInfo(catchInfo.withBucket(new MaybeStack(namespace, path)));
     }
 
     public FishProperties addRarityRestriction(RarityCountRestriction.RarityCount... rarityCount)

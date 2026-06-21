@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -14,10 +8,10 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 75,
-    "missPenalty": 5,
+    "hp": 100,
+    "missPenalty": 20,
     "modifiers": [],
-    "speed": 7,
+    "speed": 10,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -31,12 +25,12 @@
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]
@@ -52,22 +46,16 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_warm_lake"
-      ]
+      "biomes": [
+        "#starcatcher:is_warm_lake"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:weather_restriction",
-      "weather": "clear"
     },
     {
       "type": "starcatcher:fluid",

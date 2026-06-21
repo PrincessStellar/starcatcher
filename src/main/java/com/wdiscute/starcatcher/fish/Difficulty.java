@@ -143,12 +143,23 @@ public record Difficulty(
     public static Difficulty MEDIUM_MOVING = MEDIUM.moving();
     public static Difficulty MEDIUM_VANISHING_MOVING = MEDIUM.moving().vanishing();
 
+    public static Difficulty MEDIUM_FROZEN = new Difficulty(
+            10, 20, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.FROZEN
+    );
+
     public static Difficulty HARD = new Difficulty(
-            11, 10, 1,
+            11, 20, 1,
             List.of(),
             SweetSpot.THIN, SweetSpot.THIN);
     public static Difficulty HARD_VANISHING = HARD.vanishing();
     public static Difficulty HARD_MOVING = HARD.moving();
+
+    public static Difficulty HARD_FROZEN = new Difficulty(
+            11, 20, 1,
+            List.of(),
+            SweetSpot.FROZEN, SweetSpot.THIN);
 
     public static Difficulty THIN_NO_DECAY_NOT_FORGIVING = new Difficulty(
             11, 40, 0,
@@ -272,7 +283,7 @@ public record Difficulty(
             SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
     );
 
-    public static Difficulty SUN_SEEKING_CARP = new Difficulty(
+    public static Difficulty CLOUDS_LEGENDARY = new Difficulty(
             5000, 10, -10, 1,
             List.of(
                     new PullDownModifier(""),

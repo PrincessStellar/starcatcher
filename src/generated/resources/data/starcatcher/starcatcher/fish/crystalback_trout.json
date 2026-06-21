@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
@@ -18,7 +12,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 150,
     "missPenalty": 20,
     "modifiers": [
       {
@@ -63,12 +57,10 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_cold_lake"
-      ]
+      "biomes": [
+        "#starcatcher:is_cold_lake"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -91,5 +83,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/icy.png"
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
@@ -18,10 +12,10 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 75,
-    "missPenalty": 5,
+    "hp": 100,
+    "missPenalty": 20,
     "modifiers": [],
-    "speed": 7,
+    "speed": 10,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -35,18 +29,18 @@
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "epic",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -56,12 +50,10 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_warm_lake"
-      ]
+      "biomes": [
+        "#starcatcher:is_warm_lake"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
@@ -73,11 +65,11 @@
       "type": "starcatcher:daytime_restriction",
       "ranges": [
         {
-          "first": 0,
-          "second": 12700
+          "first": 12700,
+          "second": 24000
         }
       ],
-      "translation_override": "gui.guide.day"
+      "translation_override": "gui.guide.night"
     },
     {
       "type": "starcatcher:fluid",

@@ -89,4 +89,6 @@ public class ElevationBias extends AbstractFishRestriction
                 Component.translatable("gui.guide.range", bestY - range + " - " + bestY + range)
         );
     }
+
+    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 50, 20, "");
 }

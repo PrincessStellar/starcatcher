@@ -60,6 +60,7 @@ public record Treasure
     public static final Treasure CLEAR_SMITHING_TEMPLATE = Treasure.specificItem(SCItems.CLEAR_SMITHING_TEMPLATE.value().getDefaultInstance());
     public static final Treasure KING_SMITHING_TEMPLATE = Treasure.specificItem(SCItems.KING_SMITHING_TEMPLATE.value().getDefaultInstance());
     public static final Treasure ICEBORN_SKIN_SMITHING_TEMPLATE = Treasure.specificItem(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE.value().getDefaultInstance());
+    public static final Treasure SKY_SKIN_SMITHING_TEMPLATE = Treasure.specificItem(SCItems.SKY_SKIN_SMITHING_TEMPLATE.value().getDefaultInstance());
 
     public static final Codec<Treasure> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             WeightedLootTable.CODEC.listOf().optionalFieldOf("loot_tables", List.of()).forGetter(Treasure::lootTables),

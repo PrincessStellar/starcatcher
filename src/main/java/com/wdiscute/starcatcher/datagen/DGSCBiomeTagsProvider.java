@@ -128,8 +128,6 @@ public class DGSCBiomeTagsProvider extends BiomeTagsProvider
         ;
 
         this.tag(create(SCTags.IS_WARM_LAKE))
-                .addOptionalTag(BiomeTags.IS_SAVANNA)
-                .addOptionalTag(BiomeTags.HAS_DESERT_PYRAMID)
                 .addOptionalTag(Tags.Biomes.IS_DESERT)
                 .addOptionalTag(Tags.Biomes.IS_BADLANDS)
         ;

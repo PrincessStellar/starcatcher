@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-19T16:54:02.1102896	Item Models: starcatcher
+// 1.21.1	2026-06-21T03:15:20.0663002	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
@@ -16,6 +16,7 @@ c4633791b8c040d3d2abb5b6e5cd32396ceb7a26 assets/starcatcher/models/item/black_ee
 d5f52c7bc654df726cae2ad03206008b0855623a assets/starcatcher/models/item/bluegigi.json
 f6622b9583e175a1425975e29509e36f596ff8ec assets/starcatcher/models/item/blue_crystal_fin.json
 926dadaf41532fc411cf6b10ff1d98dcb3b5bb4b assets/starcatcher/models/item/blue_herring.json
+6e755ba596e382f3e1981e5ce35f0f7439b10fa2 assets/starcatcher/models/item/blue_ice_pike.json
 ff350c277dd34a5e1f58bef63243dfdc703f052c assets/starcatcher/models/item/bobber.json
 b7b85b2939e82bcc1575802e9fb00d4ae6e1e528 assets/starcatcher/models/item/boner_skin_smithing_template.json
 6179f2da9065b9f2b4e738da036f2865bc7137f4 assets/starcatcher/models/item/boot.json
@@ -140,6 +141,7 @@ d4f78be947fa0653ab211626b347a668a5c740e9 assets/starcatcher/models/item/mossy_ho
 532c47348452ae5450777653c35b99b69a455ac7 assets/starcatcher/models/item/murkwater_bait.json
 1e5dfe0c5ce1ea6b478211bb48a89ef1ad327041 assets/starcatcher/models/item/naturalist_skin_smithing_template.json
 6c786cdd13b970b7d2ec5cb4f45dbe98972c1d66 assets/starcatcher/models/item/nebula_squid.json
+7675262333753aafb54ebda4bd8c992c21a940bf assets/starcatcher/models/item/oasis_sturgeon.json
 47f8b6d0e08479358c93b2b2fb5740f1eeb1d932 assets/starcatcher/models/item/obidontiee.json
 3dd99d16d54d03ec0000cc535d815ec7dc373869 assets/starcatcher/models/item/obsidian_crab.json
 a7f1f64d2fa0d02b33ca86786c89635b32586b84 assets/starcatcher/models/item/obsidian_eel.json
@@ -173,6 +175,7 @@ a96c0d50e137e9a61e0785e7e7436f054e513b3b assets/starcatcher/models/item/sculk_ba
 1d8f62486d4ade7697dd259e7eea2956f4ade753 assets/starcatcher/models/item/sea_bass.json
 2cf1a48036f6089eaf10bfb648c802ff4470b4a0 assets/starcatcher/models/item/seeking_worm.json
 684fcbf65e58f0269bae19af7eb216d245f46d62 assets/starcatcher/models/item/settings.json
+fbafd0e206a3af7e9799f7f5cccc7a452678ea3b assets/starcatcher/models/item/shark.json
 e69a29a668dc771e2c00eb05c2437176c7b0f90f assets/starcatcher/models/item/sharktooth_skin_smithing_template.json
 f0fd4696bb77c46600fcd8b72e54bdda3fddef98 assets/starcatcher/models/item/shiny_hook.json
 81456b1f9eb5728e0607552f79a87045108cb312 assets/starcatcher/models/item/shroomfish.json

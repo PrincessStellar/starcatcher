@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
@@ -56,24 +50,16 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_swamp"
-      ]
+      "biomes": [
+        "#starcatcher:is_swamp"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:murkwater_bait": 50
-      }
     },
     {
       "type": "starcatcher:fluid",

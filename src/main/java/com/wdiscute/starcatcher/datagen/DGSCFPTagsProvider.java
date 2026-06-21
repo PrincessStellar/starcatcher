@@ -25,20 +25,22 @@ public class DGSCFPTagsProvider extends TagsProvider<FishProperties>
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        DGSCFishProperties.PROPERTIES.forEach((k, v) ->
-        {
-            FishProperties fp = v;
-            ResourceLocation location = k.location();
-            if(fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
-            {
-                if(fp.rarity().equals(Rarity.TRASH)) tag(SCTags.TRASH_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(Rarity.COMMON)) tag(SCTags.COMMON_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(Rarity.UNCOMMON)) tag(SCTags.UNCOMMON_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(Rarity.RARE)) tag(SCTags.RARE_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(Rarity.EPIC)) tag(SCTags.EPIC_ENTRIES_FP).addOptional(location);
-                if(fp.rarity().equals(Rarity.LEGENDARY)) tag(SCTags.LEGENDARY_ENTRIES_FP).addOptional(location);
-            }
-        });
+        //todo check how to do tags, hopefully provider will have the fish registry entries already at this point
+        if(true) System.out.println("sadaw");
+//        DGSCFishProperties.PROPERTIES.forEach((k, v) ->
+//        {
+//            FishProperties fp = v;
+//            ResourceLocation location = k.location();
+//            if(fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+//            {
+//                if(fp.rarity().equals(Rarity.TRASH)) tag(SCTags.TRASH_ENTRIES_FP).addOptional(location);
+//                if(fp.rarity().equals(Rarity.COMMON)) tag(SCTags.COMMON_ENTRIES_FP).addOptional(location);
+//                if(fp.rarity().equals(Rarity.UNCOMMON)) tag(SCTags.UNCOMMON_ENTRIES_FP).addOptional(location);
+//                if(fp.rarity().equals(Rarity.RARE)) tag(SCTags.RARE_ENTRIES_FP).addOptional(location);
+//                if(fp.rarity().equals(Rarity.EPIC)) tag(SCTags.EPIC_ENTRIES_FP).addOptional(location);
+//                if(fp.rarity().equals(Rarity.LEGENDARY)) tag(SCTags.LEGENDARY_ENTRIES_FP).addOptional(location);
+//            }
+//        });
 
 
     }

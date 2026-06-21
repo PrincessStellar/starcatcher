@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
@@ -78,30 +72,6 @@
   "has_guide_entry": true,
   "rarity": "epic",
   "restrictions": [
-    {
-      "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
-      ]
-    },
-    {
-      "type": "starcatcher:biome",
-      "biomes": [
-        "minecraft:lush_caves"
-      ],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "minecraft:is_jungle"
-      ],
-      "translation_override": "tag.starcatcher.lush_and_jungle"
-    },
-    {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 50,
-      "min_y": -2147483648,
-      "translation_override": "gui.guide.elevation.underground"
-    },
     {
       "type": "starcatcher:fluid",
       "fluids": [

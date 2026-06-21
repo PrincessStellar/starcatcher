@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:sunny_sturgeon",
+      "required": false
+    },
+    {
       "id": "starcatcher:twilight_koi",
       "required": false
     },
@@ -29,11 +33,43 @@
       "required": false
     },
     {
+      "id": "starcatcher:sun_seeking_carp",
+      "required": false
+    },
+    {
       "id": "starcatcher:thunder_bass",
       "required": false
     },
     {
       "id": "starcatcher:lightning_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_trout",
+      "required": false
+    },
+    {
+      "id": "starcatcher:wintery_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_ice_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mirage_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:agave_bream",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cactifish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:oasis_sturgeon",
       "required": false
     },
     {
@@ -50,34 +86,6 @@
     },
     {
       "id": "starcatcher:pinfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_trout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:wintery_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:mirage_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cactifish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:agave_bream",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sunny_sturgeon",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sun_seeking_carp",
       "required": false
     },
     {
@@ -166,6 +174,10 @@
     },
     {
       "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
+      "id": "starcatcher:shark",
       "required": false
     },
     {

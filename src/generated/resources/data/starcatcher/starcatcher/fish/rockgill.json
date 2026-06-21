@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -14,7 +8,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 150,
     "missPenalty": 20,
     "modifiers": [],
     "speed": 10,
@@ -53,23 +47,21 @@
     {
       "type": "starcatcher:biome",
       "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [
-        "starcatcher:is_ocean",
-        "starcatcher:is_river",
-        "starcatcher:is_mushroom_fields",
-        "starcatcher:is_cold_lake",
-        "starcatcher:is_warm_lake"
+      "blacklist": [
+        "#starcatcher:is_ocean",
+        "#starcatcher:is_river",
+        "#starcatcher:is_mushroom_fields",
+        "#starcatcher:is_cold_lake",
+        "#starcatcher:is_warm_lake"
       ],
-      "biomes_tags": [],
       "hover_translation": "gui.guide.lakes.hover",
       "translation_override": "gui.guide.lakes"
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
-      "min_y": 100,
-      "translation_override": "gui.guide.elevation.mountains"
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
     },
     {
       "type": "starcatcher:fluid",

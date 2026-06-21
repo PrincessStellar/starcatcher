@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -16,12 +10,7 @@
     "decay": 1.0,
     "hp": 300,
     "missPenalty": 30,
-    "modifiers": [
-      {
-        "type": "starcatcher:deep_dark",
-        "translation_override": ""
-      }
-    ],
+    "modifiers": [],
     "speed": 13,
     "sweetspots": [
       {
@@ -48,23 +37,15 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "minecraft:deep_dark"
+        "#minecraft:deep_dark"
       ],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": []
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 50,
+      "max_y": 0,
       "min_y": -2147483648,
-      "translation_override": "gui.guide.elevation.underground"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:sculk_bait": 50
-      }
+      "translation_override": "gui.guide.elevation.deepslate"
     },
     {
       "type": "starcatcher:fluid",
@@ -81,5 +62,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/deep_dark.png"
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

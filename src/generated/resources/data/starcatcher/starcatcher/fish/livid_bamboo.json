@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -15,7 +9,7 @@
   "difficulty": {
     "decay": 1.0,
     "hp": 200,
-    "missPenalty": 10,
+    "missPenalty": 20,
     "modifiers": [],
     "speed": 11,
     "sweetspots": [
@@ -53,15 +47,13 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "minecraft:bamboo_jungle"
+        "#minecraft:bamboo_jungle"
       ],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": []
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 100,
+      "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
     },

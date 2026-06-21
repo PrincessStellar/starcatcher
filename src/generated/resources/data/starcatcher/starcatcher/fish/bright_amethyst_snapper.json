@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 2,
   "catch_info": {
     "item": {
@@ -15,7 +9,7 @@
   "difficulty": {
     "decay": 1.0,
     "hp": 100,
-    "missPenalty": 10,
+    "missPenalty": 20,
     "modifiers": [],
     "speed": 11,
     "sweetspots": [
@@ -71,5 +65,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/cave.png"
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

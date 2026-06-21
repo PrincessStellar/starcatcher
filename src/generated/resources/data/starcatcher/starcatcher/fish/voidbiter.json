@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -71,12 +65,6 @@
       "baits": {
         "starcatcher:legendary_bait": 50
       }
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:empty"
-      ]
     }
   ],
   "size_and_weight": {

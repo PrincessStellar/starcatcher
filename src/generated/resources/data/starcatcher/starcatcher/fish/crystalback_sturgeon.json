@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -59,18 +53,22 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_cold_lake"
-      ]
+      "biomes": [
+        "#starcatcher:is_cold_lake"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
-      "min_y": 100,
-      "translation_override": "gui.guide.elevation.mountains"
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:elevation_bias",
+      "best_y": 100,
+      "extra_chance_at_best": 20,
+      "range": 50
     },
     {
       "type": "starcatcher:fluid",
@@ -87,5 +85,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/icy.png"
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }

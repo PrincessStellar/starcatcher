@@ -1,16 +1,18 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.U;
+import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
+import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
-
-import java.util.List;
+import net.minecraft.data.worldgen.BootstrapContext;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
+import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
 
 public class DGUnusualFishFishes
 {
-    public static void bootstrap()
+    public static void bootstrap(BootstrapContext<FishProperties> context)
     {
 
         //
@@ -27,468 +29,238 @@ public class DGUnusualFishFishes
         //
 
         //ocean
-        register(fish(new MaybeStack("unusualfishmod", "wizard_jelly_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "wizard_jelly_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "wizard_jelly"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
-                .withRarity(Rarity.EPIC)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                .withDifficulty(Difficulty.HARD)
-                .withBaseChance(2)
+//       Currently entity only, will possibly be itemized in the future
+        FishRegistration.register(context,
+                PresetRestrictions.allOceans(context)
+                        .withFish("unusualfishmod", "wizard_jelly_bucket")
+                        .withBucketedFish("unusualfishmod", "wizard_jelly_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "wizard_jelly"))
+                        .withAlwaysSpawnEntity()
+                        .withRarity(Rarity.EPIC)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withDifficulty(Difficulty.HARD)
+                        .withBaseChance(2)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "raw_aero_mono"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "aero_mono_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "aero_mono"))
-                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
-                .withRarity(Rarity.COMMON)
-                .withDifficulty(Difficulty.EASY)
+        FishRegistration.register(context,
+                PresetRestrictions.allOceans(context)
+                        .withFish("unusualfishmod", "raw_aero_mono")
+                        .withBucketedFish("unusualfishmod", "aero_mono_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "aero_mono"))
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "raw_beaked_herring"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "beaked_herring_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "beaked_herring"))
-                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.EASY_MOVING)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "brick_snail_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "brick_snail_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "brick_snail"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
-                .withRarity(Rarity.RARE)
-                .withWeather(WeatherRestriction.RAIN)
-                .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                .withBaseChance(10)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "celestial_fish_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "celestial"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_OCEAN)
-                .withRarity(Rarity.LEGENDARY)
-                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                .withWeather(WeatherRestriction.CLEAR)
-                .withDifficulty(Difficulty.TWO_AQUA)
-                .withBaseChance(30)
+        FishRegistration.register(context,
+                PresetRestrictions.allOceans(context)
+                        .withFish("unusualfishmod", "raw_beaked_herring")
+                        .withBucketedFish("unusualfishmod", "beaked_herring_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "beaked_herring"))
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.EASY_MOVING)
         );
 
         //deep oceans
-        register(fish(new MaybeStack("unusualfishmod", "tribble_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "tribble"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_DEEP_OCEAN)
-                .withDifficulty(Difficulty.MEDIUM)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(helper("demon_herring")
-                .addRestriction(WorldRestrictions.OVERWORLD_DEEP_OCEAN)
-                .withRarity(Rarity.COMMON)
-                .withDifficulty(Difficulty.MEDIUM)
-                .withDaytimeRestriction(DaytimeRestriction.DAY)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "sea_spider_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "sea_spider"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_DEEP_OCEAN)
-                .withRarity(Rarity.COMMON)
-                .withDifficulty(Difficulty.EASY_VANISHING)
+        FishRegistration.register(context,
+                PresetRestrictions.deepOcean(context)
+                        .withFish("unusualfishmod", "demon_herring")
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
         );
 
         //cold oceans
-        register(fish(new MaybeStack("unusualfishmod", "volt_angler_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "volt_angler"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN)
-                .withRarity(Rarity.RARE)
-                .withWeather(WeatherRestriction.RAIN)
-                .withDifficulty(Difficulty.HARD)
-        );
+//       Currently entity only, will possibly be itemized in the future
+//                FishRegistration.register(
+//        context,
+//                PresetRestrictions.fish("unusualfishmod", "volt_angler_bucket"))
+//                .withEntityToSpawn(U.holderEntity("unusualfishmod", "volt_angler"))
+//                .withAlwaysSpawnEntity()
+//                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_OCEAN)
+//                .withRarity(FishProperties.Rarity.RARE)
+//                .withWeather(WeatherRestriction.RAIN)
+//                .withDifficulty(FishProperties.Difficulty.HARD)
+//        );
 
-        register(fish(new MaybeStack("unusualfishmod", "blizzardfin_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "blizzardfin"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN)
-                .withRarity(Rarity.UNCOMMON)
-                .withDaytimeRestriction(DaytimeRestriction.DAY)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "raw_snowflake"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "snowflake_tail_fish_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "snowflaketail"))
-                .addRestriction(WorldRestrictions.OVERWORLD_COLD_OCEAN)
-                .withRarity(Rarity.EPIC)
-                .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+        FishRegistration.register(context,
+                PresetRestrictions.coldOcean(context)
+                        .withFish("unusualfishmod", "raw_frosty_fin")
+                        .withBucketedFish("unusualfishmod", "frosty_fin_fish_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "frostyfin"))
+                        .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
         );
 
         //lukewarm oceans
-        register(fish(new MaybeStack("unusualfishmod", "trumpet_squid_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "trumpet_squid_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "trumpet_squid"))
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.MEDIUM)
-                .withRarity(Rarity.UNCOMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "circus_fish")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "circus"))
+                        .withRarity(Rarity.RARE)
+                        .withWeather(WeatherRestriction.CLEAR)
+                        .withDifficulty(Difficulty.HEAVY_FIVE_NORMAL)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "squoddle_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "squoddle_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "squoddle"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.MEDIUM_MOVING)
-                .withRarity(Rarity.COMMON)
+
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "raw_copperflame_anthias")
+                        .withBucketedFish("unusualfishmod", "copperflame_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "copperflame"))
+                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withRarity(Rarity.COMMON)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "spoon_shark_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "spoon_shark"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.MEDIUM_MOVING)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "forkfish")
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY_MOVING)
         );
 
-        register(helper("circus")
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withRarity(Rarity.RARE)
-                .withWeather(WeatherRestriction.CLEAR)
-                .withDifficulty(Difficulty.HEAVY_FIVE_NORMAL)
-                .withDaytimeRestriction(DaytimeRestriction.DAY)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "sea_pancake_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "sea_pancake"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "raw_copperflame_anthias"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "copperflame_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "copperflame"))
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .withRarity(Rarity.COMMON)
-        );
-
-        register(helper("forkfish")
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withRarity(Rarity.COMMON)
-                .withDifficulty(Difficulty.EASY_MOVING)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "picklefish_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "picklefish_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "picklefish"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_MOVING)
-                .withRarity(Rarity.COMMON)
-                .withDaytimeRestriction(DaytimeRestriction.DAY)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "porcupine_lobsta_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "porcupine_lobsta_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "porcupine_lobsta"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_LUKEWARM_OCEAN)
-                .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                .withRarity(Rarity.UNCOMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "raw_picklefish")
+                        .withBucketedFish("unusualfishmod", "picklefish_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "picklefish"))
+                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withRarity(Rarity.COMMON)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY)
         );
 
         //warm ocean
-        register(fish(new MaybeStack("unusualfishmod", "tiger_puffer_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "tiger_puffer_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "tiger_puffer"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withRarity(Rarity.RARE)
-                .withDifficulty(Difficulty.FOUR_THIN_VANISHING)
-                .withBaseChance(2)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "amber_goby")
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY_MOVING)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "zebra_cornetfish_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "zebra_cornetfish"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.FOUR_THIN_MOVING)
-                .withRarity(Rarity.EPIC)
-                .withWeather(WeatherRestriction.RAIN)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                .withBaseChance(20)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "raw_sneep_snorp")
+                        .withBucketedFish("unusualfishmod", "sneepsnorp_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "sneep_snorp"))
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.EASY_MOVING)
         );
 
-        register(helper("amber_goby")
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withRarity(Rarity.COMMON)
-                .withDifficulty(Difficulty.EASY_MOVING)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context).withFish("unusualfishmod", "duality_damselfish")
+                        .withDifficulty(Difficulty.EASY_FAST_FISH)
+                        .withRarity(Rarity.UNCOMMON)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "raw_sneep_snorp"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "sneepsnorp_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "sneep_snorp"))
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.EASY_MOVING)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "sea_mosquito_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "sea_mosquito_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "sea_mosquito"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.MEDIUM_MOVING)
-                .withRarity(Rarity.COMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "clownthorn_shark_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "clownthorn_shark_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "clownthorn_shark"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "coral_skrimp_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "coral_skrimp_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "coral_skrimp"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .withRarity(Rarity.COMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "crimsonshell_squid_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "crimsonshell_squid_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "crimsonshell"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.THREE_BIG_TWO_THIN_VANISHING)
-                .withRarity(Rarity.RARE)
-                .withWeather(WeatherRestriction.RAIN)
-        );
-
-        register(helper("duality_damselfish")
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withDifficulty(Difficulty.EASY_FAST_FISH)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(helper("spindlefish")
-                .addRestriction(WorldRestrictions.OVERWORLD_WARM_OCEAN)
-                .withWeather(WeatherRestriction.THUNDER)
-                .withDifficulty(Difficulty.SINGLE_AQUA)
-                .withBaseChance(30)
-                .withRarity(Rarity.LEGENDARY)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "spindlefish")
+                        .withWeather(WeatherRestriction.THUNDER)
+                        .withDifficulty(Difficulty.SINGLE_AQUA)
+                        .withBaseChance(30)
+                        .withRarity(Rarity.LEGENDARY)
         );
 
 
         //river
-        register(helper("triple_twirl_pleco")
-                .addRestriction(WorldRestrictions.OVERWORLD_RIVER)
-                .withRarity(Rarity.COMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.warmOcean(context)
+                        .withFish("unusualfishmod", "triple_twirl_pleco")
+                        .withRarity(Rarity.COMMON)
         );
 
-        register(helperOnlyBucket("blackcap_snail")
-                .addRestriction(WorldRestrictions.OVERWORLD_RIVER)
-                .withRarity(Rarity.RARE)
-                .withDifficulty(Difficulty.HARD_MOVING)
-                .withBaseChance(1)
-        );
-
-        register(helperOnlyBucket("ripper")
-                .addRestriction(WorldRestrictions.OVERWORLD_RIVER)
-                .withDifficulty(Difficulty.MEDIUM_MOVING)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "pinkfin_idol_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "pinkfin_idol_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "pinkfin"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_COLD_RIVER)
-                .withDifficulty(Difficulty.EASY_MOVING)
-                .withRarity(Rarity.UNCOMMON)
-                .withDaytimeRestriction(DaytimeRestriction.DAY)
-        );
+//       Currently entity only, will possibly be itemized in the future
+//                FishRegistration.register(
+//        context,
+//                PresetRestrictions.fish("unusualfishmod", "pinkfin_idol_bucket"))
+//                .withBucketedFish("unusualfishmod", "pinkfin_idol_bucket"))
+//                .withEntityToSpawn(U.holderEntity("unusualfishmod", "pinkfin"))
+//                .withAlwaysSpawnEntity()
+//                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_COLD_RIVER)
+//                .withDifficulty(FishProperties.Difficulty.EASY_MOVING)
+//                .withRarity(FishProperties.Rarity.UNCOMMON)
+//                .withDaytimeRestriction(DaytimeRestriction.DAY)
+//        );
 
 
         //swamp(s)
-        register(helper("bark_angelfish")
-                .addRestriction(WorldRestrictions.OVERWORLD_SWAMP_ONLY)
-                .withRarity(Rarity.COMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.swamp(context)
+                        .withFish("unusualfishmod", "bark_angelfish")
+                        .withRarity(Rarity.COMMON)
         );
 
-        register(fish(new MaybeStack("unusualfishmod", "roughback_guitarfish_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "roughback_guitarfish_spawn_egg"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_SWAMP_ONLY)
-                .withDifficulty(Difficulty.HARD_MOVING)
-                .withRarity(Rarity.RARE)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                .withBaseChance(7)
+//       Currently entity only, will possibly be itemized in the future
+//                FishRegistration.register(
+//        context,
+//                PresetRestrictions.helperOnlyBucket("stout_bichir")
+//                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
+//                .withRarity(FishProperties.Rarity.COMMON)
+//        );
+
+        FishRegistration.register(context,
+                PresetRestrictions.swamp(context)
+                        .withFish("unusualfishmod", "drooping_gourami")
+                        .withDifficulty(Difficulty.MEDIUM)
+                        .withRarity(Rarity.UNCOMMON)
         );
 
-        register(helperOnlyBucket("stout_bichir")
-                .addRestriction(WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
-                .withRarity(Rarity.COMMON)
-        );
+//       Currently entity only, will possibly be itemized in the future
+//                FishRegistration.register(
+//        context,
+//                PresetRestrictions.fish("unusualfishmod", "lobed_skipper_bucket"))
+//                .withBucketedFish("unusualfishmod", "lobed_skipper_bucket"))
+//                .withEntityToSpawn(U.holderEntity("unusualfishmod", "skipper"))
+//                .withAlwaysSpawnEntity()
+//                .addRestrictions(FishProperties.WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
+//                .withDifficulty(FishProperties.Difficulty.SINGLE_BIG_FAST_MOVING)
+//                .withRarity(FishProperties.Rarity.EPIC)
+//                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
+//                .withBaseChance(15)
+//        );
 
-        register(helper("drooping_gourami")
-                .addRestriction(WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
-                .withDifficulty(Difficulty.MEDIUM)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "lobed_skipper_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "lobed_skipper_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "skipper"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
-                .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING)
-                .withRarity(Rarity.EPIC)
-                .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                .withBaseChance(15)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "muddytop_snail_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "muddytop_snail_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "muddytop"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_MANGROVE_SWAMP)
-                .withDifficulty(Difficulty.MEDIUM_MOVING)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(helper("sailor_barb")
-                .addRestriction(WorldRestrictions.OVERWORLD_SWAMPS)
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .withRarity(Rarity.UNCOMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.swamp(context)
+                        .withFish("unusualfishmod", "sailor_barb")
+                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withRarity(Rarity.UNCOMMON)
         );
 
         //jungle
-        register(fish(new MaybeStack("unusualfishmod", "tiger_jungle_shark_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "jungleshark"))
-                .withAlwaysSpawnEntity()
-                .withDifficulty(Difficulty.EASY_VANISHING)
-                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE)
-                .withRarity(Rarity.COMMON)
-        );
-
-        register(helper("eyelash")
-                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(helperOnlyBucket("freshwater_mantis")
-                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE)
-                .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
-                .withRarity(Rarity.RARE)
-                .withBaseChance(1)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "gnasher_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "gnasher"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_JUNGLE)
-                .withDifficulty(Difficulty.SINGLE_THIN_FAST)
-                .withRarity(Rarity.LEGENDARY)
-                .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                .withWeather(WeatherRestriction.CLEAR)
-                .withBaseChance(1)
+        FishRegistration.register(context,
+                PresetRestrictions.jungle(context).withFish("unusualfishmod", "eyelash")
+                        .withBucketedFish("unusualfishmod", "eyelash_fish_bucket")
+                        .withRarity(Rarity.UNCOMMON)
         );
 
         //savanna
-        register(fish(new MaybeStack("unusualfishmod", "rhino_tetra_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "rhino_tetra"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_SAVANNA)
-                .withRarity(Rarity.UNCOMMON)
-        );
 
         //mushroom fields
-        register(fish(new MaybeStack("unusualfishmod", "kalappa_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "kalappa"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_MUSHROOM_FIELDS)
-                .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                .withRarity(Rarity.RARE)
-        );
-
 
         //underground
-        register(fish(new MaybeStack("unusualfishmod", "raw_blind_sailfin"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "blind_sailfin_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "blindsailfin"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(List.of(DimensionRestriction.OVERWORLD,
-                        new ElevationRestriction(Integer.MIN_VALUE, 30, "")))
-                .withDifficulty(Difficulty.HARD_VANISHING)
-                .withRarity(Rarity.RARE)
-                .withBaseChance(2)
+        FishRegistration.register(context,
+                PresetRestrictions.empty(context)
+                        .withFish("unusualfishmod", "raw_blind_sailfin")
+                        .withBucketedFish("unusualfishmod", "blind_sailfin_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "blindsailfin"))
+                        .withAlwaysSpawnEntity()
+                        .addRestrictions(
+                                DimensionRestriction.OVERWORLD,
+                                new ElevationRestriction(Integer.MIN_VALUE, 30, "")
+                        )
+                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withRarity(Rarity.RARE)
+                        .withBaseChance(2)
         );
 
-        register(helperOnlyBucket("deep_crawler")
-                .addRestriction(List.of(DimensionRestriction.OVERWORLD,
-                        new ElevationRestriction(Integer.MIN_VALUE, 20, "")))
-                .withRarity(Rarity.COMMON)
+        FishRegistration.register(context,
+                PresetRestrictions.deepslate(context).withFish("unusualfishmod", "raw_hatchetfish")
+                        .withBucketedFish("unusualfishmod", "hatchet_fish_bucket")
+                        .withEntityToSpawn(U.holderEntity("unusualfishmod", "hatchet_fish"))
+                        .withAlwaysSpawnEntity()
+                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withRarity(Rarity.UNCOMMON)
         );
-
-        register(fish(new MaybeStack("unusualfishmod", "raw_hatchetfish"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", "hatchet_fish_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "hatchet_fish"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_DEEPSLATE)
-                .withDifficulty(Difficulty.EASY_MOVING)
-                .withRarity(Rarity.UNCOMMON)
-        );
-
-        register(helperOnlyBucket("mossthorn")
-                .addRestriction(List.of(DimensionRestriction.OVERWORLD,
-                        BiomeRestriction.LUSH_CAVES,
-                        new ElevationRestriction(Integer.MIN_VALUE, 40, "")))
-                .withDifficulty(Difficulty.EASY_MOVING)
-                .withRarity(Rarity.COMMON)
-        );
-
-        register(fish(new MaybeStack("unusualfishmod", "prawn_spawn_egg"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", "prawn"))
-                .withAlwaysSpawnEntity()
-                .addRestriction(WorldRestrictions.OVERWORLD_DRIPSTONE_CAVES)
-                .withDifficulty(Difficulty.SINGLE_THIN_FAST)
-                .withRarity(Rarity.LEGENDARY)
-        );
-
-        register(helperOnlyBucket("shockcat")
-                .addRestriction(WorldRestrictions.OVERWORLD)
-                .withRarity(Rarity.UNCOMMON)
-                .withDifficulty(Difficulty.EASY_MOVING)
-        );
-    }
-
-    public static FishProperties helperOnlyBucket(String s)
-    {
-        return fish(new MaybeStack("unusualfishmod", s + "_bucket"))
-                .withBucketedFish(new MaybeStack("unusualfishmod", s + "_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", s))
-                .withAlwaysSpawnEntity()
-                .withSizeAndWeight(80, 40, 12000, 7000);
-    }
-
-    public static FishProperties helper(String s)
-    {
-        return fish(new MaybeStack("unusualfishmod", "raw_" + s))
-                .withBucketedFish(new MaybeStack("unusualfishmod", s + "_bucket"))
-                .withEntityToSpawn(U.holderEntity("unusualfishmod", s))
-                .withSizeAndWeight(80, 40, 12000, 7000);
     }
 }

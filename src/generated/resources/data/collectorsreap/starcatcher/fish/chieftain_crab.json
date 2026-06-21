@@ -1,0 +1,121 @@
+{
+  "base_chance": 5,
+  "catch_info": {
+    "always_spawn_entity": true,
+    "entity": "collectorsreap:chieftain_crab",
+    "fish_bucket": "collectorsreap:chieftain_crab_bucket",
+    "item": "collectorsreap:chieftain_crab",
+    "override_minigame_item": {
+      "count": 1,
+      "id": "starcatcher:unknown_fish"
+    }
+  },
+  "difficulty": {
+    "decay": 1.0,
+    "hp": 200,
+    "missPenalty": 10,
+    "modifiers": [],
+    "speed": 14,
+    "sweetspots": [
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 24,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 10,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_claw.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 24,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 10,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_claw.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -3324603,
+        "hitbox_size_in_pixels": 15,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 1,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/nether_crab_leg.png",
+        "vanishing_rate": 0.0
+      }
+    ]
+  },
+  "has_guide_entry": true,
+  "rarity": "uncommon",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ]
+    }
+  ],
+  "size_and_weight": {
+    "average_size_cm": 28.0,
+    "average_weight_grams": 260.0,
+    "deviation_size_cm": 8.0,
+    "deviation_weight_grams": 60.0,
+    "golden_chance": 0.02
+  },
+  "skips_minigame": false,
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
+}

@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 8,
   "catch_info": {
     "item": {
@@ -52,24 +46,16 @@
     },
     {
       "type": "starcatcher:biome",
-      "biomes": [],
-      "biomes_blacklist": [],
-      "biomes_blacklist_tags": [],
-      "biomes_tags": [
-        "starcatcher:is_cherry_grove"
-      ]
+      "biomes": [
+        "#starcatcher:is_cherry_grove"
+      ],
+      "blacklist": []
     },
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:cherry_bait": 50
-      }
     },
     {
       "type": "starcatcher:daytime_restriction",

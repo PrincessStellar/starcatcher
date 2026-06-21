@@ -24,7 +24,7 @@ public interface SCFishRestrictions
             registerFishRestriction("dimension", DimensionRestriction::new);
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> BIOME =
-            registerFishRestriction("biome", BiomeRestriction::new);
+            registerFishRestriction("biome", () -> new BiomeRestriction(List.of(), List.of(), "", ""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> BAIT =
             registerFishRestriction("bait", () -> new BaitRestriction(Map.of(), ""));

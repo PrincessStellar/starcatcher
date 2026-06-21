@@ -1,10 +1,4 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "starcatcher"
-    }
-  ],
   "base_chance": 5,
   "catch_info": {
     "item": {
@@ -15,13 +9,8 @@
   "difficulty": {
     "decay": 1.0,
     "hp": 350,
-    "missPenalty": 10,
-    "modifiers": [
-      {
-        "type": "starcatcher:teleport",
-        "translation_override": ""
-      }
-    ],
+    "missPenalty": 20,
+    "modifiers": [],
     "speed": 11,
     "sweetspots": [
       {
@@ -54,12 +43,6 @@
       "dimensions": [
         "minecraft:the_end"
       ]
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:empty"
-      ]
     }
   ],
   "size_and_weight": {
@@ -70,5 +53,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/end_void.png"
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
 }
