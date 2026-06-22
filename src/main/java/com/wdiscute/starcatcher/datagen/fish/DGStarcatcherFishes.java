@@ -6,12 +6,13 @@ import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class DGStarcatcherFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         //
         //,--.          ,--.

@@ -8,13 +8,14 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
 
 public class DGTideFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         //
         //  ,--.   ,--.    ,--.
@@ -34,7 +35,8 @@ public class DGTideFishes
                         .withSizeAndWeight(27, 11, 500, 352)
                         .withDifficulty(Difficulty.EASY_MOVING)
                         .withRarity(Rarity.COMMON)
-                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY),
+                "tide"
         );
 
         FishRegistration.register(
@@ -45,7 +47,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "rainbow_trout"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -56,7 +59,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "largemouth_bass"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -67,7 +71,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "brook_trout"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -78,7 +83,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "white_crappie"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
                         .withDifficulty(Difficulty.EASY_VANISHING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -89,7 +95,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "black_crappie"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
                         .withDifficulty(Difficulty.EASY_VANISHING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
 
@@ -102,7 +109,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
 
@@ -114,7 +122,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "bluegill"))
                         .withSizeAndWeight(20, 5, 400, 100)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
 
@@ -126,7 +135,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "guppy"))
                         .withSizeAndWeight(20, 5, 400, 100)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
 
@@ -139,7 +149,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT),
+                "tide"
         );
 
 
@@ -152,7 +163,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT),
+                "tide"
         );
 
 
@@ -164,7 +176,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "blossom_bass"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.TWO_AQUA_ONE_THIN)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -176,7 +189,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "arapaima"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.SINGLE_AQUA)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -189,7 +203,8 @@ public class DGTideFishes
                         .withSizeAndWeight(100, 50, 10000, 3000)
                         .withDifficulty(Difficulty.SINGLE_AQUA)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -200,7 +215,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "frostbite_flounder"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.HARD_MOVING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -212,7 +228,8 @@ public class DGTideFishes
                         .withSizeAndWeight(400, 120, 16000, 11000)
                         .withDifficulty(Difficulty.TWO_AQUA_ONE_THIN)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -224,7 +241,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "sturgeon"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.TWO_THIN_NO_DECAY)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -236,7 +254,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "slimy_salmon"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.TWO_THIN)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -249,7 +268,8 @@ public class DGTideFishes
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.SINGLE_THIN_FAST)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -262,7 +282,8 @@ public class DGTideFishes
                         .withSizeAndWeight(400, 120, 16000, 11000)
                         .withDifficulty(Difficulty.SINGLE_THIN_FAST)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -275,7 +296,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "mackerel"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.EASY)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -286,7 +308,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "tuna"))
                         .withSizeAndWeight(150, 50, 120000, 60000)
                         .withDifficulty(Difficulty.EASY)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -297,7 +320,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "red_snapper"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -308,7 +332,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "snook"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -319,7 +344,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "anchovy"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -330,7 +356,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "flounder"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -341,7 +368,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "angelfish"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.EASY_FAST_FISH)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -352,7 +380,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "spore_stalker"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.HARD_MOVING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -363,7 +392,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "mahi_mahi"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.FOUR_BIG_VANISHING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -374,7 +404,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "sailfish"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.FOUR_THIN)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -385,7 +416,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "swordfish"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.TWO_THIN_NO_DECAY)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -396,7 +428,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "manta_ray"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.TWO_THIN_NO_DECAY)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -410,7 +443,8 @@ public class DGTideFishes
                         .withSizeAndWeight(70, 50, 4000, 2000)
                         .withDifficulty(Difficulty.SINGLE_AQUA)
                         .withRarity(Rarity.EPIC)
-                        .withBaseChance(2)
+                        .withBaseChance(2),
+                "tide"
         );
 
 
@@ -423,7 +457,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.SINGLE_AQUA)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -436,7 +471,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.TWO_AQUA)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -448,7 +484,8 @@ public class DGTideFishes
                         .withSizeAndWeight(10, 3, 40, 10)
                         .withDifficulty(Difficulty.TWO_THIN)
                         .withDaytimeRestriction(DaytimeRestriction.NOON)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -461,7 +498,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.TWO_THIN)
                         .withDaytimeRestriction(DaytimeRestriction.NOON)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -474,7 +512,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.TWO_THIN)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -487,7 +526,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.TWO_THIN)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -499,7 +539,8 @@ public class DGTideFishes
                         .withSizeAndWeight(400, 120, 16000, 11000)
                         .withDifficulty(Difficulty.HARD)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -513,7 +554,8 @@ public class DGTideFishes
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
                         .withBaseChance(1)
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -527,7 +569,8 @@ public class DGTideFishes
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withWeather(WeatherRestriction.RAIN)
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
-                        .withRarity(Rarity.LEGENDARY)
+                        .withRarity(Rarity.LEGENDARY),
+                "tide"
         );
 
 
@@ -540,7 +583,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "cave_eel"))
                         .withSizeAndWeight(500, 150, 10000, 2000)
                         .withDifficulty(Difficulty.EASY)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -551,7 +595,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "deep_grouper"))
                         .withSizeAndWeight(50, 15, 1000, 200)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -562,7 +607,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "cave_crawler"))
                         .withSizeAndWeight(50, 15, 1000, 200)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -573,7 +619,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "shadow_snapper"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -584,7 +631,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "glowfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -595,7 +643,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "anglerfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -606,7 +655,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "abyss_angler"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -617,7 +667,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "iron_tetra"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.EIGHT_STONE_SPOTS)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -628,7 +679,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "dripstone_darter"))
                         .withSizeAndWeight(6, 2, 7, 6)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -639,7 +691,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "lapis_lanternfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -650,7 +703,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "crystal_shrimp"))
                         .withSizeAndWeight(10, 3, 20, 10)
                         .withDifficulty(Difficulty.EASY_FAST_FISH)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -661,7 +715,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "crystalline_carp"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.TWO_AQUA)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -672,7 +727,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "crystalline_carp"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -683,7 +739,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "gilded_minnow"))
                         .withSizeAndWeight(6, 4, 5, 3)
                         .withDifficulty(Difficulty.FOUR_THIN)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -694,7 +751,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "bedrock_tetra"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_STONE_SPOTS)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -706,7 +764,8 @@ public class DGTideFishes
                         .withSizeAndWeight(40, 12, 1600, 1100)
                         .withDifficulty(Difficulty.FOUR_BIG_MOVING)
                         .withBaseChance(2)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -717,7 +776,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "echo_snapper"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_BIG_MOVING)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -728,7 +788,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "chasm_eel"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.TWO_THIN)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
         FishRegistration.register(
@@ -741,7 +802,8 @@ public class DGTideFishes
                         .withRarity(Rarity.LEGENDARY)
                         .withDifficulty(Difficulty.SINGLE_THIN_FAST)
                         .withBaseChance(1)
-                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
+                        .addRestrictions(BaitRestriction.LEGENDARY_BAIT),
+                "tide"
         );
 
         FishRegistration.register(
@@ -756,7 +818,8 @@ public class DGTideFishes
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
                         .addRestrictions(DimensionRestriction.OVERWORLD,
                                 new ElevationRestriction(20, 30, "")
-                        )
+                        ),
+                "tide"
         );
 
 
@@ -769,7 +832,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "magma_mackerel"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -780,7 +844,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "ember_koi"))
                         .withSizeAndWeight(60, 13, 3500, 731)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -791,7 +856,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "ash_perch"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -802,7 +868,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "obsidian_pike"))
                         .withSizeAndWeight(75, 20, 5000, 3000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -813,7 +880,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "volcano_tuna"))
                         .withSizeAndWeight(150, 50, 120000, 60000)
                         .withDifficulty(Difficulty.MEDIUM_MOVING)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "tide"
         );
 
         FishRegistration.register(
@@ -824,7 +892,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "crimson_fangjaw"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -835,7 +904,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "warped_guppy"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD_VANISHING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
 
@@ -847,7 +917,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "soulscale"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD_VANISHING)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -858,7 +929,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "witherfin"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -869,7 +941,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "inferno_guppy"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD)
-                        .withRarity(Rarity.RARE)
+                        .withRarity(Rarity.RARE),
+                "tide"
         );
 
         FishRegistration.register(
@@ -880,7 +953,8 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "blazing_swordfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "tide"
         );
 
 
@@ -894,7 +968,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.TWO_STONE_SPOTS_EASY)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -906,7 +981,8 @@ public class DGTideFishes
                         .withSizeAndWeight(300, 150, 26000, 7000)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -918,7 +994,8 @@ public class DGTideFishes
                         .withSizeAndWeight(300, 150, 16000, 7000)
                         .withDifficulty(Difficulty.TWO_AQUA)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -930,7 +1007,8 @@ public class DGTideFishes
                         .withSizeAndWeight(6, 4, 5, 3)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -942,7 +1020,8 @@ public class DGTideFishes
                         .withSizeAndWeight(300, 150, 26000, 7000)
                         .withDifficulty(Difficulty.TWO_STONE_SPOTS_EASY)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -954,7 +1033,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.MEDIUM)
                         .withRarity(Rarity.COMMON)
-                        .withBaseChance(20)
+                        .withBaseChance(20),
+                "tide"
         );
 
         FishRegistration.register(
@@ -966,7 +1046,8 @@ public class DGTideFishes
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -978,7 +1059,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -990,7 +1072,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.HARD_MOVING)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1002,7 +1085,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1014,7 +1098,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.MEDIUM_VANISHING)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1026,7 +1111,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.TWO_AQUA)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1038,7 +1124,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDifficulty(Difficulty.FOUR_BIG_VANISHING)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1050,7 +1137,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_THIN)
                         .withRarity(Rarity.UNCOMMON)
-                        .withBaseChance(15)
+                        .withBaseChance(15),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1062,7 +1150,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_THIN)
                         .withRarity(Rarity.RARE)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1074,7 +1163,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_THIN_MOVING)
                         .withRarity(Rarity.RARE)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1086,7 +1176,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.THREE_BIG_TWO_THIN_VANISHING)
                         .withRarity(Rarity.RARE)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1098,7 +1189,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.FOUR_THIN_VANISHING)
                         .withRarity(Rarity.RARE)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1110,7 +1202,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.SINGLE_BIG_FAST)
                         .withRarity(Rarity.RARE)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1122,7 +1215,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.SINGLE_BIG_FAST_VANISHING)
                         .withRarity(Rarity.EPIC)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1134,7 +1228,8 @@ public class DGTideFishes
                         .withSizeAndWeight(40, 20, 1300, 700)
                         .withDifficulty(Difficulty.TWO_AQUA_ONE_THIN)
                         .withRarity(Rarity.EPIC)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1146,7 +1241,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.HEAVY_EIGHT_AQUA)
                         .withRarity(Rarity.EPIC)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1158,7 +1254,8 @@ public class DGTideFishes
                         .withSizeAndWeight(60, 20, 7000, 2000)
                         .withDifficulty(Difficulty.TWO_AQUA_ONE_THIN)
                         .withRarity(Rarity.EPIC)
-                        .withBaseChance(10)
+                        .withBaseChance(10),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1171,7 +1268,8 @@ public class DGTideFishes
                         .withDifficulty(Difficulty.NON_STOP_ACTION_AQUA)
                         .withRarity(Rarity.LEGENDARY)
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
-                        .withBaseChance(3)
+                        .withBaseChance(3),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1184,7 +1282,8 @@ public class DGTideFishes
                         .withSkipsMinigame()
                         .withRarity(Rarity.LEGENDARY)
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
-                        .withBaseChance(3)
+                        .withBaseChance(3),
+                "tide"
         );
 
         FishRegistration.register(
@@ -1197,7 +1296,8 @@ public class DGTideFishes
                         .withDifficulty(Difficulty.WITHER)
                         .withRarity(Rarity.LEGENDARY)
                         .addRestrictions(BaitRestriction.LEGENDARY_BAIT)
-                        .withBaseChance(3)
+                        .withBaseChance(3),
+                "tide"
         );
 
     }

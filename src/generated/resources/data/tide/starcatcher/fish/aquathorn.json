@@ -1,0 +1,71 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tide"
+    }
+  ],
+  "base_chance": 2,
+  "catch_info": {
+    "entity": "tide:aquathorn",
+    "fish_bucket": "tide:aquathorn_bucket",
+    "item": "tide:aquathorn"
+  },
+  "difficulty": {
+    "decay": 1.0,
+    "hp": 100,
+    "missPenalty": 5,
+    "modifiers": [],
+    "speed": 13,
+    "sweetspots": [
+      {
+        "color_as_int": -13076094,
+        "hitbox_size_in_pixels": 24,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 10,
+        "sweetspot_type": "starcatcher:aqua",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
+        "vanishing_rate": 0.0
+      }
+    ]
+  },
+  "has_guide_entry": true,
+  "rarity": "epic",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimensions": [
+        "minecraft:overworld"
+      ]
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [
+        "#starcatcher:is_cold_ocean"
+      ],
+      "blacklist": []
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    }
+  ],
+  "size_and_weight": {
+    "average_size_cm": 70.0,
+    "average_weight_grams": 4000.0,
+    "deviation_size_cm": 50.0,
+    "deviation_weight_grams": 2000.0,
+    "golden_chance": 0.02
+  },
+  "skips_minigame": false,
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
+}

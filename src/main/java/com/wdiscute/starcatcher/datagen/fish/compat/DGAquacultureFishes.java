@@ -9,13 +9,14 @@ import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
 
 public class DGAquacultureFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
 
         //
@@ -35,7 +36,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(30, 10, 1500, 500)
                         .withDifficulty(Difficulty.MEDIUM)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -43,7 +45,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "bluegill")
                         .withBucketedFish(new MaybeStack("aquaculture", "smallmouth_bass_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "smallmouth_bass"))
-                        .withSizeAndWeight(15, 3, 300, 200)
+                        .withSizeAndWeight(15, 3, 300, 200),
+                "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -53,7 +56,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "brown_trout"))
                         .withSizeAndWeight(45, 15, 3000, 2000)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                        .withWeather(WeatherRestriction.CLEAR)
+                        .withWeather(WeatherRestriction.CLEAR),
+                "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -64,7 +68,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(60, 20, 10000, 4000)
                         .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.RARE)
-                        .withWeather(WeatherRestriction.RAIN)
+                        .withWeather(WeatherRestriction.RAIN),
+                "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -75,7 +80,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(150, 40, 100000, 25000)
                         .withDifficulty(Difficulty.THIN_NO_DECAY_NOT_FORGIVING)
                         .withRarity(Rarity.EPIC)
-                        .withWeather(WeatherRestriction.RAIN)
+                        .withWeather(WeatherRestriction.RAIN),
+                "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -83,7 +89,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "gar")
                         .withBucketedFish(new MaybeStack("aquaculture", "gar_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "gar"))
-                        .withSizeAndWeight(160, 30, 160000, 20000)
+                        .withSizeAndWeight(160, 30, 160000, 20000),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -92,7 +99,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "minnow")
                         .withBucketedFish(new MaybeStack("aquaculture", "minnow_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "minnow"))
-                        .withSizeAndWeight(6, 4, 10, 4)
+                        .withSizeAndWeight(6, 4, 10, 4),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -103,7 +111,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "muskellunge"))
                         .withSizeAndWeight(100, 10, 7000, 3000)
                         .withRarity(Rarity.RARE)
-                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -112,7 +121,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "perch")
                         .withBucketedFish(new MaybeStack("aquaculture", "perch_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "perch"))
-                        .withSizeAndWeight(20, 5, 500, 200)
+                        .withSizeAndWeight(20, 5, 500, 200),
+                "aquaculture"
         );
 
         //arid
@@ -125,7 +135,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(170, 30, 150000, 20000)
                         .withRarity(Rarity.UNCOMMON)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withDaytimeRestriction(DaytimeRestriction.NIGHT)
+                        .withDaytimeRestriction(DaytimeRestriction.NIGHT),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -137,7 +148,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(40, 10, 4000, 300)
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withDifficulty(Difficulty.HARD)
+                        .withDifficulty(Difficulty.HARD),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -146,7 +158,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "capitaine")
                         .withBucketedFish(new MaybeStack("aquaculture", "capitaine_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "capitaine"))
-                        .withSizeAndWeight(130, 50, 12000, 3000)
+                        .withSizeAndWeight(130, 50, 12000, 3000),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -157,7 +170,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "synodontis"))
                         .withSizeAndWeight(35, 15, 1000, 300)
                         .withDifficulty(Difficulty.HARD_MOVING)
-                        .withRarity(Rarity.EPIC)
+                        .withRarity(Rarity.EPIC),
+                "aquaculture"
         );
 
         //arctic ocean
@@ -168,7 +182,8 @@ public class DGAquacultureFishes
                         .withBucketedFish(new MaybeStack("aquaculture", "atlantic_cod_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "atlantic_cod"))
                         .withSizeAndWeight(100, 50, 15000, 10000)
-                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -179,7 +194,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "blackfish"))
                         .withSizeAndWeight(50, 20, 5000, 3000)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.UNCOMMON),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -188,7 +204,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "pacific_halibut")
                         .withBucketedFish(new MaybeStack("aquaculture", "pacific_halibut_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "pacific_halibut"))
-                        .withSizeAndWeight(150, 50, 80000, 5000)
+                        .withSizeAndWeight(150, 50, 80000, 5000),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -199,7 +216,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "atlantic_halibut"))
                         .withSizeAndWeight(200, 80, 150000, 10000)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withWeather(WeatherRestriction.RAIN)
+                        .withWeather(WeatherRestriction.RAIN),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -211,7 +229,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(25, 5, 200, 100)
                         .withDifficulty(Difficulty.HARD_MOVING)
                         .withRarity(Rarity.RARE)
-                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -223,7 +242,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(50, 10, 2000, 1000)
                         .withRarity(Rarity.EPIC)
                         .withWeather(WeatherRestriction.THUNDER)
-                        .withDifficulty(Difficulty.HARD)
+                        .withDifficulty(Difficulty.HARD),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -232,7 +252,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "pollock")
                         .withBucketedFish(new MaybeStack("aquaculture", "pollock_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "pollock"))
-                        .withSizeAndWeight(70, 30, 5000, 4000)
+                        .withSizeAndWeight(70, 30, 5000, 4000),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -243,7 +264,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "rainbow_trout"))
                         .withSizeAndWeight(60, 20, 2000, 1500)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDaytimeRestriction(DaytimeRestriction.DAY)
+                        .withDaytimeRestriction(DaytimeRestriction.DAY),
+                "aquaculture"
         );
 
         //saltwater
@@ -256,7 +278,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(100, 70, 50000, 40000)
                         .withRarity(Rarity.UNCOMMON)
                         .withDifficulty(Difficulty.HARD)
-                        .withBaseChance(3)
+                        .withBaseChance(3),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -265,7 +288,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "red_grouper")
                         .withBucketedFish(new MaybeStack("aquaculture", "red_grouper_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "red_grouper"))
-                        .withSizeAndWeight(100, 50, 15000, 10000)
+                        .withSizeAndWeight(100, 50, 15000, 10000),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -274,7 +298,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "tuna")
                         .withBucketedFish(new MaybeStack("aquaculture", "tuna_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "tuna"))
-                        .withSizeAndWeight(200, 100, 200000, 150000)
+                        .withSizeAndWeight(200, 100, 200000, 150000),
+                "aquaculture"
         );
 
         //jungle
@@ -287,7 +312,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(250, 50, 50000, 150000)
                         .withRarity(Rarity.RARE)
                         .withDifficulty(Difficulty.HARD)
-                        .withWeather(WeatherRestriction.RAIN)
+                        .withWeather(WeatherRestriction.RAIN),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -296,7 +322,8 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "arrau_turtle")
                         .withEntityToSpawn(U.holderEntity("aquaculture", "arrau_turtle"))
                         .withSizeAndWeight(100, 30, 80000, 150000)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM),
+                "aquaculture"
         );
 
 
@@ -310,7 +337,8 @@ public class DGAquacultureFishes
                         .addBait(BaitRestriction.LEGENDARY_BAIT)
                         .withRarity(Rarity.LEGENDARY)
                         .withDifficulty(Difficulty.FOUR_BIG)
-                        .withDaytimeRestriction(DaytimeRestriction.NOON)
+                        .withDaytimeRestriction(DaytimeRestriction.NOON),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -321,7 +349,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "tambaqui"))
                         .withSizeAndWeight(100, 30, 150000, 10000)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM),
+                "aquaculture"
         );
 
         //swamp
@@ -333,7 +362,8 @@ public class DGAquacultureFishes
                         //no entity
                         .withSizeAndWeight(10, 5, 5, 3)
                         .withRarity(Rarity.RARE)
-                        .withDifficulty(Difficulty.HARD)
+                        .withDifficulty(Difficulty.HARD),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -345,7 +375,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(20, 5, 1000, 500)
                         .withRarity(Rarity.EPIC)
                         .withDifficulty(Difficulty.HARD)
-                        .withWeather(WeatherRestriction.RAIN)
+                        .withWeather(WeatherRestriction.RAIN),
+                "aquaculture"
         );
 
         //mushroom island
@@ -357,7 +388,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "brown_shrooma"))
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.FOUR_BIG)
+                        .withDifficulty(Difficulty.FOUR_BIG),
+                "aquaculture"
         );
 
         FishRegistration.register(
@@ -368,7 +400,8 @@ public class DGAquacultureFishes
                         .withEntityToSpawn(U.holderEntity("aquaculture", "brown_shrooma"))
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.FOUR_BIG)
+                        .withDifficulty(Difficulty.FOUR_BIG),
+                "aquaculture"
         );
 
         //anywhere
@@ -381,7 +414,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(15, 5, 100, 5)
                         .withBaseChance(1)
                         //0.5% weight
-                        .withPercentageChance(0.005f)
+                        .withPercentageChance(0.005f),
+                "aquaculture"
         );
 
 
@@ -397,7 +431,8 @@ public class DGAquacultureFishes
                         .addRarityRestriction(new RarityCountRestriction.RarityCount(
                                 Rarity.GOLDEN, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
                         .withPercentageChance(0.05f)
-                        .extra()
+                        .extra(),
+                "aquaculture"
         );
 
     }

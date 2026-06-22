@@ -469,6 +469,50 @@
       "required": false
     },
     {
+      "id": "starcatcher:coggill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_brass_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:phillipsfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:valve",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:eel_dynamo",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:brassgill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
+      "required": false
+    },
+    {
       "id": "starcatcher:boot",
       "required": false
     },
@@ -934,6 +978,50 @@
     },
     {
       "id": "starcatcher:nebula_squid",
+      "required": false
+    },
+    {
+      "id": "starcatcher:coggill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mechanical_brass_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:phillipsfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:valve",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:eel_dynamo",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:brassgill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
       "required": false
     },
     "starcatcher:obidontiee",

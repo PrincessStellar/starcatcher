@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
+import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.compat.*;
 import com.wdiscute.starcatcher.fish.*;
@@ -7,7 +8,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -24,9 +28,12 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
                 output,
                 registries,
                 BUILDER,
-                (wad) ->
+                (consumer) ->
                 {
-                    System.out.println("test");
+                    runningOnlyForConditions = true;
+                    bootstrap(null);
+                    conditionsFps.forEach(pair -> consumer.accept(pair.getFirst(), new ModLoadedCondition(pair.getSecond())));
+                    runningOnlyForConditions = false;
                 },
                 Set.of(
                         "minecraft",
@@ -52,7 +59,10 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         );
     }
 
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    static boolean runningOnlyForConditions = false;
+    static List<Pair<ResourceKey<FishProperties>, String>> conditionsFps = new ArrayList<>();
+
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         //vanilla
         DGTrophies.bootstrap(context);
@@ -60,8 +70,6 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 
         //starcatcher
         DGStarcatcherFishes.bootstrap(context);
-
-        if (true) return;
 
         //starcatcher compat
         DGCreateFishes.bootstrap(context);

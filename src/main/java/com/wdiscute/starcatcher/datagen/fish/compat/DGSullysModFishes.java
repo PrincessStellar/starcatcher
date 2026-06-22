@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGSullysModFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         //
         // ,---.            ,--. ,--.           ,--.             ,--.   ,--.            ,--.
@@ -35,7 +36,8 @@ public class DGSullysModFishes
                         .withEntityToSpawn(U.holderEntity("sullysmod", "piranha"))
                         .withSizeAndWeight(30, 10, 500, 300)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD_MOVING),
+                "sullysmod"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,
                 //        new BiomeRestriction(List.of(), List.of(U.rl("sullysmod", "biome/piranha_spawn_in")), List.of(), List.of(), ""))
         );
@@ -47,7 +49,8 @@ public class DGSullysModFishes
                         .withEntityToSpawn(U.holderEntity("sullysmod", "lanternfish"))
                         .withSizeAndWeight(100, 50, 15000, 10000)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.HARD)
+                        .withDifficulty(Difficulty.HARD),
+                "sullysmod"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,
                 //        new BiomeRestriction(List.of(), List.of(U.rl("sullysmod", "biome/lanternfish_spawn_in")), List.of(), List.of(), ""))
         );

@@ -12,6 +12,7 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.SeasonRestriction;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGCollectorsReapFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         //
         // ,-----.         ,--. ,--.                  ,--.                   ,--.             ,------.
@@ -40,7 +41,8 @@ public class DGCollectorsReapFishes
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/platinum_bass")),
 //                                List.of(), List.of(), "")
-                        )
+                        ),
+                "collectorsreap"
         );
 
 
@@ -56,7 +58,8 @@ public class DGCollectorsReapFishes
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/tiger_prawn")),
 //                                List.of(), List.of(), "")
-                        )
+                        ),
+                "collectorsreap"
         );
 
         FishRegistration.register(context,
@@ -69,7 +72,8 @@ public class DGCollectorsReapFishes
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/clam")),
 //                                List.of(), List.of(), "")
-                        )
+                        ),
+                "collectorsreap"
         );
 
         FishRegistration.register(context,
@@ -83,7 +87,8 @@ public class DGCollectorsReapFishes
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/urchin")),
 //                                List.of(), List.of(), "")
-                        )
+                        ),
+                "collectorsreap"
         );
 
 
@@ -101,7 +106,8 @@ public class DGCollectorsReapFishes
 //                                List.of(), List.of(), "")
                         )
                         .withAlwaysSpawnEntity()
-                        .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
+                        .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH)),
+                "collectorsreap"
         );
     }
 }

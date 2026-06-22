@@ -12,6 +12,7 @@
     "minecraft:stone": "place_stone",
     "starcatcher:clam": "place_clam",
     "starcatcher:conch": "place_conch",
-    "starcatcher:starcaught_bucket": "place_fish"
+    "starcatcher:starcaught_bucket": "place_fish",
+    "starcatcher:starcaught_lava_bucket": "place_fish"
   }
 }

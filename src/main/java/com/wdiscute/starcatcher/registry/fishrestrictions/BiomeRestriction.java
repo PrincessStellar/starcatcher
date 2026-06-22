@@ -157,6 +157,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
     public BiomeRestriction biome(BootstrapContext<FishProperties> context, ResourceLocation biome)
     {
+        if(context == null) return this;
         HolderSet.Named<Biome> set = context.lookup(Registries.BIOME).getOrThrow(TagKey.create(Registries.BIOME, biome));
         return new BiomeRestriction(new ArrayList<>(biomes)
         {{
@@ -166,6 +167,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
     public BiomeRestriction tag(BootstrapContext<FishProperties> context, ResourceLocation tag)
     {
+        if(context == null) return this;
         HolderSet.Named<Biome> set = context.lookup(Registries.BIOME).getOrThrow(TagKey.create(Registries.BIOME, tag));
         return new BiomeRestriction(new ArrayList<>(biomes)
         {{
@@ -175,6 +177,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
     public BiomeRestriction blacklisted(BootstrapContext<FishProperties> context, ResourceLocation biome)
     {
+        if(context == null) return this;
         HolderSet.Named<Biome> set = context.lookup(Registries.BIOME).getOrThrow(TagKey.create(Registries.BIOME, biome));
         return new BiomeRestriction(biomes, new ArrayList<>(blacklist)
         {{
@@ -184,6 +187,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
     public BiomeRestriction blacklistedTag(BootstrapContext<FishProperties> context, ResourceLocation tag)
     {
+        if(context == null) return this;
         HolderSet.Named<Biome> set = context.lookup(Registries.BIOME).getOrThrow(TagKey.create(Registries.BIOME, tag));
         return new BiomeRestriction(biomes, new ArrayList<>(blacklist)
         {{

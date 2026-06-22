@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class DGAlexsCavesFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
 
         //
@@ -49,7 +50,8 @@ public class DGAlexsCavesFishes
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 TOXIC_CAVES,
-                                FluidRestriction.ACID)
+                                FluidRestriction.ACID),
+                "alexscaves"
         );
 
         FishRegistration.register(context,
@@ -63,7 +65,8 @@ public class DGAlexsCavesFishes
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
                                 FluidRestriction.PURPLE_SODA
-                        )
+                        ),
+                "alexscaves"
         );
 
         FishRegistration.register(
@@ -78,7 +81,8 @@ public class DGAlexsCavesFishes
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
                                 FluidRestriction.PURPLE_SODA
-                        )
+                        ),
+                "alexscaves"
         );
 
         FishRegistration.register(
@@ -93,7 +97,8 @@ public class DGAlexsCavesFishes
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
                                 FluidRestriction.PURPLE_SODA
-                        )
+                        ),
+                "alexscaves"
         );
 
         FishRegistration.register(
@@ -108,7 +113,8 @@ public class DGAlexsCavesFishes
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
                                 FluidRestriction.PURPLE_SODA
-                        )
+                        ),
+                "alexscaves"
         );
 
         FishRegistration.register(
@@ -123,7 +129,8 @@ public class DGAlexsCavesFishes
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
                                 FluidRestriction.PURPLE_SODA
-                        )
+                        ),
+                "alexscaves"
         );
 
 
@@ -138,7 +145,8 @@ public class DGAlexsCavesFishes
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 ABYSSAL_CHASM
-                        )
+                        ),
+                "alexscaves"
         );
 
         FishRegistration.register(
@@ -152,25 +160,8 @@ public class DGAlexsCavesFishes
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 ABYSSAL_CHASM
-                        )
-        );
-
-
-        FishRegistration.register(
-                context,
-                PresetRestrictions.empty(context)
-                        .withFish("alexscaves", "trilocaris_tail")
-                        .withBucketedFish(new MaybeStack("alexscaves", "trilocaris_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "trilocaris"))
-                        .withSizeAndWeight(30, 10, 1000, 5000)
-                        .withRarity(Rarity.RARE)
-                        .addRestrictions(
-                                DimensionRestriction.OVERWORLD,
-                                PRIMORDIAL_CAVES
-                        )
-                        .withAlwaysSpawnEntity()
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "trilocaris"))
-                        .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
+                        ),
+                "alexscaves"
         );
     }
 }

@@ -11,11 +11,12 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.Nullable;
 
 
 public class DGMinecraftFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
         FishRegistration.register(context,
                 PresetRestrictions.allOceans(context)

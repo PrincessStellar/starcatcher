@@ -11,13 +11,6 @@ public class DGEternalStarlightFishes
     public static void bootstrap(BootstrapContext<FishProperties> context)
     {
 
-        //
-        //                                   ,--.
-        //  ,---. ,--.--.  ,---.   ,--,--. ,-'  '-.  ,---.
-        // | .--' |  .--' | .-. : ' ,-.  | '-.  .-' | .-. :
-        // \ `--. |  |    \   --. \ '-'  |   |  |   \   --.
-        //  `---' `--'     `----'  `--`--'   `--'    `----'
-        //
 
 
     }

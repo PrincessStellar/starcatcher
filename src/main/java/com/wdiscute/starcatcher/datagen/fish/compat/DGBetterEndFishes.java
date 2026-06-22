@@ -7,13 +7,14 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
 
 public class DGBetterEndFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
 
         //
@@ -31,16 +32,6 @@ public class DGBetterEndFishes
                         .withEntityToSpawn(U.holderEntity("betterend", "end_fish"))
                         .withSizeAndWeight(80, 40, 2000, 400)
                         .withRarity(Rarity.RARE)
-        );
-
-        FishRegistration.register(context,
-                PresetRestrictions.endOuterIslands(context)
-                        .withFish("betterend", "gelatine")
-                        .withBucketedFish(new MaybeStack("betterend", "bucket_cubozoa"))
-                        .withAlwaysSpawnEntity()
-                        .withEntityToSpawn(U.holderEntity("betterend", "cubozoa"))
-                        .withSizeAndWeight(70, 20, 200, 60)
-                        .withRarity(Rarity.EPIC)
         );
     }
 }

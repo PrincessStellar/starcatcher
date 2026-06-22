@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 
 public class DGEnvironmentalFishes
 {
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
 
         //
@@ -40,7 +41,8 @@ public class DGEnvironmentalFishes
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(U.rl("environmental", "blossom_woods"), U.rl("environmental", "blossom_valleys")),
 //                                List.of(), List.of(), List.of(), "")
-                        )
+                        ),
+                "environmental"
         );
     }
 }

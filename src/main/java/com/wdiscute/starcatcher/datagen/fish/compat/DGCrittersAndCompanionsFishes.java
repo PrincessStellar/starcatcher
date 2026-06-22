@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
 import net.minecraft.data.worldgen.BootstrapContext;
+import org.jetbrains.annotations.Nullable;
 
 import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
 import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
@@ -16,7 +17,7 @@ public class DGCrittersAndCompanionsFishes
 {
 
 
-    public static void bootstrap(BootstrapContext<FishProperties> context)
+    public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
 
         //
@@ -31,7 +32,8 @@ public class DGCrittersAndCompanionsFishes
         FishRegistration.register(context,
                 PresetRestrictions.beach(context)
                         .withFish("crittersandcompanions", "clam")
-                        .withSkipsMinigame()
+                        .withSkipsMinigame(),
+                "crittersandcompanions"
         );
 
         FishRegistration.register(context,
@@ -41,7 +43,8 @@ public class DGCrittersAndCompanionsFishes
                         .withEntityToSpawn(U.holderEntity("crittersandcompanions", "koi_fish"))
                         .withSizeAndWeight(60, 20, 3000, 2000)
                         .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON)
+                        .withRarity(Rarity.COMMON),
+                "crittersandcompanions"
         );
     }
 }

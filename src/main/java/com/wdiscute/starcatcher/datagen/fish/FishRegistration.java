@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
+import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -41,6 +42,17 @@ public final class FishRegistration
                                          FishProperties input,
                                          String requiredModId)
     {
+
+        //if running during conditions generation, dont register as context is null
+        if (DGSCFishProperties.runningOnlyForConditions)
+        {
+            //if has a required modid,
+            if (!requiredModId.isEmpty())
+                DGSCFishProperties.conditionsFps.add(Pair.of(key, requiredModId));
+            return;
+        }
+
+
         FishProperties fp = prepare(input);
 
         context.register(key, fp);
@@ -60,10 +72,10 @@ public final class FishRegistration
     {
         ALL_FISHABLE.add(fp);
 
-        if(fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+        if (fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             STARCATCHER_FISHABLE.add(fp);
 
-        if(SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getKey().location())
+        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getKey().location())
                 .anyMatch(o -> fp.catchInfo().fish().rl().equals(o)))
             STARCATCHER_BUCKETABLE.add(fp);
 
