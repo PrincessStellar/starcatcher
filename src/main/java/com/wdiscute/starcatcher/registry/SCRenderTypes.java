@@ -3,12 +3,14 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.core.Direction;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -20,12 +22,14 @@ import java.io.IOException;
 import static net.minecraft.client.renderer.RenderStateShard.*;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID, value = Dist.CLIENT)
-public class SCRenderTypes  {
+public class SCRenderTypes
+{
 
     static ShaderInstance rendertypeGuiFadeShader;
     static ShaderInstance goldItemShader;
 
-    public static ShaderInstance getRendertypeGuiFadeShader() {
+    public static ShaderInstance getRendertypeGuiFadeShader()
+    {
         return rendertypeGuiFadeShader;
     }
 
@@ -45,28 +49,37 @@ public class SCRenderTypes  {
                     .setOutputState(ITEM_ENTITY_TARGET)
                     .setLightmapState(LIGHTMAP)
                     .setOverlayState(OVERLAY)
-                    //.setDepthTestState(EQUAL_DEPTH_TEST)
+                    .setDepthTestState(EQUAL_DEPTH_TEST)
                     .setWriteMaskState(RenderStateShard.COLOR_DEPTH_WRITE)
                     .setTexturingState(TEXTURING_GOLD_FISH_GLINT)
                     .createCompositeState(true)
     );
 
-    public static void setupGoldGlintTexturing() {
-        float frameCount = 12f;
+    public static void setupGoldGlintTexturing()
+    {
+        //TODO make it affected by accessability glint speed
 
-        float frameSize = 1 / frameCount;
-        long i = (long)((double) Util.getMillis() / 200.0);
-        int currentFrame = (int) (i % frameCount);
+        float speedSec = 5f;
 
-        Matrix4f matrix4f = new Matrix4f().translation(0.0f, frameSize * currentFrame, 0.0F).scale(1, frameSize, 1);
+        long speedMs = (long)(speedSec * 1000);
+
+        long t = System.currentTimeMillis() % (speedMs);
+        double value = (double) t / speedMs;
+        //value = (t < speedMs) ? (double) t / speedMs : 0.85;
+
+        Matrix4f matrix4f = new Matrix4f()
+                .translation(0.0f, (float) (0 + value), 0.0F)
+                .scale(1, 1 / 10f, 1)
+                .rotate(Axis.ZP.rotationDegrees(-20f));
         RenderSystem.setTextureMatrix(matrix4f);
     }
 
 
     @SubscribeEvent
-    static void registerShaders(RegisterShadersEvent event) throws IOException {
+    static void registerShaders(RegisterShadersEvent event) throws IOException
+    {
         event.registerShader(new ShaderInstance(event.getResourceProvider(), Starcatcher.rl("gui_fade"), DefaultVertexFormat.POSITION), (shader) -> rendertypeGuiFadeShader = shader);
-        event.registerShader(new ShaderInstance(event.getResourceProvider(), Starcatcher.rl("gold_item"), DefaultVertexFormat.NEW_ENTITY),  (shader) -> goldItemShader = shader);
+        event.registerShader(new ShaderInstance(event.getResourceProvider(), Starcatcher.rl("gold_item"), DefaultVertexFormat.NEW_ENTITY), (shader) -> goldItemShader = shader);
     }
 
 }
