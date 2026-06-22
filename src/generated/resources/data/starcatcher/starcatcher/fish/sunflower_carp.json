@@ -47,7 +47,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:sunflower_plains"
+        "minecraft:sunflower_plains"
       ],
       "blacklist": []
     },

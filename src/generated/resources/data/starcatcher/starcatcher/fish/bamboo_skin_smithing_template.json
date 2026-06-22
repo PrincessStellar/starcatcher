@@ -48,7 +48,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:bamboo_jungle"
+        "minecraft:bamboo_jungle"
       ],
       "blacklist": []
     },

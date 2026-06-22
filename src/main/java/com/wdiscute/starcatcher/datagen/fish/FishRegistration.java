@@ -52,11 +52,8 @@ public final class FishRegistration
             return;
         }
 
-
         FishProperties fp = prepare(input);
-
         context.register(key, fp);
-        //todo compat keys?
     }
 
     private static FishProperties prepare(FishProperties fp)

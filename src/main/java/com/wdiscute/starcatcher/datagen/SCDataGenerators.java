@@ -32,6 +32,7 @@ public class SCDataGenerators
 
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput output = gen.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         //fish properties datapack??
         event.createDatapackRegistryObjects(DGSCFishProperties.BUILDER);
@@ -45,7 +46,6 @@ public class SCDataGenerators
         gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));
 
         //fish models
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         gen.addProvider(event.includeServer(), new DGSCItemModelProvider(output, existingFileHelper));
 
         //block tags

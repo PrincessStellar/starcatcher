@@ -47,7 +47,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:deep_dark"
+        "minecraft:deep_dark"
       ],
       "blacklist": []
     },

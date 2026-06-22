@@ -39,7 +39,7 @@ public record Treasure
 {
     public static final Treasure EMPTY = new Treasure(List.of(), List.of(), List.of());
     public static final Treasure VANILLA_FISHING_LOOT_TABLE = Treasure.lootTable(List.of(BuiltInLootTables.FISHING_TREASURE.location()), Items.FISHING_ROD);
-    public static final Treasure EXAMPLE_LOOT_TABLE =
+    public static final Treasure EXAMPLE_TREASURE =
             new Treasure(
                     List.of(
                             new WeightedLootTable(BuiltInLootTables.FISHING.location(), 20),

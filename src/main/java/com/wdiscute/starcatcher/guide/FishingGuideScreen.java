@@ -1349,7 +1349,8 @@ public class FishingGuideScreen extends Screen
         FishCaughtCounter fcc = fishCaughtCounterMap.get(rl);
         ItemStack is = fp.catchInfo().fish().toStack();
 
-        SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, GOLDEN);
+        if (fcc != null && fcc.caughtGolden())
+            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, GOLDEN);
 
         //calculate caught counter
         int caught = fcc == null ? 0 : fcc.count();

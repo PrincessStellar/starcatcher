@@ -4,11 +4,15 @@ import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.compat.*;
 import com.wdiscute.starcatcher.fish.*;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import org.jetbrains.annotations.Nullable;
@@ -64,6 +68,14 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 
     public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
+        if(context != null)
+        {
+            HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
+
+            System.out.println(biomes.getOrThrow(Biomes.THE_END));
+        }
+
+
         //vanilla
         DGTrophies.bootstrap(context);
         DGMinecraftFishes.bootstrap(context);

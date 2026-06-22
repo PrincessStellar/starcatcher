@@ -6,16 +6,11 @@ import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
-
-import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
-
-import java.util.List;
 
 public class DGAlexsCavesFishes
 {
@@ -35,10 +30,10 @@ public class DGAlexsCavesFishes
         //final BiomeRestriction ABYSSAL_CHASM = new BiomeRestriction(List.of(U.rl("alexscaves", "abyssal_chasm")), List.of(), List.of(), List.of(), "");
         //final BiomeRestriction PRIMORDIAL_CAVES = new BiomeRestriction(List.of(U.rl("alexscaves", "primordial_caves")), List.of(), List.of(), List.of(), "");
 
-        final BiomeRestriction TOXIC_CAVES = BiomeRestriction.EMPTY;
-        final BiomeRestriction CANDY_CAVITY = BiomeRestriction.EMPTY;
-        final BiomeRestriction ABYSSAL_CHASM = BiomeRestriction.EMPTY;
-        final BiomeRestriction PRIMORDIAL_CAVES = BiomeRestriction.EMPTY;
+        final BiomeRestriction TOXIC_CAVES = BiomeRestriction.empty();
+        final BiomeRestriction CANDY_CAVITY = BiomeRestriction.empty();
+        final BiomeRestriction ABYSSAL_CHASM = BiomeRestriction.empty();
+        final BiomeRestriction PRIMORDIAL_CAVES = BiomeRestriction.empty();
 
         FishRegistration.register(context,
                 PresetRestrictions.empty(context)

@@ -51,7 +51,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:dripstone_caves"
+        "minecraft:dripstone_caves"
       ],
       "blacklist": []
     },

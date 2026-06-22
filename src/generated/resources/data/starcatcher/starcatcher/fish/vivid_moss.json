@@ -51,7 +51,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:lush_caves"
+        "minecraft:lush_caves"
       ],
       "blacklist": []
     },
