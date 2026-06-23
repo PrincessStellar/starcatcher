@@ -12,12 +12,12 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 150,
+    "hp": 250,
     "missPenalty": 20,
     "modifiers": [
       {
         "type": "starcatcher:freeze_on_miss",
-        "length": 40,
+        "length": 140,
         "rampTime": 10,
         "translation_override": ""
       }
@@ -47,7 +47,7 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "epic",
   "restrictions": [
     {
       "type": "starcatcher:dimension",

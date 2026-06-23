@@ -8,6 +8,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -32,52 +33,52 @@ public class TeleportModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         Minecraft.getInstance().player.playSound(SoundEvents.ENDERMAN_TELEPORT, 0.6f, 1f);
         instance.addParticles(instance.handlePos, 20, 0x7935de);
         instance.handlePos = kimbePosition;
         kimbePosition = ass.pos;
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
 
     @Override
-    public boolean skipRenderingKimbeMarker()
+    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
     {
         return false;
     }
 
     @Override
-    public boolean skipHitParticles()
+    public boolean skipHitParticles(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public boolean skipHitSound()
+    public boolean skipHitSound(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public boolean skipMissSound()
+    public boolean skipMissSound(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
-        super.onMiss();
+        super.onMiss(instance);
         Minecraft.getInstance().player.playSound(SoundEvents.SHULKER_AMBIENT, 0.6f, 1f);
         instance.addParticles(instance.handlePos, 20, 0x7935de);
         instance.handlePos = U.r.nextFloat(360);
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderBackground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderBackground(guiGraphics, partialTick, width, height);
+        super.renderBackground(instance, guiGraphics, partialTick, width, height);
 
         int layers = (int) instance.modifierData.getOrDefault(Starcatcher.rl("multi_layer_modifier"), 0);
 
@@ -97,9 +98,9 @@ public class TeleportModifier extends AbstractMinigameModifier
 
 
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderForeground(guiGraphics, partialTick, width, height);
+        super.renderForeground(instance, guiGraphics, partialTick, width, height);
         renderKimbeMarker(guiGraphics, width, height);
     }
 

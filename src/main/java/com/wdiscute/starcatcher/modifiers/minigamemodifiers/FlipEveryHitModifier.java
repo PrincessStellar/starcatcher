@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,11 +22,11 @@ public class FlipEveryHitModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         instance.currentRotation *= -1;
         instance.getActiveSweetSpots().forEach(o -> o.currentRotation *= -1);
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
 
     @Override

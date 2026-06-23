@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +24,7 @@ public class DisableHitSoundsModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean skipHitSound()
+    public boolean skipHitSound(FishingMinigameScreen instance)
     {
         return true;
     }

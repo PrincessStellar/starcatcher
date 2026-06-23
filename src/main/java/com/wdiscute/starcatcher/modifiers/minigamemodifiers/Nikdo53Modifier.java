@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import net.dries007.tfc.common.entities.aquatic.Fish;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
@@ -48,18 +49,18 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot spot)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot spot)
     {
         if (getSpotLayer(spot) == pointerLayer)
         {
             putSpotLayer(spot, getRandomLayer());
-            return super.onHit(spot);
+            return super.onHit(instance, spot);
         }
         return true;
     }
 
     @Override
-    public void onKeyReleased(int key, int scanCode, int keyModifiers)
+    public void onKeyReleased(FishingMinigameScreen instance, int key, int scanCode, int keyModifiers)
     {
         if (key == getOptions().keyLeft.getKey().getValue())
             isHoldingLeft = false;
@@ -74,7 +75,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
+    public void mouseScrolled(FishingMinigameScreen instance, double mouseX, double mouseY, double scrollX, double scrollY)
     {
         if(scrollY < 0)
         {
@@ -94,11 +95,11 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
         if (pointerLayer < 0)
             pointerLayer = 0;
 
-        super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
+        super.mouseScrolled(instance, mouseX, mouseY, scrollX, scrollY);
     }
 
     @Override
-    public void onKeyPress(int key, int scanCode, int keyModifiers)
+    public void onKeyPress(FishingMinigameScreen instance, int key, int scanCode, int keyModifiers)
     {
         if (key == getOptions().keyLeft.getKey().getValue())
         {
@@ -122,17 +123,17 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean skipRenderingKimbeMarker()
+    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public ActiveSweetSpot onSpotAdded(ActiveSweetSpot spot)
+    public ActiveSweetSpot onSpotAdded(FishingMinigameScreen instance, ActiveSweetSpot spot)
     {
         int layer = getRandomLayer();
         putSpotLayer(spot, layer);
-        return super.onSpotAdded(spot);
+        return super.onSpotAdded(instance, spot);
     }
 
     private int getRandomLayer()
@@ -141,7 +142,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void renderOnPointer(GuiGraphics guiGraphics, PoseStack poseStack, float partialTick)
+    public void renderOnPointer(FishingMinigameScreen instance, GuiGraphics guiGraphics, PoseStack poseStack, float partialTick)
     {
         if (pointerLayer == 0)
             FishingMinigameScreen.renderPoseCentered(guiGraphics, POINTER_SMALL, 128);
@@ -150,13 +151,13 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void renderOnSweetSpot(GuiGraphics guiGraphics, PoseStack poseStack, ActiveSweetSpot spot, float partialTick)
+    public void renderOnSweetSpot(FishingMinigameScreen instance, GuiGraphics guiGraphics, PoseStack poseStack, ActiveSweetSpot ass, float partialTick)
     {
-        if (spot.behaviour == null) return;
+        if (ass.behaviour == null) return;
 
         poseStack.pushPose();
 
-        int layer = getSpotLayer(spot);
+        int layer = getSpotLayer(ass);
 
         poseStack.translate(0, -9 * layer, 0);
 
@@ -164,7 +165,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
         if (pointerLayer != layer)
             RenderSystem.setShaderColor(0.3f, 0.3f, 0.3f, 1);
 
-        spot.behaviour.render(guiGraphics, poseStack, partialTick);
+        ass.behaviour.render(guiGraphics, poseStack, partialTick, instance, ass);
 
         RenderSystem.setShaderColor(1, 1, 1, 1);
 
@@ -172,15 +173,15 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean shouldDarkenWheel()
+    public boolean shouldDarkenWheel(FishingMinigameScreen instance)
     {
         return pointerLayer != 0;
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderBackground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderBackground(guiGraphics, partialTick, width, height);
+        super.renderBackground(instance, guiGraphics, partialTick, width, height);
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -212,7 +213,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
@@ -248,13 +249,13 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean disablePointerRendering()
+    public boolean disablePointerRendering(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public boolean disableSweetSpotRendering(ActiveSweetSpot spot)
+    public boolean disableSweetSpotRendering(FishingMinigameScreen instance, ActiveSweetSpot spot)
     {
         return true;
     }

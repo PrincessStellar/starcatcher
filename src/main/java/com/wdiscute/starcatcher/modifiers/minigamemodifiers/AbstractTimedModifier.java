@@ -1,12 +1,13 @@
 package com.wdiscute.starcatcher.modifiers.minigamemodifiers;
 
-public abstract class AbstractTimedModifier extends AbstractMinigameModifier
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
+
+public abstract class AbstractTimedModifier extends AbstractInstancedMinigameModifier
 {
     int length;
 
-    public AbstractTimedModifier(int length, String translationOverride)
+    public AbstractTimedModifier(int length)
     {
-        super(translationOverride);
         this.length = length;
     }
 
@@ -16,12 +17,12 @@ public abstract class AbstractTimedModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance)
     {
-        if (length > 0 && tickCount >= length)
+        if (length > 0 && instance.tickCount >= length)
         {
             removed = true;
         }
-        super.tick();
+        super.tick(instance);
     }
 }

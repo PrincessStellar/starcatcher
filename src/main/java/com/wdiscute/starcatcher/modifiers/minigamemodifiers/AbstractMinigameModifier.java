@@ -31,7 +31,7 @@ public abstract class AbstractMinigameModifier implements Modifier
         return List.of(Component.translatable("tooltip.modifier." + getIdentifier().toLanguageKey()));
     }
 
-    public void mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
+    public void mouseScrolled(FishingMinigameScreen instance, double mouseX, double mouseY, double scrollX, double scrollY)
     {
     }
 
@@ -41,20 +41,16 @@ public abstract class AbstractMinigameModifier implements Modifier
     }
 
     public boolean removed = false;
-    public int tickCount = 0;
-    protected FishingMinigameScreen instance;
 
     public void onAdd(FishingMinigameScreen instance)
     {
-        this.instance = instance;
         removed = false;
-        tickCount = 0;
     }
 
     /**
      * Runs when removed or the minigame ends
      */
-    public void onRemove()
+    public void onRemove(FishingMinigameScreen instance)
     {
     }
 
@@ -62,7 +58,7 @@ public abstract class AbstractMinigameModifier implements Modifier
      * Transforms an ActiveSweetSpot before it gets added.
      * Setting spot removed to true cancels it
      */
-    public ActiveSweetSpot onSpotAdded(ActiveSweetSpot spot)
+    public ActiveSweetSpot onSpotAdded(FishingMinigameScreen instance, ActiveSweetSpot spot)
     {
         return spot;
     }
@@ -72,47 +68,44 @@ public abstract class AbstractMinigameModifier implements Modifier
      *
      * @return whether the hit should be cancelled
      */
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         return false;
     }
 
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
     }
 
-    public void tick()
-    {
-        tickCount++;
-    }
-
-    public void onKeyPress(int key, int scanCode, int keyModifiers)
+    public void tick(FishingMinigameScreen instance)
     {
     }
 
-    public boolean shouldDarkenWheel()
+    public void onKeyPress(FishingMinigameScreen instance, int key, int scanCode, int keyModifiers)
+    {
+    }
+
+    public boolean shouldDarkenWheel(FishingMinigameScreen instance)
     {
         return false;
     }
 
-    public void onKeyReleased(int key, int scanCode, int keyModifiers)
+    public void onKeyReleased(FishingMinigameScreen instance, int key, int scanCode, int keyModifiers)
     {
     }
 
-    public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderBackground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
     }
 
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
     }
 
     /**
      * Disables rendering the included pointer
-     * <p>
-     * Still renders {@link #renderOnPointer(GuiGraphics, PoseStack, float)}
      */
-    public boolean disablePointerRendering()
+    public boolean disablePointerRendering(FishingMinigameScreen instance)
     {
         return false;
     }
@@ -120,45 +113,45 @@ public abstract class AbstractMinigameModifier implements Modifier
     /**
      * Has the correctly rotated poseStack already
      */
-    public void renderOnPointer(GuiGraphics guiGraphics, PoseStack poseStack, float partialTick)
+    public void renderOnPointer(FishingMinigameScreen instance, GuiGraphics guiGraphics, PoseStack poseStack, float partialTick)
     {
     }
 
-    public boolean disableSweetSpotRendering(ActiveSweetSpot spot)
-    {
-        return false;
-    }
-
-    public void renderOnSweetSpot(GuiGraphics guiGraphics, PoseStack poseStack, ActiveSweetSpot spot, float partialTick)
-    {
-    }
-
-    public boolean forceAwardTreasure()
+    public boolean disableSweetSpotRendering(FishingMinigameScreen instance, ActiveSweetSpot spot)
     {
         return false;
     }
 
-    public boolean skipRenderingKimbeMarker()
+    public void renderOnSweetSpot(FishingMinigameScreen instance, GuiGraphics guiGraphics, PoseStack poseStack, ActiveSweetSpot spot, float partialTick)
+    {
+    }
+
+    public boolean forceAwardTreasure(FishingMinigameScreen instance)
     {
         return false;
     }
 
-    public boolean skipHitParticles()
+    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
     {
         return false;
     }
 
-    public boolean skipMissSound()
+    public boolean skipHitParticles(FishingMinigameScreen instance)
     {
         return false;
     }
 
-    public boolean skipHitSound()
+    public boolean skipMissSound(FishingMinigameScreen instance)
     {
         return false;
     }
 
-    public boolean flipRodAndProgressDisplay()
+    public boolean skipHitSound(FishingMinigameScreen instance)
+    {
+        return false;
+    }
+
+    public boolean flipRodAndProgressDisplay(FishingMinigameScreen instance)
     {
         return false;
     }

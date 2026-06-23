@@ -198,11 +198,6 @@ public record FishProperties(
         return this;
     }
 
-    public FishProperties addModifier(Modifier modifier)
-    {
-        return withDifficultyRaw(dif.addModifiers(List.of(modifier)));
-    }
-
     public FishProperties addRestriction(AbstractFishRestriction restriction)
     {
         this.restrictions.add(restriction);

@@ -181,7 +181,7 @@ public class SettingsScreen extends FishingMinigameScreen
     @Override
     public void onClose()
     {
-        modifiers.forEach(AbstractMinigameModifier::onRemove);
+        modifiers.forEach(o -> o.onRemove(this));
 
         if (tournamentCached == null)
             TournamentOverlay.clear();

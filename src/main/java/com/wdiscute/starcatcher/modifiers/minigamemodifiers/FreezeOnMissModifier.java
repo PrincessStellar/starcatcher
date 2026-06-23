@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -30,16 +31,16 @@ public class FreezeOnMissModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
-        super.onMiss();
+        super.onMiss(instance);
         instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(length, rampTime));
     }
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderBackground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderBackground(guiGraphics, partialTick, width, height);
+        super.renderBackground(instance, guiGraphics, partialTick, width, height);
 
         int layers = (int) instance.modifierData.getOrDefault(Starcatcher.rl("multi_layer_modifier"), 0);
 

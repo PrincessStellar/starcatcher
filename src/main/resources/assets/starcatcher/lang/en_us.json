@@ -263,7 +263,7 @@
 
 
   "tooltip.starcatcher.modifiers": "Fishing Modifiers:",
-  "tooltip.starcatcher.modifiers.active": "<scepic><u>Active Modifiers:</scepic></u>",
+  "tooltip.starcatcher.modifiers.active": "<scepic>§lActive Modifiers:</scepic>",
 
   "tooltip.modifier.starcatcher.prevent_frozen": "Prevents your handle from freezing up",
 

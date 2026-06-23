@@ -11,18 +11,17 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 
-public class FrozenPointerWhileActiveModifier extends AbstractMinigameModifier
+public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
 {
     private final int rampTime;
-    private final int length;
     private int tickCount;
 
     public static final ResourceLocation FROZEN = Starcatcher.rl("textures/gui/minigame/modifiers/freeze_center.png");
 
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderForeground(guiGraphics, partialTick, width, height);
+        super.renderForeground(instance, guiGraphics, partialTick, width, height);
         float alpha = 1 - (instance.handleSpeed - instance.handleBaseSpeed / 2) / (instance.handleBaseSpeed - instance.handleBaseSpeed / 2);
         RenderSystem.setShaderColor(1, 1, 1, alpha);
         RenderSystem.enableBlend();
@@ -33,9 +32,8 @@ public class FrozenPointerWhileActiveModifier extends AbstractMinigameModifier
 
     public FrozenPointerWhileActiveModifier(int length, int rampTime)
     {
-        super("");
+        super(length);
         this.rampTime = rampTime;
-        this.length = length;
     }
 
     @Override
@@ -45,13 +43,13 @@ public class FrozenPointerWhileActiveModifier extends AbstractMinigameModifier
         //cancel if any modifiers with the CancelFrozenEffect interface are active
         if (instance.getModifiers().stream().anyMatch(o -> o instanceof CancelFrozenEffect))
             removed = true;
-        onMiss();
+        onMiss(instance);
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance)
     {
-        super.tick();
+        super.tick(instance);
 
         tickCount++;
 
@@ -73,7 +71,7 @@ public class FrozenPointerWhileActiveModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
         tickCount = 0;
         Minecraft.getInstance().player.playSound(SoundEvents.GLASS_BREAK, 0.4f, 1f);
@@ -81,21 +79,9 @@ public class FrozenPointerWhileActiveModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onRemove()
+    public void onRemove(FishingMinigameScreen instance)
     {
-        super.onRemove();
+        super.onRemove(instance);
         instance.handleSpeed = instance.handleBaseSpeed;
-    }
-
-    @Override
-    public ResourceLocation getIdentifier()
-    {
-        return null;
-    }
-
-    @Override
-    public MapCodec<? extends Modifier> getCodec()
-    {
-        return null;
     }
 }

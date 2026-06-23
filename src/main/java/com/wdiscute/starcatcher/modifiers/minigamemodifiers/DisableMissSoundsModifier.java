@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,7 +22,7 @@ public class DisableMissSoundsModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean skipMissSound()
+    public boolean skipMissSound(FishingMinigameScreen instance)
     {
         return true;
     }

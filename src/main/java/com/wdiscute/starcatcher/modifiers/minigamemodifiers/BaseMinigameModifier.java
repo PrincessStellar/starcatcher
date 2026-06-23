@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -25,9 +26,9 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
-        super.onMiss();
+        super.onMiss(instance);
         //kimbe marker
         instance.kimbeMarkerAlpha = 1;
         //You have to make the actual texture white before trying to recolor like this, dummy
@@ -43,7 +44,7 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         instance.kimbeMarkerAlpha = 1;
         instance.kimbeMarkerColor = 0x2ce17d;
@@ -56,13 +57,13 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
             instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.TREASURE));
         }
 
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
 
     public static final ResourceLocation GOLD_OUTLINE = Starcatcher.rl("textures/gui/minigame/gold_outline.png");
 
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
 
         if (instance.rarity.equals(Rarity.LEGENDARY))
@@ -87,5 +88,11 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
     public MapCodec<? extends Modifier> getCodec()
     {
         return CODEC;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "[SpawnSweetSpotModifier@" + Integer.toHexString(hashCode()) + "]";
     }
 }

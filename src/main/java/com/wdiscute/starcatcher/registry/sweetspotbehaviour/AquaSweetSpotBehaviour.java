@@ -14,9 +14,9 @@ public class AquaSweetSpotBehaviour extends NormalSweetSpotBehaviour
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.tick();
+        super.tick(instance, ass);
         if(ass.shouldSudokuOnVanish && ass.alpha <= 0)
             instance.addParticles(ass.pos, 10, ass.particleColor);
     }

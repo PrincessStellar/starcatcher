@@ -17,6 +17,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:wintery_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_boreal",
+      "required": false
+    },
+    {
       "id": "starcatcher:agave_bream",
       "required": false
     },
@@ -306,6 +314,14 @@
     },
     {
       "id": "starcatcher:sun_seeking_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:wintery_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_boreal",
       "required": false
     },
     {

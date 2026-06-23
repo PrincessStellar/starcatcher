@@ -14,17 +14,69 @@
     "decay": 1.0,
     "hp": 100,
     "missPenalty": 20,
-    "modifiers": [],
-    "speed": 10,
+    "modifiers": [
+      {
+        "type": "starcatcher:spawn_sweetspots",
+        "chance": 1.0,
+        "cooldown": 140,
+        "sudoku_vanish": false,
+        "sweetspot": {
+          "color_as_int": -16711936,
+          "hitbox_size_in_pixels": 22,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweetspot_type": "starcatcher:mirage",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:spawn_sweetspots",
+        "chance": 0.3,
+        "cooldown": 130,
+        "sudoku_vanish": false,
+        "sweetspot": {
+          "color_as_int": -16711936,
+          "hitbox_size_in_pixels": 15,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweetspot_type": "starcatcher:mirage",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": ""
+      },
+      {
+        "type": "starcatcher:spawn_sweetspots",
+        "chance": 0.1,
+        "cooldown": 120,
+        "sudoku_vanish": false,
+        "sweetspot": {
+          "color_as_int": -16711936,
+          "hitbox_size_in_pixels": 15,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweetspot_type": "starcatcher:mirage",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": ""
+      }
+    ],
+    "speed": 11,
     "sweetspots": [
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       },
       {

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,9 +22,9 @@ public class MoveSweetSpotsOnMissModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
-        super.onMiss();
+        super.onMiss(instance);
         instance.getActiveSweetSpots().forEach(o -> o.pos = instance.getRandomFreePosition(o.thickness));
     }
 

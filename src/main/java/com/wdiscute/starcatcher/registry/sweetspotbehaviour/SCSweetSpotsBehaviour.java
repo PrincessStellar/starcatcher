@@ -21,6 +21,7 @@ public interface SCSweetSpotsBehaviour
     ResourceLocation DEEP_OCEAN = registerSweetspot("deep_ocean", () -> DeepOceanSweetSpotBehaviour::new);
     ResourceLocation CLOUD = registerSweetspot("cloud", () -> CloudSweetSpotBehaviour::new);
     ResourceLocation GLOWING_SWEETSPOT = registerSweetspot("glowing", () -> GlowingSweetSpotBehaviour::new);
+    ResourceLocation MIRAGE = registerSweetspot("mirage", () -> MirageSweetspotBehaviour::new);
 
 
     static ResourceLocation registerSweetspot(String name, Supplier<Supplier<? extends AbstractSweetSpotBehaviour>> supplier)

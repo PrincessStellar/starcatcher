@@ -20,7 +20,7 @@
       {
         "type": "starcatcher:spawn_sweetspots",
         "chance": 0.25,
-        "cooldown": 5,
+        "cooldown": 10,
         "sudoku_vanish": true,
         "sweetspot": {
           "color_as_int": -65536,

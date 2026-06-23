@@ -59,7 +59,7 @@ public class DGUnusualFishFishes
                         .withBucketedFish("unusualfishmod", "beaked_herring_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "beaked_herring"))
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "unusualfishmod"
         );
 
@@ -92,7 +92,7 @@ public class DGUnusualFishFishes
                         .withBucketedFish("unusualfishmod", "frosty_fin_fish_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "frostyfin"))
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing().moving())
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "unusualfishmod"
         );
@@ -115,7 +115,7 @@ public class DGUnusualFishFishes
                         .withFish("unusualfishmod", "raw_copperflame_anthias")
                         .withBucketedFish("unusualfishmod", "copperflame_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "copperflame"))
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.COMMON),
                 "unusualfishmod"
         );
@@ -124,7 +124,7 @@ public class DGUnusualFishFishes
                 PresetRestrictions.warmOcean(context)
                         .withFish("unusualfishmod", "forkfish")
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "unusualfishmod"
         );
 
@@ -133,7 +133,7 @@ public class DGUnusualFishFishes
                         .withFish("unusualfishmod", "raw_picklefish")
                         .withBucketedFish("unusualfishmod", "picklefish_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "picklefish"))
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "unusualfishmod"
@@ -144,7 +144,7 @@ public class DGUnusualFishFishes
                 PresetRestrictions.warmOcean(context)
                         .withFish("unusualfishmod", "amber_goby")
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "unusualfishmod"
         );
 
@@ -154,7 +154,7 @@ public class DGUnusualFishFishes
                         .withBucketedFish("unusualfishmod", "sneepsnorp_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "sneep_snorp"))
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "unusualfishmod"
         );
 
@@ -239,7 +239,7 @@ public class DGUnusualFishFishes
         FishRegistration.register(context,
                 PresetRestrictions.swamp(context)
                         .withFish("unusualfishmod", "sailor_barb")
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "unusualfishmod"
         );
@@ -266,7 +266,7 @@ public class DGUnusualFishFishes
                                 DimensionRestriction.OVERWORLD,
                                 new ElevationRestriction(Integer.MIN_VALUE, 30, "")
                         )
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE)
                         .withBaseChance(2),
                 "unusualfishmod"
@@ -276,7 +276,7 @@ public class DGUnusualFishFishes
                 PresetRestrictions.deepslate(context).withFish("unusualfishmod", "raw_hatchetfish")
                         .withBucketedFish("unusualfishmod", "hatchet_fish_bucket")
                         .withEntityToSpawn(U.holderEntity("unusualfishmod", "hatchet_fish"))
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "unusualfishmod"
         );

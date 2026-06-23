@@ -36,7 +36,6 @@ public class PresetRestrictions
                 .addRestriction(BiomeRestriction.coldLakes(context))
                 .addRestriction(ElevationRestriction.ABOVE_FIFTY)
                 .addRestriction(FluidRestriction.WATER)
-                .addModifier(new FreezeOnMissModifier(40, 10, ""))
                 ;
     }
 

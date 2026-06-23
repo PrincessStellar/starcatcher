@@ -15,16 +15,16 @@ public class TntSweetSpotBehaviour extends AbstractSweetSpotBehaviour
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.tick();
-        if(ticksActive > 40) ass.removed = true;
+        super.tick(instance, ass);
+        if(ass.ticksActive > 40) ass.removed = true;
     }
 
     @Override
-    public void onHit()
+    public void onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.onHit();
+        super.onHit(instance, ass);
         ass.removed = true;
         instance.progress -= ass.reward;
         Minecraft.getInstance().player.playSound(SoundEvents.GENERIC_EXPLODE.value(), 0.2f, 1f);

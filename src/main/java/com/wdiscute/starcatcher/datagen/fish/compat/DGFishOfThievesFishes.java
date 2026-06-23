@@ -39,7 +39,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "splashtail_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "splashtail"))
                         .withSizeAndWeight(250, 70, 7600, 2000)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "fishofthieves"
         );
 
@@ -60,7 +60,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "islehopper_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "islehopper"))
                         .withSizeAndWeight(300, 20, 23000, 3600)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON),
                 "fishofthieves"
         );
@@ -71,7 +71,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "ancientscale_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "ancientscale"))
                         .withSizeAndWeight(70, 10, 4000, 2000)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE),
                 "fishofthieves"
         );
@@ -93,7 +93,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "wildsplash_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "wildsplash"))
                         .withSizeAndWeight(120, 30, 8000, 2200)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "fishofthieves"
         );
@@ -115,7 +115,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "battlegill_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "battlegill"))
                         .withSizeAndWeight(100, 10, 19000, 4200)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON),
                 "fishofthieves"
         );
@@ -126,7 +126,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "wrecker_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "wrecker"))
                         .withSizeAndWeight(100, 10, 19000, 4200)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.EPIC),
                 "fishofthieves"
         );
@@ -137,7 +137,7 @@ public class DGFishOfThievesFishes
                         .withBucketedFish(new MaybeStack("fishofthieves", "stormfish_bucket"))
                         .withEntityToSpawn(U.holderEntity("fishofthieves", "stormfish"))
                         .withSizeAndWeight(150, 30, 14000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withWeather(WeatherRestriction.THUNDER)
                         .withRarity(Rarity.RARE),
                 "fishofthieves"

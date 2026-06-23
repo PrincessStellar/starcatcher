@@ -37,26 +37,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:icetooth_sturgeon",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_trout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:wintery_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_boreal",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blue_ice_pike",
-      "required": false
-    },
-    {
       "id": "starcatcher:sandtail",
       "required": false
     },
@@ -518,26 +498,6 @@
     },
     {
       "id": "starcatcher:crystalback_sturgeon",
-      "required": false
-    },
-    {
-      "id": "starcatcher:icetooth_sturgeon",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_trout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:wintery_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_boreal",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blue_ice_pike",
       "required": false
     },
     {

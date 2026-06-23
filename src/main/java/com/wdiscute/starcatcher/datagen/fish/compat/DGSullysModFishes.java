@@ -36,7 +36,7 @@ public class DGSullysModFishes
                         .withEntityToSpawn(U.holderEntity("sullysmod", "piranha"))
                         .withSizeAndWeight(30, 10, 500, 300)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.HARD_MOVING),
+                        .withDifficulty(Difficulty.HARD.moving()),
                 "sullysmod"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,
                 //        new BiomeRestriction(List.of(), List.of(U.rl("sullysmod", "biome/piranha_spawn_in")), List.of(), List.of(), ""))

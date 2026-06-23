@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -34,14 +35,14 @@ public class SpawnTreasureOnHitX extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
-        super.onMiss();
+        super.onMiss(instance);
         instance.modifierData.put(getIdentifier(), 0);
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         int hits = (int) instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0) + 1;
         instance.modifierData.put(getIdentifier(), hits);
@@ -53,7 +54,7 @@ public class SpawnTreasureOnHitX extends AbstractMinigameModifier
             removed = true;
         }
 
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
 
     @Override

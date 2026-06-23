@@ -35,7 +35,7 @@ public class DGUpgradeAquaticFishes
                         .withBucketedFish(new MaybeStack("upgrade_aquatic", "pike_bucket"))
                         .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "pike"))
                         .withSizeAndWeight(75, 20, 5000, 3000)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "upgrade_aquatic"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,
@@ -49,7 +49,7 @@ public class DGUpgradeAquaticFishes
                         .withBucketedFish(new MaybeStack("upgrade_aquatic", "perch_bucket"))
                         .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "perch"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "upgrade_aquatic"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,

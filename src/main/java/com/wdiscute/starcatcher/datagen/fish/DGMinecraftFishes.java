@@ -23,7 +23,7 @@ public class DGMinecraftFishes
                         .withFish(Items.COD)
                         .withBucketedFish(new MaybeStack(Items.COD_BUCKET))
                         .withEntityToSpawn(EntityType.COD.builtInRegistryHolder())
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withSizeAndWeight(80, 40, 12000, 7000)
         );
 
@@ -33,7 +33,7 @@ public class DGMinecraftFishes
                         .withBucketedFish(new MaybeStack(Items.PUFFERFISH_BUCKET))
                         .withEntityToSpawn(EntityType.PUFFERFISH.builtInRegistryHolder())
                         .withSizeAndWeight(70, 20, 10000, 3000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON)
         );
 

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//region dif
 public record Difficulty(
         int hp,
         int speed,
@@ -42,13 +41,6 @@ public record Difficulty(
         list.addAll(newModifier);
         list.addAll(this.modifiers);
         return new Difficulty(this.hp, this.speed, this.penalty, this.decay, list, this.sweetSpots);
-    }
-
-    public Difficulty vanishing(float vanishingRate)
-    {
-        List<SweetSpot> sss = new ArrayList<>();
-        sweetSpots.forEach(s -> sss.add(s.vanishing(vanishingRate)));
-        return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
     }
 
     public Difficulty withHP(int hp)
@@ -78,6 +70,13 @@ public record Difficulty(
         return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
     }
 
+    public Difficulty vanishing(float vanishingRate)
+    {
+        List<SweetSpot> sss = new ArrayList<>();
+        sweetSpots.forEach(s -> sss.add(s.vanishing(vanishingRate)));
+        return new Difficulty(hp, speed, penalty, decay, modifiers, sss);
+    }
+
     public Difficulty moving(float movingRate)
     {
         List<SweetSpot> sss = new ArrayList<>();
@@ -100,7 +99,19 @@ public record Difficulty(
     }
 
 
-    //region preset difficulties
+    //
+    //                                          ,--.
+    // ,---.  ,--.--.  ,---.   ,---.   ,---.  ,-'  '-.
+    //| .-. | |  .--' | .-. : (  .-'  | .-. : '-.  .-'
+    //| '-' ' |  |    \   --. .-'  `) \   --.   |  |
+    //|  |-'  `--'     `----' `----'   `----'   `--'
+    //`--'
+    //   ,--. ,--.  ,---.  ,---. ,--.                 ,--.   ,--.   ,--.
+    // ,-|  | `--' /  .-' /  .-' `--'  ,---. ,--.,--. |  | ,-'  '-. `--'  ,---.   ,---.
+    //' .-. | ,--. |  `-, |  `-, ,--. | .--' |  ||  | |  | '-.  .-' ,--. | .-. : (  .-'
+    //\ `-' | |  | |  .-' |  .-' |  | \ `--. '  ''  ' |  |   |  |   |  | \   --. .-'  `)
+    // `---'  `--' `--'   `--'   `--'  `---'  `----'  `--'   `--'   `--'  `----' `----'
+    //
 
     public static Difficulty TRASH = new Difficulty(
             10, 0, 0,
@@ -108,18 +119,81 @@ public record Difficulty(
             SweetSpot.TRASH, SweetSpot.TRASH
     );
 
+
+
+
+
+
+
+
     public static Difficulty EASY = new Difficulty(
             75, 7, 5, 1,
             List.of(),
             SweetSpot.NORMAL, SweetSpot.NORMAL
     );
-    public static Difficulty EASY_VANISHING = EASY.vanishing();
-    public static Difficulty EASY_MOVING = EASY.moving();
+
+    public static Difficulty EASY_FROZEN = new Difficulty(
+            75, 7, 5, 1,
+            List.of(new FreezeOnMissModifier(40, 10, "")),
+            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.FROZEN
+    );
+
+    public static Difficulty EASY_MIRAGE = new Difficulty(
+            75, 7, 5, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, "")
+            ),
+            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.MIRAGE_NORMAL
+    );
+
+    public static Difficulty EASY_MIRAGE_MOVING = new Difficulty(
+            75, 7, 5, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, "")
+            ),
+            SweetSpot.NORMAL, SweetSpot.NORMAL
+    );
 
     public static Difficulty EASY_STONE = new Difficulty(
             10, 20, 1,
             List.of(),
             SweetSpot.STONE_LOW_REWARD, SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
+    );
+
+
+
+
+
+
+
+    public static Difficulty MEDIUM = new Difficulty(
+            10, 20, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.THIN
+    );
+
+    public static Difficulty MEDIUM_FROZEN = new Difficulty(
+            10, 20, 1,
+            List.of(new FreezeOnMissModifier(40, 10, "")),
+            SweetSpot.NORMAL, SweetSpot.FROZEN
+    );
+
+    public static Difficulty MEDIUM_MIRAGE = new Difficulty(
+            10, 20, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, ""),
+                    new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL, false, "")
+            ),
+            SweetSpot.NORMAL, SweetSpot.MIRAGE_NORMAL
+    );
+
+    public static Difficulty MEDIUM_MIRAGE_MOVING = new Difficulty(
+            10, 20, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL.moving(1), false, "")
+            ),
+            SweetSpot.NORMAL.moving(1), SweetSpot.MIRAGE_NORMAL.moving(1)
     );
 
     public static Difficulty MEDIUM_STONE = new Difficulty(
@@ -128,38 +202,45 @@ public record Difficulty(
             SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
     );
 
-    public static Difficulty HARD_STONE = new Difficulty(
-            200, 12, 30, 2,
-            List.of(),
-            SweetSpot.STONE_LOW_REWARD, SweetSpot.THIN
-    );
 
-    public static Difficulty MEDIUM = new Difficulty(
-            10, 20, 1,
-            List.of(),
-            SweetSpot.NORMAL, SweetSpot.THIN
-    );
-    public static Difficulty MEDIUM_VANISHING = MEDIUM.vanishing();
-    public static Difficulty MEDIUM_MOVING = MEDIUM.moving();
-    public static Difficulty MEDIUM_VANISHING_MOVING = MEDIUM.moving().vanishing();
 
-    public static Difficulty MEDIUM_FROZEN = new Difficulty(
-            10, 20, 1,
-            List.of(),
-            SweetSpot.NORMAL, SweetSpot.FROZEN
-    );
+
+
+
+
 
     public static Difficulty HARD = new Difficulty(
             11, 20, 1,
             List.of(),
             SweetSpot.THIN, SweetSpot.THIN);
-    public static Difficulty HARD_VANISHING = HARD.vanishing();
-    public static Difficulty HARD_MOVING = HARD.moving();
 
     public static Difficulty HARD_FROZEN = new Difficulty(
             11, 20, 1,
-            List.of(),
+            List.of(new FreezeOnMissModifier(140, 10, "")),
             SweetSpot.FROZEN, SweetSpot.THIN);
+
+    public static Difficulty HARD_MIRAGE = new Difficulty(
+            11, 20, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, ""),
+                    new SpawnSweetSpotsModifier(130, 0.3f, SweetSpot.MIRAGE_THIN, false, ""),
+                    new SpawnSweetSpotsModifier(120, 0.1f, SweetSpot.MIRAGE_THIN, false, "")
+            ),
+            SweetSpot.THIN, SweetSpot.THIN);
+
+    public static Difficulty HARD_MIRAGE_MOVING = new Difficulty(
+            11, 20, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(130, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(120, 0.1f, SweetSpot.MIRAGE_THIN.moving(1), false, "")
+            ),
+            SweetSpot.THIN.moving(1), SweetSpot.THIN.moving(1));
+
+
+
+
+
 
     public static Difficulty THIN_NO_DECAY_NOT_FORGIVING = new Difficulty(
             11, 40, 0,
@@ -283,17 +364,6 @@ public record Difficulty(
             SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
     );
 
-    public static Difficulty CLOUDS_LEGENDARY = new Difficulty(
-            5000, 10, -10, 1,
-            List.of(
-                    new PullDownModifier(""),
-                    new DisableHitSoundsModifier(""),
-                    new DisableMissSoundsModifier(""),
-                    new FlipSweetSpotsOnMissModifier(0.05f, "")
-            ),
-            SweetSpot.CLOUD_1, SweetSpot.CLOUD_2, SweetSpot.CLOUD_3, SweetSpot.CLOUD_4
-    );
-
     public static Difficulty SINGLE_THIN_FAST = new Difficulty(
             14, 10, 1,
             List.of(),
@@ -325,33 +395,12 @@ public record Difficulty(
             SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA, SweetSpot.AQUA
     );
 
-    public static Difficulty AURORA = new Difficulty(
-            500,
-            14, 75, 3f,
-            List.of(),
-            SweetSpot.FROZEN, SweetSpot.FROZEN
-    );
-
-    public static Difficulty STONEFISH = new Difficulty(
-            3000,
-            14, 30, 0f,
-            List.of(),
-            SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
-    );
-
-    public static Difficulty WITHER = new Difficulty(300,
-            10, 30, 1,
-            List.of(),
-            SweetSpot.WITHER_BIG, SweetSpot.WITHER, SweetSpot.WITHER_REVERSED
-    );
-
     public static Difficulty CREEPER = new Difficulty(
             10, 20, 1,
-            List.of(new SpawnSweetSpotsModifier(-1, 5, 0.25f, Difficulty.SweetSpot.TNT, true, "")),
+            List.of(new SpawnSweetSpotsModifier(10, 0.25f, Difficulty.SweetSpot.TNT, true, "")),
             SweetSpot.CREEPER, SweetSpot.CREEPER
     );
 
-    public static Difficulty NO_SWEETSPOTS = new Difficulty(10, 20, 1, List.of());
 
     public static Difficulty DEEPSLATE_CRAB = new Difficulty(
             200, 14, 10, 1,
@@ -397,6 +446,51 @@ public record Difficulty(
             SweetSpot.AQUA, SweetSpot.AQUA
     );
 
+    //
+    //,--.                                     ,--.
+    //|  |  ,---.   ,---.   ,---.  ,--,--,   ,-|  |  ,--,--. ,--.--. ,--. ,--.
+    //|  | | .-. : | .-. | | .-. : |      \ ' .-. | ' ,-.  | |  .--'  \  '  /
+    //|  | \   --. ' '-' ' \   --. |  ||  | \ `-' | \ '-'  | |  |      \   '
+    //`--'  `----' .`-  /   `----' `--''--'  `---'   `--`--' `--'    .-'  /
+    //             `---'                                             `---'
+
+    public static Difficulty AURORA = new Difficulty(
+            500,
+            14, 75, 3f,
+            List.of(new FreezeOnMissModifier(40, 10, "")),
+            SweetSpot.FROZEN, SweetSpot.FROZEN
+    );
+
+    public static Difficulty OASIS_SURGEON = new Difficulty(
+            500,
+            12, 10, 1f,
+            List.of(
+                    new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(110, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(120, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(130, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(140, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(150, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, ""),
+                    new SpawnSweetSpotsModifier(260, 0.3f, SweetSpot.MIRAGE_THIN.moving(1), false, "")
+            ),
+            SweetSpot.THIN.moving(1)
+    );
+
+    public static Difficulty WITHER = new Difficulty(300,
+            10, 30, 1,
+            List.of(),
+            SweetSpot.WITHER_BIG, SweetSpot.WITHER.moving(3), SweetSpot.WITHER.moving(-3)
+    );
+
+    public static Difficulty STONEFISH = new Difficulty(
+            3000,
+            14, 30, 0f,
+            List.of(),
+            SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
+    );
+
+    public static Difficulty VESANI = new Difficulty(10, 20, 1, List.of());
+
     public static Difficulty CERBERAY = new Difficulty(
             500, 14, 10, 1.5f,
             List.of(
@@ -406,7 +500,30 @@ public record Difficulty(
             SweetSpot.THIN, SweetSpot.THIN
     );
 
-    //endregion preset difficulties
+    public static Difficulty CLOUDS_LEGENDARY = new Difficulty(
+            5000, 10, -10, 1,
+            List.of(
+                    new PullDownModifier(""),
+                    new DisableHitSoundsModifier(""),
+                    new DisableMissSoundsModifier(""),
+                    new FlipSweetSpotsOnMissModifier(0.05f, "")
+            ),
+            SweetSpot.CLOUD_1, SweetSpot.CLOUD_2, SweetSpot.CLOUD_3, SweetSpot.CLOUD_4
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static final Codec<Difficulty> CODEC = RecordCodecBuilder.create(instance ->
@@ -571,6 +688,22 @@ public record Difficulty(
                 0xffADD8E6
         );
 
+        public static SweetSpot MIRAGE_NORMAL = new SweetSpot(
+                SCSweetSpotsBehaviour.MIRAGE,
+                RL_NORMAL,
+                22,
+                0,
+                0xff00ff00
+        );
+
+        public static SweetSpot MIRAGE_THIN = new SweetSpot(
+                SCSweetSpotsBehaviour.MIRAGE,
+                RL_THIN,
+                15,
+                0,
+                0xff00ff00
+        );
+
         public static SweetSpot NORMAL_HEAVY = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
                 RL_NORMAL,
@@ -589,26 +722,11 @@ public record Difficulty(
 
         public static SweetSpot WITHER = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_WITHER,
+                RL_WITHER_BIG,
                 22,
                 15,
-                false,
-                0,
-                3,
                 0xff1f1f1f
         );
-
-        public static SweetSpot WITHER_REVERSED = new SweetSpot(
-                SCSweetSpotsBehaviour.NORMAL,
-                RL_WITHER,
-                22,
-                15,
-                false,
-                0,
-                -3,
-                0xff1f1f1f
-        );
-
 
         public static SweetSpot WITHER_BIG = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,

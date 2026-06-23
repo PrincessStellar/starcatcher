@@ -8,10 +8,28 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
-    "missPenalty": 20,
-    "modifiers": [],
-    "speed": 10,
+    "hp": 75,
+    "missPenalty": 5,
+    "modifiers": [
+      {
+        "type": "starcatcher:spawn_sweetspots",
+        "chance": 1.0,
+        "cooldown": 140,
+        "sudoku_vanish": false,
+        "sweetspot": {
+          "color_as_int": -16711936,
+          "hitbox_size_in_pixels": 22,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweetspot_type": "starcatcher:mirage",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": ""
+      }
+    ],
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -25,12 +43,22 @@
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 15,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 0,
+        "sweetspot_type": "starcatcher:mirage",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]

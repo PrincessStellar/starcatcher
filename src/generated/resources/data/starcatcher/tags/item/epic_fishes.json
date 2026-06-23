@@ -9,6 +9,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:blue_ice_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boreal",
+      "required": false
+    },
+    {
       "id": "starcatcher:cactifish",
       "required": false
     },
@@ -218,6 +226,14 @@
     },
     {
       "id": "starcatcher:lightning_bass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_ice_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boreal",
       "required": false
     },
     {

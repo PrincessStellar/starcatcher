@@ -33,7 +33,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "yellow_perch_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "yellow_perch"))
                         .withSizeAndWeight(27, 11, 500, 352)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "tide"
@@ -82,7 +82,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "white_crappie_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "white_crappie"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -94,7 +94,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "black_crappie_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "black_crappie"))
                         .withSizeAndWeight(35, 8, 1600, 1200)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -108,7 +108,7 @@ public class DGTideFishes
                         .withEntityToSpawn(U.holderEntity("tide", "carp"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -161,7 +161,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "catfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "catfish"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "tide"
@@ -214,7 +214,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "frostbite_flounder_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "frostbite_flounder"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -331,7 +331,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "snook_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "snook"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -343,7 +343,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "anchovy_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "anchovy"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -355,7 +355,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "flounder_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "flounder"))
                         .withSizeAndWeight(27.0f, 11, 500, 352)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -379,7 +379,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "spore_stalker_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "spore_stalker"))
                         .withSizeAndWeight(70, 50, 4000, 2000)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -594,7 +594,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "deep_grouper_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "deep_grouper"))
                         .withSizeAndWeight(50, 15, 1000, 200)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing().moving())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -618,7 +618,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "shadow_snapper_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "shadow_snapper"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -630,7 +630,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "glowfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "glowfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -642,7 +642,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "anglerfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "anglerfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -678,7 +678,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "dripstone_darter_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "dripstone_darter"))
                         .withSizeAndWeight(6, 2, 7, 6)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -690,7 +690,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "lapis_lanternfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "lapis_lanternfish"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -726,7 +726,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "crystalline_carp_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "crystalline_carp"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -867,7 +867,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "obsidian_pike_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "obsidian_pike"))
                         .withSizeAndWeight(75, 20, 5000, 3000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.COMMON),
                 "tide"
         );
@@ -879,7 +879,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "volcano_tuna_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "volcano_tuna"))
                         .withSizeAndWeight(150, 50, 120000, 60000)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -891,7 +891,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "crimson_fangjaw_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "crimson_fangjaw"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing().moving())
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -903,7 +903,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "warped_guppy_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "warped_guppy"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -916,7 +916,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "soulscale_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "soulscale"))
                         .withSizeAndWeight(60, 20, 7000, 2000)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -979,7 +979,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "pale_clubfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "pale_clubfish"))
                         .withSizeAndWeight(300, 150, 26000, 7000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.COMMON)
                         .withBaseChance(20),
                 "tide"
@@ -1005,7 +1005,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "enderfin_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "enderfin"))
                         .withSizeAndWeight(6, 4, 5, 3)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.COMMON)
                         .withBaseChance(20),
                 "tide"
@@ -1070,7 +1070,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "endergazer_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "endergazer"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withBaseChance(15),
                 "tide"
@@ -1083,7 +1083,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "blue_neonfish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "blue_neonfish"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON)
                         .withBaseChance(15),
                 "tide"
@@ -1096,7 +1096,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "judgment_fish_bucket")
                         .withEntityToSpawn(U.holderEntity("tide", "judgment_fish"))
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON)
                         .withBaseChance(15),
                 "tide"

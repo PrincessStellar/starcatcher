@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -55,9 +56,9 @@ public class AdjustVanishingRate extends AbstractMinigameModifier
     }
 
     @Override
-    public ActiveSweetSpot onSpotAdded(ActiveSweetSpot ass)
+    public ActiveSweetSpot onSpotAdded(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.onSpotAdded(ass);
+        super.onSpotAdded(instance, ass);
         ass.vanishingRate = ass.vanishingRate * multiplier;
         return ass;
     }

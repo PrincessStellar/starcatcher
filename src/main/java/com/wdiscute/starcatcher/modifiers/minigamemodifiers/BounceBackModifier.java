@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +26,7 @@ public class BounceBackModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
         if (bounceBackTime > 0)
         {
@@ -43,10 +44,10 @@ public class BounceBackModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance)
     {
         //no idea wtf is going on here anymore
-        super.tick();
+        super.tick(instance);
 
         if (bounced)
             bounceBackTime--;

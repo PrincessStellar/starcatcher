@@ -9,9 +9,9 @@ public class TreasureSweetSpotBehaviour extends AbstractSweetSpotBehaviour
 {
 
     @Override
-    public void onHit()
+    public void onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.onHit();
+        super.onHit(instance, ass);
         //spawn particles before repositioning
         instance.addParticles(ass.pos, 30, 0x00ff00);
         //flip if ass is flip
@@ -40,9 +40,9 @@ public class TreasureSweetSpotBehaviour extends AbstractSweetSpotBehaviour
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.tick();
+        super.tick(instance, ass);
         if (instance.treasureProgress >= 100) ass.removed = true;
     }
 }

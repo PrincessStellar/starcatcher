@@ -44,7 +44,7 @@ public class DGSpawnFishes
                         .withEntityToSpawn(U.holderEntity("spawn", "herring"))
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "spawn"
         );
 

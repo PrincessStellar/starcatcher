@@ -36,7 +36,7 @@ public class DGCollectorsReapFishes
                         .withBucketedFish(new MaybeStack("collectorsreap", "platinum_bass_bucket"))
                         .withEntityToSpawn(U.holderEntity("collectorsreap", "platinum_bass"))
                         .withSizeAndWeight(40, 12, 1600, 1100)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD//,
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/platinum_bass")),
@@ -52,7 +52,7 @@ public class DGCollectorsReapFishes
                         .withBucketedFish(new MaybeStack("collectorsreap", "tiger_prawn_bucket"))
                         .withEntityToSpawn(U.holderEntity("collectorsreap", "tiger_prawn"))
                         .withSizeAndWeight(28, 8, 260, 60)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.RARE)
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD//,

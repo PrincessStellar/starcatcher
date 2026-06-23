@@ -2,19 +2,34 @@ package com.wdiscute.starcatcher.tooltips;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import org.apache.commons.lang3.tuple.Triple;
 
 public class SCTooltipGradient
 {
     public static MutableComponent process(String text, Triple<Integer, Integer, Integer> firstColor, Triple<Integer, Integer, Integer> secondColor)
     {
+        boolean bold;
+
+        if (text.startsWith("§l"))
+        {
+            bold = true;
+            text = text.replaceFirst("§l", "");
+        }
+        else
+            bold = false;
+
+
         MutableComponent component = Component.empty();
 
         double time = System.currentTimeMillis() * 0.0006d;
 
         for (int i = 0; i < text.length(); i++)
         {
-            component.append(Component.literal(String.valueOf(text.charAt(i))).withColor(getBlueColorForIndex(i, time, firstColor, secondColor)));
+            component.append(Component.literal(String.valueOf(text.charAt(i))).withStyle(Style.EMPTY
+                    .withColor((getBlueColorForIndex(i, time, firstColor, secondColor)))
+                    .withBold(bold)
+            ));
         }
 
         return component;

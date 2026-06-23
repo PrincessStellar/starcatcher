@@ -131,7 +131,10 @@ public class TooltipEvents
                 if (!modComp.isEmpty())
                     //if it's the active rod, add active modifiers, otherwise fishing modifiers
                     if (player != null && stack.is(SCTags.RODS) && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+                    {
+                        cachedTimer = -1;
                         comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.modifiers.active").withStyle(ChatFormatting.GRAY));
+                    }
                     else
                         comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
 

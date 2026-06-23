@@ -65,7 +65,6 @@ public class SCRenderTypes
 
         long t = System.currentTimeMillis() % (speedMs);
         double value = (double) t / speedMs;
-        //value = (t < speedMs) ? (double) t / speedMs : 0.85;
 
         Matrix4f matrix4f = new Matrix4f()
                 .translation(0.0f, (float) (0 + value), 0.0F)

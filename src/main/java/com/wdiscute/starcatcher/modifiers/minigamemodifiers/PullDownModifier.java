@@ -25,20 +25,20 @@ public class PullDownModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean flipRodAndProgressDisplay()
+    public boolean flipRodAndProgressDisplay(FishingMinigameScreen instance)
     {
         return true;
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderForeground(guiGraphics, partialTick, width, height);
+        super.renderForeground(instance, guiGraphics, partialTick, width, height);
         //todo render clouds
     }
 

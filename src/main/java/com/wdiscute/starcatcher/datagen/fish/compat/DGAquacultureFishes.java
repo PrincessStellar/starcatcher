@@ -169,7 +169,7 @@ public class DGAquacultureFishes
                         .withBucketedFish(new MaybeStack("aquaculture", "synodontis_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "synodontis"))
                         .withSizeAndWeight(35, 15, 1000, 300)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.EPIC),
                 "aquaculture"
         );
@@ -227,7 +227,7 @@ public class DGAquacultureFishes
                         .withBucketedFish(new MaybeStack("aquaculture", "atlantic_herring_bucket"))
                         .withEntityToSpawn(U.holderEntity("aquaculture", "atlantic_herring"))
                         .withSizeAndWeight(25, 5, 200, 100)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "aquaculture"

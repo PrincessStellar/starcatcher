@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.LeafSweetSpotBehaviour;
 import net.minecraft.client.Minecraft;
@@ -30,9 +31,9 @@ public class AddLeavesSweetspotsModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void tick()
+    public void tick(FishingMinigameScreen instance)
     {
-        super.tick();
+        super.tick(instance);
 
         if(U.r.nextFloat() < chancePerTick)
         {

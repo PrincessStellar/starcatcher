@@ -1,13 +1,15 @@
 package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 
 public class GlowingSweetSpotBehaviour extends NormalSweetSpotBehaviour
 {
     @Override
-    public void onHit()
+    public void onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.onHit();
+        super.onHit(instance, ass);
         Object data = instance.modifierData.computeIfAbsent(Starcatcher.rl("deep_dark"), o -> 0);
 
         if (data instanceof Integer i)

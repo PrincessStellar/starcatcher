@@ -12,8 +12,8 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
-    "missPenalty": 20,
+    "hp": 150,
+    "missPenalty": 5,
     "modifiers": [
       {
         "type": "starcatcher:freeze_on_miss",
@@ -22,7 +22,7 @@
         "translation_override": ""
       }
     ],
-    "speed": 10,
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -32,22 +32,32 @@
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
+        "vanishing_rate": 0.1
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 15,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 20,
+        "reward": 15,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
-        "vanishing_rate": 0.0
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.1
+      },
+      {
+        "color_as_int": -5383962,
+        "hitbox_size_in_pixels": 33,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 15,
+        "sweetspot_type": "starcatcher:freeze",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
+        "vanishing_rate": 0.1
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "uncommon",
   "restrictions": [
     {
       "type": "starcatcher:dimension",

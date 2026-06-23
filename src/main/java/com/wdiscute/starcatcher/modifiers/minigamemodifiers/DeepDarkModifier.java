@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.GlowingSweetSpotBehaviour;
 import net.minecraft.client.Minecraft;
@@ -27,7 +28,7 @@ public class DeepDarkModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(ActiveSweetSpot ass)
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         if(ass.behaviour instanceof GlowingSweetSpotBehaviour) return false;
         Object data = instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
@@ -37,11 +38,11 @@ public class DeepDarkModifier extends AbstractMinigameModifier
 
         Minecraft.getInstance().player.playSound(SoundEvents.SCULK_BLOCK_HIT, 1f, 1f);
 
-        return super.onHit(ass);
+        return super.onHit(instance, ass);
     }
 
     @Override
-    public void onMiss()
+    public void onMiss(FishingMinigameScreen instance)
     {
         Object data = instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
 
@@ -50,9 +51,9 @@ public class DeepDarkModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void renderForeground(GuiGraphics guiGraphics, float partialTick, int width, int height)
+    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
     {
-        super.renderForeground(guiGraphics, partialTick, width, height);
+        super.renderForeground(instance, guiGraphics, partialTick, width, height);
 
         Object data = instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
 

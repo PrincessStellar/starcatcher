@@ -232,14 +232,14 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.translate(-width >> 1, -height >> 1, 0);
 
         //render modifiers background
-        modifiers.forEach(modifier -> modifier.renderBackground(guiGraphics, partialTick, width, height));
+        modifiers.forEach(modifier -> modifier.renderBackground(this, guiGraphics, partialTick, width, height));
 
         if (treasureActive) renderTreasure(guiGraphics);
 
         int centerX = width / 2;
         int centerY = height / 2;
 
-        boolean shouldDarken = modifiers.stream().anyMatch(AbstractMinigameModifier::shouldDarkenWheel);
+        boolean shouldDarken = modifiers.stream().anyMatch(o -> o.shouldDarkenWheel(this));
 
         //render tank background
         guiGraphics.blit(texture, centerX - 44 - 106, centerY - 58,
@@ -285,7 +285,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         guiGraphics.blit(texture, centerX - 16, centerY - 16,
                 32, 32, 224, 128, 32, 32, 256, 256);
 
-        boolean flip = modifiers.stream().anyMatch(AbstractMinigameModifier::flipRodAndProgressDisplay);
+        boolean flip = modifiers.stream().anyMatch(o -> o.flipRodAndProgressDisplay(this));
 
         //fishing rod
         guiGraphics.blit(texture, centerX - 32 - 70, centerY - 24 - 57 + (flip ? 130 : 0),
@@ -322,10 +322,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.popPose();
 
         //render sweet spots foreground
-        activeSweetSpots.forEach(sweetspot -> sweetspot.behaviour.renderForeground(guiGraphics, partialTick, width, height));
+        activeSweetSpots.forEach(ass -> ass.behaviour.renderForeground(guiGraphics, partialTick, width, height, this, ass));
 
         //render modifiers foreground
-        modifiers.forEach(modifier -> modifier.renderForeground(guiGraphics, partialTick, width, height));
+        modifiers.forEach(modifier -> modifier.renderForeground(this, guiGraphics, partialTick, width, height));
 
         //render particles
         hitParticles.forEach(p -> p.render(guiGraphics, width, height));
@@ -335,18 +335,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (SCConfig.DEBUG_MINIGAME.get())
         {
             int yOffsetMod = 10;
-            guiGraphics.drawString(this.font, "minigame modifiers:", 10, yOffsetMod, 0xffffff00);
+            guiGraphics.drawString(this.font, "minigame modifiers: " + modifiers.size(), 10, yOffsetMod, 0xffffff00);
 
             for (AbstractMinigameModifier modifier : modifiers)
             {
                 yOffsetMod = yOffsetMod + 10;
-                guiGraphics.drawString(this.font, modifier.toString().contains(".")
-                        ? modifier.toString().substring(modifier.toString().lastIndexOf('.') + 1)
-                        : modifier.toString(), 10, yOffsetMod, 0xffffffff);
+                guiGraphics.drawString(this.font, modifier.toString(), 10, yOffsetMod, 0xffffffff);
             }
 
             int yOffsetASS = 10;
-            guiGraphics.drawString(this.font, "active sweet-spots:", width / 2 + 120, yOffsetASS, 0xffffff00);
+            guiGraphics.drawString(this.font, "active sweet-spots: " + activeSweetSpots.size(), width / 2 + 90, yOffsetASS, 0xffffff00);
 
             for (ActiveSweetSpot ass : activeSweetSpots)
             {
@@ -355,17 +353,17 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                         ass.texture.getPath().contains("/")
                                 ? ass.texture.getPath().substring(ass.texture.getPath().lastIndexOf('/') + 1)
                                 : ass.texture.getPath()
-                ), width / 2 + 120, yOffsetASS, 0xffffffff);
+                ), width / 2 + 90, yOffsetASS, 0xffffffff);
                 yOffsetASS += 10;
-                guiGraphics.drawString(this.font, "rew:" + ass.reward + " van:" + ass.vanishingRate + " mov:" + ass.movingRate + " pos:" + ass.pos, width / 2 + 120, yOffsetASS, 0xffffffff);
+                guiGraphics.drawString(this.font, "rew: " + ass.reward + " / van: " + ass.vanishingRate + " / mov: " + ass.movingRate + " / pos: " + ass.pos, width / 2 + 90, yOffsetASS, 0xffffffff);
                 yOffsetASS += 10;
-                guiGraphics.drawString(this.font, "alpha: " + ass.alpha + " col:" + ass.particleColor + " thick:" + ass.thickness, width / 2 + 120, yOffsetASS, 0xffffffff);
+                guiGraphics.drawString(this.font, "col: " + ass.particleColor + " / thick:" + ass.thickness + " / alpha: " + ass.alpha, width / 2 + 90, yOffsetASS, 0xffffffff);
                 yOffsetASS += 10;
                 guiGraphics.drawString(this.font, "behaviour: " + (
                         ass.behaviour.toString().contains(".")
                                 ? ass.behaviour.toString().substring(ass.behaviour.toString().lastIndexOf('.') + 1)
                                 : ass.behaviour.toString()
-                ), width / 2 + 120, yOffsetASS, 0xffffffff);
+                ), width / 2 + 90, yOffsetASS, 0xffffffff);
                 yOffsetASS += 10;
             }
 
@@ -380,16 +378,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             guiGraphics.drawString(this.font, "item: " + treasureIS.toString(), width / 2 - 100, height / 2 + 140, 0xffffffff);
             guiGraphics.drawString(this.font, "progress: " + treasureProgress + "/100", width / 2 - 100, height / 2 + 150, 0xffffffff);
 
-            guiGraphics.drawString(this.font, "fp: ", 10, height / 2 - 40, 0xffffff00);
-            guiGraphics.drawString(this.font, "penalty: " + penalty, 10, height / 2 - 30, 0xffffffff);
-            guiGraphics.drawString(this.font, "handle speed: " + handleSpeed, 10, height / 2 - 20, 0xffffffff);
-            guiGraphics.drawString(this.font, "handle pos: " + handlePos, 10, height / 2 - 10, 0xffffffff);
-            guiGraphics.drawString(this.font, "decay: " + decay, 10, height / 2, 0xffffffff);
-            guiGraphics.drawString(this.font, "perfect catch: " + perfectCatch, 10, height / 2 + 10, 0xffffffff);
-            guiGraphics.drawString(this.font, "cons. hits: " + consecutiveHits, 10, height / 2 + 20, 0xffffffff);
-            guiGraphics.drawString(this.font, "particles: " + hitParticles.size(), 10, height / 2 + 30, 0xffffffff);
-            guiGraphics.drawString(this.font, "grace: " + gracePeriod, 10, height / 2 + 40, 0xffffffff);
-            guiGraphics.drawString(this.font, "tick: " + tickCount, 10, height / 2 + 50, 0xffffffff);
+            guiGraphics.drawString(this.font, "fp: ", 10, height - 100, 0xffffff00);
+            guiGraphics.drawString(this.font, "penalty: " + penalty, 10, height - 90, 0xffffffff);
+            guiGraphics.drawString(this.font, "handle speed: " + handleSpeed, 10, height - 80, 0xffffffff);
+            guiGraphics.drawString(this.font, "handle pos: " + handlePos, 10, height - 70, 0xffffffff);
+            guiGraphics.drawString(this.font, "decay: " + decay, 10, height - 60, 0xffffffff);
+            guiGraphics.drawString(this.font, "perfect catch: " + perfectCatch, 10, height - 50, 0xffffffff);
+            guiGraphics.drawString(this.font, "cons. hits: " + consecutiveHits, 10, height - 40, 0xffffffff);
+            guiGraphics.drawString(this.font, "particles: " + hitParticles.size(), 10, height - 30, 0xffffffff);
+            guiGraphics.drawString(this.font, "grace: " + gracePeriod, 10, height - 20, 0xffffffff);
+            guiGraphics.drawString(this.font, "tick: " + tickCount, 10, height - 10, 0xffffffff);
 
             //rod attachments
 //            guiGraphics.drawString(this.font, "attachments: ", 10, height - 50, 0xffffff00);
@@ -410,11 +408,11 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.rotateAround(Axis.ZP.rotationDegrees(ass.pos + (partialTick * ass.movingRate) * ass.currentRotation), 0, 0, 0);
 
-        boolean isDisabled = modifiers.stream().anyMatch(mod -> mod.disableSweetSpotRendering(ass));
+        boolean isDisabled = modifiers.stream().anyMatch(mod -> mod.disableSweetSpotRendering(this, ass));
         if (!isDisabled)
-            ass.behaviour.render(guiGraphics, poseStack, partialTick);
+            ass.behaviour.render(guiGraphics, poseStack, partialTick, this, ass);
 
-        modifiers.forEach(mod -> mod.renderOnSweetSpot(guiGraphics, poseStack, ass, partialTick));
+        modifiers.forEach(mod -> mod.renderOnSweetSpot(this, guiGraphics, poseStack, ass, partialTick));
 
         poseStack.popPose();
     }
@@ -458,7 +456,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void renderKimbeMarker(GuiGraphics guiGraphics)
     {
-        if (modifiers.stream().anyMatch(AbstractMinigameModifier::skipRenderingKimbeMarker)) return;
+        if (modifiers.stream().anyMatch(o -> o.skipRenderingKimbeMarker(this))) return;
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -497,13 +495,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         poseStack.translate(0, -16, 0);
 
-        boolean isDisabled = modifiers.stream().anyMatch(AbstractMinigameModifier::disablePointerRendering);
+        boolean isDisabled = modifiers.stream().anyMatch(o -> o.disablePointerRendering(this));
         if (!isDisabled)
             renderPoseCentered(guiGraphics, texture, 32, 64, 144, 0, 256);
 
         poseStack.translate(0, 16, 0);
 
-        modifiers.forEach(mod -> mod.renderOnPointer(guiGraphics, poseStack, partialTick));
+        modifiers.forEach(mod -> mod.renderOnPointer(this, guiGraphics, poseStack, partialTick));
 
         poseStack.popPose();
     }
@@ -517,7 +515,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             holdingTicks = 0;
         }
 
-        modifiers.forEach(mod -> mod.onKeyReleased(keyCode, scanCode, keyModifiers));
+        modifiers.forEach(mod -> mod.onKeyReleased(this, keyCode, scanCode, keyModifiers));
 
         return super.keyReleased(keyCode, scanCode, keyModifiers);
     }
@@ -525,7 +523,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY)
     {
-        modifiers.forEach(o -> o.mouseScrolled(mouseX, mouseY, scrollX, scrollY));
+        modifiers.forEach(o -> o.mouseScrolled(this, mouseX, mouseY, scrollX, scrollY));
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }
 
@@ -553,7 +551,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (this.minecraft.options.keyInventory.isActiveAndMatches(mouseKey) && !SCKeymappings.MINIGAME_HIT.getKey().equals(mouseKey))
         {
             //play miss sound
-            if (SCConfig.ENABLE_TACKLE_SOUNDS.get() && modifiers.stream().anyMatch(AbstractMinigameModifier::skipMissSound))
+            if (SCConfig.ENABLE_TACKLE_SOUNDS.get() && modifiers.stream().anyMatch(o -> o.skipMissSound(this)))
                 tackleSkin.onFailedMinigame(Minecraft.getInstance().player);
             this.onClose();
             return true;
@@ -567,7 +565,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             isHoldingKey = true;
         }
 
-        this.modifiers.forEach(mod -> mod.onKeyPress(keyCode, scanCode, keyModifiers));
+        this.modifiers.forEach(mod -> mod.onKeyPress(this, keyCode, scanCode, keyModifiers));
 
         return super.keyPressed(keyCode, scanCode, keyModifiers);
     }
@@ -588,14 +586,14 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         for (ActiveSweetSpot ass : activeSweetSpots)
         {
-            if (doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2))
+            if (ass.canHit && doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2))
             {
 
                 //check if each modifier allows the hit to register
-                if (modifiers.stream().anyMatch(o -> o.onHit(ass))) continue;
+                if (modifiers.stream().anyMatch(o -> o.onHit(this, ass))) continue;
 
                 hitSomething = true;
-                ass.behaviour.onHit();
+                ass.behaviour.onHit(this, ass);
                 break;
             }
         }
@@ -603,13 +601,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         if (!hitSomething)
         {
-            this.modifiers.forEach(AbstractMinigameModifier::onMiss);
+            this.modifiers.forEach(o -> o.onMiss(this));
 
             consecutiveHits = 0;
-            if (SCConfig.ENABLE_MISS_SOUND.get() && modifiers.stream().noneMatch(AbstractMinigameModifier::skipMissSound))
+            if (SCConfig.ENABLE_MISS_SOUND.get() && modifiers.stream().noneMatch(o -> o.skipMissSound(this)))
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
 
-            activeSweetSpots.forEach(o -> o.behaviour.onMiss());
+            activeSweetSpots.forEach(ass -> ass.behaviour.onMiss(this, ass));
 
             progress -= penalty;
         }
@@ -644,21 +642,21 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         //tick modifiers
-        modifiers.forEach(AbstractMinigameModifier::tick);
+        modifiers.forEach(o -> o.tick(this));
         //tick behaviour
-        activeSweetSpots.forEach(s -> s.behaviour.tick());
+        activeSweetSpots.forEach(ass -> ass.behaviour.tick(this, ass));
 
         //remove activeSweetSpots marked for removal
-        activeSweetSpots.removeIf(s ->
+        activeSweetSpots.removeIf(ass ->
         {
-            if (s.removed) s.behaviour.onRemove();
-            return s.removed;
+            if (ass.removed) ass.behaviour.onRemove(this, ass);
+            return ass.removed;
         });
 
         //remove modifiers marked for removal
         modifiers.removeIf(m ->
         {
-            if (m.removed) m.onRemove();
+            if (m.removed) m.onRemove(this);
             return m.removed;
         });
 
@@ -672,7 +670,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //trigger onAdd of SweetSpotBehaviour
         spotsToAdd.forEach(o -> o.behaviour.onAdd(this, o));
         //trigger onSpotAdded of modifiers
-        spotsToAdd.forEach(s -> modifiers.forEach(m -> m.onSpotAdded(s)));
+        spotsToAdd.forEach(s -> modifiers.forEach(m -> m.onSpotAdded(this, s)));
         spotsToAdd.clear();
 
         //move pointer
@@ -710,7 +708,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             if (progressSmooth > hp)
             {
                 //if completed treasure minigame, or is a perfect catch with the mossy hook
-                boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(AbstractMinigameModifier::forceAwardTreasure);
+                boolean awardTreasure = treasureProgress > 100 || modifiers.stream().anyMatch(o -> o.forceAwardTreasure(this));
 
                 if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
                     tackleSkin.onSuccessfulMinigame(Minecraft.getInstance().player);
@@ -726,7 +724,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public void onClose()
     {
-        modifiers.forEach(AbstractMinigameModifier::onRemove);
+        modifiers.forEach(o -> o.onRemove(this));
 
         PacketDistributor.sendToServer(new SBFishingCompletedPayload(-1, false, false, consecutiveHits));
         this.minecraft.popGuiLayer();
@@ -818,9 +816,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void removeAllSweetSpots()
     {
-        for (var dws : activeSweetSpots)
+        for (var ass : activeSweetSpots)
         {
-            dws.removed = true;
+            ass.removed = true;
         }
     }
 }

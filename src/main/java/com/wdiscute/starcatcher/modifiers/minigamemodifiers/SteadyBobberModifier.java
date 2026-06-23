@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
+import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 
@@ -22,9 +23,9 @@ public class SteadyBobberModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public ActiveSweetSpot onSpotAdded(ActiveSweetSpot ass)
+    public ActiveSweetSpot onSpotAdded(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
-        super.onSpotAdded(ass);
+        super.onSpotAdded(instance, ass);
         if (ass.baseSS.texturePath().equals(Difficulty.SweetSpot.NORMAL.texturePath()))
         {
             ass.texture = Difficulty.SweetSpot.NORMAL_STEADY.texturePath();

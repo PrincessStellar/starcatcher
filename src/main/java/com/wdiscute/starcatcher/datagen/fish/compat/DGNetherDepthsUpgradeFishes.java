@@ -41,7 +41,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "bonefish"))
                         .withSizeAndWeight(120, 40, 700, 200)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING),
+                        .withDifficulty(Difficulty.MEDIUM.moving()),
                 "netherdepthsupgrade"
         );
 
@@ -53,7 +53,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "blazefish"))
                         .withSizeAndWeight(160, 29, 5200, 1200)
                         .withRarity(Rarity.LEGENDARY)
-                        .withDifficulty(Difficulty.HARD_VANISHING),
+                        .withDifficulty(Difficulty.HARD.vanishing()),
                 "netherdepthsupgrade"
         );
 
@@ -64,7 +64,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "eyeball_fish"))
                         .withSizeAndWeight(70, 40, 700, 200)
                         .withRarity(Rarity.RARE)
-                        .withDifficulty(Difficulty.HARD_MOVING),
+                        .withDifficulty(Difficulty.HARD.moving()),
                 "netherdepthsupgrade"
         );
 
@@ -75,7 +75,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "glowdine"))
                         .withSizeAndWeight(130, 30, 3400, 900)
                         .withRarity(Rarity.RARE)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING_MOVING),
+                        .withDifficulty(Difficulty.MEDIUM.vanishing().moving()),
                 "netherdepthsupgrade"
         );
 
@@ -86,7 +86,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "lava_pufferfish"))
                         .withSizeAndWeight(90, 30, 3700, 900)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.HARD_MOVING),
+                        .withDifficulty(Difficulty.HARD.moving()),
                 "netherdepthsupgrade"
         );
 
@@ -97,7 +97,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "magmacubefish"))
                         .withSizeAndWeight(120, 40, 3000, 400)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "netherdepthsupgrade"
         );
 
@@ -130,7 +130,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "soulsucker"))
                         .withSizeAndWeight(140, 30, 12000, 3000)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING),
+                        .withDifficulty(Difficulty.MEDIUM.vanishing()),
                 "netherdepthsupgrade"
         );
 
@@ -141,7 +141,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn(U.holderEntity("netherdepthsupgrade", "wither_bonefish"))
                         .withSizeAndWeight(400, 100, 32000, 7000)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.HARD_MOVING),
+                        .withDifficulty(Difficulty.HARD.moving()),
                 "netherdepthsupgrade"
         );
     }

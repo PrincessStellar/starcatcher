@@ -70,7 +70,7 @@ public class DGCreateFishes
                         .withFish(CreateCompat.VALVE)
                         .withSizeAndWeight(7, 1, 300, 100)
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_MOVING),
+                        .withDifficulty(Difficulty.EASY.moving()),
                 "create"
         );
 
@@ -80,7 +80,7 @@ public class DGCreateFishes
                         .withFish(CreateCompat.PIPEHEAD)
                         .withSizeAndWeight(7, 1, 2400, 400)
                         .withRarity(Rarity.RARE)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING),
+                        .withDifficulty(Difficulty.MEDIUM.moving()),
                 "create"
         );
 
@@ -91,7 +91,7 @@ public class DGCreateFishes
                         .withSizeAndWeight(7, 1, 7400, 800)
                         .withRarity(Rarity.RARE)
                         .withBaseChance(3)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING),
+                        .withDifficulty(Difficulty.MEDIUM.moving()),
                 "create"
         );
 
@@ -101,7 +101,7 @@ public class DGCreateFishes
                         .withFish(CreateCompat.EEL_DYNAMO)
                         .withSizeAndWeight(7, 1, 7400, 800)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.HARD_VANISHING),
+                        .withDifficulty(Difficulty.HARD.vanishing()),
                 "create"
         );
 

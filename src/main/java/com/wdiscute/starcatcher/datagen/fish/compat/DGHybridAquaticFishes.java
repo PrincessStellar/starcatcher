@@ -34,7 +34,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "clownfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "clownfish"))
                         .withSizeAndWeight(8, 3, 140, 60)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -46,7 +46,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "surgeonfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "surgeonfish"))
                         .withSizeAndWeight(15, 5, 600, 200)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -58,7 +58,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "blowfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "blowfish"))
                         .withSizeAndWeight(18, 4, 5, 3)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -70,7 +70,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "boxfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "boxfish"))
                         .withSizeAndWeight(27, 13, 180, 90)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -82,7 +82,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "damselfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "damselfish"))
                         .withSizeAndWeight(6, 3, 18, 5)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -94,7 +94,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "moray_eel")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "moray_eel"))
                         .withSizeAndWeight(180, 70, 21000, 8000)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "hybrid_aquatic"
@@ -177,7 +177,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "seahorse")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "seahorse"))
                         .withSizeAndWeight(15, 10, 20, 15)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -201,7 +201,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "flying_fish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "flying_fish"))
                         .withSizeAndWeight(19, 11, 570, 330)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -211,7 +211,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "anglerfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "anglerfish"))
                         .withSizeAndWeight(10.5f, 7.5f, 585, 295)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -221,7 +221,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "barreleye")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "barreleye"))
                         .withSizeAndWeight(15, 5, 99.25f, 42.5f)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -242,7 +242,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "coelacanth")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "coelacanth"))
                         .withSizeAndWeight(175, 25, 59500, 8000)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE),
                 "hybrid_aquatic"
         );
@@ -252,7 +252,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "oarfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "oarfish"))
                         .withSizeAndWeight(500, 300, 122727.25f, 61363.6f)
-                        .withDifficulty(Difficulty.HARD_VANISHING)
+                        .withDifficulty(Difficulty.HARD.vanishing())
                         .withRarity(Rarity.RARE)
                         .withWeather(WeatherRestriction.THUNDER),
                 "hybrid_aquatic"
@@ -263,7 +263,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "ratfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "ratfish"))
                         .withSizeAndWeight(90, 10, 4300, 2500)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -273,7 +273,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "snailfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "snailfish"))
                         .withSizeAndWeight(19.65f, 9.15f, 84, 76)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -283,7 +283,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "john_dory")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "john_dory"))
                         .withSizeAndWeight(50, 15, 3846.15f, 1153.85f)
-                        .withDifficulty(Difficulty.MEDIUM_VANISHING)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -304,7 +304,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "squirrelfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "squirrelfish"))
                         .withSizeAndWeight(21, 3, 300, 100)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
@@ -315,7 +315,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "tuna")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "tuna"))
                         .withSizeAndWeight(300, 100, 680250, 226750)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -325,7 +325,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "mahi")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "mahi"))
                         .withSizeAndWeight(90, 10, 4300, 2500)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -345,7 +345,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "herring")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "herring"))
                         .withSizeAndWeight(40, 12, 663.4f, 436.6f)
-                        .withDifficulty(Difficulty.EASY_MOVING)
+                        .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -395,7 +395,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "opah")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "opah"))
                         .withSizeAndWeight(90, 10, 4300, 2500)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -407,7 +407,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "ocean_sunfish")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "ocean_sunfish"))
                         .withSizeAndWeight(230, 100, 1273500, 1026500)
-                        .withDifficulty(Difficulty.HARD_MOVING)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
                         .withWeather(WeatherRestriction.CLEAR),
@@ -429,7 +429,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "carp")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "carp"))
                         .withSizeAndWeight(60, 20, 8000, 4000)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -449,7 +449,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "oscar")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "oscar"))
                         .withSizeAndWeight(30, 10, 5290, 3710)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.UNCOMMON),
                 "hybrid_aquatic"
         );
@@ -489,7 +489,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "danio")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "danio"))
                         .withSizeAndWeight(4.4f, 0.6f, 0.7f, 0.2f)
-                        .withDifficulty(Difficulty.EASY_VANISHING)
+                        .withDifficulty(Difficulty.EASY.vanishing())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );
@@ -509,7 +509,7 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "discus")
                         .withEntityToSpawn(U.holderEntity("hybrid_aquatic", "discus"))
                         .withSizeAndWeight(90, 10, 4300, 2500)
-                        .withDifficulty(Difficulty.MEDIUM_MOVING)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );

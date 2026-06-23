@@ -15,14 +15,7 @@
     "decay": 1.0,
     "hp": 100,
     "missPenalty": 20,
-    "modifiers": [
-      {
-        "type": "starcatcher:freeze_on_miss",
-        "length": 40,
-        "rampTime": 10,
-        "translation_override": ""
-      }
-    ],
+    "modifiers": [],
     "speed": 11,
     "sweetspots": [
       {
