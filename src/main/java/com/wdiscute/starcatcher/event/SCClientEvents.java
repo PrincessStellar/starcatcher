@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.locators.FishRadarLayer;
 import com.wdiscute.starcatcher.locators.FishTrackedLayer;
+import com.wdiscute.starcatcher.minigame.KonamiDetector;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumRenderer;
 import com.wdiscute.starcatcher.blocks.display.DisplayBlockRenderer;
@@ -43,7 +44,10 @@ public class SCClientEvents
     @SubscribeEvent
     public static void keyPressed(InputEvent.Key event)
     {
-        if(event.getAction() == 0 && event.getKey() == SCKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
+        if (event.getAction() == 1)
+            KonamiDetector.keyPressed(event.getKey());
+
+        if (event.getAction() == 0 && event.getKey() == SCKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
         {
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
         }
@@ -52,7 +56,8 @@ public class SCClientEvents
     @SubscribeEvent
     public static void onAssetReload(RegisterClientReloadListenersEvent event)
     {
-        event.registerReloadListener((ResourceManagerReloadListener) resourceManager -> {
+        event.registerReloadListener((ResourceManagerReloadListener) resourceManager ->
+        {
             GoldRenderer.INSTANCE.close();
             BakedModelRemapper.REMAPPED_MODELS.clear();
         });
