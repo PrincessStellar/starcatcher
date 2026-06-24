@@ -15,7 +15,7 @@ public class BoostThrownSpeedModifier extends AbstractCatchModifier
     public static final MapCodec<BoostThrownSpeedModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("multiplier").forGetter(o -> o.multiplier),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, BoostThrownSpeedModifier::new));
 
     public BoostThrownSpeedModifier(float multiplier, String translationOverride)

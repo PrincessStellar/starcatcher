@@ -25,8 +25,7 @@
           "sweetspot_type": "starcatcher:mirage",
           "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
           "vanishing_rate": 0.0
-        },
-        "translation_override": ""
+        }
       }
     ],
     "speed": 7,
@@ -68,9 +67,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
-      ]
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
     },
     {
       "type": "starcatcher:biome",

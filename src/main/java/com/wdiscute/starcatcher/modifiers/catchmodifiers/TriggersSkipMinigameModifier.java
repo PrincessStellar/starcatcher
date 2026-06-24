@@ -11,7 +11,7 @@ public class TriggersSkipMinigameModifier extends AbstractCatchModifier implemen
 {
     public static final MapCodec<TriggersSkipMinigameModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, TriggersSkipMinigameModifier::new));
 
     public TriggersSkipMinigameModifier(String translationOverride)

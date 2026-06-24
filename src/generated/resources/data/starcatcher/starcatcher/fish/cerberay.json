@@ -19,13 +19,11 @@
         "type": "starcatcher:burn_on_miss",
         "extra_speed": 20,
         "length": 40,
-        "ramp_time": 10,
-        "translation_override": ""
+        "ramp_time": 10
       },
       {
         "type": "starcatcher:multi_layer_modifier",
-        "max_layers": 2,
-        "translation_override": ""
+        "max_layers": 2
       }
     ],
     "speed": 14,
@@ -57,9 +55,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:the_nether"
-      ]
+      "dimension_entry": "the_nether",
+      "translation_override": "dimension.minecraft.the_nether"
     },
     {
       "type": "starcatcher:bait",

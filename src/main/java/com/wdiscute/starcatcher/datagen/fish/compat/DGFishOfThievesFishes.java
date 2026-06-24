@@ -5,15 +5,11 @@ import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.registry.fishrestrictions.SeasonRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
-
-import static com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties.*;
-import static com.wdiscute.starcatcher.datagen.fish.PresetRestrictions.*;
 
 public class DGFishOfThievesFishes
 {

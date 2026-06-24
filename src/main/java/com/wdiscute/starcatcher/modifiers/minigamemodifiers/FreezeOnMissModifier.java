@@ -20,7 +20,7 @@ public class FreezeOnMissModifier extends AbstractMinigameModifier
             instance.group(
                     Codec.INT.fieldOf("length").forGetter(o -> o.length),
                     Codec.INT.optionalFieldOf("rampTime", -1).forGetter(o -> o.rampTime),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, FreezeOnMissModifier::new));
 
     public FreezeOnMissModifier(int length, int rampTime, String translationOverride)

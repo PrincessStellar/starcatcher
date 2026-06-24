@@ -140,31 +140,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //`--`--`--'  `---'   `---'  `--' `--'   `--'  `----' `--'    `----'
         //
 
-        //default catch modifiers
-        modifiers.add(SCItems.DEFAULT_CATCH,
-                List.of(
-                        new FishMessagesModifier(0.05f, ""),
-                        new LuckAttributeModifier(new HashMap<>()
-                        {{
-                            put(Rarity.COMMON, 0);
-                            put(Rarity.UNCOMMON, 1);
-                            put(Rarity.RARE, 2);
-                            put(Rarity.EPIC, 3);
-                            put(Rarity.LEGENDARY, 5);
-                        }}, "tooltip.modifier.starcatcher.luck_attribute"),
-                        new ExtraGoldenChanceModifier(0.01f, false, ""),
-                        new ExtraGoldenChanceModifier(0.01f, true, "")
-                ), false
-        );
-
-        //default minigame modifiers
-        modifiers.add(SCItems.DEFAULT_MINIGAME,
-                List.of(
-                        new BaseMinigameModifier("")
-                ), false
-        );
-
-
         modifiers.add(SCItems.SLIMEY_BOBBER, List.of(
                 new BounceBackModifier("")
         ), false);

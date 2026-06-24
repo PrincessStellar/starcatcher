@@ -21,7 +21,7 @@ public class AddLeavesSweetspotsModifier extends AbstractMinigameModifier
     public static final MapCodec<AddLeavesSweetspotsModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.optionalFieldOf("chance_per_tick", 0.025f).forGetter(o -> o.chancePerTick),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
                     ).apply(instance, AddLeavesSweetspotsModifier::new));
 
     public AddLeavesSweetspotsModifier(float chancePerTick, String overrideOverride)

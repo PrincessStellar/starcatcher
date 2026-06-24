@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
+import com.wdiscute.starcatcher.registry.SCDataEntries;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -29,7 +30,7 @@ public interface Modifier
 
     static List<AbstractMinigameModifier> getDefaultMinigameModifiers()
     {
-        List<Modifier> data = SCItems.DEFAULT_MINIGAME.getData(SCDataMaps.ITEM_MODIFIERS);
+        List<Modifier> data = SCDataEntries.DEFAULT_MINIGAME_MODIFIERS.get();
 
         if(data == null) data = List.of();
 
@@ -40,7 +41,7 @@ public interface Modifier
 
     static List<AbstractCatchModifier> getDefaultCatchModifiers()
     {
-        List<Modifier> data = SCItems.DEFAULT_CATCH.getData(SCDataMaps.ITEM_MODIFIERS);
+        List<Modifier> data = SCDataEntries.DEFAULT_CATCH_MODIFIERS.get();
 
         if(data == null) data = List.of();
 

@@ -11,7 +11,7 @@ public class PreventFrozenModifier extends AbstractMinigameModifier implements C
 {
     public static final MapCodec<PreventFrozenModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, PreventFrozenModifier::new));
 
     public PreventFrozenModifier(String translationOverride)

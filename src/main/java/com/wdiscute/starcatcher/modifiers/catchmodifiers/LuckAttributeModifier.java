@@ -25,7 +25,7 @@ public class LuckAttributeModifier extends AbstractCatchModifier
             instance.group(
                     Codec.unboundedMap(Rarity.CODEC, Codec.INT).fieldOf("rarity_count_increase_times_luck")
                             .forGetter(o -> o.map),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, LuckAttributeModifier::new));
 
     public LuckAttributeModifier(Map<Rarity, Integer> map, String translationOverride)

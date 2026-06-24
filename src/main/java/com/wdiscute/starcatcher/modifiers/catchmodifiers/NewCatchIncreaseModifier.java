@@ -21,7 +21,7 @@ public class NewCatchIncreaseModifier extends AbstractCatchModifier
     public static final MapCodec<NewCatchIncreaseModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.fieldOf("increase").forGetter(o -> o.increase),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, NewCatchIncreaseModifier::new));
 
     public NewCatchIncreaseModifier(int increase, String translationOverride)

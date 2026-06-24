@@ -32,7 +32,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     public static final MapCodec<Nikdo53Modifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.fieldOf("max_layers").forGetter(mod -> mod.maxPointerLayer),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, Nikdo53Modifier::new));
 
     public Nikdo53Modifier(int extra_layers, String translationOverride)

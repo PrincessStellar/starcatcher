@@ -21,7 +21,7 @@ public class AnglersHatModifier extends AbstractCatchModifier
 {
     public static final MapCodec<AnglersHatModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, AnglersHatModifier::new));
 
     public AnglersHatModifier(String translationOverrider)

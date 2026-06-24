@@ -35,9 +35,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:the_end"
-      ]
+      "dimension_entry": "the_end",
+      "translation_override": "dimension.minecraft.the_end"
     }
   ],
   "size_and_weight": {

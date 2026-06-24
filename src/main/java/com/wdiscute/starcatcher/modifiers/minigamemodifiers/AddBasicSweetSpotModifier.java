@@ -17,7 +17,7 @@ public class AddBasicSweetSpotModifier extends AbstractMinigameModifier
     public static final MapCodec<AddBasicSweetSpotModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Difficulty.SweetSpot.CODEC.fieldOf("sweetspot_to_add").forGetter(o -> o.ss),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, AddBasicSweetSpotModifier::new));
 
     public AddBasicSweetSpotModifier(Difficulty.SweetSpot ss, String translationOverride)

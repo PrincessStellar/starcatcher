@@ -19,7 +19,7 @@ public class DeepDarkModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<DeepDarkModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, DeepDarkModifier::new));
 
     public DeepDarkModifier(String translationOverride)

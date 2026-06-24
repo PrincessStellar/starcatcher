@@ -17,7 +17,7 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<BaseMinigameModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, BaseMinigameModifier::new));
 
     public BaseMinigameModifier(String translationOverride)

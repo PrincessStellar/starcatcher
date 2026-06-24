@@ -20,7 +20,7 @@ public class IgnoreWeatherRestrictionsModifier extends AbstractCatchModifier imp
     public static final MapCodec<IgnoreWeatherRestrictionsModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("weight").forGetter(o -> o.chance),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, IgnoreWeatherRestrictionsModifier::new));
 
     public IgnoreWeatherRestrictionsModifier(float chance, String translationOverride)

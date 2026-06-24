@@ -18,7 +18,7 @@ public class FlipSweetSpotsOnMissModifier extends AbstractMinigameModifier
     public static final MapCodec<FlipSweetSpotsOnMissModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("chance").forGetter(o -> o.chance),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, FlipSweetSpotsOnMissModifier::new));
 
     public FlipSweetSpotsOnMissModifier(float chance, String translationOverride)

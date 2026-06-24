@@ -16,7 +16,7 @@ public class PullDownModifier extends AbstractMinigameModifier
 
     public static final MapCodec<PullDownModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, PullDownModifier::new));
 
     public PullDownModifier(String translationOverride)

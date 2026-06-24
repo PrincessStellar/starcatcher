@@ -20,7 +20,7 @@ public class AdjustBaseHandleSpeedModifier extends AbstractMinigameModifier
     public static final MapCodec<AdjustBaseHandleSpeedModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.optionalFieldOf("multiplier", 0f).forGetter(o -> o.multiplier),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
                     ).apply(instance, AdjustBaseHandleSpeedModifier::new));
 
     public AdjustBaseHandleSpeedModifier(float multiplier, String translationOverride)

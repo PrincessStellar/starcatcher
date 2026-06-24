@@ -14,7 +14,7 @@ public class NeverLoseModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<NeverLoseModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, NeverLoseModifier::new));
 
     public NeverLoseModifier(String translationOverride)

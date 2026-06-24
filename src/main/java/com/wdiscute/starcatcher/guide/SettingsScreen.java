@@ -1,23 +1,18 @@
 package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.starcatcher.SCConfig;
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.starcatcher.tournament.Tournament;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import com.wdiscute.starcatcher.tournament.TournamentScoreSettings;
-import mezz.jei.common.config.file.ConfigValue;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.text.DecimalFormat;

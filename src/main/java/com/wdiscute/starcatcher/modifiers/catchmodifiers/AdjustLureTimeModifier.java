@@ -24,7 +24,7 @@ public class AdjustLureTimeModifier extends AbstractCatchModifier
                     Codec.FLOAT.fieldOf("min_ticks_multiplier").forGetter(o -> o.minTicks),
                     Codec.FLOAT.fieldOf("max_ticks_multiplier").forGetter(o -> o.maxTicks),
                     Codec.FLOAT.fieldOf("chance_every_tick_multiplier").forGetter(o -> o.randomness),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, AdjustLureTimeModifier::new));
 
     @Override

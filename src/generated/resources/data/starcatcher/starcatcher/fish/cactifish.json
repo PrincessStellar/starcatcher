@@ -29,8 +29,7 @@
           "sweetspot_type": "starcatcher:mirage",
           "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
           "vanishing_rate": 0.0
-        },
-        "translation_override": ""
+        }
       },
       {
         "type": "starcatcher:spawn_sweetspots",
@@ -46,8 +45,7 @@
           "sweetspot_type": "starcatcher:mirage",
           "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
           "vanishing_rate": 0.0
-        },
-        "translation_override": ""
+        }
       },
       {
         "type": "starcatcher:spawn_sweetspots",
@@ -63,8 +61,7 @@
           "sweetspot_type": "starcatcher:mirage",
           "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
           "vanishing_rate": 0.0
-        },
-        "translation_override": ""
+        }
       }
     ],
     "speed": 11,
@@ -96,9 +93,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
-      ]
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
     },
     {
       "type": "starcatcher:biome",

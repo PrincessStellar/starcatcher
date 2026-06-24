@@ -13,7 +13,7 @@ public class StoneHookModifier extends AbstractMinigameModifier
 {
     public static final MapCodec<StoneHookModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, StoneHookModifier::new));
 
     public StoneHookModifier(String translationOverride)

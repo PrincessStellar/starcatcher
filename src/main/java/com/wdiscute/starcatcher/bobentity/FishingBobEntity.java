@@ -5,7 +5,6 @@ import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
-import com.wdiscute.starcatcher.fish.MaybeStack;
 import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
@@ -14,7 +13,7 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
-import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
@@ -42,7 +41,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class FishingBobEntity extends Projectile
 {

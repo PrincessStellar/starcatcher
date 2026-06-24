@@ -12,7 +12,7 @@ public class NoGravityModifier extends AbstractCatchModifier
 {
     public static final MapCodec<NoGravityModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, NoGravityModifier::new));
 
     public NoGravityModifier(String translationOverride)

@@ -24,7 +24,7 @@ public class TeleportModifier extends AbstractMinigameModifier
 
     public static final MapCodec<TeleportModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, TeleportModifier::new));
 
     public TeleportModifier(String translationOverride)

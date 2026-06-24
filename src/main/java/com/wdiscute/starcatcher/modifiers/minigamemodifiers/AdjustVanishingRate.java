@@ -21,7 +21,7 @@ public class AdjustVanishingRate extends AbstractMinigameModifier
     public static final MapCodec<AdjustVanishingRate> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("multiplier").forGetter(mod -> mod.multiplier),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, AdjustVanishingRate::new));
 
     public AdjustVanishingRate(float multiplier, String translationOverride)

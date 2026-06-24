@@ -18,7 +18,7 @@ public class SpawnTreasureOnHitX extends AbstractMinigameModifier
     public static final MapCodec<SpawnTreasureOnHitX> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.fieldOf("hits_to_spawn_treasure").forGetter(o -> o.hitsToSpawn),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, SpawnTreasureOnHitX::new));
 
     private final int hitsToSpawn;

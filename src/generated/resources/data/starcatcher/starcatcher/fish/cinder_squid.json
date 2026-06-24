@@ -60,9 +60,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:the_nether"
-      ]
+      "dimension_entry": "the_nether",
+      "translation_override": "dimension.minecraft.the_nether"
     },
     {
       "type": "starcatcher:fluid",

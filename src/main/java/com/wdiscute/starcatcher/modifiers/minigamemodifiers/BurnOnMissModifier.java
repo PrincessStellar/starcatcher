@@ -22,7 +22,7 @@ public class BurnOnMissModifier extends AbstractMinigameModifier
                     Codec.INT.fieldOf("length").forGetter(o -> o.length),
                     Codec.INT.fieldOf("ramp_time").forGetter(o -> o.rampTime),
                     Codec.INT.fieldOf("extra_speed").forGetter(o -> o.extraSpeed),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, BurnOnMissModifier::new));
 
     public BurnOnMissModifier(int length, int rampTime, int extraSpeed, String translationOverride)

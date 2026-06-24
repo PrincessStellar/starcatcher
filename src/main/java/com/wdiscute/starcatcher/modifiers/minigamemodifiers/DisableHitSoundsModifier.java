@@ -15,7 +15,7 @@ public class DisableHitSoundsModifier extends AbstractMinigameModifier
 
     public static final MapCodec<DisableHitSoundsModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, DisableHitSoundsModifier::new));
 
     public DisableHitSoundsModifier(String translationOverride)

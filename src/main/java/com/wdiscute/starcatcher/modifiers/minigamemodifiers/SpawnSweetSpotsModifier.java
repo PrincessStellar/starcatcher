@@ -27,7 +27,7 @@ public class SpawnSweetSpotsModifier extends AbstractMinigameModifier
                     Codec.FLOAT.fieldOf("chance").forGetter(mod -> mod.chance),
                     Difficulty.SweetSpot.CODEC.fieldOf("sweetspot").forGetter(mod -> mod.sweetSpot),
                     Codec.BOOL.fieldOf("sudoku_vanish").forGetter(mod -> mod.sudokuVanish),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, SpawnSweetSpotsModifier::new));
 
     public SpawnSweetSpotsModifier(int cooldown, float chance, Difficulty.SweetSpot sweetSpot, boolean sudokuVanish, String translationOverride)

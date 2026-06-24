@@ -20,7 +20,7 @@ public class IgnoreDaytimeRestrictionsModifier extends AbstractCatchModifier imp
     public static final MapCodec<IgnoreDaytimeRestrictionsModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("weight").forGetter(o -> o.chance),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, IgnoreDaytimeRestrictionsModifier::new));
 
     public IgnoreDaytimeRestrictionsModifier(float chance, String translationOverride)

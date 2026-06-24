@@ -13,7 +13,7 @@ public class RemoveBaseFishedItemModifier extends AbstractCatchModifier
 {
     public static final MapCodec<RemoveBaseFishedItemModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, RemoveBaseFishedItemModifier::new));
 
     public RemoveBaseFishedItemModifier(String translationOverride)

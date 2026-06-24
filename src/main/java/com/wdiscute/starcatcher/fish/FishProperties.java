@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.io.*;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;

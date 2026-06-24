@@ -12,7 +12,7 @@ public class SurvivesLavaModifier extends AbstractCatchModifier
 {
     public static final MapCodec<SurvivesLavaModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, SurvivesLavaModifier::new));
 
     public SurvivesLavaModifier(String translationOverride)

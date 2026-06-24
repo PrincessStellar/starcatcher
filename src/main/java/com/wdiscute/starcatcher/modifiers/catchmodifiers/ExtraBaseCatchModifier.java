@@ -29,7 +29,7 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
             instance.group(
                     Codec.INT.fieldOf("count").forGetter(o -> o.count),
                     Codec.BOOL.fieldOf("only_for_perfect_catch").forGetter(o -> o.onlyForPerfectCatch),
-                    Codec.STRING.fieldOf("translation_override").forGetter(o -> o.translationOverride)
+                    Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, ExtraBaseCatchModifier::new));
 
     public ExtraBaseCatchModifier(int count, boolean perfect, String translationOverride)

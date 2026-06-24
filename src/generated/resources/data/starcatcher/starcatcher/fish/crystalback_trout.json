@@ -18,8 +18,7 @@
       {
         "type": "starcatcher:freeze_on_miss",
         "length": 40,
-        "rampTime": 10,
-        "translation_override": ""
+        "rampTime": 10
       }
     ],
     "speed": 7,
@@ -61,9 +60,8 @@
   "restrictions": [
     {
       "type": "starcatcher:dimension",
-      "dimensions": [
-        "minecraft:overworld"
-      ]
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
     },
     {
       "type": "starcatcher:biome",
