@@ -119,6 +119,7 @@ public class Starcatcher
         SCLootModifiers.register(modEventBus);
         SCStats.register(modEventBus);
         SCAttributes.register(modEventBus);
+        SCDataEntries.register(modEventBus);
 
         Modifier.registerCatch();
 

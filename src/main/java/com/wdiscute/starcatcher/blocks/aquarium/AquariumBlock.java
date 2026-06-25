@@ -14,6 +14,7 @@ import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -468,7 +469,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
     public enum Interaction implements StringRepresentable
     {
-        NOTHING("nothing", null, U::alwaysFalse),
+        NOTHING("nothing", null, Utils::alwaysFalse),
 
         PLACE_FISH("place_fish", SoundEvents.DOLPHIN_SPLASH, (l, bp, bs, is, p) ->
         {

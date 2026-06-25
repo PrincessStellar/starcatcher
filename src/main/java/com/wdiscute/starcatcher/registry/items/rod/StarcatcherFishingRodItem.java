@@ -17,7 +17,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -40,12 +42,22 @@ public class StarcatcherFishingRodItem extends Item implements MenuProvider
         super(new Properties()
                 .rarity(Rarity.EPIC)
                 .fireResistant()
+                .durability(128)
                 .stacksTo(1)
                 .component(SCDataComponents.BOBBER.get(), new SingleStackContainer(new ItemStack(SCItems.BOBBER.get())))
                 .component(SCDataComponents.BAIT.get(), SingleStackContainer.empty())
                 .component(SCDataComponents.HOOK.get(), new SingleStackContainer(new ItemStack(SCItems.HOOK.get())))
         );
     }
+
+    @Override
+    public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource)
+    {
+        super.onDestroyed(itemEntity, damageSource);
+
+    }
+
+
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
     {

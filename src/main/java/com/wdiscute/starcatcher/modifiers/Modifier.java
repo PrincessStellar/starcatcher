@@ -7,11 +7,8 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
 import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
-import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.registry.SCDataEntries;
-import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
-import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -114,6 +111,11 @@ public interface Modifier
         if (ModList.get().isLoaded("curios"))
             CuriosCompat.getItems(player).forEach(o -> modifiers.addAll(getModifiers(o)));
 
+        //data attachments
+        modifiers.addAll(SCDataAttachments.get(player, SCDataAttachments.MODIFIERS));
+
+        //todo add potion effects
+
         return modifiers;
     }
 
@@ -129,11 +131,10 @@ public interface Modifier
 
         //todo add enchants
 
-        //todo add potion effects
-
+        //if not rod, end pipeline
         if (!itemStack.is(SCTags.RODS)) return modifiers;
 
-        //if not a rod, add hook bobber and bait slot modifiers too
+        //if rod, add hook bobber and bait slot modifiers too
         var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
         var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
         var bobber = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();

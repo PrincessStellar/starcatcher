@@ -17,6 +17,7 @@ import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.component.DataComponents;
@@ -26,6 +27,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -257,6 +259,19 @@ public class FishApi
                     if (fbe.modifiers.stream().noneMatch(acm -> acm.shouldSkipAddingBaseItem(fbe, is)))
                         items.add(is);
                 }
+
+                //damage rod
+                if(!SCConfig.ENABLE_ROD_DURABILITY.get())
+                {
+                    ItemStack rod = null;
+                    if(player.getOffhandItem().is(SCTags.RODS)) rod = player.getOffhandItem();
+                    if(player.getMainHandItem().is(SCTags.RODS)) rod = player.getMainHandItem();
+
+                    if(rod != null)
+                        rod.hurtAndBreak(1, (ServerLevel) player.level(), player, Utils::nothing);
+                }
+
+
 
                 //add items to list from modifiers
                 for (AbstractCatchModifier acm : fbe.modifiers)

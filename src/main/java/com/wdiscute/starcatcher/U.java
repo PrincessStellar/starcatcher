@@ -186,21 +186,6 @@ public class U
         return Holder.direct(entity.get());
     }
 
-    public static boolean alwaysTrue(Object... o)
-    {
-        return true;
-    }
-
-    public static boolean alwaysFalse(Object... o)
-    {
-        return false;
-    }
-
-    public static void nothing(Object... o)
-    {
-    }
-
-    //0-255
     public static int intToRed(int packedColor)
     {
         return packedColor >> 16 & 255;

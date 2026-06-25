@@ -5,12 +5,15 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.utils.DataEntry;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.bus.api.IEventBus;
 
 import java.util.List;
 import java.util.Map;
 
 public interface SCDataEntries
 {
+    static void register(IEventBus eventBus){}
+
     DataEntry<Map<String, List<ResourceLocation>>> DIMENSION_ENTRIES = DataEntry.register(Starcatcher.rl("dimension_entries"),
             Codec.unboundedMap(Codec.STRING, ResourceLocation.CODEC.listOf()),
             Map.of());
@@ -20,6 +23,4 @@ public interface SCDataEntries
 
     DataEntry<List<Modifier>> DEFAULT_MINIGAME_MODIFIERS = DataEntry.register(Starcatcher.rl("default_minigame_modifiers"), Modifier.CODEC.listOf(),
             List.of());
-
-
 }

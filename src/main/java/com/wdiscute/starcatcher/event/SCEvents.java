@@ -2,7 +2,9 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.sellingbin.event.SBevents;
 import com.wdiscute.starcatcher.SCConfig;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
 import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
@@ -41,8 +43,10 @@ import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerDestroyItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -54,9 +58,24 @@ import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
+import java.awt.event.ItemEvent;
+
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class SCEvents
 {
+    @SubscribeEvent
+    public static void onBreak(PlayerDestroyItemEvent event)
+    {
+        ItemStack rod = event.getOriginal();
+        if(rod.is(SCTags.RODS))
+        {
+            event.getEntity().addItem(SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack());
+            event.getEntity().addItem(SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack());
+            event.getEntity().addItem(SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, SingleStackContainer.empty()).stack());
+        }
+    }
+
+
     @SubscribeEvent
     public static void serverStarted(RegisterSpawnPlacementsEvent event)
     {

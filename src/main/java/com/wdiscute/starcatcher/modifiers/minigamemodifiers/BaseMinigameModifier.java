@@ -75,6 +75,6 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
     @Override
     public String toString()
     {
-        return "[SpawnSweetSpotModifier@" + Integer.toHexString(hashCode()) + "]";
+        return "[BaseModifier@" + Integer.toHexString(hashCode()) + "]";
     }
 }

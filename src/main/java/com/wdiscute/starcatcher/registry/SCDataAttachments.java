@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -14,6 +16,7 @@ import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public interface SCDataAttachments
@@ -48,6 +51,14 @@ public interface SCDataAttachments
                     AttachmentType.builder(() -> Starcatcher.BASE)
                             .serialize(ResourceLocation.CODEC)
                             .sync(ResourceLocation.STREAM_CODEC)
+                            .build()
+    );
+
+    Supplier<AttachmentType<List<Modifier>>> MODIFIERS = ATTACHMENT_TYPES.register(
+            "modifiers", () ->
+                    AttachmentType.builder(() -> List.<Modifier>of())
+                            .serialize(Modifier.CODEC.listOf())
+                            .sync(ByteBufCodecs.fromCodec(Modifier.CODEC).apply(ByteBufCodecs.list()))
                             .build()
     );
 
