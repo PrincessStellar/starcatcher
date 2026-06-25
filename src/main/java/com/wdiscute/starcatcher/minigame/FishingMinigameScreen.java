@@ -41,6 +41,8 @@ import java.util.*;
 
 public class FishingMinigameScreen extends Screen implements GuiEventListener
 {
+    public static final ResourceLocation GOLD_OUTLINE = Starcatcher.rl("textures/gui/minigame/gold_outline.png");
+
     public ResourceLocation texture;
     public boolean renderBlur = true;
 
@@ -244,6 +246,16 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //render tank background
         guiGraphics.blit(texture, centerX - 44 - 106, centerY - 58,
                 96, 112, 0, 112, 96, 112, 256, 256);
+
+        //render golden border if legendary fish
+        if (rarity.equals(Rarity.LEGENDARY))
+            guiGraphics.blit(GOLD_OUTLINE,
+                    width / 2 - 150, height / 2 - 58,
+                    96, 112,
+                    0, 0,
+                    96, 112,
+                    96, 112
+            );
 
         //render wheel background
         if (shouldDarken) RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
@@ -632,7 +644,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     public void tick()
     {
         //progress = 12313123;
-
 
 
         if (isHoldingInput())

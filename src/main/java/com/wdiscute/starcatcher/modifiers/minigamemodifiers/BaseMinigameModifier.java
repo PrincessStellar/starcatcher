@@ -60,24 +60,6 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
         return super.onHit(instance, ass);
     }
 
-    public static final ResourceLocation GOLD_OUTLINE = Starcatcher.rl("textures/gui/minigame/gold_outline.png");
-
-    @Override
-    public void renderForeground(FishingMinigameScreen instance, GuiGraphics guiGraphics, float partialTick, int width, int height)
-    {
-
-        if (instance.rarity.equals(Rarity.LEGENDARY))
-            guiGraphics.blit(GOLD_OUTLINE,
-                    width / 2 - 150, height / 2 - 58,
-                    96, 112,
-                    0, 0,
-                    96, 112,
-                    96, 112
-            );
-
-
-    }
-
     @Override
     public ResourceLocation getIdentifier()
     {

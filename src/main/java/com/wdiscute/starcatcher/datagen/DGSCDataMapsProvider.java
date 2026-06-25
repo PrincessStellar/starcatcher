@@ -29,6 +29,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
@@ -55,6 +57,8 @@ public class DGSCDataMapsProvider extends DataMapProvider
         var sellable = this.builder(SBDataMaps.SELLING_BIN_VALUE);
         var compostable = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         var modifiers = this.builder(SCDataMaps.ITEM_MODIFIERS);
+        var modifiers_effects = this.builder(SCDataMaps.EFFECT_MODIFIERS);
+        var modifiers_enchants = this.builder(SCDataMaps.ENCHANTMENT_MODIFIERS);
         var tackleSkin = this.builder(SCDataMaps.TACKLE_SKIN);
         var messages = this.builder(SCDataMaps.MESSAGE_BACKGROUND);
 
@@ -418,6 +422,33 @@ public class DGSCDataMapsProvider extends DataMapProvider
                         new AdjustBaseHandleSpeedModifier(1.25f, "")
                 ), false);
 
+        //
+        //         ,---.  ,---.                  ,--.
+        // ,---.  /  .-' /  .-'  ,---.   ,---. ,-'  '-.  ,---.
+        //| .-. : |  `-, |  `-, | .-. : | .--' '-.  .-' (  .-'
+        //\   --. |  .-' |  .-' \   --. \ `--.   |  |   .-'  `)
+        // `----' `--'   `--'    `----'  `---'   `--'   `----'
+        //
+
+        modifiers_effects.add(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MobEffects.LUCK.value()),
+                List.of(
+                        new AdjustBaseHandleSpeedModifier(1.25f, "")
+                ), false);
+
+
+        //
+        //                        ,--.                          ,--.
+        // ,---.  ,--,--,   ,---. |  ,---.   ,--,--. ,--,--,  ,-'  '-.  ,---.
+        //| .-. : |      \ | .--' |  .-.  | ' ,-.  | |      \ '-.  .-' (  .-'
+        //\   --. |  ||  | \ `--. |  | |  | \ '-'  | |  ||  |   |  |   .-'  `)
+        // `----' `--''--'  `---' `--' `--'  `--`--' `--''--'   `--'   `----'
+        //
+
+        modifiers_enchants.add(Enchantments.LUCK_OF_THE_SEA,
+                List.of(
+
+                ), false);
+
 
         //
         //  ,--.                   ,--.     ,--.                     ,--.     ,--.
@@ -465,21 +496,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
         //todo
         treasures.add(Starcatcher.rl("aurora"), Treasure.SKY_SKIN_SMITHING_TEMPLATE, false);
 
-
-        //
-        //         ,---.  ,---.                  ,--.
-        // ,---.  /  .-' /  .-'  ,---.   ,---. ,-'  '-.  ,---.
-        //| .-. : |  `-, |  `-, | .-. : | .--' '-.  .-' (  .-'
-        //\   --. |  .-' |  .-' \   --. \ `--.   |  |   .-'  `)
-        // `----' `--'   `--'    `----'  `---'   `--'   `----'
-        //
-
-        var effects = this.builder(SCDataMaps.EFFECT_MODIFIERS);
-
-        effects.add(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MobEffects.LUCK.value()),
-                List.of(
-                        new AdjustBaseHandleSpeedModifier(1.25f, "")
-                ), false);
 
 
     }

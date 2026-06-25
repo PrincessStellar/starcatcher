@@ -217,6 +217,11 @@ public class SCConfig
             .translation("starcatcher.configuration.hide_catches")
             .define("hide_catches", false);
 
+    public static final ModConfigSpec.BooleanValue DISABLE_ROD_DURABILITY = BUILDER_SERVER
+            .comment("Disable Starcatcher's fishing rod durability")
+            .translation("starcatcher.configuration.disable_rod_durability")
+            .define("disable_rod_durability", true);
+
     static final ModConfigSpec SPEC_SERVER = BUILDER_SERVER.build();
 
 }

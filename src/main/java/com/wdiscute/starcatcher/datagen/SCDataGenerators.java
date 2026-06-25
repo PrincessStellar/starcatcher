@@ -2,14 +2,6 @@ package com.wdiscute.starcatcher.datagen;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
-import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.LuckAttributeModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
-import com.wdiscute.starcatcher.registry.SCDataEntries;
-import com.wdiscute.utils.Utils;
-import com.wdiscute.utils.datagen.DataEntryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -23,9 +15,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
@@ -85,7 +75,7 @@ public class SCDataGenerators
         gen.addProvider(event.includeServer(), new DGSCDataMapsProvider(output, lookupProvider));
 
         //data entries
-        SCDataEntriesProvider.start(gen, output, event.includeServer());
+        SCDGDataEntriesProvider.start(gen, output, event.includeServer());
 
     }
 }
