@@ -80,7 +80,7 @@ public class BiomeRestriction extends AbstractFishRestriction
 
         Registry<Biome> registry = level.registryAccess().registryOrThrow(Registries.BIOME);
         //if biomes contains biome and blacklist doesn't contain biome
-        if (biomes.stream().anyMatch(o -> o.matches(biome, registry))
+        if ((biomes.isEmpty() || biomes.stream().anyMatch(o -> o.matches(biome, registry)))
             && blacklist.stream().noneMatch(o -> o.matches(biome, registry)))
             return 0;
         else
@@ -184,7 +184,7 @@ public class BiomeRestriction extends AbstractFishRestriction
         return new BiomeRestriction(biomes, blacklist, hover, translation);
     }
 
-    public static final BiomeRestriction empty()
+    public static BiomeRestriction empty()
     {
         return new BiomeRestriction(new ArrayList<>(), new ArrayList<>(), "", "");
     }
