@@ -79,26 +79,6 @@ public class Starcatcher
         return ResourceLocation.fromNamespaceAndPath(Starcatcher.MOD_ID, s);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public static void fishCaughtToast(FishProperties fp, boolean newFish, int sizeCM, int weightCM)
-    {
-        if (newFish) Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
-
-        SizeAndWeight.Units units = SCConfig.UNIT.get();
-
-        String size = units.getSizeAsString(sizeCM);
-        String weight = units.getWeightAsString(weightCM);
-
-        Minecraft.getInstance().player.displayClientMessage(
-                Component.literal("")
-                        .append(Component.translatable(fp.catchInfo().fish().toStack().getDescriptionId()))
-                        .append(Component.literal(" - " + size + " - " + weight))
-                , true);
-
-        Minecraft.getInstance().gui.overlayMessageTime = 180;
-    }
-
-
     public Starcatcher(IEventBus modEventBus, ModContainer modContainer)
     {
         SCCreativeModeTabs.register(modEventBus);

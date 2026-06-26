@@ -3,23 +3,20 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
 import com.wdiscute.starcatcher.registry.SCEntities;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
+import com.wdiscute.utils.MaybeStack;
 import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -28,7 +25,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
@@ -52,8 +48,6 @@ import net.minecraft.world.phys.shapes.*;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.awt.*;
 
 public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedBlock
 {
@@ -518,7 +512,7 @@ public class AquariumBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
                 ItemStack bucketToReturn = new ItemStack(StarcaughtBucket.getBucketForStack(abe.fish));
 
-                SCDataComponents.set(bucketToReturn, SCDataComponents.BUCKETED_FISH, SingleStackContainer.from(abe.fish));
+                SCDataComponents.set(bucketToReturn, SCDataComponents.BUCKETED_FISH, new MaybeStack(abe.fish));
                 p.addItem(bucketToReturn);
 
                 abe.setFish(ItemStack.EMPTY);

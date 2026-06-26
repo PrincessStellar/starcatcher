@@ -2,7 +2,6 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxMenu;
-import com.wdiscute.starcatcher.registry.items.rod.FishingRodMenu;
 import com.wdiscute.starcatcher.tournament.StandMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -19,9 +18,6 @@ public interface SCMenuTypes
 {
     DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(Registries.MENU, Starcatcher.MOD_ID);
-
-    Supplier<MenuType<FishingRodMenu>> FISHING_ROD_MENU =
-            registerMenuType("fishing_rod_menu", FishingRodMenu::new);
 
     Supplier<MenuType<StandMenu>> STAND_MENU =
             registerMenuType("stand_menu", StandMenu::new);

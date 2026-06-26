@@ -3,11 +3,11 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.message.EditableMessage;
 import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;
@@ -27,9 +27,9 @@ public interface SCDataComponents
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, Starcatcher.MOD_ID);
 
     //bucketed fish
-    DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BUCKETED_FISH = register(
+    DeferredHolder<DataComponentType<?>, DataComponentType<MaybeStack>> BUCKETED_FISH = register(
             "bucketed_fish",
-            builder -> builder.persistent(SingleStackContainer.CODEC));
+            builder -> builder.persistent(MaybeStack.CODEC));
 
 
     //signed book system
@@ -39,15 +39,15 @@ public interface SCDataComponents
 
 
     //rod menu
-    DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BOBBER = register(
+    DeferredHolder<DataComponentType<?>, DataComponentType<MaybeStack>> BOBBER = register(
             "bobber",
-            builder -> builder.persistent(SingleStackContainer.CODEC));
+            builder -> builder.persistent(MaybeStack.CODEC));
 
-    DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> BAIT = register(
-            "bait", builder -> builder.persistent(SingleStackContainer.CODEC));
+    DeferredHolder<DataComponentType<?>, DataComponentType<MaybeStack>> BAIT = register(
+            "bait", builder -> builder.persistent(MaybeStack.CODEC));
 
-    DeferredHolder<DataComponentType<?>, DataComponentType<SingleStackContainer>> HOOK = register(
-            "hook", builder -> builder.persistent(SingleStackContainer.CODEC));
+    DeferredHolder<DataComponentType<?>, DataComponentType<MaybeStack>> HOOK = register(
+            "hook", builder -> builder.persistent(MaybeStack.CODEC));
 
 
     //storing data on itemstack

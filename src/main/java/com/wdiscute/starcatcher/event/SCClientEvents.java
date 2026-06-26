@@ -22,8 +22,7 @@ import com.wdiscute.starcatcher.particles.FishingBitingParticles;
 import com.wdiscute.starcatcher.particles.FishingNotificationParticles;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.compat.curios.CuriosEvents;
-import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
-import com.wdiscute.starcatcher.registry.items.rod.FishingRodScreen;
+import com.wdiscute.starcatcher.registry.items.StarcatcherFishingRodItem;
 import com.wdiscute.starcatcher.shaders.BakedModelRemapper;
 import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import com.wdiscute.starcatcher.tournament.StandScreen;
@@ -105,7 +104,6 @@ public class SCClientEvents
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event)
     {
-        event.register(SCMenuTypes.FISHING_ROD_MENU.get(), FishingRodScreen::new);
         event.register(SCMenuTypes.STAND_MENU.get(), StandScreen::new);
         event.register(SCMenuTypes.TACKLE_BOX.get(), TackleBoxScreen::new);
     }

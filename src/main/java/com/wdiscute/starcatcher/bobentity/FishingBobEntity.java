@@ -8,7 +8,6 @@ import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
@@ -320,15 +319,11 @@ public class FishingBobEntity extends Projectile
 
                 player.awardStat(SCStats.STARCAUGHT_FISH_MISSED.get());
 
-                ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack();
+                ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new MaybeStack(ItemStack.EMPTY)).toStack();
                 if (!bait.is(Tags.Items.BUCKETS_EMPTY))
                 {
                     bait.shrink(1);
-                    if (bait.getCount() < 5)
-                    {
-                        player.displayClientMessage(Component.translatable("gui.starcatcher.bait_running_low"), true);
-                    }
-                    SCDataComponents.set(rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
+                    SCDataComponents.set(rod, SCDataComponents.BAIT, new MaybeStack(bait));
                 }
 
                 kill();

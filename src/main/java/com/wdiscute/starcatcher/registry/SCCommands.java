@@ -267,7 +267,8 @@ public interface SCCommands
     private static int awardAllFish(ServerPlayer player, int ticks, int size, int weight, float percentile, boolean golden)
     {
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
-            FishCaughtCounter.awardFishCaughtCounter(fp, player, ticks, size, weight, percentile, false, false, golden);
+            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, ticks, size, weight, percentile,
+                    false, false, golden, false);
 
         return 0;
     }
@@ -275,7 +276,8 @@ public interface SCCommands
     private static int awardAllFish(ServerPlayer player)
     {
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
-            FishCaughtCounter.awardFishCaughtCounter(fp, player, 0, 0, 0, 0, false, false, false);
+            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, 0, 0, 0, 0,
+                    false, false, false, false);
 
         return 0;
     }
@@ -295,8 +297,8 @@ public interface SCCommands
 
         FishProperties fp = list.get(U.r.nextInt(list.size()));
 
-        FishCaughtCounter.awardFishCaughtCounter(fp, player,
-                ticks, size, weight, percentile, perfectCatch, false, golden);
+        FishCaughtCounter.awardFishCaughtCounter(fp, null, player,
+                ticks, size, weight, percentile, perfectCatch, false, golden, true);
         return 0;
     }
 
@@ -304,7 +306,7 @@ public interface SCCommands
     {
         Optional<FishProperties> optional = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getOptional(fish);
         if (optional.isPresent())
-            FishCaughtCounter.awardFishCaughtCounter(optional.get(), player, ticks, size, weight, percentile, false, false, golden);
+            FishCaughtCounter.awardFishCaughtCounter(optional.get(), null, player, ticks, size, weight, percentile, false, false, golden, true);
         else
             throw ERROR_FISH_ENTRY_INVALID.create(fish);
         return 0;

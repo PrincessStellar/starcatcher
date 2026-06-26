@@ -5,31 +5,43 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 30,
+  "base_chance": 5,
   "catch_info": {
-    "item": "unusualfishmod:spindlefish"
+    "entity": "unusualfishmod:eyelash",
+    "fish_bucket": "unusualfishmod:eyelash_fish_bucket",
+    "item": "unusualfishmod:raw_eyelash"
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
+    "hp": 75,
     "missPenalty": 5,
     "modifiers": [],
-    "speed": 13,
+    "speed": 7,
     "sweetspots": [
       {
-        "color_as_int": -13076094,
-        "hitbox_size_in_pixels": 24,
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 10,
-        "sweetspot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
+        "reward": 15,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 15,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "legendary",
+  "rarity": "uncommon",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -39,7 +51,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#starcatcher:is_warm_ocean"
+        "#minecraft:is_jungle"
       ],
       "blacklist": []
     },
@@ -48,10 +60,6 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:weather_restriction",
-      "weather": "thunder"
     },
     {
       "type": "starcatcher:fluid",

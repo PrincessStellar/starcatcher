@@ -7,7 +7,9 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "unusualfishmod:bark_angelfish"
+    "entity": "unusualfishmod:amber_goby",
+    "fish_bucket": "unusualfishmod:amber_goby_bucket",
+    "item": "unusualfishmod:raw_amber_goby"
   },
   "difficulty": {
     "decay": 1.0,
@@ -20,7 +22,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -30,7 +32,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -49,7 +51,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#starcatcher:is_swamp"
+        "#starcatcher:is_warm_ocean"
       ],
       "blacklist": []
     },

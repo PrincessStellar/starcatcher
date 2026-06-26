@@ -2,10 +2,10 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.io.NBTCodecHelper;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -101,7 +101,7 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
     {
         super.saveAdditional(tag, registries);
 
-        NBTCodecHelper.encode(SingleStackContainer.CODEC, new SingleStackContainer(getFish().copy()), tag, "fish");
+        NBTCodecHelper.encode(MaybeStack.CODEC, new MaybeStack(getFish().copy()), tag, "fish");
 
         tag.putDouble("fish_target_x", fishTarget.x);
         tag.putDouble("fish_target_y", fishTarget.y);
@@ -123,7 +123,7 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
 
         fishTarget = new Vec3(x, y, z);
 
-        fish = NBTCodecHelper.decode(SingleStackContainer.CODEC, tag, "fish").stack();
+        fish = NBTCodecHelper.decode(MaybeStack.CODEC, tag, "fish").toStack();
     }
 
     @Override

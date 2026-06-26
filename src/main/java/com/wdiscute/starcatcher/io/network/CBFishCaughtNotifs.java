@@ -2,30 +2,31 @@ package com.wdiscute.starcatcher.io.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.guide.FishCaughtToast;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record CBFishCaughtPayload(FishProperties fp, boolean newFish, int size, int weight,
-                                  float percentile) implements CustomPacketPayload
+public record CBFishCaughtNotifs(FishProperties fp, boolean displayToast, int size, int weight,
+                                 float percentile) implements CustomPacketPayload
 {
 
-    public static final Type<CBFishCaughtPayload> TYPE = new Type<>(Starcatcher.rl("fish_caught"));
+    public static final Type<CBFishCaughtNotifs> TYPE = new Type<>(Starcatcher.rl("fish_caught_toast"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, CBFishCaughtPayload> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<RegistryFriendlyByteBuf, CBFishCaughtNotifs> STREAM_CODEC = StreamCodec.composite(
             FishProperties.STREAM_CODEC,
-            CBFishCaughtPayload::fp,
+            CBFishCaughtNotifs::fp,
             ByteBufCodecs.BOOL,
-            CBFishCaughtPayload::newFish,
+            CBFishCaughtNotifs::displayToast,
             ByteBufCodecs.INT,
-            CBFishCaughtPayload::size,
+            CBFishCaughtNotifs::size,
             ByteBufCodecs.INT,
-            CBFishCaughtPayload::weight,
+            CBFishCaughtNotifs::weight,
             ByteBufCodecs.FLOAT,
-            CBFishCaughtPayload::percentile,
-            CBFishCaughtPayload::new
+            CBFishCaughtNotifs::percentile,
+            CBFishCaughtNotifs::new
     );
 
     @Override
@@ -39,7 +40,7 @@ public record CBFishCaughtPayload(FishProperties fp, boolean newFish, int size, 
         context.enqueueWork(() ->
         {
             if (fp.hasGuideEntry())
-                Starcatcher.fishCaughtToast(fp(), newFish(), size(), weight());
+                FishCaughtToast.newFish(fp(), displayToast, size, weight);
         });
     }
 }

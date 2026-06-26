@@ -381,19 +381,19 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:duality_damselfish",
+      "id": "unusualfishmod:raw_duality_damselfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:drooping_gourami",
+      "id": "unusualfishmod:raw_drooping_gourami",
       "required": false
     },
     {
-      "id": "unusualfishmod:sailor_barb",
+      "id": "unusualfishmod:raw_sailor_barb",
       "required": false
     },
     {
-      "id": "unusualfishmod:eyelash",
+      "id": "unusualfishmod:raw_eyelash",
       "required": false
     },
     {
@@ -781,19 +781,19 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:duality_damselfish",
+      "id": "unusualfishmod:raw_duality_damselfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:drooping_gourami",
+      "id": "unusualfishmod:raw_drooping_gourami",
       "required": false
     },
     {
-      "id": "unusualfishmod:sailor_barb",
+      "id": "unusualfishmod:raw_sailor_barb",
       "required": false
     },
     {
-      "id": "unusualfishmod:eyelash",
+      "id": "unusualfishmod:raw_eyelash",
       "required": false
     },
     {

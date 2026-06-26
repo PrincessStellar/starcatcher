@@ -6,10 +6,10 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -141,7 +141,7 @@ public class FishEntity extends AbstractFish
     public ItemStack getBucketItemStack()
     {
         ItemStack is = new ItemStack(fireImmune() ? SCItems.STARCAUGHT_LAVA_BUCKET.asItem() : SCItems.STARCAUGHT_BUCKET.asItem());
-        SCDataComponents.set(is, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(getBodyArmorItem().copy()));
+        SCDataComponents.set(is, SCDataComponents.BUCKETED_FISH, new MaybeStack(getBodyArmorItem().copy()));
         return is;
     }
 

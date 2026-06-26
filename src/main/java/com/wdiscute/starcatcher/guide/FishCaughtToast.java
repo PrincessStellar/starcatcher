@@ -1,10 +1,12 @@
 package com.wdiscute.starcatcher.guide;
 
 import com.wdiscute.libtooltips.Tooltips;
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
@@ -64,5 +66,24 @@ public class FishCaughtToast implements Toast
             return Visibility.SHOW;
         else
             return Visibility.HIDE;
+    }
+
+    public static void newFish(FishProperties fp, boolean displayToast, int sizeCM, int weightCM)
+    {
+        if (displayToast)
+            Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
+
+        SizeAndWeight.Units units = SCConfig.UNIT.get();
+
+        String size = units.getSizeAsString(sizeCM);
+        String weight = units.getWeightAsString(weightCM);
+
+        Minecraft.getInstance().player.displayClientMessage(
+                Component.literal("")
+                        .append(Component.translatable(fp.catchInfo().fish().toStack().getDescriptionId()))
+                        .append(Component.literal(" - " + size + " - " + weight))
+                , true);
+
+        Minecraft.getInstance().gui.overlayMessageTime = 180;
     }
 }

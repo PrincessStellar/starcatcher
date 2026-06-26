@@ -8,7 +8,7 @@ import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.FTBTeamsCompat;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.io.network.CBFishCaughtPayload;
+import com.wdiscute.starcatcher.io.network.CBFishCaughtNotifs;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -20,6 +20,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public record FishCaughtCounter(
@@ -95,18 +96,15 @@ public record FishCaughtCounter(
                 hasGuideNotification);
     }
 
-    public static void awardFishCaughtCounter(FishProperties fpCaught, Player player, int ticks, int size, int weight,
-                                              float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
-    {
-        awardFishCaughtCounter(fpCaught, null, player, ticks, size, weight, percentile, perfectCatch, awardToTeam, golden);
-    }
-
-    public static void awardFishCaughtCounter(FishProperties fpCaught, ResourceLocation rl, Player player,
-                                              int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean awardToTeam, boolean golden)
+    public static void awardFishCaughtCounter(FishProperties fpCaught, @Nullable ResourceLocation rl, Player player,
+                                              int ticks, int size, int weight, float percentile,
+                                              boolean perfectCatch, boolean awardToTeam, boolean golden, boolean displayToast)
     {
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
 
+        //if rl param is null, get it from fp from registry
         ResourceLocation loc = rl == null ? player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fpCaught) : rl;
+        //if fp/rl is valid
         if (loc != null)
         {
             FishCaughtCounter fishCaughtCounter = fishesCaught.get(loc);
@@ -125,7 +123,7 @@ public record FishCaughtCounter(
 
             //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
             if (!fpCaught.catchInfo().alwaysSpawnEntity() && fpCaught.hasGuideEntry())
-                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtPayload(fpCaught, newFish, size, weight, percentile));
+                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtNotifs(fpCaught, displayToast && newFish, size, weight, percentile));
 
             FishingGuideAttachment.setFishesCaught(player, fishesCaught);
         }

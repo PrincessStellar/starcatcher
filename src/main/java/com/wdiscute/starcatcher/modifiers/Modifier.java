@@ -5,10 +5,10 @@ import com.mojang.serialization.*;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -135,9 +135,9 @@ public interface Modifier
         if (!itemStack.is(SCTags.RODS)) return modifiers;
 
         //if rod, add hook bobber and bait slot modifiers too
-        var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
-        var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
-        var bobber = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
+        var hook = SCDataComponents.getOrDefault(itemStack, SCDataComponents.HOOK, MaybeStack.EMPTY).toStack();
+        var bait = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
+        var bobber = SCDataComponents.getOrDefault(itemStack, SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack();
 
         modifiers.addAll(getModifiers(hook));
         modifiers.addAll(getModifiers(bait));

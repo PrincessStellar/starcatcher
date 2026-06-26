@@ -4,10 +4,9 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -64,7 +63,7 @@ public class StarcaughtBucket extends BucketItem
 
     private static ItemStack getFish(ItemStack bucket)
     {
-        return SCDataComponents.getOrDefault(bucket, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(ItemStack.EMPTY)).stack();
+        return SCDataComponents.getOrDefault(bucket, SCDataComponents.BUCKETED_FISH, new MaybeStack(ItemStack.EMPTY)).toStack();
     }
 
     @Override
@@ -82,15 +81,15 @@ public class StarcaughtBucket extends BucketItem
     @Override
     public Component getName(ItemStack stack)
     {
-        SingleStackContainer ssc = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH);
+        MaybeStack maybeStack = SCDataComponents.get(stack, SCDataComponents.BUCKETED_FISH);
 
-        if (ssc == null)
+        if (maybeStack == null)
             return super.getName(stack);
         else
         {
             Component baseName;
-            Component customName = ssc.stack().get(DataComponents.CUSTOM_NAME);
-            Component itemName = ssc.stack().get(DataComponents.ITEM_NAME);
+            Component customName = maybeStack.toStack().get(DataComponents.CUSTOM_NAME);
+            Component itemName = maybeStack.toStack().get(DataComponents.ITEM_NAME);
 
             if (customName != null)
             {
@@ -100,9 +99,9 @@ public class StarcaughtBucket extends BucketItem
             {
                 baseName = itemName;
             }
-            else baseName = Component.translatable(ssc.stack().getDescriptionId());
+            else baseName = Component.translatable(maybeStack.stack().getDescriptionId());
 
-            CaughtFishInfo sw = SCDataComponents.get(ssc.stack(), SCDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo sw = SCDataComponents.get(maybeStack.stack(), SCDataComponents.CAUGHT_FISH_INFO);
             if (sw != null)
             {
                 Rarity rarity = sw.golden() ? Rarity.GOLDEN : sw.rarity();

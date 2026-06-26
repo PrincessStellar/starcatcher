@@ -1409,7 +1409,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:demon_herring",
+      "id": "unusualfishmod:raw_demon_herring",
       "required": false
     },
     {
@@ -1417,7 +1417,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:circus_fish",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {
@@ -1425,7 +1425,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:forkfish",
+      "id": "unusualfishmod:raw_forkfish",
       "required": false
     },
     {
@@ -1433,7 +1433,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:amber_goby",
+      "id": "unusualfishmod:raw_amber_goby",
       "required": false
     },
     {
@@ -1441,31 +1441,31 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:duality_damselfish",
+      "id": "unusualfishmod:raw_duality_damselfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:spindlefish",
+      "id": "unusualfishmod:raw_spindlefish",
       "required": false
     },
     {
-      "id": "unusualfishmod:triple_twirl_pleco",
+      "id": "unusualfishmod:raw_triple_twirl_pleco",
       "required": false
     },
     {
-      "id": "unusualfishmod:bark_angelfish",
+      "id": "unusualfishmod:raw_bark_angelfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:drooping_gourami",
+      "id": "unusualfishmod:raw_drooping_gourami",
       "required": false
     },
     {
-      "id": "unusualfishmod:sailor_barb",
+      "id": "unusualfishmod:raw_sailor_barb",
       "required": false
     },
     {
-      "id": "unusualfishmod:eyelash",
+      "id": "unusualfishmod:raw_eyelash",
       "required": false
     },
     {
@@ -2885,7 +2885,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:demon_herring",
+      "id": "unusualfishmod:raw_demon_herring",
       "required": false
     },
     {
@@ -2893,7 +2893,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:circus_fish",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {
@@ -2901,7 +2901,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:forkfish",
+      "id": "unusualfishmod:raw_forkfish",
       "required": false
     },
     {
@@ -2909,7 +2909,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:amber_goby",
+      "id": "unusualfishmod:raw_amber_goby",
       "required": false
     },
     {
@@ -2917,31 +2917,31 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:duality_damselfish",
+      "id": "unusualfishmod:raw_duality_damselfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:spindlefish",
+      "id": "unusualfishmod:raw_spindlefish",
       "required": false
     },
     {
-      "id": "unusualfishmod:triple_twirl_pleco",
+      "id": "unusualfishmod:raw_triple_twirl_pleco",
       "required": false
     },
     {
-      "id": "unusualfishmod:bark_angelfish",
+      "id": "unusualfishmod:raw_bark_angelfish",
       "required": false
     },
     {
-      "id": "unusualfishmod:drooping_gourami",
+      "id": "unusualfishmod:raw_drooping_gourami",
       "required": false
     },
     {
-      "id": "unusualfishmod:sailor_barb",
+      "id": "unusualfishmod:raw_sailor_barb",
       "required": false
     },
     {
-      "id": "unusualfishmod:eyelash",
+      "id": "unusualfishmod:raw_eyelash",
       "required": false
     },
     {

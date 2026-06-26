@@ -5,41 +5,33 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 30,
   "catch_info": {
-    "item": "unusualfishmod:duality_damselfish"
+    "entity": "unusualfishmod:spindlefish",
+    "fish_bucket": "unusualfishmod:spindlefish_bucket",
+    "item": "unusualfishmod:raw_spindlefish"
   },
   "difficulty": {
     "decay": 1.0,
     "hp": 100,
-    "missPenalty": 20,
+    "missPenalty": 5,
     "modifiers": [],
-    "speed": 15,
+    "speed": 13,
     "sweetspots": [
       {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "color_as_int": -13076094,
+        "hitbox_size_in_pixels": 24,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
-        "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 15,
-        "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "reward": 10,
+        "sweetspot_type": "starcatcher:aqua",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "uncommon",
+  "rarity": "legendary",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -58,6 +50,10 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:weather_restriction",
+      "weather": "thunder"
     },
     {
       "type": "starcatcher:fluid",

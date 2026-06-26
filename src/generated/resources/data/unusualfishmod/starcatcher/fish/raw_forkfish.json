@@ -7,7 +7,9 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "unusualfishmod:triple_twirl_pleco"
+    "entity": "unusualfishmod:forkfish",
+    "fish_bucket": "unusualfishmod:forkfish_bucket",
+    "item": "unusualfishmod:raw_forkfish"
   },
   "difficulty": {
     "decay": 1.0,
@@ -20,7 +22,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -30,7 +32,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",

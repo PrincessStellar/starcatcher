@@ -280,7 +280,7 @@ public class DGStarcatcherFishes
                 PresetRestrictions.warmLake(context)
                         .withFish(SCItems.AGAVE_BREAM)
                         .withSizeAndWeight(new SizeAndWeight(36, 12, 2000, 1000))
-                        .withDifficulty(Difficulty.MEDIUM_MIRAGE.moving())
+                        .withDifficulty(Difficulty.MEDIUM_MIRAGE_MOVING)
                         .withRarity(Rarity.RARE)
         );
 
@@ -753,7 +753,7 @@ public class DGStarcatcherFishes
                 PresetRestrictions.caves(context)
                         .withFish(SCItems.BLACK_EEL)
                         .withSizeAndWeight(new SizeAndWeight(500, 150, 6000, 2000))
-                        .withDifficulty(Difficulty.MEDIUM_STONE)
+                        .withDifficulty(Difficulty.MEDIUM)
                         .withRarity(Rarity.UNCOMMON)
         );
 

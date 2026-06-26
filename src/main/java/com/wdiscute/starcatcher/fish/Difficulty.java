@@ -167,19 +167,19 @@ public record Difficulty(
 
 
     public static Difficulty MEDIUM = new Difficulty(
-            10, 20, 1,
+            100, 10, 20, 1,
             List.of(),
             SweetSpot.NORMAL, SweetSpot.THIN
     );
 
     public static Difficulty MEDIUM_FROZEN = new Difficulty(
-            10, 20, 1,
+            100, 10, 20, 1,
             List.of(new FreezeOnMissModifier(40, 10, "")),
             SweetSpot.NORMAL, SweetSpot.FROZEN
     );
 
     public static Difficulty MEDIUM_MIRAGE = new Difficulty(
-            10, 20, 1,
+            100, 10, 20, 1,
             List.of(
                     new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, ""),
                     new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL, false, "")
@@ -188,18 +188,12 @@ public record Difficulty(
     );
 
     public static Difficulty MEDIUM_MIRAGE_MOVING = new Difficulty(
-            10, 20, 1,
+            100, 10, 20, 1,
             List.of(
                     new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, ""),
                     new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL.moving(1), false, "")
             ),
             SweetSpot.NORMAL.moving(1), SweetSpot.MIRAGE_NORMAL.moving(1)
-    );
-
-    public static Difficulty MEDIUM_STONE = new Difficulty(
-            150, 10, 20, 1,
-            List.of(),
-            SweetSpot.STONE_LOW_REWARD, SweetSpot.NORMAL
     );
 
 

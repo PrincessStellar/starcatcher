@@ -32,7 +32,7 @@ public class FTBTeamsCompat
                 if (playerByUUID != null && playerByUUID.getUUID().equals(player.getUUID()))
                 {
                     FishCaughtCounter.awardFishCaughtCounter(fp, rl, playerByUUID,
-                            ticks, size, weight, 100, false, false, false);
+                            ticks, size, weight, 100, false, false, false, false);
                 }
             }
         }

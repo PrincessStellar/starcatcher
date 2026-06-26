@@ -2,8 +2,7 @@ package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
-import com.wdiscute.starcatcher.registry.items.rod.StarcatcherFishingRodItem;
+import com.wdiscute.utils.MaybeStack;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -29,9 +28,9 @@ public class RodSlotTooltipRenderer implements ClientTooltipComponent
     {
         this.tooltip = tooltip;
         ItemStack rod = tooltip.rod();
-        bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, SingleStackContainer.empty()).stack();
-        bait = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
-        hook = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.HOOK, SingleStackContainer.empty()).stack();
+        bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack();
+        bait = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
+        hook = SCDataComponents.getOrDefault(tooltip.rod(), SCDataComponents.HOOK, MaybeStack.EMPTY).toStack();
     }
 
     @Override

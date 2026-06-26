@@ -196,7 +196,6 @@
   "starcatcher.configuration.restrict_tackle_box_to_tag" : "Restrict Tackle Box To Tag",
   "starcatcher.configuration.fish_percentile_size_max_scale" : "Fish Model Max Scale",
   "starcatcher.configuration.fish_percentile_size_min_scale" : "Fish Model Min Scale",
-  "starcatcher.configuration.enable_rod_menu" : "Enable Rod Menu",
   "starcatcher.configuration.max_tackle_box_fish_storage" : "Max Tackle Box Fish",
   "starcatcher.configuration.hide_treasures" : "Hide Treasures",
 
@@ -215,6 +214,7 @@
 
   "entity.starcatcher.fish" : "Starcaught Fish",
 
+  "gui.starcatcher.bait_out" : "You're out of bait!",
   "gui.starcatcher.bait_running_low" : "Your bait is running low...",
   "gui.starcatcher.reel_no_fish" : "There are no fishes here...",
   "gui.starcatcher.no_hook_or_bobber" : "A fishing rod won't work without a hook and a bobber...",

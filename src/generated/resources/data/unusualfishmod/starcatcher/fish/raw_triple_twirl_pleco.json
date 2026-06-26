@@ -7,7 +7,9 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "unusualfishmod:amber_goby"
+    "entity": "unusualfishmod:triple_twirl_pleco",
+    "fish_bucket": "unusualfishmod:triple_twirl_pleco_bucket",
+    "item": "unusualfishmod:raw_triple_twirl_pleco"
   },
   "difficulty": {
     "decay": 1.0,
@@ -20,7 +22,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -30,7 +32,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",

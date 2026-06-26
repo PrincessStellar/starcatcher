@@ -293,7 +293,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:circus_fish",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {
@@ -593,7 +593,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:circus_fish",
+      "id": "unusualfishmod:raw_circus_fish",
       "required": false
     },
     {

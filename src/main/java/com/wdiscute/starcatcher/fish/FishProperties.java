@@ -222,6 +222,11 @@ public record FishProperties(
         return withCatchInfo(catchInfo.withEntityToSpawn(entityTypeHolder));
     }
 
+    public FishProperties withEntityToSpawn(String namespace, String path)
+    {
+        return withCatchInfo(catchInfo.withEntityToSpawn(U.holderEntity(namespace, path)));
+    }
+
     public FishProperties withPercentageChance(float chance)
     {
         restrictions.add(new ChancePercentageRestriction(0.05f));

@@ -7,20 +7,22 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "item": "unusualfishmod:sailor_barb"
+    "entity": "unusualfishmod:demon_herring",
+    "fish_bucket": "unusualfishmod:demon_herring_bucket",
+    "item": "unusualfishmod:raw_demon_herring"
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 75,
-    "missPenalty": 5,
+    "hp": 100,
+    "missPenalty": 20,
     "modifiers": [],
-    "speed": 7,
+    "speed": 10,
     "sweetspots": [
       {
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -28,18 +30,18 @@
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
-        "moving_rate": 1.0,
-        "reward": 15,
+        "moving_rate": 0.0,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]
   },
   "has_guide_entry": true,
-  "rarity": "uncommon",
+  "rarity": "common",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -49,7 +51,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#starcatcher:is_swamp"
+        "#starcatcher:is_deep_ocean"
       ],
       "blacklist": []
     },
@@ -58,6 +60,16 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 0,
+          "second": 12700
+        }
+      ],
+      "translation_override": "gui.guide.day"
     },
     {
       "type": "starcatcher:fluid",

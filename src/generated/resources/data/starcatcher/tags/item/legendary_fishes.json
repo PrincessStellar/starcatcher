@@ -81,7 +81,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:spindlefish",
+      "id": "unusualfishmod:raw_spindlefish",
       "required": false
     },
     {
@@ -165,7 +165,7 @@
       "required": false
     },
     {
-      "id": "unusualfishmod:spindlefish",
+      "id": "unusualfishmod:raw_spindlefish",
       "required": false
     }
   ]

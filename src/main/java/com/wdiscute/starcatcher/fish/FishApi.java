@@ -11,23 +11,21 @@ import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.io.CaughtFishInfo;
 import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.SingleStackContainer;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import com.wdiscute.utils.MaybeStack;
 import com.wdiscute.utils.Utils;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,7 +37,6 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,13 +120,8 @@ public class FishApi
      */
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
-        if(fp.catchInfo().fish().toStack().is(SCItems.PEAKDWELLER))
-        {
-            System.out.println("wdawd");
-        }
-
         //if dev worm return rod weight
-        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
+        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new MaybeStack(ItemStack.EMPTY)).toStack().is(SCItems.DEV_WORM) &&
             fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
             return 1;
 
@@ -189,7 +181,8 @@ public class FishApi
                 if (fbe.modifiers.stream().anyMatch(o -> o.cancelGolden(fbe))) golden = false;
 
                 //award fish counter entry to guide book
-                FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToAwardUponFishingComplete, player, time, size, weight, percentile, perfectCatch, true, golden);
+                FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToAwardUponFishingComplete,
+                        player, time, size, weight, percentile, perfectCatch, true, golden, false);
 
                 //add score to tournaments
                 TournamentHandler.addScore(player, fp, perfectCatch, percentile);
@@ -241,7 +234,7 @@ public class FishApi
 
                     if (entity == null)
                     {
-                        LogUtils.getLogger().warn("starcatcher doesnt like when the flag or whatever is not enabled");
+                        LogUtils.getLogger().warn("starcatcher doesn't like when the flag or whatever is not enabled");
                         return;
                     }
 
@@ -258,7 +251,6 @@ public class FishApi
                 //if not entity then add rod item resourceLocation
                 else
                 {
-
                     ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, size, weight, percentile, golden, player, perfectCatch);
 
                     if (fbe.modifiers.stream().noneMatch(acm -> acm.shouldSkipAddingBaseItem(fbe, is)))
@@ -272,11 +264,28 @@ public class FishApi
                     if(player.getOffhandItem().is(SCTags.RODS)) rod = player.getOffhandItem();
                     if(player.getMainHandItem().is(SCTags.RODS)) rod = player.getMainHandItem();
 
+                    //if rod is found (should never fail!)
                     if(rod != null)
+                    {
+                        ItemStack bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack();
+                        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
+                        ItemStack hook = SCDataComponents.getOrDefault(rod, SCDataComponents.HOOK, MaybeStack.EMPTY).toStack();
+
                         rod.hurtAndBreak(1, (ServerLevel) player.level(), player, Utils::nothing);
+
+                        //if rod broke, award bobber, bait & hook
+                        if(rod.isEmpty())
+                        {
+                            player.addItem(bobber);
+                            player.addItem(bait);
+                            player.addItem(hook);
+                        }
+                    }
+                    else
+                    {
+                        LogUtils.getLogger().warn("Starcatcher couldn't find a rod to decrease durability! Report this to the devs on github or discord");
+                    }
                 }
-
-
 
                 //add items to list from modifiers
                 for (AbstractCatchModifier acm : fbe.modifiers)
@@ -331,18 +340,18 @@ public class FishApi
             }
 
             //consume bait if not bucket
-            ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
+            ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
             if (!bait.is(Tags.Items.BUCKETS_EMPTY))
             {
                 bait.shrink(1);
-                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
+                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
             }
 
             //consume bait if bucket & bucketed fish available, and completed minigame (fish don't eat buckets!)
             if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && time != -1)
             {
                 bait.shrink(1);
-                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new SingleStackContainer(bait));
+                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
             }
 
             fbe.kill();
@@ -369,10 +378,13 @@ public class FishApi
         return fish;
     }
 
+    /**
+     * Generates the itemstack for fishing taking into account bucketability
+     */
     public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile,
                                           boolean golden, Player player, boolean perfectCatch)
     {
-        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, SingleStackContainer.empty()).stack();
+        ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
 
         boolean canBeBucketed = !fp.catchInfo().bucketedFish().toStack().isEmpty() && bait.is(Tags.Items.BUCKETS_EMPTY);
 
@@ -396,7 +408,7 @@ public class FishApi
                 if (SCConfig.SAVE_DATA_TO_ITEMS.get())
                     SCDataComponents.set(bucket, SCDataComponents.CAUGHT_FISH_INFO, caughtFishInfo);
 
-                SCDataComponents.set(bucket, SCDataComponents.BUCKETED_FISH, new SingleStackContainer(baseFish));
+                SCDataComponents.set(bucket, SCDataComponents.BUCKETED_FISH, new MaybeStack(baseFish));
                 return bucket;
             }
             else
