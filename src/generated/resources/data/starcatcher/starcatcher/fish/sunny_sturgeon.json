@@ -61,15 +61,9 @@
       "translation_override": "gui.guide.lakes"
     },
     {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 2147483647,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
-    },
-    {
       "type": "starcatcher:elevation_bias",
       "best_y": 100,
-      "extra_chance_at_best": 20,
+      "extra_chance_at_best": 9,
       "range": 50
     },
     {

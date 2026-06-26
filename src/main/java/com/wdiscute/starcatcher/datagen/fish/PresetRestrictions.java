@@ -29,6 +29,19 @@ public class PresetRestrictions
                 ;
     }
 
+    public static FishProperties lakeMountain(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                //todo rethink the mountain elevation bias interaction with the base chance
+                .withBaseChance(0)
+                .addRestriction(DimensionRestriction.OVERWORLD)
+                .addRestriction(BiomeRestriction.lakes(context))
+                .addRestriction(ElevationBias.MOUNTAIN)
+                .addRestriction(FluidRestriction.WATER)
+                ;
+    }
+
+
     public static FishProperties coldLake(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()

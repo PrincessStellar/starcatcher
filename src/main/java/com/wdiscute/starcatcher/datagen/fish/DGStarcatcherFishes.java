@@ -57,15 +57,14 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.lake(context)
+                PresetRestrictions.lakeMountain(context)
                         .withFish(SCItems.PEAKDWELLER)
                         .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 5000))
                         .withDifficulty(Difficulty.EASY.withHP(150))
-                        .addRestriction(ElevationBias.MOUNTAIN)
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.lake(context)
+                PresetRestrictions.lakeMountain(context)
                         .withFish(SCItems.ROCKGILL)
                         .withSizeAndWeight(new SizeAndWeight(100, 50, 10000, 5000))
                         .withDifficulty(Difficulty.EASY.moving()));
@@ -90,10 +89,9 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.lake(context)
+                PresetRestrictions.lakeMountain(context)
                         .withFish(SCItems.SUNNY_STURGEON)
                         .withSizeAndWeight(new SizeAndWeight(400, 200, 100000, 50000))
-                        .addRestriction(ElevationBias.MOUNTAIN)
                         .withRarity(Rarity.UNCOMMON)
                         .withDifficulty(Difficulty.MEDIUM)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
@@ -120,7 +118,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.lake(context)
+                PresetRestrictions.lakeMountain(context)
                         .withFish(SCItems.SUN_SEEKING_CARP)
                         .withSizeAndWeight(new SizeAndWeight(60, 20, 6000, 4000))
                         .withRarity(Rarity.RARE)
@@ -171,7 +169,7 @@ public class DGStarcatcherFishes
                 PresetRestrictions.coldLake(context)
                         .withFish(SCItems.CRYSTALBACK_STURGEON)
                         .withSizeAndWeight(new SizeAndWeight(400, 200, 100000, 50000))
-                        .addRestriction(ElevationBias.MOUNTAIN)
+                        //todo mountain
                         .withDifficulty(Difficulty.EASY_FROZEN.withHP(150))
         );
 

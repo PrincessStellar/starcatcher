@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -64,9 +65,18 @@ public class ElevationBias extends AbstractFishRestriction
         //returns the extra weight scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
         int distance = Math.abs(entity.blockPosition().getY() - bestY);
 
-        int scaledChance = extraChance * (1 - distance / range);
+        int scaledChance = (int) (extraChance * (1 - (float) distance / (float) range));
 
-        return Math.max(scaledChance, 0);
+        return scaledChance > 0 ? scaledChance : -9999;
+    }
+
+    @Override
+    public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+            return List.of(Component.translatable("gui.guide.hover.elevation.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+        else
+            return List.of(Component.translatable("gui.guide.hover.elevation.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
     }
 
     @Override
@@ -78,17 +88,8 @@ public class ElevationBias extends AbstractFishRestriction
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return Component.translatable("gui.guide.hover");
+        return Component.translatable("gui.guide.elevation_bias", bestY);
     }
 
-    @Override
-    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
-    {
-        return List.of(
-                Component.translatable("gui.guide.extra_chance", bestY, extraChance),
-                Component.translatable("gui.guide.range", bestY - range + " - " + bestY + range)
-        );
-    }
-
-    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 50, 20, "");
+    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 50, 9, "");
 }

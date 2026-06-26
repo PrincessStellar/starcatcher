@@ -6,7 +6,7 @@ import com.wdiscute.starcatcher.bobentity.tackles.*;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
 import com.wdiscute.starcatcher.locators.FishRadarLayer;
-import com.wdiscute.starcatcher.locators.FishTrackedLayer;
+import com.wdiscute.starcatcher.locators.FishTrackerLayer;
 import com.wdiscute.starcatcher.minigame.KonamiDetector;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.blocks.aquarium.AquariumRenderer;
@@ -89,7 +89,7 @@ public class SCClientEvents
     @SubscribeEvent
     public static void registerGuiLayers(RegisterGuiLayersEvent event)
     {
-        event.registerAboveAll(Starcatcher.rl("tracked_fish"), new FishTrackedLayer());
+        event.registerAboveAll(Starcatcher.rl("tracked_fish"), new FishTrackerLayer());
         event.registerAboveAll(Starcatcher.rl("fish_radar"), new FishRadarLayer());
         event.registerAboveAll(Starcatcher.rl("tournament"), new TournamentOverlay());
     }

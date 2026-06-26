@@ -123,6 +123,11 @@ public class FishApi
      */
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
+        if(fp.catchInfo().fish().toStack().is(SCItems.PEAKDWELLER))
+        {
+            System.out.println("wdawd");
+        }
+
         //if dev worm return rod weight
         if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new SingleStackContainer(ItemStack.EMPTY)).stack().is(SCItems.DEV_WORM) &&
             fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))

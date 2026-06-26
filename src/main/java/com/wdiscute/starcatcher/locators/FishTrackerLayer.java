@@ -3,18 +3,14 @@ package com.wdiscute.starcatcher.locators;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.sun.jna.platform.win32.WinNT;
-import com.teamtea.eclipticseasons.config.ClientConfig;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
-import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import net.minecraft.CrashReport;
@@ -32,7 +28,6 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -43,7 +38,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FishTrackedLayer implements LayeredDraw.Layer
+public class FishTrackerLayer implements LayeredDraw.Layer
 {
 
     private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/fish_tracker/background.png");
