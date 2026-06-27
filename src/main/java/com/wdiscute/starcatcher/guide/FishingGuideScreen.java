@@ -1280,7 +1280,7 @@ public class FishingGuideScreen extends Screen
                     int xpos = uiX + 53 + (i % 7) * 20;
                     int ypos = uiY + 67 + (i / 7 * 20) + 38;
 
-                    renderFishIndex(guiGraphics, xpos, ypos, mouseX, mouseY, fp, 0xffc6bdaf);
+                    renderFishIndex(guiGraphics, xpos, ypos, mouseX, mouseY, fp);
                 }
 
                 //render decorations and stuff
@@ -1318,7 +1318,7 @@ public class FishingGuideScreen extends Screen
             for (int i = 0; i < 49; i++)
             {
                 if (i > entries.size() - 1) return;
-                renderFishIndex(guiGraphics, xx + 160 + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(i), 0xffc6bdaf);
+                renderFishIndex(guiGraphics, xx + 160 + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(i));
             }
         }
         else
@@ -1328,7 +1328,7 @@ public class FishingGuideScreen extends Screen
             {
                 int order = i + 49 * (page * 2 - 1);
                 if (order > entries.size() - 1) break;
-                renderFishIndex(guiGraphics, xx + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(order), 0xffc6bdaf);
+                renderFishIndex(guiGraphics, xx + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(order));
             }
 
             //render second page, right
@@ -1336,13 +1336,13 @@ public class FishingGuideScreen extends Screen
             {
                 int order = i + 49 + 49 * (page * 2 - 1);
                 if (order > entries.size() - 1) return;
-                renderFishIndex(guiGraphics, xx + 160 + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(order), 0xffc6bdaf);
+                renderFishIndex(guiGraphics, xx + 160 + (i % 7 * 20), uiY + 56 + (i / 7 * 20), mouseX, mouseY, entries.get(order));
             }
         }
         hasNextPage = true;
     }
 
-    private void renderFishIndex(GuiGraphics guiGraphics, int xOffset, int yOffset, int mouseX, int mouseY, FishProperties fp, int backgroundFillColor)
+    private void renderFishIndex(GuiGraphics guiGraphics, int xOffset, int yOffset, int mouseX, int mouseY, FishProperties fp)
     {
         ResourceLocation rl = fp.toLoc(level);
         FishCaughtCounter fcc = fishCaughtCounterMap.get(rl);
@@ -1368,7 +1368,7 @@ public class FishingGuideScreen extends Screen
         }
 
         //render fill
-        guiGraphics.fill(xOffset - 1, yOffset - 1, xOffset + 17, yOffset + 17, backgroundFillColor);
+        guiGraphics.fill(xOffset - 1, yOffset - 1, xOffset + 17, yOffset + 17, SCColors.GUIDE_BACKGROUND_DARK);
 
         //glow color
         int color = switch (fp.rarity())

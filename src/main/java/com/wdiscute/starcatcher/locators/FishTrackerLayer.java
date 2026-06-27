@@ -11,6 +11,7 @@ import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import net.minecraft.CrashReport;
@@ -75,11 +76,6 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         cachedRL = player.getData(SCDataAttachments.TRACKED_FISH);
         cachedCaughtFish = player.getData(SCDataAttachments.FISHING_GUIDE).fishesCaught.containsKey(cachedRL);
 
-        //restrictions
-        cachedFP.restrictions().stream().filter(AbstractFishRestriction::isEnabled)
-                .forEach(o -> cachedRestrictions
-                        .addAll(o.getIndexHover(level, cachedFP, player, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER)));
-
         //chances
         cachedChance = 0;
         cachedTotalChance = 0;
@@ -103,6 +99,13 @@ public class FishTrackerLayer implements LayeredDraw.Layer
             else if (chance > 0)
                 cachedTotalChance += chance;
         }
+
+        //cache restrictions
+        cachedRestrictions.clear();
+        if (cachedFP != null)
+            cachedFP.restrictions().stream().filter(AbstractFishRestriction::isEnabled)
+                    .forEach(o -> cachedRestrictions
+                            .addAll(o.getIndexHover(level, cachedFP, player, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER)));
     }
 
     @Override
@@ -117,33 +120,40 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         if (Minecraft.getInstance().player == null) return;
         else player = Minecraft.getInstance().player;
 
-        boolean shouldShow = player.getMainHandItem().is(SCTags.HAS_TRACKER_LAYER) || player.getOffhandItem().is(SCTags.HAS_TRACKER_LAYER) || Minecraft.getInstance().screen instanceof SettingsScreen;
+        boolean shouldShow = player.getMainHandItem().is(SCTags.HAS_TRACKER_LAYER) || player.getOffhandItem().is(SCTags.HAS_TRACKER_LAYER);
 
         ResourceLocation trackedRL = Minecraft.getInstance().player.getData(SCDataAttachments.TRACKED_FISH);
         shouldShow = shouldShow && !trackedRL.equals(Starcatcher.MISSINGNO);
 
+        if(Minecraft.getInstance().screen instanceof SettingsScreen)
+        {
+            shouldShow = true;
+            cachedFP = FishProperties.empty();
+        }
+
         //smoothly moves ui in and out of screen
         if (!shouldShow)
-            if (offScreen > -150 + SCConfig.RADAR_X_OFFSET.get())
-                offScreen -= 15 * deltaTracker.getGameTimeDeltaTicks();
+            if (offScreen > -250 + SCConfig.TRACKER_X_OFFSET.get())
+                offScreen -= 15F * deltaTracker.getRealtimeDeltaTicks();
             else
             {
-                offScreen = (float) (-150 + SCConfig.RADAR_X_OFFSET.get());
+                offScreen = (float) (-250 + SCConfig.TRACKER_X_OFFSET.get());
                 return;
             }
         else if (offScreen < 0)
-            offScreen += 15 * deltaTracker.getGameTimeDeltaTicks();
+            offScreen += 15F * deltaTracker.getRealtimeDeltaTicks();
         else
             offScreen = 0;
 
 
+        //transform and scale from config
         guiGraphics.pose().pushPose();
-        guiGraphics.pose().scale(((float) SCConfig.RADAR_SCALE.getAsDouble()), ((float) SCConfig.RADAR_SCALE.getAsDouble()), 1);
-        guiGraphics.pose().translate(SCConfig.RADAR_X_OFFSET.get(), SCConfig.RADAR_Y_OFFSET.get(), 0);
+        guiGraphics.pose().scale(((float) SCConfig.TRACKER_SCALE.getAsDouble()), ((float) SCConfig.TRACKER_SCALE.getAsDouble()), 1);
+        guiGraphics.pose().translate(SCConfig.TRACKER_X_OFFSET.get(), SCConfig.TRACKER_Y_OFFSET.get(), 0);
 
+        //translate offset animation
         guiGraphics.pose().translate(-offScreen, 0, 0);
 
-        renderImage(guiGraphics, BACKGROUND);
 
         //recalculate every <config freq>
         if (System.currentTimeMillis() > lastRefreshMS + SCConfig.OVERLAY_UPDATE_FREQUENCY.get())
@@ -155,6 +165,8 @@ public class FishTrackerLayer implements LayeredDraw.Layer
             return;
         }
 
+        //render base background
+        renderImage(guiGraphics, BACKGROUND);
 
         //render fish + name
         if (cachedCaughtFish || !SCConfig.HIDE_ENTRIES_UNTIL_FOUND.get())

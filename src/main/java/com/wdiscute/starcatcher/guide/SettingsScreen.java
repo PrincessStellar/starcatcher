@@ -62,17 +62,21 @@ public class SettingsScreen extends FishingMinigameScreen
         ));
 
 
-        buttons.add(new Button(SCConfig.MINIGAME_X_OFFSET, 70, -60, "x offset: ", 1));
-        buttons.add(new Button(SCConfig.MINIGAME_Y_OFFSET, 70, -45, "y offset: ", 1));
-        buttons.add(new Button(SCConfig.MINIGAME_RENDER_SCALE, 70, -30, "scale: ", 0.01f));
+        buttons.add(new Button(SCConfig.MINIGAME_X_OFFSET, 70, -110, "x offset: ", 1));
+        buttons.add(new Button(SCConfig.MINIGAME_Y_OFFSET, 70, -95, "y offset: ", 1));
+        buttons.add(new Button(SCConfig.MINIGAME_RENDER_SCALE, 70, -80, "scale: ", 0.01f));
 
-        buttons.add(new Button(SCConfig.TOURNAMENT_X_OFFSET, 70, 0, "x offset: ", 1));
-        buttons.add(new Button(SCConfig.TOURNAMENT_Y_OFFSET, 70, 15, "y offset: ", 1));
-        buttons.add(new Button(SCConfig.TOURNAMENT_SCALE, 70, 30, "scale: ", 0.01f));
+        buttons.add(new Button(SCConfig.TOURNAMENT_X_OFFSET, 70, -50, "x offset: ", 1));
+        buttons.add(new Button(SCConfig.TOURNAMENT_Y_OFFSET, 70, -35, "y offset: ", 1));
+        buttons.add(new Button(SCConfig.TOURNAMENT_SCALE, 70, -20, "scale: ", 0.01f));
 
-        buttons.add(new Button(SCConfig.RADAR_X_OFFSET, 70, 60, "x offset: ", 1));
-        buttons.add(new Button(SCConfig.RADAR_Y_OFFSET, 70, 75, "y offset: ", 1));
-        buttons.add(new Button(SCConfig.RADAR_SCALE, 70, 90, "scale: ", 0.01f));
+        buttons.add(new Button(SCConfig.RADAR_X_OFFSET, 70, 10, "x offset: ", 1));
+        buttons.add(new Button(SCConfig.RADAR_Y_OFFSET, 70, 25, "y offset: ", 1));
+        buttons.add(new Button(SCConfig.RADAR_SCALE, 70, 40, "scale: ", 0.01f));
+
+        buttons.add(new Button(SCConfig.TRACKER_X_OFFSET, 70, 70, "x offset: ", 1));
+        buttons.add(new Button(SCConfig.TRACKER_Y_OFFSET, 70, 85, "y offset: ", 1));
+        buttons.add(new Button(SCConfig.TRACKER_SCALE, 70, 100, "scale: ", 0.01f));
 
     }
 
@@ -82,9 +86,10 @@ public class SettingsScreen extends FishingMinigameScreen
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         buttons.forEach(o -> o.render(guiGraphics, width, height, font));
 
-        guiGraphics.drawString(font, "Minigame: ", width / 2 + 70, height / 2 - 70, 0xffffff00);
-        guiGraphics.drawString(font, "Tournament: ", width / 2 + 70, height / 2 - 10, 0xffffff00);
-        guiGraphics.drawString(font, "Radar: ", width / 2 + 70, height / 2 + 50, 0xffffff00);
+        guiGraphics.drawString(font, "Minigame: ", width / 2 + 70, height / 2 - 120, 0xffffff00);
+        guiGraphics.drawString(font, "Tournament: ", width / 2 + 70, height / 2 - 60, 0xffffff00);
+        guiGraphics.drawString(font, "Radar: ", width / 2 + 70, height / 2, 0xffffff00);
+        guiGraphics.drawString(font, "Tracker: ", width / 2 + 70, height / 2 + 60, 0xffffff00);
     }
 
     public record Button(ModConfigSpec.DoubleValue configSpec, int x, int y, String text, float increase)

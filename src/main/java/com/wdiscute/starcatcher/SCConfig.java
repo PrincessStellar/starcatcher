@@ -40,7 +40,7 @@ public class SCConfig
 
     public static final ModConfigSpec.DoubleValue RADAR_Y_OFFSET = BUILDER_CLIENT
             .translation("starcatcher.configuration.radar_y_offset")
-            .defineInRange("radar_y_offset", 0d, -10000, 10000);
+            .defineInRange("radar_y_offset", 80d, -10000, 10000);
 
     public static final ModConfigSpec.DoubleValue RADAR_SCALE = BUILDER_CLIENT
             .translation("starcatcher.configuration.radar_scale")
@@ -52,7 +52,7 @@ public class SCConfig
 
     public static final ModConfigSpec.DoubleValue TRACKER_Y_OFFSET = BUILDER_CLIENT
             .translation("starcatcher.configuration.tracker_y_offset")
-            .defineInRange("tracker_y_offset", 0d, -10000, 10000);
+            .defineInRange("tracker_y_offset", -50d, -10000, 10000);
 
     public static final ModConfigSpec.DoubleValue TRACKER_SCALE = BUILDER_CLIENT
             .translation("starcatcher.configuration.tracker_scale")
