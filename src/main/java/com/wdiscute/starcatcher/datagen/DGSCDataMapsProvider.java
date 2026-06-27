@@ -263,10 +263,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new NewCatchIncreaseModifier(5, "")
         ), false);
 
-        modifiers.add(SCItems.DEV_WORM, List.of(
-                new AdjustLureTimeModifier(0.2f, 0.2f, 0.2f, "")
-        ), false);
-
         //baits
         modifiers.add(SCItems.GUNPOWDER_BAIT, List.of(
                 new AdjustLureTimeModifier(0.7f, 0.8f, 1.3f, "")

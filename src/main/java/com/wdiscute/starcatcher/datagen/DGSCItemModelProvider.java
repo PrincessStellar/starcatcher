@@ -93,7 +93,6 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(WORM);
         simpleItem(ALMIGHTY_WORM);
         simpleItem(SEEKING_WORM);
-        simpleItem(DEV_WORM);
         simpleItem(GUNPOWDER_BAIT);
         simpleItem(CHERRY_BAIT);
         simpleItem(LUSH_BAIT);

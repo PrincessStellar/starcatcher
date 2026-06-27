@@ -417,10 +417,6 @@
       "required": false
     },
     {
-      "id": "collectorsreap:clam",
-      "required": false
-    },
-    {
       "id": "upgrade_aquatic:pike",
       "required": false
     },
@@ -878,10 +874,6 @@
     },
     {
       "id": "collectorsreap:platinum_bass",
-      "required": false
-    },
-    {
-      "id": "collectorsreap:clam",
       "required": false
     },
     {

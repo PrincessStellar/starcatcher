@@ -112,22 +112,31 @@ public class FishApi
         return Pair.of(fpToFish, rlToAwardUponFishingComplete);
     }
 
-
     /**
      * Calculates the chance of catching the specific FP.
+     * Each restriction may add, remove or modify from the base chance.
+     * If a restriction returns -9999 that is considered an impossible catch and all remaining restriction checks are ignored.
      * None of the parameters should be passed as null as different restrictions might check for data in those parameters.
      */
     public static int calculateChance(FishProperties fp, Entity entity, Level level, ItemStack rod, AbstractFishRestriction.Context context)
     {
-        //if dev worm return rod weight
-        if (SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, new MaybeStack(ItemStack.EMPTY)).toStack().is(SCItems.DEV_WORM) &&
-            fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
-            return 1;
-
         int chance = fp.baseChance();
 
         for (var restriction : fp.restrictions())
-            chance += restriction.getFishChance(chance, level, fp, entity, rod, context);
+        {
+            int chanceToAdd = restriction.getFishChance(chance, level, fp, entity, rod, context);
+            chance += chanceToAdd;
+            //if restriction doesn't allow for fish, skip remaining conditions
+            if (chanceToAdd == -9999) break;
+        }
+
+        for (var restriction : fp.restrictions())
+        {
+            int chanceToAdd = restriction.getFishChance(chance, level, fp, entity, rod, context);
+            chance += chanceToAdd;
+            //if restriction doesn't allow for fish, skip remaining conditions
+            if (chanceToAdd == -9999) break;
+        }
 
         return chance;
     }
@@ -257,14 +266,14 @@ public class FishApi
                 }
 
                 //damage rod
-                if(!SCConfig.ENABLE_ROD_DURABILITY.get())
+                if (!SCConfig.ENABLE_ROD_DURABILITY.get())
                 {
                     ItemStack rod = null;
-                    if(player.getOffhandItem().is(SCTags.RODS)) rod = player.getOffhandItem();
-                    if(player.getMainHandItem().is(SCTags.RODS)) rod = player.getMainHandItem();
+                    if (player.getOffhandItem().is(SCTags.RODS)) rod = player.getOffhandItem();
+                    if (player.getMainHandItem().is(SCTags.RODS)) rod = player.getMainHandItem();
 
                     //if rod is found (should never fail!)
-                    if(rod != null)
+                    if (rod != null)
                     {
                         ItemStack bobber = SCDataComponents.getOrDefault(rod, SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack();
                         ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
@@ -273,7 +282,7 @@ public class FishApi
                         rod.hurtAndBreak(1, (ServerLevel) player.level(), player, Utils::nothing);
 
                         //if rod broke, award bobber, bait & hook
-                        if(rod.isEmpty())
+                        if (rod.isEmpty())
                         {
                             player.addItem(bobber);
                             player.addItem(bait);

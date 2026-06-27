@@ -25,6 +25,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,18 +74,32 @@ public class BiomeRestriction extends AbstractFishRestriction
         return SCFishRestrictions.BIOME;
     }
 
+    private static final BlockPos[] BPS = {
+            new BlockPos(5,0, 0),
+            new BlockPos(-5,0, 0),
+            new BlockPos(0,0, 5),
+            new BlockPos(0,0, -5)
+    };
+
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        Holder<Biome> biome = level.getBiome(entity.blockPosition());
 
         Registry<Biome> registry = level.registryAccess().registryOrThrow(Registries.BIOME);
-        //if biomes contains biome and blacklist doesn't contain biome
-        if ((biomes.isEmpty() || biomes.stream().anyMatch(o -> o.matches(biome, registry)))
-            && blacklist.stream().noneMatch(o -> o.matches(biome, registry)))
-            return 0;
-        else
-            return -9999;
+
+        //check biomes around the bobber
+        for (int i = 0; i < 4; i++)
+        {
+            BlockPos offset = BPS[i];
+            Holder<Biome> biome = level.getBiome(entity.blockPosition().offset(offset.getX(), offset.getY(), offset.getZ()));
+
+            //if biomes contains biome and blacklist doesn't contain biome
+            if ((biomes.isEmpty() || biomes.stream().anyMatch(o -> o.matches(biome, registry)))
+                && blacklist.stream().noneMatch(o -> o.matches(biome, registry)))
+                return 0;
+        }
+
+        return -9999;
     }
 
     @Override

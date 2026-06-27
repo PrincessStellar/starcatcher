@@ -38,7 +38,6 @@ public interface SCCreativeModeTabs
                         ConglomerateOfItems.create()
                                 .add(SCItems.ROD)
                                 .add(SCItems.GUIDE)
-                                .add(SCItems.DEV_WORM)
                                 .add(SCBlocks.STAND)
                                 .add(SCBlocks.DISPLAY)
                                 .add(SCBlocks.TACKLE_BOX)

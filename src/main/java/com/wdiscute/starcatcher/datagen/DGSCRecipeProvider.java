@@ -10,7 +10,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
@@ -184,9 +183,6 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .requires(SCTags.EPIC_FISHES)
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output, Starcatcher.rl("meteorological_bait_from_epic_fishes"));
-
-        //hats
-        colorBlockWithDye(output, dyes, hats, "fisherman_hats");
 
         //radar
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.FISH_RADAR)
@@ -999,16 +995,19 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .save(output, Starcatcher.rl("humble_rod")
                 );
 
-        //tackle box
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.TACKLE_BOX, 1)
-                .define('C', Items.COPPER_INGOT)
-                .define('H', Items.CHAIN)
-                .define('I', Items.IRON_INGOT)
-                .pattern("CCC")
-                .pattern("H H")
-                .pattern("III")
-                .unlockedBy("has_fish", has(ItemTags.FISHES))
-                .save(output);
+        //hats
+        for (int i = 0; i < dyes.size(); i++)
+        {
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, hats.get(i), 1)
+                    .define('P', SCItems.PEARL)
+                    .define('C', carpets.get(i))
+                    .define('W', wools.get(i))
+                    .pattern(" P ")
+                    .pattern("CWW")
+                    .pattern("   ")
+                    .unlockedBy("has_pearl", has(SCItems.PEARL))
+                    .save(output);
+        }
 
         //tackle boxes
         for (int i = 0; i < dyes.size(); i++)
@@ -1024,6 +1023,17 @@ public class DGSCRecipeProvider extends RecipeProvider
                     .unlockedBy("has_fish", has(ItemTags.FISHES))
                     .save(output);
         }
+
+        //tackle box
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCBlocks.TACKLE_BOX, 1)
+                .define('C', Items.COPPER_INGOT)
+                .define('H', Items.CHAIN)
+                .define('I', Items.IRON_INGOT)
+                .pattern("CCC")
+                .pattern("H H")
+                .pattern("III")
+                .unlockedBy("has_fish", has(ItemTags.FISHES))
+                .save(output);
 
         //letter
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.LETTER, 1)
@@ -1062,21 +1072,6 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .save(output);
     }
 
-    protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group)
-    {
-        for (int i = 0; i < dyes.size(); ++i)
-        {
-            Item item = dyes.get(i);
-            Item item1 = dyeableItems.get(i);
-            ShapelessRecipeBuilder.shapeless(
-                    RecipeCategory.BUILDING_BLOCKS, item1)
-                    .requires(item)
-                    .requires(SCItems.PEARL)
-                    .requires(Ingredient.of(dyeableItems.stream().filter((p_288265_) -> !p_288265_.equals(item1)).map(ItemStack::new))).group(group).unlockedBy("has_needed_dye", has(item)).save(recipeOutput, "dye_" + getItemName(item1));
-        }
-
-    }
-
     List<Item> dyes = List.of(
             Items.BLACK_DYE,
             Items.BLUE_DYE,
@@ -1094,6 +1089,44 @@ public class DGSCRecipeProvider extends RecipeProvider
             Items.RED_DYE,
             Items.YELLOW_DYE,
             Items.WHITE_DYE
+    );
+
+    List<Item> wools = List.of(
+            Items.BLACK_WOOL,
+            Items.BLUE_WOOL,
+            Items.BROWN_WOOL,
+            Items.CYAN_WOOL,
+            Items.GRAY_WOOL,
+            Items.GREEN_WOOL,
+            Items.LIGHT_BLUE_WOOL,
+            Items.LIGHT_GRAY_WOOL,
+            Items.LIME_WOOL,
+            Items.MAGENTA_WOOL,
+            Items.ORANGE_WOOL,
+            Items.PINK_WOOL,
+            Items.PURPLE_WOOL,
+            Items.RED_WOOL,
+            Items.YELLOW_WOOL,
+            Items.WHITE_WOOL
+    );
+
+    List<Item> carpets = List.of(
+            Items.BLACK_CARPET,
+            Items.BLUE_CARPET,
+            Items.BROWN_CARPET,
+            Items.CYAN_CARPET,
+            Items.GRAY_CARPET,
+            Items.GREEN_CARPET,
+            Items.LIGHT_BLUE_CARPET,
+            Items.LIGHT_GRAY_CARPET,
+            Items.LIME_CARPET,
+            Items.MAGENTA_CARPET,
+            Items.ORANGE_CARPET,
+            Items.PINK_CARPET,
+            Items.PURPLE_CARPET,
+            Items.RED_CARPET,
+            Items.YELLOW_CARPET,
+            Items.WHITE_CARPET
     );
 
     List<Item> hats = List.of(

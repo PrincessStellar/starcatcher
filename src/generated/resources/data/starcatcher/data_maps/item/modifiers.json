@@ -73,14 +73,6 @@
         "translation_override": "tooltip.modifier.starcatcher.deep_ocean_bobber"
       }
     ],
-    "starcatcher:dev_worm": [
-      {
-        "type": "starcatcher:adjust_lure_time",
-        "chance_every_tick_multiplier": 0.2,
-        "max_ticks_multiplier": 0.2,
-        "min_ticks_multiplier": 0.2
-      }
-    ],
     "starcatcher:dripstone_bait": [
       {
         "type": "starcatcher:adjust_lure_time",

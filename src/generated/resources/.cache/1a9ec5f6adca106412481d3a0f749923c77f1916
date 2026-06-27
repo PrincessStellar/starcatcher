@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-26T19:56:23.7949756	FishingProperties
+// 1.21.1	2026-06-27T02:21:15.6338317	FishingProperties
 7d8fb664607a6432ef2661977c20f9306c08e534 data/alexscaves/starcatcher/fish/lanternfish.json
 a0240f39a501ad5ebad443d2d002a4a8aa3ad0a3 data/alexscaves/starcatcher/fish/radgill.json
 81067a079d9167a3bda56ec3b0b96ebc6518c8d4 data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -42,10 +42,10 @@ b22438444d625e9f13c085170b3c22f781d2646a data/aquaculture/starcatcher/fish/small
 56a63390b501f07e4eec0a80b977b6369be5edfb data/aquaculture/starcatcher/fish/tambaqui.json
 cb842f03878bb7c9c89319f49c13a4e207912918 data/aquaculture/starcatcher/fish/tuna.json
 61bff6f646dc78e24534fac59752622fc00675e2 data/collectorsreap/starcatcher/fish/chieftain_crab.json
-e0556ca84d2c23c83bd5e78b2dc355493b00c46c data/collectorsreap/starcatcher/fish/clam.json
+b27f654feff91e0828f5acf32d798eb843f69624 data/collectorsreap/starcatcher/fish/clam.json
 858b6226a6e7f9699464983de51c55526f8754e5 data/collectorsreap/starcatcher/fish/platinum_bass.json
 a6d5f6e1209d6353c3a1716f4d41019305b622bb data/collectorsreap/starcatcher/fish/tiger_prawn.json
-b45afce0e36a3de51646526b20a5d6200b7cf67b data/collectorsreap/starcatcher/fish/urchin.json
+e9a66499a604aa48a55472fab3ccfb6f24587294 data/collectorsreap/starcatcher/fish/urchin.json
 0dcff183c423ec90c84e0e24eb4c7cb2dc587716 data/crittersandcompanions/starcatcher/fish/clam.json
 00bb9f1a2ef16b68d7ab180a35780918021ac79e data/crittersandcompanions/starcatcher/fish/koi_fish.json
 3f1cdb87617f946368fdad505239bb3978dfadc7 data/environmental/starcatcher/fish/koi.json
@@ -110,7 +110,7 @@ dfc7024927de5e4c71b607fa36f2b1c727c2f34f data/minecraft/starcatcher/fish/creeper
 e122e601df59b5ee3afbead284a4bc08951d26bc data/minecraft/starcatcher/fish/diamond.json
 7d8521f4d32d822499a42d0074086f4f63d73b6d data/minecraft/starcatcher/fish/netherite_scrap.json
 d1df62cc70e09e7671e4f825405161e086687236 data/minecraft/starcatcher/fish/netherite_upgrade_smithing_template.json
-ed195682524ebd301812a09a45c58a821472e0f9 data/minecraft/starcatcher/fish/nether_star.json
+65962181d3ea212c49e987590d1c98f59d2fad7a data/minecraft/starcatcher/fish/nether_star.json
 7f4e9851b5b64c75f2b962762d177a13b36c698d data/minecraft/starcatcher/fish/pufferfish.json
 ca5e0a2bb2d6e9d921ba03b5726b21055a5fa8d1 data/minecraft/starcatcher/fish/rotten_flesh.json
 31e884857e1e43427148fe39ccfd66fe996c2e8e data/minecraft/starcatcher/fish/salmon.json

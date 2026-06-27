@@ -81,7 +81,6 @@ public interface SCItems
     DeferredItem<Item> WORM = ITEMS.register("worm", BasicItem::new);
     DeferredItem<Item> ALMIGHTY_WORM = ITEMS.register("almighty_worm", BasicItem::new);
     DeferredItem<Item> SEEKING_WORM = ITEMS.register("seeking_worm", BasicItem::new);
-    DeferredItem<Item> DEV_WORM = ITEMS.register("dev_worm", BasicItem::new);
 
     DeferredItem<Item> GUNPOWDER_BAIT = ITEMS.register("gunpowder_bait", BasicItem::new);
     DeferredItem<Item> CHERRY_BAIT = ITEMS.register("cherry_bait", BasicItem::new);
