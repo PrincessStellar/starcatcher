@@ -14,8 +14,12 @@ public interface SCDataEntries
 {
     static void register(IEventBus eventBus){}
 
-    DataEntry<Map<String, List<ResourceLocation>>> DIMENSION_ENTRIES = DataEntry.register(Starcatcher.rl("dimension_entries"),
+    DataEntry<Map<String, List<ResourceLocation>>> DIMENSION_TAGS = DataEntry.register(Starcatcher.rl("dimension_tags"),
             Codec.unboundedMap(Codec.STRING, ResourceLocation.CODEC.listOf()),
+            Map.of());
+
+    DataEntry<Map<String, Integer>> DIMENSION_VOID_LEVEL = DataEntry.register(Starcatcher.rl("dimension_void_level"),
+            Codec.unboundedMap(Codec.STRING, Codec.INT),
             Map.of());
 
     DataEntry<List<Modifier>> DEFAULT_CATCH_MODIFIERS = DataEntry.register(Starcatcher.rl("default_catch_modifiers"), Modifier.CODEC.listOf(),

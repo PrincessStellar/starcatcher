@@ -20,7 +20,7 @@ public class SCDGDataEntriesProvider
     public static void start(DataGenerator gen, PackOutput output, boolean includeServer)
     {
         gen.addProvider(includeServer,
-                new DataEntryProvider<>(output, SCDataEntries.DIMENSION_ENTRIES,
+                new DataEntryProvider<>(output, SCDataEntries.DIMENSION_TAGS,
                         Map.of(
                                 "overworld", List.of(
                                         Utils.rl("overworld")

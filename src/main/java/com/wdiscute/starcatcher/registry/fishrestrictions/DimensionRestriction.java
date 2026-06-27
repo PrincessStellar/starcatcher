@@ -17,8 +17,8 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DimensionRestriction extends AbstractFishRestriction
 {
@@ -57,7 +57,8 @@ public class DimensionRestriction extends AbstractFishRestriction
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_ENTRIES.get().getOrDefault(dimensionEntry, List.of());
+        Map<String, List<ResourceLocation>> stringListMap = SCDataEntries.DIMENSION_TAGS.get();
+        List<ResourceLocation> allowedDimensions = stringListMap.getOrDefault(dimensionEntry, List.of());
 
         if(allowedDimensions.contains(level.dimension().location())) return 0;
 
@@ -82,7 +83,7 @@ public class DimensionRestriction extends AbstractFishRestriction
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_ENTRIES.get().getOrDefault(dimensionEntry, List.of());
+        List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_TAGS.get().getOrDefault(dimensionEntry, List.of());
 
         //Dimensions: [No Dimensions]
         if (allowedDimensions.isEmpty())
@@ -98,7 +99,7 @@ public class DimensionRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_ENTRIES.get().getOrDefault(dimensionEntry, List.of());
+        List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_TAGS.get().getOrDefault(dimensionEntry, List.of());
 
         if(allowedDimensions.isEmpty()) return List.of();
 

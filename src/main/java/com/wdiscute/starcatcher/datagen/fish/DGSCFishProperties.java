@@ -68,14 +68,6 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 
     public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
-        if(context != null)
-        {
-            HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
-
-            System.out.println(biomes.getOrThrow(Biomes.THE_END));
-        }
-
-
         //vanilla
         DGTrophies.bootstrap(context);
         DGMinecraftFishes.bootstrap(context);

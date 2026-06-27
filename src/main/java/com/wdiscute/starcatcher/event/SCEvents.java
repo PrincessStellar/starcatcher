@@ -28,6 +28,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -103,15 +104,35 @@ public class SCEvents
     @SubscribeEvent
     public static void itemFished(ItemFishedEvent event)
     {
-        if(!SCConfig.GIVE_ROD.get()) return;
+        if (!SCConfig.GIVE_ROD.get()) return;
         Player player = event.getHookEntity().getPlayerOwner();
-        if(SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty())
+        if (SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty())
         {
-            if(!FishingGuideAttachment.getFishedRod(player))
+            if (!FishingGuideAttachment.getFishedRod(player))
             {
                 FishingGuideAttachment.setFishedRod(player, true);
-                player.addItem(SCItems.ROD.toStack());
-                player.addItem(SCItems.GUIDE.toStack());
+
+                FishingHook bobber = event.getHookEntity();
+
+                double x = Math.clamp((player.position().x - bobber.position().x) / 25, -1, 1);
+                double y = Math.clamp((player.position().y - bobber.position().y) / 20, -1, 1);
+                double z = Math.clamp((player.position().z - bobber.position().z) / 25, -1, 1);
+                Vec3 vec3 = new Vec3(x, 0.7 + y, z);
+
+                ItemEntity rodFished = new ItemEntity(player.level(),
+                        bobber.position().x, bobber.position().y + 1.2f, bobber.position().z,
+                        SCItems.ROD.toStack());
+
+                ItemEntity guideFished = new ItemEntity(player.level(),
+                        bobber.position().x, bobber.position().y + 1.2f, bobber.position().z,
+                        SCItems.GUIDE.toStack());
+
+                rodFished.setDeltaMovement(vec3);
+                guideFished.setDeltaMovement(vec3);
+
+                bobber.level().addFreshEntity(guideFished);
+                bobber.level().addFreshEntity(rodFished);
+
             }
         }
     }
