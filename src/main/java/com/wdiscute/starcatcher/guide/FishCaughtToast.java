@@ -3,10 +3,10 @@ package com.wdiscute.starcatcher.guide;
 import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
@@ -55,7 +55,7 @@ public class FishCaughtToast implements Toast
 
         if (this.old != lettersRevealed)
         {
-            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.4F, U.r.nextFloat(0.2F) + 1.3F);
+            Minecraft.getInstance().player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.4F, Utils.r.nextFloat(0.2F) + 1.3F);
             this.old = lettersRevealed;
         }
 

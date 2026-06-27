@@ -1,12 +1,8 @@
 package com.wdiscute.starcatcher.modifiers.minigamemodifiers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 
 public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
 {
-    public static final ResourceLocation TEXTURE = U.rl("minecraft", "textures/block/fire_0.png");
+    public static final ResourceLocation TEXTURE = Utils.rl("minecraft", "textures/block/fire_0.png");
     private final int rampTime;
     private final float extraSpeed;
 
@@ -54,7 +50,7 @@ public class BurnPointerWhileActiveModifier extends AbstractTimedModifier
         //slowdown / ending
         if (instance.tickCount >= length - rampTime)
         {
-            float newPointerSpeed = currentSpeed - U.sign(currentSpeed) * increaseValueEveryTick;
+            float newPointerSpeed = currentSpeed - Math.signum(currentSpeed) * increaseValueEveryTick;
             instance.handleSpeed = Math.abs(instance.handleBaseSpeed) < newPointerSpeed ? newPointerSpeed : instance.handleBaseSpeed;
         }
 

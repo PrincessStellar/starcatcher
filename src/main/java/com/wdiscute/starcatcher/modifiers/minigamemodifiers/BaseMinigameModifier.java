@@ -4,13 +4,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
-import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import net.minecraft.client.gui.GuiGraphics;
+import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
 
 public class BaseMinigameModifier extends AbstractMinigameModifier
@@ -52,7 +50,7 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
 
         instance.consecutiveHits++;
 
-        if (U.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
+        if (Utils.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
         {
             instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.TREASURE));
         }

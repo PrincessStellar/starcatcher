@@ -3,11 +3,11 @@ package com.wdiscute.starcatcher.minigame;
 import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCAttributes;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.AbstractSweetSpotBehaviour;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 
@@ -43,7 +43,7 @@ public class ActiveSweetSpot
 
     public int ticksActive = 0;
     public boolean canHit = true;
-    public int seed = U.r.nextInt();
+    public int seed = Utils.r.nextInt();
 
     // For use with modifiers, map an id with some data
     public Map<Integer, Object> extraData = new HashMap<>();

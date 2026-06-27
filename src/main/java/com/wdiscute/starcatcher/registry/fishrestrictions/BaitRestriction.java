@@ -4,11 +4,12 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
+import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -121,11 +122,13 @@ public class BaitRestriction extends AbstractFishRestriction
     public static final BaitRestriction MURKWATER_BAIT = new BaitRestriction(Map.of(SCItems.MURKWATER_BAIT.getId(), 50), "");
     public static final BaitRestriction LEGENDARY_BAIT = new BaitRestriction(Map.of(SCItems.LEGENDARY_BAIT.getId(), 50), "");
 
+    public static final BaitRestriction WITHER_SKELETON_SKULL = new BaitRestriction(Map.of(Utils.rl("wither_skeleton_skull"), 50), "");
+
     public static final BaitRestriction FISH_OF_THIEVES = new BaitRestriction(
             Map.of(
-                    U.rl("fishofthieves", "earthworms"), 50,
-                    U.rl("fishofthieves", "grubs"), 50,
-                    U.rl("fishofthieves", "leeches"), 50),
+                    Utils.rl("fishofthieves", "earthworms"), 50,
+                    Utils.rl("fishofthieves", "grubs"), 50,
+                    Utils.rl("fishofthieves", "leeches"), 50),
             "");
 
     public static final BaitRestriction ALMIGHTY_WORM = new BaitRestriction(Map.of(SCItems.ALMIGHTY_WORM.getId(), 5), "");

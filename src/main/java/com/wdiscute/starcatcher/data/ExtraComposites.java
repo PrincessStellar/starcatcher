@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.io;
+package com.wdiscute.starcatcher.data;
 
 import com.mojang.datafixers.util.*;
 import net.minecraft.network.codec.StreamCodec;

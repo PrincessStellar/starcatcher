@@ -5,10 +5,8 @@ import com.wdiscute.sellingbin.processors.QualityFoodsProcessor;
 import com.wdiscute.sellingbin.registry.SBDataMaps;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -19,6 +17,7 @@ import com.wdiscute.starcatcher.modifiers.catchmodifiers.*;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.*;
 import com.wdiscute.starcatcher.registry.tackleskin.SCTackleSkins;
 import com.wdiscute.starcatcher.sellingbin.FishProcessor;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +28,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.neoforge.common.Tags;
@@ -37,7 +35,6 @@ import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -372,7 +369,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 List.of(
                         new ForceSelectFishFromEntryModifier(
                                 1,
-                                U.rl("creeper"),
+                                Utils.rl("creeper"),
                                 "tooltip.modifier.starcatcher.add_creeper"
                         ),
 

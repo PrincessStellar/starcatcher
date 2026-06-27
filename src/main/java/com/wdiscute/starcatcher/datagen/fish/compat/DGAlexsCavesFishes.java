@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -9,6 +8,7 @@ import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DimensionRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +39,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "radgill")
                         .withBucketedFish(new MaybeStack("alexscaves", "radgill_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "radgill"))
+                        .withEntityToSpawn("alexscaves", "radgill")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -53,7 +53,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "sweetish_fish_blue")
                         .withBucketedFish(new MaybeStack("alexscaves", "sweetish_fish_blue_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
+                        .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -69,7 +69,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "sweetish_fish_green")
                         .withBucketedFish(new MaybeStack("alexscaves", "sweetish_fish_blue_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
+                        .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -85,7 +85,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "sweetish_fish_pink")
                         .withBucketedFish(new MaybeStack("alexscaves", "sweetish_fish_pink_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
+                        .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 70000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -101,7 +101,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "sweetish_fish_red")
                         .withBucketedFish(new MaybeStack("alexscaves", "sweetish_fish_red_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
+                        .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -117,7 +117,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "sweetish_fish_yellow")
                         .withBucketedFish(new MaybeStack("alexscaves", "sweetish_fish_yellow_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "sweetish_fish"))
+                        .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
@@ -134,7 +134,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "lanternfish")
                         .withBucketedFish(new MaybeStack("alexscaves", "lanternfish_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "lanternfish"))
+                        .withEntityToSpawn("alexscaves", "lanternfish")
                         .withSizeAndWeight(100, 50, 15000, 10000)
                         .withRarity(Rarity.RARE)
                         .addRestrictions(
@@ -149,7 +149,7 @@ public class DGAlexsCavesFishes
                 PresetRestrictions.empty(context)
                         .withFish("alexscaves", "tripodfish")
                         .withBucketedFish(new MaybeStack("alexscaves", "tripodfish_bucket"))
-                        .withEntityToSpawn(U.holderEntity("alexscaves", "tripodfish"))
+                        .withEntityToSpawn("alexscaves", "tripodfish")
                         .withSizeAndWeight(30, 10, 1000, 5000)
                         .withRarity(Rarity.RARE)
                         .addRestrictions(

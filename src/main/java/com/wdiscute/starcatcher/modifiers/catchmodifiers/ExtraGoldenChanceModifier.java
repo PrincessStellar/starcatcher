@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

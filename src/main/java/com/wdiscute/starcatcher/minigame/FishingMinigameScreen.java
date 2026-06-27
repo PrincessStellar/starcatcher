@@ -11,10 +11,11 @@ import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.Nikdo53Modifier;
 import com.wdiscute.starcatcher.registry.*;
-import com.wdiscute.starcatcher.io.network.SBFishingCompletedPayload;
+import com.wdiscute.starcatcher.data.network.SBFishingCompletedPayload;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.AbstractMinigameModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -187,7 +188,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public int getRandomFreePosition(int sizeOfTheSweetspotToPlace)
     {
-        int posBeingChecked = U.r.nextInt(360);
+        int posBeingChecked = Utils.r.nextInt(360);
 
         //find the closest available pos
         for (int i = 0; i < 180; i++)
@@ -208,7 +209,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         }
 
         LogUtils.getLogger().warn("Starcatcher's minigame couldn't find a non-overlapping free position! Consider not having so many active sweet-spots");
-        return U.r.nextInt(360);
+        return Utils.r.nextInt(360);
     }
 
     @Override
@@ -478,9 +479,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         poseStack.translate(-centerX, -centerY, 0);
 
         RenderSystem.setShaderColor(
-                (float) U.intToRed(kimbeMarkerColor) / 255,
-                (float) U.intToGreen(kimbeMarkerColor) / 255,
-                (float) U.intToBlue(kimbeMarkerColor) / 255,
+                (float) Utils.intToRed(kimbeMarkerColor) / 255,
+                (float) Utils.intToGreen(kimbeMarkerColor) / 255,
+                (float) Utils.intToBlue(kimbeMarkerColor) / 255,
                 kimbeMarkerAlpha);
         RenderSystem.enableBlend();
 
@@ -750,10 +751,10 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                     new HitFakeParticle(
                             xPos,
                             yPos,
-                            new Vector2d(U.r.nextFloat() * 2 - 1, U.r.nextFloat() * 2 - 1),
-                            (float) U.intToRed(color) / 255,
-                            (float) U.intToGreen(color) / 255,
-                            (float) U.intToBlue(color) / 255,
+                            new Vector2d(Utils.r.nextFloat() * 2 - 1, Utils.r.nextFloat() * 2 - 1),
+                            (float) Utils.intToRed(color) / 255,
+                            (float) Utils.intToGreen(color) / 255,
+                            (float) Utils.intToBlue(color) / 255,
                             1
                     ));
         }

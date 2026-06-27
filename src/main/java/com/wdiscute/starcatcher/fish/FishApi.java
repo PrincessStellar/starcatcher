@@ -5,12 +5,11 @@ import com.mojang.logging.LogUtils;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.compat.QualityFoodCompat;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
@@ -162,7 +161,7 @@ public class FishApi
                 fbe.tackleSkin.onSuccessfulMinigame(player);
 
                 //pick rod percentile
-                float percentile = U.r.nextFloat(100);
+                float percentile = Utils.r.nextFloat(100);
 
                 //modify percentile from modifiers
                 for (AbstractCatchModifier modifier : fbe.modifiers)

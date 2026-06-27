@@ -2,9 +2,8 @@ package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
-import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;

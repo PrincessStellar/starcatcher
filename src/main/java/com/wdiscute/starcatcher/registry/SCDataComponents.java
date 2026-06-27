@@ -2,7 +2,8 @@ package com.wdiscute.starcatcher.registry;
 
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.SignedGuide;
 import com.wdiscute.starcatcher.message.EditableMessage;
 import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;

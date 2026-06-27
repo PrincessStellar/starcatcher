@@ -3,11 +3,10 @@ package com.wdiscute.starcatcher.compat.jei;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.IsolatedFPScreen;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 
 public class IsolatedJeiFPScreen extends IsolatedFPScreen
 {
@@ -46,7 +45,7 @@ public class IsolatedJeiFPScreen extends IsolatedFPScreen
                 guiGraphics,
                 fp,
                 fp.catchInfo().fish().toStack(),
-                FishCaughtCounter.get(Minecraft.getInstance().player, fp),
+                FishCaughtCounter.get(Minecraft.getInstance().player, fp.toLoc(Minecraft.getInstance().level)),
                 uiX + 31,
                 uiY - 25,
                 mouseX,

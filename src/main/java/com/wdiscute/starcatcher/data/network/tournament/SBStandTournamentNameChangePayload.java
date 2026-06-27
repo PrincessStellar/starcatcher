@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.io.network.tournament;
+package com.wdiscute.starcatcher.data.network.tournament;
 
 
 import com.mojang.authlib.GameProfile;

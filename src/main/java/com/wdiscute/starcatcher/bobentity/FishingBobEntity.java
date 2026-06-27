@@ -3,9 +3,8 @@ package com.wdiscute.starcatcher.bobentity;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
-import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
+import com.wdiscute.starcatcher.data.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -13,9 +12,9 @@ import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -408,7 +407,7 @@ public class FishingBobEntity extends Projectile
         if (!level().isClientSide && currentState == FishHookState.BOBBING)
         {
             ticksInFluid++;
-            boolean fish = U.r.nextFloat() < chanceToFishEachTick;
+            boolean fish = Utils.r.nextFloat() < chanceToFishEachTick;
             if ((fish || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
             {
                 this.setPos(position().x, position().y - 0.5f, position().z);

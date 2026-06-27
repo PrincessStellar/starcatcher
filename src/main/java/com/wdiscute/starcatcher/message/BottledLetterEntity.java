@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.message;
 
-import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.MessagesSavedData;
+import com.wdiscute.starcatcher.data.MessagesSavedData;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;

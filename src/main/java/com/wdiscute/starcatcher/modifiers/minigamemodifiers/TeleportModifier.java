@@ -6,10 +6,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +20,7 @@ public class TeleportModifier extends AbstractMinigameModifier
 {
     public static final ResourceLocation OVERLAY = Starcatcher.rl("textures/gui/minigame/modifiers/teleport.png");
 
-    private float kimbePosition = U.r.nextInt(359);
+    private float kimbePosition = Utils.r.nextInt(359);
 
     public static final MapCodec<TeleportModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
@@ -72,7 +72,7 @@ public class TeleportModifier extends AbstractMinigameModifier
         super.onMiss(instance);
         Minecraft.getInstance().player.playSound(SoundEvents.SHULKER_AMBIENT, 0.6f, 1f);
         instance.addParticles(instance.handlePos, 20, 0x7935de);
-        instance.handlePos = U.r.nextFloat(360);
+        instance.handlePos = Utils.r.nextFloat(360);
     }
 
     @Override
@@ -117,9 +117,9 @@ public class TeleportModifier extends AbstractMinigameModifier
         poseStack.translate(-centerX, -centerY, 0);
 
         RenderSystem.setShaderColor(
-                (float) U.intToRed(0x653bea) / 255,
-                (float) U.intToGreen(0x653bea) / 255,
-                (float) U.intToBlue(0x653bea) / 255,
+                (float) Utils.intToRed(0x653bea) / 255,
+                (float) Utils.intToGreen(0x653bea) / 255,
+                (float) Utils.intToBlue(0x653bea) / 255,
                 0.6f);
 
         RenderSystem.enableBlend();

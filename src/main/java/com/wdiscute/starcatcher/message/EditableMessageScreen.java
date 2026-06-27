@@ -2,20 +2,14 @@ package com.wdiscute.starcatcher.message;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.network.SBSetEditableMessagePayload;
-import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.data.network.SBSetEditableMessagePayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;

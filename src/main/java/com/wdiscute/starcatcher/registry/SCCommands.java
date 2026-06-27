@@ -10,17 +10,17 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
-import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.io.network.CBFishingStartedPayload;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.data.network.CBFishingStartedPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -295,7 +295,7 @@ public interface SCCommands
 
         if (list.isEmpty()) return 0;
 
-        FishProperties fp = list.get(U.r.nextInt(list.size()));
+        FishProperties fp = list.get(Utils.r.nextInt(list.size()));
 
         FishCaughtCounter.awardFishCaughtCounter(fp, null, player,
                 ticks, size, weight, percentile, perfectCatch, false, golden, true);
@@ -335,7 +335,7 @@ public interface SCCommands
 
         if (!available.isEmpty())
         {
-            FishProperties fpToFish = available.get(U.r.nextInt(available.size()));
+            FishProperties fpToFish = available.get(Utils.r.nextInt(available.size()));
             PacketDistributor.sendToPlayer(player, new CBFishingStartedPayload(fpToFish, MaybeStack.EMPTY, new MaybeStack(player.getMainHandItem())));
         }
         else

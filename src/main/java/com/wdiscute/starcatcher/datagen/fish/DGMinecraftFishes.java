@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
@@ -61,7 +60,7 @@ public class DGMinecraftFishes
                         .withAlwaysSpawnEntity()
                         .withEntityToSpawn(EntityType.WITHER.builtInRegistryHolder())
                         .withBaseChance(0)
-                        .addBait(new BaitRestriction(java.util.Map.of(U.rl("wither_skeleton_skull"), 200), ""))
+                        .addBait(BaitRestriction.WITHER_SKELETON_SKULL)
                         .withDifficulty(Difficulty.WITHER)
                         .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH))
                         .withRarity(Rarity.LEGENDARY)

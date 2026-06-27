@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.tournament;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.io.ExtraComposites;
+import com.wdiscute.starcatcher.data.ExtraComposites;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

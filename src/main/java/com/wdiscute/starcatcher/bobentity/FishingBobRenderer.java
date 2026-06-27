@@ -5,10 +5,10 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.tackles.*;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -78,7 +78,7 @@ public class FishingBobRenderer extends EntityRenderer<FishingBobEntity>
         ResourceLocation tackleRl = SCDataAttachments.get(fishingBobEntity, SCDataAttachments.TACKLE_SKIN);
 
         EntityModel<FishEntity> model = BOB_MODELS.getOrDefault(tackleRl, BOB_MODELS.get(Starcatcher.BASE));
-        VertexConsumer vertexconsumer = buffer.getBuffer(model.renderType(U.rl(tackleRl.getNamespace(),
+        VertexConsumer vertexconsumer = buffer.getBuffer(model.renderType(Utils.rl(tackleRl.getNamespace(),
                 "textures/entity/tackle/" + tackleRl.getPath() + ".png")));
         model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();

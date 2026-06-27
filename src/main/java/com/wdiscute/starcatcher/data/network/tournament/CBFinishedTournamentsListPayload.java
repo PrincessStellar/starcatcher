@@ -1,10 +1,9 @@
-package com.wdiscute.starcatcher.io.network.tournament;
+package com.wdiscute.starcatcher.data.network.tournament;
 
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.Tournament;
-import com.wdiscute.starcatcher.tournament.TournamentOverlay;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;

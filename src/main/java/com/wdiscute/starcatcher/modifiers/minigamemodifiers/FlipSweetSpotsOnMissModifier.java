@@ -4,10 +4,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
 
 public class FlipSweetSpotsOnMissModifier extends AbstractMinigameModifier
@@ -33,7 +33,7 @@ public class FlipSweetSpotsOnMissModifier extends AbstractMinigameModifier
         super.onMiss(instance);
         for (ActiveSweetSpot ass : instance.getActiveSweetSpots())
         {
-            if(U.r.nextFloat() < chance)
+            if(Utils.r.nextFloat() < chance)
             {
                 ass.currentRotation *= -1;
             }

@@ -1,11 +1,11 @@
 package com.wdiscute.starcatcher.blocks.aquarium;
 
-import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.NBTCodecHelper;
+import com.wdiscute.starcatcher.data.NBTCodecHelper;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.blocks.TickableBlockEntity;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -58,7 +58,7 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
         cooldown--;
         if (!(cooldown < 0)) return;
 
-        cooldown = 150 + U.r.nextInt(100);
+        cooldown = 150 + Utils.r.nextInt(100);
         Direction dir = Direction.getRandom(level.random);
         BlockPos bp = getBlockPos();
         if (fishTargetBP == BlockPos.ZERO) fishTargetBP = bp;
@@ -83,9 +83,9 @@ public class AquariumBlockEntity extends BlockEntity implements TickableBlockEnt
 
         //add some randomness to fish target for random fish rotation and positioning
         fishTarget = fishTarget.add(new Vec3(
-                U.r.nextFloat() / 3 - 0.17f,
-                U.r.nextFloat() / 2 - 0.4f,
-                U.r.nextFloat() / 3 - 0.17f
+                Utils.r.nextFloat() / 3 - 0.17f,
+                Utils.r.nextFloat() / 2 - 0.4f,
+                Utils.r.nextFloat() / 3 - 0.17f
         ));
 
         setChanged();

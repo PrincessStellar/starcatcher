@@ -1,11 +1,10 @@
 package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.fish.CatchInfo;
-import com.wdiscute.starcatcher.fish.Difficulty;
-import com.wdiscute.starcatcher.io.network.tournament.CBClearTournamentPayload;
-import com.wdiscute.starcatcher.io.network.tournament.CBFinishedTournamentsListPayload;
+import com.wdiscute.starcatcher.data.network.tournament.CBClearTournamentPayload;
+import com.wdiscute.starcatcher.data.network.tournament.CBFinishedTournamentsListPayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.io.network.tournament.CBActiveTournamentUpdatePayload;
+import com.wdiscute.starcatcher.data.network.tournament.CBActiveTournamentUpdatePayload;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;

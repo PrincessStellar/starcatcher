@@ -6,11 +6,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import net.dries007.tfc.common.entities.aquatic.Fish;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.gui.GuiGraphics;
@@ -226,9 +225,9 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
         poseStack.translate(-centerX, -centerY, 0);
 
         RenderSystem.setShaderColor(
-                (float) U.intToRed(instance.kimbeMarkerColor) / 255,
-                (float) U.intToGreen(instance.kimbeMarkerColor) / 255,
-                (float) U.intToBlue(instance.kimbeMarkerColor) / 255,
+                (float) Utils.intToRed(instance.kimbeMarkerColor) / 255,
+                (float) Utils.intToGreen(instance.kimbeMarkerColor) / 255,
+                (float) Utils.intToBlue(instance.kimbeMarkerColor) / 255,
                 instance.kimbeMarkerAlpha);
         RenderSystem.enableBlend();
 

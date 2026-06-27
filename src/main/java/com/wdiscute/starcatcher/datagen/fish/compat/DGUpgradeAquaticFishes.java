@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.datagen.fish.compat;
 
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.Difficulty;
@@ -27,8 +26,8 @@ public class DGUpgradeAquaticFishes
                 context,
                 PresetRestrictions.empty(context)
                         .withFish("upgrade_aquatic", "pike")
-                        .withBucketedFish(new MaybeStack("upgrade_aquatic", "pike_bucket"))
-                        .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "pike"))
+                        .withBucketedFish("upgrade_aquatic", "pike_bucket")
+                        .withEntityToSpawn("upgrade_aquatic", "pike")
                         .withSizeAndWeight(75, 20, 5000, 3000)
                         .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
@@ -41,8 +40,8 @@ public class DGUpgradeAquaticFishes
                 context,
                 PresetRestrictions.empty(context)
                         .withFish("upgrade_aquatic", "perch")
-                        .withBucketedFish(new MaybeStack("upgrade_aquatic", "perch_bucket"))
-                        .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "perch"))
+                        .withBucketedFish("upgrade_aquatic", "perch_bucket")
+                        .withEntityToSpawn("upgrade_aquatic", "perch")
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.EASY.moving())
                         .withRarity(Rarity.COMMON),
@@ -55,8 +54,8 @@ public class DGUpgradeAquaticFishes
                 context,
                 PresetRestrictions.empty(context)
                         .withFish("upgrade_aquatic", "lionfish")
-                        .withBucketedFish(new MaybeStack("upgrade_aquatic", "lionfish_bucket"))
-                        .withEntityToSpawn(U.holderEntity("upgrade_aquatic", "lionfish"))
+                        .withBucketedFish("upgrade_aquatic", "lionfish_bucket")
+                        .withEntityToSpawn("upgrade_aquatic", "lionfish")
                         .withSizeAndWeight(27.0f, 11, 500, 352)
                         .withDifficulty(Difficulty.FOUR_BIG_VANISHING)
                         .withRarity(Rarity.UNCOMMON),

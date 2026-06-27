@@ -1,8 +1,8 @@
-package com.wdiscute.starcatcher.io.attachments;
+package com.wdiscute.starcatcher.data.attachments;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

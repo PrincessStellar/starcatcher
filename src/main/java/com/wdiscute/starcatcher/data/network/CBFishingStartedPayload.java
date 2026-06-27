@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.io.network;
+package com.wdiscute.starcatcher.data.network;
 
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;

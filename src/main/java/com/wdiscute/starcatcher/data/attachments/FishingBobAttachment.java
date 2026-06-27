@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.io.attachments;
+package com.wdiscute.starcatcher.data.attachments;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

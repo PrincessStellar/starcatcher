@@ -3,11 +3,9 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.teamtea.eclipticseasons.data.start;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import net.minecraft.ChatFormatting;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -22,7 +20,6 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,6 +150,6 @@ public class FluidRestriction extends AbstractFishRestriction
     public static final FluidRestriction LAVA = new FluidRestriction(ResourceLocation.withDefaultNamespace("lava"), "");
     public static final FluidRestriction WATER = new FluidRestriction(ResourceLocation.withDefaultNamespace("water"), "");
     public static final FluidRestriction VOID = new FluidRestriction(ResourceLocation.withDefaultNamespace("empty"), "");
-    public static final FluidRestriction ACID = new FluidRestriction(U.rl("alexscaves", "acid"), "");
-    public static final FluidRestriction PURPLE_SODA = new FluidRestriction(U.rl("alexscaves", "purple_soda"), "");
+    public static final FluidRestriction ACID = new FluidRestriction(Utils.rl("alexscaves", "acid"), "");
+    public static final FluidRestriction PURPLE_SODA = new FluidRestriction(Utils.rl("alexscaves", "purple_soda"), "");
 }

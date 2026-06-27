@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.message;
 
-import com.wdiscute.starcatcher.io.network.CBOpenEditableMessagePayload;
-import com.wdiscute.starcatcher.io.network.CBOpenMessagePayload;
+import com.wdiscute.starcatcher.data.network.CBOpenEditableMessagePayload;
+import com.wdiscute.starcatcher.data.network.CBOpenMessagePayload;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

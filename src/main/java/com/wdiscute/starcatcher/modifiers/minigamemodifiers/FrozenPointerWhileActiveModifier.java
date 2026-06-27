@@ -1,11 +1,9 @@
 package com.wdiscute.starcatcher.modifiers.minigamemodifiers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
-import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -65,7 +63,7 @@ public class FrozenPointerWhileActiveModifier extends AbstractTimedModifier
 
         if (tickCount >= length - rampTime)
         {
-            float newPointerSpeed = currentSpeed + U.sign(currentSpeed) * decreaseTime;
+            float newPointerSpeed = currentSpeed + Math.signum(currentSpeed) * decreaseTime;
             instance.handleSpeed = Math.abs(instance.handleBaseSpeed) < newPointerSpeed ? instance.handleBaseSpeed : newPointerSpeed;
         }
     }

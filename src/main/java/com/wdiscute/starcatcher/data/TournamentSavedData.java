@@ -1,10 +1,9 @@
-package com.wdiscute.starcatcher.io;
+package com.wdiscute.starcatcher.data;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.tournament.Tournament;
-import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class TournamentSavedData extends SavedData
 {

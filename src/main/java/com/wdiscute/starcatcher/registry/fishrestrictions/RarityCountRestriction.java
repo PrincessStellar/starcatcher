@@ -8,7 +8,7 @@ import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.io.FishCaughtCounter;
+import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.registry.SCDataAttachments;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.core.Registry;

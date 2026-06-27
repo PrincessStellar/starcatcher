@@ -3,12 +3,10 @@ package com.wdiscute.starcatcher.fish;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.*;
-import com.wdiscute.starcatcher.registry.*;
+import com.wdiscute.starcatcher.data.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
-import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -93,7 +91,7 @@ public record FishProperties(
 
     public ResourceLocation toLoc(Level level)
     {
-        return U.getRlFromFp(level, this);
+        return level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(this);
     }
 
     public static FishProperties empty()
@@ -224,7 +222,7 @@ public record FishProperties(
 
     public FishProperties withEntityToSpawn(String namespace, String path)
     {
-        return withCatchInfo(catchInfo.withEntityToSpawn(U.holderEntity(namespace, path)));
+        return withCatchInfo(catchInfo.withEntityToSpawn(Utils.holderEntity(namespace, path)));
     }
 
     public FishProperties withPercentageChance(float chance)

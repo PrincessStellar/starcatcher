@@ -1,9 +1,9 @@
 package com.wdiscute.starcatcher.blocks.tacklebox;
 
 import com.mojang.serialization.MapCodec;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
+import com.wdiscute.utils.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -48,7 +48,7 @@ public class TackleBoxBlock extends BaseEntityBlock implements SimpleWaterlogged
 {
     private static final Component UNKNOWN_CONTENTS = Component.translatable("container.starcatcher.tackle_box.unknownContents");
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    public static final ResourceLocation CONTENTS = U.rl("minecraft", "contents");
+    public static final ResourceLocation CONTENTS = Utils.rl("minecraft", "contents");
     @javax.annotation.Nullable
     private final DyeColor color;
 

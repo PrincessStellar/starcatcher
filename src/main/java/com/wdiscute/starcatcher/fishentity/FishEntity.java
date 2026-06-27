@@ -2,14 +2,14 @@ package com.wdiscute.starcatcher.fishentity;
 
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -104,7 +104,7 @@ public class FishEntity extends AbstractFish
                 kill();
             else
             {
-                FishProperties fp = available.get(U.r.nextInt(available.size()));
+                FishProperties fp = available.get(Utils.r.nextInt(available.size()));
                 ItemStack is = fp.catchInfo().fish().toStack();
                 setBodyArmorItem(is);
             }

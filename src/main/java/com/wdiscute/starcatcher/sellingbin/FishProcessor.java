@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.sellingbin.processors.AbstractProcessor;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;

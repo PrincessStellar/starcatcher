@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.gui.GuiGraphics;

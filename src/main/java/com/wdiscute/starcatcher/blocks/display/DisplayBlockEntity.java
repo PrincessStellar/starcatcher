@@ -1,11 +1,11 @@
 package com.wdiscute.starcatcher.blocks.display;
 
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.registry.SCBlockEntities;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.compat.SableCompat;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -60,13 +60,13 @@ public class DisplayBlockEntity extends BlockEntity
             }
             enchantingTable.tRot = (float) Mth.atan2(d1, d0);
             enchantingTable.open += 0.1F;
-            if (enchantingTable.open < 0.5F || U.r.nextInt(40) == 0)
+            if (enchantingTable.open < 0.5F || Utils.r.nextInt(40) == 0)
             {
                 float f1 = enchantingTable.flipT;
 
                 do
                 {
-                    enchantingTable.flipT = enchantingTable.flipT + (float) (U.r.nextInt(4) - U.r.nextInt(4));
+                    enchantingTable.flipT = enchantingTable.flipT + (float) (Utils.r.nextInt(4) - Utils.r.nextInt(4));
                 } while (f1 == enchantingTable.flipT);
             }
         }

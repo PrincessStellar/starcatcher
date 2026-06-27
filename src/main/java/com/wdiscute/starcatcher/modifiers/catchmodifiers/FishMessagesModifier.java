@@ -5,16 +5,16 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.Difficulty;
-import com.wdiscute.starcatcher.io.MessagesSavedData;
+import com.wdiscute.starcatcher.data.MessagesSavedData;
 import com.wdiscute.starcatcher.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.MaybeStack;
+import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +47,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
     public Pair<FishProperties, ResourceLocation> forceSelectFishIfNoNonFishAvailable(FishingBobEntity fbe)
     {
         //if passes the chance
-        if (U.r.nextDouble() > chance)
+        if (fbe.level().random.nextFloat() > chance)
             return null;
 
         List<Message> messages = MessagesSavedData.get(((ServerLevel) fbe.level())).getMessages();
@@ -59,7 +59,7 @@ public class FishMessagesModifier extends AbstractCatchModifier
         {
             ItemStack is = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
 
-            Message message = list.get(U.r.nextInt(list.size()));
+            Message message = list.get(Utils.r.nextInt(list.size()));
             MessagesSavedData.get(((ServerLevel) fbe.level())).removeMessage(message);
 
             SCDataComponents.set(is, SCDataComponents.MESSAGE, message);

@@ -2,8 +2,8 @@ package com.wdiscute.starcatcher.tournament;
 
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
-import com.wdiscute.starcatcher.io.network.tournament.SBStandTournamentNameChangePayload;
+import com.wdiscute.starcatcher.data.network.tournament.SBStandTournamentNameChangePayload;
+import com.wdiscute.utils.Utils;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -142,7 +142,7 @@ public class StandScreen extends AbstractContainerScreen<StandMenu>
         guiGraphics.drawString(this.font, Component.translatable("gui.starcatcher.tournament.status"), uiX + 130, uiY + 68, 0x9c897c, false);
 
         //duration
-        guiGraphics.drawString(this.font, U.calculateRealLifeTimeFromTicks(currentTournament.durationInTicks), uiX + 55, uiY + 88, 0x635040, false);
+        guiGraphics.drawString(this.font, Utils.calculateRealLifeTimeFromTicks(currentTournament.durationInTicks), uiX + 55, uiY + 88, 0x635040, false);
         if (isOwner && currentTournament.status.equals(Tournament.Status.PREPARING))
         {
             renderImage(guiGraphics, TINY_ARROW_LEFT, 54, 101, 6, 5);

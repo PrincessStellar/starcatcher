@@ -2,7 +2,7 @@ package com.wdiscute.starcatcher.registry.items;
 
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;

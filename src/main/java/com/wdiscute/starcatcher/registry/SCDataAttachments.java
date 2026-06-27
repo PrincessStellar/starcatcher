@@ -1,14 +1,10 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.io.attachments.FishingBobAttachment;
-import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.data.attachments.FishingBobAttachment;
+import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import com.wdiscute.starcatcher.modifiers.catchmodifiers.AbstractCatchModifier;
-import com.wdiscute.starcatcher.registry.tackleskin.AbstractTackleSkin;
-import com.wdiscute.starcatcher.registry.tackleskin.BaseTackleSkin;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.neoforged.bus.api.IEventBus;

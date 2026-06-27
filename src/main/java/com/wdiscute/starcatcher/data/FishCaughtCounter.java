@@ -1,15 +1,16 @@
-package com.wdiscute.starcatcher.io;
+package com.wdiscute.starcatcher.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.FTBTeamsCompat;
 import com.wdiscute.starcatcher.fish.CatchInfo;
-import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
-import com.wdiscute.starcatcher.io.network.CBFishCaughtNotifs;
+import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.data.network.CBFishCaughtNotifs;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.utils.Utils;
+import net.minecraft.Util;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -36,11 +37,6 @@ public record FishCaughtCounter(
         boolean hasGuideNotification
 )
 {
-    public static FishCaughtCounter get(Player player, FishProperties loc)
-    {
-        return get(player, U.getRlFromFp(player.level(), loc));
-    }
-
     public static FishCaughtCounter get(Player player, ResourceLocation loc)
     {
         return FishingGuideAttachment.getFishesCaught(player).get(loc);
@@ -63,7 +59,7 @@ public record FishCaughtCounter(
     @Nonnull
     public static FishCaughtCounter create(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, U.getTime(), golden, perfectCatch, hasGuideNotification);
+        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, Util.getEpochMillis(), golden, perfectCatch, hasGuideNotification);
     }
 
     public FishCaughtCounter getUpdated(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)

@@ -2,10 +2,10 @@ package com.wdiscute.starcatcher.locators;
 
 import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.SCTags;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.compat.curios.CuriosCompat;
+import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.guide.SettingsScreen;
-import com.wdiscute.starcatcher.io.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
@@ -58,7 +58,6 @@ public class FishRadarLayer implements LayeredDraw.Layer
         fpsInArea.clear();
 
         lastRefreshMS = System.currentTimeMillis();
-        System.out.println("recalculated radar");
 
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
             if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER) > 0)
@@ -68,7 +67,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
 
         FishingGuideAttachment.getFishesCaught(player).forEach((loc, counter) ->
         {
-            fishesCaught.add(U.getFpFromRl(level, loc));
+            fishesCaught.add(FishApi.getFP(level, loc));
         });
     }
 

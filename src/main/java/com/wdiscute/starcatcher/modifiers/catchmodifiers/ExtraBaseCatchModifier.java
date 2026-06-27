@@ -4,17 +4,16 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.utils.Utils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
 
         for (int i = 0; i < count; i++)
         {
-            float percentile = U.r.nextFloat(100);
+            float percentile = fbe.level().random.nextFloat() * 100;
 
             int size = SizeAndWeight.getRandomSize(fp, percentile);
             int weight = SizeAndWeight.getRandomWeight(fp, percentile);

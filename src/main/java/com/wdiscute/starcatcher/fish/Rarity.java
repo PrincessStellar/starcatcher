@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.fish;
 
 import com.mojang.serialization.Codec;
-import com.wdiscute.starcatcher.io.CaughtFishInfo;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;

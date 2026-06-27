@@ -1,9 +1,9 @@
 package com.wdiscute.starcatcher.compat;
 
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
+import com.wdiscute.utils.Utils;
 import it.hurts.sskirillss.relics.api.relics.IRelicItem;
 import it.hurts.sskirillss.relics.api.relics.data.AbilityData;
 import it.hurts.sskirillss.relics.api.relics.data.RelicData;
@@ -21,7 +21,7 @@ public class ReliquifiedArtifactsCompat
 {
     private static Item getHatItem()
     {
-        return BuiltInRegistries.ITEM.get(U.rl("artifacts", "anglers_hat"));
+        return BuiltInRegistries.ITEM.get(Utils.rl("artifacts", "anglers_hat"));
     }
 
     private static ItemStack getEquippedHatStack(Player player)
@@ -46,7 +46,7 @@ public class ReliquifiedArtifactsCompat
         if (!ability.isRankModifierUnlocked("treasure")) return false;
 
         double treasureChance = ability.getStatData("treasure_chance").getValue();
-        return U.r.nextFloat() < treasureChance;
+        return Utils.r.nextFloat() < treasureChance;
     }
 
     public static List<ItemStack> getBonusCatchItems(Player player, FishingBobEntity fbe)
@@ -64,7 +64,7 @@ public class ReliquifiedArtifactsCompat
         List<ItemStack> items = new ArrayList<>();
         for (int i = 0; i < bonusCount; i++)
         {
-            float percentile = U.r.nextFloat(100);
+            float percentile = Utils.r.nextFloat(100);
             int size = SizeAndWeight.getRandomSize(fbe.fpToFish, percentile);
             int weight = SizeAndWeight.getRandomWeight(fbe.fpToFish, percentile);
             ItemStack is = FishApi.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, size, weight, percentile, false, player, false);

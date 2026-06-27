@@ -69,7 +69,6 @@ public class FishTrackerLayer implements LayeredDraw.Layer
 
     private void recalculate()
     {
-        System.out.println("recalculated tracker");
         lastRefreshMS = System.currentTimeMillis();
 
         LocalPlayer player = Minecraft.getInstance().player;

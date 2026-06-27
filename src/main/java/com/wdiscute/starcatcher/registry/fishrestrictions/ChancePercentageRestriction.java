@@ -4,8 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.U;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.utils.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -61,12 +61,12 @@ public class ChancePercentageRestriction extends AbstractFishRestriction
     @Override
     public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        if (context.equals(Context.COMMAND)) return U.r.nextFloat() > chance ? -9999 : 0;
-        if (context.equals(Context.FISHING)) return U.r.nextFloat() > chance ? -9999 : 0;
+        if (context.equals(Context.COMMAND)) return Utils.r.nextFloat() > chance ? -9999 : 0;
+        if (context.equals(Context.FISHING)) return Utils.r.nextFloat() > chance ? -9999 : 0;
         if (context.equals(Context.GUIDE_ENTRY)) return 0;
         if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
         if (context.equals(Context.GUIDE_FISHES_HOVER)) return 0;
-        if (context.equals(Context.FISH_ENTITY)) return U.r.nextFloat() > chance ? -9999 : 0;
+        if (context.equals(Context.FISH_ENTITY)) return Utils.r.nextFloat() > chance ? -9999 : 0;
         if (context.equals(Context.EMI)) return 0;
         return 0;
     }
