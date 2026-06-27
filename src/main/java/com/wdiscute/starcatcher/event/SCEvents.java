@@ -27,6 +27,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -41,6 +42,7 @@ import net.neoforged.neoforge.event.*;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
@@ -99,6 +101,22 @@ public class SCEvents
     }
 
     @SubscribeEvent
+    public static void itemFished(ItemFishedEvent event)
+    {
+        if(!SCConfig.GIVE_ROD.get()) return;
+        Player player = event.getHookEntity().getPlayerOwner();
+        if(SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty())
+        {
+            if(!FishingGuideAttachment.getFishedRod(player))
+            {
+                FishingGuideAttachment.setFishedRod(player, true);
+                player.addItem(SCItems.ROD.toStack());
+                player.addItem(SCItems.GUIDE.toStack());
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void addCapabilities(RegisterCapabilitiesEvent event)
     {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, SCBlockEntities.TACKLE_BOX.get(),
@@ -148,7 +166,8 @@ public class SCEvents
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event)
     {
-        if (event.getEntity() instanceof ServerPlayer sp)
+        Player player = event.getEntity();
+        if (player instanceof ServerPlayer sp)
         {
             //tournament
             var tournament = TournamentHandler.getTournamentForPlayer(sp);
@@ -161,12 +180,10 @@ public class SCEvents
             PacketDistributor.sendToPlayer(sp, new CBFinishedTournamentsListPayload(TournamentHandler.getFinishedTournaments()));
 
             //guide
-            FishingGuideAttachment fishingGuideAttachment = SCDataAttachments.get(sp, SCDataAttachments.FISHING_GUIDE);
-
-            if (SCConfig.GIVE_GUIDE.get() && !fishingGuideAttachment.receivedGuide)
+            if (SCConfig.GIVE_GUIDE.get() && !FishingGuideAttachment.getReceivedGuide(player))
             {
                 sp.addItem(new ItemStack(SCItems.GUIDE.get()));
-                fishingGuideAttachment.receivedGuide = true;
+                FishingGuideAttachment.setReceivedGuide(player, true);
             }
         }
     }

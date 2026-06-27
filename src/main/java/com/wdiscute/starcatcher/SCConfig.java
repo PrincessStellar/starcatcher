@@ -113,6 +113,11 @@ public class SCConfig
             .comment("Award guide when joining the world/server once per player")
             .define("give_guide", true);
 
+    public static final ModConfigSpec.BooleanValue GIVE_ROD = BUILDER_SERVER
+            .translation("starcatcher.configuration.give_rod")
+            .comment("Award rod & guide the first time a player fishes with a vanilla fishing rod")
+            .define("give_rod", true);
+
     public static final ModConfigSpec.BooleanValue ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS = BUILDER_SERVER
             .translation("starcatcher.configuration.enable_worms")
             .comment("Enables/disables the ability to bonemeal farmland for worms.")

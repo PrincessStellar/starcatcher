@@ -1043,6 +1043,23 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output);
 
+        //worm > almighty
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.ALMIGHTY_WORM, 1)
+                .requires(SCItems.WORM)
+                .requires(SCItems.WORM)
+                .requires(SCItems.WORM)
+                .requires(SCItems.WORM)
+                .unlockedBy("has_worm", has(SCItems.WORM))
+                .save(output);
+
+        //almighty > seeking
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.SEEKING_WORM, 1)
+                .requires(SCItems.ALMIGHTY_WORM)
+                .requires(SCItems.ALMIGHTY_WORM)
+                .requires(SCItems.ALMIGHTY_WORM)
+                .requires(SCItems.ALMIGHTY_WORM)
+                .unlockedBy("has_almighty_worm", has(SCItems.WORM))
+                .save(output);
 
         //fish recipes
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUNFLOWER, 1)
