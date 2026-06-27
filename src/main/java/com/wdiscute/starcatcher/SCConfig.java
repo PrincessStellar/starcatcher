@@ -8,6 +8,7 @@ public class SCConfig
 {
     private static final ModConfigSpec.Builder BUILDER_CLIENT = new ModConfigSpec.Builder();
 
+    //minigame & overlays positioning
     public static final ModConfigSpec.DoubleValue MINIGAME_X_OFFSET = BUILDER_CLIENT
             .push("ui_settings")
             .translation("starcatcher.configuration.minigame_x_offset")
@@ -62,10 +63,16 @@ public class SCConfig
             .translation("starcatcher.configuration.debug")
             .define("debug", false);
 
+
+    //non minigame
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .pop()
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
+
+    public static final ModConfigSpec.IntValue OVERLAY_UPDATE_FREQUENCY = BUILDER_CLIENT
+            .translation("starcatcher.configuration.overlay_update_frequency")
+            .defineInRange("overlay_update_frequency", 1000, 100, Integer.MAX_VALUE);
 
     public static final ModConfigSpec.BooleanValue REMOVE_NOTIFICATION_ON_HOVER = BUILDER_CLIENT
             .translation("starcatcher.configuration.remove_notif_on_hover")

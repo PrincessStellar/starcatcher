@@ -45,7 +45,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
     int imageWidth = 101;
     int imageHeight = 160;
 
-    float counterSinceLastRefresh = 999;
+    long lastRefreshMS = 0;
 
     Player player;
     ClientLevel level;
@@ -56,6 +56,9 @@ public class FishRadarLayer implements LayeredDraw.Layer
     private void recalculate()
     {
         fpsInArea.clear();
+
+        lastRefreshMS = System.currentTimeMillis();
+        System.out.println("recalculated radar");
 
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
             if (fp.hasGuideEntry() && fp.calculateChance(player, player.level(), ItemStack.EMPTY, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER) > 0)
@@ -116,6 +119,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
 
         guiGraphics.pose().translate(-offScreen, 0, 0);
 
+        //rows of radar to render
         switch (fpsInArea.size())
         {
             case 0, 1, 2, 3, 4, 5:
@@ -145,18 +149,17 @@ public class FishRadarLayer implements LayeredDraw.Layer
         int animationFrame = ((int) (level.getGameTime() / 2 % 32 + 1));
         renderImage(guiGraphics, Starcatcher.rl("textures/gui/fish_radar/radar_animation" + animationFrame + ".png"));
 
-        //recalculate every 100 ticks?
-        counterSinceLastRefresh += 1 * deltaTracker.getGameTimeDeltaTicks();
-        if (counterSinceLastRefresh > 100) recalculate();
+        //recalculate every <config value>
+        Integer freq = SCConfig.OVERLAY_UPDATE_FREQUENCY.get();
+        if (System.currentTimeMillis() > lastRefreshMS + freq)
+            recalculate();
 
         for (int i = 0; i < fpsInArea.size(); i++)
         {
             ItemStack is = new ItemStack(SCItems.MISSINGNO.get());
 
             if (fishesCaught.contains(fpsInArea.get(i)))
-            {
                 is = fpsInArea.get(i).catchInfo().fish().toStack();
-            }
 
             guiGraphics.renderItem(
                     is,

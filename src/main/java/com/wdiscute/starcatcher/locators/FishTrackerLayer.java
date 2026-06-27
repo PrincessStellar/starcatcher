@@ -54,28 +54,32 @@ public class FishTrackerLayer implements LayeredDraw.Layer
     int imageWidth = 155;
     int imageHeight = 135;
 
-    float counterSinceLastRefresh = 999;
+    long lastRefreshMS = 0;
 
     Player player;
     ClientLevel level;
 
-    ItemStack cachedItemMain = null;
-    ItemStack cachedItemOff = null;
     int cachedChance = 0;
     int cachedTotalChance = 0;
     boolean cachedCaughtFish = false;
+    List<Component> cachedRestrictions = new ArrayList<>();
 
     FishProperties cachedFP = null;
     ResourceLocation cachedRL = null;
 
     private void recalculate()
     {
+        System.out.println("recalculated tracker");
+        lastRefreshMS = System.currentTimeMillis();
+
         LocalPlayer player = Minecraft.getInstance().player;
         cachedRL = player.getData(SCDataAttachments.TRACKED_FISH);
         cachedCaughtFish = player.getData(SCDataAttachments.FISHING_GUIDE).fishesCaught.containsKey(cachedRL);
 
-        cachedItemMain = player.getMainHandItem();
-        cachedItemOff = player.getOffhandItem();
+        //restrictions
+        cachedFP.restrictions().stream().filter(AbstractFishRestriction::isEnabled)
+                .forEach(o -> cachedRestrictions
+                        .addAll(o.getIndexHover(level, cachedFP, player, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER)));
 
         //chances
         cachedChance = 0;
@@ -86,7 +90,7 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         {
             ResourceLocation key = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
 
-            int chance = fish.calculateChance(player, level, cachedItemMain.is(SCTags.RODS) ? cachedItemMain : cachedItemOff, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER);
+            int chance = fish.calculateChance(player, level, player.getMainHandItem().is(SCTags.RODS) ? player.getMainHandItem() : player.getOffhandItem(), AbstractFishRestriction.Context.GUIDE_FISHES_HOVER);
 
             if (key != null && key.equals(cachedRL))
             {
@@ -142,12 +146,9 @@ public class FishTrackerLayer implements LayeredDraw.Layer
 
         renderImage(guiGraphics, BACKGROUND);
 
-        //recalculate every 100 ticks or item in hand changed (for rod modifiers)
-        counterSinceLastRefresh += 1 * deltaTracker.getGameTimeDeltaTicks();
-        if (counterSinceLastRefresh > 100 ||
-            cachedItemMain != Minecraft.getInstance().player.getMainHandItem() ||
-            cachedItemOff != Minecraft.getInstance().player.getOffhandItem()
-        ) recalculate();
+        //recalculate every <config freq>
+        if (System.currentTimeMillis() > lastRefreshMS + SCConfig.OVERLAY_UPDATE_FREQUENCY.get())
+            recalculate();
 
         if (cachedFP == null || cachedRL == null)
         {
@@ -173,9 +174,6 @@ public class FishTrackerLayer implements LayeredDraw.Layer
                     34, 34);
         }
 
-
-
-
         //render weight
         double percentage = (double) cachedChance / cachedTotalChance * 100;
         renderCenteredString(guiGraphics, font, Component.literal(new DecimalFormat("0.#").format(percentage) + "%"),
@@ -185,10 +183,8 @@ public class FishTrackerLayer implements LayeredDraw.Layer
 
 
         //render restrictions
-        List<Component> list = new ArrayList<>();
-        cachedFP.restrictions().stream().filter(AbstractFishRestriction::isEnabled).forEach(o -> list.addAll(o.getIndexHover(level, cachedFP, player, AbstractFishRestriction.Context.GUIDE_FISHES_HOVER)));
-        for (int i = 0; i < list.size(); i++)
-            guiGraphics.drawString(font, list.get(i), uiX + 70, uiY + 49 + i * 10, SCColors.GUIDE_TEXT_DARK, false);
+        for (int i = 0; i < cachedRestrictions.size(); i++)
+            guiGraphics.drawString(font, cachedRestrictions.get(i), uiX + 70, uiY + 49 + i * 10, SCColors.GUIDE_TEXT_DARK, false);
 
 
         guiGraphics.pose().popPose();
