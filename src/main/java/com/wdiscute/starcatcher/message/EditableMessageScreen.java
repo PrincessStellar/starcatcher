@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class EditableMessageScreen extends Screen
     private final String sender;
     private final List<String> text = new ArrayList<>();
     private final List<EditBox> boxes = new ArrayList<>();
-    private EditBox name = null;
+    private EditBox nameBox = new EditBox(Minecraft.getInstance().font, 0, 0, Component.empty());
 
     public static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/message/message.png");
 
@@ -59,30 +60,40 @@ public class EditableMessageScreen extends Screen
             box.setMaxLength(40);
             box.setTextShadow(false);
             box.setEditable(true);
-            if (text.size() > i) box.setValue(text.get(i));
+            if (text.size() > i)
+                box.setValue(text.get(i));
             addWidget(box);
             boxes.add(box);
         }
 
         //name
-        name = new EditBox(this.font, uiX + 255, uiY + 208, 500, 12, Component.empty());
-        name.setCanLoseFocus(true);
-        name.setTextColor(0x635040);
-        name.setBordered(false);
-        name.setMaxLength(17);
-        name.setValue(sender);
-        name.setTextShadow(false);
-        name.setEditable(true);
-        addWidget(name);
+        nameBox = new EditBox(Minecraft.getInstance().font, uiX + 255, uiY + 208, 500, 12, Component.empty());
+        nameBox.setCanLoseFocus(true);
+        nameBox.setTextColor(0x635040);
+        nameBox.setBordered(false);
+        nameBox.setMaxLength(17);
+        nameBox.setValue(sender);
+        nameBox.setTextShadow(false);
+        nameBox.setEditable(true);
+        addWidget(nameBox);
     }
 
     @Override
     public void resize(Minecraft minecraft, int width, int height)
     {
         List<String> s = new ArrayList<>();
-        for (int i = 0; i < 15; i++) s.add(this.name.getValue());
+
+        String name = this.nameBox.getValue();
+
+        for (int i = 0; i < 15; i++)
+            s.add(this.boxes.get(i).getValue());
+
         this.init(minecraft, width, height);
-        for (int i = 0; i < 15; i++) boxes.get(i).setValue(s.get(i));
+
+        for (int i = 0; i < 15; i++)
+            boxes.get(i).setValue(s.get(i));
+
+        this.nameBox.setValue(name);
     }
 
     @Override
@@ -91,18 +102,26 @@ public class EditableMessageScreen extends Screen
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderImage(guiGraphics, BACKGROUND);
         boxes.forEach(b -> b.render(guiGraphics, mouseX, mouseY, partialTick));
-        if (name != null) name.render(guiGraphics, mouseX, mouseY, partialTick);
+        nameBox.render(guiGraphics, mouseX, mouseY, partialTick);
     }
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers)
     {
         InputConstants.Key key = InputConstants.getKey(keyCode, scanCode);
-        if (this.minecraft.options.keyInventory.isActiveAndMatches(key) && boxes.stream().noneMatch(EditBox::canConsumeInput) && !name.canConsumeInput())
+        if (this.minecraft.options.keyInventory.isActiveAndMatches(key) && boxes.stream().noneMatch(EditBox::canConsumeInput) && !nameBox.canConsumeInput())
         {
             this.onClose();
             return true;
         }
+
+        //if pressed enter, send arrow down to go to next line
+        if (keyCode == GLFW.GLFW_KEY_ENTER)
+        {
+            keyPressed(GLFW.GLFW_KEY_DOWN, 0, 0);
+            return true;
+        }
+
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
@@ -110,7 +129,7 @@ public class EditableMessageScreen extends Screen
     public boolean mouseClicked(double mouseX, double mouseY, int button)
     {
         boxes.forEach(o -> o.setFocused(false));
-        name.setFocused(false);
+        nameBox.setFocused(false);
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
@@ -124,7 +143,7 @@ public class EditableMessageScreen extends Screen
     {
         List<String> text = new ArrayList<>();
         boxes.forEach(b -> text.add(b.getValue()));
-        PacketDistributor.sendToServer(new SBSetEditableMessagePayload(new EditableMessage(name.getValue(), text)));
+        PacketDistributor.sendToServer(new SBSetEditableMessagePayload(new EditableMessage(nameBox.getValue(), text)));
         super.onClose();
     }
 
