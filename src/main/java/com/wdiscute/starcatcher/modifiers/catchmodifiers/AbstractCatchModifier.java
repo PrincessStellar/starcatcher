@@ -45,17 +45,17 @@ public abstract class AbstractCatchModifier implements Modifier
     {
     }
 
-    public int adjustMinTicksToFish(int minTicksToFish)
+    public int adjustMinTicksToFish(FishingBobEntity fishingBobEntity, int minTicksToFish)
     {
         return minTicksToFish;
     }
 
-    public int adjustMaxTicksToFish(int maxTicksToFish)
+    public int adjustMaxTicksToFish(FishingBobEntity fishingBobEntity, int maxTicksToFish)
     {
         return maxTicksToFish;
     }
 
-    public float adjustChanceToFishEachTick(float chanceToFishEachTick)
+    public float adjustChanceToFishEachTick(FishingBobEntity fishingBobEntity, float chanceToFishEachTick)
     {
         return chanceToFishEachTick;
     }
@@ -159,6 +159,7 @@ public abstract class AbstractCatchModifier implements Modifier
         return null;
     }
 
+    //no access to bobber entity
     public List<ItemStack> addToTreasureWeightedList()
     {
         return List.of();

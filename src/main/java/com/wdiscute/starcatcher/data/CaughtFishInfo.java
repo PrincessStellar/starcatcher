@@ -16,8 +16,8 @@ public record CaughtFishInfo(
 
     public static final Codec<CaughtFishInfo> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    Codec.INT.fieldOf("size").forGetter(CaughtFishInfo::sizeInCentimeters),
-                    Codec.INT.fieldOf("weight").forGetter(CaughtFishInfo::weightInGrams),
+                    Codec.INT.optionalFieldOf("size", 0).forGetter(CaughtFishInfo::sizeInCentimeters),
+                    Codec.INT.optionalFieldOf("weight", 0).forGetter(CaughtFishInfo::weightInGrams),
                     Codec.FLOAT.optionalFieldOf("percentile", 0f).forGetter(CaughtFishInfo::percentile),
                     Rarity.CODEC.optionalFieldOf("rarity", Rarity.COMMON).forGetter(CaughtFishInfo::rarity),
                     Codec.BOOL.optionalFieldOf("golden", false).forGetter(CaughtFishInfo::golden)

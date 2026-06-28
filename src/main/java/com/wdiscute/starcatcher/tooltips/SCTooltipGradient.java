@@ -27,7 +27,7 @@ public class SCTooltipGradient
         for (int i = 0; i < text.length(); i++)
         {
             component.append(Component.literal(String.valueOf(text.charAt(i))).withStyle(Style.EMPTY
-                    .withColor((getBlueColorForIndex(i, time, firstColor, secondColor)))
+                    .withColor((getColorForIndex(i, time, firstColor, secondColor)))
                     .withBold(bold)
             ));
         }
@@ -35,7 +35,7 @@ public class SCTooltipGradient
         return component;
     }
 
-    public static int getBlueColorForIndex(int seed, double time, Triple<Integer, Integer, Integer> firstColor, Triple<Integer, Integer, Integer> secondColor)
+    public static int getColorForIndex(int seed, double time, Triple<Integer, Integer, Integer> firstColor, Triple<Integer, Integer, Integer> secondColor)
     {
         double wavelength = 50.0;
         double t = time + (seed / wavelength) * (2.0 * Math.PI);

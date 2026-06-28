@@ -16,6 +16,7 @@ import com.wdiscute.starcatcher.data.network.tournament.CBClearTournamentPayload
 import com.wdiscute.starcatcher.data.network.tournament.SBStandTournamentNameChangePayload;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
+import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,6 +25,7 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -56,6 +58,9 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
+
+import java.util.List;
+import java.util.Map;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class SCEvents
@@ -236,14 +241,7 @@ public class SCEvents
         {
             if (!level.isClientSide && SCConfig.ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS.getAsBoolean())
             {
-                ItemStack is;
-                float i = level.getRandom().nextFloat();
-                if (i < 0.8f)
-                    is = new ItemStack(SCItems.WORM.get());
-                else if (i < 0.99f)
-                    is = new ItemStack(SCItems.ALMIGHTY_WORM.get());
-                else
-                    is = new ItemStack(SCItems.SEEKING_WORM.get());
+                ItemStack is = getWorm(level.getRandom());
 
                 Vec3 vec3 = Vec3.atLowerCornerWithOffset(pos, 0.5F, 1.01, 0.5F).offsetRandom(level.random, 0.7F);
                 ItemEntity itementity = new ItemEntity(level, vec3.x(), vec3.y(), vec3.z(), is);
@@ -260,6 +258,27 @@ public class SCEvents
                 }
             }
         }
+    }
+
+    public static ItemStack getWorm(RandomSource random)
+    {
+        int totalWeight = SCDataEntries.WORMS.get().stream()
+                .mapToInt(Utils.Duo::second)
+                .sum();
+
+        if (totalWeight <= 0)
+            return ItemStack.EMPTY;
+
+        int value = random.nextInt(totalWeight);
+
+        for (Utils.Duo<ItemStack, Integer> entry : SCDataEntries.WORMS.get())
+        {
+            value -= entry.second();
+            if (value < 0)
+                return entry.first().copy();
+        }
+
+        return ItemStack.EMPTY;
     }
 
     @SubscribeEvent

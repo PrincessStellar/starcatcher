@@ -1,15 +1,20 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.mojang.serialization.Codec;
+import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.LuckAttributeModifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataEntries;
+import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.utils.Utils;
 import com.wdiscute.utils.datagen.DataEntryProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,5 +64,17 @@ public class SCDGDataEntriesProvider
                 List.of(new BaseMinigameModifier("")
                 ))
         );
+
+        ItemStack stack = SCItems.SEEKING_WORM.toStack();
+        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
+
+        gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.WORMS,
+                List.of(
+                        new Utils.Duo<>(SCItems.WORM.toStack(), 149),
+                        new Utils.Duo<>(SCItems.ALMIGHTY_WORM.toStack(), 40),
+                        new Utils.Duo<>(SCItems.SEEKING_WORM.toStack(), 10),
+                        new Utils.Duo<>(stack, 1)
+                )
+        ));
     }
 }

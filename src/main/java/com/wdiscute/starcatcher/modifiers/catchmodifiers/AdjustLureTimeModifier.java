@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -88,19 +89,19 @@ public class AdjustLureTimeModifier extends AbstractCatchModifier
     }
 
     @Override
-    public int adjustMinTicksToFish(int minTicksToFish)
+    public int adjustMinTicksToFish(FishingBobEntity fbe, int minTicksToFish)
     {
         return (int) (minTicksToFish * minTicks);
     }
 
     @Override
-    public int adjustMaxTicksToFish(int maxTicksToFish)
+    public int adjustMaxTicksToFish(FishingBobEntity fbe,int maxTicksToFish)
     {
         return (int) (maxTicksToFish * maxTicks);
     }
 
     @Override
-    public float adjustChanceToFishEachTick(float chanceToFishEachTick)
+    public float adjustChanceToFishEachTick(FishingBobEntity fbe,float chanceToFishEachTick)
     {
         return chanceToFishEachTick * randomness;
     }

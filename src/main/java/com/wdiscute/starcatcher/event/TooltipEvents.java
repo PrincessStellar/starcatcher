@@ -96,6 +96,33 @@ public class TooltipEvents
             }
         }
 
+        //caught fish info
+        if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
+        {
+            SizeAndWeight.Units units = SCConfig.UNIT.get();
+            CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
+
+            if (sw.golden())
+            {
+                cachedTimer = -1;
+                MutableComponent element = Component.empty().append(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
+                if (hasShiftDown)
+                    element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
+                comp.add(element);
+            }
+            else
+            {
+                String size = units.getSizeAsString(sw.sizeInCentimeters());
+                String weight = units.getWeightAsString(sw.weightInGrams());
+                String percentile = " (top " + (int) sw.percentile() + "%)";
+
+                MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
+                if (hasShiftDown)
+                    element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
+                comp.add(element);
+            }
+        }
+
         //modifiers
         Player player = Minecraft.getInstance().player;
         List<Modifier> modifiers;
@@ -136,33 +163,6 @@ public class TooltipEvents
                         comp.add(Tooltips.resolveTagsToComponentFromTranslationKey("tooltip.starcatcher.modifiers").withStyle(ChatFormatting.GRAY));
 
                 comp.addAll(modComp);
-            }
-        }
-
-        //caught fish info
-        if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
-        {
-            SizeAndWeight.Units units = SCConfig.UNIT.get();
-            CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
-
-            if (sw.golden())
-            {
-                cachedTimer = -1;
-                MutableComponent element = Component.empty().append(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
-                if (hasShiftDown)
-                    element.append(Component.literal(" (top 0%)").withStyle(Style.EMPTY.withColor(0x707070)));
-                comp.add(element);
-            }
-            else
-            {
-                String size = units.getSizeAsString(sw.sizeInCentimeters());
-                String weight = units.getWeightAsString(sw.weightInGrams());
-                String percentile = " (top " + (int) sw.percentile() + "%)";
-
-                MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
-                if (hasShiftDown)
-                    element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
-                comp.add(element);
             }
         }
 

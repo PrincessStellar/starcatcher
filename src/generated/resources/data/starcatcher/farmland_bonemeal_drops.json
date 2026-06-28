@@ -1,0 +1,35 @@
+[
+  {
+    "item": {
+      "count": 1,
+      "id": "starcatcher:worm"
+    },
+    "weight": 149
+  },
+  {
+    "item": {
+      "count": 1,
+      "id": "starcatcher:almighty_worm"
+    },
+    "weight": 40
+  },
+  {
+    "item": {
+      "count": 1,
+      "id": "starcatcher:seeking_worm"
+    },
+    "weight": 10
+  },
+  {
+    "item": {
+      "components": {
+        "starcatcher:caught_fish_info": {
+          "golden": true
+        }
+      },
+      "count": 1,
+      "id": "starcatcher:seeking_worm"
+    },
+    "weight": 1
+  }
+]

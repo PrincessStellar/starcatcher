@@ -111,9 +111,9 @@ public class FishingBobEntity extends Projectile
         //modify rod chances
         for (AbstractCatchModifier acm : modifiers)
         {
-            minTicksToFish = acm.adjustMinTicksToFish(minTicksToFish);
-            maxTicksToFish = acm.adjustMaxTicksToFish(maxTicksToFish);
-            chanceToFishEachTick = acm.adjustChanceToFishEachTick(chanceToFishEachTick);
+            minTicksToFish = acm.adjustMinTicksToFish(this, minTicksToFish);
+            maxTicksToFish = acm.adjustMaxTicksToFish(this, maxTicksToFish);
+            chanceToFishEachTick = acm.adjustChanceToFishEachTick(this, chanceToFishEachTick);
         }
 
         minTicksToFish = Math.max(1, minTicksToFish);
