@@ -63,7 +63,7 @@ public class StarcatcherFishingRodItem extends Item
         //if player is not fishing, cast
         if (fishingBobAttachment.isEmpty())
         {
-            ItemStack bait = SCDataComponents.getOrDefault(stack, SCDataComponents.HOOK, MaybeStack.EMPTY).toStack();
+            ItemStack bait = SCDataComponents.getOrDefault(stack, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
 
             //display bait count messages
             if (bait.isEmpty())
