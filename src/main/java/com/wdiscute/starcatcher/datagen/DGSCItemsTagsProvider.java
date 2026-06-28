@@ -235,6 +235,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         tag(SCTags.HAS_TRACKER_LAYER)
                 .add(GUIDE.get())
                 .addTag(SCTags.RODS);
+
+        this.tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .addTag(SCTags.RODS);
     }
 
 
