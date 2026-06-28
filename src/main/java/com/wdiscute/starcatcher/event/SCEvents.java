@@ -245,7 +245,6 @@ public class SCEvents
 
                 Vec3 vec3 = Vec3.atLowerCornerWithOffset(pos, 0.5F, 1.01, 0.5F).offsetRandom(level.random, 0.7F);
                 ItemEntity itementity = new ItemEntity(level, vec3.x(), vec3.y(), vec3.z(), is);
-                itementity.setDefaultPickUpDelay();
                 level.addFreshEntity(itementity);
 
                 level.playSound(null, pos, SoundEvents.COMPOSTER_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);

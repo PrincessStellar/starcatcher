@@ -65,15 +65,21 @@ public class SCDGDataEntriesProvider
                 ))
         );
 
-        ItemStack stack = SCItems.SEEKING_WORM.toStack();
-        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
+        ItemStack worm = SCItems.WORM.toStack();
+        ItemStack almighty = SCItems.ALMIGHTY_WORM.toStack();
+        ItemStack seeking = SCItems.SEEKING_WORM.toStack();
+        SCDataComponents.set(worm, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
+        SCDataComponents.set(almighty, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
+        SCDataComponents.set(seeking, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
 
         gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.WORMS,
                 List.of(
-                        new Utils.Duo<>(SCItems.WORM.toStack(), 149),
-                        new Utils.Duo<>(SCItems.ALMIGHTY_WORM.toStack(), 40),
-                        new Utils.Duo<>(SCItems.SEEKING_WORM.toStack(), 10),
-                        new Utils.Duo<>(stack, 1)
+                        new Utils.Duo<>(SCItems.WORM.toStack(), 1485),
+                        new Utils.Duo<>(SCItems.ALMIGHTY_WORM.toStack(), 396),
+                        new Utils.Duo<>(SCItems.SEEKING_WORM.toStack(), 99),
+                        new Utils.Duo<>(worm, 15),
+                        new Utils.Duo<>(almighty, 4),
+                        new Utils.Duo<>(seeking, 1)
                 )
         ));
     }
