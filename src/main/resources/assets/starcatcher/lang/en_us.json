@@ -198,6 +198,8 @@
   "starcatcher.configuration.fish_percentile_size_min_scale" : "Fish Model Min Scale",
   "starcatcher.configuration.max_tackle_box_fish_storage" : "Max Tackle Box Fish",
   "starcatcher.configuration.hide_treasures" : "Hide Treasures",
+  "starcatcher.configuration.hide_catches" : "Hide Catches",
+  "starcatcher.configuration.enable_rod_durability" : "Enable Rod Durability",
 
 
 

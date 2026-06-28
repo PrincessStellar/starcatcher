@@ -266,7 +266,7 @@ public class FishApi
                 }
 
                 //damage rod
-                if (!SCConfig.ENABLE_ROD_DURABILITY.get())
+                if (SCConfig.ENABLE_ROD_DURABILITY.get())
                 {
                     ItemStack rod = null;
                     if (player.getOffhandItem().is(SCTags.RODS)) rod = player.getOffhandItem();
