@@ -408,7 +408,7 @@ public class FishingBobEntity extends Projectile
         {
             ticksInFluid++;
             boolean fish = Utils.r.nextFloat() < chanceToFishEachTick;
-            if ((fish || ticksInFluid > maxTicksToFish) && ticksInFluid > minTicksToFish)
+            if ((fish && ticksInFluid > minTicksToFish) || ticksInFluid > maxTicksToFish)
             {
                 this.setPos(position().x, position().y - 0.5f, position().z);
                 if (!level().isClientSide) currentState = FishHookState.BITING;
