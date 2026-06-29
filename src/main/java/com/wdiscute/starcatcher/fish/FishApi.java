@@ -163,6 +163,9 @@ public class FishApi
                 player.awardStat(Stats.FISH_CAUGHT);
                 player.awardStat(SCStats.STARCAUGHT_FISH.get());
 
+                //trigger criterion
+                SCCriterionTriggers.FISH.get().trigger(player, fbe.rlToAwardUponFishingComplete == null ? Starcatcher.MISSINGNO : fbe.rlToAwardUponFishingComplete, fp.rarity(), time, perfectCatch);
+
                 //trigger modifiers
                 fbe.modifiers.forEach(m -> m.onSuccessfulMinigameCompletion(fbe, time, completedTreasure, perfectCatch, hits));
 

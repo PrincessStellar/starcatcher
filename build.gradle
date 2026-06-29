@@ -109,50 +109,17 @@ dependencies {
     compileOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
     //runtimeOnly files(".compatmods/architectury-13.0.8-neoforge.jar")
 
+    //kambrik
+    //compileOnly "maven.modrinth:zfbCkvdZ:rCSmCZpX"
+    runtimeOnly "maven.modrinth:zfbCkvdZ:rCSmCZpX"
 
+    //bountiful
+    //compileOnly "maven.modrinth:BpwWFOVM:swTb6NU9"
+    runtimeOnly "maven.modrinth:BpwWFOVM:swTb6NU9"
 
-    //datagen compat
-
-    //aquaculture
-    //compileOnly "maven.modrinth:aquaculture:2.7.21"
-    //runtimeOnly "maven.modrinth:aquaculture:2.7.21"
-
-    //critters-and-companions
-    //compileOnly "maven.modrinth:critters-and-companions:1.21.1-2.3.4"
-    //runtimeOnly "maven.modrinth:critters-and-companions:1.21.1-2.3.4"
-
-    //environmental
-    //compileOnly "maven.modrinth:environmental:5.0.1"
-    //runtimeOnly "maven.modrinth:environmental:5.0.1"
-    //runtimeOnly "maven.modrinth:blueprint:8.1.0"
-
-    //fish-of-thieves
-    //compileOnly "maven.modrinth:fish-of-thieves:21.1.1.2-neoforge"
-    //runtimeOnly "maven.modrinth:fish-of-thieves:21.1.1.2-neoforge"
-
-    //hybrid aquatic
-    //compileOnly "maven.modrinth:hybrid-aquatic:1.5.5-neoforge"
-    //runtimeOnly "maven.modrinth:hybrid-aquatic:1.5.5-neoforge"
-
-    //miner's delight
-    //compileOnly "maven.modrinth:miners-delight:1.4.5"
-    //runtimeOnly "maven.modrinth:miners-delight:1.4.5"
-    //runtimeOnly "maven.modrinth:lodestonelib:1.8.2"
-    //runtimeOnly "maven.modrinth:farmers-delight:1.21.1-1.3.2"
-
-    //nether-depths-upgrade
-    //compileOnly "maven.modrinth:nether-depths-upgrade:3.1.8"
-    //runtimeOnly "maven.modrinth:nether-depths-upgrade:3.1.8"
-
-    //spawn-mod
-    //compileOnly "maven.modrinth:spawn-mod:4.0.4"
-    //runtimeOnly "maven.modrinth:spawn-mod:4.0.4"
-
-    //tide
-    //compileOnly "maven.modrinth:tide:2.0.3"
-    //runtimeOnly "maven.modrinth:tide:2.0.3"
-    //runtimeOnly "maven.modrinth:cloth-config:15.0.140+neoforge"
-
+    //kotlin for forge
+    //compileOnly "maven.modrinth:BpwWFOVM:swTb6NU9"
+    runtimeOnly "maven.modrinth:ordsPcFz:uhJhCT7X"
 
     //Serene Seasons
     compileOnly files(".compatmods/SereneSeasons-neoforge-1.21.1-10.1.0.3.jar")
