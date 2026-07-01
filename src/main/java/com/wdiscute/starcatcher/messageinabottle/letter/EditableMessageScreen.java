@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.letter;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.starcatcher.Starcatcher;

@@ -2,9 +2,10 @@ package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import net.mcexpanded.fancytabsections.FancyTabSections;
+import net.mcexpanded.fancytabsections.Section.SectionColored;
 import net.mcexpanded.fancytabsections.creativetab.ConglomerateOfItems;
-import net.mcexpanded.fancytabsections.creativetab.SectionColored;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -104,12 +105,6 @@ public interface SCCreativeModeTabs
                 )
         );
 
-        //message itemstack
-        //ItemStack bottle = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
-        //bottle.set(SCDataComponents.MESSAGE, message);
-        //ItemStack messageIS = new ItemStack(SCItems.MESSAGE.get());
-        //bottle.set(SCDataComponents.MESSAGE, message);
-
         //Trophies & Secrets
         FancyTabSections.addSection(Starcatcher.rl("starcatcher"),
                 new SectionColored(
@@ -130,6 +125,68 @@ public interface SCCreativeModeTabs
                                 .add(SCItems.MESSAGE_IN_A_BOTTLE)
                                 .add(SCItems.BROKEN_BOTTLE)
                                 .add(SCItems.MESSAGE)
+
+                                //secret messages
+                                //amethyst hook
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.AMETHYST_HOOK);
+                                    return stack;
+                                })
+
+                                //hopeful
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPEFUL);
+                                    return stack;
+                                })
+
+                                //hopeful
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPELESS);
+                                    return stack;
+                                })
+
+                                //lava 1
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_1);
+                                    return stack;
+                                })
+
+                                //lava 2
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_2);
+                                    return stack;
+                                })
+
+                                //true blue
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.TRUE_BLUE);
+                                    return stack;
+                                })
+
+                                //wither
+                                .add(() ->
+                                {
+                                    ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+                                    SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.WITHER);
+                                    return stack;
+                                })
+
+
+
+
+
                 )
         );
 

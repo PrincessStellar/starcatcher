@@ -1,7 +1,7 @@
 package com.wdiscute.starcatcher.data.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.message.EditableMessage;
+import com.wdiscute.starcatcher.messageinabottle.letter.EditableMessage;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.network.RegistryFriendlyByteBuf;

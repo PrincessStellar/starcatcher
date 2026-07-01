@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.data;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.message.Message;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;

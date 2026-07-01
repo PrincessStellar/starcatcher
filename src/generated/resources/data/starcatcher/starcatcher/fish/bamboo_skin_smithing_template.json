@@ -59,7 +59,7 @@
     },
     {
       "type": "starcatcher:percentage_chance",
-      "chance": 0.05
+      "chance": 0.01
     },
     {
       "type": "starcatcher:fluid",

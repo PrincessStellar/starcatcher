@@ -3,6 +3,10 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
+import com.wdiscute.starcatcher.messageinabottle.letter.BottledLetterItem;
+import com.wdiscute.starcatcher.messageinabottle.letter.LetterItem;
+import com.wdiscute.starcatcher.messageinabottle.message.MessageInABottleItem;
+import com.wdiscute.starcatcher.messageinabottle.message.MessageItem;
 import com.wdiscute.starcatcher.registry.items.FishItem;
 import com.wdiscute.starcatcher.registry.items.SCFoodProperties;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
@@ -10,7 +14,7 @@ import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
 import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
 import com.wdiscute.starcatcher.registry.items.StarcatcherFishingRodItem;
-import com.wdiscute.starcatcher.message.*;
+import com.wdiscute.starcatcher.messageinabottle.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -137,7 +141,7 @@ public interface SCItems
     DeferredItem<Item> HUMBLE_ROD = RODS_REGISTRY.register("humble_rod", StarcatcherFishingRodItem::new);
 
     //secrets
-    DeferredItem<Item> LETTER = ITEMS.register("letter", MessageItem::new);
+    DeferredItem<Item> LETTER = ITEMS.register("letter", LetterItem::new);
     DeferredItem<Item> BOTTLED_LETTER = ITEMS.register("bottled_letter", BottledLetterItem::new);
 
     DeferredItem<Item> MESSAGE_IN_A_BOTTLE = ITEMS.register("message_in_a_bottle", MessageInABottleItem::new);

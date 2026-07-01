@@ -1,8 +1,8 @@
 package com.wdiscute.starcatcher.data.network;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import com.wdiscute.starcatcher.message.Message;
-import com.wdiscute.starcatcher.message.MessageScreen;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
+import com.wdiscute.starcatcher.messageinabottle.message.MessageScreen;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;

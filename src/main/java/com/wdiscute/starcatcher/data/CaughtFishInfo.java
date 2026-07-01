@@ -14,6 +14,8 @@ public record CaughtFishInfo(
 )
 {
 
+    public static final CaughtFishInfo GOLDEN = new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true);
+
     public static final Codec<CaughtFishInfo> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.INT.optionalFieldOf("size", 0).forGetter(CaughtFishInfo::sizeInCentimeters),

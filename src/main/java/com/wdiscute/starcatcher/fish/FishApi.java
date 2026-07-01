@@ -510,6 +510,6 @@ public class FishApi
 
     public static List<FishProperties> getSecrets(RegistryAccess registryAccess)
     {
-        return registryAccess.registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).stream().filter(o -> o.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.SECRET)).toList();
+        return registryAccess.registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).stream().filter(o -> o.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.MESSAGE)).toList();
     }
 }

@@ -1,4 +1,4 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.letter;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;

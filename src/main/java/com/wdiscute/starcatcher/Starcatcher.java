@@ -161,6 +161,12 @@ public class Starcatcher
 
             Tooltips.registerProcessor("scnone",
                     (t, s, e) -> Component.literal(t));
+
+            Tooltips.registerProcessor("sclava",
+                    (t, s, e) -> SCTooltipGradient.process(t,
+                            Triple.of(219, 91, 41),
+                            Triple.of(219, 129, 41)
+                    ));
         }
     }
 }

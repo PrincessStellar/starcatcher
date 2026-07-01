@@ -1,6 +1,7 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.letter;
 
 import com.wdiscute.starcatcher.data.MessagesSavedData;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCEntities;
@@ -82,7 +83,7 @@ public class BottledLetterEntity extends ThrowableItemProjectile
                     }
                     else
                     {
-                        sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown"), false);
+                        sp.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.thrown.fail"), false);
                     }
                 }
             }

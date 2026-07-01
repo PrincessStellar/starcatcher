@@ -1,15 +1,13 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.message;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.wdiscute.libtooltips.Tooltips;
-import com.wdiscute.starcatcher.Starcatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 

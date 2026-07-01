@@ -7,6 +7,8 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
+import com.wdiscute.starcatcher.messageinabottle.letter.EditableMessage;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
@@ -120,6 +122,32 @@ public class TooltipEvents
                 if (hasShiftDown)
                     element.append(Component.literal(percentile).withStyle(Style.EMPTY.withColor(0x707070)));
                 comp.add(element);
+            }
+        }
+
+        //message tooltip
+        if (SCDataComponents.has(stack, SCDataComponents.MESSAGE))
+        {
+            Message message = SCDataComponents.get(stack, SCDataComponents.MESSAGE);
+            if (!message.senderDisplayName().isEmpty())
+            {
+                if (hasShiftDown)
+                    comp.add(Component.translatable("tooltip.starcatcher.letter", message.sender().toString()).withStyle(ChatFormatting.GRAY));
+                else
+                    comp.add(Component.translatable("tooltip.starcatcher.letter").withStyle(ChatFormatting.GRAY).append(Component.translatable(message.senderDisplayName())).withStyle(ChatFormatting.GRAY));
+            }
+        }
+
+        //letters tooltip
+        if (SCDataComponents.has(stack, SCDataComponents.EDITABLE_MESSAGE))
+        {
+            EditableMessage message = SCDataComponents.get(stack, SCDataComponents.EDITABLE_MESSAGE);
+            if (!message.sender().isEmpty())
+            {
+                if (hasShiftDown)
+                    comp.add(Component.translatable("tooltip.starcatcher.letter", message.sender()).withStyle(ChatFormatting.GRAY));
+                else
+                    comp.add(Component.translatable("tooltip.starcatcher.letter", message.sender()).withStyle(ChatFormatting.GRAY));
             }
         }
 

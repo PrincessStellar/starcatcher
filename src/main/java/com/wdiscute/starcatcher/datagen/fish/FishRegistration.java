@@ -32,7 +32,7 @@ public final class FishRegistration
         registerInternal(context, key(fp), fp, requiredModId);
     }
 
-    public static void register(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties, String requiredModId)
+    public static void register(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties)
     {
         registerInternal(context, key, properties, "");
     }
@@ -107,5 +107,10 @@ public final class FishRegistration
     public static ResourceKey<FishProperties> key(FishProperties fp)
     {
         return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, fp.catchInfo().fish().rl());
+    }
+
+    public static ResourceKey<FishProperties> key(String string)
+    {
+        return ResourceKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl(string));
     }
 }

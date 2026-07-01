@@ -5,10 +5,13 @@ import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
+import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.Nullable;
 
@@ -229,70 +232,146 @@ public class DGTrophies
         //`----'   `----'  `---' `--'     `----'   `--'   `----'
         //
 
-//        register(overworldSurfaceempty().withFish(SCItems.DRIFTING_WATERLOGGED_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .withHasGuideEntry(false)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.NONE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .secret()
-//        );
-//
-//        register(overworldSurfaceLava().withFish(SCItems.SCALDING_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .withHasGuideEntry(false)
-//                .secret()
-//        );
-//
-//        register(overworldSurfaceLava().withFish(SCItems.BURNING_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 2, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .withHasGuideEntry(false)
-//                .secret()
-//        );
-//
-//        register(overworldSurfaceempty().withFish(SCItems.HOPEFUL_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .withHasGuideEntry(false)
-//                .secret()
-//        );
-//
-//        register(overworldSurfaceempty().withFish(SCItems.HOPELESS_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 15, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .withHasGuideEntry(false)
-//                .secret()
-//        );
-//
-//        register(overworldSurfaceempty().withFish(SCItems.TRUE_BLUE_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
-//                .withHasGuideEntry(false)
-//                .secret()
-//        );
-//
-//        register(empty().withFish(SCItems.WITHERED_BOTTLE))
-//                .withMaxLimit(1)
-//                .withDifficulty(Difficulty.TRASH)
-//                .withHasGuideEntry(false)
-//                .secret()
-//                .withBaseChance(0)
-//                .addRestrictions(new BaitRestriction(Map.of(U.rl("wither_skeleton_skull"), 200), "200"))
-//        );
+        //amethyst hook
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.AMETHYST_HOOK);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/amethyst_hook"),
+                    PresetRestrictions.empty(context)
+                            .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .message()
+            );
+        }
+
+        //hopeful
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPEFUL);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/hopeful"),
+                    PresetRestrictions.empty(context)
+                            .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 10, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .message()
+            );
+        }
+
+        //hopeless
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPELESS);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/hopeless"),
+                    PresetRestrictions.empty(context)
+                            .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.RARE, 15, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .message()
+            );
+        }
+
+
+        //lava
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_1);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/lava_1"),
+                    PresetRestrictions.surfaceLava(context)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .message()
+            );
+        }
+
+        //lava 2
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_2);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/lava_2"),
+                    PresetRestrictions.surfaceLava(context)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.LEGENDARY, 2, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .message()
+            );
+        }
+
+
+        //true blue
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.TRUE_BLUE);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/true_blue"),
+                    PresetRestrictions.empty(context)
+                            .withPercentageChance(0.004f)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .message()
+            );
+        }
+
+        //wither
+        {
+            ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
+            SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.WITHER);
+            FishRegistration.register(context,
+                    FishRegistration.key("message/wither"),
+                    PresetRestrictions.empty(context)
+                            .withFish(stack)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .message()
+                            .withBaseChance(0)
+                            .addBait(BaitRestriction.WITHER_SKELETON_SKULL)
+            );
+        }
+
 
         //
-        //          ,--.   ,--.
-        // ,---.  ,-'  '-. |  ,---.   ,---.  ,--.--.  ,---.
-        //| .-. | '-.  .-' |  .-.  | | .-. : |  .--' (  .-'
-        //' '-' '   |  |   |  | |  | \   --. |  |    .-'  `)
-        // `---'    `--'   `--' `--'  `----' `--'    `----'
+        //  ,-----.                               ,--.
+        // '  .-.  '   ,--.,--.  ,---.   ,---.  ,-'  '-.
+        // |  | |  |   |  ||  | | .-. : (  .-'  '-.  .-'
+        // '  '-'  '-. '  ''  ' \   --. .-'  `)   |  |
+        //  `-----'--'  `----'   `----' `----'    `--'
         //
+
+        {
+            FishRegistration.register(context,
+                    FishRegistration.key("quest/amethyst_hook"),
+                    PresetRestrictions.empty(context)
+                            .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                            .withFish(SCItems.AMETHYST_HOOK)
+                            .withMaxLimit(1)
+                            .withDifficulty(Difficulty.TRASH)
+                            .withHasGuideEntry(false)
+                            .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
+                            .extra()
+            );
+        }
 
     }
 }

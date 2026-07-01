@@ -405,8 +405,6 @@ public class DGAquacultureFishes
                 context,
                 PresetRestrictions.allOceans(context)
                         .withFish("aquaculture", "goldfish")
-                        //no bucketed version
-                        //no entity
                         .withSizeAndWeight(15, 5, 100, 5)
                         .withBaseChance(1)
                         //0.5% chance

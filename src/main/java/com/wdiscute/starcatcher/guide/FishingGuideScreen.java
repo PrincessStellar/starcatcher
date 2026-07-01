@@ -15,8 +15,8 @@ import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.data.network.SBTrackFishPayload;
-import com.wdiscute.starcatcher.message.Message;
-import com.wdiscute.starcatcher.message.MessageScreen;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
+import com.wdiscute.starcatcher.messageinabottle.message.MessageScreen;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.data.network.SignGuidePayload;
@@ -123,10 +123,7 @@ public class FishingGuideScreen extends Screen
     private static final ResourceLocation ENTITY = Starcatcher.rl("textures/gui/guide/entity.png");
     private static final ResourceLocation ALWAYS_ENTITY = Starcatcher.rl("textures/gui/guide/always_entity.png");
 
-    public static final CaughtFishInfo GOLDEN = new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true);
-
     public static final int MAX_HELP_PAGES = 12;
-
 
     private final List<ItemStack> tackleBoxes = new ArrayList<>();
     private final List<ItemStack> baits = new ArrayList<>();
@@ -1349,7 +1346,7 @@ public class FishingGuideScreen extends Screen
         ItemStack is = fp.catchInfo().fish().toStack();
 
         if (fcc != null && fcc.caughtGolden())
-            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, GOLDEN);
+            SCDataComponents.set(is, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
 
         //calculate caught counter
         int caught = fcc == null ? 0 : fcc.count();

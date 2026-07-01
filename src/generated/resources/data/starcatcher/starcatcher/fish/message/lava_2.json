@@ -1,10 +1,41 @@
 {
   "base_chance": 5,
   "catch_info": {
-    "type": "extra",
+    "type": "message",
     "item": {
+      "components": {
+        "starcatcher:message": {
+          "background": "starcatcher:textures/gui/message/message_overworld.png",
+          "dimension": "starcatcher:missingno",
+          "sender": [
+            1706407745,
+            -1005039813,
+            -1902890649,
+            38309877
+          ],
+          "sender_display_name": "starcatcher.message.lava_proof_2.sender",
+          "text": [
+            "starcatcher.message.lava_proof_2.0",
+            "starcatcher.message.lava_proof_2.1",
+            "starcatcher.message.lava_proof_2.2",
+            "starcatcher.message.lava_proof_2.3",
+            "starcatcher.message.lava_proof_2.4",
+            "starcatcher.message.lava_proof_2.5",
+            "starcatcher.message.lava_proof_2.6",
+            "starcatcher.message.lava_proof_2.7",
+            "starcatcher.message.lava_proof_2.8",
+            "starcatcher.message.lava_proof_2.9",
+            "starcatcher.message.lava_proof_2.10",
+            "starcatcher.message.lava_proof_2.11",
+            "starcatcher.message.lava_proof_2.12",
+            "starcatcher.message.lava_proof_2.13",
+            "starcatcher.message.lava_proof_2.14",
+            "starcatcher.message.lava_proof_2.15"
+          ]
+        }
+      },
       "count": 1,
-      "id": "starcatcher:obsidian_skin_smithing_template"
+      "id": "starcatcher:message_in_a_bottle"
     }
   },
   "difficulty": {
@@ -51,12 +82,18 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
-      "type": "starcatcher:weather_restriction",
-      "weather": "rain"
+      "type": "starcatcher:caught_limit",
+      "limit": 1
     },
     {
-      "type": "starcatcher:percentage_chance",
-      "chance": 0.01
+      "type": "starcatcher:rarity_count",
+      "rarities": [
+        {
+          "count": 2,
+          "count_type": "total",
+          "rarity": "legendary"
+        }
+      ]
     },
     {
       "type": "starcatcher:fluid",

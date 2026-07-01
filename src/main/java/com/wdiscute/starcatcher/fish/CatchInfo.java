@@ -29,7 +29,7 @@ public record CatchInfo(
     {
         FISH("fish"),
         TROPHY("trophy"),
-        SECRET("secret"),
+        MESSAGE("message"),
         EXTRA("extra");
 
         public static final Codec<FishEntryType> CODEC = StringRepresentable.fromEnum(FishEntryType::values);

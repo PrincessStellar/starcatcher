@@ -8,7 +8,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.data.MessagesSavedData;
-import com.wdiscute.starcatcher.message.Message;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;

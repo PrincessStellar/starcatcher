@@ -1,7 +1,8 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.message;
 
 import com.wdiscute.starcatcher.data.network.CBOpenEditableMessagePayload;
 import com.wdiscute.starcatcher.data.network.CBOpenMessagePayload;
+import com.wdiscute.starcatcher.messageinabottle.letter.EditableMessage;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -33,14 +34,8 @@ public class MessageItem extends Item
         //if item has message, open message screen
         if (message != null)
             PacketDistributor.sendToPlayer((ServerPlayer) player, new CBOpenMessagePayload(message));
-
-        EditableMessage editableMessage = SCDataComponents.get(stack, SCDataComponents.EDITABLE_MESSAGE);
-
-        // if no message, set default
-        if (editableMessage == null)
-            editableMessage = new EditableMessage(player.getName().getString(), List.of());
-
-        PacketDistributor.sendToPlayer((ServerPlayer) player, new CBOpenEditableMessagePayload(editableMessage));
+        else
+            PacketDistributor.sendToPlayer((ServerPlayer) player, new CBOpenMessagePayload(Message.DEFAULT));
 
         return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }

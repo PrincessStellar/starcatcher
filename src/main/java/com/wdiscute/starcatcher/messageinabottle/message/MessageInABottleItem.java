@@ -1,6 +1,5 @@
-package com.wdiscute.starcatcher.message;
+package com.wdiscute.starcatcher.messageinabottle.message;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.sounds.SoundEvents;
@@ -10,9 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import java.util.List;
-import java.util.UUID;
 
 public class MessageInABottleItem extends Item
 {
@@ -30,7 +26,7 @@ public class MessageInABottleItem extends Item
 
         //give note
         ItemStack is = new ItemStack(SCItems.MESSAGE.get());
-        SCDataComponents.set(is, SCDataComponents.MESSAGE, message.lock());
+        SCDataComponents.set(is, SCDataComponents.MESSAGE, message);
         player.addItem(is);
 
         player.playSound(SoundEvents.PLAYER_ATTACK_SWEEP);

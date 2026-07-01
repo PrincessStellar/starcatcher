@@ -227,7 +227,7 @@ public record FishProperties(
 
     public FishProperties withPercentageChance(float chance)
     {
-        restrictions.add(new ChancePercentageRestriction(0.05f));
+        restrictions.add(new ChancePercentageRestriction(chance));
         return this;
     }
 
@@ -247,9 +247,9 @@ public record FishProperties(
         return withCatchInfo(catchInfo.withFishType(CatchInfo.FishEntryType.TROPHY));
     }
 
-    public FishProperties secret()
+    public FishProperties message()
     {
-        return withCatchInfo(catchInfo.withFishType(CatchInfo.FishEntryType.SECRET));
+        return withCatchInfo(catchInfo.withFishType(CatchInfo.FishEntryType.MESSAGE));
     }
 
     public FishProperties extra()
@@ -260,6 +260,11 @@ public record FishProperties(
     public FishProperties withFish(MaybeStack fish)
     {
         return withCatchInfo(catchInfo.withFish(fish));
+    }
+
+    public FishProperties withFish(ItemStack stack)
+    {
+        return withCatchInfo(catchInfo.withFish(new MaybeStack(stack)));
     }
 
     public FishProperties withFish(DeferredBlock<Block> fish)

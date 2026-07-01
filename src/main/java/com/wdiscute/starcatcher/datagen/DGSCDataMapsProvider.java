@@ -7,7 +7,7 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.message.Message;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
