@@ -1,7 +1,6 @@
-// 1.21.1	2026-07-01T17:12:29.2241328	Registries
+// 1.21.1	2026-07-02T17:32:20.6348005	Registries
 db41cda8b730bf11176b2799cb9a24c64aebf2b0 data/starcatcher/starcatcher/fish/agave_bream.json
 4b52f130e3eea8c6a81c639cec18c35c5ea53865 data/starcatcher/starcatcher/fish/amethystback.json
-d3737981fc2cb2d6a5badff0d2a47614b698fad8 data/starcatcher/starcatcher/fish/amethyst_hook.json
 8439ad4a7dee1240eac1751230f02e2fb2ff7bf0 data/starcatcher/starcatcher/fish/aquamarine_pike.json
 1626cd47ad0ad0a0b6214ca701f8e1ed25275146 data/starcatcher/starcatcher/fish/aurora.json
 802afa3347cbe0111bbd4cbe291d59820779d87c data/starcatcher/starcatcher/fish/azure_crystalback_minnow.json
@@ -104,7 +103,7 @@ ce2308d272a03d2b3fffd68ec129ac9fc26aebb0 data/starcatcher/starcatcher/fish/pink_
 962ce28ae9b478c2c3bbc5e4f45056a993970cd0 data/starcatcher/starcatcher/fish/pipehead.json
 f374649eb12c1718bc86fa36f1d3218318bb4a09 data/starcatcher/starcatcher/fish/purple_carp.json
 126c009c5c5e8e0ec3bcae3f1fcfc8406a8dbde5 data/starcatcher/starcatcher/fish/pyrotrout.json
-7ea34c58ca65414aee7d32447f064a6c5b5bf845 data/starcatcher/starcatcher/fish/quest/amethyst_hook.json
+d3737981fc2cb2d6a5badff0d2a47614b698fad8 data/starcatcher/starcatcher/fish/quest/amethyst_hook.json
 09542aa1fe7cb4cc5e7e7d10bfaf0838777fc324 data/starcatcher/starcatcher/fish/rainfin.json
 d25907bd5a82aeeacf287cb8fd89eb2aa9da511f data/starcatcher/starcatcher/fish/redscaled_tuna.json
 8890bd70d5887011d4982c430ed0043a365328b1 data/starcatcher/starcatcher/fish/ripple_catfish.json

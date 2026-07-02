@@ -155,4 +155,9 @@ public abstract class AbstractMinigameModifier implements Modifier
     {
         return false;
     }
+
+    public boolean preventLosingMinigame(FishingMinigameScreen fishingMinigameScreen)
+    {
+        return false;
+    }
 }

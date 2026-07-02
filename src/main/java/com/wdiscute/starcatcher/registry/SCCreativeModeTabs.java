@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.messageinabottle.message.Message;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.AdjustLureTimeModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.NeverLoseModifier;
 import net.mcexpanded.fancytabsections.FancyTabSections;
 import net.mcexpanded.fancytabsections.Section.SectionColored;
 import net.mcexpanded.fancytabsections.creativetab.ConglomerateOfItems;
@@ -13,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 
@@ -38,12 +41,22 @@ public interface SCCreativeModeTabs
                         0xffffffff,
                         ConglomerateOfItems.create()
                                 .add(SCItems.ROD)
+                                .add(() ->
+                                {
+                                    ItemStack devRod = SCItems.ICEBORN_ROD.toStack();
+                                    SCDataComponents.set(devRod, SCDataComponents.MODIFIERS, List.of(
+                                            new NeverLoseModifier(""),
+                                            new AdjustLureTimeModifier(0.2f, 0.2f, 0.2f, "")
+                                    ));
+                                    return devRod;
+                                })
                                 .add(SCItems.GUIDE)
                                 .add(SCBlocks.STAND)
                                 .add(SCBlocks.DISPLAY)
                                 .add(SCBlocks.TACKLE_BOX)
                                 .add(SCBlocks.AQUARIUM)
                                 .add(SBBlocks.SELLING_BIN)
+
                 )
         );
 

@@ -112,17 +112,6 @@ public class DGTrophies
         FishRegistration.register(
                 context,
                 PresetRestrictions.deepslate(context)
-                        .withFish(SCItems.AMETHYST_HOOK)
-                        .withMaxLimit(1)
-                        .withDifficulty(Difficulty.TRASH)
-                        .withHasGuideEntry(false)
-                        .addRarityRestriction(new RarityCountRestriction.RarityCount(Rarity.EPIC, 1, RarityCountRestriction.RarityCount.CountType.TOTAL))
-                        .extra()
-        );
-
-        FishRegistration.register(
-                context,
-                PresetRestrictions.deepslate(context)
                         .withFish(Items.DIAMOND)
                         .withMaxLimit(1)
                         .withDifficulty(Difficulty.TRASH)
@@ -362,8 +351,7 @@ public class DGTrophies
         {
             FishRegistration.register(context,
                     FishRegistration.key("quest/amethyst_hook"),
-                    PresetRestrictions.empty(context)
-                            .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                    PresetRestrictions.deepslate(context)
                             .withFish(SCItems.AMETHYST_HOOK)
                             .withMaxLimit(1)
                             .withDifficulty(Difficulty.TRASH)

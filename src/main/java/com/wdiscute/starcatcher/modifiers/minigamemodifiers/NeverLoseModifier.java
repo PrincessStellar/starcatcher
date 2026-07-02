@@ -23,21 +23,22 @@ public class NeverLoseModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void tick(FishingMinigameScreen instance)
+    public boolean preventLosingMinigame(FishingMinigameScreen fishingMinigameScreen)
     {
-        super.tick(instance);
-
-        if (instance.progressSmooth < 5)
-        {
-            instance.progressSmooth += instance.hp / 5;
-            instance.progress = (float) instance.hp / 5;
-        }
+        fishingMinigameScreen.progress = fishingMinigameScreen.hp / 5f;
+        return true;
     }
 
     @Override
     public ResourceLocation getIdentifier()
     {
         return Starcatcher.rl("never_lose");
+    }
+
+    @Override
+    public String toString()
+    {
+        return "[NeverLoseModifier@" + Integer.toHexString(hashCode()) + "]";
     }
 
     @Override

@@ -102,7 +102,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     protected final List<AbstractMinigameModifier> modifiers = new ArrayList<>();
     protected final List<AbstractMinigameModifier> modifiersToAdd = new ArrayList<>(); // delays the adding process to avoid concurrency exceptions
 
-    public FishingMinigameScreen(FishProperties fp, ItemStack treasure, List<AbstractMinigameModifier> baseModifiers, AbstractTackleSkin tackleSkin)
+    public FishingMinigameScreen(FishProperties fp, ItemStack treasure, List<AbstractMinigameModifier> extraModifiers, AbstractTackleSkin tackleSkin)
     {
         super(Component.empty());
 
@@ -139,8 +139,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         //add default modifiers
         Modifier.getDefaultMinigameModifiers().forEach(this::addModifier);
 
-        //add modifiers from constructor
-        baseModifiers.forEach(this::addModifier);
+        //add extra modifiers from constructor
+        extraModifiers.forEach(this::addModifier);
 
         //add every modifier from fp json which is registered
         for (Modifier mod : fp.dif().modifiers())
@@ -318,8 +318,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         else
             guiGraphics.blit(
                     texture, centerX - 6 - 102, centerY - 56 - 24,
-                    16, (int) (112 - yoffset),
-                    176F, yoffset - 10,
+                    16, (int) (112 - yoffset + 8),
+                    176F, yoffset,
                     16, (int) (112 - yoffset),
                     256, 256);
 
@@ -708,7 +708,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         if (!isSettingsScreen())
         {
 
-            if (progressSmooth < 0)
+            if (progressSmooth < 0 && modifiers.stream().noneMatch(o -> o.preventLosingMinigame(this)))
             {
                 if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
                     tackleSkin.onFailedMinigame(Minecraft.getInstance().player);

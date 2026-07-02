@@ -4,7 +4,8 @@ import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 
 public abstract class AbstractTimedModifier extends AbstractInstancedMinigameModifier
 {
-    int length;
+    public int length;
+    public int tickCount;
 
     public AbstractTimedModifier(int length)
     {
@@ -19,7 +20,8 @@ public abstract class AbstractTimedModifier extends AbstractInstancedMinigameMod
     @Override
     public void tick(FishingMinigameScreen instance)
     {
-        if (length > 0 && instance.tickCount >= length)
+        tickCount++;
+        if (length > 0 && tickCount >= length)
         {
             removed = true;
         }

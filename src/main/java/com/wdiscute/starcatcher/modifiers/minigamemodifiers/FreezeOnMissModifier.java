@@ -31,10 +31,25 @@ public class FreezeOnMissModifier extends AbstractMinigameModifier
     }
 
     @Override
+    public String toString()
+    {
+        return "[FreezeOnMissModifier@" + Integer.toHexString(hashCode()) + "]";
+    }
+
+    @Override
     public void onMiss(FishingMinigameScreen instance)
     {
         super.onMiss(instance);
-        instance.addUniqueModifier(new FrozenPointerWhileActiveModifier(length, rampTime));
+        for (AbstractMinigameModifier modifier : instance.getModifiers())
+        {
+            if(modifier instanceof FreezeHandleModifier fpwam)
+            {
+                fpwam.tickCount = 0;
+                return;
+            }
+        }
+
+        instance.addModifier(new FreezeHandleModifier(40, 10));
     }
 
     @Override

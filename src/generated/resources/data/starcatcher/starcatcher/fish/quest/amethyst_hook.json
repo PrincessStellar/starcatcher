@@ -40,10 +40,15 @@
   "rarity": "common",
   "restrictions": [
     {
+      "type": "starcatcher:dimension",
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
+    },
+    {
       "type": "starcatcher:elevation_restriction",
-      "max_y": 2147483647,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "max_y": 0,
+      "min_y": -2147483648,
+      "translation_override": "gui.guide.elevation.deepslate"
     },
     {
       "type": "starcatcher:caught_limit",
@@ -57,6 +62,12 @@
           "count_type": "total",
           "rarity": "epic"
         }
+      ]
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
       ]
     }
   ],

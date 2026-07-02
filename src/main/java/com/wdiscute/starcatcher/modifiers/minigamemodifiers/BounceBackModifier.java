@@ -17,7 +17,7 @@ public class BounceBackModifier extends AbstractMinigameModifier
                     Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, BounceBackModifier::new));
 
-    private int bounceBackTime = 0;
+    private int bouncedTicks = 0;
     private boolean bounced = false;
 
     public BounceBackModifier(String translationOverride)
@@ -26,46 +26,48 @@ public class BounceBackModifier extends AbstractMinigameModifier
     }
 
     @Override
-    public void onMiss(FishingMinigameScreen instance)
+    public void onAdd(FishingMinigameScreen instance)
     {
-        if (bounceBackTime > 0)
-        {
-            instance.progress += instance.penalty;
-        }
+        super.onAdd(instance);
+        bounced = false;
+        bouncedTicks = 0;
+    }
 
-        if (instance.progress <= instance.penalty && !bounced)
-        {
-            instance.progress += instance.penalty;
-            Minecraft.getInstance().player.playSound(SoundEvents.SLIME_HURT);
-            bounceBackTime = instance.hp / 5;
-            bounced = true;
-        }
-
+    @Override
+    public String toString()
+    {
+        return "[BouncebackModifier@" + Integer.toHexString(hashCode()) + "] (bounced: " + bounced + " / bouncedTicks: " + bouncedTicks + ")";
     }
 
     @Override
     public void tick(FishingMinigameScreen instance)
     {
-        //no idea wtf is going on here anymore
         super.tick(instance);
-
-        if (bounced)
-            bounceBackTime--;
-
-        if (bounceBackTime > 0)
+        if(bouncedTicks > 0)
         {
-            instance.progress += 1;
-            if (instance.progressSmooth < 5) instance.progressSmooth = 5;
+            instance.progress += instance.hp / 50f;
+            bouncedTicks--;
         }
+    }
 
-        if (bounceBackTime < 0) removed = true;
-
-        if (instance.progressSmooth < 2 && !bounced)
+    @Override
+    public boolean preventLosingMinigame(FishingMinigameScreen instance)
+    {
+        //if hasn't triggered
+        if (!bounced)
         {
-            bounced = true;
+            //bounce ticks for smooth animation
+            bouncedTicks = 10;
+
+            //set progress to 10 to not lose instantly again
+            instance.progress = 10;
             Minecraft.getInstance().player.playSound(SoundEvents.SLIME_HURT);
-            bounceBackTime = instance.hp / 5;
+            removed = true;
+            return true;
         }
+
+        //return true to prevent if bounced ticks is not 0
+        return bouncedTicks > 0;
     }
 
     @Override

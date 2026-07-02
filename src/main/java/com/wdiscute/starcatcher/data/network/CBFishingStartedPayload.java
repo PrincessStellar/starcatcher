@@ -17,6 +17,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
+import java.util.List;
+
 public record CBFishingStartedPayload(FishProperties fp, MaybeStack treasure,
                                       MaybeStack rod) implements CustomPacketPayload
 {
@@ -52,6 +54,6 @@ public record CBFishingStartedPayload(FishProperties fp, MaybeStack treasure,
         AbstractTackleSkin tackleSkin = SCDataMaps.getOrDefault(maybeRod, SCDataMaps.TACKLE_SKIN, Starcatcher.TACKLE_SKIN_REGISTRY.get(Starcatcher.rl("rod")));
 
         //start minigame
-        Minecraft.getInstance().setScreen(new FishingMinigameScreen(data.fp(), data.treasure.toStack(), Modifier.getMinigameModifiers(context.player()), tackleSkin));
+        Minecraft.getInstance().setScreen(new FishingMinigameScreen(data.fp(), data.treasure.toStack(), List.of(), tackleSkin));
     }
 }
