@@ -178,6 +178,7 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("bost_thrown_speed"), BoostThrownSpeedModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("force_select_fish_from_entry"), ForceSelectFishFromEntryModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("force_select_fish"), ForceSelectFishModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("roll_percentile"), RollPercentileModifier.CODEC);
     }
 
 

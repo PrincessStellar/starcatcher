@@ -294,6 +294,9 @@
 
   "tooltip.modifier.starcatcher.spawn_treasure_on_hit_x": "A treasure spawns after %s consecutive hits",
 
+  "tooltip.modifier.starcatcher.roll_percentile": "Fish are bigger and heavier",
+  "tooltip.modifier.starcatcher.roll_percentile.shift": "Percentile will be rolled an extra %s times, picking the lowest one.",
+
   "tooltip.modifier.starcatcher.anglers_hat": "",
 
   "tooltip.modifier.starcatcher.hide_catch": "You can no longer see your catch whilst fishing",

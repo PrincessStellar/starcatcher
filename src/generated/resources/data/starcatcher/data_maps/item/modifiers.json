@@ -277,7 +277,8 @@
     ],
     "starcatcher:fisherman_hat_white": [
       {
-        "type": "starcatcher:no_gravity"
+        "type": "starcatcher:roll_percentile",
+        "rolls": 2
       }
     ],
     "starcatcher:fisherman_hat_yellow": [

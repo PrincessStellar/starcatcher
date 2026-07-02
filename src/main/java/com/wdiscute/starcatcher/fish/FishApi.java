@@ -173,7 +173,7 @@ public class FishApi
                 fbe.tackleSkin.onSuccessfulMinigame(player);
 
                 //pick rod percentile
-                float percentile = Utils.r.nextFloat(100);
+                float percentile = fbe.getRandom().nextFloat() * 100;
 
                 //modify percentile from modifiers
                 for (AbstractCatchModifier modifier : fbe.modifiers)

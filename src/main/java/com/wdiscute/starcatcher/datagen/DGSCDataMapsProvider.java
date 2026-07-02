@@ -374,7 +374,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_WHITE.asItem().builtInRegistryHolder(),
                 List.of(
-                        new NoGravityModifier("")
+                        new RollPercentileModifier(2, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_BROWN.asItem().builtInRegistryHolder(),
@@ -488,7 +488,6 @@ public class DGSCDataMapsProvider extends DataMapProvider
         treasures.add(Starcatcher.rl("aurora"), Treasure.ICEBORN_SKIN_SMITHING_TEMPLATE, false);
         //todo
         treasures.add(Starcatcher.rl("aurora"), Treasure.SKY_SKIN_SMITHING_TEMPLATE, false);
-
 
 
     }
