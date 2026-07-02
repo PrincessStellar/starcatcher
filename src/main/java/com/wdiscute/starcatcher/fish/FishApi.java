@@ -212,11 +212,11 @@ public class FishApi
                     //if entity is from starcatcher, can only spawn if it's a bucketable fish (aka has a model)
                     canSpawnEntity = SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(
                             o -> BuiltInRegistries.ITEM.getKey(o.getDelegate().value())
-                    ).anyMatch(rl -> rl.equals(location));
+                    ).anyMatch(rl -> rl.equals(fp.catchInfo().fish().rl()));
                 else
                     //if entity is not from starcatcher, then it can spawn
+                    //because the default is starcatcher:fish, meaning if its any other entity, then it can spawn
                     canSpawnEntity = true;
-
 
                 //check if should spawn entity, can catch && anything wants to spawn it
                 if (canSpawnEntity &&

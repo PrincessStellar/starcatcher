@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -203,6 +204,8 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .addTag(SCTags.BOBBERS)
                 .addTag(SCTags.FISHABLE)
                 .addTag(ItemTags.FISHES)
+                .add(GUIDE.get())
+                .add(FISH_RADAR.get())
         ;
 
         //tackle boxes

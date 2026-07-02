@@ -4,6 +4,8 @@
     "#starcatcher:hooks",
     "#starcatcher:bobbers",
     "#starcatcher:fishable",
-    "#minecraft:fishes"
+    "#minecraft:fishes",
+    "starcatcher:starcatcher_guide",
+    "starcatcher:fish_radar"
   ]
 }
