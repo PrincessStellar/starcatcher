@@ -156,7 +156,7 @@ public class TooltipEvents
         List<Modifier> modifiers;
 
         //if rod, get every modifier not just the itemstack
-        if (player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
+        if (stack.is(SCTags.RODS) && player != null && (stack == player.getItemInHand(InteractionHand.MAIN_HAND) || stack == player.getItemInHand(InteractionHand.OFF_HAND)))
             modifiers = Modifier.getModifiers(player);
         else
             modifiers = Modifier.getModifiers(stack);
