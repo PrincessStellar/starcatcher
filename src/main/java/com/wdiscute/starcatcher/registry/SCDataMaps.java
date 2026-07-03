@@ -45,7 +45,7 @@ public interface SCDataMaps
 
     DataMapType<LevelStem, ResourceLocation> MESSAGE_BACKGROUND = DataMapType.builder(
             Starcatcher.rl("message_background"), Registries.LEVEL_STEM, ResourceLocation.CODEC
-    ).synced(ResourceLocation.CODEC, true).build();
+    ).build();
 
     static <T> T getOrDefault(ItemStack stack, DataMapType<Item, T> dataMap, T d)
     {

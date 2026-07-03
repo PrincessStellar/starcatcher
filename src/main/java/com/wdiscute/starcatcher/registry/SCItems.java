@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry;
 
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.compat.CreateCompat;
 import com.wdiscute.starcatcher.guide.FishingGuideItem;
@@ -22,6 +23,8 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.data.loading.DatagenModLoader;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 public interface SCItems
 {
@@ -49,7 +52,8 @@ public interface SCItems
     DeferredItem<Item> FISH_RADAR = ITEMS.register("fish_radar", SingleStackBasicItem::new);
     DeferredItem<Item> STARCATCHER_TWINE = ITEMS.register("starcatcher_twine", SingleStackBasicItem::new);
 
-    DeferredItem<Item> SETTINGS = ITEMS.register("settings", BasicItem::new);
+    DeferredItem<Item> SETTINGS = ITEMS.register("settings", () ->  new Item(new Item
+            .Properties().component(Tooltips.TOOLTIP_ALWAYS, List.of("wadwad"))));
     DeferredItem<Item> TREASURE = ITEMS.register("treasure", BasicItem::new);
 
     //hooks
