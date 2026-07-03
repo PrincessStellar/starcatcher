@@ -165,25 +165,25 @@ public class BiomeRestriction extends AbstractFishRestriction
         return hover;
     }
 
-    public BiomeRestriction biome(BootstrapContext<FishProperties> context, ResourceLocation biome)
+    public BiomeRestriction biome(ResourceLocation biome)
     {
         biomes.add(new EntryOrTag.Entry<>(ResourceKey.create(Registries.BIOME, biome)));
         return this;
     }
 
-    public BiomeRestriction tag(BootstrapContext<FishProperties> context, ResourceLocation tag)
+    public BiomeRestriction tag(ResourceLocation tag)
     {
         biomes.add(new EntryOrTag.Tag<>(TagKey.create(Registries.BIOME, tag)));
         return this;
     }
 
-    public BiomeRestriction blacklisted(BootstrapContext<FishProperties> context, ResourceLocation biome)
+    public BiomeRestriction blacklisted(ResourceLocation biome)
     {
         blacklist.add(new EntryOrTag.Entry<>(ResourceKey.create(Registries.BIOME, biome)));
         return this;
     }
 
-    public BiomeRestriction blacklistedTag(BootstrapContext<FishProperties> context, ResourceLocation tag)
+    public BiomeRestriction blacklistedTag(ResourceLocation tag)
     {
         blacklist.add(new EntryOrTag.Tag<>(TagKey.create(Registries.BIOME, tag)));
         return this;
@@ -204,233 +204,233 @@ public class BiomeRestriction extends AbstractFishRestriction
         return new BiomeRestriction(new ArrayList<>(), new ArrayList<>(), "", "");
     }
 
-    public static BiomeRestriction lakes(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction lakes()
     {
         return empty()
-                .blacklistedTag(context, SCTags.IS_OCEAN)
-                .blacklistedTag(context, SCTags.IS_RIVER)
-                .blacklistedTag(context, SCTags.IS_MUSHROOM_FIELDS)
-                .blacklistedTag(context, SCTags.IS_COLD_LAKE)
-                .blacklistedTag(context, SCTags.IS_WARM_LAKE)
+                .blacklistedTag(SCTags.IS_OCEAN)
+                .blacklistedTag(SCTags.IS_RIVER)
+                .blacklistedTag(SCTags.IS_MUSHROOM_FIELDS)
+                .blacklistedTag(SCTags.IS_COLD_LAKE)
+                .blacklistedTag(SCTags.IS_WARM_LAKE)
                 .hover("gui.guide.lakes.hover")
                 .translation("gui.guide.lakes");
     }
 
-    public static BiomeRestriction warmLakes(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction warmLakes()
     {
         return empty()
-                .tag(context, SCTags.IS_WARM_LAKE);
+                .tag(SCTags.IS_WARM_LAKE);
     }
 
-    public static BiomeRestriction coldLakes(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction coldLakes()
     {
         return empty()
-                .tag(context, SCTags.IS_COLD_LAKE);
+                .tag(SCTags.IS_COLD_LAKE);
     }
 
-    public static BiomeRestriction flowerForest(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction flowerForest()
     {
         return empty()
-                .biome(context, Biomes.FLOWER_FOREST.location());
+                .biome(Biomes.FLOWER_FOREST.location());
     }
 
-    public static BiomeRestriction sunflowerPlains(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction sunflowerPlains()
     {
         return empty()
-                .biome(context, Biomes.SUNFLOWER_PLAINS.location());
+                .biome(Biomes.SUNFLOWER_PLAINS.location());
     }
 
-    public static BiomeRestriction swampOnly(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction swampOnly()
     {
         return empty()
-                .biome(context, Biomes.SWAMP.location());
+                .biome(Biomes.SWAMP.location());
     }
 
-    public static BiomeRestriction bambooJungle(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction bambooJungle()
     {
         return empty()
-                .biome(context, Biomes.BAMBOO_JUNGLE.location());
+                .biome(Biomes.BAMBOO_JUNGLE.location());
     }
 
     // underground
-    public static BiomeRestriction lushCaves(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction lushCaves()
     {
         return empty()
-                .biome(context, Biomes.LUSH_CAVES.location());
+                .biome(Biomes.LUSH_CAVES.location());
     }
 
-    public static BiomeRestriction dripstoneCaves(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction dripstoneCaves()
     {
         return empty()
-                .biome(context, Biomes.DRIPSTONE_CAVES.location());
+                .biome(Biomes.DRIPSTONE_CAVES.location());
     }
 
-    public static BiomeRestriction deepDark(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction deepDark()
     {
         return empty()
-                .biome(context, Biomes.DEEP_DARK.location());
+                .biome(Biomes.DEEP_DARK.location());
     }
 
     // oceans
-    public static BiomeRestriction coldOceans(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction coldOceans()
     {
         return empty()
-                .tag(context, SCTags.IS_COLD_OCEAN);
+                .tag(SCTags.IS_COLD_OCEAN);
     }
 
-    public static BiomeRestriction allOceans(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction allOceans()
     {
         return empty()
-                .tag(context, SCTags.IS_OCEAN);
+                .tag(SCTags.IS_OCEAN);
     }
 
-    public static BiomeRestriction normalOceans(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction normalOceans()
     {
         return empty()
-                .tag(context, SCTags.IS_NORMAL_OCEAN);
+                .tag(SCTags.IS_NORMAL_OCEAN);
     }
 
-    public static BiomeRestriction lukewarmOcean(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction lukewarmOcean()
     {
         return empty()
-                .tag(context, SCTags.IS_LUKEWARM_OCEAN);
+                .tag(SCTags.IS_LUKEWARM_OCEAN);
     }
 
-    public static BiomeRestriction coldAndLukewarmOcean(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction coldAndLukewarmOcean()
     {
         return empty()
-                .tag(context, SCTags.IS_LUKEWARM_OCEAN)
-                .tag(context, SCTags.IS_COLD_OCEAN);
+                .tag(SCTags.IS_LUKEWARM_OCEAN)
+                .tag(SCTags.IS_COLD_OCEAN);
     }
 
-    public static BiomeRestriction warmOceans(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction warmOceans()
     {
         return empty()
-                .tag(context, SCTags.IS_WARM_OCEAN);
+                .tag(SCTags.IS_WARM_OCEAN);
     }
 
-    public static BiomeRestriction deepOceans(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction deepOceans()
     {
         return empty()
-                .tag(context, SCTags.IS_DEEP_OCEAN);
+                .tag(SCTags.IS_DEEP_OCEAN);
     }
 
     // rivers
-    public static BiomeRestriction coldRivers(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction coldRivers()
     {
         return empty()
-                .tag(context, SCTags.IS_COLD_RIVER);
+                .tag(SCTags.IS_COLD_RIVER);
     }
 
-    public static BiomeRestriction rivers(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction rivers()
     {
         return empty()
-                .tag(context, SCTags.IS_RIVER)
-                .blacklistedTag(context, SCTags.IS_COLD_RIVER);
+                .tag(SCTags.IS_RIVER)
+                .blacklistedTag(SCTags.IS_COLD_RIVER);
     }
 
-    public static BiomeRestriction savannas(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction savannas()
     {
         return empty()
-                .tag(context, BiomeTags.IS_SAVANNA.location());
+                .tag(BiomeTags.IS_SAVANNA.location());
     }
 
-    public static BiomeRestriction beaches(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction beaches()
     {
         return empty()
-                .tag(context, SCTags.IS_BEACH);
+                .tag(SCTags.IS_BEACH);
     }
 
-    public static BiomeRestriction mushroomFields(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction mushroomFields()
     {
         return empty()
-                .tag(context, SCTags.IS_MUSHROOM_FIELDS);
+                .tag(SCTags.IS_MUSHROOM_FIELDS);
     }
 
-    public static BiomeRestriction jungles(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction jungles()
     {
         return empty()
-                .tag(context, BiomeTags.IS_JUNGLE.location());
+                .tag(BiomeTags.IS_JUNGLE.location());
     }
 
-    public static BiomeRestriction taigas(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction taigas()
     {
         return empty()
-                .tag(context, BiomeTags.IS_TAIGA.location());
+                .tag(BiomeTags.IS_TAIGA.location());
     }
 
-    public static BiomeRestriction cherryGroves(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction cherryGroves()
     {
         return empty()
-                .tag(context, SCTags.IS_CHERRY_GROVE);
+                .tag(SCTags.IS_CHERRY_GROVE);
     }
 
-    public static BiomeRestriction junglesAndSwamps(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction junglesAndSwamps()
     {
         return empty()
-                .tag(context, BiomeTags.IS_JUNGLE.location())
-                .tag(context, SCTags.IS_SWAMP);
+                .tag(BiomeTags.IS_JUNGLE.location())
+                .tag(SCTags.IS_SWAMP);
     }
 
-    public static BiomeRestriction swamps(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction swamps()
     {
         return empty()
-                .tag(context, SCTags.IS_SWAMP);
+                .tag(SCTags.IS_SWAMP);
     }
 
-    public static BiomeRestriction mangroveSwamp(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction mangroveSwamp()
     {
         return empty()
-                .biome(context, Biomes.MANGROVE_SWAMP.location());
+                .biome(Biomes.MANGROVE_SWAMP.location());
     }
 
-    public static BiomeRestriction darkForest(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction darkForest()
     {
         return empty()
-                .tag(context, SCTags.IS_DARK_FOREST);
+                .tag(SCTags.IS_DARK_FOREST);
     }
 
-    public static BiomeRestriction forest(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction forest()
     {
         return empty()
-                .tag(context, BiomeTags.IS_FOREST.location());
+                .tag(BiomeTags.IS_FOREST.location());
     }
 
-    public static BiomeRestriction lushCavesAndJungles(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction lushCavesAndJungles()
     {
         return empty()
-                .biome(context, Biomes.LUSH_CAVES.location())
-                .tag(context, BiomeTags.IS_JUNGLE.location());
+                .biome(Biomes.LUSH_CAVES.location())
+                .tag(BiomeTags.IS_JUNGLE.location());
     }
 
-    public static BiomeRestriction crimsonForest(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction crimsonForest()
     {
         return empty()
-                .tag(context, SCTags.IS_CRIMSON_FOREST);
+                .tag(SCTags.IS_CRIMSON_FOREST);
     }
 
-    public static BiomeRestriction warpedForest(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction warpedForest()
     {
         return empty()
-                .tag(context, SCTags.IS_WARPED_FOREST);
+                .tag(SCTags.IS_WARPED_FOREST);
     }
 
-    public static BiomeRestriction soulSandValley(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction soulSandValley()
     {
         return empty()
-                .tag(context, SCTags.IS_SOUL_SAND_VALLEY);
+                .tag(SCTags.IS_SOUL_SAND_VALLEY);
     }
 
-    public static BiomeRestriction basaltDeltas(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction basaltDeltas()
     {
         return empty()
-                .tag(context, SCTags.IS_BASALT_DELTAS);
+                .tag(SCTags.IS_BASALT_DELTAS);
     }
 
-    public static BiomeRestriction outerIslands(BootstrapContext<FishProperties> context)
+    public static BiomeRestriction outerIslands()
     {
         return empty()
-                .tag(context, BiomeTags.IS_END.location())
-                .biome(context, Biomes.THE_END.location());
+                .tag(BiomeTags.IS_END.location())
+                .biome(Biomes.THE_END.location());
     }
 }
