@@ -10,10 +10,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -33,6 +35,15 @@ public class BrokenBottleEntity extends ThrowableItemProjectile
     }
 
     @Override
+    protected void onHitBlock(BlockHitResult result)
+    {
+        //spawn item
+        ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
+        level().addFreshEntity(itemEntity);
+        super.onHitBlock(result);
+    }
+
+    @Override
     protected Item getDefaultItem()
     {
         return SCItems.BROKEN_BOTTLE.get();
@@ -46,14 +57,14 @@ public class BrokenBottleEntity extends ThrowableItemProjectile
 
     public void handleEntityEvent(byte id)
     {
+        //spawn item
+        ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
+        level().addFreshEntity(itemEntity);
+
+        //no idea what id 3 is
         if (id == 3)
-        {
-            ParticleOptions particleoptions = this.getParticle();
             for (int i = 0; i < 8; ++i)
-            {
-                this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), (double) 0.0F, (double) 0.0F, (double) 0.0F);
-            }
-        }
+                this.level().addParticle(this.getParticle(), this.getX(), this.getY(), this.getZ(), 0.0F, 0.0F, 0.0F);
 
     }
 

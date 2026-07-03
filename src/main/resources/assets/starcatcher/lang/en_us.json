@@ -258,7 +258,7 @@
   "tooltip.starcatcher.starcatcher_guide.signed": "This Book Belongs To: %s",
   "tooltip.starcatcher.starcatcher_guide.signed_shift": "Signed By: %s",
 
-  "tooltip.starcatcher.letter": "Written by: ",
+  "tooltip.starcatcher.letter": "Written by: %s",
 
   "item.starcatcher.starcatcher_twine": "Starcatcher's Twine",
   "tooltip.starcatcher.starcatcher_twine.0": "A delicate twine wrapped around a stick.",
@@ -1423,6 +1423,7 @@
   "tooltip.starcatcher.bottled_letter.2" : "the ocean and let it start its journey.",
 
   "item.starcatcher.bottled_letter.thrown" : "Your bottled letter starts its journey...",
+  "item.starcatcher.bottled_letter.dropped" : "A dropped bottled letter won't go far...",
   "item.starcatcher.bottled_letter.thrown.fail" : "Your bottled letter seems to have been eaten by a crab... [No Editable Message Data Component found in item, report this to the dev if the item was not cheated in!]",
 
   "item.starcatcher.message_in_a_bottle" : "Message in a Bottle",
@@ -1434,7 +1435,8 @@
   "tooltip.starcatcher.message.1" : "Who knows how long it's been drifting the waves to reach you.",
 
   "item.starcatcher.broken_bottle" : "Broken Bottle",
-  "tooltip.starcatcher.broken_bottle.0" : "The remains of an once intact bottle.",
+  "tooltip.starcatcher.broken_bottle.0" : "A broken bottle reminiscing the times it was unbroken.",
+  "tooltip.starcatcher.broken_bottle.1" : "Some things never go back to the way they were before.",
 
   "item.starcatcher.secret_note" : "Secret Note",
   "tooltip.starcatcher.secret_note.0" : "An old secret note almost lost to time.",

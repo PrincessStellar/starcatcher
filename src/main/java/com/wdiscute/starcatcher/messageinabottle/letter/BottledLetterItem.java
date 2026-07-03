@@ -1,7 +1,9 @@
 package com.wdiscute.starcatcher.messageinabottle.letter;
 
+import com.wdiscute.libtooltips.Tooltips;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -19,6 +21,13 @@ public class BottledLetterItem extends Item implements ProjectileItem
     public BottledLetterItem()
     {
         super(new Properties().stacksTo(1));
+    }
+
+    @Override
+    public boolean onDroppedByPlayer(ItemStack item, Player player)
+    {
+        player.displayClientMessage(Component.translatable("item.starcatcher.bottled_letter.dropped"), true);
+        return super.onDroppedByPlayer(item, player);
     }
 
     @Override
