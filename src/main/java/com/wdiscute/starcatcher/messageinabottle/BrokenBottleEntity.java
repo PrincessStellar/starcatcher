@@ -57,10 +57,6 @@ public class BrokenBottleEntity extends ThrowableItemProjectile
 
     public void handleEntityEvent(byte id)
     {
-        //spawn item
-        ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
-        level().addFreshEntity(itemEntity);
-
         //no idea what id 3 is
         if (id == 3)
             for (int i = 0; i < 8; ++i)
@@ -71,6 +67,11 @@ public class BrokenBottleEntity extends ThrowableItemProjectile
     protected void onHitEntity(EntityHitResult result)
     {
         super.onHitEntity(result);
+
+        //spawn item
+        ItemEntity itemEntity = new ItemEntity(level(), position().x, position().y, position().z, getItem());
+        level().addFreshEntity(itemEntity);
+
         Entity entity = result.getEntity();
         level().playSound(
                 null,
