@@ -133,6 +133,13 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
+        //leather from boot
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LEATHER, 1)
+                .requires(SCItems.BOOT)
+                .unlockedBy("has_boot", has(SCItems.BOOT))
+                .save(output);
+
+
         //sculk
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.SCULK_BAIT, 4)
                 .requires(Items.BONE_MEAL)
@@ -496,7 +503,7 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .pattern("   ")
                 .pattern("BBB")
                 .pattern(" P ")
-                .unlockedBy("has_fish", has(SCTags.STARCAUGHT_FISHABLES))
+                .unlockedBy("has_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output);
 
         //aquarium
@@ -538,34 +545,34 @@ public class DGSCRecipeProvider extends RecipeProvider
 
         //starcaught fish
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SCItems.STARCAUGHT_FISH, 1)
-                .requires(SCTags.STARCAUGHT_FISHABLES)
-                .unlockedBy("has_common_fish", has(SCTags.COMMON_FISHES))
+                .requires(SCTags.STARCAUGHT_FISHABLE)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_common"));
 
         //cooked fish from starcaught
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smelting_from_starcaught_fish"));
 
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_campfire_from_starcaught_fish"));
 
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCItems.STARCAUGHT_FISH), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking_from_starcaught_fish"));
 
         //cooked fish from tag
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(SCTags.STARCAUGHT_FISHABLE), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 200)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smelting"));
 
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(SCTags.STARCAUGHT_FISHABLE), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 600)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_campfire"));
 
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCTags.STARCAUGHT_FISHABLES), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
-                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLES))
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(SCTags.STARCAUGHT_FISHABLE), RecipeCategory.FOOD, SCItems.COOKED_STARCAUGHT_FISH, 0.35F, 100)
+                .unlockedBy("has_starcaught_fish", has(SCTags.STARCAUGHT_FISHABLE))
                 .save(output, Starcatcher.rl("starcaught_fish_from_smoking"));
 
         //
@@ -870,48 +877,6 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlocks("has_template_obsidian", has(SCItems.OBSIDIAN_SKIN_SMITHING_TEMPLATE))
                 .save(output, Starcatcher.rl("obsidian_rod")
                 );
-
-        //alpha
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.ALPHA_SKIN_SMITHING_TEMPLATE, 2)
-                .define('T', SCItems.ALPHA_SKIN_SMITHING_TEMPLATE)
-                .define('D', Items.DIAMOND)
-                .define('C', Items.GRASS_BLOCK)
-                .pattern("DTD")
-                .pattern("DCD")
-                .pattern("DDD")
-                .unlockedBy("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
-                .save(output);
-
-        StarcatcherRodRecipeBuilder.rodSkin(
-                        Ingredient.of(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE),
-                        Ingredient.of(Items.GRASS_BLOCK),
-                        SCItems.ALPHA_ROD.toStack()
-                )
-                .unlocks("has_template_alpha", has(SCItems.ALPHA_SKIN_SMITHING_TEMPLATE))
-                .save(output, Starcatcher.rl("alpha_rod")
-                );
-
-
-        //good old
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE, 2)
-                .define('T', SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE)
-                .define('D', Items.DIAMOND)
-                .define('C', Items.FISHING_ROD)
-                .pattern("DTD")
-                .pattern("DCD")
-                .pattern("DDD")
-                .unlockedBy("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
-                .save(output);
-
-        StarcatcherRodRecipeBuilder.rodSkin(
-                        Ingredient.of(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE),
-                        Ingredient.of(Items.FISHING_ROD),
-                        SCItems.GOOD_OLD_ROD.toStack()
-                )
-                .unlocks("has_template_good_old", has(SCItems.GOOD_OLD_SKIN_SMITHING_TEMPLATE))
-                .save(output, Starcatcher.rl("good_old_rod")
-                );
-
 
         //boner
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.BONER_SKIN_SMITHING_TEMPLATE, 2)

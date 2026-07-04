@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "starcatcher:starcaught_fishable"
+      "item": "starcatcher:boot"
     }
   ],
   "result": {
     "count": 1,
-    "id": "starcatcher:starcaught_fish"
+    "id": "minecraft:leather"
   }
 }

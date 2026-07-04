@@ -54,7 +54,8 @@ public class SCTags
     public static final TagKey<Item> RODS = ItemTags.create(Starcatcher.rl("rods"));
 
     public static final TagKey<Item> BUCKETABLE_FISHES = ItemTags.create(Starcatcher.rl("bucketable_fishes"));
-    public static final TagKey<Item> STARCAUGHT_FISHABLES = ItemTags.create(Starcatcher.rl("starcaught_fishables"));
+    public static final TagKey<Item> STARCAUGHT_FISHABLE = ItemTags.create(Starcatcher.rl("starcaught_fishable"));
+    public static final TagKey<Item> STARCAUGHT_FISHABLE_FISH = ItemTags.create(Starcatcher.rl("starcaught_fishable_fish"));
     public static final TagKey<Item> FISHABLE = ItemTags.create(Starcatcher.rl("fishable"));
 
     public static final TagKey<Item> CRABS = ItemTags.create(Starcatcher.rl("crabs"));

@@ -3,11 +3,9 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.compat.CreateCompat;
-import com.wdiscute.starcatcher.datagen.fish.DGStarcatcherFishes;
 import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -40,33 +38,35 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
     {
         //fishes, cat_food, foods/raw_fish
         for (var item : BUCKETABLE_FISHES_REGISTRY.getEntries())
-        {
-            tag(ItemTags.FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-            tag(ItemTags.CAT_FOOD).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-            tag(Tags.Items.FOODS_RAW_FISH).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
             tag(SCTags.BUCKETABLE_FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-        }
 
-        for (var item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
-        {
-            tag(ItemTags.FISHES).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-            tag(ItemTags.CAT_FOOD).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-            tag(Tags.Items.FOODS_RAW_FISH).addOptional(BuiltInRegistries.ITEM.getKey(item.value()));
-        }
+        //starcatcher fishes to minecraft and common tags
+        tag(ItemTags.CAT_FOOD).addTag(SCTags.STARCAUGHT_FISHABLE_FISH);
+        tag(ItemTags.FISHES).addTag(SCTags.STARCAUGHT_FISHABLE_FISH);
+        tag(Tags.Items.FOODS_RAW_FISH).addTag(SCTags.STARCAUGHT_FISHABLE_FISH);
 
-        //rarity tags for starcatcher fish only
+        //add every starcatcher FP of STARCAUGHT_FISHABLES to STARCAUGHT_FISHABLES item tag
         for (FishProperties fp : FishRegistration.STARCATCHER_FISHABLE)
         {
             ResourceLocation key = BuiltInRegistries.ITEM.getKey(fp.catchInfo().fish().toItem());
-            tag(SCTags.STARCAUGHT_FISHABLES).addOptional(key);
+            tag(SCTags.STARCAUGHT_FISHABLE).addOptional(key);
         }
 
+        //starcaught fishable fish
+        tag(SCTags.STARCAUGHT_FISHABLE_FISH)
+                .addTag(SCTags.STARCAUGHT_FISHABLE)
+                .remove(SCTags.CRABS)
+                .remove(SCTags.EELS)
+                .remove(SCTags.SHRIMPS)
+        ;
+
+        //cycle every FP
         for (FishProperties fp : FishRegistration.ALL_FISHABLE)
         {
             ResourceLocation key = fp.catchInfo().fish().rl();
 
-            //add all "normal catches" to rarity tags
-            if(fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.catchInfo().alwaysSpawnEntity())
+            //add all non-trophy non-message non-extra to rarity tags
+            if (fp.hasGuideEntry() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.catchInfo().alwaysSpawnEntity())
             {
                 //fishable for tackle box
                 tag(SCTags.FISHABLE).addOptional(key);
@@ -81,14 +81,6 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 }
             }
         }
-
-        //bucketable fish
-        for (FishProperties fp : FishRegistration.STARCATCHER_BUCKETABLE)
-        {
-            tag(SCTags.STARCAUGHT_FISHABLES).add(fp.catchInfo().fish().toItem());
-        }
-
-
 
         //crabs
         tag(SCTags.CRABS)
@@ -107,7 +99,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
 
         //shrimps
         tag(SCTags.SHRIMPS)
-                .add(MOLTEN_SHRIMP.get());
+                .add(MOLTEN_SHRIMP.get())
+                .add(SCORCHED_BLOODSUCKER.get())
+        ;
 
         //worms
         tag(SCTags.WORMS)

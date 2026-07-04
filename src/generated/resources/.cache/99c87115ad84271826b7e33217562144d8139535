@@ -1,7 +1,6 @@
-// 1.21.1	2026-06-27T02:37:49.0877615	Item Models: starcatcher
+// 1.21.1	2026-07-04T14:45:08.4673215	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
-051867812c59ff4273241ad2d047552386f1559a assets/starcatcher/models/item/alpha_skin_smithing_template.json
 033477fbb520065b97801242f6e7c58288fea05d assets/starcatcher/models/item/amethystback.json
 acec16217fc4eb41dcb582e6f31551d755510e80 assets/starcatcher/models/item/amethyst_hook.json
 c9d191032ac9251c4e385286728bcf4b6bb965b2 assets/starcatcher/models/item/aquamarine_pike.json
@@ -98,7 +97,6 @@ b36b128fa801cbb9408d2fd22a19205dbba08c4e assets/starcatcher/models/item/glowston
 0d458e856637d6d09020cc8c87e163d2e2ab21bb assets/starcatcher/models/item/golden_bobber.json
 0cec096e2ac653e2fc204248ac0b760c09316e2d assets/starcatcher/models/item/gold_fan.json
 ca50f132187554666f3f9ad54003c3999b672b57 assets/starcatcher/models/item/gold_hook.json
-f2d5e46cbc9e48865dc830992470bb7c8d1edce8 assets/starcatcher/models/item/good_old_skin_smithing_template.json
 30c783d35cb7dc5ecdb5498914e4f1ec151de446 assets/starcatcher/models/item/gunpowder_bait.json
 933a2bf2227c12a70a336d3b77275e2c41c311e4 assets/starcatcher/models/item/heavy_hook.json
 ae00df136477e53a52813f73d02163bd6dc902ab assets/starcatcher/models/item/hollowbelly_darter.json

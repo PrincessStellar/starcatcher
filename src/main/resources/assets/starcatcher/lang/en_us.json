@@ -116,7 +116,9 @@
   "tag.starcatcher.rods" : "Starcatcher Rods",
   "tag.starcatcher.templates" : "Fishing Rod Templates",
   "tag.starcatcher.bucketable_fishes" : "Starcatcher Bucketable Fishes",
-  "tag.starcatcher.starcaught_fishes" : "Starcaught Fishables",
+  "tag.starcatcher.fishable" : "Fishable",
+  "tag.starcatcher.starcaught_fishable" : "Starcaught Fishable",
+  "tag.starcatcher.starcaught_fishable_fish" : "Starcaught Fishable Fish",
   "tag.starcatcher.hats" : "Hats",
 
   "tag.starcatcher.common_fishes" : "Common Fishes",
@@ -1949,7 +1951,7 @@
 
 
   "item.starcatcher.scorched_bloodsucker" : "Scorched Bloodsucker",
-  "tooltip.starcatcher.scorched_bloodsucker.0" : "A hard to catch parasite found in deepslate lava lakes.",
+  "tooltip.starcatcher.scorched_bloodsucker.0" : "A hard to catch shrimp-like parasite found in deepslate lava lakes.",
 
   "item.starcatcher.molten_deepslate_crab" : "Molten Deepslate Crab",
   "tooltip.starcatcher.molten_deepslate_crab.0" : "A gold colored crab found at deepslate levels close to lava rivers.",

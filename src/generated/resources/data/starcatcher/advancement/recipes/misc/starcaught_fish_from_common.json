@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_common_fish": {
+    "has_starcaught_fish": {
       "conditions": {
         "items": [
           {
-            "items": "#starcatcher:common_fishes"
+            "items": "#starcatcher:starcaught_fishable"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_common_fish"
+      "has_starcaught_fish"
     ]
   ],
   "rewards": {

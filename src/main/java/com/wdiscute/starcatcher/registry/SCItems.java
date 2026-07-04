@@ -8,14 +8,11 @@ import com.wdiscute.starcatcher.messageinabottle.letter.BottledLetterItem;
 import com.wdiscute.starcatcher.messageinabottle.letter.LetterItem;
 import com.wdiscute.starcatcher.messageinabottle.message.MessageInABottleItem;
 import com.wdiscute.starcatcher.messageinabottle.message.MessageItem;
-import com.wdiscute.starcatcher.registry.items.FishItem;
-import com.wdiscute.starcatcher.registry.items.SCFoodProperties;
-import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
-import com.wdiscute.starcatcher.registry.items.helper.BasicItem;
-import com.wdiscute.starcatcher.registry.items.helper.FireResistantBasicItem;
-import com.wdiscute.starcatcher.registry.items.helper.SingleStackBasicItem;
-import com.wdiscute.starcatcher.registry.items.StarcatcherFishingRodItem;
+import com.wdiscute.starcatcher.registry.items.*;
 import com.wdiscute.starcatcher.messageinabottle.*;
+import com.wdiscute.utils.item.BasicItem;
+import com.wdiscute.utils.item.FireResistantBasicItem;
+import com.wdiscute.utils.item.SingleStackBasicItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
@@ -31,7 +28,6 @@ public interface SCItems
 
     static void registerExtraItems()
     {
-        //needs to be commented out during datagen is create is not loaded on dev
         if (ModList.get().isLoaded("create") || DatagenModLoader.isRunningDataGen())
             CreateCompat.register();
     }
@@ -119,8 +115,6 @@ public interface SCItems
     DeferredItem<Item> AZURE_CRYSTAL_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("azure_crystal_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> BAMBOO_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("bamboo_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> OBSIDIAN_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("obsidian_skin_smithing_template", BasicItem::new);
-    DeferredItem<Item> ALPHA_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("alpha_skin_smithing_template", BasicItem::new);
-    DeferredItem<Item> GOOD_OLD_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("good_old_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> BONER_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("boner_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> SKY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("sky_skin_smithing_template", BasicItem::new);
     DeferredItem<Item> LUSH_GLOWBERRY_SKIN_SMITHING_TEMPLATE = TEMPLATES_REGISTRY.register("lush_glowberry_skin_smithing_template", BasicItem::new);
@@ -135,10 +129,8 @@ public interface SCItems
     DeferredItem<Item> SLIMED_ROD = RODS_REGISTRY.register("slimed_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> SHARKTOOTH_ROD = RODS_REGISTRY.register("sharktooth_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> AZURE_CRYSTAL_ROD = RODS_REGISTRY.register("azure_crystal_rod", StarcatcherFishingRodItem::new);
-    DeferredItem<Item> GOOD_OLD_ROD = RODS_REGISTRY.register("good_old_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> BAMBOO_ROD = RODS_REGISTRY.register("bamboo_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> OBSIDIAN_ROD = RODS_REGISTRY.register("obsidian_rod", StarcatcherFishingRodItem::new);
-    DeferredItem<Item> ALPHA_ROD = RODS_REGISTRY.register("alpha_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> BONER_ROD = RODS_REGISTRY.register("boner_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> SKY_ROD = RODS_REGISTRY.register("sky_rod", StarcatcherFishingRodItem::new);
     DeferredItem<Item> LUSH_GLOWBERRY_ROD = RODS_REGISTRY.register("lush_glowberry_rod", StarcatcherFishingRodItem::new);
@@ -209,7 +201,7 @@ public interface SCItems
     DeferredItem<Item> OASIS_STURGEON = registerBucketFish("oasis_sturgeon");
 
     //swamp
-    DeferredItem<Item> MOSSY_BOOT = registerNonBucketFish("mossy_boot");
+    DeferredItem<Item> MOSSY_BOOT = ITEMS.register("mossy_boot", MossyBootItem::new);
 
     DeferredItem<Item> SLUDGE_CATFISH = registerBucketFish("sludge_catfish");
 
@@ -252,7 +244,7 @@ public interface SCItems
     DeferredItem<Item> HOLLOWBELLY_DARTER = registerBucketFish("hollowbelly_darter");
     DeferredItem<Item> MISTBACK_CHUB = registerBucketFish("mistback_chub");
     DeferredItem<Item> BLUEGIGI = registerNonBucketFish("bluegigi");
-    DeferredItem<Item> DRIED_SEAWEED = registerNonBucketFish("dried_seaweed");
+    DeferredItem<Item> DRIED_SEAWEED = ITEMS.register("dried_seaweed", BasicItem::new);
 
     //icy river
     DeferredItem<Item> FROSTGILL_CHUB = registerBucketFish("frostgill_chub");

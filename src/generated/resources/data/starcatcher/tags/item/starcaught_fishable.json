@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "starcatcher:boot",
-      "required": false
-    },
-    {
       "id": "starcatcher:obidontiee",
       "required": false
     },
@@ -117,10 +113,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:mossy_boot",
-      "required": false
-    },
-    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -174,10 +166,6 @@
     },
     {
       "id": "starcatcher:sunflower_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dried_seaweed",
       "required": false
     },
     {
@@ -258,14 +246,6 @@
     },
     {
       "id": "starcatcher:bigeye_tuna",
-      "required": false
-    },
-    {
-      "id": "starcatcher:conch",
-      "required": false
-    },
-    {
-      "id": "starcatcher:clam",
       "required": false
     },
     {
@@ -425,10 +405,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:lava_crab_claw",
-      "required": false
-    },
-    {
       "id": "starcatcher:willish",
       "required": false
     },
@@ -510,10 +486,6 @@
     },
     {
       "id": "starcatcher:meka_agave_bream",
-      "required": false
-    },
-    {
-      "id": "starcatcher:boot",
       "required": false
     },
     {
@@ -629,10 +601,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:mossy_boot",
-      "required": false
-    },
-    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -686,10 +654,6 @@
     },
     {
       "id": "starcatcher:sunflower_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dried_seaweed",
       "required": false
     },
     {
@@ -770,14 +734,6 @@
     },
     {
       "id": "starcatcher:bigeye_tuna",
-      "required": false
-    },
-    {
-      "id": "starcatcher:conch",
-      "required": false
-    },
-    {
-      "id": "starcatcher:clam",
       "required": false
     },
     {
@@ -937,10 +893,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:lava_crab_claw",
-      "required": false
-    },
-    {
       "id": "starcatcher:willish",
       "required": false
     },
@@ -1023,112 +975,6 @@
     {
       "id": "starcatcher:meka_agave_bream",
       "required": false
-    },
-    "starcatcher:obidontiee",
-    "starcatcher:driftfin",
-    "starcatcher:rainfin",
-    "starcatcher:silverveil_perch",
-    "starcatcher:elderscale",
-    "starcatcher:sunny_sturgeon",
-    "starcatcher:twilight_koi",
-    "starcatcher:ripple_catfish",
-    "starcatcher:sun_seeking_carp",
-    "starcatcher:thunder_bass",
-    "starcatcher:lightning_bass",
-    "starcatcher:icetooth_sturgeon",
-    "starcatcher:crystalback_trout",
-    "starcatcher:wintery_pike",
-    "starcatcher:crystalback_boreal",
-    "starcatcher:blue_ice_pike",
-    "starcatcher:boreal",
-    "starcatcher:mirage_carp",
-    "starcatcher:agave_bream",
-    "starcatcher:cactifish",
-    "starcatcher:oasis_sturgeon",
-    "starcatcher:sludge_catfish",
-    "starcatcher:lily_snapper",
-    "starcatcher:pinfish",
-    "starcatcher:pale_pinfish",
-    "starcatcher:petaldrift_carp",
-    "starcatcher:pink_koi",
-    "starcatcher:downfall_bream",
-    "starcatcher:drifting_bream",
-    "starcatcher:willow_bream",
-    "starcatcher:hollowbelly_darter",
-    "starcatcher:mistback_chub",
-    "starcatcher:silverfin_pike",
-    "starcatcher:carpenjoe",
-    "starcatcher:frostgill_chub",
-    "starcatcher:crystalback_minnow",
-    "starcatcher:blue_crystal_fin",
-    "starcatcher:blue_herring",
-    "starcatcher:ironjaw_herring",
-    "starcatcher:deepjaw_herring",
-    "starcatcher:dusktail_snapper",
-    "starcatcher:redscaled_tuna",
-    "starcatcher:bigeye_tuna",
-    "starcatcher:morganite",
-    "starcatcher:whiteveil",
-    "starcatcher:yellowstone_fish",
-    "starcatcher:lush_pike",
-    "starcatcher:vivid_moss",
-    "starcatcher:the_quarrish",
-    "starcatcher:ghostly_pike",
-    "starcatcher:sculkfish",
-    "starcatcher:cerberay",
-    "starcatcher:charfish",
-    "starcatcher:obidontiee",
-    "starcatcher:driftfin",
-    "starcatcher:rainfin",
-    "starcatcher:silverveil_perch",
-    "starcatcher:elderscale",
-    "starcatcher:sunny_sturgeon",
-    "starcatcher:twilight_koi",
-    "starcatcher:ripple_catfish",
-    "starcatcher:sun_seeking_carp",
-    "starcatcher:thunder_bass",
-    "starcatcher:lightning_bass",
-    "starcatcher:icetooth_sturgeon",
-    "starcatcher:crystalback_trout",
-    "starcatcher:wintery_pike",
-    "starcatcher:crystalback_boreal",
-    "starcatcher:blue_ice_pike",
-    "starcatcher:boreal",
-    "starcatcher:mirage_carp",
-    "starcatcher:agave_bream",
-    "starcatcher:cactifish",
-    "starcatcher:oasis_sturgeon",
-    "starcatcher:sludge_catfish",
-    "starcatcher:lily_snapper",
-    "starcatcher:pinfish",
-    "starcatcher:pale_pinfish",
-    "starcatcher:petaldrift_carp",
-    "starcatcher:pink_koi",
-    "starcatcher:downfall_bream",
-    "starcatcher:drifting_bream",
-    "starcatcher:willow_bream",
-    "starcatcher:hollowbelly_darter",
-    "starcatcher:mistback_chub",
-    "starcatcher:silverfin_pike",
-    "starcatcher:carpenjoe",
-    "starcatcher:frostgill_chub",
-    "starcatcher:crystalback_minnow",
-    "starcatcher:blue_crystal_fin",
-    "starcatcher:blue_herring",
-    "starcatcher:ironjaw_herring",
-    "starcatcher:deepjaw_herring",
-    "starcatcher:dusktail_snapper",
-    "starcatcher:redscaled_tuna",
-    "starcatcher:bigeye_tuna",
-    "starcatcher:morganite",
-    "starcatcher:whiteveil",
-    "starcatcher:yellowstone_fish",
-    "starcatcher:lush_pike",
-    "starcatcher:vivid_moss",
-    "starcatcher:the_quarrish",
-    "starcatcher:ghostly_pike",
-    "starcatcher:sculkfish",
-    "starcatcher:cerberay",
-    "starcatcher:charfish"
+    }
   ]
 }

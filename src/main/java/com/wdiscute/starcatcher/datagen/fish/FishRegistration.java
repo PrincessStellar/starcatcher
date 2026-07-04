@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
@@ -20,7 +21,6 @@ public final class FishRegistration
 {
     public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
     public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
-    public static final List<FishProperties> STARCATCHER_BUCKETABLE = new ArrayList<>();
 
     public static void register(BootstrapContext<FishProperties> context, FishProperties fp)
     {
@@ -69,13 +69,9 @@ public final class FishRegistration
     {
         ALL_FISHABLE.add(fp);
 
-        if (fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
+        //add every starcatcher fish that is not trash to STARCATCHER_FISHABLE tag
+        if (fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.rarity().equals(Rarity.TRASH))
             STARCATCHER_FISHABLE.add(fp);
-
-        if (SCItems.BUCKETABLE_FISHES_REGISTRY.getEntries().stream().map(o -> o.getKey().location())
-                .anyMatch(o -> fp.catchInfo().fish().rl().equals(o)))
-            STARCATCHER_BUCKETABLE.add(fp);
-
     }
 
     private static FishProperties sortRestrictions(FishProperties fp)
