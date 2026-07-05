@@ -1,0 +1,80 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tide"
+    }
+  ],
+  "base_chance": 5,
+  "catch_info": {
+    "entity": "tide:mirage_catfish",
+    "fish_bucket": "tide:mirage_catfish_bucket",
+    "item": "tide:mirage_catfish"
+  },
+  "difficulty": {
+    "decay": 1.0,
+    "hp": 100,
+    "missPenalty": 5,
+    "modifiers": [],
+    "speed": 13,
+    "sweetspots": [
+      {
+        "color_as_int": -13076094,
+        "hitbox_size_in_pixels": 24,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 10,
+        "sweetspot_type": "starcatcher:aqua",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
+        "vanishing_rate": 0.0
+      }
+    ]
+  },
+  "has_guide_entry": true,
+  "rarity": "rare",
+  "restrictions": [
+    {
+      "type": "starcatcher:dimension",
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [
+        "#starcatcher:is_warm_lake"
+      ],
+      "blacklist": []
+    },
+    {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 16500,
+          "second": 19500
+        }
+      ],
+      "translation_override": "gui.guide.midnight"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
+    }
+  ],
+  "size_and_weight": {
+    "average_size_cm": 100.0,
+    "average_weight_grams": 10000.0,
+    "deviation_size_cm": 50.0,
+    "deviation_weight_grams": 3000.0,
+    "golden_chance": 0.02
+  },
+  "skips_minigame": false,
+  "textures": "starcatcher:textures/gui/minigame/surface.png"
+}
