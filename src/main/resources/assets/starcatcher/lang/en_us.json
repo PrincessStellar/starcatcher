@@ -29,6 +29,7 @@
   "stat.starcatcher.starcaught_treasures": "Starcaught Treasures",
   "stat.starcatcher.starcaught_fish": "Starcaught Fish",
   "stat.starcatcher.starcaught_fish_missed": "Starcaught Fish Missed",
+  "stat.starcatcher.bait_used": "Bait used",
 
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",
@@ -585,18 +586,6 @@
 
   "block.starcatcher.display" : "Starcatcher's Display",
 
-  "item.starcatcher.award_all_fishes" : "Award All Fishes",
-  "item.starcatcher.award_one_fish" : "Award One Fish",
-  "item.starcatcher.revoke_all_fishes" : "Revoke All Fishes",
-
-  "item.starcatcher.award_all_trophies" : "Award All Trophies",
-  "item.starcatcher.revoke_all_trophies" : "Revoke All trophies",
-
-  "item.starcatcher.award_all_secrets" : "Award All Secrets",
-  "item.starcatcher.revoke_all_secrets" : "Revoke All Secrets",
-
-  "item.starcatcher.revoke_all_extras" : "Revoke All Extras",
-
   "gui.starcatcher.toast.fish_caught" : "New Fish Caught!",
 
   "gui.guide.signed.0" : "This book is Signed and will",
@@ -1148,38 +1137,23 @@
 
 
 
+  "gui.guide.page.12.left.title" : "Stats",
 
-  "gui.guide.page.12.left.title" : "Trophies",
-  "gui.guide.page.12.left.0" : "",
-  "gui.guide.page.12.left.1" : "",
-  "gui.guide.page.12.left.2" : "",
-  "gui.guide.page.12.left.3" : "",
-  "gui.guide.page.12.left.4" : "",
-  "gui.guide.page.12.left.5" : "  Trophies are a display",
-  "gui.guide.page.12.left.6" : "of one's skill in angling",
-  "gui.guide.page.12.left.7" : "and are sure to put",
-  "gui.guide.page.12.left.8" : "others to shame for their",
-  "gui.guide.page.12.left.9" : "lack of trophyfulness.",
-  "gui.guide.page.12.left.10" : "",
-  "gui.guide.page.12.left.11" : "  Trophies will instantly",
-  "gui.guide.page.12.left.12" : "bite your hook once all",
-  "gui.guide.page.12.left.13" : "the conditions are met.",
-
-  "gui.guide.page.12.right.title" : "Secrets",
+  "gui.guide.page.12.right.title" : "Trophies",
   "gui.guide.page.12.right.0" : "",
   "gui.guide.page.12.right.1" : "",
   "gui.guide.page.12.right.2" : "",
   "gui.guide.page.12.right.3" : "",
   "gui.guide.page.12.right.4" : "",
-  "gui.guide.page.12.right.5" : "  Who knows what forgotten",
-  "gui.guide.page.12.right.6" : "stories you might find",
-  "gui.guide.page.12.right.7" : "encapsulated in bottles",
-  "gui.guide.page.12.right.8" : "adrift the waves.",
-  "gui.guide.page.12.right.9" : "",
-  "gui.guide.page.12.right.10" : "  Keep an eye out for",
-  "gui.guide.page.12.right.11" : "hints of treasures left",
-  "gui.guide.page.12.right.12" : "behind by other anglers!",
-
+  "gui.guide.page.12.right.5" : "  Trophies are a display",
+  "gui.guide.page.12.right.6" : "of one's skill in angling",
+  "gui.guide.page.12.right.7" : "and are sure to put",
+  "gui.guide.page.12.right.8" : "others to shame for their",
+  "gui.guide.page.12.right.9" : "lack of trophyfulness.",
+  "gui.guide.page.12.right.10" : "",
+  "gui.guide.page.12.right.11" : "  Trophies will instantly",
+  "gui.guide.page.12.right.12" : "bite your hook once all",
+  "gui.guide.page.12.right.13" : "the conditions are met.",
 
   "gui.guide.lakes" : "Lakes",
   "gui.guide.lakes.hover" : "Unremarkable surface biomes.",

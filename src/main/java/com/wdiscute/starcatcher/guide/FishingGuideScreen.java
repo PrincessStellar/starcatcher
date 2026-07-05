@@ -15,8 +15,6 @@ import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import com.wdiscute.starcatcher.data.network.SBTrackFishPayload;
-import com.wdiscute.starcatcher.messageinabottle.message.Message;
-import com.wdiscute.starcatcher.messageinabottle.message.MessageScreen;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.data.network.SignGuidePayload;
@@ -137,7 +135,7 @@ public class FishingGuideScreen extends Screen
     private final ItemStack sweetspotsIcon;
     private final ItemStack treasureIcon;
     private final ItemStack standIcon;
-    private final ItemStack letterBottleIcon;
+    private final ItemStack letterIcon;
     private final ItemStack aquariumIcon;
     private final ItemStack displayIcon;
     private final ItemStack guideIcon;
@@ -527,8 +525,8 @@ public class FishingGuideScreen extends Screen
         double y = mouseY - uiY;
 
         //if hovering scrollable on left
-        if (x > 53 && x < 189 && y > 145 && y < 200 && menu == 1 &&
-            (page == 4 || page == 5 || page == 6 || page == 10 || page == 12))
+        if (x > 53 && x < 189 && y > 155 && y < 200 && menu == 1 &&
+            (page == 4 || page == 5 || page == 6 || page == 10))
         {
             if (scrollY < 0)
                 leftPageScroll++;
@@ -538,8 +536,8 @@ public class FishingGuideScreen extends Screen
         else
         {
             //if hovering scrollable on right
-            if (x > 212 && x < 356 && y > 145 && y < 200 && menu == 1 &&
-                (page == 5 || page == 12))
+            if (x > 212 && x < 356 && y > 155 && y < 200 && menu == 1 &&
+                (page == 5 || page == 6 || page == 12))
             {
                 if (scrollY < 0)
                     rightPageScroll++;
@@ -859,9 +857,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     leftPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
                     leftPageScroll++;
+                }
 
                 //scrollable tackle boxes icons
                 for (int i = 0; i < 5; i++)
@@ -896,9 +900,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     leftPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
                     leftPageScroll++;
+                }
 
                 //hooks and bobbers items
                 for (int i = 0; i < 5; i++)
@@ -928,9 +938,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     rightPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     rightPageScroll++;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
 
 
                 //scrollable baits icons
@@ -965,9 +981,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     leftPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
                     leftPageScroll++;
+                }
 
                 //hooks and bobbers items
                 for (int i = 0; i < 5; i++)
@@ -997,9 +1019,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     rightPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     rightPageScroll++;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
 
 
                 //scrollable tackles icons
@@ -1035,7 +1063,7 @@ public class FishingGuideScreen extends Screen
             case 8 ->
             {
                 renderImage(guiGraphics, HELP_PAGE_MESSAGES);
-                renderItemWithHoverAndEmi(guiGraphics, letterBottleIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+                renderItemWithHoverAndEmi(guiGraphics, letterIcon, uiX + 166, uiY + 39, mouseX, mouseY);
 
                 for (int i = 0; i < 4; i++)
                 {
@@ -1061,9 +1089,15 @@ public class FishingGuideScreen extends Screen
                 guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
                 guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
                 if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
                     leftPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
                 if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
                     leftPageScroll++;
+                }
 
                 //hooks and bobbers items
                 for (int i = 0; i < 5; i++)
@@ -1096,27 +1130,41 @@ public class FishingGuideScreen extends Screen
             }
 
 
-            //trophies and secrets
+            //stats and trophies
             case 12 ->
             {
                 renderImage(guiGraphics, HELP_PAGE_TROPHIES);
-                renderItemWithHoverAndEmi(guiGraphics, trophyIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+                renderItemWithHoverAndEmi(guiGraphics, letterIcon, uiX + 166, uiY + 39, mouseX, mouseY);
 
-                //left page scroll arrows
-                guiGraphics.blit(ARROW_LEFT, uiX + 54, uiY + 170, 0, 0, 16, 16, 16, 16);
-                guiGraphics.blit(ARROW_RIGHT, uiX + 171, uiY + 170, 0, 0, 16, 16, 16, 16);
-                if (clicked && mouseX > uiX + 54 && mouseX < uiX + 64 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    leftPageScroll--;
-                if (clicked && mouseX > uiX + 175 && mouseX < uiX + 185 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    leftPageScroll++;
 
-                //trophies items
+                guiGraphics.drawString(font, "test", uiX + 53, uiY + 63, SCColors.GUIDE_TEXT_DARK, false);
+
+
+                //trophy icon
+                renderItemWithHoverAndEmi(guiGraphics, trophyIcon, uiX + 321, uiY + 39, mouseX, mouseY);
+
+                //right page scroll arrows
+                guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
+                guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
+                if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    rightPageScroll--;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
+                if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
+                {
+                    rightPageScroll++;
+                    player.playSound(SoundEvents.BAMBOO_WOOD_BUTTON_CLICK_ON, 0.3f, 1f);
+                }
+
+
+                //scrollable trophy icons
                 for (int i = 0; i < 5; i++)
                 {
-                    int x = uiX + 72 + (i * 20);
+                    int x = uiX + 238 + (i * 20);
                     int y = uiY + 170;
-                    ItemStack stack = trophiesIS.get(Math.abs((leftPageScroll + i) % trophiesIS.size()));
-                    FishProperties fp = trophies.get(Math.abs((leftPageScroll + i) % trophies.size()));
+                    ItemStack stack = trophiesIS.get(Math.abs((rightPageScroll + i) % trophiesIS.size()));
+                    FishProperties fp = trophies.get(Math.abs((rightPageScroll + i) % trophies.size()));
                     //render item
                     renderItem(stack, x, y, 1);
                     //render hover item tooltip
@@ -1130,47 +1178,6 @@ public class FishingGuideScreen extends Screen
                         //if clicked on a trophy, display FP
                         if (clicked && !fp.equals(FishProperties.empty()))
                             Minecraft.getInstance().setScreen(new IsolatedFPScreen(fp, this));
-                    }
-
-                    //scrollable background fill
-                    guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
-                }
-
-
-                //secret icon
-                renderItemWithHoverAndEmi(guiGraphics, letterBottleIcon, uiX + 321, uiY + 39, mouseX, mouseY);
-
-                //right page scroll arrows
-                guiGraphics.blit(ARROW_LEFT, uiX + 224, uiY + 170, 0, 0, 16, 16, 16, 16);
-                guiGraphics.blit(ARROW_RIGHT, uiX + 332, uiY + 170, 0, 0, 16, 16, 16, 16);
-                if (clicked && mouseX > uiX + 225 && mouseX < uiX + 235 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    rightPageScroll--;
-                if (clicked && mouseX > uiX + 336 && mouseX < uiX + 346 && mouseY > uiY + 170 && mouseY < uiY + 170 + 16)
-                    rightPageScroll++;
-
-
-                //scrollable secrets icons
-                for (int i = 0; i < 5; i++)
-                {
-                    int x = uiX + 238 + (i * 20);
-                    int y = uiY + 170;
-                    ItemStack stack = secretsIS.get(Math.abs((rightPageScroll + i) % secretsIS.size()));
-                    FishProperties fp = secrets.get(Math.abs((rightPageScroll + i) % secrets.size()));
-                    //render item
-                    renderItem(stack, x, y, 1);
-                    //render hover item tooltip
-                    if (mouseX > x && mouseX < x + 16 && mouseY > y && mouseY < y + 16)
-                    {
-                        FishCaughtCounter fcc = fishCaughtCounterMap.get(fp.toLoc(level));
-
-                        if (fcc != null)
-                            guiGraphics.renderTooltip(font, stack, mouseX, mouseY);
-
-                        //if clicked on a trophy, display FP
-                        if (clicked && !fp.equals(FishProperties.empty()) && fcc != null && stack.is(SCItems.MESSAGE_IN_A_BOTTLE))
-                            Minecraft.getInstance().setScreen(
-                                    new MessageScreen(SCDataComponents.getOrDefault(stack, SCDataComponents.MESSAGE, Message.DEFAULT))
-                            );
                     }
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
@@ -1814,8 +1821,8 @@ public class FishingGuideScreen extends Screen
         standIcon = new ItemStack(SCBlocks.STAND.get());
         var fishermanHatIcon = new ItemStack(SCBlocks.FISHERMAN_HAT_BLUE.get());
         var settingsIcon = new ItemStack(SCItems.SETTINGS.get());
-        var letterIcon = new ItemStack(SCItems.LETTER.get());
-        letterBottleIcon = new ItemStack(SCItems.BOTTLED_LETTER.get());
+        letterIcon = new ItemStack(SCItems.LETTER.get());
+        var letterBottleIcon = new ItemStack(SCItems.LETTER.get());
         var messageBottleIcon = new ItemStack(SCItems.MESSAGE_IN_A_BOTTLE.get());
         var messageIcon = new ItemStack(SCItems.MESSAGE.get());
         sellingBinIcon = new ItemStack(SBBlocks.SELLING_BIN.get());

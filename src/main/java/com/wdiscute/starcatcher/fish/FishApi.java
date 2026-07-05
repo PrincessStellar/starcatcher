@@ -355,6 +355,7 @@ public class FishApi
             if (!bait.is(Tags.Items.BUCKETS_EMPTY))
             {
                 bait.shrink(1);
+                player.awardStat(SCStats.BAIT_USED.get(), 1);
                 SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
             }
 
@@ -362,6 +363,7 @@ public class FishApi
             if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && time != -1)
             {
                 bait.shrink(1);
+                player.awardStat(SCStats.BAIT_USED.get(), 1);
                 SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
             }
 
