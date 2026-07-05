@@ -14,11 +14,21 @@ import java.util.List;
 public class MessageScreen extends Screen
 {
     private final Message message;
+    private final Screen screenToReturnTo;
 
     public MessageScreen(Message message)
     {
         super(Component.empty());
         this.message = message;
+        this.screenToReturnTo = null;
+    }
+
+    public MessageScreen(Message message, Screen screenToReturnTo)
+    {
+        super(Component.empty());
+        this.message = message;
+        this.screenToReturnTo = screenToReturnTo;
+        Minecraft.getInstance().player.playSound(SoundEvents.BOOK_PAGE_TURN);
     }
 
     public static void openMessageScreen(Message message)
@@ -72,6 +82,18 @@ public class MessageScreen extends Screen
     private void renderImage(GuiGraphics guiGraphics, ResourceLocation rl)
     {
         guiGraphics.blit(rl, uiX, uiY, 0, 0, 512, 256, 512, 256);
+    }
+
+    @Override
+    public void onClose()
+    {
+        if(screenToReturnTo != null)
+        {
+            Minecraft.getInstance().setScreen(screenToReturnTo);
+            Minecraft.getInstance().player.playSound(SoundEvents.BOOK_PAGE_TURN);
+        }
+        else
+            super.onClose();
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-04T14:45:08.4673215	Item Models: starcatcher
+// 1.21.1	2026-07-05T15:51:41.1217744	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 033477fbb520065b97801242f6e7c58288fea05d assets/starcatcher/models/item/amethystback.json
@@ -124,7 +124,6 @@ d1c8a3a0e24044485a540d3e01d98db535c272a2 assets/starcatcher/models/item/magma_fi
 4d4fdeb7bd37f20764544a5c6e01912ee3faf721 assets/starcatcher/models/item/mechanical_brass_snail.json
 2c32e87f2e08330bafb412a20343f7a289e49e16 assets/starcatcher/models/item/mechanical_snail.json
 f86ae63ac899fb9825b742a576681ed13b05c057 assets/starcatcher/models/item/meka_agave_bream.json
-89eab477ec005bf3be94d20ab1318b94f4a906e5 assets/starcatcher/models/item/message.json
 5b4c17f7edf796079e2e97e26a5ccdca64dc90e7 assets/starcatcher/models/item/message_in_a_bottle.json
 a02ed29e60857f57b56acb3bd991230ad7962737 assets/starcatcher/models/item/meteorological_bait.json
 d98b04fa0f7414323b56a41c977190c4d48f8bfd assets/starcatcher/models/item/mirage_carp.json

@@ -12,6 +12,7 @@ import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataMaps;
+import com.wdiscute.starcatcher.registry.SCItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
@@ -126,7 +127,7 @@ public class TooltipEvents
         }
 
         //message tooltip
-        if (SCDataComponents.has(stack, SCDataComponents.MESSAGE))
+        if (SCDataComponents.has(stack, SCDataComponents.MESSAGE) && stack.is(SCItems.MESSAGE))
         {
             Message message = SCDataComponents.get(stack, SCDataComponents.MESSAGE);
             if (!message.senderDisplayName().isEmpty())
