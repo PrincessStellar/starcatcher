@@ -105,6 +105,12 @@
         "minecraft:the_end"
       ],
       "dimensions_blacklist": []
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ]
     }
   ],
   "size_and_weight": {
