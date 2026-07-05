@@ -56,7 +56,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(BOTTLED_LETTER);
 
         simpleItem(MESSAGE_IN_A_BOTTLE);
-        simpleItem(MESSAGE);
+        //simpleItem(MESSAGE);
 
         simpleItem(BROKEN_BOTTLE);
 
@@ -161,9 +161,6 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleBlockItem(TACKLE_BOX_GREEN.get());
 
     }
-
-
-
 
     private ItemModelBuilder simpleItem(DeferredItem<? extends Item> item)
     {

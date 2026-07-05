@@ -261,7 +261,7 @@
   "tooltip.starcatcher.starcatcher_guide.signed": "This Book Belongs To: %s",
   "tooltip.starcatcher.starcatcher_guide.signed_shift": "Signed By: %s",
 
-  "tooltip.starcatcher.letter": "Written by: %s",
+  "tooltip.starcatcher.letter": "Written by: ",
 
   "item.starcatcher.starcatcher_twine": "Starcatcher's Twine",
   "tooltip.starcatcher.starcatcher_twine.0": "A delicate twine wrapped around a stick.",
@@ -726,7 +726,7 @@
 
   "gui.guide.index.cosmetics" : "Cosmetics",
   "gui.guide.index.tournaments" : "Fishing Tournaments",
-  "gui.guide.index.messages" : "Letters & Messages-in-a-bottle",
+  "gui.guide.index.messages" : "Letters  & Messages-in-a-bottle",
   "gui.guide.index.selling_bin" : "Selling Your Fishes!",
   "gui.guide.index.aquarium" : "Aquariums",
   "gui.guide.index.display" : "Display",
@@ -1008,6 +1008,7 @@
 
 
 
+  "gui.guide.page.8.left.messages_found" : "Messages found",
   "gui.guide.page.8.left.title" : "Messages",
   "gui.guide.page.8.left.0" : "",
   "gui.guide.page.8.left.1" : "",
@@ -1024,19 +1025,13 @@
   "gui.guide.page.8.right.1" : "",
   "gui.guide.page.8.right.2" : "",
   "gui.guide.page.8.right.3" : "",
-  "gui.guide.page.8.right.4" : "",
-  "gui.guide.page.8.right.5" : "  Whoever left these is",
-  "gui.guide.page.8.right.6" : "most likely gone by now,",
-  "gui.guide.page.8.right.7" : "however you too can",
-  "gui.guide.page.8.right.8" : "write down your stories",
-  "gui.guide.page.8.right.9" : "in a <sclegendary>letter</sclegendary>, put it inside",
-  "gui.guide.page.8.right.10" : "a bottle, and throw it",
-  "gui.guide.page.8.right.11" : "out to the ocean!",
-  "gui.guide.page.8.right.12" : "",
-  "gui.guide.page.8.right.13" : "",
-  "gui.guide.page.8.right.14" : "",
-  "gui.guide.page.8.right.15" : "  Some lonely angler is",
-  "gui.guide.page.8.right.16" : "bound find it at some point...",
+  "gui.guide.page.8.right.4" : "  Whoever left these is",
+  "gui.guide.page.8.right.5" : "most likely gone by now,",
+  "gui.guide.page.8.right.6" : "however you too can",
+  "gui.guide.page.8.right.7" : "write down your stories",
+  "gui.guide.page.8.right.8" : "in a <sclegendary>letter</sclegendary>, put it inside",
+  "gui.guide.page.8.right.9" : "a bottle, and throw it",
+  "gui.guide.page.8.right.10" : "out to the ocean!",
 
   "gui.guide.page.9.left.title" : "Selling Bin",
   "gui.guide.page.9.left.0" : "",

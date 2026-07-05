@@ -59,7 +59,7 @@ public record FishCaughtCounter(
     @Nonnull
     public static FishCaughtCounter create(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, Util.getEpochMillis(), golden, perfectCatch, hasGuideNotification);
+        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, Util.getEpochMillis() / 1000, golden, perfectCatch, hasGuideNotification);
     }
 
     public FishCaughtCounter getUpdated(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)

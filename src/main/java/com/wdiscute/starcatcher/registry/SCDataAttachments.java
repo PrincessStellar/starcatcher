@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.registry;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.data.attachments.FishingBobAttachment;
 import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +25,12 @@ public interface SCDataAttachments
     Supplier<AttachmentType<FishingBobAttachment>> FISHING_BOB = ATTACHMENT_TYPES.register(
             "fishing_bob", () -> AttachmentType.builder(() -> new FishingBobAttachment(""))
                     .sync(FishingBobAttachment.STREAM_CODEC)
+                    .build()
+    );
+
+    Supplier<AttachmentType<List<Message>>> MESSAGES_CAUGHT = ATTACHMENT_TYPES.register(
+            "messages_caught", () -> AttachmentType.builder(() -> List.<Message>of())
+                    .sync(Message.STREAM_CODEC.apply(ByteBufCodecs.list()))
                     .build()
     );
 

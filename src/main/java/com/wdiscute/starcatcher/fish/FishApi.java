@@ -505,12 +505,12 @@ public class FishApi
         return registryAccess.registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).stream().filter(o -> o.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.TROPHY)).toList();
     }
 
-    public static List<FishProperties> getSecrets(Level level)
+    public static List<FishProperties> getMessages(Level level)
     {
-        return getSecrets(level.registryAccess());
+        return getMessages(level.registryAccess());
     }
 
-    public static List<FishProperties> getSecrets(RegistryAccess registryAccess)
+    public static List<FishProperties> getMessages(RegistryAccess registryAccess)
     {
         return registryAccess.registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).stream().filter(o -> o.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.MESSAGE)).toList();
     }

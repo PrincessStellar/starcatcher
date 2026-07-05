@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.registry;
 
 import com.wdiscute.starcatcher.Starcatcher;
+import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.utils.MaybeStack;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.Item;
@@ -11,7 +12,6 @@ public interface SCItemProperties
 
     static void addCustomItemProperties()
     {
-
         for (DeferredHolder<Item, ? extends Item> item : SCItems.RODS_REGISTRY.getEntries())
         {
             ItemProperties.register(
@@ -28,6 +28,26 @@ public interface SCItemProperties
                     }
             );
         }
+
+        ItemProperties.register(
+                SCItems.MESSAGE.get(),
+                Starcatcher.rl("message"),
+                (stack, level, entity, seed) ->
+                {
+                    if (entity == null) return 0.0f;
+
+                    Message message = SCDataComponents.get(stack, SCDataComponents.MESSAGE);
+                    if (message == null) return 0;
+
+                    if (message.background().equals(Message.BACKGROUND_NETHER))
+                        return 1;
+
+                    if (message.background().equals(Message.BACKGROUND_END))
+                        return 2;
+
+                    return 0f;
+                }
+        );
 
     }
 }
