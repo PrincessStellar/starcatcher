@@ -289,7 +289,6 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "flashlight_fish")
                         .withEntityToSpawn("hybrid_aquatic", "flashlight_fish")
                         .withSizeAndWeight(20, 10, 80, 40)
-                        .withDifficulty(Difficulty.EASY_FAST_FISH)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
@@ -515,7 +514,6 @@ public class DGHybridAquaticFishes
                         .withFish("hybrid_aquatic", "pleco")
                         .withEntityToSpawn("hybrid_aquatic", "pleco")
                         .withSizeAndWeight(35.5f, 25.5f, 170.1f, 122.2f)
-                        .withDifficulty(Difficulty.EASY_FAST_FISH)
                         .withRarity(Rarity.COMMON),
                 "hybrid_aquatic"
         );

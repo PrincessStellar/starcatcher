@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "entity": "aquaculture:bayad",
     "fish_bucket": "aquaculture:bayad_bucket",
@@ -56,7 +56,8 @@
         "#starcatcher:is_river",
         "#starcatcher:is_mushroom_fields",
         "#starcatcher:is_cold_lake",
-        "#starcatcher:is_warm_lake"
+        "#starcatcher:is_warm_lake",
+        "#starcatcher:is_cherry_grove"
       ],
       "hover_translation": "gui.guide.lakes.hover",
       "translation_override": "gui.guide.lakes"

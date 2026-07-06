@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "entity": "aquaculture:box_turtle",
     "item": "aquaculture:box_turtle"

@@ -122,9 +122,14 @@ public class FishApi
     {
         int chance = fp.baseChance();
 
+//        if(fp.catchInfo().fish().rl().equals(SCItems.OASIS_STURGEON.getId()))
+//        {
+//            System.out.println("adwa");
+//        }
+
         for (var restriction : fp.restrictions())
         {
-            int chanceToAdd = restriction.getFishChance(chance, level, fp, entity, rod, context);
+            int chanceToAdd = restriction.adjustChance(chance, level, fp, entity, rod, context);
             chance += chanceToAdd;
             //if restriction doesn't allow for fish, skip remaining conditions
             if (chanceToAdd == -9999) break;
@@ -132,7 +137,7 @@ public class FishApi
 
         for (var restriction : fp.restrictions())
         {
-            int chanceToAdd = restriction.getFishChance(chance, level, fp, entity, rod, context);
+            int chanceToAdd = restriction.adjustChance(chance, level, fp, entity, rod, context);
             chance += chanceToAdd;
             //if restriction doesn't allow for fish, skip remaining conditions
             if (chanceToAdd == -9999) break;

@@ -103,8 +103,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn("netherdepthsupgrade", "obsidianfish")
                         .withSizeAndWeight(200, 50, 500000, 68000)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.FOUR_STONE_SPOTS),
-                "netherdepthsupgrade"
+                , "netherdepthsupgrade"
         );
 
         FishRegistration.register(context,
@@ -114,8 +113,7 @@ public class DGNetherDepthsUpgradeFishes
                         .withEntityToSpawn("netherdepthsupgrade", "searing_cod")
                         .withSizeAndWeight(500, 50, 80000, 20000)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.EASY_FAST_FISH),
-                "netherdepthsupgrade"
+                , "netherdepthsupgrade"
         );
 
         FishRegistration.register(context,

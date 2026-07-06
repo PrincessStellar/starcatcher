@@ -1,5 +1,5 @@
 {
-  "base_chance": 5,
+  "base_chance": 6,
   "catch_info": {
     "fish_bucket": {
       "count": 1,
@@ -12,7 +12,7 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 75,
+    "hp": 100,
     "missPenalty": 5,
     "modifiers": [],
     "speed": 7,
@@ -55,7 +55,8 @@
         "#starcatcher:is_river",
         "#starcatcher:is_mushroom_fields",
         "#starcatcher:is_cold_lake",
-        "#starcatcher:is_warm_lake"
+        "#starcatcher:is_warm_lake",
+        "#starcatcher:is_cherry_grove"
       ],
       "hover_translation": "gui.guide.lakes.hover",
       "translation_override": "gui.guide.lakes"

@@ -104,7 +104,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties trophyFp, @NotNull Entity entity1, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties trophyFp, @NotNull Entity entity1, ItemStack rod, Context context)
     {
         Entity entity = entity1 instanceof FishingBobEntity fbe ? fbe.player : entity1;
 
@@ -227,7 +227,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
     @Override
     public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return adjustChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
     }
 
     @Override

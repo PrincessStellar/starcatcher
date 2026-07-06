@@ -59,12 +59,6 @@
       "translation_override": "dimension.minecraft.the_nether"
     },
     {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
-    },
-    {
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:lava"

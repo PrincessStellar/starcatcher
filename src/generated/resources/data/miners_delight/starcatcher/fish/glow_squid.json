@@ -12,19 +12,29 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
-    "missPenalty": 30,
+    "hp": 75,
+    "missPenalty": 5,
     "modifiers": [],
-    "speed": 13,
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 33,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 1.0,
+        "moving_rate": 0.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal_steady.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "vanishing_rate": 0.0
+      },
+      {
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
+        "is_flip": false,
+        "moving_rate": 0.0,
+        "reward": 15,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]
@@ -38,10 +48,19 @@
       "translation_override": "dimension.minecraft.overworld"
     },
     {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "blacklist": [
+        "minecraft:dripstone_caves",
+        "minecraft:lush_caves",
+        "minecraft:deep_dark"
+      ]
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
-      "min_y": -2147483648,
-      "translation_override": "gui.guide.elevation.underground"
+      "min_y": 0,
+      "translation_override": "gui.guide.elevation.stone_caves"
     },
     {
       "type": "starcatcher:fluid",

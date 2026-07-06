@@ -74,7 +74,6 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "catfish_bucket")
                         .withEntityToSpawn("aquaculture", "catfish")
                         .withSizeAndWeight(150, 40, 100000, 25000)
-                        .withDifficulty(Difficulty.THIN_NO_DECAY_NOT_FORGIVING)
                         .withRarity(Rarity.EPIC)
                         .withWeather(WeatherRestriction.RAIN),
                 "aquaculture"
@@ -332,7 +331,6 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(30, 10, 500, 300)
                         .addBait(BaitRestriction.LEGENDARY_BAIT)
                         .withRarity(Rarity.LEGENDARY)
-                        .withDifficulty(Difficulty.FOUR_BIG)
                         .withDaytimeRestriction(DaytimeRestriction.NOON),
                 "aquaculture"
         );
@@ -384,8 +382,7 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "brown_shrooma")
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.FOUR_BIG),
-                "aquaculture"
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -396,8 +393,7 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "brown_shrooma")
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.FOUR_BIG),
-                "aquaculture"
+                , "aquaculture"
         );
 
         //anywhere

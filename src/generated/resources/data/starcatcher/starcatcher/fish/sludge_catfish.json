@@ -12,10 +12,10 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 75,
-    "missPenalty": 5,
+    "hp": 100,
+    "missPenalty": 20,
     "modifiers": [],
-    "speed": 7,
+    "speed": 10,
     "sweetspots": [
       {
         "color_as_int": -16711936,
@@ -29,12 +29,12 @@
       },
       {
         "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
+        "hitbox_size_in_pixels": 15,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 15,
+        "reward": 20,
         "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/thin.png",
         "vanishing_rate": 0.0
       }
     ]

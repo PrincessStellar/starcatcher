@@ -1,5 +1,5 @@
 {
-  "base_chance": 18,
+  "base_chance": 10,
   "catch_info": {
     "fish_bucket": {
       "count": 1,
@@ -40,7 +40,7 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "uncommon",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -61,16 +61,6 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:daytime_restriction",
-      "ranges": [
-        {
-          "first": 12700,
-          "second": 24000
-        }
-      ],
-      "translation_override": "gui.guide.night"
     },
     {
       "type": "starcatcher:weather_restriction",

@@ -56,7 +56,7 @@ public class BiomeBias extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         Holder<Biome> biome = level.getBiome(entity.blockPosition());
 

@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "entity": "aquaculture:carp",
     "fish_bucket": "aquaculture:carp_bucket",

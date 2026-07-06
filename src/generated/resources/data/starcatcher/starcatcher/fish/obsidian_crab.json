@@ -106,8 +106,8 @@
     {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
-      "min_y": -2147483648,
-      "translation_override": "gui.guide.elevation.underground"
+      "min_y": 0,
+      "translation_override": "gui.guide.elevation.stone_caves"
     },
     {
       "type": "starcatcher:fluid",

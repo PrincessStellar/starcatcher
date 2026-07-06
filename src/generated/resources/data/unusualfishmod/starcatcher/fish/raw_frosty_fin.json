@@ -5,7 +5,7 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "entity": "unusualfishmod:frostyfin",
     "fish_bucket": "unusualfishmod:frosty_fin_fish_bucket",

@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 11,
   "catch_info": {
     "entity": "aquaculture:brown_trout",
     "fish_bucket": "aquaculture:brown_trout_bucket",

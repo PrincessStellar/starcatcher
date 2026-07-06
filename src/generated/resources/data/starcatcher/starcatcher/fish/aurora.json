@@ -1,5 +1,5 @@
 {
-  "base_chance": 2,
+  "base_chance": 10,
   "catch_info": {
     "item": {
       "count": 1,
@@ -23,21 +23,41 @@
         "color_as_int": -5383962,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:freeze",
         "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
-        "vanishing_rate": 0.0
+        "vanishing_rate": 0.1
       },
       {
         "color_as_int": -5383962,
         "hitbox_size_in_pixels": 33,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:freeze",
         "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
-        "vanishing_rate": 0.0
+        "vanishing_rate": 0.1
+      },
+      {
+        "color_as_int": -5383962,
+        "hitbox_size_in_pixels": 33,
+        "is_flip": false,
+        "moving_rate": 1.0,
+        "reward": 15,
+        "sweetspot_type": "starcatcher:freeze",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
+        "vanishing_rate": 0.1
+      },
+      {
+        "color_as_int": -5383962,
+        "hitbox_size_in_pixels": 33,
+        "is_flip": false,
+        "moving_rate": 1.0,
+        "reward": 15,
+        "sweetspot_type": "starcatcher:freeze",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/frozen.png",
+        "vanishing_rate": 0.1
       }
     ]
   },
@@ -52,7 +72,7 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#starcatcher:is_cold_lake"
+        "minecraft:ice_spikes"
       ],
       "blacklist": []
     },
@@ -63,10 +83,14 @@
       "translation_override": "gui.guide.elevation.surface"
     },
     {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
+      "type": "starcatcher:daytime_restriction",
+      "ranges": [
+        {
+          "first": 12700,
+          "second": 24000
+        }
+      ],
+      "translation_override": "gui.guide.night"
     },
     {
       "type": "starcatcher:fluid",

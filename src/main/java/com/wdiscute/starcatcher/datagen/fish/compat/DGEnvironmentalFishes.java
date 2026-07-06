@@ -29,7 +29,6 @@ public class DGEnvironmentalFishes
                         .withBucketedFish("environmental", "koi_bucket")
                         .withEntityToSpawn("environmental", "koi")
                         .withSizeAndWeight(60, 20, 3000, 2000)
-                        .withDifficulty(Difficulty.EASY_FAST_FISH)
                         .withRarity(Rarity.UNCOMMON)
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD//,

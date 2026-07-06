@@ -1,5 +1,5 @@
 {
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "type": "extra",
     "item": {
@@ -43,6 +43,20 @@
       "type": "starcatcher:dimension",
       "dimension_entry": "overworld",
       "translation_override": "dimension.minecraft.overworld"
+    },
+    {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "blacklist": [
+        "#starcatcher:is_ocean",
+        "#starcatcher:is_river",
+        "#starcatcher:is_mushroom_fields",
+        "#starcatcher:is_cold_lake",
+        "#starcatcher:is_warm_lake",
+        "#starcatcher:is_cherry_grove"
+      ],
+      "hover_translation": "gui.guide.lakes.hover",
+      "translation_override": "gui.guide.lakes"
     },
     {
       "type": "starcatcher:elevation_restriction",

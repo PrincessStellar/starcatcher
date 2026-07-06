@@ -29,7 +29,6 @@ public class DGSpawnFishes
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withDifficulty(Difficulty.FOUR_AQUA)
                         .withBaseChance(20),
                 "spawn"
         );

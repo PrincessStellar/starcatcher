@@ -1187,6 +1187,7 @@
   "gui.guide.structure" : "Structure: ",
   "gui.guide.elevation" : "Elevation: ",
   "gui.guide.elevation_bias" : "Around %s",
+  "gui.guide.elevation_bias.hover" : "From %s to %s, best at %s",
   "gui.guide.caught_limit" : "Caught Limit: ",
   "gui.guide.rarity_count.caught" : "Caught: ",
   "gui.guide.fluid" : "Fluid: ",

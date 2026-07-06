@@ -1,5 +1,5 @@
 {
-  "base_chance": 2,
+  "base_chance": 5,
   "catch_info": {
     "item": {
       "count": 1,
@@ -8,49 +8,29 @@
   },
   "difficulty": {
     "decay": 1.0,
-    "hp": 100,
-    "missPenalty": 20,
+    "hp": 75,
+    "missPenalty": 5,
     "modifiers": [],
-    "speed": 10,
+    "speed": 7,
     "sweetspots": [
       {
-        "color_as_int": -13076094,
-        "hitbox_size_in_pixels": 24,
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 10,
-        "sweetspot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
+        "reward": 15,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       },
       {
-        "color_as_int": -13076094,
-        "hitbox_size_in_pixels": 24,
+        "color_as_int": -16711936,
+        "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 10,
-        "sweetspot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -13076094,
-        "hitbox_size_in_pixels": 24,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 10,
-        "sweetspot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -13076094,
-        "hitbox_size_in_pixels": 24,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 10,
-        "sweetspot_type": "starcatcher:aqua",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/aqua.png",
+        "reward": 15,
+        "sweetspot_type": "starcatcher:normal",
+        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
       }
     ]

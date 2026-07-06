@@ -21,13 +21,11 @@ public class ElevationBias extends AbstractFishRestriction
 {
     private final int bestY;
     private final int range;
-    private final int extraChance;
 
     public static final MapCodec<ElevationBias> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.INT.fieldOf("best_y").forGetter(o -> o.bestY),
                     Codec.INT.fieldOf("range").forGetter(o -> o.range),
-                    Codec.INT.fieldOf("extra_chance_at_best").forGetter(o -> o.extraChance),
                     Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
             ).apply(instance, ElevationBias::new));
 
@@ -36,15 +34,13 @@ public class ElevationBias extends AbstractFishRestriction
         super("");
         this.bestY = 90;
         this.range = 10;
-        this.extraChance = 0;
     }
 
-    public ElevationBias(int bestY, int range, int extraChance, String translationOverride)
+    public ElevationBias(int bestY, int range, String translationOverride)
     {
         super(translationOverride);
         this.bestY = bestY;
         this.range = range;
-        this.extraChance = extraChance;
     }
 
     @Override
@@ -60,23 +56,47 @@ public class ElevationBias extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        int chance = adjustChance(10, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER);
+        if (chance == -9999)
+            return SCColors.GUIDE_RED;
+
+        if (chance > -4)
+            return SCColors.GUIDE_GREEN;
+
+        return SCColors.GUIDE_YELLOW;
+    }
+
+    @Override
+    public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        return List.of(Component.translatable("gui.guide.elevation_bias.hover", bestY - range, bestY + range, bestY));
+    }
+
+    @Override
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         //returns the extra weight scaled linearly from 0 to extraChance, with extraChance at 100% at bestY
         int distance = Math.abs(entity.blockPosition().getY() - bestY);
 
-        int scaledChance = (int) (extraChance * (1 - (float) distance / (float) range));
+        if (distance > range) return -9999;
 
-        return scaledChance > 0 ? scaledChance : -9999;
+        int chanceToRemove = (int) (currentChance * ((float) distance / (float) range));
+        return chanceToRemove >= currentChance ? -9999 : -chanceToRemove;
     }
 
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
-            return List.of(Component.translatable("gui.guide.hover.elevation.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
-        else
+        int chance = adjustChance(10, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER);
+        if (chance == -9999)
             return List.of(Component.translatable("gui.guide.hover.elevation.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
+
+        if (chance > -4)
+            return List.of(Component.translatable("gui.guide.hover.elevation.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+
+        return List.of(Component.translatable("gui.guide.hover.elevation.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_YELLOW)));
     }
 
     @Override
@@ -91,5 +111,5 @@ public class ElevationBias extends AbstractFishRestriction
         return Component.translatable("gui.guide.elevation_bias", bestY);
     }
 
-    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 20, 7, "");
+    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 30, "");
 }

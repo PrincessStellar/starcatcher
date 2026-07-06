@@ -57,15 +57,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:downfall_bream",
-      "required": false
-    },
-    {
       "id": "starcatcher:drifting_bream",
-      "required": false
-    },
-    {
-      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
@@ -73,15 +65,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:bluegigi",
+      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
       "id": "starcatcher:frostgill_chub",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_minnow",
       "required": false
     },
     {
@@ -122,10 +110,6 @@
     },
     {
       "id": "starcatcher:glowstone_seeker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scalding_pike",
       "required": false
     },
     {
@@ -517,15 +501,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:downfall_bream",
-      "required": false
-    },
-    {
       "id": "starcatcher:drifting_bream",
-      "required": false
-    },
-    {
-      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
@@ -533,15 +509,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:bluegigi",
+      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
       "id": "starcatcher:frostgill_chub",
-      "required": false
-    },
-    {
-      "id": "starcatcher:crystalback_minnow",
       "required": false
     },
     {
@@ -582,10 +554,6 @@
     },
     {
       "id": "starcatcher:glowstone_seeker",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scalding_pike",
       "required": false
     },
     {

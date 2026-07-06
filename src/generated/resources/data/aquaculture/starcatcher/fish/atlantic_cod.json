@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 6,
   "catch_info": {
     "entity": "aquaculture:atlantic_cod",
     "fish_bucket": "aquaculture:atlantic_cod_bucket",

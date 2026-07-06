@@ -5,7 +5,7 @@
       "modid": "aquaculture"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 6,
   "catch_info": {
     "entity": "aquaculture:boulti",
     "fish_bucket": "aquaculture:boulti_bucket",

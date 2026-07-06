@@ -5,7 +5,7 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 6,
   "catch_info": {
     "entity": "unusualfishmod:demon_herring",
     "fish_bucket": "unusualfishmod:demon_herring_bucket",

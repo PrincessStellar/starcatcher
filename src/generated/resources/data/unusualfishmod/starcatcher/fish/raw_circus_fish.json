@@ -5,25 +5,25 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 7,
   "catch_info": {
     "entity": "unusualfishmod:circus",
     "fish_bucket": "unusualfishmod:circus_fish_bucket",
     "item": "unusualfishmod:raw_circus_fish"
   },
   "difficulty": {
-    "decay": 0.0,
-    "hp": 100,
-    "missPenalty": 40,
+    "decay": 1.0,
+    "hp": 75,
+    "missPenalty": 5,
     "modifiers": [],
-    "speed": 5,
+    "speed": 7,
     "sweetspots": [
       {
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 1,
+        "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0
@@ -33,37 +33,7 @@
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
         "moving_rate": 0.0,
-        "reward": 1,
-        "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 1,
-        "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 1,
-        "sweetspot_type": "starcatcher:normal",
-        "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
-        "vanishing_rate": 0.0
-      },
-      {
-        "color_as_int": -16711936,
-        "hitbox_size_in_pixels": 22,
-        "is_flip": false,
-        "moving_rate": 0.0,
-        "reward": 1,
+        "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
         "vanishing_rate": 0.0

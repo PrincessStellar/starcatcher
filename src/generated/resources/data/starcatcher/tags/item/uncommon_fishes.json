@@ -45,7 +45,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:blue_crystal_fin",
+      "id": "starcatcher:downfall_bream",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_minnow",
       "required": false
     },
     {
@@ -54,10 +58,6 @@
     },
     {
       "id": "starcatcher:redscaled_tuna",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bigeye_tuna",
       "required": false
     },
     {
@@ -74,6 +74,10 @@
     },
     {
       "id": "starcatcher:vivid_moss",
+      "required": false
+    },
+    {
+      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -94,6 +98,10 @@
     },
     {
       "id": "starcatcher:magma_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:scalding_pike",
       "required": false
     },
     {
@@ -445,7 +453,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:blue_crystal_fin",
+      "id": "starcatcher:downfall_bream",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_minnow",
       "required": false
     },
     {
@@ -454,10 +466,6 @@
     },
     {
       "id": "starcatcher:redscaled_tuna",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bigeye_tuna",
       "required": false
     },
     {
@@ -474,6 +482,10 @@
     },
     {
       "id": "starcatcher:vivid_moss",
+      "required": false
+    },
+    {
+      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -494,6 +506,10 @@
     },
     {
       "id": "starcatcher:magma_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:scalding_pike",
       "required": false
     },
     {

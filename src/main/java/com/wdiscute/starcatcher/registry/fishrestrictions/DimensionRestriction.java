@@ -55,7 +55,7 @@ public class DimensionRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         Map<String, List<ResourceLocation>> stringListMap = SCDataEntries.DIMENSION_TAGS.get();
         List<ResourceLocation> allowedDimensions = stringListMap.getOrDefault(dimensionEntry, List.of());
@@ -68,7 +68,7 @@ public class DimensionRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+        if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.dimension.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         else
             return List.of(Component.translatable("gui.guide.hover.dimension.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
@@ -102,8 +102,9 @@ public class DimensionRestriction extends AbstractFishRestriction
         List<ResourceLocation> allowedDimensions = SCDataEntries.DIMENSION_TAGS.get().getOrDefault(dimensionEntry, List.of());
 
         if(allowedDimensions.isEmpty()) return List.of();
+        if(allowedDimensions.size() == 1) return List.of();
 
-        return allowedDimensions.stream().map(o -> (Component) Component.translatable("dimension." + o)).toList();
+        return allowedDimensions.stream().map(o -> (Component) Component.translatable("dimension." + o.toLanguageKey())).toList();
     }
 
     public static final DimensionRestriction OVERWORLD = new DimensionRestriction("overworld", "dimension.minecraft.overworld");

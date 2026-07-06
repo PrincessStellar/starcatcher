@@ -42,7 +42,6 @@ public class DGMinecraftFishes
                         .withBucketedFish(new MaybeStack(Items.TROPICAL_FISH_BUCKET))
                         .withEntityToSpawn(EntityType.TROPICAL_FISH.builtInRegistryHolder())
                         .withSizeAndWeight(70, 20, 10000, 3000)
-                        .withDifficulty(Difficulty.FOUR_AQUA)
                         .withRarity(Rarity.RARE)
         );
 

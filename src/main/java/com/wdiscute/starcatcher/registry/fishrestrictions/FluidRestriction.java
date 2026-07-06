@@ -65,9 +65,9 @@ public class FluidRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        if (context.isGuide())
+        if (context.isGuide() || context.equals(Context.RADAR))
         {
             return 0;
         }

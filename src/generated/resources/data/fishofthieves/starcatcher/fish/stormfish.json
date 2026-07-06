@@ -5,7 +5,7 @@
       "modid": "fishofthieves"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 25,
   "catch_info": {
     "entity": "fishofthieves:stormfish",
     "fish_bucket": "fishofthieves:stormfish_bucket",

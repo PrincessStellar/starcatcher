@@ -5,7 +5,7 @@
       "modid": "hybrid_aquatic"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 21,
   "catch_info": {
     "entity": "hybrid_aquatic:stonefish",
     "item": "hybrid_aquatic:stonefish"

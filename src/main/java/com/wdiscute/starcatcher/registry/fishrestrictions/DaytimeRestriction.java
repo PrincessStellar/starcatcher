@@ -58,18 +58,24 @@ public class DaytimeRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-        //skip if any modifiers have SkipsDaytimeRestriction interface
-        if (context.equals(Context.FISHING) && entity instanceof FishingBobEntity bob && bob.player != null)
-        {
-            if (Modifier.getModifiers(bob.player).stream().anyMatch(
-                    o -> o instanceof SkipsDaytimeRestriction sp && sp.shouldSkipDaytime(level)))
-                return 0;
+        if(context.equals(Context.RADAR)) return 0;
+        if(context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
 
-            if (Modifier.getModifiers(bob.player).stream().anyMatch(
-                    o -> o instanceof SkipsDaytimeRestriction sp && sp.shouldSkipDaytime(level)))
-                return 0;
+        //skip if any modifiers have SkipsDaytimeRestriction interface
+        if (context.equals(Context.FISHING))
+        {
+            if (entity instanceof FishingBobEntity bob && bob.player != null)
+            {
+                if (Modifier.getModifiers(bob.player).stream().anyMatch(
+                        o -> o instanceof SkipsDaytimeRestriction sp && sp.shouldSkipDaytime(level)))
+                    return 0;
+
+                if (Modifier.getModifiers(bob.player).stream().anyMatch(
+                        o -> o instanceof SkipsDaytimeRestriction sp && sp.shouldSkipDaytime(level)))
+                    return 0;
+            }
         }
 
         float daytime = level.dayTime() % 24000;
@@ -83,7 +89,7 @@ public class DaytimeRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+        if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.daytime.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         else
             return List.of(Component.translatable("gui.guide.hover.daytime.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));

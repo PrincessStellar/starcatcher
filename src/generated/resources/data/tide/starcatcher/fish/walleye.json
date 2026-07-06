@@ -5,7 +5,7 @@
       "modid": "tide"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 10,
   "catch_info": {
     "entity": "tide:walleye",
     "fish_bucket": "tide:walleye_bucket",

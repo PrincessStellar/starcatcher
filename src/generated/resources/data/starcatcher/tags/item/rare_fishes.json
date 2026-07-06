@@ -45,6 +45,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:bluegigi",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_crystal_fin",
+      "required": false
+    },
+    {
       "id": "starcatcher:blue_herring",
       "required": false
     },
@@ -342,6 +350,14 @@
     },
     {
       "id": "starcatcher:sunflower_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bluegigi",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_crystal_fin",
       "required": false
     },
     {

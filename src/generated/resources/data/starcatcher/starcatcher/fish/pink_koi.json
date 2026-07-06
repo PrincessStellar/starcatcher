@@ -1,5 +1,5 @@
 {
-  "base_chance": 8,
+  "base_chance": 5,
   "catch_info": {
     "fish_bucket": {
       "count": 1,
@@ -59,10 +59,6 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:weather_restriction",
-      "weather": "rain"
     },
     {
       "type": "starcatcher:fluid",

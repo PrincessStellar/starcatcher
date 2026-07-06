@@ -64,7 +64,7 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         if (entity instanceof FishingBobEntity fbe)
         {
@@ -88,7 +88,7 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+        if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.caught_limit", getCaughtCounter(fp, player) + " / " + limit)
                     .withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         else

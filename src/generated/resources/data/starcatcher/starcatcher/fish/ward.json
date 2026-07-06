@@ -1,5 +1,5 @@
 {
-  "base_chance": 2,
+  "base_chance": 5,
   "catch_info": {
     "item": {
       "count": 1,
@@ -55,12 +55,6 @@
       "max_y": 0,
       "min_y": -2147483648,
       "translation_override": "gui.guide.elevation.deepslate"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
     },
     {
       "type": "starcatcher:fluid",

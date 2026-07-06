@@ -5,7 +5,7 @@
       "modid": "hybrid_aquatic"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 7,
   "catch_info": {
     "entity": "hybrid_aquatic:seahorse",
     "item": "hybrid_aquatic:seahorse"

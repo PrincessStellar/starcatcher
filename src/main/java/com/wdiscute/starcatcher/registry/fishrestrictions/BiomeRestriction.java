@@ -9,7 +9,6 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.EntryOrTag;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -25,7 +24,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +80,8 @@ public class BiomeRestriction extends AbstractFishRestriction
     };
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
-
         Registry<Biome> registry = level.registryAccess().registryOrThrow(Registries.BIOME);
 
         //check biomes around the bobber
@@ -105,7 +102,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if (getFishChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
+        if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.biome.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         else
             return List.of(Component.translatable("gui.guide.hover.biome.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
@@ -212,6 +209,7 @@ public class BiomeRestriction extends AbstractFishRestriction
                 .blacklistedTag(SCTags.IS_MUSHROOM_FIELDS)
                 .blacklistedTag(SCTags.IS_COLD_LAKE)
                 .blacklistedTag(SCTags.IS_WARM_LAKE)
+                .blacklistedTag(SCTags.IS_CHERRY_GROVE)
                 .hover("gui.guide.lakes.hover")
                 .translation("gui.guide.lakes");
     }
@@ -263,6 +261,15 @@ public class BiomeRestriction extends AbstractFishRestriction
     {
         return empty()
                 .biome(Biomes.LUSH_CAVES.location());
+    }
+
+    public static BiomeRestriction underground()
+    {
+        return empty()
+                .blacklisted(Biomes.DRIPSTONE_CAVES.location())
+                .blacklisted(Biomes.LUSH_CAVES.location())
+                .blacklisted(Biomes.DEEP_DARK.location())
+                ;
     }
 
     public static BiomeRestriction dripstoneCaves()

@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.wdiscute.starcatcher.SCColors;
-import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import net.minecraft.client.gui.GuiGraphics;
@@ -62,7 +61,7 @@ public abstract class AbstractFishRestriction implements Comparable<AbstractFish
         return codec();
     }
 
-    public abstract int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context);
+    public abstract int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context);
 
 
     public MutableComponent getDescriptionPrefix()
@@ -72,7 +71,7 @@ public abstract class AbstractFishRestriction implements Comparable<AbstractFish
 
     public int getColor(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return getFishChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
+        return adjustChance(0, level, fp, player, ItemStack.EMPTY, context) >= 0 ? SCColors.GUIDE_GREEN : SCColors.GUIDE_RED;
     }
 
     public Component getDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
@@ -132,6 +131,7 @@ public abstract class AbstractFishRestriction implements Comparable<AbstractFish
     {
         COMMAND,
         FISHING,
+        RADAR,
         GUIDE_ENTRY,
         GUIDE_FISHES_IN_AREA,
         GUIDE_FISHES_HOVER,

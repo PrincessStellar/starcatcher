@@ -23,17 +23,15 @@ public class DGMinersDelightFishes
                         .withFish("miners_delight", "squid")
                         .withEntityToSpawn("minecraft", "squid")
                         .withSizeAndWeight(40, 20, 1300, 700)
-                        .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING)
                         .withRarity(Rarity.UNCOMMON),
                 "miners_delight"
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.underground(context)
+                PresetRestrictions.caves(context)
                         .withFish("miners_delight", "glow_squid")
                         .withEntityToSpawn("minecraft", "glow_squid")
                         .withSizeAndWeight(40, 20, 1300, 700)
-                        .withDifficulty(Difficulty.SINGLE_BIG_FAST_MOVING)
                         .withRarity(Rarity.COMMON),
                 "miners_delight"
         );

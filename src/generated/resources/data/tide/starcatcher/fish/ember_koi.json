@@ -49,6 +49,20 @@
       "translation_override": "dimension.minecraft.overworld"
     },
     {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "blacklist": [
+        "#starcatcher:is_ocean",
+        "#starcatcher:is_river",
+        "#starcatcher:is_mushroom_fields",
+        "#starcatcher:is_cold_lake",
+        "#starcatcher:is_warm_lake",
+        "#starcatcher:is_cherry_grove"
+      ],
+      "hover_translation": "gui.guide.lakes.hover",
+      "translation_override": "gui.guide.lakes"
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
       "min_y": 50,

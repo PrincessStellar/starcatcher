@@ -58,7 +58,7 @@ public class DaytimeBias extends AbstractFishRestriction
     }
 
     @Override
-    public int getFishChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
+    public int adjustChance(int currentChance, Level level, FishProperties fp, @NotNull Entity entity, ItemStack rod, Context context)
     {
         //fishes in area for guidebook ignores this restriction
         if (context.equals(Context.GUIDE_FISHES_HOVER)) return 0;

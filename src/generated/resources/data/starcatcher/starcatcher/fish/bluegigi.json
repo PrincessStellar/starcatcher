@@ -17,7 +17,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -27,7 +27,7 @@
         "color_as_int": -16711936,
         "hitbox_size_in_pixels": 22,
         "is_flip": false,
-        "moving_rate": 0.0,
+        "moving_rate": 1.0,
         "reward": 15,
         "sweetspot_type": "starcatcher:normal",
         "texture_path": "starcatcher:textures/gui/minigame/spots/normal.png",
@@ -36,7 +36,7 @@
     ]
   },
   "has_guide_entry": true,
-  "rarity": "common",
+  "rarity": "rare",
   "restrictions": [
     {
       "type": "starcatcher:dimension",
@@ -57,16 +57,6 @@
       "max_y": 2147483647,
       "min_y": 50,
       "translation_override": "gui.guide.elevation.surface"
-    },
-    {
-      "type": "starcatcher:daytime_restriction",
-      "ranges": [
-        {
-          "first": 0,
-          "second": 12700
-        }
-      ],
-      "translation_override": "gui.guide.day"
     },
     {
       "type": "starcatcher:fluid",

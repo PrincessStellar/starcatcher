@@ -5,7 +5,7 @@
       "modid": "collectorsreap"
     }
   ],
-  "base_chance": 1,
+  "base_chance": 0,
   "catch_info": {
     "entity": "collectorsreap:clam",
     "fish_bucket": "collectorsreap:clam_bucket",

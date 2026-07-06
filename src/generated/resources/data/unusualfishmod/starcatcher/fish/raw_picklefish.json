@@ -5,7 +5,7 @@
       "modid": "unusualfishmod"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 6,
   "catch_info": {
     "entity": "unusualfishmod:picklefish",
     "fish_bucket": "unusualfishmod:picklefish_bucket",

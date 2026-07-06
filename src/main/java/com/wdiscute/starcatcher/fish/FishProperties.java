@@ -328,10 +328,12 @@ public record FishProperties(
         map.putAll(bait.baits);
         override.set(bait.translationOverride);
 
-        this.restrictions.removeIf(o -> o instanceof BaitRestriction);
-        this.restrictions.add(new BaitRestriction(map, override.get()));
+        List<AbstractFishRestriction> list = new ArrayList<>(this.restrictions);
 
-        return this;
+        list.removeIf(o -> o instanceof BaitRestriction);
+        list.add(new BaitRestriction(map, override.get()));
+
+        return withRestrictions(list);
     }
 
     public FishProperties withWeather(WeatherRestriction rain)

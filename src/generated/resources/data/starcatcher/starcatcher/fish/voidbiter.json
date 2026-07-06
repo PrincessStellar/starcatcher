@@ -55,12 +55,6 @@
       "type": "starcatcher:dimension",
       "dimension_entry": "the_end",
       "translation_override": "dimension.minecraft.the_end"
-    },
-    {
-      "type": "starcatcher:bait",
-      "baits": {
-        "starcatcher:legendary_bait": 50
-      }
     }
   ],
   "size_and_weight": {

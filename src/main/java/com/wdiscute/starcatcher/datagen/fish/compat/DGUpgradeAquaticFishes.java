@@ -57,7 +57,6 @@ public class DGUpgradeAquaticFishes
                         .withBucketedFish("upgrade_aquatic", "lionfish_bucket")
                         .withEntityToSpawn("upgrade_aquatic", "lionfish")
                         .withSizeAndWeight(27.0f, 11, 500, 352)
-                        .withDifficulty(Difficulty.FOUR_BIG_VANISHING)
                         .withRarity(Rarity.UNCOMMON),
                 "upgrade_aquatic"
                 //.addRestrictions(DimensionRestriction.OVERWORLD,

@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.datagen.fish;
 
 import com.wdiscute.starcatcher.fish.FishProperties;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.FreezeOnMissModifier;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 
@@ -32,7 +31,7 @@ public class PresetRestrictions
     public static FishProperties lakeMountain(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
-                .withBaseChance(1)
+                .withBaseChance(10)
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.lakes())
                 .addRestriction(ElevationBias.MOUNTAIN)
@@ -65,10 +64,10 @@ public class PresetRestrictions
     public static FishProperties coldLakeMountain(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
+                .withBaseChance(10)
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.coldLakes())
                 .addRestriction(ElevationBias.MOUNTAIN)
-                .addRestriction(ElevationRestriction.ABOVE_FIFTY)
                 .addRestriction(FluidRestriction.WATER)
                 ;
     }
@@ -244,21 +243,13 @@ public class PresetRestrictions
                 ;
     }
 
-    public static FishProperties underground(BootstrapContext<FishProperties> context)
-    {
-        return FishProperties.empty()
-                .addRestriction(DimensionRestriction.OVERWORLD)
-                .addRestriction(ElevationRestriction.BELOW_FIFTY)
-                .addRestriction(FluidRestriction.WATER)
-                ;
-    }
-
     public static FishProperties caves(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(ElevationRestriction.ZERO_TO_FIFTY)
                 .addRestriction(FluidRestriction.WATER)
+                .addRestriction(BiomeRestriction.underground())
                 ;
     }
 
@@ -268,6 +259,7 @@ public class PresetRestrictions
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.dripstoneCaves())
                 .addRestriction(FluidRestriction.WATER)
+                .addRestriction(BiomeRestriction.underground())
                 ;
     }
 
@@ -304,15 +296,16 @@ public class PresetRestrictions
         return FishProperties.empty()
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                .addRestriction(BiomeRestriction.lakes())
                 .addRestriction(FluidRestriction.LAVA)
                 ;
     }
 
-    public static FishProperties undergroundLava(BootstrapContext<FishProperties> context)
+    public static FishProperties caveLava(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
                 .addRestriction(DimensionRestriction.OVERWORLD)
-                .addRestriction(ElevationRestriction.BELOW_FIFTY)
+                .addRestriction(ElevationRestriction.ZERO_TO_FIFTY)
                 .addRestriction(FluidRestriction.LAVA)
                 ;
     }

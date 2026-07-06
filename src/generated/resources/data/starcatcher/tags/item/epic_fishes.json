@@ -13,10 +13,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:boreal",
-      "required": false
-    },
-    {
       "id": "starcatcher:cactifish",
       "required": false
     },
@@ -41,15 +37,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
       "id": "starcatcher:geode_eel",
       "required": false
     },
     {
       "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
-      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -66,10 +62,6 @@
     },
     {
       "id": "starcatcher:obsidian_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scorched_bloodsucker",
       "required": false
     },
     {
@@ -233,10 +225,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:boreal",
-      "required": false
-    },
-    {
       "id": "starcatcher:cactifish",
       "required": false
     },
@@ -261,15 +249,15 @@
       "required": false
     },
     {
+      "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
       "id": "starcatcher:geode_eel",
       "required": false
     },
     {
       "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
-      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -286,10 +274,6 @@
     },
     {
       "id": "starcatcher:obsidian_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:scorched_bloodsucker",
       "required": false
     },
     {

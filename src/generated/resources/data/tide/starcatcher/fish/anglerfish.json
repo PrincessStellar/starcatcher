@@ -49,6 +49,15 @@
       "translation_override": "dimension.minecraft.overworld"
     },
     {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "blacklist": [
+        "minecraft:dripstone_caves",
+        "minecraft:lush_caves",
+        "minecraft:deep_dark"
+      ]
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
       "min_y": 0,

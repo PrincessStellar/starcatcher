@@ -5,7 +5,7 @@
       "modid": "hybrid_aquatic"
     }
   ],
-  "base_chance": 5,
+  "base_chance": 11,
   "catch_info": {
     "entity": "hybrid_aquatic:opah",
     "item": "hybrid_aquatic:opah"

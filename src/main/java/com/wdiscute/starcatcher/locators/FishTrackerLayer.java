@@ -85,7 +85,7 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         {
             ResourceLocation key = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
 
-            int chance = fish.calculateChance(player, level, player.getMainHandItem().is(SCTags.RODS) ? player.getMainHandItem() : player.getOffhandItem(), AbstractFishRestriction.Context.GUIDE_FISHES_HOVER);
+            int chance = fish.calculateChance(player, level, player.getMainHandItem().is(SCTags.RODS) ? player.getMainHandItem() : player.getOffhandItem(), AbstractFishRestriction.Context.RADAR);
 
             if (key != null && key.equals(cachedRL))
             {

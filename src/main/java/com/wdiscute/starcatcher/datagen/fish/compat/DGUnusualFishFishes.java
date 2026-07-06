@@ -104,7 +104,6 @@ public class DGUnusualFishFishes
                         .withEntityToSpawn("unusualfishmod", "circus")
                         .withRarity(Rarity.RARE)
                         .withWeather(WeatherRestriction.CLEAR)
-                        .withDifficulty(Difficulty.HEAVY_FIVE_NORMAL)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "unusualfishmod"
         );
@@ -167,7 +166,6 @@ public class DGUnusualFishFishes
                         .withFish("unusualfishmod", "raw_duality_damselfish")
                         .withBucketedFish("unusualfishmod", "duality_damselfish_bucket")
                         .withEntityToSpawn("unusualfishmod", "duality_damselfish")
-                        .withDifficulty(Difficulty.EASY_FAST_FISH)
                         .withRarity(Rarity.UNCOMMON),
                 "unusualfishmod"
         );
@@ -178,7 +176,6 @@ public class DGUnusualFishFishes
                         .withBucketedFish("unusualfishmod", "spindlefish_bucket")
                         .withEntityToSpawn("unusualfishmod", "spindlefish")
                         .withWeather(WeatherRestriction.THUNDER)
-                        .withDifficulty(Difficulty.SINGLE_AQUA)
                         .withBaseChance(30)
                         .withRarity(Rarity.LEGENDARY),
                 "unusualfishmod"

@@ -1,5 +1,5 @@
 {
-  "base_chance": 1,
+  "base_chance": 5,
   "catch_info": {
     "item": {
       "count": 1,
@@ -44,10 +44,19 @@
       "translation_override": "dimension.minecraft.overworld"
     },
     {
+      "type": "starcatcher:biome",
+      "biomes": [],
+      "blacklist": [
+        "minecraft:dripstone_caves",
+        "minecraft:lush_caves",
+        "minecraft:deep_dark"
+      ]
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 50,
-      "min_y": -2147483648,
-      "translation_override": "gui.guide.elevation.underground"
+      "min_y": 0,
+      "translation_override": "gui.guide.elevation.stone_caves"
     },
     {
       "type": "starcatcher:fluid",
