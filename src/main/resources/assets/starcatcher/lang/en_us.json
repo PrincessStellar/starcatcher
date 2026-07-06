@@ -1524,33 +1524,56 @@
   "starcatcher.cold_lakes" : "Cold Lakes",
 
   "item.starcatcher.frostjaw_trout" : "Frostjaw Trout",
-  "tooltip.starcatcher.frostjaw_trout.0" : "A trout species known for it's razor-sharp",
-  "tooltip.starcatcher.frostjaw_trout.1" : "jaws of petrified ice crystals.",
+  "tooltip.starcatcher.frostjaw_trout.0" : "A trout species known for its razor-sharp jaws of petrified ice.",
+  "tooltip.starcatcher.frostjaw_trout.1" : "Even the boldest predators think twice before biting one.",
+
+  "item.starcatcher.crystalback_sturgeon" : "Crystalback Sturgeon",
+  "tooltip.starcatcher.crystalback_sturgeon.0" : "A sturgeon common to lakes high up on mountains.",
+  "tooltip.starcatcher.crystalback_sturgeon.1" : "Its crystal-covered back turns away most attackers before they get close.",
 
 
+
+
+
+  "item.starcatcher.icetooth_sturgeon" : "Icetooth Sturgeon",
+  "tooltip.starcatcher.icetooth_sturgeon.0" : "A sturgeon found high up in the mountains.",
+  "tooltip.starcatcher.icetooth_sturgeon.1" : "Its petrified ice teeth make short work of unwary prey.",
 
   "item.starcatcher.crystalback_trout" : "Crystalback Trout",
-  "tooltip.starcatcher.crystalback_trout.0" : "A hardy trout species which uses its",
-  "tooltip.starcatcher.crystalback_trout.1" : "crystal-covered back to defend itself from predators.",
+  "tooltip.starcatcher.crystalback_trout.0" : "A hardy trout with a crystal-covered back.",
+  "tooltip.starcatcher.crystalback_trout.1" : "Few predators enjoy biting into it twice.",
 
 
+
+
+
+  "item.starcatcher.crystalback_boreal" : "Crystalback Boreal",
+  "tooltip.starcatcher.crystalback_boreal.0" : "Named after the legendary <sclegendary>Boreal</sclegendary>, this fish is far easier to catch.",
+  "tooltip.starcatcher.crystalback_boreal.1" : "Its crystal-covered back glitters brightly, making hiding nearly impossible.",
 
   "item.starcatcher.wintery_pike" : "Wintery Pike",
-  "tooltip.starcatcher.wintery_pike.0" : "A spiky predatory fish. ",
-  "tooltip.starcatcher.wintery_pike.1" : "Often seen stalking prey beneath frozen lakes.",
+  "tooltip.starcatcher.wintery_pike.0" : "A spiky predatory fish common beneath frozen lakes.",
+  "tooltip.starcatcher.wintery_pike.1" : "Patient hunters have watched one stalk its prey for hours.",
+
+
 
 
 
   "item.starcatcher.blue_ice_pike" : "Blue Ice Pike",
-  "tooltip.starcatcher.blue_ice_pike.0" : "A predatory fish with scales made of blue ice.",
-  "tooltip.starcatcher.blue_ice_pike.1" : "It vanishing into the frozen waters as soon as it senses danger bigger than itself.",
+  "tooltip.starcatcher.blue_ice_pike.0" : "A predatory fish with scales resembling blue ice.",
+  "tooltip.starcatcher.blue_ice_pike.1" : "It vanishes into the frozen waters at the first sign of danger.",
 
+
+
+  "item.starcatcher.boreal" : "Boreal",
+  "tooltip.starcatcher.boreal.0" : "A <sclegendary>legendary</sclegendary> fish found in icy mountain lakes.",
+  "tooltip.starcatcher.boreal.1" : "Its crystal-covered body blends seamlessly into the water,",
+  "tooltip.starcatcher.boreal.2" : "making it a true challenge even for seasoned anglers.",
 
 
   "item.starcatcher.aurora" : "Aurora",
-  "tooltip.starcatcher.aurora.0" : "A beautiful <sclegendary>legendary</sclegendary> fish.",
-  "tooltip.starcatcher.aurora.1" : "It's size makes for an incredibly evasive catch,",
-  "tooltip.starcatcher.aurora.2" : "made even harder by its slippery, crystal-frozen body.",
+  "tooltip.starcatcher.aurora.0" : "The most beautiful <sclegendary>legendary</sclegendary> fish there is.",
+  "tooltip.starcatcher.aurora.1" : "Its size and crystal-frozen body make it one of the most elusive catches known.",
 
 
 
@@ -1597,20 +1620,24 @@
 
 
 
-
-
   "starcartcher.swamp" : "swamp",
 
   "item.starcatcher.mossy_boot" : "Mossy Boot",
   "tooltip.starcatcher.mossy_boot.0" : "A boot, but this time it's mossy!",
 
+
+
   "item.starcatcher.sludge_catfish" : "Sludge Catfish",
   "tooltip.starcatcher.sludge_catfish.0" : "A dirty catfish species common in murky swamp waters.",
   "tooltip.starcatcher.sludge_catfish.1" : "It makes a surprisingly good meal if cleaned properly.",
 
+
+
   "item.starcatcher.lily_snapper" : "Lily Snapper",
   "tooltip.starcatcher.lily_snapper.0" : "A rare, long-bodied snapper found in swamps.",
   "tooltip.starcatcher.lily_snapper.1" : "It catches smaller fish with its long pointed mouth.",
+
+
 
   "item.starcatcher.sage_catfish" : "Sage Catfish",
   "tooltip.starcatcher.sage_catfish.0" : "A sage-colored catfish found in quiet swamps.",
@@ -1667,25 +1694,7 @@
   "item.starcatcher.petal_bass" : "Petal Bass",
   "tooltip.starcatcher.petal_bass.0" : "A species of bass adapted to live amongst the flowers of the Overworld.",
 
-  "item.starcatcher.crystalback_sturgeon" : "Crystalback Sturgeon",
-  "tooltip.starcatcher.crystalback_sturgeon.0" : "A sturgeon often found in high altitudes,",
-  "tooltip.starcatcher.crystalback_sturgeon.1" : "known for it's crystalback which helps it passively",
-  "tooltip.starcatcher.crystalback_sturgeon.2" : "defend from attackers whilst hunting.",
 
-  "item.starcatcher.icetooth_sturgeon" : "Icetooth Sturgeon",
-  "tooltip.starcatcher.icetooth_sturgeon.0" : "Found high up in the mountains, this sturgeon",
-  "tooltip.starcatcher.icetooth_sturgeon.1" : "uses it's sharp petrified ice teeth to bite down on prey.",
-
-  "item.starcatcher.boreal" : "Boreal",
-  "tooltip.starcatcher.boreal.0" : "A <sclegendary>legendary</sclegendary> fish found in icy mountains.",
-  "tooltip.starcatcher.boreal.1" : "A real challenge even for skilled anglers, they are",
-  "tooltip.starcatcher.boreal.2" : "known for blending into the icy waters making it hard",
-  "tooltip.starcatcher.boreal.3" : "follow their quick movements.",
-
-  "item.starcatcher.crystalback_boreal" : "Crystalback Boreal",
-  "tooltip.starcatcher.crystalback_boreal.0" : "Although named after the <sclegendary>legendary</sclegendary> fish <sclegendary>Boreal</sclegendary>, this",
-  "tooltip.starcatcher.crystalback_boreal.1" : "fish is not nearly as hard to catch. Its shiny back makes it",
-  "tooltip.starcatcher.crystalback_boreal.2" : "easy to keep track and the crystallized back slows down its swimming speed.",
 
 
 

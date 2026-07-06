@@ -433,13 +433,6 @@ public record Difficulty(
             ),
             SweetSpot.VOIDBITER_SPOT, SweetSpot.VOIDBITER_SPOT);
 
-    public static Difficulty JOEL = new Difficulty(
-            200,
-            14, 6, 1,
-            List.of(),
-            SweetSpot.AQUA, SweetSpot.AQUA
-    );
-
     //
     //,--.                                     ,--.
     //|  |  ,---.   ,---.   ,---.  ,--,--,   ,-|  |  ,--,--. ,--.--. ,--. ,--.
@@ -453,6 +446,27 @@ public record Difficulty(
             14, 75, 3f,
             List.of(new FreezeOnMissModifier(40, 10, "")),
             SweetSpot.FROZEN, SweetSpot.FROZEN
+    );
+
+    public static Difficulty BOREAL = new Difficulty(
+            500,
+            14, 75, 3f,
+            List.of(new FreezeOnMissModifier(40, 10, "")),
+            SweetSpot.FROZEN, SweetSpot.FROZEN
+    );
+
+    public static Difficulty AZURE_CRYSTALBACK_MINNOW = new Difficulty(
+            500,
+            14, 75, 3f,
+            List.of(new FreezeOnMissModifier(40, 10, "")),
+            SweetSpot.FROZEN, SweetSpot.FROZEN
+    );
+
+    public static Difficulty JOEL = new Difficulty(
+            2000,
+            6, 300, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL
     );
 
     public static Difficulty OASIS_SURGEON = new Difficulty(

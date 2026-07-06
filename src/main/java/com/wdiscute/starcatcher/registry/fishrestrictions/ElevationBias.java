@@ -91,5 +91,5 @@ public class ElevationBias extends AbstractFishRestriction
         return Component.translatable("gui.guide.elevation_bias", bestY);
     }
 
-    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 50, 9, "");
+    public static final ElevationBias MOUNTAIN = new ElevationBias(100, 20, 7, "");
 }

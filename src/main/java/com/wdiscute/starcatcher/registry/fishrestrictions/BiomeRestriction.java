@@ -228,6 +228,12 @@ public class BiomeRestriction extends AbstractFishRestriction
                 .tag(SCTags.IS_COLD_LAKE);
     }
 
+    public static BiomeRestriction iceSpikes()
+    {
+        return empty()
+                .biome(Biomes.ICE_SPIKES.location());
+    }
+
     public static BiomeRestriction flowerForest()
     {
         return empty()

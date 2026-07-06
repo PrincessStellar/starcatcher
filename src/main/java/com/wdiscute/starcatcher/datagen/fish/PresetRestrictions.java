@@ -32,8 +32,7 @@ public class PresetRestrictions
     public static FishProperties lakeMountain(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
-                //todo rethink the mountain elevation bias interaction with the base chance
-                .withBaseChance(0)
+                .withBaseChance(1)
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.lakes())
                 .addRestriction(ElevationBias.MOUNTAIN)
@@ -47,6 +46,28 @@ public class PresetRestrictions
         return FishProperties.empty()
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.coldLakes())
+                .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                .addRestriction(FluidRestriction.WATER)
+                ;
+    }
+
+    public static FishProperties iceSpikes(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .addRestriction(DimensionRestriction.OVERWORLD)
+                .addRestriction(BiomeRestriction.iceSpikes())
+                .addRestriction(ElevationRestriction.ABOVE_FIFTY)
+                .addRestriction(FluidRestriction.WATER)
+                ;
+    }
+
+
+    public static FishProperties coldLakeMountain(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .addRestriction(DimensionRestriction.OVERWORLD)
+                .addRestriction(BiomeRestriction.coldLakes())
+                .addRestriction(ElevationBias.MOUNTAIN)
                 .addRestriction(ElevationRestriction.ABOVE_FIFTY)
                 .addRestriction(FluidRestriction.WATER)
                 ;
