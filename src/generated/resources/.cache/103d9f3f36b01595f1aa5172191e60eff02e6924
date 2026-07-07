@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T16:26:47.5500352	Registries
+// 1.21.1	2026-07-07T17:37:24.8550167	Registries
 db41cda8b730bf11176b2799cb9a24c64aebf2b0 data/starcatcher/starcatcher/fish/agave_bream.json
 b41a0c89a5168ecb0abb1bdf167569bf16673d5f data/starcatcher/starcatcher/fish/amethystback.json
 38a8823305753e4eaf61101d0290d1feba47f0b4 data/starcatcher/starcatcher/fish/aquamarine_pike.json
@@ -116,7 +116,7 @@ c69084cd9356622d658a4296ea764fd46565af43 data/starcatcher/starcatcher/fish/scald
 06c409e90a577141e2ebaa55767cea32e5d866d6 data/starcatcher/starcatcher/fish/scorchfish.json
 3d1c7f08a436094f2b0b001fda8a661b410ae3ba data/starcatcher/starcatcher/fish/sculkfish.json
 9766fecca78b6e7b4addb576be57cbba7e42f853 data/starcatcher/starcatcher/fish/sea_bass.json
-ee9cf273f1c56e164d087212f45b678a07646fa0 data/starcatcher/starcatcher/fish/shroomfish.json
+e4914fbbfbb5bbeece5ed46c52db42ca889dab73 data/starcatcher/starcatcher/fish/shroomfish.json
 81746605b34205d835cafe0b02fbe464bbd47d06 data/starcatcher/starcatcher/fish/silverfin_pike.json
 0cf86b98a3bbae7d7be80ec9fca6dd014a5625d7 data/starcatcher/starcatcher/fish/silverveil_perch.json
 837188a0082825b1c7e0a366abe842005ffc62d7 data/starcatcher/starcatcher/fish/slimed_skin_smithing_template.json

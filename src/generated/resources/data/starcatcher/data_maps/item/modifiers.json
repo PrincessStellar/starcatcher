@@ -141,8 +141,8 @@
     ],
     "starcatcher:fisherman_hat_brown": [
       {
-        "type": "starcatcher:bost_thrown_speed",
-        "multiplier": 3.0
+        "type": "starcatcher:boost_throw_speed",
+        "multiplier": 2.5
       }
     ],
     "starcatcher:fisherman_hat_cyan": [

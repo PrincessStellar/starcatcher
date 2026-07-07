@@ -13,6 +13,7 @@ public interface SCSweetSpotsBehaviour
             DeferredRegister.create(Starcatcher.SWEETSPOT_BEHAVIOUR_REGISTRY, Starcatcher.MOD_ID);
 
     ResourceLocation NORMAL = registerSweetspot("normal", () -> NormalSweetSpotBehaviour::new);
+    ResourceLocation MUSHROOM = registerSweetspot("mushroom", () -> MushroomSweetSpotBehaviour::new);
     ResourceLocation FROZEN = registerSweetspot("freeze", () -> FreezeSweetSpotBehaviour::new);
     ResourceLocation TREASURE = registerSweetspot("treasure", () -> TreasureSweetSpotBehaviour::new);
     ResourceLocation TNT = registerSweetspot("tnt", () -> TntSweetSpotBehaviour::new);

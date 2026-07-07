@@ -9,16 +9,16 @@ import com.wdiscute.starcatcher.modifiers.Modifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 
-public class BoostThrownSpeedModifier extends AbstractCatchModifier
+public class BoostThrowSpeedModifier extends AbstractCatchModifier
 {
     final float multiplier;
-    public static final MapCodec<BoostThrownSpeedModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<BoostThrowSpeedModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.FLOAT.fieldOf("multiplier").forGetter(o -> o.multiplier),
                     Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
-            ).apply(instance, BoostThrownSpeedModifier::new));
+            ).apply(instance, BoostThrowSpeedModifier::new));
 
-    public BoostThrownSpeedModifier(float multiplier, String translationOverride)
+    public BoostThrowSpeedModifier(float multiplier, String translationOverride)
     {
         super(translationOverride);
         this.multiplier = multiplier;
@@ -33,7 +33,7 @@ public class BoostThrownSpeedModifier extends AbstractCatchModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("bost_thrown_speed");
+        return Starcatcher.rl("boost_throw_speed");
     }
 
     @Override

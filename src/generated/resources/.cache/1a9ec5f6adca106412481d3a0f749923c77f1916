@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T16:26:47.5530351	FishingProperties
+// 1.21.1	2026-07-07T17:37:24.8600097	FishingProperties
 7d8fb664607a6432ef2661977c20f9306c08e534 data/alexscaves/starcatcher/fish/lanternfish.json
 a0240f39a501ad5ebad443d2d002a4a8aa3ad0a3 data/alexscaves/starcatcher/fish/radgill.json
 81067a079d9167a3bda56ec3b0b96ebc6518c8d4 data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -112,7 +112,7 @@ e122e601df59b5ee3afbead284a4bc08951d26bc data/minecraft/starcatcher/fish/diamond
 c3b25a230da908e7df780fea1422a2ffa038d963 data/minecraft/starcatcher/fish/lily_pad.json
 7d8521f4d32d822499a42d0074086f4f63d73b6d data/minecraft/starcatcher/fish/netherite_scrap.json
 d1df62cc70e09e7671e4f825405161e086687236 data/minecraft/starcatcher/fish/netherite_upgrade_smithing_template.json
-65962181d3ea212c49e987590d1c98f59d2fad7a data/minecraft/starcatcher/fish/nether_star.json
+0ec25d71c50d1cbf48e2b8f44554209dbc6db33d data/minecraft/starcatcher/fish/nether_star.json
 7f4e9851b5b64c75f2b962762d177a13b36c698d data/minecraft/starcatcher/fish/pufferfish.json
 f3dd46be70db66beaabacc4c480ffb09f1d86ba1 data/minecraft/starcatcher/fish/rotten_flesh.json
 31e884857e1e43427148fe39ccfd66fe996c2e8e data/minecraft/starcatcher/fish/salmon.json
@@ -248,7 +248,7 @@ c69084cd9356622d658a4296ea764fd46565af43 data/starcatcher/starcatcher/fish/scald
 06c409e90a577141e2ebaa55767cea32e5d866d6 data/starcatcher/starcatcher/fish/scorchfish.json
 3d1c7f08a436094f2b0b001fda8a661b410ae3ba data/starcatcher/starcatcher/fish/sculkfish.json
 9766fecca78b6e7b4addb576be57cbba7e42f853 data/starcatcher/starcatcher/fish/sea_bass.json
-ee9cf273f1c56e164d087212f45b678a07646fa0 data/starcatcher/starcatcher/fish/shroomfish.json
+e4914fbbfbb5bbeece5ed46c52db42ca889dab73 data/starcatcher/starcatcher/fish/shroomfish.json
 81746605b34205d835cafe0b02fbe464bbd47d06 data/starcatcher/starcatcher/fish/silverfin_pike.json
 0cf86b98a3bbae7d7be80ec9fca6dd014a5625d7 data/starcatcher/starcatcher/fish/silverveil_perch.json
 837188a0082825b1c7e0a366abe842005ffc62d7 data/starcatcher/starcatcher/fish/slimed_skin_smithing_template.json
@@ -314,7 +314,7 @@ efa2b0d95027dc8e48f9118491a62bc295264e65 data/tide/starcatcher/fish/crystalline_
 069bb3f02f196f30d1c11dd866ca8efadb539bf8 data/tide/starcatcher/fish/deep_blue.json
 065405a40dffcc3f6d1fe92cc8f45fdb68cc2c94 data/tide/starcatcher/fish/deep_grouper.json
 860cf9c4f92a525330d7b5b654196d994f4d77c1 data/tide/starcatcher/fish/devils_hole_pupfish.json
-a146d0e84f1b02977f264bcd3b091e37946a9e1a data/tide/starcatcher/fish/dragon_fish.json
+c94aa19b7235a87bf8d44e4f9417464a274ce5dd data/tide/starcatcher/fish/dragon_fish.json
 7ac985facc6b553d0edd1e91229b5d8a328f1dfe data/tide/starcatcher/fish/dripstone_darter.json
 7f4fedaf695f2cd97361e24d3781855a2c544638 data/tide/starcatcher/fish/dutchman_sock.json
 83b43f01e7e2252aea6daca6d4880731f62b2c59 data/tide/starcatcher/fish/echo_snapper.json

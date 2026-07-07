@@ -280,6 +280,8 @@
 
   "tooltip.modifier.starcatcher.bounce_back": "Prevents the fish from swimming away once by bouncing it back up",
 
+  "tooltip.modifier.starcatcher.boost_throw_speed": "Your bobber will fly REALLY far",
+
   "tooltip.modifier.starcatcher.survives_lava": "Allows for lava-fishing",
 
   "tooltip.modifier.starcatcher.add_creeper": "An ill-tempered friend might show up",

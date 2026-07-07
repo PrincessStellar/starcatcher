@@ -115,12 +115,6 @@ public record Difficulty(
     );
 
 
-
-
-
-
-
-
     public static Difficulty EASY = new Difficulty(
             75, 7, 5, 1,
             List.of(),
@@ -146,10 +140,6 @@ public record Difficulty(
             List.of(),
             SweetSpot.NORMAL, SweetSpot.THIN, SweetSpot.AQUA
     );
-
-
-
-
 
 
     public static Difficulty MEDIUM = new Difficulty(
@@ -189,10 +179,6 @@ public record Difficulty(
     );
 
 
-
-
-
-
     public static Difficulty HARD = new Difficulty(
             100, 11, 20, 1,
             List.of(),
@@ -225,7 +211,6 @@ public record Difficulty(
             100, 11, 20, 1,
             List.of(),
             SweetSpot.AQUA, SweetSpot.AQUA);
-
 
 
     //
@@ -306,9 +291,12 @@ public record Difficulty(
 
     //todo leaf-like sweetspots with mushrooms
     public static Difficulty SHROOMFISH = new Difficulty(
-            2000, 6, 300, 1,
-            List.of(),
-            SweetSpot.NORMAL
+            700, 12, 100, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(40, 0.5f, SweetSpot.RED_MUSHROOM, false, ""),
+                    new SpawnSweetSpotsModifier(30, 0.5f, SweetSpot.BROWN_MUSHROOM, false, "")
+            ),
+            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL
     );
 
 
@@ -372,17 +360,6 @@ public record Difficulty(
             SweetSpot.VOIDBITER_SPOT, SweetSpot.VOIDBITER_SPOT);
 
 
-
-
-
-
-
-
-
-
-
-
-
     public static final Codec<Difficulty> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     Codec.INT.fieldOf("hp").forGetter(Difficulty::hp),
@@ -438,6 +415,8 @@ public record Difficulty(
         private static final ResourceLocation RL_THIN_STEADY = Starcatcher.rl("textures/gui/minigame/spots/thin_steady.png");
         private static final ResourceLocation RL_FREEZE = Starcatcher.rl("textures/gui/minigame/spots/frozen.png");
         private static final ResourceLocation RL_TREASURE = Starcatcher.rl("textures/gui/minigame/spots/treasure.png");
+        private static final ResourceLocation RL_RED_MUSHROOM = Starcatcher.rl("textures/gui/minigame/spots/red_mushroom.png");
+        private static final ResourceLocation RL_BROWN_MUSHROOM = Starcatcher.rl("textures/gui/minigame/spots/brown_mushroom.png");
         private static final ResourceLocation RL_WITHER = Starcatcher.rl("textures/gui/minigame/spots/wither.png");
         private static final ResourceLocation RL_WITHER_BIG = Starcatcher.rl("textures/gui/minigame/spots/wither_big.png");
         private static final ResourceLocation RL_CREEPER = Starcatcher.rl("textures/gui/minigame/spots/creeper.png");
@@ -537,6 +516,23 @@ public record Difficulty(
                 0xff00ff00
         );
 
+        public static SweetSpot RED_MUSHROOM = new SweetSpot(
+                SCSweetSpotsBehaviour.MUSHROOM,
+                RL_RED_MUSHROOM,
+                22,
+                0,
+                0xffe75252
+        );
+
+
+        public static SweetSpot BROWN_MUSHROOM = new SweetSpot(
+                SCSweetSpotsBehaviour.MUSHROOM,
+                RL_BROWN_MUSHROOM,
+                22,
+                0,
+                0xff8b6e3b
+        );
+
         public static SweetSpot FROZEN = new SweetSpot(
                 SCSweetSpotsBehaviour.FROZEN,
                 RL_FREEZE,
@@ -579,7 +575,7 @@ public record Difficulty(
 
         public static SweetSpot WITHER = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,
-                RL_WITHER_BIG,
+                RL_WITHER,
                 22,
                 15,
                 0xff1f1f1f

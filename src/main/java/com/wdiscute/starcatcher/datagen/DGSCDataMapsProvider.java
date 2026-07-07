@@ -379,7 +379,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_BROWN.asItem().builtInRegistryHolder(),
                 List.of(
-                        new BoostThrownSpeedModifier(3, "")
+                        new BoostThrowSpeedModifier(2.5f, "")
                 ), false);
 
         modifiers.add(SCBlocks.FISHERMAN_HAT_YELLOW.asItem().builtInRegistryHolder(),

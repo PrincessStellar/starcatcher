@@ -207,8 +207,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 }
             }
         }
-
-        LogUtils.getLogger().warn("Starcatcher's minigame couldn't find a non-overlapping free position! Consider not having so many active sweet-spots");
         return Utils.r.nextInt(360);
     }
 
@@ -594,7 +592,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         kimbeMarkerPos = getPointerPosPrecise();
 
 
-        for (ActiveSweetSpot ass : activeSweetSpots)
+        for (ActiveSweetSpot ass : activeSweetSpots.reversed())
         {
             if (ass.canHit && doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2))
             {
