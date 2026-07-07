@@ -3,6 +3,8 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.KimbeMarkerModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnTreasureModifier;
 import com.wdiscute.utils.DataEntry;
 import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
@@ -26,9 +28,11 @@ public interface SCDataEntries
             Codec.unboundedMap(Codec.STRING, Codec.INT),
             Map.of());
 
+    //this should be empty as defaults come from datapack!
     DataEntry<List<Modifier>> DEFAULT_CATCH_MODIFIERS = DataEntry.register(Starcatcher.rl("default_catch_modifiers"), Modifier.CODEC.listOf(),
             List.of());
 
+    //this should be empty as defaults come from datapack!
     DataEntry<List<Modifier>> DEFAULT_MINIGAME_MODIFIERS = DataEntry.register(Starcatcher.rl("default_minigame_modifiers"), Modifier.CODEC.listOf(),
             List.of());
 

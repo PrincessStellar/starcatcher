@@ -122,9 +122,9 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
+    public void tick(FishingMinigameScreen instance)
     {
-        return true;
+        instance.getModifiers().removeIf(o -> o instanceof KimbeMarkerModifier);
     }
 
     @Override
@@ -272,7 +272,7 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("multi_layer_modifier");
+        return Starcatcher.rl("multi_layer");
     }
 
     @Override

@@ -22,7 +22,7 @@
         "ramp_time": 10
       },
       {
-        "type": "starcatcher:multi_layer_modifier",
+        "type": "starcatcher:multi_layer",
         "max_layers": 2
       }
     ],

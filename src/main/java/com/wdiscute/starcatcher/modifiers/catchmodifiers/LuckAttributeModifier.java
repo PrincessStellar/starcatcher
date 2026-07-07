@@ -38,6 +38,7 @@ public class LuckAttributeModifier extends AbstractCatchModifier
         AttributeInstance attribute = fbe.player.getAttribute(Attributes.LUCK);
         if(attribute == null) return available;
         double luck = attribute.getValue();
+        if(luck == 0d) return available;
 
         //list to return
         List<FishProperties> list = new ArrayList<>();
@@ -66,7 +67,7 @@ public class LuckAttributeModifier extends AbstractCatchModifier
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("luck_attribute_modifier");
+        return Starcatcher.rl("luck_attribute");
     }
 
     @Override

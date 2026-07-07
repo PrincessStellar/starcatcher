@@ -131,11 +131,6 @@ public abstract class AbstractMinigameModifier implements Modifier
         return false;
     }
 
-    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
-    {
-        return false;
-    }
-
     public boolean skipHitParticles(FishingMinigameScreen instance)
     {
         return false;

@@ -1,5 +1,9 @@
 [
   {
-    "type": "starcatcher:base"
+    "type": "starcatcher:kimbe_marker"
+  },
+  {
+    "type": "starcatcher:spawn_treasure",
+    "chance": 0.02
   }
 ]

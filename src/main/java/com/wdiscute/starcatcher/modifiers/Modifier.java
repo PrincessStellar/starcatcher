@@ -131,6 +131,7 @@ public interface Modifier
 
         //todo add enchants
 
+
         //if not rod, end pipeline
         if (!itemStack.is(SCTags.RODS)) return modifiers;
 
@@ -153,7 +154,7 @@ public interface Modifier
 
         //defaults
         Modifier.MODIFIERS.put(Starcatcher.rl("fish_messages"), FishMessagesModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("luck_attribute_modifier"), LuckAttributeModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("luck_attribute"), LuckAttributeModifier.CODEC);
 
         //others
         Modifier.MODIFIERS.put(Starcatcher.rl("adjust_lure_time"), AdjustLureTimeModifier.CODEC);
@@ -188,7 +189,8 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("freeze_on_miss"), FreezeOnMissModifier.CODEC);
 
         //defaults
-        Modifier.MODIFIERS.put(Starcatcher.rl("base"), BaseMinigameModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("kimbe_marker"), KimbeMarkerModifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure"), SpawnTreasureModifier.CODEC);
 
         //others
         Modifier.MODIFIERS.put(Starcatcher.rl("burn_on_miss"), BurnOnMissModifier.CODEC);
@@ -196,7 +198,7 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure_on_hit_x"), SpawnTreasureOnHitX.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("stop_decay_on_hit"), StoneHookModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("bigger_green_sweetspots"), SteadyBobberModifier.CODEC);
-        Modifier.MODIFIERS.put(Starcatcher.rl("multi_layer_modifier"), Nikdo53Modifier.CODEC);
+        Modifier.MODIFIERS.put(Starcatcher.rl("multi_layer"), Nikdo53Modifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("flip_every_hit"), FlipEveryHitModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_sweetspots"), SpawnSweetSpotsModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("add_leaves_spots"), AddLeavesSweetspotsModifier.CODEC);

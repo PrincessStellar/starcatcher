@@ -129,6 +129,10 @@
       "required": false
     },
     {
+      "id": "minecraft:lily_pad",
+      "required": false
+    },
+    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -173,6 +177,10 @@
       "required": false
     },
     {
+      "id": "minecraft:bamboo",
+      "required": false
+    },
+    {
       "id": "starcatcher:livid_bamboo",
       "required": false
     },
@@ -189,7 +197,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:bluegigi",
+      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
@@ -205,7 +213,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:hollowbelly_darter",
+      "id": "starcatcher:bluegigi",
       "required": false
     },
     {
@@ -1605,6 +1613,10 @@
       "required": false
     },
     {
+      "id": "minecraft:lily_pad",
+      "required": false
+    },
+    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -1649,6 +1661,10 @@
       "required": false
     },
     {
+      "id": "minecraft:bamboo",
+      "required": false
+    },
+    {
       "id": "starcatcher:livid_bamboo",
       "required": false
     },
@@ -1665,7 +1681,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:bluegigi",
+      "id": "starcatcher:hollowbelly_darter",
       "required": false
     },
     {
@@ -1681,7 +1697,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:hollowbelly_darter",
+      "id": "starcatcher:bluegigi",
       "required": false
     },
     {

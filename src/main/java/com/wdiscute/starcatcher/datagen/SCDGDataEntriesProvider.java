@@ -1,12 +1,12 @@
 package com.wdiscute.starcatcher.datagen;
 
-import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.FishMessagesModifier;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.LuckAttributeModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BaseMinigameModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.KimbeMarkerModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnTreasureModifier;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCDataEntries;
 import com.wdiscute.starcatcher.registry.SCItems;
@@ -48,11 +48,11 @@ public class SCDGDataEntriesProvider
                                 new FishMessagesModifier(0.05f, ""),
                                 new LuckAttributeModifier(new HashMap<>()
                                 {{
-                                    put(Rarity.COMMON, 0);
-                                    put(Rarity.UNCOMMON, 1);
-                                    put(Rarity.RARE, 2);
-                                    put(Rarity.EPIC, 3);
-                                    put(Rarity.LEGENDARY, 5);
+                                    put(Rarity.COMMON, 16);
+                                    put(Rarity.UNCOMMON, 17);
+                                    put(Rarity.RARE, 18);
+                                    put(Rarity.EPIC, 19);
+                                    put(Rarity.LEGENDARY, 20);
                                 }}, "tooltip.modifier.starcatcher.luck_attribute"),
                                 new ExtraGoldenChanceModifier(0.01f, false, ""),
                                 new ExtraGoldenChanceModifier(0.01f, true, "")
@@ -61,7 +61,9 @@ public class SCDGDataEntriesProvider
         );
 
         gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.DEFAULT_MINIGAME_MODIFIERS,
-                List.of(new BaseMinigameModifier("")
+                List.of(
+                        new KimbeMarkerModifier(""),
+                        new SpawnTreasureModifier(0.02f, "")
                 ))
         );
 

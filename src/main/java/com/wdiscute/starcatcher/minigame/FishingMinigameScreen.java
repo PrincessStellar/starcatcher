@@ -467,7 +467,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
     public void renderKimbeMarker(GuiGraphics guiGraphics)
     {
-        if (modifiers.stream().anyMatch(o -> o.skipRenderingKimbeMarker(this))) return;
         PoseStack poseStack = guiGraphics.pose();
         poseStack.pushPose();
 
@@ -600,10 +599,13 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
             if (ass.canHit && doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2))
             {
 
-                //check if each modifier allows the hit to register
+                //trigger modifiers on-hit, cancel if any returns true
                 if (modifiers.stream().anyMatch(o -> o.onHit(this, ass))) continue;
 
+                consecutiveHits++;
                 hitSomething = true;
+
+                //trigger sweet-spot behaviour on hit
                 ass.behaviour.onHit(this, ass);
                 break;
             }
@@ -614,7 +616,9 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         {
             this.modifiers.forEach(o -> o.onMiss(this));
 
+            perfectCatch = false;
             consecutiveHits = 0;
+
             if (SCConfig.ENABLE_MISS_SOUND.get() && modifiers.stream().noneMatch(o -> o.skipMissSound(this)))
                 level.playLocalSound(pos.x, pos.y, pos.z, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1, 1, false);
 
@@ -642,9 +646,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     @Override
     public void tick()
     {
-        //progress = 12313123;
-
-
         if (isHoldingInput())
         { //mimics the keyboard behavior
             holdingTicks++;

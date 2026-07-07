@@ -33,6 +33,12 @@ public class TeleportModifier extends AbstractMinigameModifier
     }
 
     @Override
+    public void tick(FishingMinigameScreen instance)
+    {
+        instance.getModifiers().removeIf(o -> o instanceof KimbeMarkerModifier);
+    }
+
+    @Override
     public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         Minecraft.getInstance().player.playSound(SoundEvents.ENDERMAN_TELEPORT, 0.6f, 1f);
@@ -40,12 +46,6 @@ public class TeleportModifier extends AbstractMinigameModifier
         instance.handlePos = kimbePosition;
         kimbePosition = ass.pos;
         return super.onHit(instance, ass);
-    }
-
-    @Override
-    public boolean skipRenderingKimbeMarker(FishingMinigameScreen instance)
-    {
-        return false;
     }
 
     @Override

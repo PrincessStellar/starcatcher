@@ -11,14 +11,14 @@ import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
 
-public class BaseMinigameModifier extends AbstractMinigameModifier
+public class KimbeMarkerModifier extends AbstractMinigameModifier
 {
-    public static final MapCodec<BaseMinigameModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<KimbeMarkerModifier> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.STRING.optionalFieldOf("translation_override", "").forGetter(o -> o.translationOverride)
-            ).apply(instance, BaseMinigameModifier::new));
+            ).apply(instance, KimbeMarkerModifier::new));
 
-    public BaseMinigameModifier(String translationOverride)
+    public KimbeMarkerModifier(String translationOverride)
     {
         super(translationOverride);
     }
@@ -32,13 +32,6 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
         //You have to make the actual texture white before trying to recolor like this, dummy
         instance.kimbeMarkerColor = 0xff6767;
         instance.kimbeMarkerPos = instance.getPointerPosPrecise();
-
-        //refresh all vanishes
-        instance.refreshSweetSpotsAlphas();
-
-        instance.perfectCatch = false;
-
-        instance.consecutiveHits = 0;
     }
 
     @Override
@@ -47,21 +40,13 @@ public class BaseMinigameModifier extends AbstractMinigameModifier
         instance.kimbeMarkerAlpha = 1;
         instance.kimbeMarkerColor = 0x2ce17d;
         instance.kimbeMarkerPos = instance.getPointerPosPrecise();
-
-        instance.consecutiveHits++;
-
-        if (Utils.r.nextFloat() > 0.98 && !instance.treasureActive && instance.treasureProgress == 0)
-        {
-            instance.addSweetSpot(new ActiveSweetSpot(instance, Difficulty.SweetSpot.TREASURE));
-        }
-
         return super.onHit(instance, ass);
     }
 
     @Override
     public ResourceLocation getIdentifier()
     {
-        return Starcatcher.rl("base");
+        return Starcatcher.rl("kimbe_marker");
     }
 
     @Override

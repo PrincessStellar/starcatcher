@@ -4,13 +4,13 @@
     "chance": 0.05
   },
   {
-    "type": "starcatcher:luck_attribute_modifier",
+    "type": "starcatcher:luck_attribute",
     "rarity_count_increase_times_luck": {
-      "common": 0,
-      "epic": 3,
-      "legendary": 5,
-      "rare": 2,
-      "uncommon": 1
+      "common": 16,
+      "epic": 19,
+      "legendary": 20,
+      "rare": 18,
+      "uncommon": 17
     },
     "translation_override": "tooltip.modifier.starcatcher.luck_attribute"
   },

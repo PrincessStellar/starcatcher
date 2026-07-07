@@ -323,7 +323,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.bambooJungle(context)
+                PresetRestrictions.jungle(context)
                         .withFish(Items.LILY_PAD)
                         .withSizeAndWeight(new SizeAndWeight(620, 270, 5300, 700))
                         .withDifficulty(Difficulty.TRASH)
