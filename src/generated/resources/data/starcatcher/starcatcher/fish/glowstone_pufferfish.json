@@ -10,7 +10,14 @@
     "decay": 1.0,
     "hp": 100,
     "missPenalty": 20,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:burn_on_miss",
+        "extra_speed": 20,
+        "length": 40,
+        "ramp_time": 10
+      }
+    ],
     "speed": 10,
     "sweetspots": [
       {
@@ -59,5 +66,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/nether.png"
 }

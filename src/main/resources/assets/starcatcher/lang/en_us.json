@@ -2,7 +2,7 @@
   "fluid.starcatcher.lava": "Lava",
   "fluid.starcatcher.water": "Water",
   "fluid.starcatcher.void": "Void",
-  "fluid.starcatcher.air": "air",
+  "fluid.starcatcher.air": "Air",
 
   "fluid.starcatcher.acid": "Acid",
   "fluid.starcatcher.purple_soda": "Purple Soda",
@@ -1851,9 +1851,16 @@
 
   "item.starcatcher.stonefish" : "Stonefish",
   "tooltip.starcatcher.stonefish.0" : "A huge heavy fish made of stone,",
-  "tooltip.starcatcher.stonefish.1" : "often feeding miners for days.",
+  "tooltip.starcatcher.stonefish.1" : "often feeding miners for days. And breaking their teeth.",
 
 
+
+
+  "item.starcatcher.dripfin" : "Dripfin",
+  "tooltip.starcatcher.dripfin.0" : "A basic fish which inhabits the water pools of dripstone caves.",
+
+  "item.starcatcher.yellowstone_fish" : "Yellowstone Fish",
+  "tooltip.starcatcher.yellowstone_fish.0" : "A beautiful gold colored fish common to dripstone caves.",
 
   "item.starcatcher.fossilized_angelfish" : "Fossilized Angelfish",
   "tooltip.starcatcher.fossilized_angelfish.0" : "An angelfish resembling a fossil.",
@@ -1861,53 +1868,46 @@
   "tooltip.starcatcher.fossilized_angelfish.2" : "ignored due to its low nutritional value,",
   "tooltip.starcatcher.fossilized_angelfish.3" : "heavy weight and high difficulty to catch.",
 
-  "item.starcatcher.dripfin" : "Dripfin",
-  "tooltip.starcatcher.dripfin.0" : "A basic fish which inhabits the",
-  "tooltip.starcatcher.dripfin.1" : "water pools of dripstone caves.",
-
-  "item.starcatcher.yellowstone_fish" : "Yellowstone Fish",
-  "tooltip.starcatcher.yellowstone_fish.0" : "A beautiful gold colored fish common to dripstone caves.",
 
 
 
-
-
-  "item.starcatcher.lush_pike" : "Lush Pike",
-  "tooltip.starcatcher.lush_pike.0" : "A mossy <sclegendary>legendary</sclegendary> pike rarely",
-  "tooltip.starcatcher.lush_pike.1" : "found in the Lush Caves. A real tough",
-  "tooltip.starcatcher.lush_pike.2" : "catch even for experienced anglers.",
 
   "item.starcatcher.vivid_moss" : "Vivid Moss",
   "tooltip.starcatcher.vivid_moss.0" : "A piece of moss resembling a fish found in Lush Caves.",
   "tooltip.starcatcher.vivid_moss.1" : "Or perhaps an actual fish consumed in moss?",
-  "tooltip.starcatcher.vivid_moss.2" : "Either way it's a hard catch due to its slipperiness.",
+  "tooltip.starcatcher.vivid_moss.2" : "Either way it shouldn't give you much trouble catching it.",
 
   "item.starcatcher.the_quarrish" : "The Quarrish",
   "tooltip.starcatcher.the_quarrish.0" : "A fish often seen around the overgrown lush caves.",
   "tooltip.starcatcher.the_quarrish.1" : "Its heavy size makes for a very tedious catch.",
 
+  "item.starcatcher.lush_pike" : "Lush Pike",
+  "tooltip.starcatcher.lush_pike.0" : "A mossy <sclegendary>legendary</sclegendary> pike found rarity in the Lush Caves.",
+  "tooltip.starcatcher.lush_pike.1" : "A real tough catch even for experienced anglers.",
+
 
 
   "item.starcatcher.ghostly_pike" : "Ghostly Pike",
-  "tooltip.starcatcher.ghostly_pike.0" : "A ghost-looking pike rarely found deep underground.",
+  "tooltip.starcatcher.ghostly_pike.0" : "A ghost-looking pike found deep underground.",
 
   "item.starcatcher.aquamarine_pike" : "Aquamarine Pike",
-  "tooltip.starcatcher.aquamarine_pike.0" : "A predatory fish found deep underground.",
+  "tooltip.starcatcher.aquamarine_pike.0" : "A predatory fish found at deepslate level.",
 
   "item.starcatcher.garnet_mackerel" : "Garnet Mackerel",
-  "tooltip.starcatcher.garnet_mackerel.0" : "A hard to catch mackerel species found deep in caves.",
+  "tooltip.starcatcher.garnet_mackerel.0" : "An easy to catch mackerel species found deep in caves.",
 
   "item.starcatcher.bright_amethyst_snapper" : "Bright Amethyst Snapper",
   "tooltip.starcatcher.bright_amethyst_snapper.0" : "A gorgeous pink colored fish found at deepslate level.",
-  "tooltip.starcatcher.bright_amethyst_snapper.1" : "It's said to always swim around with it's pair of Dark Amethyst Snapper.",
+  "tooltip.starcatcher.bright_amethyst_snapper.1" : "It's said to always swim around with a Dark Amethyst Snapper.",
 
   "item.starcatcher.dark_amethyst_snapper" : "Dark Amethyst Snapper",
   "tooltip.starcatcher.dark_amethyst_snapper.0" : "A gorgeous dark blue colored fish found at deepslate level.",
-  "tooltip.starcatcher.dark_amethyst_snapper.1" : "It's said to always swim around with it's pair of Bright Amethyst Snapper.",
+  "tooltip.starcatcher.dark_amethyst_snapper.1" : "It's said to always swim around with a Bright Amethyst Snapper.",
 
   "item.starcatcher.deepslatefish" : "Deepslatefish",
-  "tooltip.starcatcher.deepslatefish.0" : "A hard to catch fish found high up in the mountains.",
+  "tooltip.starcatcher.deepslatefish.0" : "A <sclegendary>legendary</scsclegenday> fish only found high up in the mountains.",
   "tooltip.starcatcher.deepslatefish.1" : "Just kidding. It's found at deepslate.",
+  "tooltip.starcatcher.deepslatefish.2" : "An incredibly tough catch due to its vanishing deepslate scales.",
 
 
 

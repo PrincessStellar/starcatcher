@@ -77,19 +77,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:the_quarrish",
-      "required": false
-    },
-    {
       "id": "starcatcher:ghostly_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowing_dark",
       "required": false
     },
     {
@@ -485,19 +473,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:the_quarrish",
-      "required": false
-    },
-    {
       "id": "starcatcher:ghostly_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowing_dark",
       "required": false
     },
     {

@@ -73,9 +73,14 @@
   "rarity": "legendary",
   "restrictions": [
     {
+      "type": "starcatcher:dimension",
+      "dimension_entry": "overworld",
+      "translation_override": "dimension.minecraft.overworld"
+    },
+    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
-      "min_y": 100,
+      "min_y": 200,
       "translation_override": "gui.guide.elevation.skies"
     },
     {
@@ -83,7 +88,7 @@
       "fluids": [
         "minecraft:empty"
       ],
-      "translation_override": "fluid.starcatcher.void"
+      "translation_override": "fluid.starcatcher.air"
     }
   ],
   "size_and_weight": {
@@ -94,5 +99,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/surface.png"
+  "textures": "starcatcher:textures/gui/minigame/sky.png"
 }

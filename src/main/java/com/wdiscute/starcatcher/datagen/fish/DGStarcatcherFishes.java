@@ -528,9 +528,11 @@ public class DGStarcatcherFishes
         FishRegistration.register(context,
                 PresetRestrictions.empty(context)
                         .withFish(SCItems.CLOUDFIN)
+                        .withTextures(FishProperties.SKY)
                         .withSizeAndWeight(new SizeAndWeight(920, 120, 0, 0))
+                        .addRestriction(DimensionRestriction.OVERWORLD)
                         .addRestriction(ElevationRestriction.ABOVE_TWO_HUNDRED)
-                        .addRestriction(FluidRestriction.VOID)
+                        .addRestriction(FluidRestriction.AIR)
                         .withDifficulty(Difficulty.CLOUDFIN)
                         .withRarity(Rarity.LEGENDARY)
         );
@@ -829,7 +831,7 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.GOLD_FAN)
                         .withSizeAndWeight(new SizeAndWeight(70, 50, 4000, 2000))
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_AQUA)
+                        .withDifficulty(Difficulty.EASY_STONE)
         );
 
         FishRegistration.register(context,
@@ -837,7 +839,7 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.WHITEVEIL)
                         .withSizeAndWeight(new SizeAndWeight(100, 30, 33000, 7000))
                         .withRarity(Rarity.COMMON)
-                        .withDifficulty(Difficulty.EASY_AQUA)
+                        .withDifficulty(Difficulty.EASY_STONE.moving())
         );
 
         //uncommon
@@ -847,15 +849,15 @@ public class DGStarcatcherFishes
                         .withSizeAndWeight(new SizeAndWeight(120, 80, 7000, 1000))
                         .withWeather(WeatherRestriction.RAIN)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM_STONE.withHP(200))
         );
 
         FishRegistration.register(context,
                 PresetRestrictions.caves(context)
                         .withFish(SCItems.BLACK_EEL)
                         .withSizeAndWeight(new SizeAndWeight(500, 150, 6000, 2000))
-                        .withDifficulty(Difficulty.MEDIUM)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM_STONE.moving())
         );
 
         //epic
@@ -864,9 +866,19 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.GEODE_EEL)
                         .withSizeAndWeight(new SizeAndWeight(500, 150, 10000, 2000))
                         .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.HARD.vanishing())
+                        .withDifficulty(Difficulty.HARD_STONE.withHP(300))
         );
 
+        FishRegistration.register(context,
+                PresetRestrictions.empty(context)
+                        .withFish(SCItems.AMETHYSTBACK)
+                        .withSizeAndWeight(new SizeAndWeight(300, 150, 16000, 7000))
+                        .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD_STONE.withHP(300))
+                        .addRestriction(DimensionRestriction.OVERWORLD)
+                        .addRestriction(ElevationBias.AMETHYSTBACK)
+                        .addRestriction(FluidRestriction.WATER)
+        );
 
         //legendary
         FishRegistration.register(context,
@@ -877,17 +889,6 @@ public class DGStarcatcherFishes
                         .withDifficulty(Difficulty.STONEFISH)
         );
 
-        //todo make this with elevation bias
-        FishRegistration.register(context,
-                PresetRestrictions.caves(context)
-                        .withFish(SCItems.AMETHYSTBACK)
-                        .withSizeAndWeight(new SizeAndWeight(300, 150, 16000, 7000))
-                        .withRarity(Rarity.EPIC)
-                        .withRestrictions(List.of(
-                                DimensionRestriction.OVERWORLD,
-                                new ElevationRestriction(-40, -20, ""))
-                        )
-        );
 
         //
         //    ,--.         ,--.                   ,--.
@@ -901,14 +902,14 @@ public class DGStarcatcherFishes
                 PresetRestrictions.dripstoneCaves(context)
                         .withFish(SCItems.DRIPFIN)
                         .withSizeAndWeight(new SizeAndWeight(300, 150, 16000, 7000))
-                        .withDifficulty(Difficulty.EASY.moving())
+                        .withDifficulty(Difficulty.EASY_DRIPSTONE.moving().withHP(200))
         );
 
         FishRegistration.register(context,
                 PresetRestrictions.dripstoneCaves(context)
                         .withFish(SCItems.YELLOWSTONE_FISH)
                         .withSizeAndWeight(new SizeAndWeight(600, 150, 22000, 7000))
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM_DRIPSTONE.withHP(200))
                         .withRarity(Rarity.UNCOMMON)
         );
 
@@ -916,6 +917,7 @@ public class DGStarcatcherFishes
                 PresetRestrictions.dripstoneCaves(context)
                         .withFish(SCItems.FOSSILIZED_ANGELFISH)
                         .withSizeAndWeight(new SizeAndWeight(700, 150, 36000, 7000))
+                        .withDifficulty(Difficulty.HARD_DRIPSTONE.withHP(600))
                         .withRarity(Rarity.RARE)
         );
 
@@ -933,24 +935,26 @@ public class DGStarcatcherFishes
                 PresetRestrictions.lushCaves(context)
                         .withFish(SCItems.VIVID_MOSS)
                         .withSizeAndWeight(new SizeAndWeight(120, 70, 7000, 3000))
-                        .withDifficulty(Difficulty.HARD.moving())
+                        .withDifficulty(Difficulty.MEDIUM.moving().withHP(160))
                         .withRarity(Rarity.UNCOMMON)
+        );
+
+        //rare
+        FishRegistration.register(context,
+                PresetRestrictions.lushCaves(context)
+                        .withFish(SCItems.THE_QUARRISH)
+                        .withSizeAndWeight(new SizeAndWeight(620, 270, 700000, 300000))
+                        .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.HARD.withHP(220).withSpeed(4))
         );
 
         //epic
         FishRegistration.register(context,
                 PresetRestrictions.lushCaves(context)
-                        .withFish(SCItems.THE_QUARRISH)
-                        .withSizeAndWeight(new SizeAndWeight(620, 270, 700000, 300000))
-                        .withRarity(Rarity.UNCOMMON)
-        );
-
-        //legendary
-        FishRegistration.register(context,
-                PresetRestrictions.lushCaves(context)
                         .withFish(SCItems.LUSH_PIKE)
                         .withSizeAndWeight(new SizeAndWeight(75, 20, 5000, 3000))
-                        .withRarity(Rarity.LEGENDARY)
+                        .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD.vanishing().moving().withHP(300))
         );
 
 
@@ -965,14 +969,18 @@ public class DGStarcatcherFishes
         //common
         FishRegistration.register(context,
                 PresetRestrictions.deepslate(context)
-                        .withFish(SCItems.DEEPSLATEFISH)
-                        .withSizeAndWeight(new SizeAndWeight(420, 70, 70000, 20000))
+                        .withFish(SCItems.GARNET_MACKEREL)
+                        .withSizeAndWeight(new SizeAndWeight(40, 20, 2000, 1500))
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY_DEEPSLATE.moving())
         );
 
         FishRegistration.register(context,
                 PresetRestrictions.deepslate(context)
                         .withFish(SCItems.AQUAMARINE_PIKE)
                         .withSizeAndWeight(new SizeAndWeight(75, 20, 5000, 3000))
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY_DEEPSLATE.withHP(200))
         );
 
         //uncommon
@@ -981,18 +989,8 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.GHOSTLY_PIKE)
                         .withSizeAndWeight(new SizeAndWeight(75, 20, 5000, 3000))
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM_DEEPSLATE.withHP(200))
         );
-
-        FishRegistration.register(context,
-                PresetRestrictions.deepslate(context)
-                        .withFish(SCItems.GARNET_MACKEREL)
-                        .withSizeAndWeight(new SizeAndWeight(40, 20, 2000, 1500))
-                        .withRarity(Rarity.UNCOMMON)
-        );
-
-        //rare
-
-
 
         //epic
         FishRegistration.register(context,
@@ -1000,6 +998,7 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.BRIGHT_AMETHYST_SNAPPER)
                         .withSizeAndWeight(new SizeAndWeight(60, 20, 7000, 2000))
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.MEDIUM_DEEPSLATE.moving().withHP(400))
         );
 
         FishRegistration.register(context,
@@ -1007,8 +1006,18 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.DARK_AMETHYST_SNAPPER)
                         .withSizeAndWeight(new SizeAndWeight(60, 20, 7000, 2000))
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.MEDIUM_DEEPSLATE.moving().withHP(400))
         );
 
+        //legendary
+        FishRegistration.register(context,
+                PresetRestrictions.deepslate(context)
+                        .withFish(SCItems.DEEPSLATEFISH)
+                        .withSizeAndWeight(new SizeAndWeight(420, 70, 70000, 20000))
+                        .withDifficulty(Difficulty.DEEPSLATEFISH)
+                        .withBaseChance(2)
+                        .withRarity(Rarity.LEGENDARY)
+        );
 
         //
         //    ,--.                                ,--.                  ,--.
@@ -1018,12 +1027,13 @@ public class DGStarcatcherFishes
         //  `---'   `----'  `----' |  |-'       `---'   `--`--' `--'    `--'`--'
         //                         `--'
 
-        //uncommon
+        //rare
         FishRegistration.register(context,
                 PresetRestrictions.deepDark(context)
                         .withFish(SCItems.GLOWING_DARK)
                         .withSizeAndWeight(new SizeAndWeight(100, 10, 3000, 600))
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.EASY_DEEP_DARK)
         );
 
         //epic
@@ -1032,6 +1042,8 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.SCULKFISH)
                         .withSizeAndWeight(new SizeAndWeight(30, 10, 2000, 600))
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD.vanishing().withHP(500))
+                        .withDifficulty(Difficulty.MEDIUM_DEEP_DARK)
         );
 
         //legendary
@@ -1039,8 +1051,8 @@ public class DGStarcatcherFishes
                 PresetRestrictions.deepDark(context)
                         .withFish(SCItems.WARD)
                         .withSizeAndWeight(new SizeAndWeight(50, 10, 2600, 600))
-                        .withDifficulty(Difficulty.HARD.vanishing().withHP(500))
                         .withRarity(Rarity.LEGENDARY)
+                        .withDifficulty(Difficulty.WARD)
         );
 
 
@@ -1224,7 +1236,7 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.CERBERAY)
                         .withSizeAndWeight(new SizeAndWeight(200, 53, 4000, 300))
                         .withRarity(Rarity.LEGENDARY)
-                        .withDifficultyRaw(Difficulty.CERBERAY)
+                        .withDifficulty(Difficulty.CERBERAY)
         );
 
 
@@ -1303,7 +1315,6 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.VOIDBITER)
                         .withSizeAndWeight(new SizeAndWeight(50, 15, 2000, 200))
                         .withRarity(Rarity.LEGENDARY)
-                        .withTextures(FishProperties.END_VOID)
                         .withDifficulty(Difficulty.VOIDBITER)
                         
         );

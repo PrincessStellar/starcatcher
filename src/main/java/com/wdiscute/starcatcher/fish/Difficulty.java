@@ -38,6 +38,14 @@ public record Difficulty(
         return new Difficulty(this.hp, this.speed, this.penalty, this.decay, list, this.sweetSpots);
     }
 
+    public Difficulty addModifier(Modifier newModifier)
+    {
+        List<Modifier> list = new ArrayList<>();
+        list.add(newModifier);
+        list.addAll(this.modifiers);
+        return new Difficulty(this.hp, this.speed, this.penalty, this.decay, list, this.sweetSpots);
+    }
+
     public Difficulty withHP(int hp)
     {
         return new Difficulty(hp, speed, penalty, decay, modifiers, sweetSpots);
@@ -121,6 +129,24 @@ public record Difficulty(
             SweetSpot.NORMAL, SweetSpot.NORMAL
     );
 
+    public static Difficulty EASY_STONE = new Difficulty(
+            75, 7, 5, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.STONE_LOW_REWARD
+    );
+
+    public static Difficulty EASY_DEEP_DARK = new Difficulty(
+            200, 7, 5, 1,
+            List.of(new DeepDarkModifier("")),
+            SweetSpot.SCULK, SweetSpot.SCULK, SweetSpot.GLOWING, SweetSpot.GLOWING
+    );
+
+    public static Difficulty EASY_DRIPSTONE = new Difficulty(
+            75, 7, 5, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.DRIPSTONE
+    );
+
     public static Difficulty EASY_FROZEN = new Difficulty(
             75, 7, 5, 1,
             List.of(new FreezeOnMissModifier(40, 10, "")),
@@ -135,10 +161,10 @@ public record Difficulty(
             SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.MIRAGE_NORMAL
     );
 
-    public static Difficulty EASY_AQUA = new Difficulty(
+    public static Difficulty EASY_DEEPSLATE = new Difficulty(
             75, 7, 5, 1,
             List.of(),
-            SweetSpot.NORMAL, SweetSpot.THIN, SweetSpot.AQUA
+            SweetSpot.NORMAL, SweetSpot.THIN, SweetSpot.DEEPSLATE
     );
 
 
@@ -146,6 +172,24 @@ public record Difficulty(
             100, 10, 20, 1,
             List.of(),
             SweetSpot.NORMAL, SweetSpot.THIN
+    );
+
+    public static Difficulty MEDIUM_DEEP_DARK = new Difficulty(
+            300, 10, 15, 0.7f,
+            List.of(new DeepDarkModifier("")),
+            SweetSpot.SCULK, SweetSpot.SCULK, SweetSpot.GLOWING
+    );
+
+    public static Difficulty MEDIUM_STONE = new Difficulty(
+            100, 10, 20, 1,
+            List.of(),
+            SweetSpot.STONE_LOW_REWARD, SweetSpot.THIN, SweetSpot.THIN
+    );
+
+    public static Difficulty MEDIUM_DRIPSTONE = new Difficulty(
+            100, 10, 20, 1,
+            List.of(),
+            SweetSpot.NORMAL, SweetSpot.DRIPSTONE
     );
 
     public static Difficulty MEDIUM_FROZEN = new Difficulty(
@@ -172,10 +216,10 @@ public record Difficulty(
             SweetSpot.NORMAL.moving(1), SweetSpot.MIRAGE_NORMAL.moving(1)
     );
 
-    public static Difficulty MEDIUM_AQUA = new Difficulty(
+    public static Difficulty MEDIUM_DEEPSLATE = new Difficulty(
             100, 10, 20, 1,
             List.of(),
-            SweetSpot.AQUA, SweetSpot.THIN
+            SweetSpot.DEEPSLATE, SweetSpot.THIN, SweetSpot.DEEPSLATE
     );
 
 
@@ -183,6 +227,21 @@ public record Difficulty(
             100, 11, 20, 1,
             List.of(),
             SweetSpot.THIN, SweetSpot.THIN);
+
+    public static Difficulty HARD_DEEP_DARK = new Difficulty(
+            500, 11, 20, 1,
+            List.of(new DeepDarkModifier("")),
+            SweetSpot.SCULK, SweetSpot.SCULK);
+
+    public static Difficulty HARD_STONE = new Difficulty(
+            100, 11, 20, 1,
+            List.of(),
+            SweetSpot.STONE_LOW_REWARD, SweetSpot.STONE_LOW_REWARD, SweetSpot.THIN);
+
+    public static Difficulty HARD_DRIPSTONE = new Difficulty(
+            100, 11, 20, 1,
+            List.of(),
+            SweetSpot.THIN, SweetSpot.DRIPSTONE);
 
     public static Difficulty HARD_FROZEN = new Difficulty(
             100, 11, 20, 1,
@@ -206,11 +265,6 @@ public record Difficulty(
                     new SpawnSweetSpotsModifier(120, 0.1f, SweetSpot.MIRAGE_THIN.moving(1), false, "")
             ),
             SweetSpot.THIN.moving(1), SweetSpot.THIN.moving(1));
-
-    public static Difficulty HARD_AQUA = new Difficulty(
-            100, 11, 20, 1,
-            List.of(),
-            SweetSpot.AQUA, SweetSpot.AQUA);
 
 
     //
@@ -289,7 +343,6 @@ public record Difficulty(
             SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL
     );
 
-    //todo leaf-like sweetspots with mushrooms
     public static Difficulty SHROOMFISH = new Difficulty(
             700, 12, 100, 1,
             List.of(
@@ -298,7 +351,6 @@ public record Difficulty(
             ),
             SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.NORMAL
     );
-
 
     public static Difficulty OASIS_SURGEON = new Difficulty(
             500, 12, 10, 1f,
@@ -326,6 +378,18 @@ public record Difficulty(
             SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE, SweetSpot.STONE
     );
 
+    public static Difficulty DEEPSLATEFISH = new Difficulty(
+            3000, 14, 30, 0f,
+            List.of(),
+            SweetSpot.DEEPSLATE, SweetSpot.DEEPSLATE, SweetSpot.DEEPSLATE, SweetSpot.DEEPSLATE
+    );
+
+    public static Difficulty WARD = new Difficulty(
+            1000, 10, 20, 1f,
+            List.of(new DeepDarkModifier("")),
+            SweetSpot.SCULK, SweetSpot.SCULK
+    );
+
     public static Difficulty VESANI = new Difficulty(
             100, 10, 20, 1,
             List.of());
@@ -333,7 +397,6 @@ public record Difficulty(
     public static Difficulty CERBERAY = new Difficulty(
             500, 14, 10, 1.5f,
             List.of(
-                    new BurnOnMissModifier(40, 10, 20, ""),
                     new Nikdo53Modifier(2, "")
             ),
             SweetSpot.THIN, SweetSpot.THIN
@@ -418,11 +481,12 @@ public record Difficulty(
         private static final ResourceLocation RL_RED_MUSHROOM = Starcatcher.rl("textures/gui/minigame/spots/red_mushroom.png");
         private static final ResourceLocation RL_BROWN_MUSHROOM = Starcatcher.rl("textures/gui/minigame/spots/brown_mushroom.png");
         private static final ResourceLocation RL_WITHER = Starcatcher.rl("textures/gui/minigame/spots/wither.png");
+        private static final ResourceLocation RL_SCULK = Starcatcher.rl("textures/gui/minigame/spots/sculk.png");
         private static final ResourceLocation RL_WITHER_BIG = Starcatcher.rl("textures/gui/minigame/spots/wither_big.png");
         private static final ResourceLocation RL_CREEPER = Starcatcher.rl("textures/gui/minigame/spots/creeper.png");
         private static final ResourceLocation RL_TNT = Starcatcher.rl("textures/gui/minigame/spots/tnt.png");
         private static final ResourceLocation RL_STONE = Starcatcher.rl("textures/gui/minigame/spots/stone.png");
-        private static final ResourceLocation RL_AQUA = Starcatcher.rl("textures/gui/minigame/spots/aqua.png");
+        private static final ResourceLocation RL_DEEPSLATE = Starcatcher.rl("textures/gui/minigame/spots/deepslate.png");
         private static final ResourceLocation RL_DRIPSTONE = Starcatcher.rl("textures/gui/minigame/spots/dripstone.png");
         private static final ResourceLocation RL_GLOWING = Starcatcher.rl("textures/gui/minigame/spots/glowing.png");
         private static final ResourceLocation RL_LEAF = Starcatcher.rl("textures/gui/minigame/spots/leaf.png");
@@ -489,6 +553,14 @@ public record Difficulty(
                 22,
                 15,
                 0xff00ff00
+        );
+
+        public static SweetSpot SCULK = new SweetSpot(
+                SCSweetSpotsBehaviour.SCULK,
+                RL_SCULK,
+                22,
+                15,
+                0xff259ca3
         );
 
         public static SweetSpot THIN_STEADY = new SweetSpot(
@@ -621,12 +693,12 @@ public record Difficulty(
                 0xff494949
         );
 
-        public static SweetSpot AQUA = new SweetSpot(
-                SCSweetSpotsBehaviour.AQUA,
-                RL_AQUA,
+        public static SweetSpot DEEPSLATE = new SweetSpot(
+                SCSweetSpotsBehaviour.DEEPSLATE,
+                RL_DEEPSLATE,
                 24,
                 10,
-                0xff387982
+                0xff686868
         );
 
         public static SweetSpot CLOUD_1 = new SweetSpot(
@@ -670,7 +742,7 @@ public record Difficulty(
         );
 
         public static SweetSpot GLOWING = new SweetSpot(
-                SCSweetSpotsBehaviour.GLOWING_SWEETSPOT,
+                SCSweetSpotsBehaviour.GLOWING,
                 RL_GLOWING,
                 20,
                 0,

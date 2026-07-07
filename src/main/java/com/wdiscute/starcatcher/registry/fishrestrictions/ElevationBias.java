@@ -112,4 +112,5 @@ public class ElevationBias extends AbstractFishRestriction
     }
 
     public static final ElevationBias MOUNTAIN = new ElevationBias(100, 30, "");
+    public static final ElevationBias AMETHYSTBACK = new ElevationBias(20, 10, "");
 }

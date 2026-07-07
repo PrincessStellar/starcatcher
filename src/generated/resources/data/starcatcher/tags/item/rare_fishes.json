@@ -65,6 +65,14 @@
       "required": false
     },
     {
+      "id": "starcatcher:the_quarrish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:glowing_dark",
+      "required": false
+    },
+    {
       "id": "starcatcher:suneater",
       "required": false
     },
@@ -370,6 +378,14 @@
     },
     {
       "id": "starcatcher:fossilized_angelfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:the_quarrish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:glowing_dark",
       "required": false
     },
     {

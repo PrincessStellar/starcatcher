@@ -313,11 +313,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:stonefish",
+      "id": "starcatcher:amethystback",
       "required": false
     },
     {
-      "id": "starcatcher:amethystback",
+      "id": "starcatcher:stonefish",
       "required": false
     },
     {
@@ -345,7 +345,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:deepslatefish",
+      "id": "starcatcher:garnet_mackerel",
       "required": false
     },
     {
@@ -357,15 +357,15 @@
       "required": false
     },
     {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
       "id": "starcatcher:bright_amethyst_snapper",
       "required": false
     },
     {
       "id": "starcatcher:dark_amethyst_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:deepslatefish",
       "required": false
     },
     {
@@ -1801,11 +1801,11 @@
       "required": false
     },
     {
-      "id": "starcatcher:stonefish",
+      "id": "starcatcher:amethystback",
       "required": false
     },
     {
-      "id": "starcatcher:amethystback",
+      "id": "starcatcher:stonefish",
       "required": false
     },
     {
@@ -1833,7 +1833,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:deepslatefish",
+      "id": "starcatcher:garnet_mackerel",
       "required": false
     },
     {
@@ -1845,15 +1845,15 @@
       "required": false
     },
     {
-      "id": "starcatcher:garnet_mackerel",
-      "required": false
-    },
-    {
       "id": "starcatcher:bright_amethyst_snapper",
       "required": false
     },
     {
       "id": "starcatcher:dark_amethyst_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:deepslatefish",
       "required": false
     },
     {

@@ -201,7 +201,7 @@
           "texture_path": "starcatcher:textures/gui/minigame/spots/dripstone.png",
           "vanishing_rate": 0.0
         },
-        "translation_override": "tooltip.modifier.starcatcher.deep_ocean_bobber"
+        "translation_override": "tooltip.modifier.starcatcher.deepslate_bobber"
       },
       {
         "type": "starcatcher:freeze_on_miss",
@@ -244,8 +244,18 @@
     ],
     "starcatcher:fisherman_hat_orange": [
       {
-        "type": "starcatcher:adjust_handle_speed",
-        "multiplier": 1.25
+        "type": "starcatcher:add_basic_sweetspot",
+        "sweetspot_to_add": {
+          "color_as_int": -133793,
+          "hitbox_size_in_pixels": 20,
+          "is_flip": false,
+          "moving_rate": 0.0,
+          "reward": 0,
+          "sweetspot_type": "starcatcher:glowing",
+          "texture_path": "starcatcher:textures/gui/minigame/spots/glowing.png",
+          "vanishing_rate": 0.0
+        },
+        "translation_override": "tooltip.modifier.starcatcher.glowing_bobber"
       }
     ],
     "starcatcher:fisherman_hat_pink": [

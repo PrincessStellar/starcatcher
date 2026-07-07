@@ -40,6 +40,8 @@ public record FishProperties(
 )
 {
     public static final ResourceLocation SURFACE = Starcatcher.rl("textures/gui/minigame/surface.png");
+    public static final ResourceLocation SKY = Starcatcher.rl("textures/gui/minigame/sky.png");
+    public static final ResourceLocation LAVA_OVERWORLD = Starcatcher.rl("textures/gui/minigame/lava_overworld.png");
     public static final ResourceLocation NETHER = Starcatcher.rl("textures/gui/minigame/nether.png");
     public static final ResourceLocation CAVE = Starcatcher.rl("textures/gui/minigame/cave.png");
     public static final ResourceLocation ICY = Starcatcher.rl("textures/gui/minigame/icy.png");
@@ -166,46 +168,15 @@ public record FishProperties(
                 this.restrictions, dif.addModifiers(this.dif.modifiers()), this.skipMinigame, this.hasGuideEntry, this.textures);
     }
 
-    public FishProperties withDifficultyRaw(Difficulty dif)
-    {
-        return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
-                this.restrictions, dif, this.skipMinigame, this.hasGuideEntry, this.textures);
-    }
-
     public FishProperties withSkipsMinigame()
     {
         return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
                 this.restrictions, this.dif, true, this.hasGuideEntry, this.textures);
     }
 
-    public FishProperties lava()
-    {
-        removeWater();
-        addLavaRestriction();
-        return this;
-    }
-
-    public FishProperties removeWater()
-    {
-        restrictions.removeIf(o -> o.equals(FluidRestriction.WATER));
-        return this;
-    }
-
-    public FishProperties addLavaRestriction()
-    {
-        this.restrictions.add(FluidRestriction.LAVA);
-        return this;
-    }
-
     public FishProperties addRestriction(AbstractFishRestriction restriction)
     {
         this.restrictions.add(restriction);
-        return this;
-    }
-
-    public FishProperties addRestriction(List<AbstractFishRestriction> restriction)
-    {
-        this.restrictions.addAll(restriction);
         return this;
     }
 

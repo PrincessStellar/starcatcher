@@ -87,7 +87,12 @@ public class FluidRestriction extends AbstractFishRestriction
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         if(fluids.size() == 1 && !fluids.getFirst().getPath().equals("water"))
-            return List.of(Component.translatable("block." + fluids.getFirst().toLanguageKey()).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_TEXT_DARK)));
+        {
+            if(!translationOverride.isEmpty())
+                return List.of(Component.translatable(translationOverride).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_TEXT_DARK)));
+            else
+                return List.of(Component.translatable("block." + fluids.getFirst().toLanguageKey()).withStyle(Style.EMPTY.withColor(SCColors.GUIDE_TEXT_DARK)));
+        }
         return super.getIndexHover(level, fp, player, context);
     }
 

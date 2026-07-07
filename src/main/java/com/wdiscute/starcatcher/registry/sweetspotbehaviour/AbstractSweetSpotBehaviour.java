@@ -33,6 +33,7 @@ public abstract class AbstractSweetSpotBehaviour
 
     public void onMiss(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
+        ass.alpha = 1;
     }
 
     public void onRemove(FishingMinigameScreen instance, ActiveSweetSpot ass)

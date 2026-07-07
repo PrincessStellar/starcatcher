@@ -3,7 +3,7 @@ package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 
-public class AquaSweetSpotBehaviour extends NormalSweetSpotBehaviour
+public class DeepslateSweetSpotBehaviour extends NormalSweetSpotBehaviour
 {
     @Override
     public void onAdd(FishingMinigameScreen instance, ActiveSweetSpot ass)

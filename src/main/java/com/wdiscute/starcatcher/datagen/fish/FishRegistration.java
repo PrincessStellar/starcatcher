@@ -5,10 +5,12 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
 import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.utils.MaybeStack;
@@ -62,6 +64,7 @@ public final class FishRegistration
     private static FishProperties prepare(FishProperties fp)
     {
         fp = sortRestrictions(fp);
+        fp = applyModifiers(fp);
         fp = applyStarcaughtLogic(fp);
         fp = applyChanceModifiers(fp);
         fp = applyBaits(fp);
@@ -69,9 +72,16 @@ public final class FishRegistration
         return fp;
     }
 
+    private static FishProperties applyModifiers(FishProperties fp)
+    {
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(FluidRestriction.LAVA)))
+            return fp.withDifficulty(fp.dif().addModifier(new BurnOnMissModifier(40, 10, 20, "")));
+        return fp;
+    }
+
     private static FishProperties applyBaits(FishProperties fp)
     {
-        if(fp.rarity().equals(Rarity.LEGENDARY) && fp.restrictions().stream().noneMatch(o -> o.equals(BaitRestriction.LEGENDARY_BAIT)))
+        if (fp.rarity().equals(Rarity.LEGENDARY) && fp.restrictions().stream().noneMatch(o -> o.equals(BaitRestriction.LEGENDARY_BAIT)))
         {
             fp.addBait(BaitRestriction.LEGENDARY_BAIT);
         }
@@ -82,28 +92,28 @@ public final class FishRegistration
     {
         int chance = fp.baseChance();
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.CLEAR)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.CLEAR)))
             chance += 1;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.RAIN)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.RAIN)))
             chance += 5;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.THUNDER)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(WeatherRestriction.THUNDER)))
             chance += 20;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.DAY)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.DAY)))
             chance += 1;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.NOON)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.NOON)))
             chance += 15;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.NIGHT)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.NIGHT)))
             chance += 5;
 
-        if(fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.MIDNIGHT)))
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.MIDNIGHT)))
             chance += 15;
 
-        if(fp.rarity().equals(Rarity.TRASH))
+        if (fp.rarity().equals(Rarity.TRASH))
             chance = (int) (chance * 0.5f);
 
         return fp.withBaseChance(chance);

@@ -7,6 +7,7 @@ import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
+import com.wdiscute.starcatcher.registry.sweetspotbehaviour.DeepslateSweetSpotBehaviour;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -35,20 +36,20 @@ public class AdjustVanishingRate extends AbstractMinigameModifier
     {
         MutableComponent end = Component.translatable("tooltip.modifier.starcatcher.adjust_vanishing_rate");
 
-        if(shift)
+        if (shift)
         {
             return List.of(Component.translatable("tooltip.modifier.starcatcher.adjust_vanishing_rate.shift",
                     new DecimalFormat("#.##").format(multiplier * 100)));
         }
         else
         {
-            if(multiplier >= 1.5f)
+            if (multiplier >= 1.5f)
                 return List.of(Component.translatable("tooltip.modifier.keyword.big_increase").append(end));
 
-            if(multiplier >= 1f)
+            if (multiplier >= 1f)
                 return List.of(Component.translatable("tooltip.modifier.keyword.increase").append(end));
 
-            if(multiplier <= 0.5f)
+            if (multiplier <= 0.5f)
                 return List.of(Component.translatable("tooltip.modifier.keyword.big_decrease").append(end));
 
             return List.of(Component.translatable("tooltip.modifier.keyword.decrease").append(end));
@@ -59,7 +60,10 @@ public class AdjustVanishingRate extends AbstractMinigameModifier
     public ActiveSweetSpot onSpotAdded(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         super.onSpotAdded(instance, ass);
-        ass.vanishingRate = ass.vanishingRate * multiplier;
+        if (ass.behaviour instanceof DeepslateSweetSpotBehaviour)
+            ass.vanishingRate =  ((ass.vanishingRate * multiplier) + ass.vanishingRate) / 2;
+        else
+            ass.vanishingRate = ass.vanishingRate * multiplier;
         return ass;
     }
 

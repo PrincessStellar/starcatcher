@@ -300,6 +300,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         guiGraphics.blit(texture, centerX - 32 - 70, centerY - 24 - 57 + (flip ? 130 : 0),
                 64, 48, 192, 0, 64, 48, 256, 256);
 
+        progressSmooth += ((progress - progressSmooth) / 6) * partialTickNeo;
 
         float yoffset = progressSmooth == 0 ? 0 : (progressSmooth / (float) hp * 77);
 
@@ -694,8 +695,6 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
         gracePeriod--;
 
         tickCount++;
-
-        progressSmooth += ((progress - progressSmooth) / 6);
 
         treasureProgressSmooth += (int) Math.signum(treasureProgress - treasureProgressSmooth);
 

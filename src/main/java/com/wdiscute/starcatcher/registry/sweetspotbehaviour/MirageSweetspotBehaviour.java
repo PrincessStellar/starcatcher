@@ -24,6 +24,12 @@ public class MirageSweetspotBehaviour extends AbstractSweetSpotBehaviour
     }
 
     @Override
+    public void onMiss(FishingMinigameScreen instance, ActiveSweetSpot ass)
+    {
+
+    }
+
+    @Override
     public void render(GuiGraphics guiGraphics, PoseStack poseStack, float partialTick, FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
 

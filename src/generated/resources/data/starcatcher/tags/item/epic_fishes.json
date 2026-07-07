@@ -49,6 +49,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:lush_pike",
+      "required": false
+    },
+    {
       "id": "starcatcher:bright_amethyst_snapper",
       "required": false
     },
@@ -258,6 +262,10 @@
     },
     {
       "id": "starcatcher:amethystback",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lush_pike",
       "required": false
     },
     {

@@ -8,6 +8,7 @@ import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import com.wdiscute.starcatcher.modifiers.Modifier;
 import com.wdiscute.starcatcher.registry.sweetspotbehaviour.GlowingSweetSpotBehaviour;
+import com.wdiscute.starcatcher.registry.sweetspotbehaviour.SculkSweetSpotBehaviour;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -31,12 +32,16 @@ public class DeepDarkModifier extends AbstractMinigameModifier
     public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         if(ass.behaviour instanceof GlowingSweetSpotBehaviour) return false;
-        Object data = instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
 
-        if (data instanceof Integer i)
-            instance.modifierData.put(getIdentifier(), i + 40);
+        if(ass.behaviour instanceof SculkSweetSpotBehaviour)
+        {
+            Object data = instance.modifierData.computeIfAbsent(getIdentifier(), o -> 0);
 
-        Minecraft.getInstance().player.playSound(SoundEvents.SCULK_BLOCK_HIT, 1f, 1f);
+            if (data instanceof Integer i)
+                instance.modifierData.put(getIdentifier(), i + 40);
+
+            Minecraft.getInstance().player.playSound(SoundEvents.SCULK_BLOCK_HIT, 1f, 1f);
+        }
 
         return super.onHit(instance, ass);
     }
