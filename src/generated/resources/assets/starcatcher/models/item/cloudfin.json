@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "starcatcher:item/shark"
+    "layer0": "starcatcher:item/cloudfin"
   }
 }

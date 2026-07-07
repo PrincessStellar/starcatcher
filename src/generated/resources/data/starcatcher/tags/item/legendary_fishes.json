@@ -17,6 +17,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:cloudfin",
+      "required": false
+    },
+    {
       "id": "starcatcher:azure_crystalback_minnow",
       "required": false
     },
@@ -106,6 +110,10 @@
     },
     {
       "id": "starcatcher:vesani",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cloudfin",
       "required": false
     },
     {

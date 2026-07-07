@@ -847,27 +847,6 @@ public class FishingGuideScreen extends Screen
             //sweetspots
             case 1 ->
             {
-                renderImage(guiGraphics, HELP_PAGE_SWEETSPOTS);
-                renderItemWithHoverAndEmi(guiGraphics, sweetspotsIcon, uiX + 166, uiY + 39, mouseX, mouseY);
-            }
-
-            //treasures
-            case 2 ->
-            {
-                renderImage(guiGraphics, HELP_PAGE_TREASURE);
-                renderItemWithHoverAndEmi(guiGraphics, treasureIcon, uiX + 166, uiY + 39, mouseX, mouseY);
-            }
-
-            //upgrades
-            case 3 ->
-            {
-                renderImage(guiGraphics, HELP_PAGE_UPGRADES);
-                renderItemWithHoverAndEmi(guiGraphics, upgradeIcon, uiX + 166, uiY + 39, mouseX, mouseY);
-            }
-
-            //tackle boxes
-            case 4 ->
-            {
                 renderImage(guiGraphics, HELP_PAGE_TACKLE_BOX);
 
                 //tackle boxes icon
@@ -906,6 +885,27 @@ public class FishingGuideScreen extends Screen
                     //scrollable background fill
                     guiGraphics.fill(x - 1, y - 1, x + 17, y + 17, 0xffb4a697);
                 }
+            }
+
+            //treasures
+            case 2 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_TREASURE);
+                renderItemWithHoverAndEmi(guiGraphics, treasureIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+            }
+
+            //sweet-spot types
+            case 3 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_SWEETSPOTS);
+                renderItemWithHoverAndEmi(guiGraphics, sweetspotsIcon, uiX + 166, uiY + 39, mouseX, mouseY);
+            }
+
+            //upgrades
+            case 4 ->
+            {
+                renderImage(guiGraphics, HELP_PAGE_UPGRADES);
+                renderItemWithHoverAndEmi(guiGraphics, upgradeIcon, uiX + 166, uiY + 39, mouseX, mouseY);
             }
 
             //hooks & bobbers & baits
@@ -1908,10 +1908,10 @@ public class FishingGuideScreen extends Screen
 
         indexEntries = new ArrayList<>(List.of(
                 Pair.of(rodIcon, "gui.guide.index.basics"),
-                Pair.of(auroraIcon, "gui.guide.index.sweetspots"),
-                Pair.of(treasureIcon, "gui.guide.index.treasures"),
-                Pair.of(upgradeIcon, "gui.guide.index.upgrades"),
                 Pair.of(tackleBoxIcon, "gui.guide.index.tackle_box"),
+                Pair.of(treasureIcon, "gui.guide.index.treasures"),
+                Pair.of(auroraIcon, "gui.guide.index.sweetspots"),
+                Pair.of(upgradeIcon, "gui.guide.index.upgrades"),
                 Pair.of(hookIcon, "gui.guide.index.hooks_bobbers_baits"),
                 Pair.of(settingsIcon, "gui.guide.index.settings"),
 

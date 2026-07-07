@@ -518,6 +518,22 @@ public class DGStarcatcherFishes
 
 
         //
+        //       ,--.                     ,--.
+        // ,---. |  |  ,---.  ,--.,--.  ,-|  |  ,---.
+        //| .--' |  | | .-. | |  ||  | ' .-. | (  .-'
+        //\ `--. |  | ' '-' ' '  ''  ' \ `-' | .-'  `)
+        // `---' `--'  `---'   `----'   `---'  `----'
+        //
+
+        FishRegistration.register(context,
+                PresetRestrictions.sunflowerPlains(context)
+                        .withFish(SCItems.CLOUDFIN)
+                        .withSizeAndWeight(new SizeAndWeight(920, 120, 0, 0))
+                        .withDifficulty(Difficulty.CLOUDFIN)
+                        .withRarity(Rarity.LEGENDARY)
+        );
+
+        //
         //        ,--.
         //,--.--. `--' ,--.  ,--.  ,---.  ,--.--.
         //|  .--' ,--.  \  `'  /  | .-. : |  .--'

@@ -229,6 +229,9 @@ public interface SCItems
     //sunflower field
     DeferredItem<Item> SUNFLOWER_CARP = registerNonBucketFish("sunflower_carp");
 
+    //clouds
+    DeferredItem<Item> CLOUDFIN = registerNonBucketFish("cloudfin");
+
     //icy mountain
     DeferredItem<Item> CRYSTALBACK_STURGEON = registerNonBucketFish("crystalback_sturgeon");
     DeferredItem<Item> ICETOOTH_STURGEON = registerBucketFish("icetooth_sturgeon");
@@ -261,7 +264,7 @@ public interface SCItems
     DeferredItem<Item> REDSCALED_TUNA = registerBucketFish("redscaled_tuna");
     DeferredItem<Item> BIGEYE_TUNA = registerBucketFish("bigeye_tuna");
     DeferredItem<Item> SEA_BASS = registerNonBucketFish("sea_bass");
-    DeferredItem<Item> SHARK = registerBucketFish("shark");
+    //DeferredItem<Item> SHARK = registerBucketFish("shark");
 
     //mushroom islands
     DeferredItem<Item> SHROOMFISH = registerNonBucketFish("shroomfish");
@@ -305,7 +308,7 @@ public interface SCItems
     DeferredItem<Item> WARD = registerNonBucketFish("ward");
     DeferredItem<Item> GLOWING_DARK = registerNonBucketFish("glowing_dark");
     //todo
-    DeferredItem<Item> XXXXX = registerNonBucketFish("xxxxx");
+    //DeferredItem<Item> XXXXX = registerNonBucketFish("xxxxx");
 
     //overworld surface lava
     DeferredItem<Item> SUNEATER = registerNonBucketFish("suneater", true);

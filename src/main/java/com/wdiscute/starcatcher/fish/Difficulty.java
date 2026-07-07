@@ -339,7 +339,7 @@ public record Difficulty(
             SweetSpot.THIN, SweetSpot.THIN
     );
 
-    public static Difficulty CLOUDS_LEGENDARY = new Difficulty(
+    public static Difficulty CLOUDFIN = new Difficulty(
             5000, 10, -10, 1,
             List.of(
                     new PullDownModifier(""),

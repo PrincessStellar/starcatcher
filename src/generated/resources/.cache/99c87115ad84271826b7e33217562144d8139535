@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T17:03:06.607258	Item Models: starcatcher
+// 1.21.1	2026-07-07T18:08:06.8627575	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 033477fbb520065b97801242f6e7c58288fea05d assets/starcatcher/models/item/amethystback.json
@@ -35,6 +35,7 @@ f6383369cb097a667f5406f76a8ecd9ec0bd23ce assets/starcatcher/models/item/cerberay
 466ccba57f59a2202e00d64369b6d8f2f72fcc66 assets/starcatcher/models/item/clam.json
 413dc56c829ae02782003df0fd89bc51a45b17da assets/starcatcher/models/item/clear_bobber.json
 7624bdc48e8cebe54bdeed194657679e0e27a0a7 assets/starcatcher/models/item/clear_smithing_template.json
+73f29e86830afaea84960fbe80b9ce5bc6da4a13 assets/starcatcher/models/item/cloudfin.json
 c09d112a9d99a38fb55785925e6dddb957d50f04 assets/starcatcher/models/item/cloud_bobber.json
 3a3d8f2f21f04250a28bb8665cb47f159b668a2a assets/starcatcher/models/item/coggill.json
 30b12a942f140f273527d8419bc82931ccaf99e8 assets/starcatcher/models/item/cogtopus.json
@@ -171,7 +172,6 @@ a96c0d50e137e9a61e0785e7e7436f054e513b3b assets/starcatcher/models/item/sculk_ba
 1d8f62486d4ade7697dd259e7eea2956f4ade753 assets/starcatcher/models/item/sea_bass.json
 2cf1a48036f6089eaf10bfb648c802ff4470b4a0 assets/starcatcher/models/item/seeking_worm.json
 684fcbf65e58f0269bae19af7eb216d245f46d62 assets/starcatcher/models/item/settings.json
-fbafd0e206a3af7e9799f7f5cccc7a452678ea3b assets/starcatcher/models/item/shark.json
 e69a29a668dc771e2c00eb05c2437176c7b0f90f assets/starcatcher/models/item/sharktooth_skin_smithing_template.json
 f0fd4696bb77c46600fcd8b72e54bdda3fddef98 assets/starcatcher/models/item/shiny_hook.json
 81456b1f9eb5728e0607552f79a87045108cb312 assets/starcatcher/models/item/shroomfish.json
@@ -240,5 +240,4 @@ fbc2b287c5743cfad146fc248dc52060a66bcd0d assets/starcatcher/models/item/voidfin.
 f2979fce82dfac9e96caffd674cf220602dc1f25 assets/starcatcher/models/item/willow_bream.json
 8c8029309319def42a4039da3ea72ebc70c7d9ff assets/starcatcher/models/item/wintery_pike.json
 97677dcafd957944768e783db91d6a423f045836 assets/starcatcher/models/item/worm.json
-e6a131772a7598774c361308e4391fe8452d0272 assets/starcatcher/models/item/xxxxx.json
 c0ba927bde32b9a8f5b6696aa9d756cf8bc0319d assets/starcatcher/models/item/yellowstone_fish.json

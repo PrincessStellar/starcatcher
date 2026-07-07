@@ -177,10 +177,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:shark",
-      "required": false
-    },
-    {
       "id": "starcatcher:whiteveil",
       "required": false
     },

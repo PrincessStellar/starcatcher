@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T17:37:24.8550167	Registries
+// 1.21.1	2026-07-07T18:08:06.8702222	Registries
 db41cda8b730bf11176b2799cb9a24c64aebf2b0 data/starcatcher/starcatcher/fish/agave_bream.json
 b41a0c89a5168ecb0abb1bdf167569bf16673d5f data/starcatcher/starcatcher/fish/amethystback.json
 38a8823305753e4eaf61101d0290d1feba47f0b4 data/starcatcher/starcatcher/fish/aquamarine_pike.json
@@ -25,6 +25,7 @@ b86ea5841a11cef95564ff1364f40298b9f2a8e1 data/starcatcher/starcatcher/fish/choru
 2c0922196d17d4111a625a68d03530683c498189 data/starcatcher/starcatcher/fish/chorus_minnow.json
 67581e80479c2dec3551ea191d4d2a526c19444a data/starcatcher/starcatcher/fish/cinder_squid.json
 a8592c559923d473fdf0637292f7f4e35a5f2d60 data/starcatcher/starcatcher/fish/clam.json
+c4d5797be591846f512ca9e9592dc1ba42bce21f data/starcatcher/starcatcher/fish/cloudfin.json
 9f54e24106eb496939020773f6449aad7ed17b29 data/starcatcher/starcatcher/fish/coggill.json
 36ebe52f671b9294afccad4434d7f846fde82866 data/starcatcher/starcatcher/fish/cogtopus.json
 225ca873ba01c582b73d594f4854d3f8304be12d data/starcatcher/starcatcher/fish/conch.json

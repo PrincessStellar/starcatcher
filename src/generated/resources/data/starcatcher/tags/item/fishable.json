@@ -193,6 +193,10 @@
       "required": false
     },
     {
+      "id": "starcatcher:cloudfin",
+      "required": false
+    },
+    {
       "id": "starcatcher:drifting_bream",
       "required": false
     },
@@ -1674,6 +1678,10 @@
     },
     {
       "id": "starcatcher:sunflower_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cloudfin",
       "required": false
     },
     {
