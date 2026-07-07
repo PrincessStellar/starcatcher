@@ -9,10 +9,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:rainfin",
-      "required": false
-    },
-    {
       "id": "starcatcher:silverveil_perch",
       "required": false
     },
@@ -26,10 +22,6 @@
     },
     {
       "id": "starcatcher:twilight_koi",
-      "required": false
-    },
-    {
-      "id": "starcatcher:ripple_catfish",
       "required": false
     },
     {
@@ -53,10 +45,6 @@
       "required": false
     },
     {
-      "id": "starcatcher:blue_ice_pike",
-      "required": false
-    },
-    {
       "id": "starcatcher:mirage_carp",
       "required": false
     },
@@ -66,10 +54,6 @@
     },
     {
       "id": "starcatcher:cactifish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:oasis_sturgeon",
       "required": false
     },
     {
@@ -205,11 +189,35 @@
       "required": false
     },
     {
+      "id": "starcatcher:suneater",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pyrotrout",
+      "required": false
+    },
+    {
+      "id": "starcatcher:embergill",
+      "required": false
+    },
+    {
+      "id": "starcatcher:magma_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:willish",
+      "required": false
+    },
+    {
       "id": "starcatcher:cerberay",
       "required": false
     },
     {
       "id": "starcatcher:charfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:voidbiter",
       "required": false
     }
   ]

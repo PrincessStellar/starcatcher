@@ -162,7 +162,7 @@ public interface SCItems
 
     DeferredItem<Item> OBIDONTIEE = registerBucketFish("obidontiee");
     DeferredItem<Item> DRIFTFIN = registerBucketFish("driftfin");
-    DeferredItem<Item> RAINFIN = registerBucketFish("rainfin");
+    DeferredItem<Item> RAINFIN = registerNonBucketFish("rainfin");
     DeferredItem<Item> ROCKGILL = registerNonBucketFish("rockgill");
     DeferredItem<Item> PEAKDWELLER = registerNonBucketFish("peakdweller");
 
@@ -171,7 +171,7 @@ public interface SCItems
     DeferredItem<Item> SUNNY_STURGEON = registerBucketFish("sunny_sturgeon");
 
     DeferredItem<Item> TWILIGHT_KOI = registerBucketFish("twilight_koi");
-    DeferredItem<Item> RIPPLE_CATFISH = registerBucketFish("ripple_catfish");
+    DeferredItem<Item> RIPPLE_CATFISH = registerNonBucketFish("ripple_catfish");
     DeferredItem<Item> SUN_SEEKING_CARP = registerBucketFish("sun_seeking_carp");
 
     DeferredItem<Item> THUNDER_BASS = registerBucketFish("thunder_bass");
@@ -184,7 +184,7 @@ public interface SCItems
 
     DeferredItem<Item> WINTERY_PIKE = registerBucketFish("wintery_pike");
 
-    DeferredItem<Item> BLUE_ICE_PIKE = registerBucketFish("blue_ice_pike");
+    DeferredItem<Item> BLUE_ICE_PIKE = registerNonBucketFish("blue_ice_pike");
 
     DeferredItem<Item> AURORA = registerNonBucketFish("aurora");
 
@@ -198,7 +198,7 @@ public interface SCItems
 
     DeferredItem<Item> CACTIFISH = registerBucketFish("cactifish");
 
-    DeferredItem<Item> OASIS_STURGEON = registerBucketFish("oasis_sturgeon");
+    DeferredItem<Item> OASIS_STURGEON = registerNonBucketFish("oasis_sturgeon");
 
     //swamp
     DeferredItem<Item> MOSSY_BOOT = ITEMS.register("mossy_boot", MossyBootItem::new);
@@ -288,8 +288,6 @@ public interface SCItems
     //lush caves
     DeferredItem<Item> LUSH_PIKE = registerBucketFish("lush_pike");
     DeferredItem<Item> VIVID_MOSS = registerBucketFish("vivid_moss");
-
-    //jungle
     DeferredItem<Item> THE_QUARRISH = registerBucketFish("the_quarrish");
 
     //bamboo
@@ -311,8 +309,8 @@ public interface SCItems
     //DeferredItem<Item> XXXXX = registerNonBucketFish("xxxxx");
 
     //overworld surface lava
-    DeferredItem<Item> SUNEATER = registerNonBucketFish("suneater", true);
-    DeferredItem<Item> PYROTROUT = registerNonBucketFish("pyrotrout", true);
+    DeferredItem<Item> SUNEATER = registerLavaBucketFish("suneater");
+    DeferredItem<Item> PYROTROUT = registerLavaBucketFish("pyrotrout");
     DeferredItem<Item> OBSIDIAN_EEL = registerNonBucketFish("obsidian_eel", true);
 
     //overworld underground lava
@@ -324,14 +322,14 @@ public interface SCItems
     DeferredItem<Item> MOLTEN_DEEPSLATE_CRAB = registerNonBucketFish("molten_deepslate_crab", true);
 
     //nether
-    DeferredItem<Item> EMBERGILL = registerNonBucketFish("embergill", true);
+    DeferredItem<Item> EMBERGILL = registerLavaBucketFish("embergill");
     DeferredItem<Item> SCALDING_PIKE = registerNonBucketFish("scalding_pike", true);
     DeferredItem<Item> CINDER_SQUID = registerNonBucketFish("cinder_squid", true);
     DeferredItem<Item> LAVA_CRAB = registerNonBucketFish("lava_crab", true);
-    DeferredItem<Item> MAGMA_FISH = registerNonBucketFish("magma_fish", true);
+    DeferredItem<Item> MAGMA_FISH = registerLavaBucketFish("magma_fish");
     DeferredItem<Item> GLOWSTONE_SEEKER = registerNonBucketFish("glowstone_seeker", true);
     DeferredItem<Item> GLOWSTONE_PUFFERFISH = registerNonBucketFish("glowstone_pufferfish", true);
-    DeferredItem<Item> WILLISH = registerNonBucketFish("willish", true);
+    DeferredItem<Item> WILLISH = registerLavaBucketFish("willish");
 
     DeferredItem<Item> CERBERAY = registerLavaBucketFish("cerberay");
 
@@ -343,7 +341,7 @@ public interface SCItems
     DeferredItem<Item> END_GLOW = registerNonBucketFish("end_glow");
 
     //end void
-    DeferredItem<Item> VOIDBITER = registerNonBucketFish("voidbiter");
+    DeferredItem<Item> VOIDBITER = registerBucketFish("voidbiter");
     DeferredItem<Item> PURPLE_CARP = registerNonBucketFish("purple_carp");
     DeferredItem<Item> VOIDFIN = registerNonBucketFish("voidfin");
     DeferredItem<Item> SPACEJELLY = registerNonBucketFish("spacejelly");
@@ -367,7 +365,6 @@ public interface SCItems
     {
         return BUCKETABLE_FISHES_REGISTRY.register(name, () -> new FishItem(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH).fireResistant()));
     }
-
 
     static DeferredItem<Item> registerNonBucketFish(String name)
     {
