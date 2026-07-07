@@ -18,7 +18,7 @@ public interface SCSweetSpotsBehaviour
     ResourceLocation TNT = registerSweetspot("tnt", () -> TntSweetSpotBehaviour::new);
     ResourceLocation AQUA = registerSweetspot("aqua", () -> AquaSweetSpotBehaviour::new);
     ResourceLocation LEAF = registerSweetspot("leaf", () -> LeafSweetSpotBehaviour::new);
-    ResourceLocation DEEP_OCEAN = registerSweetspot("deep_ocean", () -> DeepOceanSweetSpotBehaviour::new);
+    ResourceLocation DRIPSTONE = registerSweetspot("dripstone", () -> DripstoneSweetSpotBehaviour::new);
     ResourceLocation CLOUD = registerSweetspot("cloud", () -> CloudSweetSpotBehaviour::new);
     ResourceLocation GLOWING_SWEETSPOT = registerSweetspot("glowing", () -> GlowingSweetSpotBehaviour::new);
     ResourceLocation MIRAGE = registerSweetspot("mirage", () -> MirageSweetspotBehaviour::new);

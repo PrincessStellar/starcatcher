@@ -14,7 +14,6 @@ public abstract class AbstractSweetSpotBehaviour
         ass.pos = instance.getRandomFreePosition(ass.thickness);
     }
 
-
     public void tick(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         ass.ticksActive++;

@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T01:19:01.8359692	Item Models: starcatcher
+// 1.21.1	2026-07-07T17:03:06.607258	Item Models: starcatcher
 190248e04c8aaf81e80cc0d828c1b3f9addf4641 assets/starcatcher/models/item/agave_bream.json
 2acefa5cf3f98fbcb50f2258e2777ac75275271d assets/starcatcher/models/item/almighty_worm.json
 033477fbb520065b97801242f6e7c58288fea05d assets/starcatcher/models/item/amethystback.json
@@ -49,13 +49,13 @@ c21ddccb5dd997a4a4d122dfb83dabfe68c27dd5 assets/starcatcher/models/item/conch.js
 3b8f60b99ffb4097d6cab9006144fee8df33f25a assets/starcatcher/models/item/dark_amethyst_snapper.json
 1fe26a7404adf572b28c5753b3e037ebe0671b42 assets/starcatcher/models/item/deepjaw_herring.json
 80e715ec73efd5b04887017852efb17201b7d8ce assets/starcatcher/models/item/deepslatefish.json
-0334943a32ca64b24b3765eee4615a43ffb918c6 assets/starcatcher/models/item/deep_ocean_bobber.json
 05643542a4fee71e60c226df6009060d27eb12c8 assets/starcatcher/models/item/downfall_bream.json
 c27275d5cb8981959eb4ef6697357d627f57966a assets/starcatcher/models/item/dried_seaweed.json
 597e64a104f46169272ce7410c7dcfbb460d8401 assets/starcatcher/models/item/driftfin.json
 4f5ad720e98dec6dfd628b5c795ba0531f15ee9e assets/starcatcher/models/item/drifting_bream.json
 1ef07656dfd48376b768afd61563e6edc84f07a0 assets/starcatcher/models/item/dripfin.json
 f73f6ad862e8dbcc127aa2a1d9386e44f8873bdf assets/starcatcher/models/item/dripstone_bait.json
+6f1a7870bbe8dd1bfa146927a9435e1d4a5d815a assets/starcatcher/models/item/dripstone_bobber.json
 327a58bc3bf406f7dd5678f31f56881a3d6ff3b4 assets/starcatcher/models/item/drive_pike.json
 bc4f1cc61050f27858fbba729e0baba3ecef6b2d assets/starcatcher/models/item/dusktail_snapper.json
 519bec8444f5dd1ec4c30d84fc43a1815289c637 assets/starcatcher/models/item/echoing_hook.json

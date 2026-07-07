@@ -81,7 +81,7 @@ public class DGSCItemModelProvider extends ItemModelProvider
         simpleItem(BOBBER);
         simpleItem(STEADY_BOBBER);
         simpleItem(CLEAR_BOBBER);
-        simpleItem(DEEP_OCEAN_BOBBER);
+        simpleItem(DRIPSTONE_BOBBER);
         simpleItem(VANILLA_BOBBER);
         simpleItem(LEAF_BOBBER);
         simpleItem(SLIMEY_BOBBER);

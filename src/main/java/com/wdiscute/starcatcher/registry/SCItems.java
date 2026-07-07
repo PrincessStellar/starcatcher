@@ -73,7 +73,7 @@ public interface SCItems
     DeferredItem<Item> BOBBER = BOBBERS_REGISTRY.register("bobber", SingleStackBasicItem::new);
     DeferredItem<Item> STEADY_BOBBER = BOBBERS_REGISTRY.register("steady_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> CLEAR_BOBBER = BOBBERS_REGISTRY.register("clear_bobber", SingleStackBasicItem::new);
-    DeferredItem<Item> DEEP_OCEAN_BOBBER = BOBBERS_REGISTRY.register("deep_ocean_bobber", SingleStackBasicItem::new);
+    DeferredItem<Item> DRIPSTONE_BOBBER = BOBBERS_REGISTRY.register("dripstone_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> VANILLA_BOBBER = BOBBERS_REGISTRY.register("vanilla_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> LEAF_BOBBER = BOBBERS_REGISTRY.register("leaf_bobber", SingleStackBasicItem::new);
     DeferredItem<Item> SLIMEY_BOBBER = BOBBERS_REGISTRY.register("slimey_bobber", SingleStackBasicItem::new);
@@ -304,6 +304,7 @@ public interface SCItems
     DeferredItem<Item> SCULKFISH = registerBucketFish("sculkfish");
     DeferredItem<Item> WARD = registerNonBucketFish("ward");
     DeferredItem<Item> GLOWING_DARK = registerNonBucketFish("glowing_dark");
+    //todo
     DeferredItem<Item> XXXXX = registerNonBucketFish("xxxxx");
 
     //overworld surface lava

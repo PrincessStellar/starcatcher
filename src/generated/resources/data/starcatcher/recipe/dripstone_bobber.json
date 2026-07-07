@@ -6,22 +6,22 @@
       "item": "starcatcher:bobber"
     },
     "D": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:dripstone_block"
     },
-    "H": {
-      "item": "minecraft:heart_of_the_sea"
+    "P": {
+      "item": "minecraft:pointed_dripstone"
     },
     "S": {
       "item": "minecraft:stick"
     }
   },
   "pattern": [
-    " HS",
+    " DS",
     "DBD",
-    "SD "
+    "SP "
   ],
   "result": {
     "count": 1,
-    "id": "starcatcher:deep_ocean_bobber"
+    "id": "starcatcher:dripstone_bobber"
   }
 }

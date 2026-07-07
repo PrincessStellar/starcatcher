@@ -356,9 +356,9 @@
   "tooltip.modifier.starcatcher.adjust_handle_speed": " the handle's rotation speed",
   "tooltip.modifier.starcatcher.adjust_handle_speed.shift": "Adjusts the handle's rotation speed by %s%%",
 
-  "tooltip.modifier.starcatcher.add_basic_sweetspot": "Adds a Sweet-spot",
-  "tooltip.modifier.starcatcher.deep_ocean_bobber": "Adds a Deep Ocean Sweet-spot",
-  "tooltip.modifier.starcatcher.glowing_bobber": "Adds a Glowing Sweet-spot",
+  "tooltip.modifier.starcatcher.add_basic_sweetspot": "Adds a sweet-spot",
+  "tooltip.modifier.starcatcher.dripstone_bobber": "Adds a Dripstone sweet-spot",
+  "tooltip.modifier.starcatcher.glowing_bobber": "Adds a Glowing sweet-spot",
 
   "tooltip.modifier.starcatcher.adjust_vanishing_rate": " the vanishing rate of sweet-spots",
   "tooltip.modifier.starcatcher.adjust_vanishing_rate.shift": "Adjusts the vanishing rate of sweet-spots by %s%%",
@@ -458,7 +458,7 @@
   "item.starcatcher.slimey_bobber": "Slimey Bobber",
   "item.starcatcher.glowing_bobber": "Glowing Bobber",
   "item.starcatcher.golden_bobber": "Golden Bobber",
-  "item.starcatcher.deep_ocean_bobber": "Deep Ocean Bobber",
+  "item.starcatcher.dripstone_bobber": "Dripstone Bobber",
   "item.starcatcher.cloud_bobber": "Cloud Bobber",
 
 

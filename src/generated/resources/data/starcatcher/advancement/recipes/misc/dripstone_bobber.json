@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "starcatcher:deep_ocean_bobber"
+        "recipe": "starcatcher:dripstone_bobber"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "starcatcher:deep_ocean_bobber"
+      "starcatcher:dripstone_bobber"
     ]
   }
 }

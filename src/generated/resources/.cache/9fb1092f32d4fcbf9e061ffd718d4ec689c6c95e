@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-05T16:11:06.8554998	Recipes
+// 1.21.1	2026-07-07T17:03:06.6122583	Recipes
 940be898fdeeeae0ac99119bdc59150675e4c0ff data/minecraft/advancement/recipes/misc/bamboo.json
 aa7822d1fb2c6a6681ee1627e9f5146dc6ac0f14 data/minecraft/advancement/recipes/misc/leather.json
 87ee1450cc69fbbdc54ef710195cc48f6310c790 data/minecraft/advancement/recipes/misc/moss_block.json
@@ -37,10 +37,10 @@ db107c0b857c3e456d2b39fe545fb7946eecc485 data/starcatcher/advancement/recipes/mi
 a06acf390766ae2693d09677e723aa1eecf6979c data/starcatcher/advancement/recipes/misc/cloud_bobber.json
 442ab997a9ad98844871eaafa67868a6a1c148af data/starcatcher/advancement/recipes/misc/colorful_smithing_template.json
 b24d2e985e4c27e4b01ded46c9824111095b4057 data/starcatcher/advancement/recipes/misc/copper_hook.json
-82d33c4f2bacc70071f628f38266a93964ed0bda data/starcatcher/advancement/recipes/misc/deep_ocean_bobber.json
 13e5bacbc74418231f87b2f7dd5446ba63688dbc data/starcatcher/advancement/recipes/misc/display.json
 020daf08740515a12b9be02a99dc803b2ec4ca00 data/starcatcher/advancement/recipes/misc/dripstone_bait.json
 03dd883f14cf460cf9ca672df45ecfe1ccbfd631 data/starcatcher/advancement/recipes/misc/dripstone_bait_from_pointed_dripstone.json
+2223dae47f9ffb3b018961cc721a706e649e5518 data/starcatcher/advancement/recipes/misc/dripstone_bobber.json
 86237f0a47eb7d239d5531dd03172871ba8252ca data/starcatcher/advancement/recipes/misc/echoing_hook.json
 5dc45f99e5b60056111df2ab7d82bccf0ae5fb4e data/starcatcher/advancement/recipes/misc/exposed_copper_hook.json
 7d08091df3e7c811b9c4c4f915c6cb525fd67637 data/starcatcher/advancement/recipes/misc/fisherman_hat_black.json
@@ -171,10 +171,10 @@ f2161577f6d583512bb7dd875b97e1f0ddc48052 data/starcatcher/recipe/clear_smithing_
 532b09f6fba35cb01b485f09d8cedd06a96b277d data/starcatcher/recipe/colorful_smithing_template.json
 5303529aef4a32c00141485c526097a76c843640 data/starcatcher/recipe/colorful_tackle.json
 8ccb42668559a3ad341a1ea2311d99ffad5753e6 data/starcatcher/recipe/copper_hook.json
-d971f8e5c06e1483ccc3c1775d0fc7161604f8fc data/starcatcher/recipe/deep_ocean_bobber.json
 2c9a156043cd0d5a2642c280df887650d52fa8af data/starcatcher/recipe/display.json
 0dfff00c3e355a5dc8c81521d5458f8d0b8df3c8 data/starcatcher/recipe/dripstone_bait.json
 7f2be50478cfa80ef1d51b2827541967269305c0 data/starcatcher/recipe/dripstone_bait_from_pointed_dripstone.json
+3223ebc674b812fa323db1455317d8d28a1083a9 data/starcatcher/recipe/dripstone_bobber.json
 78430acd9dbafcaad34d82bdff047aba0c503d05 data/starcatcher/recipe/echoing_hook.json
 9e549a61320cd8d119eba00be1c8e7c6f5c8e7e3 data/starcatcher/recipe/exposed_copper_hook.json
 b2ac76088bd1ba64537983d7ad372c47dab09246 data/starcatcher/recipe/fisherman_hat_black.json

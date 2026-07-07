@@ -12,7 +12,6 @@ public class MirageSweetspotBehaviour extends AbstractSweetSpotBehaviour
     public void onAdd(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         super.onAdd(instance, ass);
-
         ass.canHit = false;
         ass.alpha = 0;
     }

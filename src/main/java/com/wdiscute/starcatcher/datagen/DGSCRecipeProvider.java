@@ -258,15 +258,15 @@ public class DGSCRecipeProvider extends RecipeProvider
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 
-        //aqua bobber
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.DEEP_OCEAN_BOBBER)
+        //dripstone bobber
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SCItems.DRIPSTONE_BOBBER)
                 .define('B', SCItems.BOBBER)
                 .define('S', Items.STICK)
-                .define('D', Items.DIAMOND)
-                .define('H', Items.HEART_OF_THE_SEA)
-                .pattern(" HS")
+                .define('D', Items.DRIPSTONE_BLOCK)
+                .define('P', Items.POINTED_DRIPSTONE)
+                .pattern(" DS")
                 .pattern("DBD")
-                .pattern("SD ")
+                .pattern("SP ")
                 .unlockedBy("has_starcatcher_rod", has(SCTags.RODS))
                 .save(output);
 

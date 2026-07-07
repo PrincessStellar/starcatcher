@@ -177,8 +177,8 @@ public class DGSCDataMapsProvider extends DataMapProvider
                 new AddLeavesSweetspotsModifier(0.025f, "")
         ), false);
 
-        modifiers.add(SCItems.DEEP_OCEAN_BOBBER, List.of(
-                new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, "tooltip.modifier.starcatcher.deep_ocean_bobber")
+        modifiers.add(SCItems.DRIPSTONE_BOBBER, List.of(
+                new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DRIPSTONE, "tooltip.modifier.starcatcher.dripstone_bobber")
         ), false);
 
         modifiers.add(SCItems.GLOWING_BOBBER, List.of(
@@ -406,7 +406,7 @@ public class DGSCDataMapsProvider extends DataMapProvider
         modifiers.add(SCBlocks.FISHERMAN_HAT_LIGHT_BLUE.asItem().builtInRegistryHolder(),
                 List.of(
                         new AdjustLureTimeModifier(1.4f, 1.4f, 1.4f, ""),
-                        new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DEEP_OCEAN, "tooltip.modifier.starcatcher.deep_ocean_bobber"),
+                        new AddBasicSweetSpotModifier(Difficulty.SweetSpot.DRIPSTONE, "tooltip.modifier.starcatcher.deep_ocean_bobber"),
                         new FreezeOnMissModifier(40, 10, "")
                 ), false);
 
