@@ -147,9 +147,10 @@ public class FluidRestriction extends AbstractFishRestriction
         return fluid;
     }
 
-    public static final FluidRestriction LAVA = new FluidRestriction(ResourceLocation.withDefaultNamespace("lava"), "");
-    public static final FluidRestriction WATER = new FluidRestriction(ResourceLocation.withDefaultNamespace("water"), "");
-    public static final FluidRestriction VOID = new FluidRestriction(ResourceLocation.withDefaultNamespace("empty"), "");
-    public static final FluidRestriction ACID = new FluidRestriction(Utils.rl("alexscaves", "acid"), "");
-    public static final FluidRestriction PURPLE_SODA = new FluidRestriction(Utils.rl("alexscaves", "purple_soda"), "");
+    public static final FluidRestriction LAVA = new FluidRestriction(ResourceLocation.withDefaultNamespace("lava"), "fluid.starcatcher.lava");
+    public static final FluidRestriction WATER = new FluidRestriction(ResourceLocation.withDefaultNamespace("water"), "fluid.starcatcher.water");
+    public static final FluidRestriction VOID = new FluidRestriction(ResourceLocation.withDefaultNamespace("empty"), "fluid.starcatcher.void");
+    public static final FluidRestriction AIR = new FluidRestriction(ResourceLocation.withDefaultNamespace("empty"), "fluid.starcatcher.air");
+    public static final FluidRestriction ACID = new FluidRestriction(Utils.rl("alexscaves", "acid"), "fluid.starcatcher.acid");
+    public static final FluidRestriction PURPLE_SODA = new FluidRestriction(Utils.rl("alexscaves", "purple_soda"), "fluid.starcatcher.purple_soda");
 }

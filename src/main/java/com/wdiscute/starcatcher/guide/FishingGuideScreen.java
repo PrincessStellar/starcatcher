@@ -1969,7 +1969,7 @@ public class FishingGuideScreen extends Screen
                 x + 73, y + 93, 0, false);
 
         //render bucketable
-        if (!fp.catchInfo().bucketedFish().toStack().is(SCItems.MISSINGNO))
+        if (!fp.catchInfo().bucketedFish().isEmpty())
         {
             guiGraphics.blit(BUCKET, x + 77, y + 103, 0, 0, 14, 14, 14, 14);
             if (mouseX > 75 && mouseX < 93 && mouseY > 105 && mouseY < 115)

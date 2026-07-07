@@ -73,28 +73,17 @@
   "rarity": "legendary",
   "restrictions": [
     {
-      "type": "starcatcher:dimension",
-      "dimension_entry": "overworld",
-      "translation_override": "dimension.minecraft.overworld"
-    },
-    {
-      "type": "starcatcher:biome",
-      "biomes": [
-        "minecraft:sunflower_plains"
-      ],
-      "blacklist": []
-    },
-    {
       "type": "starcatcher:elevation_restriction",
       "max_y": 2147483647,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "min_y": 100,
+      "translation_override": "gui.guide.elevation.skies"
     },
     {
       "type": "starcatcher:fluid",
       "fluids": [
-        "minecraft:water"
-      ]
+        "minecraft:empty"
+      ],
+      "translation_override": "fluid.starcatcher.void"
     }
   ],
   "size_and_weight": {

@@ -107,7 +107,8 @@
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:water"
-      ]
+      ],
+      "translation_override": "fluid.starcatcher.water"
     }
   ],
   "size_and_weight": {

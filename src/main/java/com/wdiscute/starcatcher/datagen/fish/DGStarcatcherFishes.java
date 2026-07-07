@@ -526,9 +526,11 @@ public class DGStarcatcherFishes
         //
 
         FishRegistration.register(context,
-                PresetRestrictions.sunflowerPlains(context)
+                PresetRestrictions.empty(context)
                         .withFish(SCItems.CLOUDFIN)
                         .withSizeAndWeight(new SizeAndWeight(920, 120, 0, 0))
+                        .addRestriction(ElevationRestriction.ABOVE_TWO_HUNDRED)
+                        .addRestriction(FluidRestriction.VOID)
                         .withDifficulty(Difficulty.CLOUDFIN)
                         .withRarity(Rarity.LEGENDARY)
         );

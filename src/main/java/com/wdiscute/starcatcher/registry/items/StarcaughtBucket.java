@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.items;
 
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fishentity.FishEntity;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
@@ -27,18 +28,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class StarcaughtBucket extends BucketItem
+public class StarcaughtBucket extends BucketItem implements Tooltips.ItemTooltip
 {
     EntityType<FishEntity> entity;
 
     public StarcaughtBucket(Fluid fluid)
     {
-        super(fluid, new Item.Properties().stacksTo(16));
+        super(fluid, new Item.Properties().stacksTo(1));
 
         entity = SCEntities.FISH.get();
     }
 
-    public static Item getBucketForStack(ItemStack stack){
+    public static Item getBucketForStack(ItemStack stack)
+    {
         return stack.has(DataComponents.FIRE_RESISTANT) ? SCItems.STARCAUGHT_LAVA_BUCKET.get() : SCItems.STARCAUGHT_BUCKET.get();
     }
 
@@ -64,18 +66,6 @@ public class StarcaughtBucket extends BucketItem
     private static ItemStack getFish(ItemStack bucket)
     {
         return SCDataComponents.getOrDefault(bucket, SCDataComponents.BUCKETED_FISH, new MaybeStack(ItemStack.EMPTY)).toStack();
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
-    {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        ItemStack fish = getFish(stack);
-        if (fish.isEmpty())
-        {
-            tooltipComponents.add(1, Component.translatable("tooltip.starcatcher.starcaught_bucket.creative.1").withColor(0x888888));
-            tooltipComponents.add(1, Component.translatable("tooltip.starcatcher.starcaught_bucket.creative.0").withColor(0x888888));
-        }
     }
 
     @Override
@@ -116,6 +106,18 @@ public class StarcaughtBucket extends BucketItem
     public Optional<TooltipComponent> getTooltipImage(ItemStack stack)
     {
         return Optional.of(new BucketTooltip(getFish(stack)));
+    }
+
+    @Override
+    public List<String> getAlwaysTooltips(ItemStack stack)
+    {
+        return List.of("tooltip.starcatcher.starcaught_bucket.creative.0", "tooltip.starcatcher.starcaught_bucket.creative.1");
+    }
+
+    @Override
+    public List<String> getShiftTooltips(ItemStack stack)
+    {
+        return List.of();
     }
 
     public record BucketTooltip(ItemStack fish) implements TooltipComponent

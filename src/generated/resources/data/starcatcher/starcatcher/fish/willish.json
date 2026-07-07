@@ -58,7 +58,8 @@
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:lava"
-      ]
+      ],
+      "translation_override": "fluid.starcatcher.lava"
     }
   ],
   "size_and_weight": {
