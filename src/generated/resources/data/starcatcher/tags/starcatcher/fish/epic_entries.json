@@ -1,111 +1,7 @@
 {
   "values": [
     {
-      "id": "starcatcher:thunder_bass",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lightning_bass",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blue_ice_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cactifish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sage_catfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:rose_siamese_fish",
-      "required": false
-    },
-    {
       "id": "starcatcher:livid_bamboo",
-      "required": false
-    },
-    {
-      "id": "starcatcher:willow_bream",
-      "required": false
-    },
-    {
-      "id": "starcatcher:carpenjoe",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bigeye_tuna",
-      "required": false
-    },
-    {
-      "id": "starcatcher:geode_eel",
-      "required": false
-    },
-    {
-      "id": "starcatcher:amethystback",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lush_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bright_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:dark_amethyst_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sculkfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:obsidian_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_deepslate_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:chorus_crab",
-      "required": false
-    },
-    {
-      "id": "starcatcher:purple_carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:voidfin",
-      "required": false
-    },
-    {
-      "id": "starcatcher:nebula_squid",
-      "required": false
-    },
-    {
-      "id": "starcatcher:eel_dynamo",
-      "required": false
-    },
-    {
-      "id": "tide:mooneye",
-      "required": false
-    },
-    {
-      "id": "tide:bull_shark",
-      "required": false
-    },
-    {
-      "id": "tide:aquathorn",
       "required": false
     },
     {
@@ -113,7 +9,7 @@
       "required": false
     },
     {
-      "id": "tide:pluto_snail",
+      "id": "starcatcher:willow_bream",
       "required": false
     },
     {
@@ -121,31 +17,7 @@
       "required": false
     },
     {
-      "id": "tide:saturn_cuttlefish",
-      "required": false
-    },
-    {
-      "id": "tide:marstilus",
-      "required": false
-    },
-    {
-      "id": "tide:uranias_pisces",
-      "required": false
-    },
-    {
-      "id": "tide:great_white_shark",
-      "required": false
-    },
-    {
-      "id": "tide:shooting_starfish",
-      "required": false
-    },
-    {
-      "id": "tide:windbass",
-      "required": false
-    },
-    {
-      "id": "tide:echo_snapper",
+      "id": "tide:snatcher_squid",
       "required": false
     },
     {
@@ -153,23 +25,23 @@
       "required": false
     },
     {
-      "id": "tide:blazing_swordfish",
+      "id": "fishofthieves:wrecker",
       "required": false
     },
     {
-      "id": "tide:mantyvern",
+      "id": "starcatcher:lush_pike",
       "required": false
     },
     {
-      "id": "tide:snatcher_squid",
+      "id": "starcatcher:chorus_crab",
       "required": false
     },
     {
-      "id": "tide:darkness_eater",
+      "id": "starcatcher:blue_ice_pike",
       "required": false
     },
     {
-      "id": "tide:shadow_shark",
+      "id": "starcatcher:sage_catfish",
       "required": false
     },
     {
@@ -177,7 +49,23 @@
       "required": false
     },
     {
-      "id": "aquaculture:synodontis",
+      "id": "starcatcher:geode_eel",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lightning_bass",
+      "required": false
+    },
+    {
+      "id": "tide:echo_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sculkfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:thunder_bass",
       "required": false
     },
     {
@@ -185,11 +73,47 @@
       "required": false
     },
     {
+      "id": "tide:mooneye",
+      "required": false
+    },
+    {
+      "id": "starcatcher:carpenjoe",
+      "required": false
+    },
+    {
+      "id": "tide:shooting_starfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:voidfin",
+      "required": false
+    },
+    {
+      "id": "starcatcher:dark_amethyst_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:obsidian_crab",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bigeye_tuna",
+      "required": false
+    },
+    {
+      "id": "tide:shadow_shark",
+      "required": false
+    },
+    {
       "id": "aquaculture:box_turtle",
       "required": false
     },
     {
-      "id": "aquaculture:brown_shrooma",
+      "id": "unusualfishmod:raw_frosty_fin",
+      "required": false
+    },
+    {
+      "id": "starcatcher:rose_siamese_fish",
       "required": false
     },
     {
@@ -197,11 +121,47 @@
       "required": false
     },
     {
-      "id": "fishofthieves:wrecker",
+      "id": "netherdepthsupgrade:lava_pufferfish",
       "required": false
     },
     {
-      "id": "netherdepthsupgrade:lava_pufferfish",
+      "id": "starcatcher:cactifish",
+      "required": false
+    },
+    {
+      "id": "tide:uranias_pisces",
+      "required": false
+    },
+    {
+      "id": "tide:pluto_snail",
+      "required": false
+    },
+    {
+      "id": "starcatcher:purple_carp",
+      "required": false
+    },
+    {
+      "id": "starcatcher:molten_deepslate_crab",
+      "required": false
+    },
+    {
+      "id": "minecraft:creeper_head",
+      "required": false
+    },
+    {
+      "id": "tide:blazing_swordfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bright_amethyst_snapper",
+      "required": false
+    },
+    {
+      "id": "tide:marstilus",
+      "required": false
+    },
+    {
+      "id": "starcatcher:eel_dynamo",
       "required": false
     },
     {
@@ -209,11 +169,55 @@
       "required": false
     },
     {
+      "id": "aquaculture:brown_shrooma",
+      "required": false
+    },
+    {
+      "id": "tide:bull_shark",
+      "required": false
+    },
+    {
+      "id": "tide:saturn_cuttlefish",
+      "required": false
+    },
+    {
+      "id": "tide:aquathorn",
+      "required": false
+    },
+    {
+      "id": "tide:great_white_shark",
+      "required": false
+    },
+    {
       "id": "netherdepthsupgrade:wither_bonefish",
       "required": false
     },
     {
-      "id": "unusualfishmod:raw_frosty_fin",
+      "id": "starcatcher:lava_crab",
+      "required": false
+    },
+    {
+      "id": "starcatcher:amethystback",
+      "required": false
+    },
+    {
+      "id": "tide:mantyvern",
+      "required": false
+    },
+    {
+      "id": "tide:darkness_eater",
+      "required": false
+    },
+    {
+      "id": "tide:windbass",
+      "required": false
+    },
+    {
+      "id": "starcatcher:nebula_squid",
+      "required": false
+    },
+    {
+      "id": "aquaculture:synodontis",
       "required": false
     }
   ]

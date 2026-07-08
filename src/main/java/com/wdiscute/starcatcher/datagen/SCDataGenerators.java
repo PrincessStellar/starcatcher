@@ -3,6 +3,7 @@ package com.wdiscute.starcatcher.datagen;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.datagen.fish.DGSCFishProperties;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -26,18 +27,16 @@ public class SCDataGenerators
     {
         DataGenerator gen = event.getGenerator();
 
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput output = gen.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        //fish properties datapack??
-        event.createDatapackRegistryObjects(DGSCFishProperties.BUILDER);
-
         //fish properties
-        gen.addProvider(
-                event.includeServer(),
-                new DGSCFishProperties(output, lookupProvider)
-        );
+        DGSCFishProperties provider = new DGSCFishProperties(output, event.getLookupProvider());
+        CompletableFuture<HolderLookup.Provider> lookupProvider = provider.getRegistryProvider();
+        gen.addProvider(event.includeServer(), provider);
+
+        //fp tags
+        gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
 
         gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));
 
@@ -51,9 +50,6 @@ public class SCDataGenerators
         //item tags
         ItemTagsProvider itp = new DGSCItemsTagsProvider(output, lookupProvider, btp.contentsGetter(), existingFileHelper);
         gen.addProvider(event.includeServer(), itp);
-
-        //fp tags todo
-        //gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
 
         //advancements
         gen.addProvider(event.includeServer(), new DGSCAdvancementProvider(output, lookupProvider, existingFileHelper));

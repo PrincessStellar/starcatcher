@@ -20,11 +20,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class FishRegistration
 {
     public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
+    public static final Map<FishProperties, ResourceLocation> ALL_FISHABLE_MAP = new HashMap<>();
     public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
 
     public static void register(BootstrapContext<FishProperties> context, FishProperties fp)
@@ -58,6 +61,7 @@ public final class FishRegistration
         }
 
         FishProperties fp = prepare(input);
+        ALL_FISHABLE_MAP.put(fp, key.location());
         context.register(key, fp);
     }
 

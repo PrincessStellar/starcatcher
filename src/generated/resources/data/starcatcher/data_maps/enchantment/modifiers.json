@@ -1,5 +1,10 @@
 {
   "values": {
-    "minecraft:luck_of_the_sea": []
+    "minecraft:luck_of_the_sea": [
+      {
+        "type": "starcatcher:spawn_treasure",
+        "chance": 1.0
+      }
+    ]
   }
 }

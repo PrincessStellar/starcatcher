@@ -303,7 +303,7 @@ public class SCEvents
     }
 
     @SubscribeEvent
-    public static void registerDataMaps(EntityAttributeCreationEvent event)
+    public static void entityAttributes(EntityAttributeCreationEvent event)
     {
         event.put(SCEntities.FISH.get(), FishEntity.createAttributes().build());
     }
@@ -312,10 +312,13 @@ public class SCEvents
     public static void registerDataMaps(RegisterDataMapTypesEvent event)
     {
         event.register(SCDataMaps.AQUARIUM_INTERACTION);
-        event.register(SCDataMaps.ITEM_MODIFIERS);
         event.register(SCDataMaps.TACKLE_SKIN);
         event.register(SCDataMaps.TREASURE);
         event.register(SCDataMaps.MESSAGE_BACKGROUND);
+
+        event.register(SCDataMaps.ITEM_MODIFIERS);
+        event.register(SCDataMaps.ENCHANTMENT_MODIFIERS);
+        event.register(SCDataMaps.EFFECT_MODIFIERS);
     }
 
     @SubscribeEvent
