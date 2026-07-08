@@ -7,7 +7,6 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
 
 public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation, float goldenChance)
 {
@@ -18,7 +17,7 @@ public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weight
 
     public float getWeightForPercentile(float percentile)
     {
-        return (int) Math.round(sizeAverage + sizeDeviation * (1.0 - (percentile / 50.0)));
+        return (int) Math.round(weightAverage + weightDeviation * (1.0 - (percentile / 50.0)));
     }
 
 
@@ -27,8 +26,7 @@ public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weight
         METRIC("gui.guide.units.metric", 1f, 1f),
         IMPERIAL("gui.guide.units.imperial", 0.3937f, 0.0352739619495804f),
         CHEESEBURGER("gui.guide.units.cheeseburger", 0.09f, 0.0087f),
-        FOOTBALL("gui.guide.units.football", 0.04545f, 0.00233f),
-        DEVELOPER_HEIGHT("gui.guide.units.developer", 0.00592f, 0.0000140845f),
+        DEVELOPER("gui.guide.units.developer", 0.00592f, 0.0000140845f),
         BANANA("gui.guide.units.banana", 0.05f, 0.00833f),
         DUCK("gui.guide.units.duck", 0.02f, 0.0006667f),
         SPACE_WHALE("gui.guide.units.space_whale", 1f, 1f),

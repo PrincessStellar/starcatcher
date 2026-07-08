@@ -58,18 +58,17 @@ public class SCConfig
             .translation("starcatcher.configuration.tracker_scale")
             .defineInRange("tracker_scale", 1d, -10000, 10000);
 
-    public static final ModConfigSpec.BooleanValue DEBUG_MINIGAME = BUILDER_CLIENT
-            .comment("Shows a bunch of extra text info during the minigame for debugging")
-            .translation("starcatcher.configuration.debug")
-            .define("debug", false);
-
-
-    //non minigame
     public static final ModConfigSpec.DoubleValue HIT_DELAY = BUILDER_CLIENT
             .pop()
             .translation("starcatcher.configuration.hit_delay")
             .defineInRange("hit_delay", 0.0d, -20, 20);
 
+    public static final ModConfigSpec.BooleanValue DEBUG_MINIGAME = BUILDER_CLIENT
+            .comment("Shows a bunch of extra text info during the minigame for debugging")
+            .translation("starcatcher.configuration.debug")
+            .define("debug", false);
+
+    //non minigame
     public static final ModConfigSpec.IntValue OVERLAY_UPDATE_FREQUENCY = BUILDER_CLIENT
             .translation("starcatcher.configuration.overlay_update_frequency")
             .defineInRange("overlay_update_frequency", 1000, 100, Integer.MAX_VALUE);
@@ -198,10 +197,6 @@ public class SCConfig
             .comment("Restricts items placeable inside the tackle box to #starcatcher:placeable_in_tacle_box")
             .translation("starcatcher.configuration.restrict_tackle_box_to_tag")
             .define("restrict_tackle_box_to_tag", true);
-
-    public static final ModConfigSpec.BooleanValue ENABLE_ROD_MENU = BUILDER_SERVER
-            .translation("starcatcher.configuration.enable_rod_menu")
-            .define("enable_rod_menu", false);
 
     public static final ModConfigSpec.DoubleValue FISH_MAX_SCALE = BUILDER_SERVER
             .comment("Controls the maximum scale of the fish model based on the size and weight percentile")

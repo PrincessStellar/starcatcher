@@ -176,7 +176,7 @@
   "commands.starcatcher.nothing_there" : "There are no fishes available at the current location. Make sure you're standing inside the correct fluid.",
   "commands.starcatcher.item_empty" : "You must have an item in your hand to apply the modifier to",
 
-  "starcatcher.configuration.ui_settings": "!!! UI Moving & Scale !!!",
+  "starcatcher.configuration.ui_settings": "§3!!! [UI Moving & Scale] !!!",
 
   "starcatcher.configuration.minigame_x_offset": "Minigame X Offset",
   "starcatcher.configuration.minigame_y_offset": "Minigame Y Offset",
@@ -199,6 +199,7 @@
   "starcatcher.configuration.enable_hit_sounds" : "Sweet-spot Hit Sounds",
   "starcatcher.configuration.enable_miss_sound" : "Minigame miss Sound",
   "starcatcher.configuration.remove_notif_on_hover" : "Remove New Fish Notif on Hover",
+  "starcatcher.configuration.overlay_update_frequency" : "Overlay Update Frequency",
 
   "starcatcher.configuration.give_guide" : "Give Guide",
   "starcatcher.configuration.enable_worms" : "Worms From Bonemealing Farmland",
@@ -690,24 +691,20 @@
   "gui.guide.units.imperial" : "Imperial (in & lb)",
 
   "gui.guide.units.cheeseburger" : "Cheeseburger",
-  "gui.guide.units.cheeseburger.size" : "Cheeseburgers",
-  "gui.guide.units.cheeseburger.weight" : "Cheeseburgers",
-
-  "gui.guide.units.football" : "Football",
-  "gui.guide.units.football.size" : "Footballs",
-  "gui.guide.units.football.weight" : "Footballs",
+  "gui.guide.units.cheeseburger.size" : "Cheeseburgers tall",
+  "gui.guide.units.cheeseburger.weight" : "Cheeseburgers heavy",
 
   "gui.guide.units.developer" : "Developer",
-  "gui.guide.units.developer.size" : "wds",
-  "gui.guide.units.developer.weight" : "wds",
+  "gui.guide.units.developer.size" : "wds tall",
+  "gui.guide.units.developer.weight" : "wds heavy",
 
   "gui.guide.units.banana" : "Banana",
-  "gui.guide.units.banana.size" : "Bananas",
-  "gui.guide.units.banana.weight" : "Bananas",
+  "gui.guide.units.banana.size" : "Bananas tall",
+  "gui.guide.units.banana.weight" : "Bananas heavy",
 
   "gui.guide.units.duck" : "Average Duck",
-  "gui.guide.units.duck.size" : "Ducks",
-  "gui.guide.units.duck.weight" : "Ducks",
+  "gui.guide.units.duck.size" : "Ducks tall",
+  "gui.guide.units.duck.weight" : "Ducks heavy",
 
   "gui.guide.units.space_whale" : "Space Whale",
   "gui.guide.units.scientific" : "Scientific",

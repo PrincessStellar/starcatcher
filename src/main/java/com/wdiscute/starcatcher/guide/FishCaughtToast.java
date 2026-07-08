@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -75,10 +76,12 @@ public class FishCaughtToast implements Toast
 
         SizeAndWeight.Units units = SCConfig.UNIT.get();
 
-        String size = units.getSizeAsString(percentile);
-        String weight = units.getWeightAsString(percentile);
+        String size = units.getSizeAsString(fp.sizeWeight().getSizeForPercentile(percentile));
+        String weight = units.getWeightAsString(fp.sizeWeight().getWeightForPercentile(percentile));
 
-        Minecraft.getInstance().player.displayClientMessage(
+        LocalPlayer player = Minecraft.getInstance().player;
+        if(player == null) return;
+        player.displayClientMessage(
                 Component.literal("")
                         .append(Component.translatable(fp.catchInfo().fish().toStack().getDescriptionId()))
                         .append(Component.literal(" - " + size + " - " + weight))
