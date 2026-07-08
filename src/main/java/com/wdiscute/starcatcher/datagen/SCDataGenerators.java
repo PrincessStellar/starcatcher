@@ -38,8 +38,6 @@ public class SCDataGenerators
         //fp tags
         gen.addProvider(event.includeServer(), new DGSCFPTagsProvider(output, lookupProvider, existingFileHelper));
 
-        gen.addProvider(event.includeServer(), new DGSCBiomeModifierProvider(output, lookupProvider));
-
         //fish models
         gen.addProvider(event.includeServer(), new DGSCItemModelProvider(output, existingFileHelper));
 

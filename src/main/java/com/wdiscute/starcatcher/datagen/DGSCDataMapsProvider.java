@@ -439,7 +439,12 @@ public class DGSCDataMapsProvider extends DataMapProvider
 
         modifiers_enchants.add(Enchantments.LUCK_OF_THE_SEA,
                 List.of(
-                        new SpawnTreasureModifier(1, "")
+                        new SpawnTreasureModifier(0.02f, "hide")
+                ), false);
+
+        modifiers_enchants.add(Enchantments.LURE,
+                List.of(
+                        new AdjustLureTimeModifier(0.95f, 0.95f, 1f, "hide")
                 ), false);
 
 

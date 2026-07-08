@@ -187,6 +187,10 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE)
                 .addTag(SCTags.HATS);
 
+        //enchantable rods
+        tag(ItemTags.FISHING_ENCHANTABLE)
+                .addTag(SCTags.RODS);
+
         tag(SCTags.PLACEABLE_IN_DISPLAY)
                 .addTag(SCTags.BUCKETABLE_FISHES)
                 .add(GUIDE.get())

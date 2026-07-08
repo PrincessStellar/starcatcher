@@ -1,11 +1,7 @@
 {
   "values": [
     {
-      "id": "starcatcher:mossy_boot",
-      "required": false
-    },
-    {
-      "id": "starcatcher:boot",
+      "id": "starcatcher:conch",
       "required": false
     },
     {
@@ -13,7 +9,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:conch",
+      "id": "starcatcher:boot",
       "required": false
     },
     {
@@ -25,11 +21,15 @@
       "required": false
     },
     {
-      "id": "minecraft:bamboo",
+      "id": "starcatcher:dried_seaweed",
       "required": false
     },
     {
-      "id": "starcatcher:dried_seaweed",
+      "id": "starcatcher:mossy_boot",
+      "required": false
+    },
+    {
+      "id": "minecraft:bamboo",
       "required": false
     },
     {

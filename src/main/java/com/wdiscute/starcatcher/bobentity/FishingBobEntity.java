@@ -42,7 +42,6 @@ import java.util.List;
 
 public class FishingBobEntity extends Projectile
 {
-    private static final Logger log = LoggerFactory.getLogger(FishingBobEntity.class);
     public static final EntityDataAccessor<Integer> STATE = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<Boolean> VOID = SynchedEntityData.defineId(FishingBobEntity.class, EntityDataSerializers.BOOLEAN);
 

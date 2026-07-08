@@ -1,7 +1,75 @@
 {
   "values": [
     {
-      "id": "spawn:angler_fish",
+      "id": "starcatcher:suneater",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sun_seeking_carp",
+      "required": false
+    },
+    {
+      "id": "tide:pentapus",
+      "required": false
+    },
+    {
+      "id": "alexscaves:lanternfish",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:spotted_eagle_ray",
+      "required": false
+    },
+    {
+      "id": "tide:vengeance",
+      "required": false
+    },
+    {
+      "id": "tide:soulscale",
+      "required": false
+    },
+    {
+      "id": "starcatcher:wintery_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:drive_pike",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pale_pinfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_herring",
+      "required": false
+    },
+    {
+      "id": "tide:dutchman_sock",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sunflower_carp",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:oarfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:boulti",
+      "required": false
+    },
+    {
+      "id": "starcatcher:spacejelly",
+      "required": false
+    },
+    {
+      "id": "tide:mahi_mahi",
+      "required": false
+    },
+    {
+      "id": "tide:gilded_minnow",
       "required": false
     },
     {
@@ -9,19 +77,15 @@
       "required": false
     },
     {
-      "id": "hybrid_aquatic:coelacanth",
+      "id": "starcatcher:agave_bream",
       "required": false
     },
     {
-      "id": "starcatcher:meka_agave_bream",
+      "id": "starcatcher:fossilized_angelfish",
       "required": false
     },
     {
-      "id": "tide:mirage_catfish",
-      "required": false
-    },
-    {
-      "id": "tide:sailfish",
+      "id": "starcatcher:petal_bass",
       "required": false
     },
     {
@@ -29,7 +93,75 @@
       "required": false
     },
     {
+      "id": "tide:bedrock_tetra",
+      "required": false
+    },
+    {
+      "id": "starcatcher:glowstone_pufferfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:molten_shrimp",
+      "required": false
+    },
+    {
+      "id": "betterend:end_fish_raw",
+      "required": false
+    },
+    {
+      "id": "unusualfishmod:raw_blind_sailfin",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:coelacanth",
+      "required": false
+    },
+    {
+      "id": "tide:crimson_fangjaw",
+      "required": false
+    },
+    {
+      "id": "starcatcher:twilight_koi",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:tiger_prawn",
+      "required": false
+    },
+    {
+      "id": "tide:sand_tiger_shark",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:blue_spotted_stingray",
+      "required": false
+    },
+    {
+      "id": "tide:blossom_bass",
+      "required": false
+    },
+    {
       "id": "tide:manta_ray",
+      "required": false
+    },
+    {
+      "id": "tide:swordfish",
+      "required": false
+    },
+    {
+      "id": "aquaculture:carp",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:eyeball_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:glowing_dark",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:glowdine",
       "required": false
     },
     {
@@ -37,7 +169,51 @@
       "required": false
     },
     {
-      "id": "fishofthieves:ancientscale",
+      "id": "tide:red_40",
+      "required": false
+    },
+    {
+      "id": "starcatcher:crystalback_boreal",
+      "required": false
+    },
+    {
+      "id": "tide:slimy_salmon",
+      "required": false
+    },
+    {
+      "id": "starcatcher:bluegigi",
+      "required": false
+    },
+    {
+      "id": "starcatcher:pipehead",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:golden_dorado",
+      "required": false
+    },
+    {
+      "id": "tide:mirage_catfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:blue_crystal_fin",
+      "required": false
+    },
+    {
+      "id": "starcatcher:ripple_catfish",
+      "required": false
+    },
+    {
+      "id": "tide:warped_guppy",
+      "required": false
+    },
+    {
+      "id": "starcatcher:meka_agave_bream",
+      "required": false
+    },
+    {
+      "id": "starcatcher:the_quarrish",
       "required": false
     },
     {
@@ -49,259 +225,11 @@
       "required": false
     },
     {
-      "id": "tide:soulscale",
-      "required": false
-    },
-    {
-      "id": "tide:dutchman_sock",
-      "required": false
-    },
-    {
-      "id": "starcatcher:agave_bream",
-      "required": false
-    },
-    {
-      "id": "minecraft:tropical_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:petal_bass",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:oarfish",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:moray_eel",
-      "required": false
-    },
-    {
-      "id": "tide:crimson_fangjaw",
-      "required": false
-    },
-    {
-      "id": "starcatcher:spacejelly",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cinder_squid",
-      "required": false
-    },
-    {
-      "id": "starcatcher:bluegigi",
-      "required": false
-    },
-    {
-      "id": "tide:blossom_bass",
-      "required": false
-    },
-    {
-      "id": "tide:frostbite_flounder",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sporefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:wintery_pike",
-      "required": false
-    },
-    {
-      "id": "tide:arapaima",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sun_seeking_carp",
-      "required": false
-    },
-    {
-      "id": "tide:elytrout",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lily_snapper",
-      "required": false
-    },
-    {
-      "id": "starcatcher:ripple_catfish",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:ocean_sunfish",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:golden_dorado",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blue_crystal_fin",
-      "required": false
-    },
-    {
-      "id": "starcatcher:charfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowstone_pufferfish",
-      "required": false
-    },
-    {
       "id": "aquaculture:atlantic_herring",
       "required": false
     },
     {
-      "id": "starcatcher:crystalback_boreal",
-      "required": false
-    },
-    {
-      "id": "tide:mahi_mahi",
-      "required": false
-    },
-    {
-      "id": "tide:vengeance",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:glowdine",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_circus_fish",
-      "required": false
-    },
-    {
-      "id": "tide:swordfish",
-      "required": false
-    },
-    {
-      "id": "tide:red_40",
-      "required": false
-    },
-    {
-      "id": "tide:bedrock_tetra",
-      "required": false
-    },
-    {
-      "id": "tide:pentapus",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_blind_sailfin",
-      "required": false
-    },
-    {
-      "id": "starcatcher:suneater",
-      "required": false
-    },
-    {
-      "id": "starcatcher:glowing_dark",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:eyeball_fish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:fossilized_angelfish",
-      "required": false
-    },
-    {
-      "id": "tide:sand_tiger_shark",
-      "required": false
-    },
-    {
-      "id": "tide:luminescent_jellyfish",
-      "required": false
-    },
-    {
-      "id": "aquaculture:arapaima",
-      "required": false
-    },
-    {
-      "id": "starcatcher:cogtopus",
-      "required": false
-    },
-    {
-      "id": "tide:warped_guppy",
-      "required": false
-    },
-    {
-      "id": "starcatcher:drive_pike",
-      "required": false
-    },
-    {
-      "id": "starcatcher:the_quarrish",
-      "required": false
-    },
-    {
-      "id": "collectorsreap:tiger_prawn",
-      "required": false
-    },
-    {
-      "id": "tide:slimy_salmon",
-      "required": false
-    },
-    {
-      "id": "betterend:end_fish_raw",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pale_pinfish",
-      "required": false
-    },
-    {
-      "id": "aquaculture:boulti",
-      "required": false
-    },
-    {
-      "id": "alexscaves:lanternfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:pipehead",
-      "required": false
-    },
-    {
-      "id": "tide:gilded_minnow",
-      "required": false
-    },
-    {
-      "id": "fishofthieves:devilfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:twilight_koi",
-      "required": false
-    },
-    {
-      "id": "starcatcher:blue_herring",
-      "required": false
-    },
-    {
-      "id": "starcatcher:molten_shrimp",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:spotted_eagle_ray",
-      "required": false
-    },
-    {
-      "id": "aquaculture:carp",
-      "required": false
-    },
-    {
-      "id": "starcatcher:sunflower_carp",
-      "required": false
-    },
-    {
-      "id": "hybrid_aquatic:blue_spotted_stingray",
-      "required": false
-    },
-    {
-      "id": "tide:sturgeon",
+      "id": "fishofthieves:ancientscale",
       "required": false
     },
     {
@@ -309,11 +237,83 @@
       "required": false
     },
     {
+      "id": "unusualfishmod:raw_circus_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cinder_squid",
+      "required": false
+    },
+    {
+      "id": "tide:luminescent_jellyfish",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:ocean_sunfish",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:moray_eel",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cogtopus",
+      "required": false
+    },
+    {
+      "id": "tide:elytrout",
+      "required": false
+    },
+    {
+      "id": "spawn:angler_fish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:sporefish",
+      "required": false
+    },
+    {
+      "id": "minecraft:tropical_fish",
+      "required": false
+    },
+    {
+      "id": "tide:sailfish",
+      "required": false
+    },
+    {
       "id": "starcatcher:mechanical_brass_snail",
       "required": false
     },
     {
+      "id": "fishofthieves:devilfish",
+      "required": false
+    },
+    {
+      "id": "tide:frostbite_flounder",
+      "required": false
+    },
+    {
+      "id": "aquaculture:arapaima",
+      "required": false
+    },
+    {
       "id": "alexscaves:tripodfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:lily_snapper",
+      "required": false
+    },
+    {
+      "id": "starcatcher:charfish",
+      "required": false
+    },
+    {
+      "id": "tide:sturgeon",
+      "required": false
+    },
+    {
+      "id": "tide:arapaima",
       "required": false
     }
   ]

@@ -147,7 +147,12 @@ public interface Modifier
             {
                 List<Modifier> list = entry.getKey().getData(SCDataMaps.ENCHANTMENT_MODIFIERS);
                 if(list != null && !list.isEmpty())
-                    modifiers.addAll(list);
+                {
+                    for (int i = 0; i < entry.getIntValue(); i++)
+                    {
+                        modifiers.addAll(list);
+                    }
+                }
             }
         }
 
