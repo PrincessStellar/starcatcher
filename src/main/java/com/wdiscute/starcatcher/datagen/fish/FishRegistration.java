@@ -25,9 +25,9 @@ import java.util.Map;
 
 public final class FishRegistration
 {
-    public static final List<FishProperties> ALL_FISHABLE = new ArrayList<>();
-    public static final Map<FishProperties, ResourceLocation> ALL_FISHABLE_MAP = new HashMap<>();
-    public static final List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
+    public static List<FishProperties> ALL_FISHABLE = new ArrayList<>();
+    public static Map<FishProperties, ResourceLocation> ALL_FISHABLE_MAP = new HashMap<>();
+    public static List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
 
     public static void register(BootstrapContext<FishProperties> context, FishProperties fp)
     {

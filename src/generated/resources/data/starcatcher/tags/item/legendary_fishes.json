@@ -1,7 +1,11 @@
 {
   "values": [
     {
-      "id": "starcatcher:boreal",
+      "id": "aquaculture:piranha",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:blazefish",
       "required": false
     },
     {
@@ -9,11 +13,15 @@
       "required": false
     },
     {
-      "id": "starcatcher:oasis_sturgeon",
+      "id": "starcatcher:azure_crystalback_minnow",
       "required": false
     },
     {
-      "id": "starcatcher:vesani",
+      "id": "starcatcher:boreal",
+      "required": false
+    },
+    {
+      "id": "starcatcher:cerberay",
       "required": false
     },
     {
@@ -21,7 +29,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:azure_crystalback_minnow",
+      "id": "starcatcher:deepslatefish",
       "required": false
     },
     {
@@ -29,19 +37,7 @@
       "required": false
     },
     {
-      "id": "starcatcher:shroomfish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:stonefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:deepslatefish",
-      "required": false
-    },
-    {
-      "id": "starcatcher:ward",
+      "id": "starcatcher:oasis_sturgeon",
       "required": false
     },
     {
@@ -53,7 +49,15 @@
       "required": false
     },
     {
-      "id": "starcatcher:cerberay",
+      "id": "starcatcher:shroomfish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:stonefish",
+      "required": false
+    },
+    {
+      "id": "starcatcher:vesani",
       "required": false
     },
     {
@@ -61,19 +65,7 @@
       "required": false
     },
     {
-      "id": "tide:coelacanth",
-      "required": false
-    },
-    {
-      "id": "tide:midas_fish",
-      "required": false
-    },
-    {
-      "id": "tide:devils_hole_pupfish",
-      "required": false
-    },
-    {
-      "id": "tide:voidseeker",
+      "id": "starcatcher:ward",
       "required": false
     },
     {
@@ -81,15 +73,23 @@
       "required": false
     },
     {
+      "id": "tide:coelacanth",
+      "required": false
+    },
+    {
+      "id": "tide:devils_hole_pupfish",
+      "required": false
+    },
+    {
       "id": "tide:dragon_fish",
       "required": false
     },
     {
-      "id": "aquaculture:piranha",
+      "id": "tide:midas_fish",
       "required": false
     },
     {
-      "id": "netherdepthsupgrade:blazefish",
+      "id": "tide:voidseeker",
       "required": false
     },
     {

@@ -294,7 +294,7 @@
 
   "tooltip.modifier.starcatcher.prevent_frozen": "Prevents your handle from freezing up",
 
-  "tooltip.modifier.starcatcher.never_lose": "[dev] never lose the minigame",
+  "tooltip.modifier.starcatcher.never_lose": "Fish are no longer able to swim away",
 
   "tooltip.modifier.starcatcher.bounce_back": "Prevents the fish from swimming away once by bouncing it back up",
 

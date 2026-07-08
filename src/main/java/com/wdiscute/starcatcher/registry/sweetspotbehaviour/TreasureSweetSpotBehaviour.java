@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.registry.sweetspotbehaviour;
 
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.minigame.ActiveSweetSpot;
 import com.wdiscute.starcatcher.minigame.FishingMinigameScreen;
 import net.minecraft.client.Minecraft;
@@ -21,8 +22,9 @@ public class TreasureSweetSpotBehaviour extends AbstractSweetSpotBehaviour
         //reposition
         if (instance.treasureProgress < 100)
             ass.pos = instance.getRandomFreePosition(ass.thickness);
-        //playsound
-        Minecraft.getInstance().player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.4f, 1f);
+        //play sound
+        if (SCConfig.ENABLE_HIT_SOUNDS.get())
+            Minecraft.getInstance().player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.4f, 1f);
     }
 
     @Override

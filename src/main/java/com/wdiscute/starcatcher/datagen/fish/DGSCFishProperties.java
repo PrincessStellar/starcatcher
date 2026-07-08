@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
 {
@@ -97,6 +98,20 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGUpgradeAquaticFishes.bootstrap(context);
         DGSpawnFishes.bootstrap(context);
         DGUnusualFishFishes.bootstrap(context);
+
+        FishRegistration.ALL_FISHABLE.sort(Comparator.comparing(o -> o.catchInfo().fish().rl().toLanguageKey()));
+        FishRegistration.STARCATCHER_FISHABLE.sort(Comparator.comparing(o -> o.catchInfo().fish().rl().toLanguageKey()));
+        FishRegistration.ALL_FISHABLE_MAP = FishRegistration.ALL_FISHABLE_MAP.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey(
+                        Comparator.comparing(o -> o.catchInfo().fish().rl().toLanguageKey())
+                ))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> a,
+                        LinkedHashMap::new
+                ));
     }
 
     @Override
