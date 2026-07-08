@@ -55,4 +55,10 @@ public class AddLeavesSweetspotsModifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[AddLeavesSweetspotsModifier@" + Integer.toHexString(hashCode()) + "](chance: " + chancePerTick + ")";
+    }
 }

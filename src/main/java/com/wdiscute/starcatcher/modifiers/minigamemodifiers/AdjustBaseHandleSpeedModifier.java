@@ -73,4 +73,10 @@ public class AdjustBaseHandleSpeedModifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[AdjustBaseHandleSpeedModifier@" + Integer.toHexString(hashCode()) + "](multiplier: " + multiplier + ")";
+    }
 }

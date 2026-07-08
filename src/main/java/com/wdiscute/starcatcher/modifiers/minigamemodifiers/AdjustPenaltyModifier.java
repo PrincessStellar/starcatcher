@@ -62,4 +62,10 @@ public class AdjustPenaltyModifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[AdjustPenaltyModifier@" + Integer.toHexString(hashCode()) + "](multiplier: " + multiplier + ")";
+    }
 }

@@ -56,6 +56,6 @@ public class KimbeMarkerModifier extends AbstractMinigameModifier
     @Override
     public String toString()
     {
-        return "[BaseModifier@" + Integer.toHexString(hashCode()) + "]";
+        return "[KimbeMarkerModifier@" + Integer.toHexString(hashCode()) + "]";
     }
 }

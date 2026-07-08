@@ -277,7 +277,7 @@ public record Difficulty(
 
     public static Difficulty CREEPER = new Difficulty(
             100, 10, 20, 1,
-            List.of(new SpawnSweetSpotsModifier(10, 0.25f, Difficulty.SweetSpot.TNT, true, "")),
+            List.of(new SpawnSweetSpotsModifier(10, 0.25f, Difficulty.SweetSpot.TNT_VANISHING, true, "")),
             SweetSpot.CREEPER, SweetSpot.CREEPER
     );
 
@@ -416,11 +416,13 @@ public record Difficulty(
     public static Difficulty VOIDBITER = new Difficulty(
             500, 10, 30, 1,
             List.of(
-                    new TeleportModifier(""),
                     new FreezeOnMissModifier(40, 10, ""),
-                    new Nikdo53Modifier(1, "")
+                    new Nikdo53Modifier(1, ""),
+                    new DeepDarkModifier(""),
+                    new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL, false, ""),
+                    new AddLeavesSweetspotsModifier(0.025f, "")
             ),
-            SweetSpot.VOIDBITER_SPOT, SweetSpot.VOIDBITER_SPOT);
+            SweetSpot.SCULK, SweetSpot.TNT, SweetSpot.DRIPSTONE, SweetSpot.GLOWING, SweetSpot.FROZEN, SweetSpot.VOIDBITER_SPOT, SweetSpot.DEEPSLATE, SweetSpot.STONE_LOW_REWARD);
 
 
     public static final Codec<Difficulty> CODEC = RecordCodecBuilder.create(instance ->
@@ -673,9 +675,17 @@ public record Difficulty(
                 SCSweetSpotsBehaviour.TNT,
                 RL_TNT,
                 33,
-                30,
+                -30,
                 0xffff0000
         );
+
+        public static SweetSpot TNT_VANISHING = new SweetSpot(
+                SCSweetSpotsBehaviour.TNT,
+                RL_TNT,
+                33,
+                -30,
+                0xffff0000
+        ).vanishing(0.06f);
 
         public static SweetSpot STONE_LOW_REWARD = new SweetSpot(
                 SCSweetSpotsBehaviour.NORMAL,

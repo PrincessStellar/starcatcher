@@ -484,6 +484,7 @@ public class BiomeRestriction extends AbstractFishRestriction
     {
         return empty()
                 .tag(BiomeTags.IS_END.location())
-                .biome(Biomes.THE_END.location());
+                .blacklisted(Biomes.THE_END.location())
+                .translation("gui.guide.outer_end_islands");
     }
 }

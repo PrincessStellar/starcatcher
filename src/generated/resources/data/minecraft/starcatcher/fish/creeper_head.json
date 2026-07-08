@@ -27,10 +27,10 @@
           "hitbox_size_in_pixels": 33,
           "is_flip": false,
           "moving_rate": 0.0,
-          "reward": 30,
+          "reward": -30,
           "sweetspot_type": "starcatcher:tnt",
           "texture_path": "starcatcher:textures/gui/minigame/spots/tnt.png",
-          "vanishing_rate": 0.0
+          "vanishing_rate": 0.06
         }
       }
     ],

@@ -57,7 +57,7 @@ public class FreezeOnMissModifier extends AbstractMinigameModifier
     {
         super.renderBackground(instance, guiGraphics, partialTick, width, height);
 
-        int layers = (int) instance.modifierData.getOrDefault(Starcatcher.rl("multi_layer_modifier"), 0);
+        int layers = (int) instance.modifierData.getOrDefault(Starcatcher.rl("multi_layer"), 0);
 
         float increase = layers * 0.22f + 1;
 

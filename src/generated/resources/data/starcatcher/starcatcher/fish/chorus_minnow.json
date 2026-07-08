@@ -50,10 +50,12 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "#minecraft:is_end",
+        "#minecraft:is_end"
+      ],
+      "blacklist": [
         "minecraft:the_end"
       ],
-      "blacklist": []
+      "translation_override": "gui.guide.outer_end_islands"
     },
     {
       "type": "starcatcher:fluid",
@@ -71,5 +73,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/end.png"
+  "textures": "starcatcher:textures/gui/minigame/end_void.png"
 }

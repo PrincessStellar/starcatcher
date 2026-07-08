@@ -68,5 +68,5 @@
     "golden_chance": 0.02
   },
   "skips_minigame": false,
-  "textures": "starcatcher:textures/gui/minigame/end.png"
+  "textures": "starcatcher:textures/gui/minigame/end_void.png"
 }

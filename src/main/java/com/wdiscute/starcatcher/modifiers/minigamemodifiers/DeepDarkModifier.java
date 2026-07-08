@@ -90,4 +90,10 @@ public class DeepDarkModifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[DeepDarkModifier@" + Integer.toHexString(hashCode()) + "]";
+    }
 }

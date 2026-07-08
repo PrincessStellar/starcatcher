@@ -16,10 +16,6 @@
     "missPenalty": 10,
     "modifiers": [
       {
-        "type": "starcatcher:multi_layer",
-        "max_layers": 2
-      },
-      {
         "type": "starcatcher:burn_on_miss",
         "extra_speed": 20,
         "length": 40,

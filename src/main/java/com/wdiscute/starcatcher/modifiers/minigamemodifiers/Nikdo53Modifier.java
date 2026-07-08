@@ -303,4 +303,10 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[Nikdo53Modifier@" + Integer.toHexString(hashCode()) + "]";
+    }
 }

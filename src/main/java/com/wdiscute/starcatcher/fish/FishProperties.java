@@ -165,7 +165,7 @@ public record FishProperties(
     public FishProperties withDifficulty(Difficulty dif)
     {
         return new FishProperties(this.catchInfo, this.baseChance, this.sizeWeight, this.rarity,
-                this.restrictions, dif.addModifiers(this.dif.modifiers()), this.skipMinigame, this.hasGuideEntry, this.textures);
+                this.restrictions, dif, this.skipMinigame, this.hasGuideEntry, this.textures);
     }
 
     public FishProperties withSkipsMinigame()

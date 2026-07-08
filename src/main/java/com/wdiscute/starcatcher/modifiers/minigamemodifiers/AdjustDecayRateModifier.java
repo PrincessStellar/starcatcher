@@ -63,4 +63,10 @@ public class AdjustDecayRateModifier extends AbstractMinigameModifier
     {
         return CODEC;
     }
+
+    @Override
+    public String toString()
+    {
+        return "[AdjustDecayRateModifier@" + Integer.toHexString(hashCode()) + "](multiplier: " + multiplier + ")";
+    }
 }

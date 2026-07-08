@@ -1242,6 +1242,8 @@
 
   "gui.guide.caves" : "Caves",
 
+  "gui.guide.outer_end_islands" : "Outer End Islands",
+
   "gui.guide.lakes" : "Lakes",
   "gui.guide.lakes.hover" : "Unremarkable surface biomes",
 
@@ -2035,9 +2037,8 @@
 
   "item.starcatcher.voidbiter" : "Voidbiter",
   "tooltip.starcatcher.voidbiter.0" : "A <sclegendary>legendary</sclegendary> fish found floating in the vast void of The End.",
-  "tooltip.starcatcher.voidbiter.1" : "So few anglers have seen it that it's only rumored to exist.",
-  "tooltip.starcatcher.voidbiter.2" : "It's said only <scuncommon>Older Anglers</scuncommon> have successfully",
-  "tooltip.starcatcher.voidbiter.3" : "caught it before.",
+  "tooltip.starcatcher.voidbiter.1" : "So few anglers have seen it that it is merely rumored to exist.",
+  "tooltip.starcatcher.voidbiter.2" : "If one were to catch it, it would be safe to assume they are an <scuncommon>Older Anglers</scuncommon> descendant.",
 
   "item.starcatcher.purple_carp" : "Purple Carp",
   "tooltip.starcatcher.purple_carp.0" : "These species of carp have adapted to the cold void of The End.",
