@@ -129,8 +129,7 @@ public class FishRadarLayer implements LayeredDraw.Layer
         renderImage(guiGraphics, Starcatcher.rl("textures/gui/fish_radar/radar_animation" + animationFrame + ".png"));
 
         //recalculate every <config value>
-        Integer freq = SCConfig.OVERLAY_UPDATE_FREQUENCY.get();
-        if (System.currentTimeMillis() > lastRefreshMS + freq)
+        if (System.currentTimeMillis() > lastRefreshMS + SCConfig.OVERLAY_UPDATE_FREQUENCY.get())
             recalculate();
 
         for (int i = 0; i < fpsInArea.size(); i++)

@@ -99,7 +99,6 @@ public record FishCaughtCounter(
         {
             player.awardStat(Stats.FISH_CAUGHT);
             player.awardStat(SCStats.STARCAUGHT_FISH.get());
-            player.awardStat(SCStats.TICKS_SPENT_FISHING.get(), ticks);
 
             switch (fpCaught.rarity())
             {

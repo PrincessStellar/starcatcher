@@ -155,9 +155,6 @@ public class FishApi
 
         if (SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) return;
 
-        //award time spent fishing stat
-        player.awardStat(SCStats.TICKS_SPENT_FISHING.get(), time);
-
         Entity levelEntity = level.getEntity(SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).getUuid());
         if (levelEntity instanceof FishingBobEntity fbe)
         {

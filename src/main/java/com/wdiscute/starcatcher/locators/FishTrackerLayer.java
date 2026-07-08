@@ -156,7 +156,6 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         else
             offScreen = 0;
 
-
         //transform and scale from config
         guiGraphics.pose().pushPose();
         guiGraphics.pose().scale(((float) SCConfig.TRACKER_SCALE.getAsDouble()), ((float) SCConfig.TRACKER_SCALE.getAsDouble()), 1);
@@ -164,7 +163,6 @@ public class FishTrackerLayer implements LayeredDraw.Layer
 
         //translate offset animation
         guiGraphics.pose().translate(-offScreen, 0, 0);
-
 
         //recalculate every <config freq>
         if (System.currentTimeMillis() > lastRefreshMS + SCConfig.OVERLAY_UPDATE_FREQUENCY.get())
@@ -203,11 +201,9 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         renderCenteredString(guiGraphics, font, Component.literal(cachedChance + "/" + cachedTotalChance),
                 uiX + 34, uiY + 75, SCColors.GUIDE_TEXT_DARK);
 
-
         //render restrictions
         for (int i = 0; i < cachedRestrictions.size(); i++)
             guiGraphics.drawString(font, cachedRestrictions.get(i), uiX + 70, uiY + 49 + i * 10, SCColors.GUIDE_TEXT_DARK, false);
-
 
         guiGraphics.pose().popPose();
 
