@@ -80,7 +80,7 @@ public class TournamentHandler
 
         tournament.status = Tournament.Status.FINISHED;
         activeTournaments.remove(tournament);
-        finishedTournaments.add(tournament);
+        finishedTournaments.add(0, tournament);
 
         //update finished tournaments to client
         if (level instanceof ServerLevel serverLevel)
@@ -205,7 +205,7 @@ public class TournamentHandler
             }
         }
 
-        finishedTournaments.addAll(finished);
+        finishedTournaments.addAll(0, finished);
         activeTournaments.removeAll(finished);
 
         //update finished tournaments to client
