@@ -129,10 +129,6 @@
       "required": false
     },
     {
-      "id": "minecraft:lily_pad",
-      "required": false
-    },
-    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -174,10 +170,6 @@
     },
     {
       "id": "starcatcher:vesani",
-      "required": false
-    },
-    {
-      "id": "minecraft:bamboo",
       "required": false
     },
     {
@@ -1617,10 +1609,6 @@
       "required": false
     },
     {
-      "id": "minecraft:lily_pad",
-      "required": false
-    },
-    {
       "id": "starcatcher:sludge_catfish",
       "required": false
     },
@@ -1662,10 +1650,6 @@
     },
     {
       "id": "starcatcher:vesani",
-      "required": false
-    },
-    {
-      "id": "minecraft:bamboo",
       "required": false
     },
     {

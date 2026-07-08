@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-07T22:14:16.5940167	FishingProperties
+// 1.21.1	2026-07-08T16:46:29.7442041	FishingProperties
 7d8fb664607a6432ef2661977c20f9306c08e534 data/alexscaves/starcatcher/fish/lanternfish.json
 cbf7c06d288b97a93478983a1dbf21087d1240aa data/alexscaves/starcatcher/fish/radgill.json
 97833e74b5a160bf2081e9d0aebe01ba8c4f7d58 data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -105,11 +105,11 @@ b1bd4a7e232a740869832244d1cd245739746482 data/hybrid_aquatic/starcatcher/fish/su
 280508050d8965f1f7a0b807c2f209a8940369a3 data/hybrid_aquatic/starcatcher/fish/tiger_barb.json
 f55dd7474d91982ddbbc1106393a39f93ee4cd70 data/hybrid_aquatic/starcatcher/fish/triggerfish.json
 251304c5d6b4c527ba9c274e4aac577c0c70728a data/hybrid_aquatic/starcatcher/fish/tuna.json
-e1b14a20a3f9099a276bff27f28e67f65919ff0e data/minecraft/starcatcher/fish/bamboo.json
+b1a6c9bf636776b2e5212af0d2245c4c315cda70 data/minecraft/starcatcher/fish/bamboo.json
 2922f14848e0f6e3c2bffe6bbc3f6b179290111a data/minecraft/starcatcher/fish/cod.json
 dfc7024927de5e4c71b607fa36f2b1c727c2f34f data/minecraft/starcatcher/fish/creeper_head.json
 9ce98b9172cae1f968d879e2151fe31a605f5f23 data/minecraft/starcatcher/fish/diamond.json
-bd755265324c2a59386e68b3f97af7311b146832 data/minecraft/starcatcher/fish/lily_pad.json
+238421d71ab40a7eae24f7fabb19cc7b9d50b6f8 data/minecraft/starcatcher/fish/lily_pad.json
 8292242ccaa1d89ac44b1acc8d510796efac58cf data/minecraft/starcatcher/fish/netherite_scrap.json
 e3f35209f2eba1cc2f16369095eff3f7c1166e56 data/minecraft/starcatcher/fish/netherite_upgrade_smithing_template.json
 0ec25d71c50d1cbf48e2b8f44554209dbc6db33d data/minecraft/starcatcher/fish/nether_star.json
