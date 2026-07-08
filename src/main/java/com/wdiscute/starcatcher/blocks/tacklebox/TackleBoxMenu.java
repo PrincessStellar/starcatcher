@@ -106,13 +106,13 @@ public class TackleBoxMenu extends AbstractContainerMenu
 
     public void update()
     {
-        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.BOBBER, new MaybeStack(container.getItem(BOBBER_SLOT).copy()));
-        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.BAIT, new MaybeStack(container.getItem(BAIT_SLOT).copy()));
-        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.HOOK, new MaybeStack(container.getItem(HOOK_SLOT).copy()));
+        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.BOBBER, new MaybeStack(container.getItem(BOBBER_SLOT)));
+        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.BAIT, new MaybeStack(container.getItem(BAIT_SLOT)));
+        SCDataComponents.set(container.getItem(ROD_SLOT), SCDataComponents.HOOK, new MaybeStack(container.getItem(HOOK_SLOT)));
 
-        container.setItem(BOBBER_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack());
-        container.setItem(BAIT_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.BAIT, MaybeStack.EMPTY).toStack());
-        container.setItem(HOOK_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.HOOK, MaybeStack.EMPTY).toStack());
+        container.setItem(BOBBER_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.BOBBER, MaybeStack.EMPTY).stack());
+        container.setItem(BAIT_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.BAIT, MaybeStack.EMPTY).stack());
+        container.setItem(HOOK_SLOT, SCDataComponents.getOrDefault(container.getItem(ROD_SLOT), SCDataComponents.HOOK, MaybeStack.EMPTY).stack());
     }
 
     public ItemStack getRod()
@@ -122,8 +122,8 @@ public class TackleBoxMenu extends AbstractContainerMenu
 
     public void onPlaceRod(ItemStack newStack)
     {
-        container.setItem(BOBBER_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.BOBBER, MaybeStack.EMPTY).toStack());
-        container.setItem(BAIT_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack());
-        container.setItem(HOOK_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.HOOK, MaybeStack.EMPTY).toStack());
+        container.setItem(BOBBER_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.BOBBER, MaybeStack.EMPTY).stack());
+        container.setItem(BAIT_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.BAIT, MaybeStack.EMPTY).stack());
+        container.setItem(HOOK_SLOT, SCDataComponents.getOrDefault(newStack, SCDataComponents.HOOK, MaybeStack.EMPTY).stack());
     }
 }
