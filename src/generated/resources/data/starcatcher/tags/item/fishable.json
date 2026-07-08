@@ -29,6 +29,10 @@
       "required": false
     },
     {
+      "id": "alexscaves:trilocaris_tail",
+      "required": false
+    },
+    {
       "id": "alexscaves:tripodfish",
       "required": false
     },
@@ -166,6 +170,10 @@
     },
     {
       "id": "betterend:end_fish_raw",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:chieftain_crab",
       "required": false
     },
     {

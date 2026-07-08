@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.datagen.fish.compat;
 
 import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
+import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.BiomeRestriction;
@@ -11,6 +12,8 @@ import com.wdiscute.utils.MaybeStack;
 import com.wdiscute.utils.Utils;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class DGAlexsCavesFishes
 {
@@ -25,15 +28,25 @@ public class DGAlexsCavesFishes
         //`--' `--' `--'  `----' '--'  '--'      `----'       `-----'  `--`--'    `--'     `----' `----'
         //
 
-        //final BiomeRestriction TOXIC_CAVES = new BiomeRestriction(List.of(U.rl("alexscaves", "toxic_caves")), List.of(), List.of(), List.of(), "");
-        //final BiomeRestriction CANDY_CAVITY = new BiomeRestriction(List.of(U.rl("alexscaves", "candy_cavity")), List.of(), List.of(), List.of(), "");
-        //final BiomeRestriction ABYSSAL_CHASM = new BiomeRestriction(List.of(U.rl("alexscaves", "abyssal_chasm")), List.of(), List.of(), List.of(), "");
-        //final BiomeRestriction PRIMORDIAL_CAVES = new BiomeRestriction(List.of(U.rl("alexscaves", "primordial_caves")), List.of(), List.of(), List.of(), "");
+        final BiomeRestriction TOXIC_CAVES = BiomeRestriction.empty().biome(Utils.rl("alexscaves", "toxic_caves"));
+        final BiomeRestriction CANDY_CAVITY = BiomeRestriction.empty().biome(Utils.rl("alexscaves", "candy_cavity"));
+        final BiomeRestriction ABYSSAL_CHASM = BiomeRestriction.empty().biome(Utils.rl("alexscaves", "abyssal_chasm"));
+        final BiomeRestriction PRIMORDIAL_CAVES = BiomeRestriction.empty().biome(Utils.rl("alexscaves", "primordial_caves"));
 
-        final BiomeRestriction TOXIC_CAVES = BiomeRestriction.empty();
-        final BiomeRestriction CANDY_CAVITY = BiomeRestriction.empty();
-        final BiomeRestriction ABYSSAL_CHASM = BiomeRestriction.empty();
-        final BiomeRestriction PRIMORDIAL_CAVES = BiomeRestriction.empty();
+        FishRegistration.register(context,
+                PresetRestrictions.empty(context)
+                        .withFish("alexscaves", "trilocaris_tail")
+                        .withBucketedFish(new MaybeStack("alexscaves", "trilocaris_bucket"))
+                        .withEntityToSpawn("alexscaves", "trilocaris")
+                        .withSizeAndWeight(80, 40, 12000, 7000)
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
+                        .addRestrictions(
+                                DimensionRestriction.OVERWORLD,
+                                PRIMORDIAL_CAVES,
+                                FluidRestriction.WATER),
+                "alexscaves"
+        );
 
         FishRegistration.register(context,
                 PresetRestrictions.empty(context)
@@ -41,7 +54,8 @@ public class DGAlexsCavesFishes
                         .withBucketedFish(new MaybeStack("alexscaves", "radgill_bucket"))
                         .withEntityToSpawn("alexscaves", "radgill")
                         .withSizeAndWeight(80, 40, 12000, 7000)
-                        .withRarity(Rarity.UNCOMMON)
+                        .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.HARD)
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 TOXIC_CAVES,
@@ -56,6 +70,7 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
@@ -72,6 +87,7 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
@@ -88,6 +104,7 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 70000)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
@@ -104,6 +121,7 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
@@ -120,6 +138,7 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "sweetish_fish")
                         .withSizeAndWeight(80, 40, 12000, 7000)
                         .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
                                 CANDY_CAVITY,
@@ -137,9 +156,11 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "lanternfish")
                         .withSizeAndWeight(100, 50, 15000, 10000)
                         .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
-                                ABYSSAL_CHASM
+                                ABYSSAL_CHASM,
+                                FluidRestriction.WATER
                         ),
                 "alexscaves"
         );
@@ -152,9 +173,11 @@ public class DGAlexsCavesFishes
                         .withEntityToSpawn("alexscaves", "tripodfish")
                         .withSizeAndWeight(30, 10, 1000, 5000)
                         .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .addRestrictions(
                                 DimensionRestriction.OVERWORLD,
-                                ABYSSAL_CHASM
+                                ABYSSAL_CHASM,
+                                FluidRestriction.WATER
                         ),
                 "alexscaves"
         );

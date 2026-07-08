@@ -7,9 +7,9 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "entity": "alexscaves:sweetish_fish",
-    "fish_bucket": "alexscaves:sweetish_fish_blue_bucket",
-    "item": "alexscaves:sweetish_fish_blue"
+    "entity": "alexscaves:trilocaris",
+    "fish_bucket": "alexscaves:trilocaris_bucket",
+    "item": "alexscaves:trilocaris_tail"
   },
   "difficulty": {
     "decay": 1.0,
@@ -51,16 +51,16 @@
     {
       "type": "starcatcher:biome",
       "biomes": [
-        "alexscaves:candy_cavity"
+        "alexscaves:primordial_caves"
       ],
       "blacklist": []
     },
     {
       "type": "starcatcher:fluid",
       "fluids": [
-        "alexscaves:purple_soda"
+        "minecraft:water"
       ],
-      "translation_override": "fluid.starcatcher.purple_soda"
+      "translation_override": "fluid.starcatcher.water"
     }
   ],
   "size_and_weight": {

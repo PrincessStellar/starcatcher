@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "alexscaves:radgill",
-      "required": false
-    },
-    {
       "id": "alexscaves:sweetish_fish_blue",
       "required": false
     },
@@ -22,6 +18,10 @@
     },
     {
       "id": "alexscaves:sweetish_fish_yellow",
+      "required": false
+    },
+    {
+      "id": "alexscaves:trilocaris_tail",
       "required": false
     },
     {
@@ -46,6 +46,10 @@
     },
     {
       "id": "aquaculture:tambaqui",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:chieftain_crab",
       "required": false
     },
     {

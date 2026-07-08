@@ -7,7 +7,6 @@
   ],
   "base_chance": 5,
   "catch_info": {
-    "always_spawn_entity": true,
     "entity": "collectorsreap:chieftain_crab",
     "fish_bucket": "collectorsreap:chieftain_crab_bucket",
     "item": "collectorsreap:chieftain_crab",

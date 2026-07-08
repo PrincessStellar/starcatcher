@@ -100,7 +100,6 @@ public class DGCollectorsReapFishes
 //                        new BiomeRestriction(List.of(), List.of(U.rl("collectorsreap", "biome/has_spawn/chieftain_crab")),
 //                                List.of(), List.of(), "")
                         )
-                        .withAlwaysSpawnEntity()
                         .withItemToOverrideWith(new MaybeStack(SCItems.UNKNOWN_FISH)),
                 "collectorsreap"
         );
