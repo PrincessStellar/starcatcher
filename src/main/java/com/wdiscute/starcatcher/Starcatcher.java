@@ -103,6 +103,7 @@ public class Starcatcher
         SCCriterionTriggers.register(modEventBus);
 
         Modifier.registerCatch();
+        Modifier.registerMinigame();
 
         modContainer.registerConfig(ModConfig.Type.CLIENT, SCConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, SCConfig.SPEC_SERVER);
@@ -117,8 +118,6 @@ public class Starcatcher
         public Client(ModContainer modContainer)
         {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-
-            Modifier.registerMinigame();
 
             //register tooltip tag processors
             Tooltips.registerProcessor("scgolden",

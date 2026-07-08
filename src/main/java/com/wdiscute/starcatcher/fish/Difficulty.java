@@ -212,7 +212,7 @@ public record Difficulty(
                     new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, ""),
                     new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL, false, "")
             ),
-            SweetSpot.NORMAL, SweetSpot.MIRAGE_NORMAL
+            SweetSpot.NORMAL
     );
 
     public static Difficulty MEDIUM_MIRAGE_MOVING = new Difficulty(
@@ -221,7 +221,7 @@ public record Difficulty(
                     new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, ""),
                     new SpawnSweetSpotsModifier(100, 0.3f, SweetSpot.MIRAGE_NORMAL.moving(1), false, "")
             ),
-            SweetSpot.NORMAL.moving(1), SweetSpot.MIRAGE_NORMAL.moving(1)
+            SweetSpot.NORMAL.moving(1)
     );
 
     public static Difficulty MEDIUM_DEEPSLATE = new Difficulty(

@@ -206,17 +206,14 @@ public interface Modifier
         Modifier.MODIFIERS.put(Starcatcher.rl("roll_percentile"), RollPercentileModifier.CODEC);
     }
 
-
     static void registerMinigame()
     {
-        //minigame modifier
-        Modifier.MODIFIERS.put(Starcatcher.rl("freeze_on_miss"), FreezeOnMissModifier.CODEC);
-
         //defaults
         Modifier.MODIFIERS.put(Starcatcher.rl("kimbe_marker"), KimbeMarkerModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure"), SpawnTreasureModifier.CODEC);
 
-        //others
+        //minigame modifier
+        Modifier.MODIFIERS.put(Starcatcher.rl("freeze_on_miss"), FreezeOnMissModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("burn_on_miss"), BurnOnMissModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("teleport"), TeleportModifier.CODEC);
         Modifier.MODIFIERS.put(Starcatcher.rl("spawn_treasure_on_hit_x"), SpawnTreasureOnHitX.CODEC);
