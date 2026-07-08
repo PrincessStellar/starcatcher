@@ -100,6 +100,7 @@ public class WeatherRestriction extends AbstractFishRestriction
         //fishes in area for guidebook ignores this restriction
         if(context.equals(Context.RADAR)) return 0;
         if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
+        if (context.equals(Context.TRACKER)) return weather.isCorrect.test(level) ? 0 : -9999;
 
         //skip if any modifiers have skipsWeatherRestriction interface
         if (context.equals(Context.FISHING) && entity instanceof FishingBobEntity bob && bob.player != null)

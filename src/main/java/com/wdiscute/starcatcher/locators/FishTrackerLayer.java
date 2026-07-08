@@ -85,19 +85,30 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         {
             ResourceLocation key = level.registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKey(fish);
 
-            int chance = fish.calculateChance(player, level, player.getMainHandItem().is(SCTags.RODS) ? player.getMainHandItem() : player.getOffhandItem(), AbstractFishRestriction.Context.RADAR);
+            int chance = fish.calculateChance(player, level, player.getMainHandItem().is(SCTags.RODS) ? player.getMainHandItem() : player.getOffhandItem(), AbstractFishRestriction.Context.TRACKER);
 
-            if (key != null && key.equals(cachedRL))
+            //if fish being checked is registered
+            if (key != null)
             {
-                cachedFP = fish;
-                if (chance > 0)
+                //if fish being checked is tracked fish
+                if (key.equals(cachedRL))
                 {
-                    cachedChance = chance;
-                    cachedTotalChance += chance;
+                    cachedFP = fish;
+                    //if chance > 0 then add that chance to chanced and total chance pool
+                    if (chance > 0)
+                    {
+                        cachedChance = chance;
+                        cachedTotalChance += chance;
+                    }
+                }
+                else
+                //if not tracked fish
+                {
+                    //add chance to total if it's possible
+                    if (chance > 0)
+                        cachedTotalChance += chance;
                 }
             }
-            else if (chance > 0)
-                cachedTotalChance += chance;
         }
 
         //cache restrictions
@@ -125,7 +136,7 @@ public class FishTrackerLayer implements LayeredDraw.Layer
         ResourceLocation trackedRL = Minecraft.getInstance().player.getData(SCDataAttachments.TRACKED_FISH);
         shouldShow = shouldShow && !trackedRL.equals(Starcatcher.MISSINGNO);
 
-        if(Minecraft.getInstance().screen instanceof SettingsScreen)
+        if (Minecraft.getInstance().screen instanceof SettingsScreen)
         {
             shouldShow = true;
             cachedFP = FishProperties.empty();

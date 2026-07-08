@@ -28,12 +28,8 @@ import java.util.List;
 public class FishRadarLayer implements LayeredDraw.Layer
 {
 
-    private static final ResourceLocation ONE_ROW = Starcatcher.rl("textures/gui/fish_radar/1_row.png");
-    private static final ResourceLocation TWO_ROWS = Starcatcher.rl("textures/gui/fish_radar/2_row.png");
-    private static final ResourceLocation THREE_ROWS = Starcatcher.rl("textures/gui/fish_radar/3_row.png");
-    private static final ResourceLocation FOUR_ROWS = Starcatcher.rl("textures/gui/fish_radar/4_row.png");
-    private static final ResourceLocation FIVE_ROWS = Starcatcher.rl("textures/gui/fish_radar/5_row.png");
-    private static final ResourceLocation SIX_ROWS = Starcatcher.rl("textures/gui/fish_radar/6_row.png");
+    private static final ResourceLocation BASE = Starcatcher.rl("textures/gui/fish_radar/base.png");
+    private static final ResourceLocation EXTRA_ROW = Starcatcher.rl("textures/gui/fish_radar/extra_row.png");
 
     int uiX;
     int uiY;
@@ -119,31 +115,15 @@ public class FishRadarLayer implements LayeredDraw.Layer
         guiGraphics.pose().translate(-offScreen, 0, 0);
 
         //rows of radar to render
-        switch (fpsInArea.size())
+        renderImage(guiGraphics, BASE);
+
+        int rows = (fpsInArea.size() -1) / 5;
+
+        for (int i = 0; i < rows; i++)
         {
-            case 0, 1, 2, 3, 4, 5:
-                renderImage(guiGraphics, ONE_ROW);
-                break;
-
-            case 6, 7, 8, 9, 10:
-                renderImage(guiGraphics, TWO_ROWS);
-                break;
-
-            case 11, 12, 13, 14, 15:
-                renderImage(guiGraphics, THREE_ROWS);
-                break;
-
-            case 16, 17, 18, 19, 20:
-                renderImage(guiGraphics, FOUR_ROWS);
-                break;
-
-            case 21, 22, 23, 24, 25:
-                renderImage(guiGraphics, FIVE_ROWS);
-                break;
-
-            default:
-                renderImage(guiGraphics, SIX_ROWS);
+            guiGraphics.blit(EXTRA_ROW, uiX, uiY + i * 18 + 66, 0, 0, 101, 22, 101, 22);
         }
+
 
         int animationFrame = ((int) (level.getGameTime() / 2 % 32 + 1));
         renderImage(guiGraphics, Starcatcher.rl("textures/gui/fish_radar/radar_animation" + animationFrame + ".png"));

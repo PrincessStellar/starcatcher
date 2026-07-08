@@ -131,6 +131,7 @@ public abstract class AbstractFishRestriction implements Comparable<AbstractFish
     {
         COMMAND,
         FISHING,
+        TRACKER,
         RADAR,
         GUIDE_ENTRY,
         GUIDE_FISHES_IN_AREA,
