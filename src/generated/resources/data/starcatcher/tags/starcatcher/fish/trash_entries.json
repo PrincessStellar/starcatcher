@@ -1,23 +1,7 @@
 {
   "values": [
     {
-      "id": "starcatcher:conch",
-      "required": false
-    },
-    {
-      "id": "collectorsreap:clam",
-      "required": false
-    },
-    {
-      "id": "starcatcher:boot",
-      "required": false
-    },
-    {
       "id": "starcatcher:clam",
-      "required": false
-    },
-    {
-      "id": "starcatcher:lava_crab_claw",
       "required": false
     },
     {
@@ -25,7 +9,19 @@
       "required": false
     },
     {
-      "id": "starcatcher:mossy_boot",
+      "id": "collectorsreap:clam",
+      "required": false
+    },
+    {
+      "id": "starcatcher:conch",
+      "required": false
+    },
+    {
+      "id": "starcatcher:boot",
+      "required": false
+    },
+    {
+      "id": "minecraft:lily_pad",
       "required": false
     },
     {
@@ -33,7 +29,11 @@
       "required": false
     },
     {
-      "id": "minecraft:lily_pad",
+      "id": "starcatcher:lava_crab_claw",
+      "required": false
+    },
+    {
+      "id": "starcatcher:mossy_boot",
       "required": false
     }
   ]

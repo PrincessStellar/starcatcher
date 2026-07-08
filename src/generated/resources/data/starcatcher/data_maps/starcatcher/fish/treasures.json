@@ -65,7 +65,7 @@
         {
           "stack": {
             "count": 1,
-            "id": "starcatcher:sky_skin_smithing_template"
+            "id": "starcatcher:iceborn_skin_smithing_template"
           }
         }
       ]
@@ -96,6 +96,36 @@
           "stack": {
             "count": 1,
             "id": "starcatcher:king_smithing_template"
+          }
+        }
+      ]
+    },
+    "starcatcher:cloudfin": {
+      "stacks": [
+        {
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:sky_skin_smithing_template"
+          }
+        }
+      ]
+    },
+    "starcatcher:joel": {
+      "stacks": [
+        {
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:sharktooth_skin_smithing_template"
+          }
+        }
+      ]
+    },
+    "starcatcher:lush_pike": {
+      "stacks": [
+        {
+          "stack": {
+            "count": 1,
+            "id": "starcatcher:lush_glowberry_skin_smithing_template"
           }
         }
       ]

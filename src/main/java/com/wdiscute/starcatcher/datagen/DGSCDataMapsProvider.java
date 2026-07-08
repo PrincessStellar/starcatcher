@@ -491,8 +491,9 @@ public class DGSCDataMapsProvider extends DataMapProvider
         treasures.add(Starcatcher.rl("boreal"), Treasure.CLEAR_SMITHING_TEMPLATE, false);
         treasures.add(Starcatcher.rl("cerberay"), Treasure.KING_SMITHING_TEMPLATE, false);
         treasures.add(Starcatcher.rl("aurora"), Treasure.ICEBORN_SKIN_SMITHING_TEMPLATE, false);
-        //todo
-        treasures.add(Starcatcher.rl("aurora"), Treasure.SKY_SKIN_SMITHING_TEMPLATE, false);
+        treasures.add(Starcatcher.rl("cloudfin"), Treasure.SKY_SKIN_SMITHING_TEMPLATE, false);
+        treasures.add(Starcatcher.rl("joel"), Treasure.SHARK_SKIN_SMITHING_TEMPLATE, false);
+        treasures.add(Starcatcher.rl("lush_pike"), Treasure.LUSH_SKIN_SMITHING_TEMPLATE, false);
 
 
     }

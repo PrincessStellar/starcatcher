@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class IsolatedFPScreen extends Screen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/jemi/entry.png");
+    protected static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/jemi/entry.png");
 
     protected final FishProperties fp;
     protected int uiX;

@@ -5,20 +5,32 @@ import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.Structures;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class DGTrophies
 {
     public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)
     {
+
+        //
+        //   ,--.                           ,--.      ,--.
+        // ,-'  '-. ,--.--.  ,---.   ,---.  |  ,---.  `--'  ,---.   ,---.
+        // '-.  .-' |  .--' | .-. | | .-. | |  .-.  | ,--. | .-. : (  .-'
+        //   |  |   |  |    ' '-' ' | '-' ' |  | |  | |  | \   --. .-'  `)
+        //   `--'   `--'     `---'  |  |-'  `--' `--' `--'  `----' `----'
+        //                          `--'
 
         FishRegistration.register(
                 context,
@@ -109,6 +121,14 @@ public class DGTrophies
                         .trophy()
         );
 
+        //
+        //                      ,--.
+        //  ,---.  ,--.  ,--. ,-'  '-. ,--.--.  ,--,--.  ,---.
+        // | .-. :  \  `'  /  '-.  .-' |  .--' ' ,-.  | (  .-'
+        // \   --.  /  /.  \    |  |   |  |    \ '-'  | .-'  `)
+        //  `----' '--'  '--'   `--'   `--'     `--`--' `----'
+        //
+
         FishRegistration.register(
                 context,
                 PresetRestrictions.deepslate(context)
@@ -143,10 +163,53 @@ public class DGTrophies
                         .extra()
         );
 
+        //skin/tackle templates
+        FishRegistration.register(
+                context,
+                PresetRestrictions.empty(context)
+                        .withFish(SCItems.VALLEY_SMITHING_TEMPLATE)
+                        .withDifficulty(Difficulty.TRASH)
+                        .addRestriction(DimensionRestriction.OVERWORLD)
+                        .addRestriction(StructureRestriction.VILLAGES)
+                        .withHasGuideEntry(false)
+                        .withPercentageChance(0.01f)
+                        .extra()
+        );
+
         FishRegistration.register(
                 context,
                 PresetRestrictions.swamp(context)
                         .withFish(SCItems.FROG_SMITHING_TEMPLATE)
+                        .withDifficulty(Difficulty.TRASH)
+                        .withHasGuideEntry(false)
+                        .withPercentageChance(0.01f)
+                        .extra()
+        );
+
+        FishRegistration.register(
+                context,
+                PresetRestrictions.netherLavaBasaltDeltas(context)
+                        .withFish(SCItems.SURVIVOR_SMITHING_TEMPLATE)
+                        .withDifficulty(Difficulty.TRASH)
+                        .withHasGuideEntry(false)
+                        .withPercentageChance(0.01f)
+                        .extra()
+        );
+
+        FishRegistration.register(
+                context,
+                PresetRestrictions.iceSpikes(context)
+                        .withFish(SCItems.ICEBORN_SKIN_SMITHING_TEMPLATE)
+                        .withDifficulty(Difficulty.TRASH)
+                        .withHasGuideEntry(false)
+                        .withPercentageChance(0.01f)
+                        .extra()
+        );
+
+        FishRegistration.register(
+                context,
+                PresetRestrictions.river(context)
+                        .withFish(SCItems.HUMBLE_SKIN_SMITHING_TEMPLATE)
                         .withDifficulty(Difficulty.TRASH)
                         .withHasGuideEntry(false)
                         .withPercentageChance(0.01f)

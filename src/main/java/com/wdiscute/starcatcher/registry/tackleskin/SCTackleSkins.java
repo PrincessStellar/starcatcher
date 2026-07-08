@@ -43,7 +43,7 @@ public interface SCTackleSkins
     DeferredHolder<AbstractTackleSkin, AbstractTackleSkin> VALLEY_TACKLE_SKIN = registerCatchModifier("valley", ValleyTackleSkin::new);
 
     //survivor
-    DeferredHolder<AbstractTackleSkin, AbstractTackleSkin> SURVIVOR_TACKLE_SKIN = registerCatchModifier("survivor_valley", SurvivorTackleSkin::new);
+    DeferredHolder<AbstractTackleSkin, AbstractTackleSkin> SURVIVOR_TACKLE_SKIN = registerCatchModifier("survivor", SurvivorTackleSkin::new);
 
     static DeferredHolder<AbstractTackleSkin, AbstractTackleSkin> registerCatchModifier(String name, Supplier<AbstractTackleSkin> sup)
     {

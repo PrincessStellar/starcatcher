@@ -1343,7 +1343,7 @@ public class DGStarcatcherFishes
                         .withFish(SCItems.SPACEJELLY)
                         .withSizeAndWeight(new SizeAndWeight(100, 20, 10, 1))
                         .withRarity(Rarity.RARE)
-                        .addRestriction(new StructureRestriction(List.of(BuiltinStructures.END_CITY.location()), ""))
+                        .addRestriction(StructureRestriction.END_CITIES)
                         .withDifficulty(Difficulty.HARD.moving().withPenalty(25).withHP(250))
         );
 

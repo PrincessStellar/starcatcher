@@ -1,17 +1,13 @@
 package com.wdiscute.starcatcher.compat.jei;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.IsolatedFPScreen;
 import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.resources.ResourceLocation;
 
 public class IsolatedJeiFPScreen extends IsolatedFPScreen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/entry.png");
-
     private final StarcatcherJeiFPRecipe.Recipe recipe;
 
     public IsolatedJeiFPScreen(StarcatcherJeiFPRecipe.Recipe recipe)

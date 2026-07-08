@@ -188,8 +188,12 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
         widgets.addTexture(ARROW, 25, 2).tooltipText(restrictions);
 
         //render treasure itemstack if available
-        widgets.addTexture(SLOT_BACKGROUND_FILLED, 64, 2).tooltipText(treasureTooltip);
-        widgets.add(new StarcatcherRenderItemEmiWidget(65, 3, treasureIngredient.getEmiStacks().getFirst().getItemStack()));
+        if(!treasureTooltip.isEmpty())
+        {
+            widgets.addTexture(SLOT_BACKGROUND_FILLED, 64, 2).tooltipText(treasureTooltip);
+            widgets.add(new StarcatcherRenderItemEmiWidget(65, 3, treasureIngredient.getEmiStacks().getFirst().getItemStack()));
+        }
+
 
         //fish
         widgets.addSlot(EmiIngredient.of(Ingredient.of(is)), 44, 2).recipeContext(this);

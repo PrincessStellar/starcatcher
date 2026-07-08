@@ -110,6 +110,7 @@
   "tag.starcatcher.is_warm_ocean" : "Warm Oceans",
   "tag.starcatcher.is_warm_river" : "Warm Rivers",
   "tag.starcatcher.is_basalt_deltas" : "Basalt Deltas",
+  "tag.starcatcher.is_soul_sand_valley" : "Soul Sand Valleys",
 
   "tag.minecraft.is_badlands" : "Badlands",
   "tag.minecraft.is_beach" : "Beaches",
@@ -502,6 +503,8 @@
 
   "item.starcatcher.kimbe_smithing_template": "Kimbe Tackle Smithing Template",
   "item.starcatcher.king_smithing_template": "King Tackle Smithing Template",
+  "item.starcatcher.valley_smithing_template": "Valley Tackle Smithing Template",
+  "item.starcatcher.survivor_smithing_template": "Survivor Tackle Smithing Template",
   "item.starcatcher.frog_smithing_template": "Frog Tackle Smithing Template",
   "item.starcatcher.clear_smithing_template": "Clear Tackle Smithing Template",
   "item.starcatcher.pearl_smithing_template": "Pearl Tackle Smithing Template",
@@ -886,7 +889,7 @@
   "gui.guide.page.3.right.6" : "    A frozen Sweetspot.",
   "gui.guide.page.3.right.7" : "    Best to avoid it.",
   "gui.guide.page.3.right.8" : "",
-  "gui.guide.page.3.right.9" : "    Aqua sweetspots are",
+  "gui.guide.page.3.right.9" : "    Deepslate sweetspots are",
   "gui.guide.page.3.right.10" : "    gone once they vanish.",
   "gui.guide.page.3.right.11" : "",
   "gui.guide.page.3.right.12" : "    Stone sweetspots barely",

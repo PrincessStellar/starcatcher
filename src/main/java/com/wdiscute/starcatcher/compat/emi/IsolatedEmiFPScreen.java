@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.compat.emi;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.guide.IsolatedFPScreen;
 import com.wdiscute.starcatcher.data.FishCaughtCounter;
@@ -9,12 +8,9 @@ import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.resources.ResourceLocation;
 
 public class IsolatedEmiFPScreen extends IsolatedFPScreen
 {
-    private static final ResourceLocation BACKGROUND = Starcatcher.rl("textures/gui/emi/entry.png");
-
     private final EmiRecipe emiRecipe;
 
     public IsolatedEmiFPScreen(FishProperties fishProperties, EmiRecipe emiRecipe)

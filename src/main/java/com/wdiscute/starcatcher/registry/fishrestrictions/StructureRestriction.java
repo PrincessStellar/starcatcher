@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +50,7 @@ public class StructureRestriction extends AbstractFishRestriction
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if(structures.isEmpty()) return Component.empty();
+        if (structures.isEmpty()) return Component.empty();
 
         if (structures.size() == 1)
             return Component.translatable("structure." + structures.getFirst().toLanguageKey());
@@ -60,7 +61,7 @@ public class StructureRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        if(structures.size() > 1)
+        if (structures.size() > 1)
         {
             List<Component> list = new ArrayList<>();
             structures.forEach(o -> list.add(Component.translatable("structure." + o.toLanguageKey())));
@@ -101,4 +102,13 @@ public class StructureRestriction extends AbstractFishRestriction
 
         return -9999;
     }
+
+    public static final StructureRestriction END_CITIES = new StructureRestriction(List.of(BuiltinStructures.END_CITY.location()), "");
+    public static final StructureRestriction VILLAGES = new StructureRestriction(List.of(
+            BuiltinStructures.VILLAGE_TAIGA.location(),
+            BuiltinStructures.VILLAGE_SNOWY.location(),
+            BuiltinStructures.VILLAGE_SAVANNA.location(),
+            BuiltinStructures.VILLAGE_PLAINS.location(),
+            BuiltinStructures.VILLAGE_DESERT.location()
+            ), "");
 }

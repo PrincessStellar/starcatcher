@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-08T16:46:29.7442041	FishingProperties
+// 1.21.1	2026-07-08T18:07:10.1529497	FishingProperties
 7d8fb664607a6432ef2661977c20f9306c08e534 data/alexscaves/starcatcher/fish/lanternfish.json
 cbf7c06d288b97a93478983a1dbf21087d1240aa data/alexscaves/starcatcher/fish/radgill.json
 97833e74b5a160bf2081e9d0aebe01ba8c4f7d58 data/alexscaves/starcatcher/fish/sweetish_fish_blue.json
@@ -191,6 +191,8 @@ f73e577b8df274f6373fdb9d562852e62a9712d0 data/starcatcher/starcatcher/fish/frost
 58354e4f6788883774f817031c1239ae801604f0 data/starcatcher/starcatcher/fish/glowstone_seeker.json
 f3a23998f81f62f6e077b38f1adf6ebbb61dc341 data/starcatcher/starcatcher/fish/gold_fan.json
 22b570f80ec9fc7e1a235f1859dcaddc2861be98 data/starcatcher/starcatcher/fish/hollowbelly_darter.json
+1c74dca994c6959eb5e69ea1e39392cebecec4ca data/starcatcher/starcatcher/fish/humble_skin_smithing_template.json
+53c5e518dbc4853a6e2ec31554ed2b240f99afed data/starcatcher/starcatcher/fish/iceborn_skin_smithing_template.json
 568a8558a37162c5676392b097d68e784adb2eee data/starcatcher/starcatcher/fish/icetooth_sturgeon.json
 0612e512237458874668111052b67c1449481a4f data/starcatcher/starcatcher/fish/ironjaw_herring.json
 ac336ff679e5b50d51c728db12378d31a632df5f data/starcatcher/starcatcher/fish/joel.json
@@ -261,6 +263,7 @@ b7b0f82843cac15b1ef40e28d061ffba28775570 data/starcatcher/starcatcher/fish/stone
 d6f347c7ee01046d4ca11a9df1d999f7062e4548 data/starcatcher/starcatcher/fish/sunflower_carp.json
 0e4af4caa74b9260cda005a76f579919544d8aac data/starcatcher/starcatcher/fish/sunny_sturgeon.json
 44d3bcf3dc753787daf7c2ac57d21390f6936069 data/starcatcher/starcatcher/fish/sun_seeking_carp.json
+124ae1441c62133e9480ece88990ad46cb163abd data/starcatcher/starcatcher/fish/survivor_smithing_template.json
 8b68c03aa38e482ca5ff145f4bc6cb0cd6b29cd1 data/starcatcher/starcatcher/fish/the_quarrish.json
 7ff4cddf88259c371fe673b35b117c2b337f9d47 data/starcatcher/starcatcher/fish/thunder_bass.json
 246718abc95a779489dfff39e72b038ee2e341ac data/starcatcher/starcatcher/fish/trophy_copper.json
@@ -270,6 +273,7 @@ e75556d0bac531a366132e0ebd198533615af9fc data/starcatcher/starcatcher/fish/troph
 2e0b8b654e59e94f65781e987bd8bd6bbef5bc84 data/starcatcher/starcatcher/fish/trophy_iron.json
 8e2de173fc4325d375a1f399e201550b770d408a data/starcatcher/starcatcher/fish/trophy_of_the_older_angler.json
 8f6c763b2b2903be71d2d72c8e5e3b0450c3d38b data/starcatcher/starcatcher/fish/twilight_koi.json
+efd817a1056facaea8b81bf1a074657b0fc7da20 data/starcatcher/starcatcher/fish/valley_smithing_template.json
 d79b97d7a75639c507e4ecdc9c13b88ea84766ee data/starcatcher/starcatcher/fish/valve.json
 fb691d3ea136abee277f17050c6fdbb5e28349ec data/starcatcher/starcatcher/fish/vesani.json
 6ea4f6fdb2359da653ff21e830c1ae1b7d41a4ff data/starcatcher/starcatcher/fish/vivid_moss.json
