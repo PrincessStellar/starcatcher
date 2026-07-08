@@ -94,8 +94,7 @@ public class StarcaughtBucket extends BucketItem implements Tooltips.ItemTooltip
             CaughtFishInfo sw = SCDataComponents.get(maybeStack.stack(), SCDataComponents.CAUGHT_FISH_INFO);
             if (sw != null)
             {
-                //todo fix this
-                Rarity rarity = sw.golden() ? Rarity.GOLDEN : Rarity.NONE; //sw.rarity();
+                Rarity rarity = sw.golden() ? Rarity.GOLDEN : sw.rarity();
                 return Component.translatable("tooltip.starcatcher.starcaught_bucket.name", rarity.wrapWithRarityMarkdown(baseName.getString()));
             }
             else
@@ -112,7 +111,10 @@ public class StarcaughtBucket extends BucketItem implements Tooltips.ItemTooltip
     @Override
     public List<String> getAlwaysTooltips(ItemStack stack)
     {
-        return List.of("tooltip.starcatcher.starcaught_bucket.creative.0", "tooltip.starcatcher.starcaught_bucket.creative.1");
+        if (SCDataComponents.has(stack, SCDataComponents.BUCKETED_FISH))
+            return List.of();
+        else
+            return List.of("tooltip.starcatcher.starcaught_bucket.creative.0", "tooltip.starcatcher.starcaught_bucket.creative.1");
     }
 
     @Override

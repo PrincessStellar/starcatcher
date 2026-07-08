@@ -26,6 +26,21 @@
       {
         "type": "starcatcher:multi_layer",
         "max_layers": 1
+      },
+      {
+        "type": "starcatcher:teleport"
+      },
+      {
+        "type": "starcatcher:teleport"
+      },
+      {
+        "type": "starcatcher:freeze_on_miss",
+        "length": 40,
+        "rampTime": 10
+      },
+      {
+        "type": "starcatcher:multi_layer",
+        "max_layers": 1
       }
     ],
     "speed": 10,
@@ -59,6 +74,13 @@
       "type": "starcatcher:dimension",
       "dimension_entry": "the_end",
       "translation_override": "dimension.minecraft.the_end"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:empty"
+      ],
+      "translation_override": "fluid.starcatcher.air"
     }
   ],
   "size_and_weight": {

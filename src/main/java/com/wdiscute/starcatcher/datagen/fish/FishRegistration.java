@@ -6,12 +6,10 @@ import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
+import com.wdiscute.starcatcher.modifiers.minigamemodifiers.TeleportModifier;
 import com.wdiscute.starcatcher.registry.SCEntities;
 import com.wdiscute.starcatcher.registry.SCItems;
-import com.wdiscute.starcatcher.registry.fishrestrictions.BaitRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.FluidRestriction;
-import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
+import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import com.wdiscute.starcatcher.registry.items.StarcaughtBucket;
 import com.wdiscute.utils.MaybeStack;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -80,6 +78,10 @@ public final class FishRegistration
     {
         if (fp.restrictions().stream().anyMatch(o -> o.equals(FluidRestriction.LAVA)))
             return fp.withDifficulty(fp.dif().addModifier(new BurnOnMissModifier(40, 10, 20, "")));
+
+        if (fp.restrictions().stream().anyMatch(o -> o.equals(DimensionRestriction.END)))
+            return fp.withDifficulty(fp.dif().addModifier(new TeleportModifier("")));
+
         return fp;
     }
 

@@ -272,9 +272,9 @@
   "item.starcatcher.humble_rod": "Humble Rod",
 
   "item.starcatcher.starcatcher_guide": "Starcatcher's Guide",
-  "tooltip.starcatcher.starcatcher_guide.0": "An angler's best companion, keeping track",
-  "tooltip.starcatcher.starcatcher_guide.1": "of all the fishes you've caught, and",
-  "tooltip.starcatcher.starcatcher_guide.2": "those you have yet to reel in!",
+  "tooltip.starcatcher.starcatcher_guide.0": "An angler's best companion,",
+  "tooltip.starcatcher.starcatcher_guide.1": "keeping track of all the fishes you've caught,",
+  "tooltip.starcatcher.starcatcher_guide.2": "and those you have yet to reel in!",
 
   "tooltip.starcatcher.starcatcher_guide.signed": "This Book Belongs To: %s",
   "tooltip.starcatcher.starcatcher_guide.signed_shift": "Signed By: %s",
@@ -1182,9 +1182,6 @@
   "gui.guide.page.12.right.12" : "bite your hook once all",
   "gui.guide.page.12.right.13" : "the conditions are met.",
 
-  "gui.guide.lakes" : "Lakes",
-  "gui.guide.lakes.hover" : "Unremarkable surface biomes.",
-
   "gui.guide.hover.dimension.correct" : "✅ Dimension",
   "gui.guide.hover.dimension.incorrect" : "❌ Dimension",
   "gui.guide.hover.biome.correct" : "✅ Biome",
@@ -1243,6 +1240,10 @@
 
   "gui.guide.hover" : "[hover]",
 
+  "gui.guide.caves" : "Caves",
+
+  "gui.guide.lakes" : "Lakes",
+  "gui.guide.lakes.hover" : "Unremarkable surface biomes",
 
   "gui.guide.rarity.golden" : "Golden",
 

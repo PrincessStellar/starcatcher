@@ -70,7 +70,8 @@
         "minecraft:dripstone_caves",
         "minecraft:lush_caves",
         "minecraft:deep_dark"
-      ]
+      ],
+      "translation_override": "gui.guide.caves"
     },
     {
       "type": "starcatcher:elevation_restriction",

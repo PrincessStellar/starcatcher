@@ -362,17 +362,19 @@ public class PresetRestrictions
     public static FishProperties end(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
-                .withTextures(FishProperties.END)
+                .withTextures(FishProperties.END_VOID)
                 .addRestriction(DimensionRestriction.END)
+                .addRestriction(FluidRestriction.AIR)
                 ;
     }
 
     public static FishProperties endOuterIslands(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
-                .withTextures(FishProperties.END)
+                .withTextures(FishProperties.END_VOID)
                 .addRestriction(DimensionRestriction.END)
                 .addRestriction(BiomeRestriction.outerIslands())
+                .addRestriction(FluidRestriction.AIR)
                 ;
     }
 }

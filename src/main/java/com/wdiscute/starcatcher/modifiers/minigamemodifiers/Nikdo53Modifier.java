@@ -48,12 +48,22 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     }
 
     @Override
-    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot spot)
+    public boolean canHitSpot(FishingMinigameScreen fishingMinigameScreen, ActiveSweetSpot ass)
     {
-        if (getSpotLayer(spot) == pointerLayer)
+        return getSpotLayer(ass) == pointerLayer;
+    }
+
+    @Override
+    public boolean onHit(FishingMinigameScreen instance, ActiveSweetSpot ass)
+    {
+        instance.kimbeMarkerAlpha = 1;
+        instance.kimbeMarkerColor = 0x2ce17d;
+        instance.kimbeMarkerPos = instance.getPointerPosPrecise();
+
+        if (getSpotLayer(ass) == pointerLayer)
         {
-            putSpotLayer(spot, getRandomLayer());
-            return super.onHit(instance, spot);
+            putSpotLayer(ass, getRandomLayer());
+            return super.onHit(instance, ass);
         }
         return true;
     }
@@ -124,7 +134,11 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
     @Override
     public void tick(FishingMinigameScreen instance)
     {
-        instance.getModifiers().removeIf(o -> o instanceof KimbeMarkerModifier);
+        instance.getModifiers().forEach(o ->
+        {
+            if(o instanceof KimbeMarkerModifier k)
+                k.removed = true;
+        });
     }
 
     @Override
@@ -191,7 +205,6 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
         for (int i = maxPointerLayer; i > 0; i--)
         {
             // Dim when not in use
-
             if(pointerLayer != i)
                 RenderSystem.setShaderColor(0.5f, 0.5f, 0.5f, 1);
 
@@ -209,6 +222,16 @@ public class Nikdo53Modifier extends AbstractMinigameModifier
 
 
         poseStack.popPose();
+    }
+
+    @Override
+    public void onMiss(FishingMinigameScreen instance)
+    {
+        instance.kimbeMarkerAlpha = 1;
+        instance.kimbeMarkerColor = 0xff6767;
+        instance.kimbeMarkerPos = instance.getPointerPosPrecise();
+
+        super.onMiss(instance);
     }
 
     @Override

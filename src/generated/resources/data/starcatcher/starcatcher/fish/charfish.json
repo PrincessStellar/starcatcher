@@ -14,7 +14,11 @@
     "decay": 1.0,
     "hp": 250,
     "missPenalty": 20,
-    "modifiers": [],
+    "modifiers": [
+      {
+        "type": "starcatcher:teleport"
+      }
+    ],
     "speed": 11,
     "sweetspots": [
       {
@@ -46,6 +50,13 @@
       "type": "starcatcher:dimension",
       "dimension_entry": "the_end",
       "translation_override": "dimension.minecraft.the_end"
+    },
+    {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:empty"
+      ],
+      "translation_override": "fluid.starcatcher.air"
     }
   ],
   "size_and_weight": {

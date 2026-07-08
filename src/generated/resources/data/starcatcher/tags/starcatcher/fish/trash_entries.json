@@ -1,7 +1,7 @@
 {
   "values": [
     {
-      "id": "starcatcher:clam",
+      "id": "starcatcher:conch",
       "required": false
     },
     {
@@ -9,11 +9,11 @@
       "required": false
     },
     {
-      "id": "collectorsreap:clam",
+      "id": "minecraft:bamboo",
       "required": false
     },
     {
-      "id": "starcatcher:conch",
+      "id": "starcatcher:clam",
       "required": false
     },
     {
@@ -21,11 +21,7 @@
       "required": false
     },
     {
-      "id": "minecraft:lily_pad",
-      "required": false
-    },
-    {
-      "id": "minecraft:bamboo",
+      "id": "collectorsreap:clam",
       "required": false
     },
     {
@@ -34,6 +30,10 @@
     },
     {
       "id": "starcatcher:mossy_boot",
+      "required": false
+    },
+    {
+      "id": "minecraft:lily_pad",
       "required": false
     }
   ]

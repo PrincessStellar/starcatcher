@@ -422,7 +422,7 @@ public class FishApi
 
                 //only save data on fish resourceLocation if config is enabled
                 if (SCConfig.SAVE_DATA_TO_ITEMS.get())
-                    SCDataComponents.set(bucket, SCDataComponents.CAUGHT_FISH_INFO, caughtFishInfo);
+                    SCDataComponents.set(baseFish, SCDataComponents.CAUGHT_FISH_INFO, caughtFishInfo);
 
                 SCDataComponents.set(bucket, SCDataComponents.BUCKETED_FISH, new MaybeStack(baseFish));
                 return bucket;

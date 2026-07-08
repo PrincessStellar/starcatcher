@@ -155,4 +155,9 @@ public abstract class AbstractMinigameModifier implements Modifier
     {
         return false;
     }
+
+    public boolean canHitSpot(FishingMinigameScreen fishingMinigameScreen, ActiveSweetSpot ass)
+    {
+        return true;
+    }
 }

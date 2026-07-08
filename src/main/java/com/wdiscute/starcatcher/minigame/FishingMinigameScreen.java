@@ -595,11 +595,12 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
 
         for (ActiveSweetSpot ass : activeSweetSpots.reversed())
         {
-            if (ass.canHit && doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2))
+            //if can hit spot
+            if (ass.canHit && doDegreesOverlapWithLeeway(getPointerPosPrecise(), ass.pos, ass.thickness / 2)
+            && modifiers.stream().allMatch(o -> o.canHitSpot(this, ass)))
             {
-
                 //trigger modifiers on-hit, cancel if any returns true
-                if (modifiers.stream().anyMatch(o -> o.onHit(this, ass))) continue;
+                modifiers.forEach(o -> o.onHit(this, ass));
 
                 consecutiveHits++;
                 hitSomething = true;

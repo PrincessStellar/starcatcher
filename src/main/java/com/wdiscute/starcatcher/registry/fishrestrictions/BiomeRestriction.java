@@ -3,10 +3,12 @@ package com.wdiscute.starcatcher.registry.fishrestrictions;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wdiscute.libtooltips.Tooltips;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.EntryOrTag;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -73,10 +75,10 @@ public class BiomeRestriction extends AbstractFishRestriction
     }
 
     private static final BlockPos[] BPS = {
-            new BlockPos(5,0, 0),
-            new BlockPos(-5,0, 0),
-            new BlockPos(0,0, 5),
-            new BlockPos(0,0, -5)
+            new BlockPos(5, 0, 0),
+            new BlockPos(-5, 0, 0),
+            new BlockPos(0, 0, 5),
+            new BlockPos(0, 0, -5)
     };
 
     @Override
@@ -103,15 +105,15 @@ public class BiomeRestriction extends AbstractFishRestriction
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
         if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
-            return List.of(Component.translatable("gui.guide.hover.biome.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
+            return List.of(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.hover.biome.correct").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
         else
-            return List.of(Component.translatable("gui.guide.hover.biome.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
+            return List.of(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.hover.biome.incorrect").withStyle(Style.EMPTY.withColor(SCColors.GUIDE_RED)));
     }
 
     @Override
     public MutableComponent getDescriptionPrefix()
     {
-        return Component.translatable("gui.guide.biome");
+        return Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.biome");
     }
 
     @Override
@@ -119,47 +121,84 @@ public class BiomeRestriction extends AbstractFishRestriction
     {
         //Biomes: ------
         if (biomes.isEmpty())
-            return Component.translatable("gui.guide.biomes.empty");
+            return Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.biomes.empty");
 
         //
         if (biomes.size() == 1)
         {
             //single biome name / biome tag name / [hover]
-            return Component.translatable(biomes.get(0).getTranslation());
+            return Tooltips.resolveTagsToComponentFromTranslationKey(biomes.get(0).getTranslation());
         }
         else
         {
-            return Component.translatable("gui.guide.hover");
+            return Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.hover");
         }
     }
 
     @Override
     public List<Component> getHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        List<Component> hover = new ArrayList<>();
+        if (!this.hover.isEmpty()) return List.of(Tooltips.resolveTagsToComponentFromTranslationKey(this.hover));
 
-        if (!this.hover.isEmpty()) return List.of(Component.translatable(this.hover));
+        List<Component> list = new ArrayList<>();
 
-//        if (!biomesList.isEmpty())
-//        {
-//            if (!biomesTags.isEmpty())
-//            {
-//                hover.add(Component.translatable("gui.guide.biome_tags").withStyle(Style.EMPTY.withBold(true)));
-//
-//                for (ResourceLocation rl : biomesTags)
-//                    hover.add(Component.translatable("tag." + rl.toLanguageKey()));
-//                hover.add(Component.empty());
-//            }
-//
-//            hover.add(Component.translatable("gui.guide.biomes").withStyle(Style.EMPTY.withBold(true)));
-//            if (biomesList.isEmpty())
-//                hover.add(Component.translatable("gui.guide.biomes.empty"));
-//
-//            for (ResourceLocation rl : biomesList)
-//                hover.add(Component.translatable("biome." + rl.toLanguageKey()));
-//        }
+        List<Component> tags = new ArrayList<>();
+        List<Component> biomes = new ArrayList<>();
 
-        return hover;
+        tags.add(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.biome_tags").withStyle(ChatFormatting.BOLD));
+        biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.biome").withStyle(ChatFormatting.BOLD));
+
+        for (EntryOrTag<Biome> eot : this.biomes)
+        {
+            if (eot instanceof EntryOrTag.Tag<Biome> tag)
+                tags.add(Tooltips.resolveTagsToComponentFromTranslationKey(tag.getTranslation()));
+
+            if (eot instanceof EntryOrTag.Entry<Biome> entry)
+                biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey(entry.getTranslation()));
+        }
+
+        if (tags.size() > 1)
+            list.addAll(tags);
+
+        if (biomes.size() > 1)
+        {
+            //add empty line if there are tags
+            if (!list.isEmpty())
+                list.add(Component.empty());
+
+            list.addAll(biomes);
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Component> getBlacklist(Level level, FishProperties fp, @NotNull Player player, Context context)
+    {
+        List<Component> list = new ArrayList<>();
+
+        List<Component> tags = new ArrayList<>();
+        List<Component> biomes = new ArrayList<>();
+
+        tags.add(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.blacklisted_biome_tags").withStyle(ChatFormatting.BOLD));
+        biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.blacklisted_biomes").withStyle(ChatFormatting.BOLD));
+
+        for (EntryOrTag<Biome> eot : blacklist)
+        {
+            if (eot instanceof EntryOrTag.Tag<Biome> tag)
+                tags.add(Tooltips.resolveTagsToComponentFromTranslationKey(tag.getTranslation()));
+
+            if (eot instanceof EntryOrTag.Entry<Biome> entry)
+                biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey(entry.getTranslation()));
+        }
+
+        if (tags.size() > 1)
+            list.addAll(tags);
+
+        if (biomes.size() > 1)
+            list.addAll(biomes);
+
+        return list;
     }
 
     public BiomeRestriction biome(ResourceLocation biome)
@@ -269,6 +308,7 @@ public class BiomeRestriction extends AbstractFishRestriction
                 .blacklisted(Biomes.DRIPSTONE_CAVES.location())
                 .blacklisted(Biomes.LUSH_CAVES.location())
                 .blacklisted(Biomes.DEEP_DARK.location())
+                .translation("gui.guide.caves")
                 ;
     }
 

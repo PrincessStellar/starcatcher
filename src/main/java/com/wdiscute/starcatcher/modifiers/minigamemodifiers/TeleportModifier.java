@@ -35,7 +35,13 @@ public class TeleportModifier extends AbstractMinigameModifier
     @Override
     public void tick(FishingMinigameScreen instance)
     {
-        instance.getModifiers().removeIf(o -> o instanceof KimbeMarkerModifier);
+        instance.getModifiers().forEach(o ->
+        {
+            if (o instanceof KimbeMarkerModifier k)
+            {
+                k.removed = true;
+            }
+        });
     }
 
     @Override
