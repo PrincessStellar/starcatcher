@@ -56,10 +56,7 @@ public class ExtraBaseCatchModifier extends AbstractCatchModifier
         {
             float percentile = fbe.level().random.nextFloat() * 100;
 
-            int size = SizeAndWeight.getRandomSize(fp, percentile);
-            int weight = SizeAndWeight.getRandomWeight(fp, percentile);
-
-            ItemStack itemStack = FishApi.makeItemStackNonBucket(fp, size, weight, percentile, false, fbe.player, perfectCatch);
+            ItemStack itemStack = FishApi.makeItemStackNonBucket(fp, percentile, false, fbe.player, perfectCatch);
 
             list.add(itemStack);
         }

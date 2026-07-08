@@ -98,7 +98,7 @@ public class DisplayBlockRenderer implements BlockEntityRenderer<DisplayBlockEnt
 
             float scale = SCDataComponents.getOrDefault(
                     fish, SCDataComponents.CAUGHT_FISH_INFO,
-                    new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
+                    CaughtFishInfo.AVERAGE
             ).getScale();
 
             //scaling + pivot adjusting

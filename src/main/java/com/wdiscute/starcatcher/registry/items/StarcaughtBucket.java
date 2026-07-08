@@ -94,7 +94,8 @@ public class StarcaughtBucket extends BucketItem implements Tooltips.ItemTooltip
             CaughtFishInfo sw = SCDataComponents.get(maybeStack.stack(), SCDataComponents.CAUGHT_FISH_INFO);
             if (sw != null)
             {
-                Rarity rarity = sw.golden() ? Rarity.GOLDEN : sw.rarity();
+                //todo fix this
+                Rarity rarity = sw.golden() ? Rarity.GOLDEN : Rarity.NONE; //sw.rarity();
                 return Component.translatable("tooltip.starcatcher.starcaught_bucket.name", rarity.wrapWithRarityMarkdown(baseName.getString()));
             }
             else

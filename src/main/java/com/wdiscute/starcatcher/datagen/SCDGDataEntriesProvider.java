@@ -1,5 +1,6 @@
 package com.wdiscute.starcatcher.datagen;
 
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
@@ -70,9 +71,9 @@ public class SCDGDataEntriesProvider
         ItemStack worm = SCItems.WORM.toStack();
         ItemStack almighty = SCItems.ALMIGHTY_WORM.toStack();
         ItemStack seeking = SCItems.SEEKING_WORM.toStack();
-        SCDataComponents.set(worm, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
-        SCDataComponents.set(almighty, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
-        SCDataComponents.set(seeking, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(0, 0, 0, Rarity.COMMON, true));
+        SCDataComponents.set(worm, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
+        SCDataComponents.set(almighty, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
+        SCDataComponents.set(seeking, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
 
         gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.WORMS,
                 List.of(

@@ -28,14 +28,26 @@
   "creativetab.starcatcher.starcatcher.hooks_bobbers": "Hooks, Bobbers & Baits",
   "creativetab.starcatcher.starcatcher.cosmetics": "Cosmetics",
   "creativetab.starcatcher.starcatcher.must_have": "Must Have",
-  "creativetab.starcatcher.starcatcher.trophies": "Trophies & Secrets",
+  "creativetab.starcatcher.starcatcher.trophies": "Trophies & Statistics",
   "creativetab.starcatcher.starcatcher.miscellaneous": "Miscellaneous",
   "creativetab.starcatcher.starcatcher.tackle_boxes": "Tackle Boxes",
 
-  "stat.starcatcher.starcaught_treasures": "Starcaught Treasures",
-  "stat.starcatcher.starcaught_fish": "Starcaught Fish",
-  "stat.starcatcher.starcaught_fish_missed": "Starcaught Fish Missed",
-  "stat.starcatcher.bait_used": "Bait used",
+  "stat.starcatcher.starcaught_fish": "Starcatcher - Starcaught Fish",
+  "stat.starcatcher.starcaught_fish_missed": "Starcatcher - Starcaught Fish Missed",
+  "stat.starcatcher.starcaught_treasures": "Starcatcher - Treasures Caught",
+
+  "stat.starcatcher.sticks_spent_fishing": "Starcatcher - Ticks Spent Fishing",
+  "stat.starcatcher.sbait_used": "Starcatcher - Bait Consumed",
+
+  "stat.starcatcher.trash_caught": "Starcatcher - Trash Caught",
+  "stat.starcatcher.common_caught": "Starcatcher - Common Fish Caught",
+  "stat.starcatcher.uncommon_caught": "Starcatcher - Uncommon Fish Caught",
+  "stat.starcatcher.rare_caught": "Starcatcher - Rare Fish Caught",
+  "stat.starcatcher.epic_caught": "Starcatcher - Epic Fish Caught",
+  "stat.starcatcher.legendary_caught": "Starcatcher - Legendary Fish Caught",
+
+  "stat.starcatcher.golden_catches": "Starcatcher - Golden Fishes Found",
+  "stat.starcatcher.perfect_catches": "Starcatcher - Perfectly Fished",
 
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",
@@ -742,6 +754,21 @@
 
 
 
+  "gui.guide.stats.fishes_caught" : "Fishes Caught",
+  "gui.guide.stats.trash_caught" : "Trash Caught",
+  "gui.guide.stats.common_caught" : "Common Fishes",
+  "gui.guide.stats.uncommon_caught" : "Uncommon Fishes",
+  "gui.guide.stats.rare_caught" : "Rare Fishes",
+  "gui.guide.stats.epic_caught" : "Epic Fishes",
+  "gui.guide.stats.legendary_caught" : "Legendary Fishes",
+  "gui.guide.stats.golden_fishes_caught" : "Golden Fishes",
+  "gui.guide.stats.perfect_fishes_caught" : "Perfect Catches",
+  "gui.guide.stats.treasures_caught" : "Treasures Caught",
+  "gui.guide.stats.starcaught_fish_missed" : "Fish Missed",
+  "gui.guide.stats.bait_used" : "Bait Consumed",
+  "gui.guide.stats.time_spent" : "Playtime",
+
+
   "gui.guide.page.0.left.title" : "The Basics",
   "gui.guide.page.0.left.0" : "",
   "gui.guide.page.0.left.1" : "",
@@ -1198,6 +1225,8 @@
   "gui.guide.elevation_bias" : "Around %s",
   "gui.guide.elevation_bias.hover" : "From %s to %s, best at %s",
   "gui.guide.caught_limit" : "Caught Limit: ",
+  "gui.guide.caught_limit.caught" : "Already Caught",
+  "gui.guide.caught_limit.not_caught" : "Not Caught",
   "gui.guide.rarity_count.caught" : "Caught: ",
   "gui.guide.fluid" : "Fluid: ",
   "gui.guide.chance" : "%s chance",

@@ -9,8 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record CBFishCaughtNotifs(FishProperties fp, boolean displayToast, int size, int weight,
-                                 float percentile) implements CustomPacketPayload
+public record CBFishCaughtNotifs(FishProperties fp, boolean displayToast, float percentile) implements CustomPacketPayload
 {
 
     public static final Type<CBFishCaughtNotifs> TYPE = new Type<>(Starcatcher.rl("fish_caught_toast"));
@@ -20,10 +19,6 @@ public record CBFishCaughtNotifs(FishProperties fp, boolean displayToast, int si
             CBFishCaughtNotifs::fp,
             ByteBufCodecs.BOOL,
             CBFishCaughtNotifs::displayToast,
-            ByteBufCodecs.INT,
-            CBFishCaughtNotifs::size,
-            ByteBufCodecs.INT,
-            CBFishCaughtNotifs::weight,
             ByteBufCodecs.FLOAT,
             CBFishCaughtNotifs::percentile,
             CBFishCaughtNotifs::new
@@ -40,7 +35,7 @@ public record CBFishCaughtNotifs(FishProperties fp, boolean displayToast, int si
         context.enqueueWork(() ->
         {
             if (fp.hasGuideEntry())
-                FishCaughtToast.newFish(fp(), displayToast, size, weight);
+                FishCaughtToast.newFish(fp(), displayToast, percentile);
         });
     }
 }

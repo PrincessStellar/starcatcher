@@ -168,7 +168,7 @@ public class FishingBobEntity extends Projectile
         if ((fpToFish.skipMinigame() || !SCConfig.ENABLE_MINIGAME.get())
             || modifiers.stream().anyMatch(m -> m.forceSkipMinigame(this)))
         {
-            FishApi.spawnFishFromPlayerFishing(((ServerPlayer) player), 0, false, false, 0);
+            FishApi.spawnFishFromPlayerFishing(((ServerPlayer) player), true, 0, false, false, 0);
         }
         else
         {

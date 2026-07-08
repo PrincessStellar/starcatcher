@@ -721,7 +721,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
                 if (SCConfig.ENABLE_TACKLE_SOUNDS.get())
                     tackleSkin.onSuccessfulMinigame(Minecraft.getInstance().player);
 
-                PacketDistributor.sendToServer(new SBFishingCompletedPayload(tickCount, awardTreasure, perfectCatch, consecutiveHits));
+                PacketDistributor.sendToServer(new SBFishingCompletedPayload(true, tickCount, awardTreasure, perfectCatch, consecutiveHits));
                 this.onClose();
             }
         }
@@ -734,7 +734,7 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         modifiers.forEach(o -> o.onRemove(this));
 
-        PacketDistributor.sendToServer(new SBFishingCompletedPayload(-1, false, false, consecutiveHits));
+        PacketDistributor.sendToServer(new SBFishingCompletedPayload(false, tickCount, false, false, consecutiveHits));
         this.minecraft.popGuiLayer();
     }
 

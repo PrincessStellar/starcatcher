@@ -103,9 +103,9 @@ public class TooltipEvents
         if (SCDataComponents.has(stack, SCDataComponents.CAUGHT_FISH_INFO))
         {
             SizeAndWeight.Units units = SCConfig.UNIT.get();
-            CaughtFishInfo sw = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo caughtFishInfo = SCDataComponents.get(stack, SCDataComponents.CAUGHT_FISH_INFO);
 
-            if (sw.golden())
+            if (caughtFishInfo.golden())
             {
                 cachedTimer = -1;
                 MutableComponent element = Component.empty().append(Tooltips.resolveTagsToComponentFromTranslationKey("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
@@ -115,9 +115,9 @@ public class TooltipEvents
             }
             else
             {
-                String size = units.getSizeAsString(sw.sizeInCentimeters());
-                String weight = units.getWeightAsString(sw.weightInGrams());
-                String percentile = " (top " + (int) sw.percentile() + "%)";
+                String size = units.getSizeAsString(caughtFishInfo.size());
+                String weight = units.getWeightAsString(caughtFishInfo.weight());
+                String percentile = " (top " + (int) caughtFishInfo.percentile() + "%)";
 
                 MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
                 if (hasShiftDown)

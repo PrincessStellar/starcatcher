@@ -145,28 +145,28 @@ public class FishApi
 
         return chance;
     }
-
+ 
     /**
      * Spawns the fished (item)entity using the FishingBobEntity linked in the player DataAttachment.
      */
-    public static void spawnFishFromPlayerFishing(ServerPlayer player, int time, boolean completedTreasure, boolean perfectCatch, int hits)
+    public static void spawnFishFromPlayerFishing(ServerPlayer player, boolean completed, int time, boolean completedTreasure, boolean perfectCatch, int hits)
     {
         ServerLevel level = ((ServerLevel) player.level());
 
         if (SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).isEmpty()) return;
 
+        //award time spent fishing stat
+        player.awardStat(SCStats.TICKS_SPENT_FISHING.get(), time);
+
         Entity levelEntity = level.getEntity(SCDataAttachments.get(player, SCDataAttachments.FISHING_BOB).getUuid());
         if (levelEntity instanceof FishingBobEntity fbe)
         {
-            if (time != -1)
+            //if won minigame
+            if (completed)
             {
                 FishProperties fp = fbe.fpToFish;
 
                 //todo change this to be a neoforge event
-
-                //award stat
-                player.awardStat(Stats.FISH_CAUGHT);
-                player.awardStat(SCStats.STARCAUGHT_FISH.get());
 
                 //trigger criterion
                 SCCriterionTriggers.FISH.get().trigger(player, fbe.rlToAwardUponFishingComplete == null ? Starcatcher.MISSINGNO : fbe.rlToAwardUponFishingComplete, fp.rarity(), time, perfectCatch);
@@ -184,10 +184,6 @@ public class FishApi
                 for (AbstractCatchModifier modifier : fbe.modifiers)
                     percentile = modifier.modifyPercentile(fbe, percentile);
 
-                //pick size and weight based on percentile
-                int size = SizeAndWeight.getRandomSize(fp, percentile);
-                int weight = SizeAndWeight.getRandomWeight(fp, percentile);
-
                 //golden if any modifier wants (base chance is from default modifiers, 1% + 1% for perfect catch
                 boolean golden = FishCaughtCounter.canCatchGolden(fp, player) &&
                                  fbe.modifiers.stream().anyMatch(o ->
@@ -198,7 +194,7 @@ public class FishApi
 
                 //award fish counter entry to guide book
                 FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToAwardUponFishingComplete,
-                        player, time, size, weight, percentile, perfectCatch, true, golden, false);
+                        player, time, percentile, perfectCatch, true, golden, false);
 
                 //add score to tournaments
                 TournamentHandler.addScore(player, fp, perfectCatch, percentile);
@@ -256,7 +252,7 @@ public class FishApi
 
                     //set fish item if it's a starcatcher fish entity
                     if (entity instanceof FishEntity fe)
-                        fe.setFish(makeItemStackNonBucket(fp, size, weight, percentile, golden, player, perfectCatch));
+                        fe.setFish(makeItemStackNonBucket(fp, percentile, golden, player, perfectCatch));
 
                     entity.setPos(fbe.position().add(0, 1.2f, 0));
 
@@ -267,7 +263,7 @@ public class FishApi
                 //if not entity then add rod item resourceLocation
                 else
                 {
-                    ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, size, weight, percentile, golden, player, perfectCatch);
+                    ItemStack is = makeItemStack(fbe.rod, fbe.fpToFish, percentile, golden, player, perfectCatch);
 
                     if (fbe.modifiers.stream().noneMatch(acm -> acm.shouldSkipAddingBaseItem(fbe, is)))
                         items.add(is);
@@ -357,7 +353,7 @@ public class FishApi
 
             //consume bait if not bucket
             ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
-            if (!bait.is(Tags.Items.BUCKETS_EMPTY))
+            if (!bait.is(Tags.Items.BUCKETS_EMPTY) && !bait.isEmpty())
             {
                 bait.shrink(1);
                 player.awardStat(SCStats.BAIT_USED.get(), 1);
@@ -365,13 +361,18 @@ public class FishApi
             }
 
             //consume bait if bucket & bucketed fish available, and completed minigame (fish don't eat buckets!)
-            if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && time != -1)
+            if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && completed)
             {
                 bait.shrink(1);
                 player.awardStat(SCStats.BAIT_USED.get(), 1);
                 SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
             }
 
+            //sync stats to player for guide book
+            if(player instanceof ServerPlayer sp)
+                sp.getStats().sendStats(sp);
+
+            //kill bobber entity
             fbe.kill();
         }
 
@@ -379,7 +380,7 @@ public class FishApi
     }
 
 
-    public static ItemStack makeItemStackNonBucket(FishProperties fp, int size, int weight, float percentile,
+    public static ItemStack makeItemStackNonBucket(FishProperties fp, float percentile,
                                                    boolean golden, Player player, boolean perfectCatch)
     {
         //normal itemstack
@@ -391,7 +392,7 @@ public class FishApi
 
         //store caught fish info data component
         if (fp.hasGuideEntry() && SCConfig.SAVE_DATA_TO_ITEMS.get() && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH))
-            SCDataComponents.set(fish, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden));
+            SCDataComponents.set(fish, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(fp.sizeWeight().getSizeForPercentile(percentile), fp.sizeWeight().getWeightForPercentile(percentile), percentile, golden ? Rarity.GOLDEN : fp.rarity()));
 
         return fish;
     }
@@ -399,7 +400,7 @@ public class FishApi
     /**
      * Generates the itemstack for fishing taking into account bucketability
      */
-    public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, int size, int weight, float percentile,
+    public static ItemStack makeItemStack(ItemStack rod, FishProperties fp, float percentile,
                                           boolean golden, Player player, boolean perfectCatch)
     {
         ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
@@ -411,7 +412,7 @@ public class FishApi
         {
             ItemStack baseFish = fp.catchInfo().fish().toStack();
 
-            CaughtFishInfo caughtFishInfo = new CaughtFishInfo(size, weight, percentile, fp.rarity(), golden);
+            CaughtFishInfo caughtFishInfo = new CaughtFishInfo(fp.sizeWeight().getSizeForPercentile(percentile), fp.sizeWeight().getWeightForPercentile(percentile), percentile, golden ? Rarity.GOLDEN : fp.rarity());
 
             //if starcatcher bucketed fish
             if (baseFish.is(SCTags.BUCKETABLE_FISHES))
@@ -435,7 +436,7 @@ public class FishApi
         }
 
         //if non bucket fish, make normal itemstack
-        return makeItemStackNonBucket(fp, size, weight, percentile, golden, player, perfectCatch);
+        return makeItemStackNonBucket(fp, percentile, golden, player, perfectCatch);
     }
 
     public static ItemStack getTreasure(ServerPlayer player, FishProperties fp, List<AbstractCatchModifier> modifiers)

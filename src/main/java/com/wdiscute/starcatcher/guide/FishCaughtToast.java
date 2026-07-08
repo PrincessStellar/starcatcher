@@ -68,15 +68,15 @@ public class FishCaughtToast implements Toast
             return Visibility.HIDE;
     }
 
-    public static void newFish(FishProperties fp, boolean displayToast, int sizeCM, int weightCM)
+    public static void newFish(FishProperties fp, boolean displayToast, float percentile)
     {
         if (displayToast)
             Minecraft.getInstance().getToasts().addToast(new FishCaughtToast(fp));
 
         SizeAndWeight.Units units = SCConfig.UNIT.get();
 
-        String size = units.getSizeAsString(sizeCM);
-        String weight = units.getWeightAsString(weightCM);
+        String size = units.getSizeAsString(percentile);
+        String weight = units.getWeightAsString(percentile);
 
         Minecraft.getInstance().player.displayClientMessage(
                 Component.literal("")

@@ -328,6 +328,7 @@ public class DGStarcatcherFishes
                         .withSizeAndWeight(new SizeAndWeight(620, 270, 5300, 700))
                         .withDifficulty(Difficulty.TRASH)
                         .withRarity(Rarity.TRASH)
+                        .withHasGuideEntry(false)
         );
 
         //swamp - uncommon
@@ -470,6 +471,7 @@ public class DGStarcatcherFishes
                         .withSizeAndWeight(new SizeAndWeight(620, 270, 5300, 700))
                         .withDifficulty(Difficulty.TRASH)
                         .withRarity(Rarity.TRASH)
+                        .withHasGuideEntry(false)
         );
 
         //epic

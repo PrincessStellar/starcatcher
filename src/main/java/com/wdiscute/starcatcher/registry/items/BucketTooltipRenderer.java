@@ -24,9 +24,9 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
         if (SCDataComponents.has(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO))
         {
             SizeAndWeight.Units units = SCConfig.UNIT.get();
-            CaughtFishInfo sw = SCDataComponents.get(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO);
+            CaughtFishInfo cfi = SCDataComponents.get(tooltip.fish(), SCDataComponents.CAUGHT_FISH_INFO);
 
-            if(sw.golden())
+            if(cfi.golden())
             {
                 MutableComponent element = Component.empty().append(Component.translatable("gui.guide.rarity.golden")).withStyle(Style.EMPTY.withColor(0x888888));
                 if(Screen.hasShiftDown())
@@ -34,9 +34,9 @@ public class BucketTooltipRenderer implements ClientTooltipComponent {
                 text = element;
                 return;
             }
-            String size = units.getSizeAsString(sw.sizeInCentimeters());
-            String weight = units.getWeightAsString(sw.weightInGrams());
-            String percentile = " (top " + (int) sw.percentile() + "%)";
+            String size = units.getSizeAsString(cfi.size());
+            String weight = units.getWeightAsString(cfi.weight());
+            String percentile = " (top " + (int) cfi.percentile() + "%)";
 
             MutableComponent element = Component.literal(size + " - " + weight).withStyle(Style.EMPTY.withColor(0x888888));
             if(Screen.hasShiftDown())

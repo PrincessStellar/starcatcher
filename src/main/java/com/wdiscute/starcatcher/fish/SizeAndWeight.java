@@ -7,9 +7,21 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.Level;
 
 public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weightAverage, float weightDeviation, float goldenChance)
 {
+    public float getSizeForPercentile(float percentile)
+    {
+        return (int) Math.round(sizeAverage + sizeDeviation * (1.0 - (percentile / 50.0)));
+    }
+
+    public float getWeightForPercentile(float percentile)
+    {
+        return (int) Math.round(sizeAverage + sizeDeviation * (1.0 - (percentile / 50.0)));
+    }
+
+
     public enum Units
     {
         METRIC("gui.guide.units.metric", 1f, 1f),
@@ -61,7 +73,7 @@ public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weight
             return vals[(this.ordinal() - 1) % vals.length];
         }
 
-        public String getSizeAsString(int sizeInCm)
+        public String getSizeAsString(float sizeInCm)
         {
             //space whale is always infinite
             if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";
@@ -85,7 +97,7 @@ public record SizeAndWeight(float sizeAverage, float sizeDeviation, float weight
             return sizeString;
         }
 
-        public String getWeightAsString(int weightInGrams)
+        public String getWeightAsString(float weightInGrams)
         {
             //space whale is always infinite
             if (this.equals(Units.SPACE_WHALE)) return "∞ space whales";

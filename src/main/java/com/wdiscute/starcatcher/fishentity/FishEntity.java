@@ -115,7 +115,7 @@ public class FishEntity extends AbstractFish
     public float getScale() {
         return SCDataComponents.getOrDefault(
                 getFish(), SCDataComponents.CAUGHT_FISH_INFO,
-                new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
+                CaughtFishInfo.AVERAGE
         ).getScale();
     }
 

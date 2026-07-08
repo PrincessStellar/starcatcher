@@ -102,45 +102,10 @@ public class FishRenderer extends MobRenderer<FishEntity, EntityModel<FishEntity
         map.put(SCItems.CERBERAY.get(), new Cerberay<>(modelSet.bakeLayer(Cerberay.LAYER_LOCATION)));
     }
 
-    // Used for the 2D fishes and stuff like the aquarium
-    public void renderOld(FishEntity fishEntity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
-    {
-        ItemStack fish = fishEntity.getFish();
-
-        poseStack.pushPose();
-
-        Vec3 offsetCenter = new Vec3(0f, -0.75f, 0f);
-
-        float scale = SCDataComponents.getOrDefault(
-                fish, SCDataComponents.CAUGHT_FISH_INFO,
-                new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
-        ).getScale();
-
-        //todo needed?
-        //poseStack.translate(be.x, be.y, be.z);
-
-        //block centering
-        poseStack.translate(offsetCenter.x, offsetCenter.y, offsetCenter.z);
-
-        //scaling + pivot adjusting
-        poseStack.translate(0, 1, 0);
-        poseStack.scale(scale, -scale, scale);
-        poseStack.translate(0, -1, 0);
-
-        poseStack.mulPose(Axis.YN.rotationDegrees(entityYaw + 180));
-
-        // Render model here
-        if (!fish.isEmpty())
-            FishRenderer.renderFishFromItem(itemRenderer, FishRenderer.map, fish, buffer, poseStack, packedLight, LivingEntityRenderer.getOverlayCoords(fishEntity, 0), fishEntity.level());
-
-        poseStack.popPose();
-    }
-
     @Override
     public void render(FishEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         model = map.get(entity.getFish().getItem());
         if (model == null) {
-            renderOld(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
             return;
         }
 

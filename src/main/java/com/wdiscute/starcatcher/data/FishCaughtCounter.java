@@ -9,6 +9,8 @@ import com.wdiscute.starcatcher.fish.CatchInfo;
 import com.wdiscute.starcatcher.data.attachments.FishingGuideAttachment;
 import com.wdiscute.starcatcher.data.network.CBFishCaughtNotifs;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.fish.SizeAndWeight;
+import com.wdiscute.starcatcher.registry.SCStats;
 import com.wdiscute.utils.Utils;
 import net.minecraft.Util;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -16,6 +18,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -28,8 +31,6 @@ public record FishCaughtCounter(
         int count,
         int fastestTicks,
         float averageTicks,
-        int size,
-        int weight,
         float percentile,
         long firstCatch,
         boolean caughtGolden,
@@ -53,16 +54,16 @@ public record FishCaughtCounter(
 
     public FishCaughtCounter removeNotification()
     {
-        return new FishCaughtCounter(this.count, this.fastestTicks, this.averageTicks, this.size, this.weight, this.percentile, this.firstCatch, this.caughtGolden, perfectCatch, false);
+        return new FishCaughtCounter(this.count, this.fastestTicks, this.averageTicks, this.percentile, this.firstCatch, this.caughtGolden, perfectCatch, false);
     }
 
     @Nonnull
-    public static FishCaughtCounter create(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
+    public static FishCaughtCounter create(int ticks, float percentile, boolean perfectCatch, boolean golden, boolean hasGuideNotification)
     {
-        return new FishCaughtCounter(1, ticks, (float) ticks, size, weight, percentile, Util.getEpochMillis() / 1000, golden, perfectCatch, hasGuideNotification);
+        return new FishCaughtCounter(1, ticks, (float) ticks, percentile, Util.getEpochMillis() / 1000, golden, perfectCatch, hasGuideNotification);
     }
 
-    public FishCaughtCounter getUpdated(int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)
+    public FishCaughtCounter getUpdated(int ticks, float percentile, boolean perfectCatch, boolean goldenCatch, boolean hasGuideNotification)
     {
         int fastestToSave = Math.min(this.fastestTicks, ticks);
         float averageToSave = (this.averageTicks * this.count + ticks) / (this.count + 1);
@@ -75,16 +76,12 @@ public record FishCaughtCounter(
         if (this.averageTicks == 0) averageToSave = ticks;
         if (this.count == 999999) countToSave = 0;
 
-        int sizeToSave = Math.max(size, this.size);
-        int weightToSave = Math.max(weight, this.weight);
         float percentileToSave = Math.min(percentile, this.percentile);
 
         return new FishCaughtCounter(
                 countToSave + 1,
                 fastestToSave,
                 averageToSave,
-                sizeToSave,
-                weightToSave,
                 percentileToSave,
                 this.firstCatch,
                 golden,
@@ -93,9 +90,38 @@ public record FishCaughtCounter(
     }
 
     public static void awardFishCaughtCounter(FishProperties fpCaught, @Nullable ResourceLocation rl, Player player,
-                                              int ticks, int size, int weight, float percentile,
+                                              int ticks, float percentile,
                                               boolean perfectCatch, boolean awardToTeam, boolean golden, boolean displayToast)
     {
+        //award stat
+        boolean isFish = fpCaught.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH);
+        if(isFish)
+        {
+            player.awardStat(Stats.FISH_CAUGHT);
+            player.awardStat(SCStats.STARCAUGHT_FISH.get());
+            player.awardStat(SCStats.TICKS_SPENT_FISHING.get(), ticks);
+
+            switch (fpCaught.rarity())
+            {
+                case TRASH -> player.awardStat(SCStats.TRASH_CAUGHT.get());
+                case COMMON -> player.awardStat(SCStats.COMMON_CAUGHT.get());
+                case UNCOMMON -> player.awardStat(SCStats.UNCOMMON_CAUGHT.get());
+                case RARE -> player.awardStat(SCStats.RARE_CAUGHT.get());
+                case EPIC -> player.awardStat(SCStats.EPIC_CAUGHT.get());
+                case LEGENDARY -> player.awardStat(SCStats.LEGENDARY_CAUGHT.get());
+            }
+
+            if(golden)
+                player.awardStat(SCStats.GOLDEN_CATCHES.get());
+
+            if(perfectCatch)
+                player.awardStat(SCStats.PERFECT_CATCHES.get());
+
+            //update stats on client
+            if(player instanceof ServerPlayer sp)
+                sp.getStats().sendStats(sp);
+        }
+
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
 
         //if rl param is null, get it from fp from registry
@@ -108,18 +134,18 @@ public record FishCaughtCounter(
 
             //ftb teams compat to share fishes caught to team, does not share size and weight
             if (ModList.get().isLoaded("ftbteams") && awardToTeam && SCConfig.ENABLE_FTB_TEAM_SHARING.get())
-                FTBTeamsCompat.awardToTeam(player, fpCaught, rl, ticks, size, weight);
+                FTBTeamsCompat.awardToTeam(player, fpCaught, rl, ticks);
 
             if (newFish)
-                fishCaughtCounter = FishCaughtCounter.create(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH));
+                fishCaughtCounter = FishCaughtCounter.create(ticks, percentile, perfectCatch, golden, isFish && fpCaught.hasGuideEntry());
             else
-                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, size, weight, percentile, perfectCatch, golden, fpCaught.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH));
+                fishCaughtCounter = fishCaughtCounter.getUpdated(ticks, percentile, perfectCatch, golden, isFish && fpCaught.hasGuideEntry());
 
             fishesCaught.put(loc, fishCaughtCounter);
 
             //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
             if (!fpCaught.catchInfo().alwaysSpawnEntity() && fpCaught.hasGuideEntry())
-                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtNotifs(fpCaught, displayToast && newFish, size, weight, percentile));
+                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtNotifs(fpCaught, displayToast && newFish, percentile));
 
             FishingGuideAttachment.setFishesCaught(player, fishesCaught);
         }
@@ -130,8 +156,6 @@ public record FishCaughtCounter(
                     Codec.INT.optionalFieldOf("count", 0).forGetter(FishCaughtCounter::count),
                     Codec.INT.optionalFieldOf("fastest_ticks", 0).forGetter(FishCaughtCounter::fastestTicks),
                     Codec.FLOAT.optionalFieldOf("average_ticks", 0.0f).forGetter(FishCaughtCounter::averageTicks),
-                    Codec.INT.optionalFieldOf("best_size", 0).forGetter(FishCaughtCounter::size),
-                    Codec.INT.optionalFieldOf("best_weight", 0).forGetter(FishCaughtCounter::weight),
                     Codec.FLOAT.optionalFieldOf("best_percentile", 0f).forGetter(FishCaughtCounter::percentile),
                     Codec.LONG.optionalFieldOf("first_catch", 0L).forGetter(FishCaughtCounter::firstCatch),
                     Codec.BOOL.optionalFieldOf("caught_golden", false).forGetter(FishCaughtCounter::caughtGolden),
@@ -145,8 +169,6 @@ public record FishCaughtCounter(
             ByteBufCodecs.VAR_INT, FishCaughtCounter::count,
             ByteBufCodecs.VAR_INT, FishCaughtCounter::fastestTicks,
             ByteBufCodecs.FLOAT, FishCaughtCounter::averageTicks,
-            ByteBufCodecs.INT, FishCaughtCounter::size,
-            ByteBufCodecs.INT, FishCaughtCounter::weight,
             ByteBufCodecs.FLOAT, FishCaughtCounter::percentile,
             ByteBufCodecs.VAR_LONG, FishCaughtCounter::firstCatch,
             ByteBufCodecs.BOOL, FishCaughtCounter::caughtGolden,

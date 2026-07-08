@@ -17,7 +17,7 @@ public class FTBTeamsCompat
 {
     private static final Logger log = LoggerFactory.getLogger(FTBTeamsCompat.class);
 
-    public static void awardToTeam(Player player, FishProperties fp, ResourceLocation rl, int ticks, int size, int weight)
+    public static void awardToTeam(Player player, FishProperties fp, ResourceLocation rl, int ticks)
     {
         TeamManagerImpl teamManager = TeamManagerImpl.INSTANCE;
         Optional<Team> teamByID = teamManager.getTeamForPlayerID(player.getUUID());
@@ -32,7 +32,7 @@ public class FTBTeamsCompat
                 if (playerByUUID != null && playerByUUID.getUUID().equals(player.getUUID()))
                 {
                     FishCaughtCounter.awardFishCaughtCounter(fp, rl, playerByUUID,
-                            ticks, size, weight, 100, false, false, false, false);
+                            ticks, 100, false, false, false, false);
                 }
             }
         }

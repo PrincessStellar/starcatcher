@@ -65,9 +65,7 @@ public class ReliquifiedArtifactsCompat
         for (int i = 0; i < bonusCount; i++)
         {
             float percentile = Utils.r.nextFloat(100);
-            int size = SizeAndWeight.getRandomSize(fbe.fpToFish, percentile);
-            int weight = SizeAndWeight.getRandomWeight(fbe.fpToFish, percentile);
-            ItemStack is = FishApi.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, size, weight, percentile, false, player, false);
+            ItemStack is = FishApi.makeItemStack(ItemStack.EMPTY, fbe.fpToFish, percentile, false, player, false);
             items.add(is);
         }
 

@@ -4,7 +4,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.wdiscute.starcatcher.SCConfig;
@@ -92,15 +91,19 @@ public interface SCCommands
                 .then(Commands.literal("set_data")
                         .then(Commands.argument("size_in_cm", IntegerArgumentType.integer())
                                 .then(Commands.argument("weight_in_grams", IntegerArgumentType.integer())
-                                        .then(Commands.argument("percentile", IntegerArgumentType.integer(0, 100))
-                                                .then(Commands.argument("rarity", EnumArgument.enumArgument(Rarity.class))
-                                                        .executes(c ->
-                                                                setDataOnStack(
-                                                                        c.getSource().getPlayerOrException(),
-                                                                        IntegerArgumentType.getInteger(c, "size_in_cm"),
-                                                                        IntegerArgumentType.getInteger(c, "weight_in_grams"),
-                                                                        IntegerArgumentType.getInteger(c, "percentile"),
-                                                                        Rarity.valueOf(c.getArgument("rarity", Rarity.class).toString())
+                                        .then(Commands.argument("size", FloatArgumentType.floatArg())
+                                                .then(Commands.argument("weight", FloatArgumentType.floatArg())
+                                                        .then(Commands.argument("percentile", IntegerArgumentType.integer(0, 100))
+                                                                .then(Commands.argument("rarity", EnumArgument.enumArgument(Rarity.class))
+                                                                        .executes(c ->
+                                                                                setDataOnStack(
+                                                                                        c.getSource().getPlayerOrException(),
+                                                                                        FloatArgumentType.getFloat(c, "size"),
+                                                                                        FloatArgumentType.getFloat(c, "weight"),
+                                                                                        IntegerArgumentType.getInteger(c, "percentile"),
+                                                                                        Rarity.valueOf(c.getArgument("rarity", Rarity.class).toString())
+                                                                                )
+                                                                        )
                                                                 )
                                                         )
                                                 )
@@ -109,27 +112,13 @@ public interface SCCommands
                         )
                 )
 
-
-                //starcatcher add_modifier starcatcher:ignore_daytime_and_weather_restrictions
-                .then(Commands.literal("add_modifier")
-                        .then(Commands.argument("modifier", StringArgumentType.string())
-                                .executes(c ->
-                                        addCatchModifier(
-                                                c.getSource().getPlayerOrException(),
-                                                StringArgumentType.getString(c, "modifier")
-                                        )
-                                )
-                        )
-                )
-
-
                 //starcatcher add_tackle_skin starcatcher:ignore_daytime_and_weather_restrictions
-                .then(Commands.literal("add_tackle_skin")
-                        .then(Commands.argument("modifier", ResourceArgument.resource(context, Starcatcher.TACKLE_SKIN))
+                .then(Commands.literal("set_tackle_skin")
+                        .then(Commands.argument("tackle_skin", ResourceArgument.resource(context, Starcatcher.TACKLE_SKIN))
                                 .executes(c ->
-                                        addTackleSkin(
+                                        setTackleSkin(
                                                 c.getSource().getPlayerOrException(),
-                                                ResourceArgument.getResource(c, "modifier", Starcatcher.TACKLE_SKIN).unwrap().left().get()
+                                                ResourceArgument.getResource(c, "tackle_skin", Starcatcher.TACKLE_SKIN).unwrap().left().get()
                                         )
                                 )
                         )
@@ -144,19 +133,13 @@ public interface SCCommands
                                 .executes(c -> awardAllFish(c.getSource().getPlayerOrException()))
                                 // -> /starcatcher award_fish all 0 0 0
                                 .then(Commands.argument("ticks", IntegerArgumentType.integer())
-                                        .then(Commands.argument("size", IntegerArgumentType.integer())
-                                                .then(Commands.argument("weight", IntegerArgumentType.integer())
-                                                        .then(Commands.argument("percentile", BoolArgumentType.bool())
-                                                                .then(Commands.argument("golden", BoolArgumentType.bool())
-                                                                        .executes(c -> awardAllFish(
-                                                                                        c.getSource().getPlayerOrException(),
-                                                                                        IntegerArgumentType.getInteger(c, "ticks"),
-                                                                                        IntegerArgumentType.getInteger(c, "size"),
-                                                                                        IntegerArgumentType.getInteger(c, "weight"),
-                                                                                        FloatArgumentType.getFloat(c, "percentile"),
-                                                                                        BoolArgumentType.getBool(c, "golden")
-                                                                                )
-                                                                        )
+                                        .then(Commands.argument("percentile", FloatArgumentType.floatArg())
+                                                .then(Commands.argument("golden", BoolArgumentType.bool())
+                                                        .executes(c -> awardAllFish(
+                                                                        c.getSource().getPlayerOrException(),
+                                                                        IntegerArgumentType.getInteger(c, "ticks"),
+                                                                        FloatArgumentType.getFloat(c, "percentile"),
+                                                                        BoolArgumentType.getBool(c, "golden")
                                                                 )
                                                         )
                                                 )
@@ -170,27 +153,17 @@ public interface SCCommands
                                 .executes(c -> awardRandomFish(c.getSource().getPlayerOrException()))
 
                                 .then(Commands.argument("ticks", IntegerArgumentType.integer())
-                                        .then(Commands.argument("size", IntegerArgumentType.integer())
-                                                .then(Commands.argument("weight", IntegerArgumentType.integer())
-                                                        .then(Commands.argument("percentile", FloatArgumentType.floatArg())
-                                                                .then(Commands.argument("golden", BoolArgumentType.bool())
-                                                                        .then(Commands.argument("perfect_catch", BoolArgumentType.bool())
-                                                                                .executes(c -> awardRandomFish(
-                                                                                                c.getSource().getPlayerOrException(),
-                                                                                                IntegerArgumentType.getInteger(c, "ticks"),
-                                                                                                IntegerArgumentType.getInteger(c, "size"),
-                                                                                                IntegerArgumentType.getInteger(c, "weight"),
-                                                                                                FloatArgumentType.getFloat(c, "percentile"),
-                                                                                                BoolArgumentType.getBool(c, "perfect_catch"),
-                                                                                                BoolArgumentType.getBool(c, "golden")
-                                                                                        )
-                                                                                )
+                                        .then(Commands.argument("percentile", FloatArgumentType.floatArg())
+                                                .then(Commands.argument("golden", BoolArgumentType.bool())
+                                                                .executes(c -> awardRandomFish(
+                                                                                c.getSource().getPlayerOrException(),
+                                                                                IntegerArgumentType.getInteger(c, "ticks"),
+                                                                                FloatArgumentType.getFloat(c, "percentile"),
+                                                                                BoolArgumentType.getBool(c, "golden")
                                                                         )
                                                                 )
-                                                        )
                                                 )
                                         )
-
                                 )
                         )
 
@@ -199,32 +172,24 @@ public interface SCCommands
                                 .executes(c -> awardFish(
                                         c.getSource().getPlayerOrException(),
                                         ResourceArgument.getResource(c, "fish", Starcatcher.FISH_REGISTRY_KEY).unwrap().left().get(),
-                                        0, 0, 0, 0, false
+                                        0, 0, false
                                 ))
                                 // -> /starcatcher award_fish 123, 123, 132, 0, false
                                 .then(Commands.argument("ticks", IntegerArgumentType.integer())
-                                        .then(Commands.argument("size", IntegerArgumentType.integer())
-                                                .then(Commands.argument("weight", IntegerArgumentType.integer())
-                                                        .then(Commands.argument("percentile", FloatArgumentType.floatArg())
-                                                                .then(Commands.argument("golden", BoolArgumentType.bool())
-                                                                        .executes(c -> awardFish(
-                                                                                        c.getSource().getPlayerOrException(),
-                                                                                        ResourceArgument.getResource(c, "fish", Starcatcher.FISH_REGISTRY_KEY).key(),
-                                                                                        IntegerArgumentType.getInteger(c, "ticks"),
-                                                                                        IntegerArgumentType.getInteger(c, "size"),
-                                                                                        IntegerArgumentType.getInteger(c, "weight"),
-                                                                                        FloatArgumentType.getFloat(c, "percentile"),
-                                                                                        BoolArgumentType.getBool(c, "golden")
-                                                                                )
-                                                                        )
+                                        .then(Commands.argument("percentile", FloatArgumentType.floatArg())
+                                                .then(Commands.argument("golden", BoolArgumentType.bool())
+                                                        .executes(c -> awardFish(
+                                                                        c.getSource().getPlayerOrException(),
+                                                                        ResourceArgument.getResource(c, "fish", Starcatcher.FISH_REGISTRY_KEY).key(),
+                                                                        IntegerArgumentType.getInteger(c, "ticks"),
+                                                                        FloatArgumentType.getFloat(c, "percentile"),
+                                                                        BoolArgumentType.getBool(c, "golden")
                                                                 )
                                                         )
                                                 )
                                         )
-
                                 )
                         )
-
                 )
 
                 //starcatcher revoke_fish ...
@@ -245,11 +210,6 @@ public interface SCCommands
         );
     }
 
-    static int addCatchModifier(ServerPlayer playerOrException, String modifier)
-    {
-        return 0;
-    }
-
     private static int revokeAllFish(ServerPlayer player)
     {
         FishingGuideAttachment.getFishesCaught(player).clear();
@@ -264,10 +224,10 @@ public interface SCCommands
         return 0;
     }
 
-    private static int awardAllFish(ServerPlayer player, int ticks, int size, int weight, float percentile, boolean golden)
+    private static int awardAllFish(ServerPlayer player, int ticks, float percentile, boolean golden)
     {
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
-            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, ticks, size, weight, percentile,
+            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, ticks, percentile,
                     false, false, golden, false);
 
         return 0;
@@ -276,7 +236,7 @@ public interface SCCommands
     private static int awardAllFish(ServerPlayer player)
     {
         for (FishProperties fp : player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY))
-            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, 0, 0, 0, 0,
+            FishCaughtCounter.awardFishCaughtCounter(fp, null, player, 0, 0,
                     false, false, false, false);
 
         return 0;
@@ -284,13 +244,12 @@ public interface SCCommands
 
     private static int awardRandomFish(ServerPlayer player)
     {
-        awardRandomFish(player, 0, 0, 0, 0, false, false);
+        awardRandomFish(player, 0, 0, false);
         return 0;
     }
 
-    private static int awardRandomFish(ServerPlayer player, int ticks, int size, int weight, float percentile, boolean perfectCatch, boolean golden)
+    private static int awardRandomFish(ServerPlayer player, int ticks, float percentile, boolean golden)
     {
-
         List<FishProperties> list = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).stream().toList();
 
         if (list.isEmpty()) return 0;
@@ -298,21 +257,21 @@ public interface SCCommands
         FishProperties fp = list.get(Utils.r.nextInt(list.size()));
 
         FishCaughtCounter.awardFishCaughtCounter(fp, null, player,
-                ticks, size, weight, percentile, perfectCatch, false, golden, true);
+                ticks, percentile, false, false, golden, true);
         return 0;
     }
 
-    private static int awardFish(ServerPlayer player, ResourceKey<FishProperties> fish, int ticks, int size, int weight, float percentile, boolean golden) throws CommandSyntaxException
+    private static int awardFish(ServerPlayer player, ResourceKey<FishProperties> fish, int ticks, float percentile, boolean golden) throws CommandSyntaxException
     {
         Optional<FishProperties> optional = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getOptional(fish);
         if (optional.isPresent())
-            FishCaughtCounter.awardFishCaughtCounter(optional.get(), null, player, ticks, size, weight, percentile, false, false, golden, true);
+            FishCaughtCounter.awardFishCaughtCounter(optional.get(), null, player, ticks, percentile, false, false, golden, true);
         else
             throw ERROR_FISH_ENTRY_INVALID.create(fish);
         return 0;
     }
 
-    private static int addTackleSkin(ServerPlayer player, ResourceKey<AbstractTackleSkin> tackleSkin) throws CommandSyntaxException
+    private static int setTackleSkin(ServerPlayer player, ResourceKey<AbstractTackleSkin> tackleSkin) throws CommandSyntaxException
     {
         ItemStack stack = player.getMainHandItem();
         if (!stack.is(SCTags.RODS)) throw ERROR_ROD.create(null);
@@ -364,7 +323,7 @@ public interface SCCommands
         }
     }
 
-    private static int setDataOnStack(ServerPlayer player, int size, int weight, int percentile, Rarity rarity) throws CommandSyntaxException
+    private static int setDataOnStack(ServerPlayer player, float size, float weight, int percentile, Rarity rarity) throws CommandSyntaxException
     {
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
@@ -378,7 +337,7 @@ public interface SCCommands
         else
             stack = mainHand;
 
-        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity, rarity.equals(Rarity.GOLDEN)));
+        SCDataComponents.set(stack, SCDataComponents.CAUGHT_FISH_INFO, new CaughtFishInfo(size, weight, percentile, rarity));
 
         return 1;
     }

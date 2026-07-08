@@ -97,7 +97,7 @@ public class FishingGuideItem extends Item
     @OnlyIn(Dist.CLIENT)
     private void openPersonalGuide()
     {
-        Minecraft.getInstance().setScreen(new FishingGuideScreen(false));
+        Minecraft.getInstance().setScreen(new FishingGuideScreen(false, null));
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -7,6 +7,7 @@ public interface SCColors
     int GUIDE_GREEN = 0xff40752c;
     int GUIDE_YELLOW = 0xffb7882f;
     int GUIDE_TEXT_DARK = 0xff635040;
+    int GUIDE_TEXT_SEMI_DARK = 0xff756253;
     int GUIDE_TEXT = 0xff9a877b;
     int TOOLTIP_GRAY = 0xff777777;
     int WHITE = 0xffffffff;

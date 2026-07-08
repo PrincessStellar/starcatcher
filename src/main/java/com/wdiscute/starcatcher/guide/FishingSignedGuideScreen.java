@@ -15,9 +15,8 @@ public class FishingSignedGuideScreen extends FishingGuideScreen
 
     public FishingSignedGuideScreen(SignedGuide signedGuide)
     {
-        super(false);
+        super(false, signedGuide);
         this.signedGuide = signedGuide;
-        isSigned = true;
     }
 
     @Override

@@ -26,6 +26,8 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.StatFormatter;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -40,6 +42,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.*;
@@ -180,6 +183,14 @@ public class SCEvents
     }
 
     @SubscribeEvent
+    public static void commonSetup(FMLCommonSetupEvent event)
+    {
+        event.enqueueWork(() -> {
+            Stats.CUSTOM.get(SCStats.TICKS_SPENT_FISHING.get(), StatFormatter.TIME);
+        });
+    }
+
+    @SubscribeEvent
     public static void levelTick(ServerTickEvent.Post event)
     {
         TournamentHandler.tick(event);
@@ -197,6 +208,9 @@ public class SCEvents
         Player player = event.getEntity();
         if (player instanceof ServerPlayer sp)
         {
+            //send stats for guide book
+            sp.getStats().sendStats(sp);
+
             //tournament
             var tournament = TournamentHandler.getTournamentForPlayer(sp);
             if (tournament != null)

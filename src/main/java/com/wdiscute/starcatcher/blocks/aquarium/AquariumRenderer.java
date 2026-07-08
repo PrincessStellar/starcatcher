@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.blocks.aquarium;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
@@ -83,7 +84,7 @@ public class AquariumRenderer implements BlockEntityRenderer<AquariumBlockEntity
 
         float scale = SCDataComponents.getOrDefault(
                 fish, SCDataComponents.CAUGHT_FISH_INFO,
-                new CaughtFishInfo(100, 100, 50, Rarity.COMMON, false)
+                CaughtFishInfo.AVERAGE
         ).getScale();
 
 

@@ -88,6 +88,9 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     @Override
     public List<Component> getIndexHover(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
+        if (limit == 1)
+            return List.of();
+
         if (adjustChance(0, level, fp, player, ItemStack.EMPTY, Context.GUIDE_FISHES_HOVER) >= 0)
             return List.of(Component.translatable("gui.guide.hover.caught_limit", getCaughtCounter(fp, player) + " / " + limit)
                     .withStyle(Style.EMPTY.withColor(SCColors.GUIDE_GREEN)));
@@ -99,13 +102,26 @@ public class CaughtLimitRestriction extends AbstractFishRestriction
     @Override
     public MutableComponent getDescriptionPrefix()
     {
-        return Component.translatable("gui.guide.caught_limit");
+        if (limit == 1)
+            return Component.empty();
+        else
+            return Component.translatable("gui.guide.caught_limit");
     }
 
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return Component.literal(getCaughtCounter(fp, player) + " / " + limit);
+        int caughtCounter = getCaughtCounter(fp, player);
+
+        if (limit == 1)
+        {
+            if (caughtCounter == 1)
+                return Component.translatable("gui.guide.caught_limit.caught");
+            else
+                return Component.translatable("gui.guide.caught_limit.not_caught");
+        }
+
+        return Component.literal(caughtCounter + " / " + limit);
     }
 
     @Override

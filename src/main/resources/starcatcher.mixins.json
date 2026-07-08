@@ -5,13 +5,13 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "DispenserWormBehaviourMixin",
-    "GetNameMixin",
     "LecternReturnMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
+    "GetNameMixin",
     "ItemRendererMixin",
     "RenderTypeHelperMixin"
   ]

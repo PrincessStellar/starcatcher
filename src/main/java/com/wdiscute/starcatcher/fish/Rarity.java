@@ -64,7 +64,7 @@ public enum Rarity implements StringRepresentable
         if (stack.has(SCDataComponents.CAUGHT_FISH_INFO))
         {
             CaughtFishInfo caughtFishInfo = stack.get(SCDataComponents.CAUGHT_FISH_INFO);
-            return caughtFishInfo != null && caughtFishInfo.golden();
+            return caughtFishInfo != null && caughtFishInfo.rarity().equals(GOLDEN);
         }
         return false;
     }
