@@ -80,24 +80,24 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGCreateFishes.bootstrap(context);
 
         //compat
-        DGTideFishes.bootstrap(context);
-        DGAquacultureFishes.bootstrap(context);
-        DGFishOfThievesFishes.bootstrap(context);
-        DGNetherDepthsUpgradeFishes.bootstrap(context);
-        DGEnvironmentalFishes.bootstrap(context);
-        DGMinersDelightFishes.bootstrap(context);
-        DGCrittersAndCompanionsFishes.bootstrap(context);
-        DGHybridAquaticFishes.bootstrap(context);
+        //DGTideFishes.bootstrap(context);
+        //DGAquacultureFishes.bootstrap(context);
+        //DGFishOfThievesFishes.bootstrap(context);
+        //DGNetherDepthsUpgradeFishes.bootstrap(context);
+        //DGEnvironmentalFishes.bootstrap(context);
+        //DGMinersDelightFishes.bootstrap(context);
+        //DGCrittersAndCompanionsFishes.bootstrap(context);
+        //DGHybridAquaticFishes.bootstrap(context);
         //todo dont forget to add to the list of ids
         //DGEternalStarlightFishes.bootstrap(context);
 
-        DGAlexsCavesFishes.bootstrap(context);
-        DGCollectorsReapFishes.bootstrap(context);
-        DGSullysModFishes.bootstrap(context);
-        DGBetterEndFishes.bootstrap(context);
-        DGUpgradeAquaticFishes.bootstrap(context);
-        DGSpawnFishes.bootstrap(context);
-        DGUnusualFishFishes.bootstrap(context);
+        //DGAlexsCavesFishes.bootstrap(context);
+        //DGCollectorsReapFishes.bootstrap(context);
+        //DGSullysModFishes.bootstrap(context);
+        //DGBetterEndFishes.bootstrap(context);
+        //DGUpgradeAquaticFishes.bootstrap(context);
+        //DGSpawnFishes.bootstrap(context);
+        //DGUnusualFishFishes.bootstrap(context);
 
         FishRegistration.ALL_FISHABLE.sort(Comparator.comparing(o -> o.catchInfo().fish().rl().toLanguageKey()));
         FishRegistration.STARCATCHER_FISHABLE.sort(Comparator.comparing(o -> o.catchInfo().fish().rl().toLanguageKey()));

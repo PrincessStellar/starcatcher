@@ -37,18 +37,6 @@ public class DGTideFishes
 
         FishRegistration.register(
                 context,
-                PresetRestrictions.coldLake(context)
-                        .withFish("tide", "rainbow_trout")
-                        .withBucketedFish("tide", "rainbow_trout_bucket")
-                        .withEntityToSpawn("tide", "rainbow_trout")
-                        .withSizeAndWeight(35, 8, 1600, 1200)
-                        .withDifficulty(Difficulty.MEDIUM)
-                        .withRarity(Rarity.COMMON),
-                "tide"
-        );
-
-        FishRegistration.register(
-                context,
                 PresetRestrictions.river(context)
                         .withFish("tide", "largemouth_bass")
                         .withBucketedFish("tide", "largemouth_bass_bucket")
@@ -122,7 +110,32 @@ public class DGTideFishes
                 "tide"
         );
 
+        //cold lake
+        FishRegistration.register(
+                context,
+                PresetRestrictions.coldLake(context)
+                        .withFish("tide", "rainbow_trout")
+                        .withBucketedFish("tide", "rainbow_trout_bucket")
+                        .withEntityToSpawn("tide", "rainbow_trout")
+                        .withSizeAndWeight(35, 8, 1600, 1200)
+                        .withDifficulty(Difficulty.MEDIUM_FROZEN)
+                        .withRarity(Rarity.COMMON),
+                "tide"
+        );
 
+        FishRegistration.register(
+                context,
+                PresetRestrictions.coldLake(context)
+                        .withFish("tide", "frostbite_flounder")
+                        .withBucketedFish("tide", "frostbite_flounder_bucket")
+                        .withEntityToSpawn("tide", "frostbite_flounder")
+                        .withSizeAndWeight(40, 12, 1600, 1100)
+                        .withDifficulty(Difficulty.HARD_FROZEN)
+                        .withRarity(Rarity.RARE),
+                "tide"
+        );
+
+        //warm lake
         FishRegistration.register(
                 context,
                 PresetRestrictions.warmLake(context)
@@ -130,7 +143,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "guppy_bucket")
                         .withEntityToSpawn("tide", "guppy")
                         .withSizeAndWeight(20, 5, 400, 100)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM_MIRAGE)
                         .withRarity(Rarity.UNCOMMON),
                 "tide"
         );
@@ -143,7 +156,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "walleye_bucket")
                         .withEntityToSpawn("tide", "walleye")
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.HARD)
+                        .withDifficulty(Difficulty.EASY_MIRAGE_MOVING)
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "tide"
@@ -157,7 +170,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "catfish_bucket")
                         .withEntityToSpawn("tide", "catfish")
                         .withSizeAndWeight(60, 20, 6000, 4000)
-                        .withDifficulty(Difficulty.MEDIUM.moving())
+                        .withDifficulty(Difficulty.MEDIUM_MIRAGE_MOVING)
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "tide"
@@ -171,6 +184,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "blossom_bass_bucket")
                         .withEntityToSpawn("tide", "blossom_bass")
                         .withSizeAndWeight(40, 12, 1600, 1100)
+                        .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -183,6 +197,7 @@ public class DGTideFishes
                         .withBucketedFish("tide", "arapaima_bucket")
                         .withEntityToSpawn("tide", "arapaima")
                         .withSizeAndWeight(40, 12, 1600, 1100)
+                        .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.RARE),
                 "tide"
         );
@@ -195,20 +210,9 @@ public class DGTideFishes
                         .withBucketedFish("tide", "mirage_catfish_bucket")
                         .withEntityToSpawn("tide", "mirage_catfish")
                         .withSizeAndWeight(100, 50, 10000, 3000)
+                        .withDifficulty(Difficulty.HARD_MIRAGE)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT)
-                        .withRarity(Rarity.RARE),
-                "tide"
-        );
-
-        FishRegistration.register(
-                context,
-                PresetRestrictions.coldLake(context)
-                        .withFish("tide", "frostbite_flounder")
-                        .withBucketedFish("tide", "frostbite_flounder_bucket")
-                        .withEntityToSpawn("tide", "frostbite_flounder")
-                        .withSizeAndWeight(40, 12, 1600, 1100)
-                        .withDifficulty(Difficulty.HARD.moving())
-                        .withRarity(Rarity.RARE),
+                        .withRarity(Rarity.EPIC),
                 "tide"
         );
 

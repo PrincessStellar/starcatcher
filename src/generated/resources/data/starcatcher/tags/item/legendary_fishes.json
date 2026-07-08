@@ -1,14 +1,6 @@
 {
   "values": [
     {
-      "id": "aquaculture:piranha",
-      "required": false
-    },
-    {
-      "id": "netherdepthsupgrade:blazefish",
-      "required": false
-    },
-    {
       "id": "starcatcher:aurora",
       "required": false
     },
@@ -66,34 +58,6 @@
     },
     {
       "id": "starcatcher:ward",
-      "required": false
-    },
-    {
-      "id": "tide:alpha_fish",
-      "required": false
-    },
-    {
-      "id": "tide:coelacanth",
-      "required": false
-    },
-    {
-      "id": "tide:devils_hole_pupfish",
-      "required": false
-    },
-    {
-      "id": "tide:dragon_fish",
-      "required": false
-    },
-    {
-      "id": "tide:midas_fish",
-      "required": false
-    },
-    {
-      "id": "tide:voidseeker",
-      "required": false
-    },
-    {
-      "id": "unusualfishmod:raw_spindlefish",
       "required": false
     }
   ]

@@ -158,7 +158,15 @@ public record Difficulty(
             List.of(
                     new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL, false, "")
             ),
-            SweetSpot.NORMAL, SweetSpot.NORMAL, SweetSpot.MIRAGE_NORMAL
+            SweetSpot.NORMAL, SweetSpot.NORMAL
+    );
+
+    public static Difficulty EASY_MIRAGE_MOVING = new Difficulty(
+            75, 7, 5, 1,
+            List.of(
+                    new SpawnSweetSpotsModifier(140, 1, SweetSpot.MIRAGE_NORMAL.moving(1), false, "")
+            ),
+            SweetSpot.NORMAL.moving(1), SweetSpot.NORMAL.moving(1)
     );
 
     public static Difficulty EASY_DEEPSLATE = new Difficulty(

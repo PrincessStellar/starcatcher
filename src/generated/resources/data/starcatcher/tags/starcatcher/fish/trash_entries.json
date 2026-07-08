@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "collectorsreap:clam",
-      "required": false
-    },
-    {
       "id": "minecraft:bamboo",
       "required": false
     },

@@ -30,10 +30,10 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "smallmouth_bass_bucket")
                         .withEntityToSpawn("aquaculture", "smallmouth_bass")
                         .withSizeAndWeight(30, 10, 1500, 500)
+                        .withRarity(Rarity.UNCOMMON)
                         .withDifficulty(Difficulty.MEDIUM)
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withRarity(Rarity.UNCOMMON),
-                "aquaculture"
+                , "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -41,8 +41,10 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "bluegill")
                         .withBucketedFish("aquaculture", "smallmouth_bass_bucket")
                         .withEntityToSpawn("aquaculture", "smallmouth_bass")
-                        .withSizeAndWeight(15, 3, 300, 200),
-                "aquaculture"
+                        .withSizeAndWeight(15, 3, 300, 200)
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY)
+                , "aquaculture"
         );
 
         FishRegistration.register(context,
@@ -51,6 +53,8 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "brown_trout_bucket")
                         .withEntityToSpawn("aquaculture", "brown_trout")
                         .withSizeAndWeight(45, 15, 3000, 2000)
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withWeather(WeatherRestriction.CLEAR),
                 "aquaculture"
@@ -62,8 +66,8 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "carp_bucket")
                         .withEntityToSpawn("aquaculture", "carp")
                         .withSizeAndWeight(60, 20, 10000, 4000)
-                        .withDifficulty(Difficulty.HARD)
                         .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.HARD)
                         .withWeather(WeatherRestriction.RAIN),
                 "aquaculture"
         );
@@ -75,6 +79,7 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "catfish")
                         .withSizeAndWeight(150, 40, 100000, 25000)
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withWeather(WeatherRestriction.RAIN),
                 "aquaculture"
         );
@@ -84,8 +89,10 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "gar")
                         .withBucketedFish("aquaculture", "gar_bucket")
                         .withEntityToSpawn("aquaculture", "gar")
-                        .withSizeAndWeight(160, 30, 160000, 20000),
-                "aquaculture"
+                        .withSizeAndWeight(160, 30, 160000, 20000)
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -94,8 +101,10 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "minnow")
                         .withBucketedFish("aquaculture", "minnow_bucket")
                         .withEntityToSpawn("aquaculture", "minnow")
-                        .withSizeAndWeight(6, 4, 10, 4),
-                "aquaculture"
+                        .withSizeAndWeight(6, 4, 10, 4)
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -105,6 +114,7 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "muskellunge_bucket")
                         .withEntityToSpawn("aquaculture", "muskellunge")
                         .withSizeAndWeight(100, 10, 7000, 3000)
+                        .withDifficulty(Difficulty.MEDIUM.vanishing())
                         .withRarity(Rarity.RARE)
                         .withDaytimeRestriction(DaytimeRestriction.MIDNIGHT),
                 "aquaculture"
@@ -116,20 +126,22 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "perch")
                         .withBucketedFish("aquaculture", "perch_bucket")
                         .withEntityToSpawn("aquaculture", "perch")
-                        .withSizeAndWeight(20, 5, 500, 200),
-                "aquaculture"
+                        .withSizeAndWeight(20, 5, 500, 200)
+                        .withRarity(Rarity.COMMON)
+                        .withDifficulty(Difficulty.EASY)
+                , "aquaculture"
         );
 
-        //arid
+        //warm lakes
         FishRegistration.register(
                 context,
-                PresetRestrictions.lake(context)
+                PresetRestrictions.warmLake(context)
                         .withFish("aquaculture", "bayad")
                         .withBucketedFish("aquaculture", "bayad_bucket")
                         .withEntityToSpawn("aquaculture", "bayad")
                         .withSizeAndWeight(170, 30, 150000, 20000)
                         .withRarity(Rarity.UNCOMMON)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM_MIRAGE)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT),
                 "aquaculture"
         );
@@ -142,9 +154,10 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "boulti")
                         .withSizeAndWeight(40, 10, 4000, 300)
                         .withRarity(Rarity.RARE)
+                        .withDifficulty(Difficulty.MEDIUM.moving())
                         .withDaytimeRestriction(DaytimeRestriction.DAY)
-                        .withDifficulty(Difficulty.HARD),
-                "aquaculture"
+                        .withDifficulty(Difficulty.HARD_MIRAGE)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -153,8 +166,10 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "capitaine")
                         .withBucketedFish("aquaculture", "capitaine_bucket")
                         .withEntityToSpawn("aquaculture", "capitaine")
-                        .withSizeAndWeight(130, 50, 12000, 3000),
-                "aquaculture"
+                        .withSizeAndWeight(130, 50, 12000, 3000)
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM_MIRAGE)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -164,30 +179,34 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "synodontis_bucket")
                         .withEntityToSpawn("aquaculture", "synodontis")
                         .withSizeAndWeight(35, 15, 1000, 300)
-                        .withDifficulty(Difficulty.HARD.moving())
-                        .withRarity(Rarity.EPIC),
-                "aquaculture"
+                        .withDifficulty(Difficulty.HARD_MIRAGE_MOVING)
+                        .withRarity(Rarity.EPIC)
+                , "aquaculture"
         );
 
-        //arctic ocean
+        //cold ocean
         FishRegistration.register(
                 context,
-                PresetRestrictions.allOceans(context)
+                PresetRestrictions.coldOcean(context)
                         .withFish("aquaculture", "atlantic_cod")
                         .withBucketedFish("aquaculture", "atlantic_cod_bucket")
                         .withEntityToSpawn("aquaculture", "atlantic_cod")
                         .withSizeAndWeight(100, 50, 15000, 10000)
+                        .withDifficulty(Difficulty.EASY_FROZEN)
+                        .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "aquaculture"
         );
 
         FishRegistration.register(
                 context,
-                PresetRestrictions.allOceans(context)
+                PresetRestrictions.coldOcean(context)
                         .withFish("aquaculture", "blackfish")
                         .withBucketedFish("aquaculture", "blackfish_bucket")
                         .withEntityToSpawn("aquaculture", "blackfish")
                         .withSizeAndWeight(50, 20, 5000, 3000)
+                        .withDifficulty(Difficulty.EASY_FROZEN)
+                        .withRarity(Rarity.COMMON)
                         .withDaytimeRestriction(DaytimeRestriction.NIGHT)
                         .withRarity(Rarity.UNCOMMON),
                 "aquaculture"
@@ -195,22 +214,25 @@ public class DGAquacultureFishes
 
         FishRegistration.register(
                 context,
-                PresetRestrictions.allOceans(context)
+                PresetRestrictions.coldOcean(context)
                         .withFish("aquaculture", "pacific_halibut")
                         .withBucketedFish("aquaculture", "pacific_halibut_bucket")
                         .withEntityToSpawn("aquaculture", "pacific_halibut")
-                        .withSizeAndWeight(150, 50, 80000, 5000),
-                "aquaculture"
+                        .withSizeAndWeight(150, 50, 80000, 5000)
+                        .withDifficulty(Difficulty.MEDIUM_FROZEN)
+                        .withRarity(Rarity.UNCOMMON)
+                , "aquaculture"
         );
 
         FishRegistration.register(
                 context,
-                PresetRestrictions.allOceans(context)
+                PresetRestrictions.coldOcean(context)
                         .withFish("aquaculture", "atlantic_halibut")
                         .withBucketedFish("aquaculture", "atlantic_halibut_bucket")
                         .withEntityToSpawn("aquaculture", "atlantic_halibut")
                         .withSizeAndWeight(200, 80, 150000, 10000)
-                        .withDifficulty(Difficulty.MEDIUM)
+                        .withDifficulty(Difficulty.MEDIUM_FROZEN)
+                        .withRarity(Rarity.UNCOMMON)
                         .withWeather(WeatherRestriction.RAIN),
                 "aquaculture"
         );
@@ -237,8 +259,8 @@ public class DGAquacultureFishes
                         .withSizeAndWeight(50, 10, 2000, 1000)
                         .withRarity(Rarity.EPIC)
                         .withWeather(WeatherRestriction.THUNDER)
-                        .withDifficulty(Difficulty.HARD),
-                "aquaculture"
+                        .withDifficulty(Difficulty.HARD)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -247,8 +269,9 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "pollock")
                         .withBucketedFish("aquaculture", "pollock_bucket")
                         .withEntityToSpawn("aquaculture", "pollock")
-                        .withSizeAndWeight(70, 30, 5000, 4000),
-                "aquaculture"
+                        .withSizeAndWeight(70, 30, 5000, 4000)
+                        .withDifficulty(Difficulty.EASY)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -258,19 +281,20 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "rainbow_trout_bucket")
                         .withEntityToSpawn("aquaculture", "rainbow_trout")
                         .withSizeAndWeight(60, 20, 2000, 1500)
+                        .withDifficulty(Difficulty.MEDIUM)
                         .withRarity(Rarity.UNCOMMON)
                         .withDaytimeRestriction(DaytimeRestriction.DAY),
                 "aquaculture"
         );
 
-        //saltwater
+        //ocean
         FishRegistration.register(
                 context,
                 PresetRestrictions.allOceans(context)
                         .withFish("aquaculture", "jellyfish")
                         .withBucketedFish("aquaculture", "jellyfish_bucket")
                         .withEntityToSpawn("aquaculture", "jellyfish")
-                        .withSizeAndWeight(100, 70, 50000, 40000)
+                        .withSizeAndWeight(100, 70, 50, 10)
                         .withRarity(Rarity.UNCOMMON)
                         .withDifficulty(Difficulty.HARD)
                         .withBaseChance(3),
@@ -283,8 +307,10 @@ public class DGAquacultureFishes
                         .withFish("aquaculture", "red_grouper")
                         .withBucketedFish("aquaculture", "red_grouper_bucket")
                         .withEntityToSpawn("aquaculture", "red_grouper")
-                        .withSizeAndWeight(100, 50, 15000, 10000),
-                "aquaculture"
+                        .withSizeAndWeight(100, 50, 15000, 10000)
+                        .withRarity(Rarity.UNCOMMON)
+                        .withDifficulty(Difficulty.MEDIUM)
+                , "aquaculture"
         );
 
         FishRegistration.register(
@@ -329,8 +355,8 @@ public class DGAquacultureFishes
                         .withBucketedFish("aquaculture", "piranha_bucket")
                         .withEntityToSpawn("aquaculture", "piranha")
                         .withSizeAndWeight(30, 10, 500, 300)
-                        .addBait(BaitRestriction.LEGENDARY_BAIT)
                         .withRarity(Rarity.LEGENDARY)
+                        .withDifficulty(Difficulty.HARD.moving())
                         .withDaytimeRestriction(DaytimeRestriction.NOON),
                 "aquaculture"
         );
@@ -347,32 +373,6 @@ public class DGAquacultureFishes
                 "aquaculture"
         );
 
-        //swamp
-        FishRegistration.register(
-                context,
-                PresetRestrictions.swamp(context)
-                        .withFish("aquaculture", "leech")
-                        //no bucketed version
-                        //no entity
-                        .withSizeAndWeight(10, 5, 5, 3)
-                        .withRarity(Rarity.RARE)
-                        .withDifficulty(Difficulty.HARD),
-                "aquaculture"
-        );
-
-        FishRegistration.register(
-                context,
-                PresetRestrictions.swamp(context)
-                        .withFish("aquaculture", "box_turtle")
-                        //no bucketed version
-                        .withEntityToSpawn("aquaculture", "box_turtle")
-                        .withSizeAndWeight(20, 5, 1000, 500)
-                        .withRarity(Rarity.EPIC)
-                        .withDifficulty(Difficulty.HARD)
-                        .withWeather(WeatherRestriction.RAIN),
-                "aquaculture"
-        );
-
         //mushroom island
         FishRegistration.register(
                 context,
@@ -382,6 +382,7 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "brown_shrooma")
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD.moving())
                 , "aquaculture"
         );
 
@@ -393,6 +394,7 @@ public class DGAquacultureFishes
                         .withEntityToSpawn("aquaculture", "brown_shrooma")
                         .withSizeAndWeight(100, 20, 3000, 500)
                         .withRarity(Rarity.EPIC)
+                        .withDifficulty(Difficulty.HARD.moving())
                 , "aquaculture"
         );
 
