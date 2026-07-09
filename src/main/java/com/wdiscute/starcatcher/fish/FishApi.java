@@ -212,9 +212,9 @@ public class FishApi
                             o -> BuiltInRegistries.ITEM.getKey(o.getDelegate().value())
                     ).anyMatch(rl -> rl.equals(fp.catchInfo().fish().rl()));
                 else
-                    //if entity is not from starcatcher, then it can spawn
+                    //if entity is not from starcatcher, then it can spawn if not golden
                     //because the default is starcatcher:fish, meaning if its any other entity, then it can spawn
-                    canSpawnEntity = true;
+                    canSpawnEntity = !golden;
 
                 //check if should spawn entity, can catch && anything wants to spawn it
                 if (canSpawnEntity &&
@@ -256,6 +256,15 @@ public class FishApi
                     Vec3 vec3 = new Vec3(x, 0.7 + y, z);
                     entity.setDeltaMovement(vec3);
                     level.addFreshEntity(entity);
+
+                    //consume bait if not bucket
+                    ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
+                    if(!bait.is(Tags.Items.BUCKETS_EMPTY))
+                    {
+                        bait.shrink(1);
+                        player.awardStat(SCStats.BAIT_USED.get(), 1);
+                        SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
+                    }
                 }
                 //if not entity then add rod item resourceLocation
                 else
@@ -346,23 +355,15 @@ public class FishApi
 
                 //play sound from tackle skin
                 fbe.tackleSkin.onFailedMinigame(player);
-            }
 
-            //consume bait if not bucket
-            ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
-            if (!bait.is(Tags.Items.BUCKETS_EMPTY) && !bait.isEmpty())
-            {
-                bait.shrink(1);
-                player.awardStat(SCStats.BAIT_USED.get(), 1);
-                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
-            }
-
-            //consume bait if bucket & bucketed fish available, and completed minigame (fish don't eat buckets!)
-            if (bait.is(Tags.Items.BUCKETS_EMPTY) && !fbe.fpToFish.catchInfo().bucketedFish().toStack().isEmpty() && completed)
-            {
-                bait.shrink(1);
-                player.awardStat(SCStats.BAIT_USED.get(), 1);
-                SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
+                //always consume bait if not bucket (fish don't eat buckets!)
+                ItemStack bait = SCDataComponents.getOrDefault(fbe.rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
+                if(!bait.is(Tags.Items.BUCKETS_EMPTY))
+                {
+                    bait.shrink(1);
+                    player.awardStat(SCStats.BAIT_USED.get(), 1);
+                    SCDataComponents.set(fbe.rod, SCDataComponents.BAIT, new MaybeStack(bait));
+                }
             }
 
             //sync stats to player for guide book
@@ -402,11 +403,25 @@ public class FishApi
     {
         ItemStack bait = SCDataComponents.getOrDefault(rod, SCDataComponents.BAIT, MaybeStack.EMPTY).toStack();
 
-        boolean canBeBucketed = !fp.catchInfo().bucketedFish().toStack().isEmpty() && bait.is(Tags.Items.BUCKETS_EMPTY);
+        //can be bucketed if has bucketed fish in fp, bait has bucket, and is not golden
+        boolean canBeBucketed = !fp.catchInfo().bucketedFish().toStack().isEmpty() && bait.is(Tags.Items.BUCKETS_EMPTY) && !golden;
+
+        //always consume bait if not bait is not a bucket
+        if(!bait.is(Tags.Items.BUCKETS_EMPTY))
+        {
+            bait.shrink(1);
+            player.awardStat(SCStats.BAIT_USED.get(), 1);
+            SCDataComponents.set(rod, SCDataComponents.BAIT, new MaybeStack(bait));
+        }
 
         //if bucketed fish
         if (canBeBucketed)
         {
+            //always consume bait (bucket) if bucketed fish
+            bait.shrink(1);
+            player.awardStat(SCStats.BAIT_USED.get(), 1);
+            SCDataComponents.set(rod, SCDataComponents.BAIT, new MaybeStack(bait));
+
             ItemStack baseFish = fp.catchInfo().fish().toStack();
 
             CaughtFishInfo caughtFishInfo = new CaughtFishInfo(fp.sizeWeight().getSizeForPercentile(percentile), fp.sizeWeight().getWeightForPercentile(percentile), percentile, golden ? Rarity.GOLDEN : fp.rarity());

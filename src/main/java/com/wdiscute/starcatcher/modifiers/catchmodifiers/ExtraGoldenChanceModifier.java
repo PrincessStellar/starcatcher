@@ -59,13 +59,11 @@ public class ExtraGoldenChanceModifier extends AbstractCatchModifier
     {
         //if dont need perfect catch, do normal math
         if (!onlyForPerfectCatch)
-            return FishCaughtCounter.canCatchGolden(fbe.fpToFish, (ServerPlayer) fbe.player)
-                    && fbe.level().getRandom().nextFloat() < risk;
+            return fbe.level().getRandom().nextFloat() < risk;
 
         //otherwise only run if it's perfect
         if (perfect)
-            return FishCaughtCounter.canCatchGolden(fbe.fpToFish, (ServerPlayer) fbe.player)
-                    && fbe.level().getRandom().nextFloat() < risk;
+            return fbe.level().getRandom().nextFloat() < risk;
 
         return false;
     }

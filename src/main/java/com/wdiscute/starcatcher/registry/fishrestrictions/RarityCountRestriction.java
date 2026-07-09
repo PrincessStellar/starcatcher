@@ -43,8 +43,6 @@ public class RarityCountRestriction extends AbstractFishRestriction
 
         public static final Codec<RarityCount> CODEC = RecordCodecBuilder.create(instance ->
                 instance.group(
-                        //golden here is used for "all rarities" as no fish is ever stored with gold rarity.
-                        //I don't wanna hear anything from kapiten about this
                         Rarity.CODEC.optionalFieldOf("rarity", Rarity.NONE).forGetter(RarityCount::rarity),
                         Codec.INT.optionalFieldOf("count", 0).forGetter(RarityCount::count),
                         CountType.CODEC.fieldOf("count_type").forGetter(RarityCount::countType)
@@ -124,7 +122,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
 
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = SCDataAttachments.get(entity, SCDataAttachments.FISHING_GUIDE).fishesCaught;
         var registry = FishApi.getRegistry(level);
-        List<FishProperties> allFishes = FishApi.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
+        List<FishProperties> allFishes = FishApi.getFishes(level).stream().filter(FishProperties::hasGuideEntry).filter(o -> !o.catchInfo().alwaysSpawnEntity()).toList();
         Map<Rarity, Pair<Integer, Integer>> map = new HashMap<>();
 
         //populate default map with all rarities and [0, 0]
@@ -165,7 +163,7 @@ public class RarityCountRestriction extends AbstractFishRestriction
         if (rarityCount.countType == RarityCount.CountType.ALL)
         {
             Registry<FishProperties> registry = FishApi.getRegistry(level);
-            List<FishProperties> fps = FishApi.getFishes(level).stream().filter(o -> o.hasGuideEntry()).toList();
+            List<FishProperties> fps = FishApi.getFishes(level).stream().filter(FishProperties::hasGuideEntry).filter(o -> !o.catchInfo().alwaysSpawnEntity()).toList();
 
             if (rarityCount.rarity.equals(Rarity.NONE))
             {

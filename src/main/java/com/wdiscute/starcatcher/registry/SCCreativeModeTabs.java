@@ -4,6 +4,7 @@ import com.wdiscute.sellingbin.registry.SBBlocks;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.AdjustLureTimeModifier;
+import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.NeverLoseModifier;
 import net.mcexpanded.fancytabsections.FancyTabSections;
 import net.mcexpanded.fancytabsections.Section.SectionColored;
@@ -45,6 +46,7 @@ public interface SCCreativeModeTabs
                                 {
                                     ItemStack devRod = SCItems.ICEBORN_ROD.toStack();
                                     SCDataComponents.set(devRod, SCDataComponents.MODIFIERS, List.of(
+                                            //new ExtraGoldenChanceModifier(1, false, ""),
                                             new NeverLoseModifier(""),
                                             new AdjustLureTimeModifier(0.2f, 0.2f, 0.2f, "")
                                     ));
