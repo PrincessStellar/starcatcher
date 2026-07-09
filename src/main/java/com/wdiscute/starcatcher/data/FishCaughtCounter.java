@@ -150,7 +150,7 @@ public record FishCaughtCounter(
 
             //send packet to client to display message above exp bar and fish caught toast, unless it alwaysSpawnEntity() (where sw and caught doesn't make sense)
             if (!fpCaught.catchInfo().alwaysSpawnEntity() && fpCaught.hasGuideEntry())
-                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtNotifs(fpCaught, displayToast && newFish, percentile));
+                PacketDistributor.sendToPlayer(((ServerPlayer) player), new CBFishCaughtNotifs(fpCaught, displayToast && newFish, percentile, golden));
 
             FishingGuideAttachment.setFishesCaught(player, fishesCaught);
         }
