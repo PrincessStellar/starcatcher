@@ -41,7 +41,7 @@ public class DGTrophies
                         .withHasGuideEntry(false)
                         .withRarity(Rarity.COMMON)
                         .addRarityRestriction(
-                                new RarityCountRestriction.RarityCount(Rarity.COMMON, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
+                                new RarityCountRestriction.RarityCount(Rarity.NONE, 25, RarityCountRestriction.RarityCount.CountType.TOTAL)
                         )
                         .trophy()
         );
