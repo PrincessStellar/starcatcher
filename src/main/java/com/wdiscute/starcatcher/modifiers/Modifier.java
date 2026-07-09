@@ -124,7 +124,8 @@ public interface Modifier
             List<Modifier> list = activeEffect.getEffect().getData(SCDataMaps.EFFECT_MODIFIERS);
 
             if(list != null && !list.isEmpty())
-                modifiers.addAll(list);
+                for (int i = 0; i < activeEffect.getAmplifier(); i++)
+                    modifiers.addAll(list);
         }
 
         return modifiers;
