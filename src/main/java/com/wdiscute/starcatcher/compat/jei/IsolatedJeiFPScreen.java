@@ -5,23 +5,23 @@ import com.wdiscute.starcatcher.guide.IsolatedFPScreen;
 import com.wdiscute.starcatcher.data.FishCaughtCounter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 
 public class IsolatedJeiFPScreen extends IsolatedFPScreen
 {
-    private final StarcatcherJeiFPRecipe.Recipe recipe;
+    private final Screen screen;
 
-    public IsolatedJeiFPScreen(StarcatcherJeiFPRecipe.Recipe recipe)
+    public IsolatedJeiFPScreen(StarcatcherJeiFPRecipe.Recipe recipe, Screen screen)
     {
         super(recipe.fp(), null);
-        this.recipe = recipe;
+        this.screen = screen;
     }
 
     @Override
     public void onClose()
     {
         super.onClose();
-
-        //EmiApi.displayRecipe(recipe);
+        Minecraft.getInstance().setScreen(screen);
     }
 
     @Override

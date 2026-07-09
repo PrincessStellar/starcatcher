@@ -49,6 +49,11 @@
   "stat.starcatcher.golden_catches": "Starcatcher - Golden Fishes Found",
   "stat.starcatcher.perfect_catches": "Starcatcher - Perfectly Fished",
 
+  "emi.starcatcher.fp.loot_tables" : "Loot Tables:",
+  "emi.starcatcher.fp.individual_items" : "Individual Items:",
+  "emi.starcatcher.fp.blacklisted_items" : "Blacklisted Items:",
+  "emi.starcatcher.fp.weight" : " weight - item",
+
   "emi.starcatcher.open_as_guide_entry" : "Open as guide entry",
   "emi.starcatcher.entity_entry" : "This entry will always spawn a %s",
 

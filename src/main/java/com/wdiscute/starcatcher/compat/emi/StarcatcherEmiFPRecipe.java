@@ -59,18 +59,14 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
 
         if (treasure == null) treasure = Treasure.EMPTY;
 
-        List<ItemStack> stacks = new ArrayList<>();
-
-        stacks.add(SCItems.TREASURE.toStack());
-
         List<WeightedLootTable> lts = new ArrayList<>(treasure.lootTables());
         lts.sort(Comparator.comparingInt(WeightedLootTable::weight));
         lts = lts.reversed();
 
         if (!lts.isEmpty())
         {
-            treasureTooltip.add(Component.literal("Loot Tables:").withStyle(ChatFormatting.BOLD)
-                    .append(Component.literal(" weight - path").withStyle(Style.EMPTY.withBold(false)).withStyle(ChatFormatting.DARK_GRAY)));
+            treasureTooltip.add(Component.translatable("emi.starcatcher.fp.loot_tables").withStyle(ChatFormatting.BOLD)
+                    .append(Component.translatable("emi.starcatcher.fp.weight").withStyle(Style.EMPTY.withBold(false)).withStyle(ChatFormatting.DARK_GRAY)));
             for (WeightedLootTable lootTable : lts)
             {
                 treasureTooltip.add(Component.literal(lootTable.weight() + " - " + lootTable.resourceLocation().getNamespace() + ":" + lootTable.resourceLocation().getPath()));
@@ -81,13 +77,19 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
         stks.sort(Comparator.comparingInt(WeightedStack::weight));
         stks = stks.reversed();
 
+        List<ItemStack> stacks = new ArrayList<>();
+
+        stacks.add(SCItems.TREASURE.toStack());
+
         if (!stks.isEmpty())
         {
+            stacks.remove(0);
+
             if (!treasureTooltip.isEmpty())
                 treasureTooltip.add(Component.literal(""));
 
-            treasureTooltip.add(Component.literal("Individual Items:").withStyle(ChatFormatting.BOLD)
-                    .append(Component.literal(" weight - item").withStyle(Style.EMPTY.withBold(false)).withStyle(ChatFormatting.DARK_GRAY)));
+            treasureTooltip.add(Component.translatable("emi.starcatcher.fp.individual_items").withStyle(ChatFormatting.BOLD)
+                    .append(Component.translatable("emi.starcatcher.fp.weight").withStyle(Style.EMPTY.withBold(false)).withStyle(ChatFormatting.DARK_GRAY)));
             for (WeightedStack weightedStack : stks)
             {
                 treasureTooltip.add(Component.literal(weightedStack.weight() + " - ").append(weightedStack.stack().toStack().getHoverName()));
@@ -100,7 +102,7 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
             if (!treasureTooltip.isEmpty())
                 treasureTooltip.add(Component.literal(""));
 
-            treasureTooltip.add(Component.literal("Blacklisted Items:").withStyle(ChatFormatting.BOLD));
+            treasureTooltip.add(Component.translatable("emi.starcatcher.fp.blacklisted_items").withStyle(ChatFormatting.BOLD));
             for (Ingredient ing : treasure.blacklist())
             {
                 ItemStack[] items = ing.getItems();
@@ -204,7 +206,7 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
         //render guide book
         widgets.add(new StarcatcherRenderItemEmiWidget(85, 3, SCItems.GUIDE.toStack()));
         //show in guide hover
-        widgets.add(new StarcatcherShowInGuideEmiWidget(83, 1, fp, this));
+        widgets.add(new StarcatcherShowInGuideEmiWidget(83, 1, fp));
 
 
         if (fp.catchInfo().alwaysSpawnEntity())

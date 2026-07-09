@@ -8,22 +8,23 @@ import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 
 public class IsolatedEmiFPScreen extends IsolatedFPScreen
 {
-    private final EmiRecipe emiRecipe;
+    private final Screen screen;
 
-    public IsolatedEmiFPScreen(FishProperties fishProperties, EmiRecipe emiRecipe)
+    public IsolatedEmiFPScreen(FishProperties fishProperties, Screen screen)
     {
         super(fishProperties, null);
-        this.emiRecipe = emiRecipe;
+        this.screen = screen;
     }
 
     @Override
     public void onClose()
     {
         super.onClose();
-        EmiApi.displayRecipe(emiRecipe);
+        Minecraft.getInstance().setScreen(screen);
     }
 
     @Override

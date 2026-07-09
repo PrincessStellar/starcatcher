@@ -31,8 +31,8 @@ import java.util.List;
 @JeiPlugin
 public class StarcatcherJeiPlugin implements IModPlugin
 {
-    public static final ResourceLocation ARROW = Starcatcher.rl("textures/gui/emi/arrow.png");
-    public static final ResourceLocation SLOT_BACKGROUND = SellingBin.rl("textures/gui/slot_background.png");
+    public static final ResourceLocation ARROW = Starcatcher.rl("textures/gui/jemi/arrow.png");
+    public static final ResourceLocation SLOT_BACKGROUND_FILLED = Starcatcher.rl("textures/gui/jemi/slot_background_filled.png");
 
     public static List<StarcatcherJeiFPRecipe.Recipe> listRecipes = new ArrayList<>();
 
