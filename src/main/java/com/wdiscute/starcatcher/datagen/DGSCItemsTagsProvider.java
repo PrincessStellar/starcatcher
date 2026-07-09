@@ -79,6 +79,16 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                     case EPIC -> tag(SCTags.EPIC_FISHES).addOptional(key);
                     case LEGENDARY -> tag(SCTags.LEGENDARY_FISHES).addOptional(key);
                 }
+
+                if (key.getNamespace().equals("starcatcher"))
+                    switch (fp.rarity())
+                    {
+                        case COMMON -> tag(SCTags.COMMON_STARCAUGHT_FISHES).addOptional(key);
+                        case UNCOMMON -> tag(SCTags.UNCOMMON_STARCAUGHT_FISHES).addOptional(key);
+                        case RARE -> tag(SCTags.RARE_STARCAUGHT_FISHES).addOptional(key);
+                        case EPIC -> tag(SCTags.EPIC_STARCAUGHT_FISHES).addOptional(key);
+                        case LEGENDARY -> tag(SCTags.LEGENDARY_STARCAUGHT_FISHES).addOptional(key);
+                    }
             }
         }
 

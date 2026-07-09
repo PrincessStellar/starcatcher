@@ -62,10 +62,15 @@ public class SCTags
     public static final TagKey<Item> SHRIMPS = ItemTags.create(Starcatcher.rl("shrimps"));
 
     public static final TagKey<Item> COMMON_FISHES = ItemTags.create(Starcatcher.rl("common_fishes"));
+    public static final TagKey<Item> COMMON_STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("common_starcaught_fishes"));
     public static final TagKey<Item> UNCOMMON_FISHES = ItemTags.create(Starcatcher.rl("uncommon_fishes"));
+    public static final TagKey<Item> UNCOMMON_STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("uncommon_starcaught_fishes"));
     public static final TagKey<Item> RARE_FISHES = ItemTags.create(Starcatcher.rl("rare_fishes"));
+    public static final TagKey<Item> RARE_STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("rare_starcaught_fishes"));
     public static final TagKey<Item> EPIC_FISHES = ItemTags.create(Starcatcher.rl("epic_fishes"));
+    public static final TagKey<Item> EPIC_STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("epic_starcaught_fishes"));
     public static final TagKey<Item> LEGENDARY_FISHES = ItemTags.create(Starcatcher.rl("legendary_fishes"));
+    public static final TagKey<Item> LEGENDARY_STARCAUGHT_FISHES = ItemTags.create(Starcatcher.rl("legendary_starcaught_fishes"));
 
     public static final TagKey<Item> HAS_RADAR_LAYER = ItemTags.create(Starcatcher.rl("has_radar_layer"));
     public static final TagKey<Item> HAS_TRACKER_LAYER = ItemTags.create(Starcatcher.rl("has_tracker_layer"));

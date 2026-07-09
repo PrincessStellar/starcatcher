@@ -17,6 +17,10 @@ public class DeepslateSweetSpotBehaviour extends NormalSweetSpotBehaviour
     public void tick(FishingMinigameScreen instance, ActiveSweetSpot ass)
     {
         super.tick(instance, ass);
+
+        if(instance.gracePeriod == Integer.MAX_VALUE)
+            ass.alpha = 1;
+
         if(ass.shouldSudokuOnVanish && ass.alpha <= 0)
             instance.addParticles(ass.pos, 10, ass.particleColor);
     }
