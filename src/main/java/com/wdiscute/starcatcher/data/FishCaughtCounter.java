@@ -45,6 +45,12 @@ public record FishCaughtCounter(
 
     public static boolean canCatchGolden(FishProperties fp, Player player)
     {
+        //can't catch golden if it's always entity
+        if(fp.catchInfo().alwaysSpawnEntity()) return false;
+
+        //can't catch golden if it has no guide entry
+        if(fp.hasGuideEntry()) return false;
+
         //returns false if player has already caught the golden fish of that fp
         Map<ResourceLocation, FishCaughtCounter> fishesCaught = FishingGuideAttachment.getFishesCaught(player);
         ResourceLocation loc = player.level().registryAccess().registryOrThrow(Starcatcher.FISH_REGISTRY_KEY).getKeyOrNull(fp);
