@@ -6,7 +6,6 @@ import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.registry.fishrestrictions.WeatherRestriction;
-import com.wdiscute.utils.MaybeStack;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
 
@@ -116,7 +115,7 @@ public class DGFishOfThievesFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish("fishofthieves", "wrecker")
                         .withBucketedFish("fishofthieves", "wrecker_bucket")
                         .withEntityToSpawn("fishofthieves", "wrecker")

@@ -103,6 +103,8 @@ public class StructureRestriction extends AbstractFishRestriction
         return -9999;
     }
 
+    public static final StructureRestriction TRIAL_CHAMBERS = new StructureRestriction(List.of(BuiltinStructures.TRIAL_CHAMBERS.location()), "");
+    public static final StructureRestriction OCEAN_MONUMENT = new StructureRestriction(List.of(BuiltinStructures.OCEAN_MONUMENT.location()), "");
     public static final StructureRestriction END_CITIES = new StructureRestriction(List.of(BuiltinStructures.END_CITY.location()), "");
     public static final StructureRestriction VILLAGES = new StructureRestriction(List.of(
             BuiltinStructures.VILLAGE_TAIGA.location(),

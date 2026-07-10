@@ -13,8 +13,6 @@ import com.wdiscute.utils.Utils;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 public class DGAlexsCavesFishes
 {
     public static void bootstrap(@Nullable BootstrapContext<FishProperties> context)

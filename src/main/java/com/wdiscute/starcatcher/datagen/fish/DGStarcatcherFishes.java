@@ -6,10 +6,7 @@ import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class DGStarcatcherFishes
 {
@@ -1293,7 +1290,7 @@ public class DGStarcatcherFishes
 
         //uncommon
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.END_GLOW)
                         .withSizeAndWeight(new SizeAndWeight(235, 25, 7000, 700))
                         .withRarity(Rarity.UNCOMMON)
@@ -1302,7 +1299,7 @@ public class DGStarcatcherFishes
 
         //rare
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.CHARFISH)
                         .withSizeAndWeight(new SizeAndWeight(135, 25, 4000, 700))
                         .withRarity(Rarity.RARE)
@@ -1311,7 +1308,7 @@ public class DGStarcatcherFishes
 
         //epic
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.CHORUS_CRAB)
                         .withSizeAndWeight(new SizeAndWeight(15, 8, 700, 300))
                         .withRarity(Rarity.EPIC)
@@ -1320,7 +1317,7 @@ public class DGStarcatcherFishes
 
         //end void
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.VOIDBITER)
                         .withSizeAndWeight(new SizeAndWeight(50, 15, 2000, 200))
                         .withRarity(Rarity.LEGENDARY)
@@ -1329,7 +1326,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.PURPLE_CARP)
                         .withSizeAndWeight(new SizeAndWeight(150, 70, 4000, 1200))
                         .withRarity(Rarity.EPIC)
@@ -1337,7 +1334,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.end(context)
+                PresetRestrictions.endVoid(context)
                         .withFish(SCItems.VOIDFIN)
                         .withSizeAndWeight(new SizeAndWeight(250, 60, 6000, 800))
                         .withRarity(Rarity.EPIC)

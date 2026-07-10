@@ -51,6 +51,13 @@
       "translation_override": "gui.guide.elevation.deepslate"
     },
     {
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:water"
+      ],
+      "translation_override": "fluid.starcatcher.water"
+    },
+    {
       "type": "starcatcher:caught_limit",
       "limit": 1
     },
@@ -63,13 +70,6 @@
           "rarity": "epic"
         }
       ]
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:water"
-      ],
-      "translation_override": "fluid.starcatcher.water"
     }
   ],
   "size_and_weight": {

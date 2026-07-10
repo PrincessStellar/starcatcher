@@ -3,7 +3,6 @@ package com.wdiscute.starcatcher.datagen.fish;
 import com.mojang.datafixers.util.Pair;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.CatchInfo;
-import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.minigamemodifiers.BurnOnMissModifier;
@@ -29,27 +28,34 @@ public final class FishRegistration
     public static Map<FishProperties, ResourceLocation> ALL_FISHABLE_MAP = new HashMap<>();
     public static List<FishProperties> STARCATCHER_FISHABLE = new ArrayList<>();
 
+    //apply fp specific stuff and register
     public static void register(BootstrapContext<FishProperties> context, FishProperties fp)
     {
-        registerInternal(context, key(fp), fp, "");
+        register(context, fp, "");
     }
 
-    public static void register(BootstrapContext<FishProperties> context, FishProperties fp, String requiredModId)
+    public static void register(BootstrapContext<FishProperties> context, FishProperties input, String requiredModId)
     {
+        FishProperties fp = prepare(input);
         registerInternal(context, key(fp), fp, requiredModId);
     }
 
-    public static void register(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties)
+    //register without applying fp specific stuff
+    public static void registerRaw(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties, String requiredModId)
+    {
+        registerInternal(context, key, properties, requiredModId);
+    }
+
+    public static void registerRaw(BootstrapContext<FishProperties> context, ResourceKey<FishProperties> key, FishProperties properties)
     {
         registerInternal(context, key, properties, "");
     }
 
     private static void registerInternal(BootstrapContext<FishProperties> context,
                                          ResourceKey<FishProperties> key,
-                                         FishProperties input,
+                                         FishProperties fp,
                                          String requiredModId)
     {
-
         //if running during conditions generation, dont register as context is null
         if (DGSCFishProperties.runningOnlyForConditions)
         {
@@ -59,8 +65,16 @@ public final class FishRegistration
             return;
         }
 
-        FishProperties fp = prepare(input);
+        if(fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && fp.restrictions().stream().noneMatch(o -> o instanceof FluidRestriction))
+            throw new IllegalStateException("No Fluid Restriction found for " + fp);
+
+        //add to lists and maps
+        ALL_FISHABLE.add(fp);
         ALL_FISHABLE_MAP.put(fp, key.location());
+        //add every starcatcher fish that is not trash to STARCATCHER_FISHABLE tag
+        if (fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.rarity().equals(Rarity.TRASH))
+            STARCATCHER_FISHABLE.add(fp);
+
         context.register(key, fp);
     }
 
@@ -71,7 +85,6 @@ public final class FishRegistration
         fp = applyStarcaughtLogic(fp);
         fp = applyChanceModifiers(fp);
         fp = applyBaits(fp);
-        addToLists(fp);
         return fp;
     }
 
@@ -120,19 +133,13 @@ public final class FishRegistration
         if (fp.restrictions().stream().anyMatch(o -> o.equals(DaytimeRestriction.MIDNIGHT)))
             chance += 15;
 
+        if (fp.restrictions().stream().anyMatch(o -> o instanceof MoonPhaseRestriction))
+            chance += 20;
+
         if (fp.rarity().equals(Rarity.TRASH))
             chance = (int) (chance * 0.5f);
 
         return fp.withBaseChance(chance);
-    }
-
-    private static void addToLists(FishProperties fp)
-    {
-        ALL_FISHABLE.add(fp);
-
-        //add every starcatcher fish that is not trash to STARCATCHER_FISHABLE tag
-        if (fp.catchInfo().fish().rl().getNamespace().equals("starcatcher") && fp.catchInfo().fishEntryType().equals(CatchInfo.FishEntryType.FISH) && !fp.rarity().equals(Rarity.TRASH))
-            STARCATCHER_FISHABLE.add(fp);
     }
 
     private static FishProperties sortRestrictions(FishProperties fp)

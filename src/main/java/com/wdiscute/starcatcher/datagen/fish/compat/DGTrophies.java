@@ -5,19 +5,15 @@ import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.Difficulty;
 import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.fish.Rarity;
-import com.wdiscute.starcatcher.fish.SizeAndWeight;
 import com.wdiscute.starcatcher.messageinabottle.message.Message;
 import com.wdiscute.starcatcher.registry.SCDataComponents;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.registry.fishrestrictions.*;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.Structures;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class DGTrophies
 {
@@ -288,7 +284,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.AMETHYST_HOOK);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/amethyst_hook"),
                     PresetRestrictions.empty(context)
                             .addRestriction(ElevationRestriction.ABOVE_FIFTY)
@@ -305,7 +301,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPEFUL);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/hopeful"),
                     PresetRestrictions.empty(context)
                             .addRestriction(ElevationRestriction.ABOVE_FIFTY)
@@ -322,7 +318,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.HOPELESS);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/hopeless"),
                     PresetRestrictions.empty(context)
                             .addRestriction(ElevationRestriction.ABOVE_FIFTY)
@@ -340,7 +336,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_1);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/lava_1"),
                     PresetRestrictions.surfaceLava(context)
                             .withFish(stack)
@@ -356,7 +352,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.LAVA_PROOF_2);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/lava_2"),
                     PresetRestrictions.surfaceLava(context)
                             .withFish(stack)
@@ -373,7 +369,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.TRUE_BLUE);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/true_blue"),
                     PresetRestrictions.empty(context)
                             .withPercentageChance(0.004f)
@@ -389,7 +385,7 @@ public class DGTrophies
         {
             ItemStack stack = SCItems.MESSAGE_IN_A_BOTTLE.toStack();
             SCDataComponents.set(stack, SCDataComponents.MESSAGE, Message.BuiltIn.WITHER);
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("message/wither"),
                     PresetRestrictions.empty(context)
                             .withFish(stack)
@@ -412,7 +408,7 @@ public class DGTrophies
         //
 
         {
-            FishRegistration.register(context,
+            FishRegistration.registerRaw(context,
                     FishRegistration.key("quest/amethyst_hook"),
                     PresetRestrictions.deepslate(context)
                             .withFish(SCItems.AMETHYST_HOOK)

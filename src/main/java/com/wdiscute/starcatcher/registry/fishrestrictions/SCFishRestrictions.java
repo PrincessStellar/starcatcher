@@ -1,9 +1,7 @@
 package com.wdiscute.starcatcher.registry.fishrestrictions;
 
 import com.wdiscute.starcatcher.Starcatcher;
-import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -35,7 +33,6 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> ELEVATION_RESTRICTION =
             registerFishRestriction("elevation_restriction", ElevationRestriction::new);
 
-    //todo add fishes with this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> ELEVATION_BIAS =
             registerFishRestriction("elevation_bias", ElevationBias::new);
 
@@ -49,9 +46,11 @@ public interface SCFishRestrictions
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> DAYTIME_BIAS =
             registerFishRestriction("daytime_bias", DaytimeBias::new);
 
-    //todo add this
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> MOON_PHASE =
-            registerFishRestriction("moon_phase", () -> new EmptyRestriction(""));
+            registerFishRestriction("moon_phase", () -> new MoonPhaseRestriction(List.of(), ""));
+
+    DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> LUCK_RESTRICTION =
+            registerFishRestriction("luck_restriction", () -> new LuckRestriction(0, ""));
 
     DeferredHolder<AbstractFishRestriction, AbstractFishRestriction> SEASON =
             registerFishRestriction("season", () -> new SeasonRestriction(Map.of(), ""));

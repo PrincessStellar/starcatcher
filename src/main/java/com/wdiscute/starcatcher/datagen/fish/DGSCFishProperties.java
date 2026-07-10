@@ -80,7 +80,7 @@ public class DGSCFishProperties extends DatapackBuiltinEntriesProvider
         DGCreateFishes.bootstrap(context);
 
         //compat
-        //DGTideFishes.bootstrap(context);
+        DGTideFishes.bootstrap(context);
         //DGAquacultureFishes.bootstrap(context);
         //DGFishOfThievesFishes.bootstrap(context);
         //DGNetherDepthsUpgradeFishes.bootstrap(context);

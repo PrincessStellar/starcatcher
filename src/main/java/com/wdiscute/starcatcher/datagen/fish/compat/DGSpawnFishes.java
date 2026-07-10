@@ -4,7 +4,6 @@ import com.wdiscute.starcatcher.datagen.fish.FishRegistration;
 import com.wdiscute.starcatcher.datagen.fish.PresetRestrictions;
 import com.wdiscute.starcatcher.fish.*;
 import com.wdiscute.starcatcher.registry.fishrestrictions.DaytimeRestriction;
-import com.wdiscute.utils.MaybeStack;
 import net.minecraft.data.worldgen.BootstrapContext;
 import org.jetbrains.annotations.Nullable;
 

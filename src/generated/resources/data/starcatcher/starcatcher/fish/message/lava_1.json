@@ -42,14 +42,7 @@
     "decay": 0.0,
     "hp": 100,
     "missPenalty": 0,
-    "modifiers": [
-      {
-        "type": "starcatcher:burn_on_miss",
-        "extra_speed": 20,
-        "length": 40,
-        "ramp_time": 10
-      }
-    ],
+    "modifiers": [],
     "speed": 10,
     "sweetspots": [
       {
@@ -83,6 +76,12 @@
       "translation_override": "dimension.minecraft.overworld"
     },
     {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 2147483647,
+      "min_y": 50,
+      "translation_override": "gui.guide.elevation.surface"
+    },
+    {
       "type": "starcatcher:biome",
       "biomes": [],
       "blacklist": [
@@ -97,10 +96,11 @@
       "translation_override": "gui.guide.lakes"
     },
     {
-      "type": "starcatcher:elevation_restriction",
-      "max_y": 2147483647,
-      "min_y": 50,
-      "translation_override": "gui.guide.elevation.surface"
+      "type": "starcatcher:fluid",
+      "fluids": [
+        "minecraft:lava"
+      ],
+      "translation_override": "fluid.starcatcher.lava"
     },
     {
       "type": "starcatcher:caught_limit",
@@ -115,13 +115,6 @@
           "rarity": "legendary"
         }
       ]
-    },
-    {
-      "type": "starcatcher:fluid",
-      "fluids": [
-        "minecraft:lava"
-      ],
-      "translation_override": "fluid.starcatcher.lava"
     }
   ],
   "size_and_weight": {

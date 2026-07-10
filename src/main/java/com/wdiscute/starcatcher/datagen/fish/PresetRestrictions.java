@@ -18,6 +18,15 @@ public class PresetRestrictions
         return FishProperties.empty();
     }
 
+    public static FishProperties overworldVoid(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .addRestriction(DimensionRestriction.OVERWORLD)
+                .addRestriction(FluidRestriction.VOID)
+                .addRestriction(ElevationRestriction.BELOW_MINUS_SIXTY_FOUR)
+                ;
+    }
+
     public static FishProperties lake(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
@@ -339,6 +348,26 @@ public class PresetRestrictions
                 ;
     }
 
+    public static FishProperties crimsonForest(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .withTextures(FishProperties.NETHER)
+                .addRestriction(DimensionRestriction.NETHER)
+                .addRestriction(BiomeRestriction.crimsonForest())
+                .addRestriction(FluidRestriction.LAVA)
+                ;
+    }
+
+    public static FishProperties warpedForest(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .withTextures(FishProperties.NETHER)
+                .addRestriction(DimensionRestriction.NETHER)
+                .addRestriction(BiomeRestriction.warpedForest())
+                .addRestriction(FluidRestriction.LAVA)
+                ;
+    }
+
     public static FishProperties netherLavaBasaltDeltas(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
@@ -359,7 +388,7 @@ public class PresetRestrictions
                 ;
     }
 
-    public static FishProperties end(BootstrapContext<FishProperties> context)
+    public static FishProperties endVoid(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
                 .withTextures(FishProperties.END_VOID)
