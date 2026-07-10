@@ -137,7 +137,7 @@ public abstract class AbstractFishRestriction implements Comparable<AbstractFish
         GUIDE_FISHES_IN_AREA,
         GUIDE_FISHES_HOVER,
         FISH_ENTITY,
-        EMI,
+        JEMI,
         OTHER;
 
         public boolean isGuide()

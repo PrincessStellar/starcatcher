@@ -1290,7 +1290,7 @@ public class DGStarcatcherFishes
 
         //uncommon
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.END_GLOW)
                         .withSizeAndWeight(new SizeAndWeight(235, 25, 7000, 700))
                         .withRarity(Rarity.UNCOMMON)
@@ -1299,7 +1299,7 @@ public class DGStarcatcherFishes
 
         //rare
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.CHARFISH)
                         .withSizeAndWeight(new SizeAndWeight(135, 25, 4000, 700))
                         .withRarity(Rarity.RARE)
@@ -1308,7 +1308,7 @@ public class DGStarcatcherFishes
 
         //epic
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.CHORUS_CRAB)
                         .withSizeAndWeight(new SizeAndWeight(15, 8, 700, 300))
                         .withRarity(Rarity.EPIC)
@@ -1317,7 +1317,7 @@ public class DGStarcatcherFishes
 
         //end void
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.VOIDBITER)
                         .withSizeAndWeight(new SizeAndWeight(50, 15, 2000, 200))
                         .withRarity(Rarity.LEGENDARY)
@@ -1326,7 +1326,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.PURPLE_CARP)
                         .withSizeAndWeight(new SizeAndWeight(150, 70, 4000, 1200))
                         .withRarity(Rarity.EPIC)
@@ -1334,7 +1334,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.endVoid(context)
+                PresetRestrictions.endAir(context)
                         .withFish(SCItems.VOIDFIN)
                         .withSizeAndWeight(new SizeAndWeight(250, 60, 6000, 800))
                         .withRarity(Rarity.EPIC)
@@ -1343,7 +1343,7 @@ public class DGStarcatcherFishes
 
         //end void outer islands
         FishRegistration.register(context,
-                PresetRestrictions.endOuterIslands(context)
+                PresetRestrictions.endOuterIslandsAir(context)
                         .withFish(SCItems.SPACEJELLY)
                         .withSizeAndWeight(new SizeAndWeight(100, 20, 10, 1))
                         .withRarity(Rarity.RARE)
@@ -1352,7 +1352,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.endOuterIslands(context)
+                PresetRestrictions.endOuterIslandsAir(context)
                         .withFish(SCItems.CHORUS_MINNOW)
                         .withSizeAndWeight(new SizeAndWeight(250, 60, 6000, 2200))
                         .withRarity(Rarity.UNCOMMON)
@@ -1360,7 +1360,7 @@ public class DGStarcatcherFishes
         );
 
         FishRegistration.register(context,
-                PresetRestrictions.endOuterIslands(context)
+                PresetRestrictions.endOuterIslandsAir(context)
                         .withFish(SCItems.NEBULA_SQUID)
                         .withSizeAndWeight(new SizeAndWeight(40, 20, 1300, 700))
                         .withRarity(Rarity.EPIC)

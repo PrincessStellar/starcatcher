@@ -388,7 +388,7 @@ public class PresetRestrictions
                 ;
     }
 
-    public static FishProperties endVoid(BootstrapContext<FishProperties> context)
+    public static FishProperties endAir(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
                 .withTextures(FishProperties.END_VOID)
@@ -397,7 +397,17 @@ public class PresetRestrictions
                 ;
     }
 
-    public static FishProperties endOuterIslands(BootstrapContext<FishProperties> context)
+    public static FishProperties endVoid(BootstrapContext<FishProperties> context)
+    {
+        return FishProperties.empty()
+                .withTextures(FishProperties.END_VOID)
+                .addRestriction(DimensionRestriction.END)
+                .addRestriction(ElevationRestriction.END_VOID)
+                .addRestriction(FluidRestriction.VOID)
+                ;
+    }
+
+    public static FishProperties endOuterIslandsAir(BootstrapContext<FishProperties> context)
     {
         return FishProperties.empty()
                 .withTextures(FishProperties.END_VOID)

@@ -52,7 +52,7 @@ public class SCClientEvents
         if (SCKeymappings.EXPAND_TOURNAMENT.consumeClick())
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
 
-        if (SCConfig.ALLOW_GUIDE_KEYBIND.get() && SCKeymappings.OPEN_GUIDE.consumeClick())
+        if (SCKeymappings.OPEN_GUIDE.consumeClick() && SCConfig.ALLOW_GUIDE_KEYBIND.get())
             Minecraft.getInstance().setScreen(new FishingGuideScreen(false, null));
 
     }

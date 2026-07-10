@@ -144,11 +144,16 @@
       "translation_override": "dimension.minecraft.the_end"
     },
     {
+      "type": "starcatcher:elevation_restriction",
+      "max_y": 50,
+      "min_y": -2147483648
+    },
+    {
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:empty"
       ],
-      "translation_override": "fluid.starcatcher.air"
+      "translation_override": "fluid.starcatcher.void"
     }
   ],
   "size_and_weight": {

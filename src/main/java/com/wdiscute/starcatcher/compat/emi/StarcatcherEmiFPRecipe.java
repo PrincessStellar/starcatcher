@@ -23,7 +23,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
@@ -132,7 +131,7 @@ public class StarcatcherEmiFPRecipe implements EmiRecipe
                                 Minecraft.getInstance().level,
                                 fp,
                                 Minecraft.getInstance().player,
-                                AbstractFishRestriction.Context.EMI)
+                                AbstractFishRestriction.Context.JEMI)
                 )
         );
     }

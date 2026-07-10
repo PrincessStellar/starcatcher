@@ -110,6 +110,7 @@ public class ElevationRestriction extends AbstractFishRestriction
     public static final ElevationRestriction ABOVE_HUNDRED = new ElevationRestriction(100, Integer.MAX_VALUE, "gui.guide.elevation.mountains");
     public static final ElevationRestriction ABOVE_TWO_HUNDRED = new ElevationRestriction(200, Integer.MAX_VALUE, "gui.guide.elevation.skies");
     public static final ElevationRestriction BELOW_FIFTY = new ElevationRestriction(Integer.MIN_VALUE, 50, "gui.guide.elevation.underground");
+    public static final ElevationRestriction END_VOID = new ElevationRestriction(Integer.MIN_VALUE, 50, "");
     public static final ElevationRestriction BELOW_ZERO = new ElevationRestriction(Integer.MIN_VALUE, 0, "gui.guide.elevation.deepslate");
     public static final ElevationRestriction BELOW_MINUS_SIXTY_FOUR = new ElevationRestriction(Integer.MIN_VALUE, -64, "gui.guide.elevation.void");
     public static final ElevationRestriction ZERO_TO_FIFTY = new ElevationRestriction(0, 50, "gui.guide.elevation.stone_caves");

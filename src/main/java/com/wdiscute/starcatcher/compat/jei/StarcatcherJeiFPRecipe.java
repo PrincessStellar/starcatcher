@@ -1,7 +1,6 @@
 package com.wdiscute.starcatcher.compat.jei;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import com.wdiscute.sellingbin.jei.SellingBinJeiPlugin;
 import com.wdiscute.starcatcher.SCColors;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.fish.FishProperties;
@@ -11,17 +10,10 @@ import com.wdiscute.starcatcher.registry.SCDataMaps;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.fish.Treasure;
 import com.wdiscute.starcatcher.registry.fishrestrictions.AbstractFishRestriction;
-import dev.emi.emi.api.stack.EmiIngredient;
-import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.builder.ITooltipBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotRichTooltipCallback;
-import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
-import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import net.minecraft.ChatFormatting;
@@ -220,7 +212,7 @@ public class StarcatcherJeiFPRecipe extends AbstractRecipeCategory<StarcatcherJe
                                     Minecraft.getInstance().level,
                                     fp,
                                     Minecraft.getInstance().player,
-                                    AbstractFishRestriction.Context.EMI)
+                                    AbstractFishRestriction.Context.JEMI)
                     )
             );
 

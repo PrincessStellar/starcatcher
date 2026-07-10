@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ChancePercentageRestriction extends AbstractFishRestriction
@@ -67,7 +68,7 @@ public class ChancePercentageRestriction extends AbstractFishRestriction
         if (context.equals(Context.GUIDE_FISHES_IN_AREA)) return 0;
         if (context.equals(Context.GUIDE_FISHES_HOVER)) return 0;
         if (context.equals(Context.FISH_ENTITY)) return Utils.r.nextFloat() > chance ? -9999 : 0;
-        if (context.equals(Context.EMI)) return 0;
+        if (context.equals(Context.JEMI)) return 0;
         return 0;
     }
 
@@ -92,6 +93,6 @@ public class ChancePercentageRestriction extends AbstractFishRestriction
     @Override
     public MutableComponent getNonOverriddenDescription(Level level, FishProperties fp, @NotNull Player player, Context context)
     {
-        return Component.translatable("gui.guide.chance", ((int) (chance * 100)) + "%");
+        return Component.translatable("gui.guide.chance", new DecimalFormat("#.##").format(chance * 100) + "%");
     }
 }

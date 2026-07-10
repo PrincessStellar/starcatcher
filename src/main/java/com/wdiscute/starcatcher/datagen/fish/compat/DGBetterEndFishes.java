@@ -21,7 +21,7 @@ public class DGBetterEndFishes
         //
 
         FishRegistration.register(context,
-                PresetRestrictions.endOuterIslands(context)
+                PresetRestrictions.endOuterIslandsAir(context)
                         .withFish("betterend", "end_fish_raw")
                         .withBucketedFish("betterend", "bucket_end_fish")
                         .withEntityToSpawn("betterend", "end_fish")
