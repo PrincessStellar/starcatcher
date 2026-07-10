@@ -1,6 +1,7 @@
 package com.wdiscute.starcatcher.registry.tackleskin;
 
 import com.wdiscute.starcatcher.bobentity.FishingBobEntity;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -13,7 +14,7 @@ public abstract class AbstractTackleSkin
     public void onBiting(Player player, Entity bobber)
     {
         RandomSource random = player.level().getRandom();
-        player.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.25F, 1.0F + (random.nextFloat() - random.nextFloat()) * 0.4F);
+        bobber.playSound(SoundEvents.FISHING_BOBBER_SPLASH, 0.4F, 1.0F + (random.nextFloat() - random.nextFloat()) * 0.4F);
     }
 
     public void onMinigameStarted(Player player)
