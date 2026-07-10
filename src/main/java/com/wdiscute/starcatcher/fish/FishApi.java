@@ -191,7 +191,7 @@ public class FishApi
 
                 //award fish counter entry to guide book
                 FishCaughtCounter.awardFishCaughtCounter(fbe.fpToFish, fbe.rlToAwardUponFishingComplete,
-                        player, time, percentile, perfectCatch, true, golden, false);
+                        player, time, percentile, perfectCatch, true, golden, !SCDataAttachments.get(player, SCDataAttachments.FISHING_GUIDE).fishesCaught.containsKey(fbe.rlToAwardUponFishingComplete));
 
                 //add score to tournaments
                 TournamentHandler.addScore(player, fp, perfectCatch, percentile);

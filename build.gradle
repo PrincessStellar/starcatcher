@@ -89,8 +89,8 @@ dependencies {
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:gbRIPDRZ"))
 
     //fancy tab sections
-    //jarJar(implementation("maven.modrinth:fancytabsections:3.2-NEOFORGE-1.21.1"))
-    jarJar(implementation("net.mcexpanded:Fancy-Tabs-Neo:3.2-NEOFORGE-1.21.1"))
+    jarJar(implementation("maven.modrinth:fancytabsections:3.3-NEOFORGE-1.21.1"))
+    //jarJar(implementation("net.mcexpanded:Fancy-Tabs-Neo:3.3-NEOFORGE-1.21.1"))
 
 
     //EMI
