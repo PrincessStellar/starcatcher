@@ -132,12 +132,6 @@ public class SCConfig
             .translation("starcatcher.configuration.enable_ftb_team_sharing")
             .define("enable_ftb_team_sharing", true);
 
-    public static final ModConfigSpec.BooleanValue ENABLE_SEASONS = BUILDER_SERVER
-            .comment("Enables/disables fishes being restricted by seasons.")
-            .comment("Useful if you want to play with a seasons mod but don't like the built-in restrictions.")
-            .translation("starcatcher.configuration.enable_seasons")
-            .define("enable_seasons", true);
-
     public static final ModConfigSpec.DoubleValue VANISHING_RATE_MULTIPLIER = BUILDER_SERVER
             .comment("Adjusts the vanishing rate, useful if you want to adjust the fishes' difficulty globally.")
             .translation("starcatcher.configuration.vanishing_rate_multiplier")
@@ -210,7 +204,7 @@ public class SCConfig
 
 
     public static final ModConfigSpec.IntValue MAX_TACKLE_BOX_FISH_STORAGE = BUILDER_SERVER
-            .comment("Sets the maximum number of fishes the tackle box can store in it's 'infinite slot'")
+            .comment("Sets the maximum number of fishes the tackle box can store in its 'infinite slot'")
             .translation("starcatcher.configuration.max_tackle_box_fish_storage")
             .defineInRange("max_tackle_box_fish_storage", 900, 0, 999);
 
@@ -228,6 +222,11 @@ public class SCConfig
             .comment("Enable Starcatcher's fishing rod durability")
             .translation("starcatcher.configuration.enable_rod_durability")
             .define("enable_rod_durability", false);
+
+    public static final ModConfigSpec.BooleanValue ALLOW_GUIDE_KEYBIND = BUILDER_SERVER
+            .comment("Allows players to use a keybind to open the guide without having the item")
+            .translation("starcatcher.configuration.allow_guide_keybind")
+            .define("allow_guide_keybind", true);
 
     static final ModConfigSpec SPEC_SERVER = BUILDER_SERVER.build();
 

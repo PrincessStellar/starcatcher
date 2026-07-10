@@ -247,6 +247,9 @@ public class DGSCItemsTagsProvider extends ItemTagsProvider
                 .add(GUIDE.get())
                 .addTag(SCTags.RODS);
 
+        tag(SCTags.HAS_FARMLAND_INTERACTION)
+                .add(Items.BONE_MEAL);
+
         this.tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .addTag(SCTags.RODS);
     }

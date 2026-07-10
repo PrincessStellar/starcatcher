@@ -22,6 +22,7 @@
   "key.category.starcatcher.starcatcher": "Starcatcher",
   "key.starcatcher.minigame_hit": "Minigame Hit",
   "key.starcatcher.expand_tournament": "Toggle Tournament Overlay",
+  "key.starcatcher.open_guide": "Open guide",
 
   "creativetab.starcatcher.starcatcher": "Starcatcher",
   "creativetab.starcatcher.starcatcher.fish": "Fish",
@@ -60,8 +61,9 @@
   "emi.category.starcatcher.fishing" : "Starcatcher's Fishing",
 
   "emi.info.starcatcher.worms.0" : "Worms have different fishing modifiers when used as bait.",
-  "emi.info.starcatcher.worms.1" : "Obtainable by bonemealing farmland.",
-  "emi.info.starcatcher.worms.2" : "Compostable.",
+  "emi.info.starcatcher.worms.1" : "Compostable.",
+
+  "emi.info.starcatcher.bonemeal_farmland" : "Bonemealing farmland may provide you with a few different items.",
 
   "emi.info.starcatcher.pearls.0" : "Clams placed on sand will slowly create pearls.",
   "emi.info.starcatcher.pearls.1" : "Once the clam has opened up you may click on it to harvest a pearl.",
@@ -161,6 +163,9 @@
   "tag.starcatcher.trash" : "Trash",
   "tag.starcatcher.worms" : "Worms",
 
+  "tag.starcatcher.has_radar_layer" : "Has Fish Radar Layer",
+  "tag.starcatcher.has_tracker_layer" : "Has Fish Tracker Layer",
+  "tag.starcatcher.has_farmland_interaction" : "Has Farmland Interaction",
 
 
 
@@ -208,6 +213,7 @@
   "starcatcher.configuration.overlay_update_frequency" : "Overlay Update Frequency",
 
   "starcatcher.configuration.give_guide" : "Give Guide",
+  "starcatcher.configuration.give_rod" : "Give Rod",
   "starcatcher.configuration.enable_worms" : "Worms From Bonemealing Farmland",
   "starcatcher.configuration.enable_minigame" : "Enable Fishing Minigame",
   "starcatcher.configuration.enable_ftb_team_sharing" : "Enable FTBTeams Sharing",
@@ -230,6 +236,7 @@
   "starcatcher.configuration.hide_treasures" : "Hide Treasures",
   "starcatcher.configuration.hide_catches" : "Hide Catches",
   "starcatcher.configuration.enable_rod_durability" : "Enable Rod Durability",
+  "starcatcher.configuration.allow_guide_keybind" : "Allow Open Guide Keybind",
 
 
 

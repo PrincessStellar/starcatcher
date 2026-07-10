@@ -1,6 +1,5 @@
 package com.wdiscute.starcatcher.datagen;
 
-import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.data.CaughtFishInfo;
 import com.wdiscute.starcatcher.fish.Rarity;
 import com.wdiscute.starcatcher.modifiers.catchmodifiers.ExtraGoldenChanceModifier;
@@ -75,7 +74,7 @@ public class SCDGDataEntriesProvider
         SCDataComponents.set(almighty, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
         SCDataComponents.set(seeking, SCDataComponents.CAUGHT_FISH_INFO, CaughtFishInfo.GOLDEN);
 
-        gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.WORMS,
+        gen.addProvider(includeServer, new DataEntryProvider<>(output, SCDataEntries.FARMLAND_BONEMEAL_DROPS,
                 List.of(
                         new Utils.Duo<>(SCItems.WORM.toStack(), 1485),
                         new Utils.Duo<>(SCItems.ALMIGHTY_WORM.toStack(), 396),

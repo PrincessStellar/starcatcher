@@ -3,8 +3,6 @@ package com.wdiscute.starcatcher.registry;
 import com.mojang.serialization.Codec;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.modifiers.Modifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.KimbeMarkerModifier;
-import com.wdiscute.starcatcher.modifiers.minigamemodifiers.SpawnTreasureModifier;
 import com.wdiscute.utils.DataEntry;
 import com.wdiscute.utils.Utils;
 import net.minecraft.resources.ResourceLocation;
@@ -36,7 +34,7 @@ public interface SCDataEntries
     DataEntry<List<Modifier>> DEFAULT_MINIGAME_MODIFIERS = DataEntry.register(Starcatcher.rl("default_minigame_modifiers"), Modifier.CODEC.listOf(),
             List.of());
 
-    DataEntry<List<Utils.Duo<ItemStack, Integer>>> WORMS = DataEntry.register(Starcatcher.rl("farmland_bonemeal_drops"),
+    DataEntry<List<Utils.Duo<ItemStack, Integer>>> FARMLAND_BONEMEAL_DROPS = DataEntry.register(Starcatcher.rl("farmland_bonemeal_drops"),
             Utils.Duo.codec(ItemStack.CODEC, "item", Codec.INT, "weight").listOf(),
             List.of());
 }

@@ -56,9 +56,7 @@ public class SeasonRestriction extends AbstractFishRestriction
     @Override
     public boolean isEnabled()
     {
-        return SCConfig.ENABLE_SEASONS.get() && (
-                ModList.get().isLoaded("sereneseasons") || ModList.get().isLoaded("eclipticseasons")
-        );
+        return ModList.get().isLoaded("sereneseasons") || ModList.get().isLoaded("eclipticseasons");
     }
 
     @Override
@@ -67,19 +65,19 @@ public class SeasonRestriction extends AbstractFishRestriction
         Seasons currentSeason = Seasons.ALL;
 
         //Serene Seasons check
-        if (ModList.get().isLoaded("sereneseasons") && SCConfig.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("sereneseasons"))
         {
             currentSeason = SereneSeasonsCompat.getSeason(level);
         }
 
         //Ecliptic Seasons check
-        if (ModList.get().isLoaded("eclipticseasons") && SCConfig.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("eclipticseasons"))
         {
             currentSeason = EclipticSeasonsCompat.getSeason(level);
         }
 
         //TerraFirmaCraft Seasons check
-        if (ModList.get().isLoaded("tfc") && SCConfig.ENABLE_SEASONS.get())
+        if (ModList.get().isLoaded("tfc"))
         {
             currentSeason = TerraFirmaCraftSeasonsCompat.getSeason(level);
         }

@@ -2,6 +2,7 @@ package com.wdiscute.starcatcher.event;
 
 import com.wdiscute.sellingbin.event.SBevents;
 import com.wdiscute.starcatcher.SCConfig;
+import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.*;
 import com.wdiscute.starcatcher.blocks.tacklebox.TackleBoxBlockEntity;
@@ -18,7 +19,6 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.starcatcher.tournament.TournamentHandler;
 import com.wdiscute.utils.Utils;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
@@ -61,11 +61,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
-import net.neoforged.neoforge.registries.RegisterEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
-
-import java.util.List;
-import java.util.Map;
 
 @EventBusSubscriber(modid = Starcatcher.MOD_ID)
 public class SCEvents
@@ -253,7 +249,7 @@ public class SCEvents
         Level level = event.getLevel();
         BlockPos pos = event.getPos();
 
-        if (event.getItemStack().is(Items.BONE_MEAL) && level.getBlockState(event.getPos()).getBlock() instanceof FarmBlock)
+        if (event.getItemStack().is(SCTags.HAS_FARMLAND_INTERACTION) && level.getBlockState(event.getPos()).getBlock() instanceof FarmBlock)
         {
             if (!level.isClientSide && SCConfig.ENABLE_BONE_MEAL_ON_FARMLAND_FOR_WORMS.getAsBoolean())
             {
@@ -277,7 +273,7 @@ public class SCEvents
 
     public static ItemStack getWorm(RandomSource random)
     {
-        int totalWeight = SCDataEntries.WORMS.get().stream()
+        int totalWeight = SCDataEntries.FARMLAND_BONEMEAL_DROPS.get().stream()
                 .mapToInt(Utils.Duo::second)
                 .sum();
 
@@ -286,7 +282,7 @@ public class SCEvents
 
         int value = random.nextInt(totalWeight);
 
-        for (Utils.Duo<ItemStack, Integer> entry : SCDataEntries.WORMS.get())
+        for (Utils.Duo<ItemStack, Integer> entry : SCDataEntries.FARMLAND_BONEMEAL_DROPS.get())
         {
             value -= entry.second();
             if (value < 0)

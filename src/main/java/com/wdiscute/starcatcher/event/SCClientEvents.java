@@ -1,10 +1,12 @@
 package com.wdiscute.starcatcher.event;
 
+import com.wdiscute.starcatcher.SCConfig;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.bobentity.FishingBobRenderer;
 import com.wdiscute.starcatcher.bobentity.tackles.*;
 import com.wdiscute.starcatcher.fishentity.FishRenderer;
 import com.wdiscute.starcatcher.fishentity.fishmodels.*;
+import com.wdiscute.starcatcher.guide.FishingGuideScreen;
 import com.wdiscute.starcatcher.locators.FishRadarLayer;
 import com.wdiscute.starcatcher.locators.FishTrackerLayer;
 import com.wdiscute.starcatcher.minigame.KonamiDetector;
@@ -27,6 +29,7 @@ import com.wdiscute.starcatcher.shaders.BakedModelRemapper;
 import com.wdiscute.starcatcher.shaders.GoldRenderer;
 import com.wdiscute.starcatcher.tournament.StandScreen;
 import com.wdiscute.starcatcher.tournament.TournamentOverlay;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
@@ -46,10 +49,12 @@ public class SCClientEvents
         if (event.getAction() == 1)
             KonamiDetector.keyPressed(event.getKey());
 
-        if (event.getAction() == 0 && event.getKey() == SCKeymappings.EXPAND_TOURNAMENT.getKey().getValue())
-        {
+        if (SCKeymappings.EXPAND_TOURNAMENT.consumeClick())
             TournamentOverlay.expandedType = TournamentOverlay.expandedType.next();
-        }
+
+        if (SCConfig.ALLOW_GUIDE_KEYBIND.get() && SCKeymappings.OPEN_GUIDE.consumeClick())
+            Minecraft.getInstance().setScreen(new FishingGuideScreen(false, null));
+
     }
 
     @SubscribeEvent
@@ -193,6 +198,7 @@ public class SCClientEvents
     {
         event.register(SCKeymappings.MINIGAME_HIT);
         event.register(SCKeymappings.EXPAND_TOURNAMENT);
+        event.register(SCKeymappings.OPEN_GUIDE);
     }
 
     @SubscribeEvent
