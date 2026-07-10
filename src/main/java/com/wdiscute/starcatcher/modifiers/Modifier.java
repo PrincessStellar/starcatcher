@@ -66,7 +66,7 @@ public interface Modifier
                             return MODIFIERS.get(rl);
 
                         if (FMLEnvironment.dist.isClient())
-                            LogUtils.getLogger().warn("Modifier [{}] not found. If this log is in a dedicated server you can ignore this warning.", rl);
+                            LogUtils.getLogger().warn("Modifier [{}] not found. Using empty modifier instead.", rl);
                         return EmptyModifier.CODEC;
                     }
             );

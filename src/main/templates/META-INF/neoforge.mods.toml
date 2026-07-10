@@ -56,6 +56,14 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.starcatcher]]
+modId = "starcatcher_delight"
+type = "incompatible"
+versionRange = "[,3.0)"
+reason = "Starcatcher requires Starcatcher Delight 3.0 or newer."
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.starcatcher]]
 modId="libtooltips"
 type="required"
 versionRange="[2.0,)"

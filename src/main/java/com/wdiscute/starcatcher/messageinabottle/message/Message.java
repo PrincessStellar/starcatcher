@@ -3,9 +3,9 @@ package com.wdiscute.starcatcher.messageinabottle.message;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.wdiscute.starcatcher.Starcatcher;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.UUIDUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -87,7 +87,7 @@ public record Message(
 
             return new Message(
                     UUID.fromString("65b5b741-c418-4f3b-8e94-316702488ff5"),
-                    I18n.get("starcatcher.message." + translationKey + ".sender"),
+                    Component.translatable("starcatcher.message." + translationKey + ".sender").getString(),
                     text,
                     Starcatcher.MISSINGNO,
                     background
