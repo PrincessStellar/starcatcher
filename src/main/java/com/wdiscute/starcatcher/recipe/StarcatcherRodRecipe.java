@@ -23,8 +23,6 @@ public record StarcatcherRodRecipe(Ingredient template, Ingredient rod, Ingredie
 {
     public boolean matches(SmithingRecipeInput input, Level level)
     {
-        System.out.println("checking template " + template.getItems()[0]);
-
         if (SCDataComponents.getOrDefault(input.base(), SCDataComponents.NETHERITE_UPGRADE, false) && addText)
             return false;
 
