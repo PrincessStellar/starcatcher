@@ -4,6 +4,7 @@ import com.wdiscute.sellingbin.SellingBin;
 import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.fish.FishApi;
 import com.wdiscute.starcatcher.recipe.StarcatcherRodRecipe;
+import com.wdiscute.starcatcher.registry.SCDataEntries;
 import com.wdiscute.starcatcher.registry.SCItems;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCBlocks;
@@ -21,8 +22,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EmiEntrypoint
@@ -45,13 +48,21 @@ public class StarcatcherEmiPlugin implements EmiPlugin
         registry.addCategory(STARCATCHER_CATEGORY);
         registry.addWorkstation(STARCATCHER_CATEGORY, MY_WORKSTATION);
 
+        //bonemealing farmland
+        List<EmiIngredient> list = new ArrayList<>(SCDataEntries.FARMLAND_BONEMEAL_DROPS.get().stream().map(o -> EmiIngredient.of(Ingredient.of(o.first()))).toList());
+        list.add(0, EmiIngredient.of(Ingredient.of(Items.BONE_MEAL)));
+        list.add(0, EmiIngredient.of(Ingredient.of(Items.FARMLAND)));
+        registry.addRecipe(new EmiInfoRecipe(list,
+                List.of(
+                        Component.translatable("emi.info.starcatcher.bonemeal_farmland")
+                ),
+                SellingBin.rl("/bonemealing_farmland")));
+
         //worms info
-        registry.addRecipe(new EmiInfoRecipe(List.of(
-                EmiIngredient.of(SCTags.WORMS)),
+        registry.addRecipe(new EmiInfoRecipe(List.of(EmiIngredient.of(SCTags.WORMS)),
                 List.of(
                         Component.translatable("emi.info.starcatcher.worms.0"),
-                        Component.translatable("emi.info.starcatcher.worms.1"),
-                        Component.translatable("emi.info.starcatcher.worms.2")
+                        Component.translatable("emi.info.starcatcher.worms.1")
                 ),
                 SellingBin.rl("/worms")));
 

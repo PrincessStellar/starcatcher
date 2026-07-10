@@ -74,6 +74,7 @@ public class SCTags
 
     public static final TagKey<Item> HAS_RADAR_LAYER = ItemTags.create(Starcatcher.rl("has_radar_layer"));
     public static final TagKey<Item> HAS_TRACKER_LAYER = ItemTags.create(Starcatcher.rl("has_tracker_layer"));
+    public static final TagKey<Item> HAS_FARMLAND_INTERACTION = ItemTags.create(Starcatcher.rl("has_farmland_interaction"));
 
     public static final TagKey<FishProperties> TRASH_ENTRIES_FP = TagKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl("trash_entries"));
     public static final TagKey<FishProperties> COMMON_ENTRIES_FP = TagKey.create(Starcatcher.FISH_REGISTRY_KEY, Starcatcher.rl("common_entries"));

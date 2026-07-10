@@ -5,7 +5,10 @@ import com.wdiscute.starcatcher.SCTags;
 import com.wdiscute.starcatcher.Starcatcher;
 import com.wdiscute.starcatcher.registry.SCBlocks;
 import com.wdiscute.starcatcher.fish.FishProperties;
+import com.wdiscute.starcatcher.registry.SCDataEntries;
 import com.wdiscute.starcatcher.registry.SCItems;
+import com.wdiscute.utils.Utils;
+import dev.emi.emi.api.stack.EmiIngredient;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -22,8 +25,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.references.Blocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +84,15 @@ public class StarcatcherJeiPlugin implements IModPlugin
                 BuiltInRegistries.ITEM.getTag(SCTags.WORMS).get()
                         .stream().map(o -> o.value().getDefaultInstance()).toList(),
                 Component.translatable("emi.info.starcatcher.worms.0"),
-                Component.translatable("emi.info.starcatcher.worms.1"),
-                Component.translatable("emi.info.starcatcher.worms.2")
+                Component.translatable("emi.info.starcatcher.worms.1")
+        );
+
+        //bonemealing farmland
+        List<ItemStack> list = new ArrayList<>(SCDataEntries.FARMLAND_BONEMEAL_DROPS.get().stream().map(Utils.Duo::first).toList());
+        list.add(0, Items.BONE_MEAL.getDefaultInstance());
+        list.add(0, Items.FARMLAND.getDefaultInstance());
+        registration.addItemStackInfo(list,
+                Component.translatable("emi.info.starcatcher.bonemeal_farmland")
         );
 
         //clams info
