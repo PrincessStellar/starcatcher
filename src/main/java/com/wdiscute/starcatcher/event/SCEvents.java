@@ -89,6 +89,24 @@ public class SCEvents
         };
 
         event.addPackFinders(
+                Starcatcher.rl("built_in_datapacks/tide_compat"),
+                PackType.SERVER_DATA,
+                Component.literal("Starcatcher - Tide Compat"),
+                packSource,
+                true,
+                Pack.Position.BOTTOM
+        );
+
+
+        //
+        //                 ,--. ,--. ,--.                      ,--.    ,--.
+        //  ,---.   ,---.  |  | |  | `--' ,--,--,   ,---.      |  |-.  `--' ,--,--,
+        // (  .-'  | .-. : |  | |  | ,--. |      \ | .-. |     | .-. ' ,--. |      \
+        // .-'  `) \   --. |  | |  | |  | |  ||  | ' '-' '     | `-' | |  | |  ||  |
+        // `----'   `----' `--' `--' `--' `--''--' .`-  /       `---'  `--' `--''--'
+        //                                         `---'
+
+        event.addPackFinders(
                 Starcatcher.rl("built_in_datapacks/selling_bin_starcatcher_emeralds"),
                 PackType.SERVER_DATA,
                 Component.literal("Starcatcher - Emeralds"),
