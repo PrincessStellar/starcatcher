@@ -26,14 +26,14 @@
   "key.starcatcher.expand_tournament": "Toggle Tournament Overlay",
   "key.starcatcher.open_guide": "Open guide",
 
-  "creativetab.starcatcher.starcatcher": "Starcatcher",
-  "creativetab.starcatcher.starcatcher.fish": "Fish",
-  "creativetab.starcatcher.starcatcher.hooks_bobbers": "Hooks, Bobbers & Baits",
-  "creativetab.starcatcher.starcatcher.cosmetics": "Cosmetics",
-  "creativetab.starcatcher.starcatcher.must_have": "Must Have",
-  "creativetab.starcatcher.starcatcher.trophies": "Trophies & Statistics",
-  "creativetab.starcatcher.starcatcher.miscellaneous": "Miscellaneous",
-  "creativetab.starcatcher.starcatcher.tackle_boxes": "Tackle Boxes",
+  "itemGroup.starcatcher": "Starcatcher",
+  "section.starcatcher.fish": "Fish",
+  "section.starcatcher.hooks_bobbers": "Hooks, Bobbers & Baits",
+  "section.starcatcher.cosmetics": "Cosmetics",
+  "section.starcatcher.must_have": "Must Have",
+  "section.starcatcher.trophies": "Trophies & Statistics",
+  "section.starcatcher.miscellaneous": "Miscellaneous",
+  "section.starcatcher.tackle_boxes": "Tackle Boxes",
 
   "stat.starcatcher.starcaught_fish": "Starcatcher - Starcaught Fish",
   "stat.starcatcher.starcaught_fish_missed": "Starcatcher - Starcaught Fish Missed",
@@ -1527,8 +1527,6 @@
 
 
 
-  "starcatcher.lakes" : "Lakes",
-
   "item.starcatcher.boot" : "Boot",
   "tooltip.starcatcher.boot.0" : "An incredibly high quality boot fished from a lake.",
   "tooltip.starcatcher.boot.1" : "Every fisherman's dream.",
@@ -1563,7 +1561,7 @@
   "item.starcatcher.elderscale" : "Elderscale",
   "tooltip.starcatcher.elderscale.0" : "A deceiving fish often found in lakes.",
   "tooltip.starcatcher.elderscale.1" : "Elderscales may live up to several decades but often spend their youth hiding.",
-  "tooltip.starcatcher.elderscale.=2" : "Spotting a young one is little more than a rumor, therefore its name.",
+  "tooltip.starcatcher.elderscale.2" : "Spotting a young one is little more than a rumor, therefore its name.",
 
   "item.starcatcher.sunny_sturgeon" : "Sunny Sturgeon",
   "tooltip.starcatcher.sunny_sturgeon.0" : "A rare sturgeon often found high up in mountains during sunny days.",
@@ -1598,8 +1596,6 @@
 
 
 
-
-  "starcatcher.cold_lakes" : "Cold Lakes",
 
   "item.starcatcher.frostjaw_trout" : "Frostjaw Trout",
   "tooltip.starcatcher.frostjaw_trout.0" : "A trout species known for its razor-sharp jaws of petrified ice.",
@@ -1657,8 +1653,6 @@
 
 
 
-  "starcatcher.warm_lakes" : "Warm Lakes",
-
 
   "item.starcatcher.sandtail" : "Sandtail",
   "tooltip.starcatcher.sandtail.0" : "A long sand-covered fish, fond only in warm climates",
@@ -1697,8 +1691,6 @@
 
 
 
-
-  "starcartcher.swamp" : "swamp",
 
   "item.starcatcher.mossy_boot" : "Mossy Boot",
   "tooltip.starcatcher.mossy_boot.0" : "A boot, but this time it's mossy!",
