@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-10T16:33:27.7481549	FishingProperties
+// 1.21.1	2026-07-12T23:03:40.5656301	FishingProperties
 b1a6c9bf636776b2e5212af0d2245c4c315cda70 data/minecraft/starcatcher/fish/bamboo.json
 2922f14848e0f6e3c2bffe6bbc3f6b179290111a data/minecraft/starcatcher/fish/cod.json
 d829320fc70f1baf8def6be3f92e4341f311f97c data/minecraft/starcatcher/fish/creeper_head.json
@@ -52,14 +52,14 @@ f1c1f803a2bb3842873746a31e4383518b5696fa data/starcatcher/starcatcher/fish/downf
 1af3ceb9ea76942779fbcf6addefcde7d53ce017 data/starcatcher/starcatcher/fish/dried_seaweed.json
 adddf49e5c5cef25618cbe0470f0381a579e3978 data/starcatcher/starcatcher/fish/driftfin.json
 22f810b045619527a986b4be53757ce1e3c2a338 data/starcatcher/starcatcher/fish/drifting_bream.json
-fbe62363bf2a54bc0dabfe194edccc305c1b260b data/starcatcher/starcatcher/fish/dripfin.json
+bf2939db5336407e691b73544f0b87ad97690c8b data/starcatcher/starcatcher/fish/dripfin.json
 a2236eceaa67e37bbb450e55d77990828c57f6cb data/starcatcher/starcatcher/fish/drive_pike.json
 adf8d64d35610b4cb36fd24e2a6688a31b672336 data/starcatcher/starcatcher/fish/dusktail_snapper.json
 a5fa24b6a0c61a1f838a861b09fd8e2ea4f32c3b data/starcatcher/starcatcher/fish/eel_dynamo.json
 aafa6bc661e2d5e622d086ae18a84eece83558c1 data/starcatcher/starcatcher/fish/elderscale.json
 5f77d6740120cd434b89b5e9d2a813a293cac45c data/starcatcher/starcatcher/fish/embergill.json
 90e054f7e7b3034120d2b8d2fe449c70ceec7e7e data/starcatcher/starcatcher/fish/end_glow.json
-3a544224edfe46c2a9393616b49eb6e0ac105583 data/starcatcher/starcatcher/fish/fossilized_angelfish.json
+9f504437d521efe8fc5a5395e40e0068eac358ee data/starcatcher/starcatcher/fish/fossilized_angelfish.json
 8a54c4cf848f8a559e24589d16ee6d7fa2329555 data/starcatcher/starcatcher/fish/frog_smithing_template.json
 8801342c2dd1f48c2e73dfaf85659391a18f98c8 data/starcatcher/starcatcher/fish/frostgill_chub.json
 f73e577b8df274f6373fdb9d562852e62a9712d0 data/starcatcher/starcatcher/fish/frostjaw_trout.json
@@ -164,7 +164,7 @@ be46429ee4289a42ecfafa8e1875f567632e9f74 data/starcatcher/starcatcher/fish/voidf
 5f0d80521ad5e6e9ab9fe81a69c0a4d7aedfa54f data/starcatcher/starcatcher/fish/willish.json
 fa50e43e72f82d9c0331dfbe2139d8ca1643e266 data/starcatcher/starcatcher/fish/willow_bream.json
 646617f0fe70af4297b40fef5e57315d96ae7992 data/starcatcher/starcatcher/fish/wintery_pike.json
-28ddf6abf2165034d6169fa3b8e8c88a8c40596d data/starcatcher/starcatcher/fish/yellowstone_fish.json
+64bcf76592e2ab14d2e5b551dd9fe9c9b04a00b8 data/starcatcher/starcatcher/fish/yellowstone_fish.json
 0f498d7214ffcebe98101d6e9abd3fdcd56e09cc data/tide/starcatcher/fish/abyss_angler.json
 f47394cbf720cfec22b77de361bf242bf75bb407 data/tide/starcatcher/fish/alpha_fish.json
 ed9ad7232ccb13e21ad55ce25ed925649d82a3ce data/tide/starcatcher/fish/amber_rockfish.json
@@ -198,7 +198,7 @@ e99f0072c82e274f2e308cd8dbc464aaa5f0933c data/tide/starcatcher/fish/crystal_shri
 34767f261369510da83681abc540fe4a249d89e6 data/tide/starcatcher/fish/deep_grouper.json
 703871be31ab1a0df5a7375ca47d0dbcb35c810e data/tide/starcatcher/fish/devils_hole_pupfish.json
 5aa2d3d1ddece4688b320c3983272ca66426bc92 data/tide/starcatcher/fish/dragon_fish.json
-fe8c517ea3635845efd50cf722c3490c602c2601 data/tide/starcatcher/fish/dripstone_darter.json
+f9784683d9fbb55aecca14d8a3ba6d52b3baa05a data/tide/starcatcher/fish/dripstone_darter.json
 ccba6e405c1f4f780d9590df749d406b476e6c91 data/tide/starcatcher/fish/dutchman_sock.json
 3f32d291532457689e63f7103a1f8d6fda74f360 data/tide/starcatcher/fish/echo_snapper.json
 f8709ffefd8b11fca6ed8f7bcf648b5ae4259225 data/tide/starcatcher/fish/elytrout.json

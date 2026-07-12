@@ -51,16 +51,6 @@
       "blacklist": []
     },
     {
-      "type": "starcatcher:biome",
-      "biomes": [],
-      "blacklist": [
-        "minecraft:dripstone_caves",
-        "minecraft:lush_caves",
-        "minecraft:deep_dark"
-      ],
-      "translation_override": "gui.guide.caves"
-    },
-    {
       "type": "starcatcher:fluid",
       "fluids": [
         "minecraft:water"

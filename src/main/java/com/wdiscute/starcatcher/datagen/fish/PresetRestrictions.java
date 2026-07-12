@@ -273,7 +273,6 @@ public class PresetRestrictions
                 .addRestriction(DimensionRestriction.OVERWORLD)
                 .addRestriction(BiomeRestriction.dripstoneCaves())
                 .addRestriction(FluidRestriction.WATER)
-                .addRestriction(BiomeRestriction.underground())
                 ;
     }
 
