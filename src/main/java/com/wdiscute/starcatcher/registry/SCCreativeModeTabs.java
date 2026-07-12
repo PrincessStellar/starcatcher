@@ -153,6 +153,8 @@ public interface SCCreativeModeTabs
                         .setBannerColor(0xff344545)
                         .add(SCItems.BUCKETABLE_FISHES_REGISTRY)
                         .add(SCItems.NON_BUCKETABLE_FISH_REGISTRY)
+                        .add(SCItems.NON_FISH_FISH_REGISTRY)
+                        .add(SCItems.LAVA_CRAB_CLAW)
                         .add(SCBlocks.CLAM)
                         .add(SCBlocks.CONCH)
         );

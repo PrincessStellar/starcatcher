@@ -30,6 +30,10 @@ public class DGSCItemModelProvider extends ItemModelProvider
         for (DeferredHolder<Item, ? extends Item> item : NON_BUCKETABLE_FISH_REGISTRY.getEntries())
             simpleItem((DeferredItem<? extends Item>) item);
 
+        //non fish fishes
+        for (DeferredHolder<Item, ? extends Item> item : NON_FISH_FISH_REGISTRY.getEntries())
+            simpleItem((DeferredItem<? extends Item>) item);
+
         //trash
         simpleItem(BOOT);
         simpleItem(DRIED_SEAWEED);

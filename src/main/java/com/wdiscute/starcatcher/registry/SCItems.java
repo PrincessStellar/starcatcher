@@ -35,6 +35,7 @@ public interface SCItems
     DeferredRegister.Items ITEMS = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items NON_BUCKETABLE_FISH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items BUCKETABLE_FISHES_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
+    DeferredRegister.Items NON_FISH_FISH_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items TEMPLATES_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items RODS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
     DeferredRegister.Items HOOKS_REGISTRY = DeferredRegister.createItems(Starcatcher.MOD_ID);
@@ -48,7 +49,7 @@ public interface SCItems
     DeferredItem<Item> FISH_RADAR = ITEMS.register("fish_radar", SingleStackBasicItem::new);
     DeferredItem<Item> STARCATCHER_TWINE = ITEMS.register("starcatcher_twine", SingleStackBasicItem::new);
 
-    DeferredItem<Item> SETTINGS = ITEMS.register("settings", () ->  new Item(new Item
+    DeferredItem<Item> SETTINGS = ITEMS.register("settings", () -> new Item(new Item
             .Properties().component(Tooltips.TOOLTIP_ALWAYS, List.of("wadwad"))));
     DeferredItem<Item> TREASURE = ITEMS.register("treasure", BasicItem::new);
 
@@ -272,11 +273,11 @@ public interface SCItems
 
     //underground
     DeferredItem<Item> GOLD_FAN = registerNonBucketFish("gold_fan");
-    DeferredItem<Item> GEODE_EEL = registerNonBucketFish("geode_eel");
+    DeferredItem<Item> GEODE_EEL = registerNonFishFish("geode_eel");
 
     //caves
     DeferredItem<Item> WHITEVEIL = registerBucketFish("whiteveil");
-    DeferredItem<Item> BLACK_EEL = registerNonBucketFish("black_eel");
+    DeferredItem<Item> BLACK_EEL = registerNonFishFish("black_eel");
     DeferredItem<Item> AMETHYSTBACK = registerNonBucketFish("amethystback");
     DeferredItem<Item> STONEFISH = registerNonBucketFish("stonefish");
 
@@ -311,21 +312,21 @@ public interface SCItems
     //overworld surface lava
     DeferredItem<Item> SUNEATER = registerLavaBucketFish("suneater");
     DeferredItem<Item> PYROTROUT = registerLavaBucketFish("pyrotrout");
-    DeferredItem<Item> OBSIDIAN_EEL = registerNonBucketFish("obsidian_eel", true);
+    DeferredItem<Item> OBSIDIAN_EEL = registerNonFishFish("obsidian_eel", true);
 
     //overworld underground lava
-    DeferredItem<Item> MOLTEN_SHRIMP = registerNonBucketFish("molten_shrimp", true);
-    DeferredItem<Item> OBSIDIAN_CRAB = registerNonBucketFish("obsidian_crab", true);
+    DeferredItem<Item> MOLTEN_SHRIMP = registerNonFishFish("molten_shrimp", true);
+    DeferredItem<Item> OBSIDIAN_CRAB = registerNonFishFish("obsidian_crab", true);
 
     //overworld deepslate lava
-    DeferredItem<Item> SCORCHED_BLOODSUCKER = registerNonBucketFish("scorched_bloodsucker", true);
-    DeferredItem<Item> MOLTEN_DEEPSLATE_CRAB = registerNonBucketFish("molten_deepslate_crab", true);
+    DeferredItem<Item> SCORCHED_BLOODSUCKER = registerNonFishFish("scorched_bloodsucker", true);
+    DeferredItem<Item> MOLTEN_DEEPSLATE_CRAB = registerNonFishFish("molten_deepslate_crab", true);
 
     //nether
     DeferredItem<Item> EMBERGILL = registerLavaBucketFish("embergill");
     DeferredItem<Item> SCALDING_PIKE = registerNonBucketFish("scalding_pike", true);
     DeferredItem<Item> CINDER_SQUID = registerNonBucketFish("cinder_squid", true);
-    DeferredItem<Item> LAVA_CRAB = registerNonBucketFish("lava_crab", true);
+    DeferredItem<Item> LAVA_CRAB = registerNonFishFish("lava_crab", true);
     DeferredItem<Item> MAGMA_FISH = registerLavaBucketFish("magma_fish");
     DeferredItem<Item> GLOWSTONE_SEEKER = registerNonBucketFish("glowstone_seeker", true);
     DeferredItem<Item> GLOWSTONE_PUFFERFISH = registerNonBucketFish("glowstone_pufferfish", true);
@@ -333,11 +334,11 @@ public interface SCItems
 
     DeferredItem<Item> CERBERAY = registerLavaBucketFish("cerberay");
 
-    DeferredItem<Item> LAVA_CRAB_CLAW = registerNonBucketFish("lava_crab_claw", true);
+    DeferredItem<Item> LAVA_CRAB_CLAW = ITEMS.register("lava_crab_claw", FireResistantBasicItem::new);
 
     //the end
     DeferredItem<Item> CHARFISH = registerBucketFish("charfish");
-    DeferredItem<Item> CHORUS_CRAB = registerNonBucketFish("chorus_crab");
+    DeferredItem<Item> CHORUS_CRAB = registerNonFishFish("chorus_crab");
     DeferredItem<Item> END_GLOW = registerNonBucketFish("end_glow");
 
     //end void
@@ -355,6 +356,18 @@ public interface SCItems
     DeferredItem<Item> STARCAUGHT_FISH = ITEMS.register("starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH)));
     DeferredItem<Item> COOKED_STARCAUGHT_FISH = ITEMS.register("cooked_starcaught_fish", () -> new Item(new Item.Properties().food(SCFoodProperties.BASIC_COOKED_FISH)));
 
+    static DeferredItem<Item> registerNonFishFish(String name)
+    {
+        return registerNonFishFish(name, false);
+    }
+
+    static DeferredItem<Item> registerNonFishFish(String name, boolean fireResistant)
+    {
+        if (fireResistant)
+            return NON_FISH_FISH_REGISTRY.register(name, FireResistantBasicItem::new);
+        else
+            return NON_FISH_FISH_REGISTRY.register(name, BasicItem::new);
+    }
 
     static DeferredItem<Item> registerBucketFish(String name)
     {
@@ -374,9 +387,9 @@ public interface SCItems
     static DeferredItem<Item> registerNonBucketFish(String name, boolean fireResistant)
     {
         if (fireResistant)
-            return NON_BUCKETABLE_FISH_REGISTRY.register(name, FireResistantBasicItem::new);
+            return NON_BUCKETABLE_FISH_REGISTRY.register(name, () -> new FishItem(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH).fireResistant()));
         else
-            return NON_BUCKETABLE_FISH_REGISTRY.register(name, BasicItem::new);
+            return NON_BUCKETABLE_FISH_REGISTRY.register(name, () -> new FishItem(new Item.Properties().food(SCFoodProperties.BASIC_RAW_FISH)));
     }
 
     static void register(IEventBus modEventBus)
@@ -384,6 +397,7 @@ public interface SCItems
         ITEMS.register(modEventBus);
         NON_BUCKETABLE_FISH_REGISTRY.register(modEventBus);
         BUCKETABLE_FISHES_REGISTRY.register(modEventBus);
+        NON_FISH_FISH_REGISTRY.register(modEventBus);
         TEMPLATES_REGISTRY.register(modEventBus);
         BOBBERS_REGISTRY.register(modEventBus);
         HOOKS_REGISTRY.register(modEventBus);
