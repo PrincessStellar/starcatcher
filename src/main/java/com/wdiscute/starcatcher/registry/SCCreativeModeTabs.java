@@ -92,6 +92,7 @@ public interface SCCreativeModeTabs
 
                         .addItemTag(SCTags.HOOKS)
                         .addItemTag(SCTags.BOBBERS)
+                        .addItemTag(SCTags.BAITS)
         );
 
         //cosmetics

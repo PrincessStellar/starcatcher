@@ -93,7 +93,7 @@ public class SCEvents
                 PackType.SERVER_DATA,
                 Component.literal("Starcatcher - Tide Compat"),
                 packSource,
-                true,
+                false,
                 Pack.Position.BOTTOM
         );
 
