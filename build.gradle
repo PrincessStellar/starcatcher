@@ -83,7 +83,7 @@ dependencies {
     jarJar(implementation("maven.modrinth:wds-selling-bin:nrGOzmNu"))
 
     //wdUtils
-    jarJar(implementation("com.wdiscute:wdUtils:1.1-NEOFORGE-1.21.1"))
+    jarJar(implementation("com.wdiscute:wdUtils:1.2-NEOFORGE-1.21.1"))
 
     //tiny multiblock lib
     jarJar(implementation("maven.modrinth:tiny-multiblock-lib:gbRIPDRZ"))
