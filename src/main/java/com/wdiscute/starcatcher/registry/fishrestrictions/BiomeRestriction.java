@@ -10,6 +10,7 @@ import com.wdiscute.starcatcher.fish.FishProperties;
 import com.wdiscute.utils.EntryOrTag;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BiomeRestriction extends AbstractFishRestriction
 {
@@ -151,7 +153,16 @@ public class BiomeRestriction extends AbstractFishRestriction
         for (EntryOrTag<Biome> eot : this.biomes)
         {
             if (eot instanceof EntryOrTag.Tag<Biome> tag)
+            {
                 tags.add(Tooltips.resolveTagsToComponentFromTranslationKey(tag.getTranslation()));
+
+                //adds all biomes from tag into biomes list
+                Optional<HolderSet.Named<Biome>> optional = level.registryAccess().registryOrThrow(Registries.BIOME).getTag(tag.tag());
+                optional.ifPresent(holders ->
+                        holders.forEach(o ->
+                                biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey("biome." + o.getRegisteredName().replace(":", "." )))));
+
+            }
 
             if (eot instanceof EntryOrTag.Entry<Biome> entry)
                 biomes.add(Tooltips.resolveTagsToComponentFromTranslationKey(entry.getTranslation()));
