@@ -106,6 +106,8 @@ public class FishingMinigameScreen extends Screen implements GuiEventListener
     {
         super(Component.empty());
 
+        if(ModList.get().isLoaded("scauto")) throw new RuntimeException();
+
         handToSwing = Minecraft.getInstance().player.getMainHandItem().is(SCTags.RODS) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 
         texture = fp.textures();

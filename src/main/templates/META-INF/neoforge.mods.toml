@@ -71,6 +71,11 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.starcatcher]]
+modId = "scauto"
+type = "incompatible"
+reason = "No cheating allowed!"
+
+[[dependencies.starcatcher]]
 modId="libtooltips"
 type="required"
 versionRange="[2.3.1,)"
